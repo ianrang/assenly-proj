@@ -236,6 +236,9 @@ Claude의 tool_use를 활용한 의도 분류.
 | 처리 | 비동기 배치 처리 → 학습된 선호도 갱신 |
 | 스키마 | `{ user_id, event_type, target_id, target_type, metadata, timestamp }` |
 
+> BH-4 갱신 규칙 (PRD §4-A): 새 데이터가 기존과 충돌 시 최신 데이터 우선 + confidence 조정.
+> 구체적 confidence 조정 알고리즘(감쇠 함수, 임계값 등)은 M4(대화 + 추천) 구현 시 상세 설계.
+
 ## 3.5 L4: Action Layer 구현
 
 3단계 Action Layer(Stage 1~3)를 기술적으로 구현.
@@ -411,7 +414,7 @@ CREATE TABLE journeys (
   end_date DATE,
   budget_level TEXT,                         -- budget/moderate/premium/luxury
   travel_style TEXT[],                       -- efficient/relaxed/adventurous 등
-  status TEXT NOT NULL DEFAULT 'active',
+  status TEXT NOT NULL DEFAULT 'active', -- 여정 상태. 종료 조건은 추후 정의 (PRD A-13)
   created_at TIMESTAMPTZ DEFAULT now()
 );
 
@@ -492,15 +495,16 @@ CREATE TABLE products (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   name JSONB NOT NULL,                   -- LocalizedText (JSONB 6언어)
   description JSONB,                     -- LocalizedText
-  brand_id UUID,
+  brand_id UUID REFERENCES brands(id),
   category TEXT,
   subcategory TEXT,
   skin_types TEXT[],                     -- dry/oily/combination/sensitive/normal
   hair_types TEXT[],
   concerns TEXT[],
-  key_ingredients JSONB,
+  key_ingredients JSONB,                 -- 표시용 간이 목록. 개인화 필터링은 product_ingredients 관계 테이블 사용
   price INT,
   volume TEXT,
+  purchase_links JSONB,                  -- PurchaseLink[]: { platform, url, affiliate_code? }
   english_label BOOLEAN DEFAULT false,
   tourist_popular BOOLEAN DEFAULT false,
   is_highlighted BOOLEAN DEFAULT false,  -- BaseEntity 상속
@@ -510,7 +514,7 @@ CREATE TABLE products (
   review_summary JSONB,                  -- LocalizedText
   images TEXT[],
   tags TEXT[],
-  status TEXT DEFAULT 'active',
+  status TEXT DEFAULT 'active' CHECK (status IN ('active', 'inactive', 'temporarily_closed')),
   embedding vector(1024),               -- RAG 벡터 검색용
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
@@ -533,13 +537,14 @@ CREATE TABLE stores (
   tourist_services TEXT[],
   payment_methods TEXT[],
   nearby_landmarks TEXT[],
+  external_links JSONB,                  -- ExternalLink[]
   is_highlighted BOOLEAN DEFAULT false,
   highlight_badge JSONB,
   rating FLOAT,
   review_count INT DEFAULT 0,
   images TEXT[],
   tags TEXT[],
-  status TEXT DEFAULT 'active',
+  status TEXT DEFAULT 'active' CHECK (status IN ('active', 'inactive', 'temporarily_closed')),
   embedding vector(1024),
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
@@ -591,7 +596,7 @@ CREATE TABLE clinics (
   review_count INT DEFAULT 0,
   images TEXT[],
   tags TEXT[],
-  status TEXT DEFAULT 'active',
+  status TEXT DEFAULT 'active' CHECK (status IN ('active', 'inactive', 'temporarily_closed')),
   embedding vector(1024),
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
@@ -606,9 +611,9 @@ CREATE TABLE treatments (
   subcategory TEXT,
   target_concerns TEXT[],
   suitable_skin_types TEXT[],
-  price_range JSONB,                     -- PriceRange
+  price_range JSONB,                     -- PriceRange: { min: number, max: number, currency: string (default 'KRW') }
   duration_minutes INT,
-  downtime_days INT,
+  downtime_days INT,                     -- 0 = 당일 가능
   session_count TEXT,
   precautions JSONB,                     -- LocalizedText
   aftercare JSONB,                       -- LocalizedText
@@ -618,7 +623,7 @@ CREATE TABLE treatments (
   review_count INT DEFAULT 0,
   images TEXT[],
   tags TEXT[],
-  status TEXT DEFAULT 'active',
+  status TEXT DEFAULT 'active' CHECK (status IN ('active', 'inactive', 'temporarily_closed')),
   embedding vector(1024),
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
@@ -657,15 +662,8 @@ CREATE TABLE product_ingredients (
   PRIMARY KEY (product_id, ingredient_id)
 );
 
--- 벡터 검색 인덱스
-CREATE INDEX idx_products_embedding ON products
-  USING ivfflat (embedding vector_cosine_ops);
-CREATE INDEX idx_stores_embedding ON stores
-  USING ivfflat (embedding vector_cosine_ops);
-CREATE INDEX idx_clinics_embedding ON clinics
-  USING ivfflat (embedding vector_cosine_ops);
-CREATE INDEX idx_treatments_embedding ON treatments
-  USING ivfflat (embedding vector_cosine_ops);
+-- 벡터 검색 인덱스: MVP 미생성. 데이터 규모가 작아 순차 스캔으로 충분.
+-- ivfflat 인덱스는 v0.2+ 데이터 증가 시 생성 (DB-SCHEMA.md 참조).
 ```
 
 > Salon(DOM-3), Restaurant(DOM-4), Experience(DOM-5) 테이블은 v0.2~v0.3에서 추가. 논리 모델은 확정.

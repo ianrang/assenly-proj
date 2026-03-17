@@ -1,7 +1,7 @@
 # 에센리 K-뷰티 AI 에이전트 — DB 스키마
 
-> 버전: 1.0
-> 최종 갱신: 2026-03-16
+> 버전: 1.1
+> 최종 갱신: 2026-03-17
 > 상위 문서: TDD v1.3 §4 (데이터 모델 개요)
 > 용도: SQL DDL 상세 정의. Supabase Migration 파일의 원본.
 
@@ -57,7 +57,7 @@ CREATE TABLE journeys (
   end_date DATE,
   budget_level TEXT,                         -- budget/moderate/premium/luxury
   travel_style TEXT[],                       -- efficient/relaxed/adventurous 등
-  status TEXT NOT NULL DEFAULT 'active',
+  status TEXT NOT NULL DEFAULT 'active', -- 여정 상태. 종료 조건은 추후 정의 (PRD A-13)
   created_at TIMESTAMPTZ DEFAULT now()
 );
 
@@ -138,15 +138,16 @@ CREATE TABLE products (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   name JSONB NOT NULL,                   -- LocalizedText (JSONB 6언어)
   description JSONB,                     -- LocalizedText
-  brand_id UUID,
+  brand_id UUID REFERENCES brands(id),
   category TEXT,
   subcategory TEXT,
   skin_types TEXT[],                     -- dry/oily/combination/sensitive/normal
   hair_types TEXT[],
   concerns TEXT[],
-  key_ingredients JSONB,
+  key_ingredients JSONB,                 -- 표시용 간이 목록. 개인화 필터링은 product_ingredients 관계 테이블 사용
   price INT,
   volume TEXT,
+  purchase_links JSONB,                  -- PurchaseLink[]: { platform, url, affiliate_code? }
   english_label BOOLEAN DEFAULT false,
   tourist_popular BOOLEAN DEFAULT false,
   is_highlighted BOOLEAN DEFAULT false,  -- BaseEntity 상속
@@ -156,7 +157,7 @@ CREATE TABLE products (
   review_summary JSONB,                  -- LocalizedText
   images TEXT[],
   tags TEXT[],
-  status TEXT DEFAULT 'active',
+  status TEXT DEFAULT 'active' CHECK (status IN ('active', 'inactive', 'temporarily_closed')),
   embedding vector(1024),               -- RAG 벡터 검색용
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
@@ -179,13 +180,14 @@ CREATE TABLE stores (
   tourist_services TEXT[],
   payment_methods TEXT[],
   nearby_landmarks TEXT[],
+  external_links JSONB,                  -- ExternalLink[]
   is_highlighted BOOLEAN DEFAULT false,
   highlight_badge JSONB,
   rating FLOAT,
   review_count INT DEFAULT 0,
   images TEXT[],
   tags TEXT[],
-  status TEXT DEFAULT 'active',
+  status TEXT DEFAULT 'active' CHECK (status IN ('active', 'inactive', 'temporarily_closed')),
   embedding vector(1024),
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
@@ -237,7 +239,7 @@ CREATE TABLE clinics (
   review_count INT DEFAULT 0,
   images TEXT[],
   tags TEXT[],
-  status TEXT DEFAULT 'active',
+  status TEXT DEFAULT 'active' CHECK (status IN ('active', 'inactive', 'temporarily_closed')),
   embedding vector(1024),
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
@@ -252,9 +254,9 @@ CREATE TABLE treatments (
   subcategory TEXT,
   target_concerns TEXT[],
   suitable_skin_types TEXT[],
-  price_range JSONB,                     -- PriceRange
+  price_range JSONB,                     -- PriceRange: { min: number, max: number, currency: string (default 'KRW') }
   duration_minutes INT,
-  downtime_days INT,
+  downtime_days INT,                     -- 0 = 당일 가능
   session_count TEXT,
   precautions JSONB,                     -- LocalizedText
   aftercare JSONB,                       -- LocalizedText
@@ -264,7 +266,7 @@ CREATE TABLE treatments (
   review_count INT DEFAULT 0,
   images TEXT[],
   tags TEXT[],
-  status TEXT DEFAULT 'active',
+  status TEXT DEFAULT 'active' CHECK (status IN ('active', 'inactive', 'temporarily_closed')),
   embedding vector(1024),
   created_at TIMESTAMPTZ DEFAULT now(),
   updated_at TIMESTAMPTZ DEFAULT now()
