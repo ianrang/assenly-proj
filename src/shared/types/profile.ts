@@ -94,7 +94,6 @@ export interface ConsentRecord {
   behavior_logging: boolean;
   data_retention: boolean;
   marketing: boolean;
-  analytics: boolean;
   consented_at: string;
   updated_at: string;
 }
@@ -109,6 +108,7 @@ export interface OnboardingFormData {
   skin_concerns: SkinConcern[]; // max 3 in UI
   // Step 3: Travel
   country: string;
+  age_range?: AgeRange;
   stay_days: number;
   start_date?: string;
   end_date?: string;

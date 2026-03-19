@@ -23,7 +23,8 @@ export type HairConcern =
   | "thinning"
   | "oily_scalp"
   | "dryness"
-  | "dandruff";
+  | "dandruff"
+  | "color_treated";
 
 export type SkinConcern =
   | "acne"
@@ -45,7 +46,9 @@ export type TravelStyle =
   | "relaxed"
   | "adventurous"
   | "instagram"
-  | "local_experience";
+  | "local_experience"
+  | "luxury"
+  | "budget";
 
 export type InterestActivity =
   | "shopping"
@@ -82,6 +85,12 @@ export interface ExternalLink {
   label?: string;
 }
 
+export interface PurchaseLink {
+  platform: string;
+  url: string;
+  affiliate_code?: string;
+}
+
 // --- DOM-1: Shopping ---
 
 export interface Product {
@@ -97,6 +106,7 @@ export interface Product {
   key_ingredients: string[] | null; // JSONB
   price: number | null;
   volume: string | null;
+  purchase_links: PurchaseLink[] | null;
   english_label: boolean;
   tourist_popular: boolean;
   is_highlighted: boolean;
@@ -127,6 +137,7 @@ export interface Store {
   tourist_services: string[];
   payment_methods: string[];
   nearby_landmarks: string[];
+  external_links: ExternalLink[];
   is_highlighted: boolean;
   highlight_badge: LocalizedText | null;
   rating: number | null;

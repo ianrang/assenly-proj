@@ -1,7 +1,7 @@
 # 에센리 K-뷰티 AI 에이전트 — 기술 설계 문서 (TDD)
 
-> 버전: 1.0
-> 최종 갱신: 2026-03-15
+> 버전: 1.1
+> 최종 갱신: 2026-03-17
 > 원칙: 이 문서는 기술 구현(HOW)만을 다룬다. 제품 요구사항(WHAT)은 PRD.md에 정의.
 
 ---
@@ -176,7 +176,7 @@ Claude의 tool_use를 활용한 의도 분류.
   2. 고민 매칭: skin_concerns → 대응 제품/시술 매핑
   3. 제약 조건 체크:
      - downtime_days < remaining_days
-       * remaining_days = end_date - today (날짜 있을 때), stay_days (없을 때 보수적 폴백)
+       * remaining_days = end_date - today (날짜 있을 때), stay_days (없을 때 폴백으로 사용, 과대평가 가능성 있음)
        * 50%+ 겹침 시 경고 표시
      - budget 범위 내 (budget/moderate/premium/luxury)
      - 영업 중 (현재 시간)
@@ -223,7 +223,7 @@ Claude의 tool_use를 활용한 의도 분류.
 |---|---|
 | 저장 | Supabase DB |
 | 내용 | User Profile (UP-1~4), Beauty History (BH-1~4), Journey records (JC-1~5) |
-| 수명 | 영구 (사용자 삭제 전까지) |
+| 수명 | 영구 (사용자 삭제 전까지). 단, anonymous 사용자는 비활동 90일 자동 만료 적용 (PRD §4-C) |
 | 접근 | 대화 시작 시 로드 → 시스템 프롬프트 주입 |
 | 갱신 | 대화 중 새 정보 감지 시 실시간 업데이트 |
 
@@ -915,3 +915,6 @@ PRD에서 확정된 비즈니스 결정에 따른 기술 구현 결정 기록.
 | C-5 | 대화 히스토리는 서버 DB에 저장. Day 1 분석 가능. | Supabase DB messages 테이블. Redis는 v0.2+ 성능 이슈 시 도입. |
 | C-6 | 다국어 텍스트는 6개 언어를 단일 객체로 관리. 언어 추가 시 엔티티 구조 변경 없음. | JSONB 단일 컬럼. `entity.name->>'en'` 패턴. |
 | C-7 | budget은 level만 사용. amount/currency는 v0.2. | TEXT 타입 단일 컬럼. 드롭다운 UI와 일치. |
+| A-14 | Anonymous 사용자 비활동 90일 자동 만료 + 이메일 수동 삭제 요청. | Supabase cron job 또는 Edge Function 스케줄러로 비활동 90일 데이터 자동 삭제. 삭제 대상: users, user_profiles, journeys, conversations, messages, beauty_history, learned_preferences, behavior_logs, consent_records. |
+| A-15 | MVP 쿠키 기반 간이 재방문. 크로스 기기는 v0.2. | localStorage에 anonymous UUID 저장. 재방문 시 UUID로 서버 프로필 조회. 쿠키 소실 시 신규 사용자 처리. |
+| M-6 | 동의 수집: Landing 배너(보관) + Kit CTA(마케팅). | consent_records 테이블 사용. Landing 최초 진입 시 배너 UI → data_retention 동의. Kit CTA 시 marketing 동의. |
