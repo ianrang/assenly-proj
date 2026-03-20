@@ -292,7 +292,6 @@ v2.0까지: 33~50주 (1인)
 | U-7 | 데이터 갱신 전략 | (a) 주기적 API 동기화 (b) 관리자 수동 (c) 제휴업체 셀프(v0.2) (d) 혼합 | Phase 0 |
 | U-8 | 시드 데이터 수집 방법 | (a) 수동 (b) AI+검수 (c) 크롤링+검수 | Phase 1 |
 | U-9 | 뷰티 KB 작성 주체 | (a) 전문가 (b) AI+검수 | Phase 1 |
-| U-10 | 분석 도구 | (a) Vercel Analytics (b) Mixpanel (c) 자체 | Phase 0 |
 | U-11 | 소프트 런칭 대상/규모 | 대상, 인원, 기간 | Phase 3 |
 | U-12 | LLM 응답 캐싱 여부 | (a) 안 함 (b) 검색 결과만 (c) LLM 응답까지 | Phase 1 |
 | U-13 | 네트워크 불안정 대응 범위 | (a) 에러 UI만 (b) 이전 대화 로컬 캐시 (c) PWA | Phase 1 |
@@ -308,6 +307,7 @@ v2.0까지: 33~50주 (1인)
 | 산출물 | 위치 |
 |--------|------|
 | 관리자 앱 요구사항 | `docs/03-design/7.2-ADMIN-REQUIREMENTS.md` |
+| 성공 지표 측정 설계 | `docs/03-design/ANALYTICS.md` |
 | PoC 결과 리포트 | `docs/04-poc/poc-results.md` |
 | 토큰 예산 분석 | `docs/04-poc/token-budget.md` |
 | 비용 추정 | `docs/04-poc/cost-estimate.md` |
