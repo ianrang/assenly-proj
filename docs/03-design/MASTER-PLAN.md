@@ -35,7 +35,7 @@
 | 시스템 | 대상 | 설명 | 문서 상태 |
 |--------|------|------|-----------|
 | **사용자 앱** | 외국인 여행객 (2040 여성) | AI 대화형 K-뷰티 추천 | ✅ PRD + TDD 확정 |
-| **관리자 앱** | 에센리 운영팀 | 데이터 CRUD + 시스템 관리 | ⚠️ 요구사항 미정의 |
+| **관리자 앱** | 에센리 운영팀 | 데이터 CRUD + 시스템 관리 | ✅ MVP 요구사항 확정 ([7.2-ADMIN](7.2-ADMIN-REQUIREMENTS.md)) |
 | **제휴업체 앱** | 클리닉/매장/브랜드 | 자사 데이터 셀프서비스 | ⚠️ 요구사항 미정의 (v0.2) |
 
 > TDD §6 아키텍처 기반: 단일 Next.js 앱, 라우트 분리. server/core/ 공유.
@@ -77,17 +77,25 @@
 
 | 항목 | 범위 |
 |------|------|
-| 데이터 CRUD | Product, Store, Brand, Ingredient, Clinic, Treatment, Doctor |
+| 데이터 CRUD | 7엔티티 × 조회/생성/수정/비활성화 (영구삭제 없음) |
 | 관계 관리 | product↔store, product↔ingredient, clinic↔treatment |
-| 하이라이트 | is_highlighted + highlight_badge 설정 |
-| 인증 | Google Workspace SSO + JWT |
+| 하이라이트 | is_highlighted 토글 + 6개 언어 badge 텍스트 |
+| 인증 | Google Workspace SSO + JWT (24h, 자동 갱신) |
+| 역할/권한 | 2역할 (super_admin, admin) + 엔티티별 read/write 14비트 |
+| 계정 관리 | super_admin이 허용 이메일 등록 + 권한 할당 |
+| 다국어 입력 | ko+en 필수, ja/zh/es/fr 선택. 하이브리드 UX |
+| 이미지 업로드 | 4엔티티, JPEG/PNG/WebP, 5MB, 1~10장 |
+| 데이터 검증 | 공통 + 엔티티별 + 참조무결성 + 비활성화 제약 |
+| 감사 로그 | 17이벤트, before/after, super_admin 전용, 불변 |
+
+> 상세: [`7.2-ADMIN-REQUIREMENTS.md`](7.2-ADMIN-REQUIREMENTS.md)
 
 ## 2.2 v0.2 — 도메인 확장 + 인증 + 제휴업체
 
 | 시스템 | 추가 범위 |
 |--------|----------|
 | 사용자 앱 | DOM-3+DOM-4, 계정 인증, 재방문 흐름, 6개 언어 UI, 위치 기반 추천 |
-| 관리자 앱 | 대시보드, 사용자/대화 분석, 시드 데이터 일괄 관리, DOM-3/DOM-4 |
+| 관리자 앱 | DOM-3/DOM-4 관리, 대시보드, 사용자/대화 분석, 대량 작업/가져오기, AI 자동 번역, partner 역할, 감사 로그 내보내기 |
 | 제휴업체 앱 | 업체 등록, 자사 데이터 등록·수정, 하이라이트 신청 |
 
 ## 2.3 v0.3 — 차별화 기능
@@ -279,7 +287,6 @@ v2.0까지: 33~50주 (1인)
 |---|------|--------|----------|
 | U-1 | 관리자 UI 프레임워크 | (a) shadcn/ui (b) Tailwind 직접 | Phase 1 |
 | U-3 | 벡터 인덱스 MVP 포함 | (a) MVP에 생성 (b) v0.2로 연기 | Phase 0 |
-| U-4 | 개인화 추출 방식 | (a) 별도 tool (b) 후처리 (c) LLM 지시 | Phase 0 |
 | U-5 | 이미지 저장소 | (a) Supabase Storage (b) Cloudinary (c) S3 | Phase 0 |
 | U-6 | 도메인 데이터 소스 | (a) 외부 API (b) 크롤링 (c) 수동 (d) 혼합 | Phase 0 |
 | U-7 | 데이터 갱신 전략 | (a) 주기적 API 동기화 (b) 관리자 수동 (c) 제휴업체 셀프(v0.2) (d) 혼합 | Phase 0 |
