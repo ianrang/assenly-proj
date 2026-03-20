@@ -24,7 +24,8 @@ async function main() {
       .select('id, auth_method, created_at')
       .single();
 
-    if (error) throw error;
+    if (error) throw new Error(`${error.message} (code: ${error.code}, details: ${error.details})`);
+
 
     testUserId = data.id;
     printResult('INSERT users', true, `id=${data.id}, method=${data.auth_method}`);
@@ -43,7 +44,8 @@ async function main() {
         .eq('id', testUserId)
         .single();
 
-      if (error) throw error;
+      if (error) throw new Error(`${error.message} (code: ${error.code}, details: ${error.details})`);
+
       printResult('SELECT users', true, `found id=${data.id}`);
     } catch (err) {
       printResult('SELECT users', false, err instanceof Error ? err.message : String(err));
@@ -62,7 +64,8 @@ async function main() {
         .select('id, last_active')
         .single();
 
-      if (error) throw error;
+      if (error) throw new Error(`${error.message} (code: ${error.code}, details: ${error.details})`);
+
       printResult('UPDATE users', true, `last_active=${data.last_active}`);
     } catch (err) {
       printResult('UPDATE users', false, err instanceof Error ? err.message : String(err));
@@ -85,7 +88,8 @@ async function main() {
         .select('user_id, skin_type')
         .single();
 
-      if (error) throw error;
+      if (error) throw new Error(`${error.message} (code: ${error.code}, details: ${error.details})`);
+
       printResult('INSERT user_profiles (FK)', true, `skin_type=${data.skin_type}`);
     } catch (err) {
       printResult('INSERT user_profiles (FK)', false, err instanceof Error ? err.message : String(err));
@@ -112,7 +116,8 @@ async function main() {
         .select('id, skin_concerns, stay_days')
         .single();
 
-      if (error) throw error;
+      if (error) throw new Error(`${error.message} (code: ${error.code}, details: ${error.details})`);
+
       testJourneyId = data.id;
       printResult('INSERT journeys (arrays)', true, `concerns=${JSON.stringify(data.skin_concerns)}, stay=${data.stay_days}`);
     } catch (err) {
@@ -139,7 +144,8 @@ async function main() {
       .select('id, name, price')
       .single();
 
-    if (error) throw error;
+    if (error) throw new Error(`${error.message} (code: ${error.code}, details: ${error.details})`);
+
     testProductId = data.id;
     printResult('INSERT products (JSONB)', true, `name.en=${(data.name as any)?.en}, price=${data.price}`);
   } catch (err) {
