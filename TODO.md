@@ -11,7 +11,7 @@
 |-------|---------|------|--------|------|
 | 사전 완료 | 12 | 12 | 100% | ✅ |
 | Phase 0 | 37 | 37 | 100% | ✅ |
-| Phase 1 | 62 | 0 | 0% | ⬜ 미시작 |
+| Phase 1 | 62 | 0 | 0% | 🔶 진행 중 |
 | Phase 2 | 68 | 0 | 0% | ⬜ 미시작 |
 | Phase 3 | 36 | 0 | 0% | ⬜ 미시작 |
 | **MVP 합계** | **215** | **46** | **21%** | |
@@ -125,9 +125,9 @@
 
 | ID | 작업 | 상세 | 산출물 | 상태 |
 |----|------|------|--------|------|
-| P1-1 | 컬러 팔레트 | Primary, Secondary, Accent, Neutral, Semantic | 디자인 토큰 문서 | ⬜ |
-| P1-2 | 타이포그래피 | 폰트, 크기 스케일, 줄높이, 자간 | 디자인 토큰 문서 | ⬜ |
-| P1-3 | 간격/그리드 | 4px 기반, 모바일/태블릿/데스크톱 | 디자인 토큰 문서 | ⬜ |
+| P1-1 | 컬러 팔레트 | Primary, Accent, Neutral, Semantic, 태그 5역할 시스템. Light 확정, Dark 2안(A:Warm/B:Neutral) 프리뷰 비교 중 | `design-preview.html` | 🔶 |
+| P1-2 | 타이포그래피 | Geist Sans 통일, 7단계 스케일 (Display~Caption), Tailwind 기본 유틸리티 활용 | `design-preview.html` | 🔶 |
+| P1-3 | 간격/그리드 | Tailwind 4px 기반 스케일, Border Radius 5단계, 모바일 퍼스트 그리드 | `design-preview.html` | 🔶 |
 | P1-4 | 공통 UI 컴포넌트 스타일 | 버튼, 입력, 카드, 모달, 탭, 배지, 토스트 | 스타일 가이드 | ⬜ |
 | P1-5 | 관리자 UI 프레임워크 결정 | shadcn/ui vs Tailwind 직접 구축 | 기술 결정 | ⬜ |
 | P1-6 | Tailwind 커스텀 설정 | 디자인 토큰 반영 | 설정 파일 | ⬜ |

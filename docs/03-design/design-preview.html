@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essenly Design System Preview — P1-1~P1-3</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+  /* ── Light Mode Tokens ── */
+  :root {
+    --primary: #D4788A;
+    --primary-hover: #C45870;
+    --primary-light: #FDE8EC;
+    --bg: #FAFAFA;
+    --surface: #FFFFFF;
+    --surface-warm: #FAF7F2;
+    --text: #1A1A2E;
+    --text-secondary: #6B7280;
+    --text-muted: #9CA3AF;
+    --border: #E5E7EB;
+    --border-warm: #E8DDD5;
+    --sage: #A8B5A0;
+    --gold: #C9A96E;
+    --coral: #E07A5F;
+    --error: #D4645E;
+    --success: #5AAF82;
+    --warning: #D49F52;
+    --error-bg: #D4645E18;
+    --success-bg: #5AAF8218;
+    --warning-bg: #D49F5218;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 20px;
+    --radius-full: 9999px;
+  }
+
+  /* ── Dark A: Warm Charcoal ── */
+  [data-theme="dark-a"] {
+    --primary: #E8899A;
+    --primary-hover: #F2A4B3;
+    --primary-light: #3D2028;
+    --bg: #1C1817;
+    --surface: #272120;
+    --surface-warm: #302826;
+    --text: #F0ECF4;
+    --text-secondary: #A1A1AA;
+    --text-muted: #71717A;
+    --border: #3D3533;
+    --border-warm: #4A3835;
+    --coral: #E8988A;
+    --error: #E09088;
+    --success: #7EC4A0;
+    --warning: #E0B878;
+    --error-bg: #E0908820;
+    --success-bg: #7EC4A020;
+    --warning-bg: #E0B87820;
+  }
+
+  /* ── Dark B: Soft Neutral ── */
+  [data-theme="dark-b"] {
+    --primary: #E8899A;
+    --primary-hover: #F2A4B3;
+    --primary-light: #3D2028;
+    --bg: #1C1A1E;
+    --surface: #282628;
+    --surface-warm: #302C2A;
+    --text: #F0ECF4;
+    --text-secondary: #A1A1AA;
+    --text-muted: #71717A;
+    --border: #3A3638;
+    --coral: #E8988A;
+    --error: #E09088;
+    --success: #7EC4A0;
+    --warning: #E0B878;
+    --error-bg: #E0908820;
+    --success-bg: #7EC4A020;
+    --warning-bg: #E0B87820;
+    --border-warm: #453C3A;
+  }
+
+  /* ── Base ── */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .container { max-width: 768px; margin: 0 auto; padding: 32px 16px; }
+
+  /* ── Header ── */
+  .header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 40px; padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap; gap: 12px;
+  }
+  .header h1 { font-size: 24px; font-weight: 700; }
+  .mode-toggle {
+    display: flex; gap: 4px; background: var(--surface);
+    border: 1px solid var(--border); border-radius: var(--radius-md); padding: 4px;
+  }
+  .mode-btn {
+    padding: 6px 12px; border: none; border-radius: var(--radius-sm);
+    font-size: 12px; font-weight: 500; cursor: pointer;
+    background: transparent; color: var(--text-secondary);
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .mode-btn.active { background: var(--primary); color: #fff; }
+
+  /* ── Section ── */
+  .section { margin-bottom: 48px; }
+  .section-title { font-size: 20px; font-weight: 600; margin-bottom: 20px; }
+  .section-subtitle { font-size: 14px; color: var(--text-muted); margin-top: -12px; margin-bottom: 20px; }
+
+  /* ── 3-way Dark Comparison ── */
+  .compare-3 {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0;
+    border-radius: var(--radius-lg); overflow: hidden;
+    border: 1px solid var(--border); margin-bottom: 16px;
+  }
+  .compare-3 .c-side { padding: 20px; }
+  .compare-3 .c-side + .c-side { border-left: 1px solid rgba(128,128,128,0.2); }
+  .c-label {
+    font-size: 10px; opacity: 0.5; margin-bottom: 6px;
+    text-transform: uppercase; letter-spacing: 1px; font-weight: 600;
+  }
+  .c-option-tag {
+    display: inline-block; font-size: 10px; font-weight: 600;
+    padding: 2px 6px; border-radius: 4px; margin-bottom: 10px;
+  }
+  .c-heading { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+  .c-body { font-size: 13px; opacity: 0.8; margin-bottom: 10px; }
+  .c-btn {
+    padding: 7px 14px; border-radius: 10px;
+    font-size: 12px; font-weight: 500; border: none; cursor: pointer;
+    display: inline-block; margin-bottom: 10px;
+  }
+  .c-card {
+    padding: 10px; border-radius: 8px; margin-bottom: 8px;
+  }
+  .c-card-title { font-size: 13px; font-weight: 600; margin-bottom: 3px; }
+  .c-card-desc { font-size: 11px; opacity: 0.65; }
+  .c-bubble { padding: 8px 12px; border-radius: 10px; font-size: 12px; margin-bottom: 6px; }
+  .c-input {
+    width: 100%; padding: 7px 10px; border-radius: 8px; font-size: 12px;
+    border: 1px solid; outline: none; font-family: inherit;
+  }
+  .c-tag { display: inline-block; padding: 2px 8px; border-radius: 9999px; font-size: 10px; font-weight: 500; }
+  .c-swatch { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+  .c-swatch-item { width: 36px; height: 36px; border-radius: 6px; border: 1px solid rgba(128,128,128,0.3); }
+  .c-swatch-row { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+  .c-swatch-label { font-size: 10px; opacity: 0.5; min-width: 50px; }
+  .c-hex { font-size: 9px; font-family: monospace; opacity: 0.5; }
+
+  @media (max-width: 700px) {
+    .compare-3 { grid-template-columns: 1fr; }
+    .compare-3 .c-side + .c-side { border-left: none; border-top: 1px solid rgba(128,128,128,0.2); }
+  }
+
+  /* ── Color Swatches ── */
+  .swatch-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px;
+  }
+  .swatch { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border); }
+  .swatch-color { height: 64px; }
+  .swatch-info { padding: 8px 10px; background: var(--surface); }
+  .swatch-name { font-size: 12px; font-weight: 600; }
+  .swatch-hex { font-size: 11px; color: var(--text-muted); font-family: monospace; }
+
+  /* ── Typography ── */
+  .type-scale { display: flex; flex-direction: column; gap: 16px; }
+  .type-row {
+    display: flex; align-items: baseline; gap: 16px;
+    padding: 12px 0; border-bottom: 1px solid var(--border);
+  }
+  .type-label { min-width: 80px; font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; }
+  .type-display { font-size: 28px; font-weight: 700; line-height: 1.2; }
+  .type-h1 { font-size: 24px; font-weight: 700; line-height: 1.3; }
+  .type-h2 { font-size: 20px; font-weight: 600; line-height: 1.35; }
+  .type-h3 { font-size: 16px; font-weight: 600; line-height: 1.4; }
+  .type-body { font-size: 14px; font-weight: 400; line-height: 1.5; }
+  .type-small { font-size: 12px; font-weight: 400; line-height: 1.5; }
+  .type-caption { font-size: 11px; font-weight: 400; line-height: 1.4; color: var(--text-muted); }
+
+  /* ── Radius ── */
+  .radius-grid { display: flex; gap: 16px; flex-wrap: wrap; }
+  .radius-item { text-align: center; }
+  .radius-box { width: 64px; height: 64px; background: var(--primary-light); border: 2px solid var(--primary); margin-bottom: 6px; }
+  .radius-label { font-size: 11px; color: var(--text-muted); }
+
+  /* ── Buttons ── */
+  .btn-group { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+  .btn {
+    padding: 10px 20px; border: none; border-radius: var(--radius-md);
+    font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s; font-family: inherit;
+  }
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-primary:hover { background: var(--primary-hover); }
+  .btn-outline { background: transparent; color: var(--primary); border: 1.5px solid var(--primary); }
+  .btn-ghost { background: transparent; color: var(--text-secondary); border: 1px solid var(--border); }
+  .btn-sm { padding: 6px 14px; font-size: 13px; border-radius: var(--radius-sm); }
+  .btn-disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+  .btn-primary:focus-visible, .btn-outline:focus-visible, .btn-ghost:focus-visible {
+    outline: 2px solid var(--primary); outline-offset: 2px;
+  }
+
+  /* ── Cards ── */
+  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .card-grid { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 20px; transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--primary); }
+  .card-warm { background: var(--surface-warm); border-color: var(--border-warm); }
+  .card-title { font-size: 16px; font-weight: 600; margin-bottom: 8px; }
+  .card-desc { font-size: 14px; color: var(--text-secondary); margin-bottom: 12px; }
+
+  /* ── Tags ── */
+  .tag-group { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 4px 10px; border-radius: var(--radius-full); font-size: 12px; font-weight: 500;
+  }
+  .tag-sm { font-size: 11px; padding: 2px 8px; }
+  /* Filled: 의사결정에 직접 영향 */
+  .tag-primary { background: var(--primary-light); color: var(--primary); }
+  .tag-sage { background: #A8B5A018; color: var(--sage); border: 1px solid var(--sage); }
+  .tag-gold { background: #C9A96E18; color: var(--gold); border: 1px solid var(--gold); }
+  /* Outline: 보조/경고 */
+  .tag-coral-outline { background: transparent; color: var(--coral); border: 1px solid var(--coral); }
+  .tag-muted { background: transparent; color: var(--text-muted); border: 1px solid var(--border); }
+  /* Highlight badge (별도 컴포넌트) */
+  .highlight-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 3px 8px; border-radius: var(--radius-sm);
+    font-size: 11px; font-weight: 600;
+    background: #C9A96E20; color: var(--gold); border: 1px solid var(--gold);
+  }
+
+  /* ── Badge ── */
+  .badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 2px 8px; border-radius: var(--radius-sm); font-size: 11px; font-weight: 600;
+  }
+  .badge-success { background: var(--success-bg); color: var(--success); }
+  .badge-warning { background: var(--warning-bg); color: var(--warning); }
+  .badge-error { background: var(--error-bg); color: var(--error); }
+
+  /* ── Input ── */
+  .input-group { display: flex; flex-direction: column; gap: 12px; max-width: 400px; }
+  .input {
+    padding: 10px 14px; border: 1px solid var(--border); border-radius: var(--radius-md);
+    font-size: 14px; background: var(--surface); color: var(--text);
+    font-family: inherit; outline: none; transition: border-color 0.2s;
+  }
+  .input:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 3px var(--primary-light); }
+  .input::placeholder { color: var(--text-muted); }
+  .input-disabled { opacity: 0.4; cursor: not-allowed; background: var(--bg); }
+
+  /* ── Chat ── */
+  .chat-area {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 20px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .bubble { max-width: 80%; padding: 10px 14px; border-radius: var(--radius-md); font-size: 14px; line-height: 1.5; }
+  .bubble-user { align-self: flex-end; background: var(--primary); color: #fff; border-bottom-right-radius: 4px; }
+  .bubble-ai {
+    align-self: flex-start; background: var(--surface-warm);
+    border: 1px solid var(--border-warm); color: var(--text); border-bottom-left-radius: 4px;
+  }
+  .chat-input-row { display: flex; gap: 8px; margin-top: 8px; }
+  .chat-input-row .input { flex: 1; }
+
+  /* ── Product Card ── */
+  .product-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); overflow: hidden; transition: border-color 0.2s;
+  }
+  .product-card:hover { border-color: var(--primary); }
+  .product-img {
+    height: 160px; background: var(--surface-warm);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); font-size: 13px; position: relative;
+  }
+  .product-body { padding: 16px; }
+  .product-brand { font-size: 12px; color: var(--text-muted); margin-bottom: 4px; }
+  .product-name { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+  .product-price { font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+  .product-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+
+  /* ── Semantic ── */
+  .semantic-grid { display: flex; gap: 16px; flex-wrap: wrap; }
+  .semantic-item { text-align: center; }
+  .semantic-dot { width: 48px; height: 48px; border-radius: var(--radius-full); margin: 0 auto 6px; }
+  .semantic-label { font-size: 11px; color: var(--text-muted); }
+
+  /* ── Spacing ── */
+  .spacing-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .spacing-bar { height: 24px; background: var(--primary-light); border: 1px solid var(--primary); border-radius: 3px; }
+  .spacing-label { font-size: 11px; color: var(--text-muted); min-width: 60px; font-family: monospace; }
+  .spacing-px { font-size: 11px; color: var(--text-muted); font-family: monospace; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div>
+      <h1>Essenly Design Preview</h1>
+      <p style="font-size:13px; color:var(--text-muted); margin-top:4px;">P1-1 Color · P1-2 Typography · P1-3 Spacing</p>
+    </div>
+    <div class="mode-toggle">
+      <button class="mode-btn active" onclick="setTheme('light', this)">Light</button>
+      <button class="mode-btn" onclick="setTheme('dark-a', this)">Dark A: Warm</button>
+      <button class="mode-btn" onclick="setTheme('dark-b', this)">Dark B: Neutral</button>
+    </div>
+  </div>
+
+  <!-- ═══ 0. 3-WAY DARK MODE COMPARISON ═══ -->
+  <div class="section">
+    <h2 class="section-title">Dark Mode Comparison</h2>
+    <p class="section-subtitle">3가지 배경 톤 비교 — 같은 UI 요소로 차이 확인</p>
+
+    <div class="compare-3">
+      <!-- Light reference -->
+      <div class="c-side" style="background:#FAFAFA; color:#1A1A2E;">
+        <div class="c-label" style="color:#9CA3AF;">Light (Reference)</div>
+        <div class="c-swatch">
+          <div class="c-swatch-row"><div class="c-swatch-label">bg</div><div class="c-swatch-item" style="background:#FAFAFA;"></div><span class="c-hex">#FAFAFA</span></div>
+          <div class="c-swatch-row"><div class="c-swatch-label">surface</div><div class="c-swatch-item" style="background:#FFFFFF;"></div><span class="c-hex">#FFFFFF</span></div>
+          <div class="c-swatch-row"><div class="c-swatch-label">warm</div><div class="c-swatch-item" style="background:#FAF7F2;"></div><span class="c-hex">#FAF7F2</span></div>
+        </div>
+        <div class="c-heading">K-Beauty for You</div>
+        <div class="c-body">Personalized beauty recommendations.</div>
+        <button class="c-btn" style="background:#D4788A; color:#fff;">Get Started</button>
+        <div class="c-card" style="background:#FFFFFF; border: 1px solid #E5E7EB;">
+          <div class="c-card-title">Hydrating Serum</div>
+          <div class="c-card-desc">For dry, sensitive skin</div>
+        </div>
+        <div class="c-card" style="background:#FAF7F2; border: 1px solid #E8DDD5;">
+          <div class="c-card-title">Warm Card</div>
+          <div class="c-card-desc">Special content area</div>
+        </div>
+        <div class="c-bubble" style="background:#D4788A; color:#fff; text-align:right;">I need skincare help</div>
+        <div class="c-bubble" style="background:#FAF7F2; border:1px solid #E8DDD5;">Try this hydrating toner!</div>
+        <input class="c-input" style="background:#FFFFFF; color:#1A1A2E; border-color:#E5E7EB;" placeholder="Search..." readonly>
+        <div style="margin-top:8px;">
+          <span class="c-tag" style="background:#FDE8EC; color:#D4788A;">Dry Skin</span>
+          <span class="c-tag" style="background:#A8B5A020; color:#A8B5A0; border:1px solid #A8B5A0;">Natural</span>
+        </div>
+      </div>
+
+      <!-- Dark A: Warm Charcoal -->
+      <div class="c-side" style="background:#1C1817; color:#F0ECF4;">
+        <div class="c-label" style="color:#71717A;">Dark A: Warm Charcoal</div>
+        <div class="c-option-tag" style="background:#E8899A30; color:#E8899A;">RECOMMENDED</div>
+        <div class="c-swatch">
+          <div class="c-swatch-row"><div class="c-swatch-label" style="color:#71717A;">bg</div><div class="c-swatch-item" style="background:#1C1817;"></div><span class="c-hex" style="color:#71717A;">#1C1817</span></div>
+          <div class="c-swatch-row"><div class="c-swatch-label" style="color:#71717A;">surface</div><div class="c-swatch-item" style="background:#272120;"></div><span class="c-hex" style="color:#71717A;">#272120</span></div>
+          <div class="c-swatch-row"><div class="c-swatch-label" style="color:#71717A;">warm</div><div class="c-swatch-item" style="background:#302826;"></div><span class="c-hex" style="color:#71717A;">#302826</span></div>
+        </div>
+        <div class="c-heading">K-Beauty for You</div>
+        <div class="c-body">Personalized beauty recommendations.</div>
+        <button class="c-btn" style="background:#E8899A; color:#fff;">Get Started</button>
+        <div class="c-card" style="background:#272120; border: 1px solid #3D3533;">
+          <div class="c-card-title">Hydrating Serum</div>
+          <div class="c-card-desc">For dry, sensitive skin</div>
+        </div>
+        <div class="c-card" style="background:#302826; border: 1px solid #4A3835;">
+          <div class="c-card-title">Warm Card</div>
+          <div class="c-card-desc">Special content area</div>
+        </div>
+        <div class="c-bubble" style="background:#E8899A; color:#fff; text-align:right;">I need skincare help</div>
+        <div class="c-bubble" style="background:#302826; border:1px solid #4A3835; color:#F0ECF4;">Try this hydrating toner!</div>
+        <input class="c-input" style="background:#272120; color:#F0ECF4; border-color:#3D3533;" placeholder="Search..." readonly>
+        <div style="margin-top:8px;">
+          <span class="c-tag" style="background:#3D2028; color:#E8899A;">Dry Skin</span>
+          <span class="c-tag" style="background:#A8B5A020; color:#A8B5A0; border:1px solid #A8B5A0;">Natural</span>
+        </div>
+      </div>
+
+      <!-- Dark B: Soft Neutral -->
+      <div class="c-side" style="background:#1C1A1E; color:#F0ECF4;">
+        <div class="c-label" style="color:#71717A;">Dark B: Soft Neutral</div>
+        <div class="c-option-tag" style="background:#71717A30; color:#A1A1AA;">ALTERNATIVE</div>
+        <div class="c-swatch">
+          <div class="c-swatch-row"><div class="c-swatch-label" style="color:#71717A;">bg</div><div class="c-swatch-item" style="background:#1C1A1E;"></div><span class="c-hex" style="color:#71717A;">#1C1A1E</span></div>
+          <div class="c-swatch-row"><div class="c-swatch-label" style="color:#71717A;">surface</div><div class="c-swatch-item" style="background:#282628;"></div><span class="c-hex" style="color:#71717A;">#282628</span></div>
+          <div class="c-swatch-row"><div class="c-swatch-label" style="color:#71717A;">warm</div><div class="c-swatch-item" style="background:#302C2A;"></div><span class="c-hex" style="color:#71717A;">#302C2A</span></div>
+        </div>
+        <div class="c-heading">K-Beauty for You</div>
+        <div class="c-body">Personalized beauty recommendations.</div>
+        <button class="c-btn" style="background:#E8899A; color:#fff;">Get Started</button>
+        <div class="c-card" style="background:#282628; border: 1px solid #3A3638;">
+          <div class="c-card-title">Hydrating Serum</div>
+          <div class="c-card-desc">For dry, sensitive skin</div>
+        </div>
+        <div class="c-card" style="background:#302C2A; border: 1px solid #453C3A;">
+          <div class="c-card-title">Warm Card</div>
+          <div class="c-card-desc">Special content area</div>
+        </div>
+        <div class="c-bubble" style="background:#E8899A; color:#fff; text-align:right;">I need skincare help</div>
+        <div class="c-bubble" style="background:#302C2A; border:1px solid #453C3A; color:#F0ECF4;">Try this hydrating toner!</div>
+        <input class="c-input" style="background:#282628; color:#F0ECF4; border-color:#3A3638;" placeholder="Search..." readonly>
+        <div style="margin-top:8px;">
+          <span class="c-tag" style="background:#3D2028; color:#E8899A;">Dry Skin</span>
+          <span class="c-tag" style="background:#A8B5A020; color:#A8B5A0; border:1px solid #A8B5A0;">Natural</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="font-size:12px; color:var(--text-muted); padding:12px; background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md);">
+      <strong>Key differences:</strong><br>
+      · <strong>A (Warm)</strong>: R채널 우세 → 따뜻한 차콜. 프로토타입 Landing (#1A1212) 톤 계승. K-뷰티 브랜드와 일관<br>
+      · <strong>B (Neutral)</strong>: RGB 균등 → 모던 중립. Apple/Material 스타일. 브랜드 온기가 약함<br>
+      · 양쪽 모두 기존 초안(#141218)보다 밝기↑, 레이어 분리↑
+    </div>
+  </div>
+
+  <!-- ═══ 1. Color Palette ═══ -->
+  <div class="section">
+    <h2 class="section-title">Color Palette</h2>
+    <p class="section-subtitle">상단 토글로 Light / Dark A / Dark B 전환</p>
+
+    <h3 style="font-size:14px; font-weight:600; margin-bottom:12px;">Primary</h3>
+    <div class="swatch-grid" style="margin-bottom:24px;">
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--primary);"></div>
+        <div class="swatch-info"><div class="swatch-name">Primary</div><div class="swatch-hex" data-light="#D4788A" data-dark-a="#E8899A" data-dark-b="#E8899A"></div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--primary-hover);"></div>
+        <div class="swatch-info"><div class="swatch-name">Primary Hover</div><div class="swatch-hex" data-light="#C45870" data-dark-a="#F2A4B3" data-dark-b="#F2A4B3"></div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--primary-light);"></div>
+        <div class="swatch-info"><div class="swatch-name">Primary Light</div><div class="swatch-hex" data-light="#FDE8EC" data-dark-a="#3D2028" data-dark-b="#3D2028"></div></div>
+      </div>
+    </div>
+
+    <h3 style="font-size:14px; font-weight:600; margin-bottom:12px;">Background & Surface</h3>
+    <div class="swatch-grid" style="margin-bottom:24px;">
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--bg);"></div>
+        <div class="swatch-info"><div class="swatch-name">Background</div><div class="swatch-hex" data-light="#FAFAFA" data-dark-a="#1C1817" data-dark-b="#1C1A1E"></div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--surface);"></div>
+        <div class="swatch-info"><div class="swatch-name">Surface</div><div class="swatch-hex" data-light="#FFFFFF" data-dark-a="#272120" data-dark-b="#282628"></div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--surface-warm);"></div>
+        <div class="swatch-info"><div class="swatch-name">Surface Warm</div><div class="swatch-hex" data-light="#FAF7F2" data-dark-a="#302826" data-dark-b="#302C2A"></div></div>
+      </div>
+    </div>
+
+    <h3 style="font-size:14px; font-weight:600; margin-bottom:12px;">Text</h3>
+    <div class="swatch-grid" style="margin-bottom:24px;">
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--text);"></div>
+        <div class="swatch-info"><div class="swatch-name">Text</div><div class="swatch-hex" data-light="#1A1A2E" data-dark-a="#F0ECF4" data-dark-b="#F0ECF4"></div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--text-secondary);"></div>
+        <div class="swatch-info"><div class="swatch-name">Text Secondary</div><div class="swatch-hex" data-light="#6B7280" data-dark-a="#A1A1AA" data-dark-b="#A1A1AA"></div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--text-muted);"></div>
+        <div class="swatch-info"><div class="swatch-name">Text Muted</div><div class="swatch-hex" data-light="#9CA3AF" data-dark-a="#71717A" data-dark-b="#71717A"></div></div>
+      </div>
+    </div>
+
+    <h3 style="font-size:14px; font-weight:600; margin-bottom:12px;">Border</h3>
+    <div class="swatch-grid" style="margin-bottom:24px;">
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--border);"></div>
+        <div class="swatch-info"><div class="swatch-name">Border</div><div class="swatch-hex" data-light="#E5E7EB" data-dark-a="#3D3533" data-dark-b="#3A3638"></div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--border-warm);"></div>
+        <div class="swatch-info"><div class="swatch-name">Border Warm</div><div class="swatch-hex" data-light="#E8DDD5" data-dark-a="#4A3835" data-dark-b="#453C3A"></div></div>
+      </div>
+    </div>
+
+    <h3 style="font-size:14px; font-weight:600; margin-bottom:12px;">Accent</h3>
+    <div class="swatch-grid" style="margin-bottom:24px;">
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--sage);"></div>
+        <div class="swatch-info"><div class="swatch-name">Sage</div><div class="swatch-hex">#A8B5A0</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--gold);"></div>
+        <div class="swatch-info"><div class="swatch-name">Gold</div><div class="swatch-hex">#C9A96E</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--coral);"></div>
+        <div class="swatch-info"><div class="swatch-name">Coral</div><div class="swatch-hex">#E07A5F</div></div>
+      </div>
+    </div>
+
+    <h3 style="font-size:14px; font-weight:600; margin-bottom:12px;">Semantic</h3>
+    <div class="semantic-grid" style="margin-bottom:12px;">
+      <div class="semantic-item"><div class="semantic-dot" style="background:var(--error);"></div><div class="semantic-label">Error</div><div style="font-size:9px;font-family:monospace;color:var(--text-muted);" class="semantic-hex" data-light="#D4645E" data-dark="#E09088"></div></div>
+      <div class="semantic-item"><div class="semantic-dot" style="background:var(--success);"></div><div class="semantic-label">Success</div><div style="font-size:9px;font-family:monospace;color:var(--text-muted);" class="semantic-hex" data-light="#5AAF82" data-dark="#7EC4A0"></div></div>
+      <div class="semantic-item"><div class="semantic-dot" style="background:var(--warning);"></div><div class="semantic-label">Warning</div><div style="font-size:9px;font-family:monospace;color:var(--text-muted);" class="semantic-hex" data-light="#D49F52" data-dark="#E0B878"></div></div>
+    </div>
+    <div style="display:flex;gap:6px;">
+      <span class="badge badge-error">Sold Out</span>
+      <span class="badge badge-success">In Stock</span>
+      <span class="badge badge-warning">Limited</span>
+    </div>
+  </div>
+
+  <!-- ═══ 2. Typography ═══ -->
+  <div class="section">
+    <h2 class="section-title">Typography Scale</h2>
+    <p class="section-subtitle">Font: Geist Sans (Inter as preview fallback)</p>
+    <div class="type-scale">
+      <div class="type-row"><span class="type-label">Display<br>28px / 700</span><span class="type-display">Your Beauty Journey</span></div>
+      <div class="type-row"><span class="type-label">H1<br>24px / 700</span><span class="type-h1">Recommended Products</span></div>
+      <div class="type-row"><span class="type-label">H2<br>20px / 600</span><span class="type-h2">Skincare for Dry Skin</span></div>
+      <div class="type-row"><span class="type-label">H3<br>16px / 600</span><span class="type-h3">Hydrating Toner</span></div>
+      <div class="type-row"><span class="type-label">Body<br>14px / 400</span><span class="type-body">This lightweight toner delivers deep hydration with hyaluronic acid and ceramides, perfect for dehydrated skin during travel.</span></div>
+      <div class="type-row"><span class="type-label">Small<br>12px / 400</span><span class="type-small">Available at Olive Young Myeongdong · Tax-free eligible</span></div>
+      <div class="type-row"><span class="type-label">Caption<br>11px / 400</span><span class="type-caption">Results may vary. Not a medical recommendation.</span></div>
+    </div>
+  </div>
+
+  <!-- ═══ 3. Radius ═══ -->
+  <div class="section">
+    <h2 class="section-title">Border Radius</h2>
+    <div class="radius-grid">
+      <div class="radius-item"><div class="radius-box" style="border-radius:var(--radius-sm);"></div><div class="radius-label">sm · 6px</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:var(--radius-md);"></div><div class="radius-label">md · 10px</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:var(--radius-lg);"></div><div class="radius-label">lg · 14px</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:var(--radius-xl);"></div><div class="radius-label">xl · 20px</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:var(--radius-full);"></div><div class="radius-label">full · 9999px</div></div>
+    </div>
+  </div>
+
+  <!-- ═══ 4. Spacing ═══ -->
+  <div class="section">
+    <h2 class="section-title">Spacing Scale</h2>
+    <p class="section-subtitle">Tailwind default 4px base</p>
+    <div class="spacing-row"><span class="spacing-label">4px</span><div class="spacing-bar" style="width:16px;"></div><span class="spacing-px">gap-1</span></div>
+    <div class="spacing-row"><span class="spacing-label">8px</span><div class="spacing-bar" style="width:32px;"></div><span class="spacing-px">gap-2</span></div>
+    <div class="spacing-row"><span class="spacing-label">12px</span><div class="spacing-bar" style="width:48px;"></div><span class="spacing-px">gap-3</span></div>
+    <div class="spacing-row"><span class="spacing-label">16px</span><div class="spacing-bar" style="width:64px;"></div><span class="spacing-px">gap-4</span></div>
+    <div class="spacing-row"><span class="spacing-label">20px</span><div class="spacing-bar" style="width:80px;"></div><span class="spacing-px">gap-5</span></div>
+    <div class="spacing-row"><span class="spacing-label">24px</span><div class="spacing-bar" style="width:96px;"></div><span class="spacing-px">gap-6</span></div>
+    <div class="spacing-row"><span class="spacing-label">32px</span><div class="spacing-bar" style="width:128px;"></div><span class="spacing-px">gap-8</span></div>
+  </div>
+
+  <!-- ═══ 5. Buttons ═══ -->
+  <div class="section">
+    <h2 class="section-title">Buttons</h2>
+    <div style="font-size:12px; font-weight:600; margin-bottom:8px; color:var(--text-secondary);">DEFAULT</div>
+    <div class="btn-group">
+      <button class="btn btn-primary">Get Started</button>
+      <button class="btn btn-outline">Learn More</button>
+      <button class="btn btn-ghost">Cancel</button>
+    </div>
+    <div style="font-size:12px; font-weight:600; margin-bottom:8px; color:var(--text-secondary);">SMALL</div>
+    <div class="btn-group">
+      <button class="btn btn-primary btn-sm">Save</button>
+      <button class="btn btn-outline btn-sm">Edit Profile</button>
+      <button class="btn btn-ghost btn-sm">Skip</button>
+    </div>
+    <div style="font-size:12px; font-weight:600; margin-bottom:8px; color:var(--text-secondary);">DISABLED</div>
+    <div class="btn-group">
+      <button class="btn btn-primary btn-disabled">Get Started</button>
+      <button class="btn btn-outline btn-disabled">Learn More</button>
+      <button class="btn btn-ghost btn-disabled">Cancel</button>
+    </div>
+    <div style="font-size:12px; font-weight:600; margin-bottom:8px; color:var(--text-secondary);">FOCUS</div>
+    <div class="btn-group">
+      <button class="btn btn-primary" style="outline:2px solid var(--primary); outline-offset:2px;">Focused</button>
+    </div>
+  </div>
+
+  <!-- ═══ 6. Tag System — Color = Role ═══ -->
+  <div class="section">
+    <h2 class="section-title">Tag System</h2>
+    <p class="section-subtitle">색상 = 태그의 "역할" (값이 아님). 5가지 시각 스타일 + 하이라이트 배지</p>
+
+    <!-- Tag Legend -->
+    <div style="background:var(--surface); border:1px solid var(--border); border-radius:var(--radius-md); padding:16px; margin-bottom:20px;">
+      <div style="font-size:12px; font-weight:600; margin-bottom:12px; color:var(--text-secondary);">TAG COLOR LEGEND</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="tag tag-primary tag-sm">Dry Skin</span>
+          <span style="font-size:11px; color:var(--text-muted);">개인화 매칭 — "당신에게 맞아요"</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="tag tag-sage tag-sm">Hydrating</span>
+          <span style="font-size:11px; color:var(--text-muted);">효능/성분 — "이걸 해줘요"</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="tag tag-gold tag-sm">English Label</span>
+          <span style="font-size:11px; color:var(--text-muted);">관광객 편의 — "여행에 유용해요"</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="tag tag-coral-outline tag-sm">3-day downtime</span>
+          <span style="font-size:11px; color:var(--text-muted);">제약/경고 — "주의하세요"</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="tag tag-muted tag-sm">Serum</span>
+          <span style="font-size:11px; color:var(--text-muted);">카테고리/부가 — "참고 정보"</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="highlight-badge">★ Essenly Pick</span>
+          <span style="font-size:11px; color:var(--text-muted);">하이라이트 배지 (VP-1)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Status Badges -->
+    <div style="margin-bottom:16px;">
+      <div style="font-size:12px; font-weight:600; margin-bottom:8px; color:var(--text-secondary);">STATUS BADGES</div>
+      <span class="badge badge-success">In Stock</span>&nbsp;
+      <span class="badge badge-warning">Limited</span>&nbsp;
+      <span class="badge badge-error">Sold Out</span>
+    </div>
+  </div>
+
+  <!-- ═══ 7. Input Fields ═══ -->
+  <div class="section">
+    <h2 class="section-title">Input Fields</h2>
+    <div class="input-group">
+      <div>
+        <div style="font-size:11px; color:var(--text-muted); margin-bottom:4px;">Placeholder</div>
+        <input class="input" type="text" placeholder="Search products or treatments...">
+      </div>
+      <div>
+        <div style="font-size:11px; color:var(--text-muted); margin-bottom:4px;">Filled</div>
+        <input class="input" type="text" value="Hyaluronic acid serum">
+      </div>
+      <div>
+        <div style="font-size:11px; color:var(--text-muted); margin-bottom:4px;">Focused (click to see)</div>
+        <input class="input" type="text" placeholder="Focus ring appears on click...">
+      </div>
+      <div>
+        <div style="font-size:11px; color:var(--text-muted); margin-bottom:4px;">Disabled</div>
+        <input class="input input-disabled" type="text" value="Cannot edit" disabled>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 8. Realistic Product Cards ═══ -->
+  <div class="section">
+    <h2 class="section-title">Product Cards — Realistic Scenarios</h2>
+    <p class="section-subtitle">AI가 대화 맥락에서 그룹별 1개씩 선택 → 카드당 최대 3개 태그</p>
+
+    <div class="card-grid">
+      <!-- Card 1: 일반 — 3색 분산 (가장 흔한 경우) -->
+      <div class="product-card">
+        <div class="product-img"><span>Product Image</span></div>
+        <div class="product-body">
+          <div class="product-brand">COSRX</div>
+          <div class="product-name">Advanced Snail 96 Mucin Power Essence</div>
+          <div class="product-price">₩16,900</div>
+          <div style="font-size:13px; color:var(--text-secondary); margin-bottom:8px;">Deep hydration for dehydrated skin during travel.</div>
+          <div class="product-tags">
+            <span class="tag tag-primary tag-sm">Dry Skin</span>
+            <span class="tag tag-sage tag-sm">Hydrating</span>
+            <span class="tag tag-gold tag-sm">English Label</span>
+          </div>
+          <div style="font-size:10px; color:var(--text-muted); margin-top:6px;">Olive Young Myeongdong</div>
+        </div>
+      </div>
+
+      <!-- Card 2: 하이라이트 배지 + 3색 분산 -->
+      <div class="product-card">
+        <div class="product-img">
+          <span class="highlight-badge" style="position:absolute; top:8px; left:8px;">★ Essenly Pick</span>
+          <span>Product Image</span>
+        </div>
+        <div class="product-body">
+          <div class="product-brand">Beauty of Joseon</div>
+          <div class="product-name">Glow Serum : Propolis + Niacinamide</div>
+          <div class="product-price">₩12,000</div>
+          <div style="font-size:13px; color:var(--text-secondary); margin-bottom:8px;">Brightens dull skin with natural propolis extract.</div>
+          <div class="product-tags">
+            <span class="tag tag-primary tag-sm">Oily Skin</span>
+            <span class="tag tag-sage tag-sm">Brightening</span>
+            <span class="tag tag-gold tag-sm">Tax-free</span>
+          </div>
+          <div style="font-size:10px; color:var(--text-muted); margin-top:6px;">Olive Young Hongdae</div>
+        </div>
+      </div>
+
+      <!-- Card 3: 같은 그룹 2개 (효능 2개 + 관광 1개) — 드문 경우 -->
+      <div class="product-card">
+        <div class="product-img"><span>Product Image</span></div>
+        <div class="product-body">
+          <div class="product-brand">Laneige</div>
+          <div class="product-name">Cream Skin Toner & Moisturizer</div>
+          <div class="product-price">₩28,000</div>
+          <div style="font-size:13px; color:var(--text-secondary); margin-bottom:8px;">2-in-1 toner that also moisturizes.</div>
+          <div class="product-tags">
+            <span class="tag tag-sage tag-sm">Hydrating</span>
+            <span class="tag tag-sage tag-sm">Soothing</span>
+            <span class="tag tag-gold tag-sm">Tourist Fav</span>
+          </div>
+          <div style="font-size:10px; color:var(--text-muted); margin-top:6px; font-style:italic;">↑ 같은 색(sage) 2개 = "둘 다 효능 정보"</div>
+        </div>
+      </div>
+
+      <!-- Card 4: 카테고리(muted) 포함 -->
+      <div class="product-card">
+        <div class="product-img"><span>Product Image</span></div>
+        <div class="product-body">
+          <div class="product-brand">Innisfree</div>
+          <div class="product-name">Retinol Cica Repair Ampoule</div>
+          <div class="product-price">₩22,000</div>
+          <div style="font-size:13px; color:var(--text-secondary); margin-bottom:8px;">Gentle retinol for first-time users.</div>
+          <div class="product-tags">
+            <span class="tag tag-primary tag-sm">Sensitive Skin</span>
+            <span class="tag tag-sage tag-sm">Anti-aging</span>
+            <span class="tag tag-muted tag-sm">Ampoule</span>
+          </div>
+          <div style="font-size:10px; color:var(--text-muted); margin-top:6px;">Innisfree Gangnam</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 9. Treatment Cards ═══ -->
+  <div class="section">
+    <h2 class="section-title">Treatment Cards — Realistic Scenarios</h2>
+    <p class="section-subtitle">시술 카드에는 제약/경고 태그(coral outline)가 추가됨</p>
+
+    <div class="card-grid">
+      <!-- Treatment 1: 안전한 시술 (경고 없음) -->
+      <div class="product-card">
+        <div class="product-img" style="height:120px;"><span>Treatment Image</span></div>
+        <div class="product-body">
+          <div class="product-brand">Skin Seoul Clinic</div>
+          <div class="product-name">Aqua Peel Facial</div>
+          <div class="product-price">₩80,000~120,000</div>
+          <div style="font-size:13px; color:var(--text-secondary); margin-bottom:8px;">Deep cleansing facial with no downtime.</div>
+          <div class="product-tags">
+            <span class="tag tag-primary tag-sm">Oily Skin</span>
+            <span class="tag tag-sage tag-sm">Pore Care</span>
+            <span class="tag tag-gold tag-sm">English Staff</span>
+          </div>
+          <div style="font-size:10px; color:var(--text-muted); margin-top:6px;">30 min · No downtime · Gangnam</div>
+        </div>
+      </div>
+
+      <!-- Treatment 2: 경고 있는 시술 -->
+      <div class="product-card">
+        <div class="product-img" style="height:120px;"><span>Treatment Image</span></div>
+        <div class="product-body">
+          <div class="product-brand">Banobagi Clinic</div>
+          <div class="product-name">Fractional CO2 Laser</div>
+          <div class="product-price">₩200,000~350,000</div>
+          <div style="font-size:13px; color:var(--text-secondary); margin-bottom:8px;">Skin resurfacing for acne scars and texture.</div>
+          <div class="product-tags">
+            <span class="tag tag-primary tag-sm">Acne Scars</span>
+            <span class="tag tag-sage tag-sm">Resurfacing</span>
+            <span class="tag tag-coral-outline tag-sm">5-day downtime</span>
+          </div>
+          <div style="font-size:10px; color:var(--warning); margin-top:6px;">⚠ Recovery overlaps 80% of your stay</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 10. Chat Interface ═══ -->
+  <div class="section">
+    <h2 class="section-title">Chat Interface (Mock)</h2>
+    <div class="chat-area">
+      <div class="bubble bubble-user">I have dry, sensitive skin and I'm visiting Seoul for 5 days. What products should I try?</div>
+      <div class="bubble bubble-ai">
+        Great question! For dry, sensitive skin in Seoul, I'd recommend starting with a gentle hydrating toner. The <strong>Laneige Cream Skin Toner</strong> is a tourist favorite — available at most Olive Young stores in Myeongdong.
+      </div>
+      <div class="bubble bubble-user">Where can I buy it near Hongdae?</div>
+      <div class="chat-input-row">
+        <input class="input" type="text" placeholder="Ask about K-beauty...">
+        <button class="btn btn-primary btn-sm" style="padding:10px 16px;">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div style="text-align:center; padding:32px 0; color:var(--text-muted); font-size:12px; border-top:1px solid var(--border); margin-top:48px;">
+    Essenly Design System Preview · Direction A+C · Primary #D4788A · Geist Sans
+  </div>
+
+</div>
+
+<script>
+let currentTheme = 'light';
+
+function setTheme(theme, btn) {
+  currentTheme = theme;
+  if (theme === 'light') {
+    document.documentElement.removeAttribute('data-theme');
+  } else {
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  // Update hex values for swatches
+  document.querySelectorAll('.swatch-hex[data-light]').forEach(el => {
+    const key = theme === 'light' ? 'light' : theme === 'dark-a' ? 'darkA' : 'darkB';
+    el.textContent = el.dataset[key] || el.dataset.light;
+  });
+
+  // Update semantic hex values
+  const isDark = theme !== 'light';
+  document.querySelectorAll('.semantic-hex[data-light]').forEach(el => {
+    el.textContent = isDark ? el.dataset.dark : el.dataset.light;
+  });
+}
+
+// Init hex values
+document.querySelectorAll('.swatch-hex[data-light]').forEach(el => {
+  el.textContent = el.dataset.light;
+});
+document.querySelectorAll('.semantic-hex[data-light]').forEach(el => {
+  el.textContent = el.dataset.light;
+});
+</script>
+</body>
+</html>
