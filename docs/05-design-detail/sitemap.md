@@ -12,13 +12,13 @@ src/app/
   layout.tsx                         # Root layout (html, body, font)
   (user)/                            # User app group (not in URL)
     [locale]/
-      layout.tsx                     # User layout (Header, TabBar)
+      layout.tsx                     # User layout (i18n provider)
       page.tsx                       # Landing
       chat/page.tsx                  # Chat + Cards + Kit CTA (inline + bottom sheet)
       onboarding/page.tsx            # 4-step onboarding wizard
       profile/page.tsx               # Profile confirm / edit
-      error.tsx                      # Error boundary
-      not-found.tsx                  # 404
+      error.tsx                      # Error boundary (Phase 2)
+      not-found.tsx                  # 404 (Phase 2)
   (admin)/                           # Admin app group (not in URL)
     admin/
       layout.tsx                     # Admin layout (Sidebar, AdminHeader)
@@ -158,3 +158,4 @@ matcher: ["/((?!api|admin|_next|_vercel|.*\\..*).*)"]
 | Route Groups | `(user)` + `(admin)` | Layout isolation, expandable to `(partner)` |
 | Error pages | Next.js error.tsx convention | No separate URL needed |
 | Entity URL pattern | `/admin/[entity]`, `/new`, `/[id]` | RESTful, consistent across 7 entities |
+| Root html lang | `lang="en"` hardcoded | MVP English only. v0.2+ multi-lang UI requires dynamic lang attribute |
