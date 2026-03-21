@@ -360,4 +360,4 @@ export function middleware(request: NextRequest) {
 
 | 변경 필요 | 내용 |
 |----------|------|
-| ⚠️ P1-17에서 추가 | admin_users, admin_permissions 테이블 (이 문서의 범위 외 — P1-17에서 설계) |
+| ✅ 반영 완료 | admin_users + audit_logs 테이블이 schema.dbml v2.0에 정의됨 |

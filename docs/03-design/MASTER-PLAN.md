@@ -26,7 +26,7 @@
 | 문서 | 버전 | 성격 | 위치 |
 |------|------|------|------|
 | PRD | v2.2 | 제품 요구사항 (WHAT) | `docs/03-design/PRD.md` |
-| TDD | v1.1 | 기술 설계 (HOW) — 사용자 앱 | `docs/03-design/TDD.md` |
+| TDD | v2.0 | 기술 설계 (HOW) — 아키텍처 + PoC 검증 | `docs/03-design/TDD.md` |
 | DB Schema | v2.0 | DBML 정본 — 21 테이블, 전체 관계 | `docs/03-design/schema.dbml` |
 | CLAUDE.md | — | 코드 표준 (8개 섹션, 59개 규칙) | `CLAUDE.md` |
 
