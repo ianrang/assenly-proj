@@ -1,0 +1,480 @@
+// ============================================================
+// Essenly K-Beauty AI Agent — Database Schema (DBML)
+// Version: 2.0
+// Updated: 2026-03-21
+// Source of Truth: This file is the structural schema definition.
+// Supplements: RLS policies, extensions, functions → migration SQL files
+//
+// Design Rules:
+//   - LocalizedText: JSONB single column (6 languages). entity.name->>'en'
+//   - Country-independent: PlaceEntity has country/city columns (VP-2)
+//   - Vector: embedding vector(1024), MVP no index (v0.2+)
+//   - Non-interventional: is_highlighted = badge display only (VP-1)
+//   - Arrays: bounded vocabulary enums only. No entity FK arrays.
+//   - JSONB: display-only or complex nested structure. Never for query targets.
+//   - ON DELETE: user data CASCADE, domain soft-delete RESTRICT/SET NULL
+// ============================================================
+
+// ============================================================
+// Enums
+// ============================================================
+
+Enum entity_status {
+  active
+  inactive
+  temporarily_closed
+}
+
+Enum admin_role {
+  super_admin
+  admin
+}
+
+Enum admin_status {
+  active
+  inactive
+}
+
+Enum message_role {
+  user
+  assistant
+  system
+}
+
+Enum preference_direction {
+  like
+  dislike
+}
+
+Enum ingredient_relation_type {
+  key
+  avoid
+}
+
+Enum beauty_history_type {
+  treatment
+  purchase
+  visit
+}
+
+Enum beauty_history_entity_type {
+  product
+  store
+  clinic
+  treatment
+}
+
+Enum behavior_log_target_type {
+  product
+  store
+  clinic
+  treatment
+  card
+  link
+}
+
+// ============================================================
+// User Data
+// ============================================================
+
+Table users {
+  id uuid [pk, default: `gen_random_uuid()`]
+  auth_method text [not null, default: 'anonymous', note: 'MVP: anonymous only. v0.2: google, email']
+  email text [unique, note: 'nullable for anonymous users']
+  created_at timestamptz [default: `now()`]
+  last_active timestamptz [default: `now()`, note: 'used for 90-day auto-expiry detection']
+
+  Note: 'MVP: anonymous users only. v0.2: account upgrade (Supabase Auth linking)'
+}
+
+Table user_profiles {
+  user_id uuid [pk, ref: > users.id]
+  skin_type text [note: 'UP-1: dry/oily/combination/sensitive/normal']
+  hair_type text [note: 'UP-2a: straight/wavy/curly/coily']
+  hair_concerns text[] [note: 'UP-2b: damage/thinning/oily_scalp etc.']
+  country text [note: 'UP-3: ISO 3166-1 alpha-2. User home country (NOT travel destination)']
+  language text [not null, default: 'en', note: 'UP-3b: en/ja/zh/es/fr/ko']
+  age_range text [note: 'UP-4: 18-24/25-29/30-34/35-39/40-49/50+']
+  updated_at timestamptz [default: `now()`]
+
+  Note: 'User permanent attributes (journey-independent). 1:1 with users. ON DELETE CASCADE.'
+}
+
+Table journeys {
+  id uuid [pk, default: `gen_random_uuid()`]
+  user_id uuid [ref: > users.id, note: 'ON DELETE CASCADE']
+  country text [not null, default: 'KR', note: 'Travel destination country (VP-2). Independent from user_profiles.country']
+  city text [not null, default: 'seoul', note: 'Intentional denormalization: independent query target']
+  skin_concerns text[] [note: 'JC-1: max 5. acne/wrinkles/dark_spots/redness/dryness/pores/dullness/dark_circles/uneven_tone/sun_damage/eczema']
+  interest_activities text[] [note: 'JC-2: shopping/clinic/salon/dining/cultural (1:1 domain mapping)']
+  stay_days int [note: 'JC-3: days staying']
+  start_date date
+  end_date date
+  budget_level text [note: 'JC-4: budget/moderate/premium/luxury']
+  travel_style text[] [note: 'JC-5: efficient/relaxed/adventurous/instagram/local_experience/luxury/budget_friendly']
+  status text [not null, default: 'active', note: 'MVP: single journey (no termination). v0.2: multi-journey with end criteria']
+  created_at timestamptz [default: `now()`]
+
+  Note: 'Per-journey context (JC-* variables). A user can have multiple journeys. ON DELETE CASCADE from users.'
+}
+
+Table beauty_history {
+  id uuid [pk, default: `gen_random_uuid()`]
+  user_id uuid [ref: > users.id, note: 'ON DELETE CASCADE']
+  type text [not null, note: 'treatment/purchase/visit']
+  entity_id uuid [note: 'Polymorphic FK — not DB-enforced. CHECK on entity_type.']
+  entity_type text [note: 'CHECK: product/store/clinic/treatment']
+  date date
+  satisfaction int [note: 'CHECK: 1-5']
+  notes text [note: 'BH-2: user memo']
+  created_at timestamptz [default: `now()`]
+
+  Note: 'BH-1~3: treatment/purchase/visit history. Polymorphic entity reference. ON DELETE CASCADE from users.'
+}
+
+Table learned_preferences {
+  id uuid [pk, default: `gen_random_uuid()`]
+  user_id uuid [ref: > users.id, note: 'ON DELETE CASCADE']
+  category text [not null, note: 'e.g. ingredient, brand, product_type']
+  preference text [not null, note: 'e.g. retinol, niacinamide, snail_mucin']
+  direction text [not null, note: 'like/dislike. CHECK constraint.']
+  confidence float [default: 0.5, note: 'BH-4: 0.0~1.0. Adjusted by new data.']
+  source text [note: 'conversation, behavior, explicit']
+  created_at timestamptz [default: `now()`]
+  updated_at timestamptz [default: `now()`]
+
+  Note: 'BH-4: learned user preferences. confidence adjusted over time. ON DELETE CASCADE from users.'
+}
+
+Table conversations {
+  id uuid [pk, default: `gen_random_uuid()`]
+  journey_id uuid [ref: > journeys.id, note: 'ON DELETE SET NULL. Nullable: Path B users may not have journey yet.']
+  user_id uuid [not null, ref: > users.id, note: 'ON DELETE CASCADE. Intentional denormalization: needed for RLS when journey_id is null.']
+  created_at timestamptz [default: `now()`]
+
+  Note: 'Chat conversation container. user_id denormalized for RLS (journey_id nullable for Path B).'
+}
+
+Table messages {
+  id uuid [pk, default: `gen_random_uuid()`]
+  conversation_id uuid [not null, ref: > conversations.id, note: 'ON DELETE CASCADE']
+  role text [not null, note: 'CHECK: user/assistant/system']
+  content text [not null]
+  card_data jsonb [note: 'ProductCard/TreatmentCard JSON. Display only, not queried.']
+  tool_calls jsonb [note: 'LLM tool call records. Ephemeral, not queried.']
+  created_at timestamptz [default: `now()`]
+
+  Note: 'Chat messages. ON DELETE CASCADE from conversations.'
+}
+
+Table behavior_logs {
+  id uuid [pk, default: `gen_random_uuid()`]
+  user_id uuid [ref: > users.id, note: 'ON DELETE CASCADE']
+  event_type text [not null, note: 'click, card_view, link_click, search, etc.']
+  target_id uuid [note: 'Polymorphic FK — not DB-enforced.']
+  target_type text [note: 'CHECK: product/store/clinic/treatment/card/link']
+  metadata jsonb [note: 'Event-specific data. Variable structure.']
+  created_at timestamptz [default: `now()`]
+
+  Note: 'User behavior tracking. Polymorphic target. ON DELETE CASCADE from users.'
+}
+
+Table consent_records {
+  user_id uuid [pk, ref: > users.id, note: 'ON DELETE CASCADE']
+  location_tracking boolean [default: false, note: 'RT-1 collection consent. MVP: excluded']
+  behavior_logging boolean [default: false, note: 'BH auto-collection consent. MVP: excluded']
+  data_retention boolean [default: false, note: 'Long-term data storage. MVP: Landing banner']
+  marketing boolean [default: false, note: 'Marketing consent. MVP: Kit CTA checkbox']
+  analytics boolean [default: false, note: 'Analytics consent']
+  consented_at timestamptz [default: `now()`]
+  updated_at timestamptz [default: `now()`]
+
+  Note: '1:1 with users. 5 consent flags. ON DELETE CASCADE from users.'
+}
+
+// ============================================================
+// Domain Data — Shopping (DOM-1)
+// ============================================================
+
+Table brands {
+  id uuid [pk, default: `gen_random_uuid()`]
+  name jsonb [not null, note: 'LocalizedText {ko, en, ja, zh, es, fr}']
+  origin text [note: 'Country of origin']
+  tier text [note: 'Brand tier/positioning']
+  is_essenly boolean [default: false, note: 'Essenly own brand flag']
+  specialties text[] [note: 'Brand specialty areas']
+  status text [default: 'active', note: 'CHECK: active/inactive/temporarily_closed']
+  created_at timestamptz [default: `now()`]
+  updated_at timestamptz [default: `now()`]
+
+  Note: 'K-beauty brands. status added for soft-delete consistency.'
+}
+
+Table ingredients {
+  id uuid [pk, default: `gen_random_uuid()`]
+  name jsonb [not null, note: 'LocalizedText']
+  inci_name text [note: 'International Nomenclature of Cosmetic Ingredients']
+  function text[] [note: 'moisturizing, anti-aging, brightening, etc.']
+  caution_skin_types text[] [note: 'Skin types that should be cautious']
+  common_in text[] [note: 'Common product categories containing this']
+  status text [default: 'active', note: 'CHECK: active/inactive/temporarily_closed']
+  created_at timestamptz [default: `now()`]
+  updated_at timestamptz [default: `now()`]
+
+  Note: 'Cosmetic ingredients. Used for DV-1/DV-2 personalization filtering via product_ingredients.'
+}
+
+Table products {
+  id uuid [pk, default: `gen_random_uuid()`]
+  name jsonb [not null, note: 'LocalizedText']
+  description jsonb [note: 'LocalizedText']
+  brand_id uuid [ref: > brands.id, note: 'ON DELETE SET NULL. Nullable.']
+  category text [note: 'skincare/makeup/haircare/bodycare/tools']
+  subcategory text
+  skin_types text[] [note: 'dry/oily/combination/sensitive/normal']
+  hair_types text[] [note: 'straight/wavy/curly/coily']
+  concerns text[] [note: '11-pool: acne/wrinkles/dark_spots/redness/dryness/pores/dullness/dark_circles/uneven_tone/sun_damage/eczema']
+  key_ingredients jsonb [note: 'Display shortlist. Personalization filtering uses product_ingredients junction. Sync responsibility documented.']
+  price int [note: 'KRW. 0 or positive.']
+  volume text [note: 'e.g. 50ml, 200ml']
+  purchase_links jsonb [note: 'PurchaseLink[]: {platform, url, affiliate_code?}. Display only.']
+  english_label boolean [default: false]
+  tourist_popular boolean [default: false]
+  is_highlighted boolean [default: false, note: 'VP-1: badge display only. Never affects ranking.']
+  highlight_badge jsonb [note: 'LocalizedText. Required when is_highlighted=true.']
+  rating float [note: '0.0~5.0. Admin-entered.']
+  review_count int [default: 0, note: '0 or positive. Admin-entered.']
+  review_summary jsonb [note: 'LocalizedText. AI-generated summary.']
+  images text[] [note: 'CDN URLs. Ordered. First = thumbnail.']
+  tags text[]
+  status text [default: 'active', note: 'CHECK: active/inactive/temporarily_closed']
+  embedding "vector(1024)" [note: 'RAG vector search. MVP: no index (sequential scan).']
+  created_at timestamptz [default: `now()`]
+  updated_at timestamptz [default: `now()`]
+
+  Note: 'DOM-1 Shopping: K-beauty products.'
+}
+
+Table stores {
+  id uuid [pk, default: `gen_random_uuid()`]
+  name jsonb [not null, note: 'LocalizedText']
+  description jsonb [note: 'LocalizedText']
+  country text [default: 'KR', note: 'VP-2: country-independent']
+  city text [default: 'seoul', note: 'Intentional denormalization']
+  district text [note: 'Seoul district for location filter']
+  location "geography(point, 4326)" [note: 'PostGIS point']
+  address jsonb [note: 'LocalizedText']
+  operating_hours jsonb [note: 'Complex schedule structure. Not queried relationally.']
+  english_support text [default: 'none', note: 'none/basic/good/fluent']
+  store_type text [note: 'olive_young/chicor/department_store/brand_store/pharmacy/other']
+  tourist_services text[] [note: 'tax_refund, multilingual_staff, etc.']
+  payment_methods text[] [note: 'cash, card, mobile_pay, etc.']
+  nearby_landmarks text[] [note: 'Navigation reference']
+  external_links jsonb [note: 'ExternalLink[]: {type, url, label?}']
+  is_highlighted boolean [default: false, note: 'VP-1']
+  highlight_badge jsonb [note: 'LocalizedText']
+  rating float
+  review_count int [default: 0]
+  images text[]
+  tags text[]
+  status text [default: 'active', note: 'CHECK: active/inactive/temporarily_closed']
+  embedding "vector(1024)"
+  created_at timestamptz [default: `now()`]
+  updated_at timestamptz [default: `now()`]
+
+  Note: 'DOM-1 Shopping: beauty stores. brands_available removed — derive via products.brand_id + product_stores.'
+}
+
+// ============================================================
+// Domain Data — Treatment (DOM-2)
+// ============================================================
+
+Table clinics {
+  id uuid [pk, default: `gen_random_uuid()`]
+  name jsonb [not null, note: 'LocalizedText']
+  description jsonb [note: 'LocalizedText']
+  country text [default: 'KR']
+  city text [default: 'seoul']
+  district text
+  location "geography(point, 4326)"
+  address jsonb [note: 'LocalizedText']
+  operating_hours jsonb
+  english_support text [default: 'none', note: 'none/basic/good/fluent']
+  clinic_type text [note: 'dermatology/plastic_surgery/aesthetic/med_spa']
+  license_verified boolean [default: false]
+  consultation_type text[]
+  foreigner_friendly jsonb [note: 'ForeignerSupport: {languages, interpreter, english_consent, overseas_card, pickup}']
+  booking_url text
+  external_links jsonb [note: 'ExternalLink[]: {type, url, label?}']
+  is_highlighted boolean [default: false, note: 'VP-1']
+  highlight_badge jsonb [note: 'LocalizedText']
+  rating float
+  review_count int [default: 0]
+  images text[]
+  tags text[]
+  status text [default: 'active', note: 'CHECK: active/inactive/temporarily_closed']
+  embedding "vector(1024)"
+  created_at timestamptz [default: `now()`]
+  updated_at timestamptz [default: `now()`]
+
+  Note: 'DOM-2 Treatment: beauty clinics.'
+}
+
+Table treatments {
+  id uuid [pk, default: `gen_random_uuid()`]
+  name jsonb [not null, note: 'LocalizedText']
+  description jsonb [note: 'LocalizedText']
+  category text [note: 'skin/laser/injection/facial/body/hair']
+  subcategory text
+  target_concerns text[] [note: '11-pool (same as products.concerns)']
+  suitable_skin_types text[] [note: 'dry/oily/combination/sensitive/normal']
+  price_min int [note: 'KRW. Replaces price_range JSONB. Enables direct SQL filtering + indexing.']
+  price_max int [note: 'KRW. price_min <= price_max enforced in application.']
+  price_currency text [default: 'KRW', note: 'MVP: KRW only. v0.2: multi-currency.']
+  duration_minutes int [note: '1 or more']
+  downtime_days int [note: '0 = same-day OK. Used for stay_days feasibility check.']
+  session_count text [note: 'e.g. 3~5 sessions recommended']
+  precautions jsonb [note: 'LocalizedText. Pre-treatment warnings.']
+  aftercare jsonb [note: 'LocalizedText. Post-treatment care.']
+  is_highlighted boolean [default: false, note: 'VP-1']
+  highlight_badge jsonb [note: 'LocalizedText']
+  rating float
+  review_count int [default: 0]
+  images text[]
+  tags text[]
+  status text [default: 'active', note: 'CHECK: active/inactive/temporarily_closed']
+  embedding "vector(1024)"
+  created_at timestamptz [default: `now()`]
+  updated_at timestamptz [default: `now()`]
+
+  Note: 'DOM-2 Treatment: beauty procedures. price_range JSONB split into price_min/max/currency for query performance.'
+}
+
+Table doctors {
+  id uuid [pk, default: `gen_random_uuid()`]
+  clinic_id uuid [not null, ref: > clinics.id, note: 'ON DELETE RESTRICT. Cannot delete clinic with doctors.']
+  name jsonb [not null, note: 'LocalizedText']
+  specialties text[]
+  languages text[] [note: 'Languages the doctor speaks']
+  certifications text[]
+  status text [default: 'active', note: 'CHECK: active/inactive/temporarily_closed']
+  created_at timestamptz [default: `now()`]
+  updated_at timestamptz [default: `now()`]
+
+  Note: 'DOM-2: doctors at clinics. status added for soft-delete consistency.'
+}
+
+// ============================================================
+// Junction Tables (N:M — 3 only, all business-essential)
+// ============================================================
+
+Table product_stores {
+  product_id uuid [ref: > products.id]
+  store_id uuid [ref: > stores.id]
+
+  indexes {
+    (product_id, store_id) [pk]
+  }
+
+  Note: 'Which stores sell which products. Admin-managed. Both FKs required.'
+}
+
+Table product_ingredients {
+  product_id uuid [ref: > products.id]
+  ingredient_id uuid [ref: > ingredients.id]
+  type text [not null, note: 'key/avoid. CHECK constraint. Determines DV-1/DV-2 filtering.']
+
+  indexes {
+    (product_id, ingredient_id) [pk]
+  }
+
+  Note: 'Product-ingredient relationship with attribute (type). Used for personalization filtering (DV-1/DV-2). Same product+ingredient cannot be both key and avoid.'
+}
+
+Table clinic_treatments {
+  clinic_id uuid [ref: > clinics.id]
+  treatment_id uuid [ref: > treatments.id]
+
+  indexes {
+    (clinic_id, treatment_id) [pk]
+  }
+
+  Note: 'Which clinics offer which treatments. Admin-managed.'
+}
+
+// ============================================================
+// Admin
+// ============================================================
+
+Table admin_users {
+  id uuid [pk, default: `gen_random_uuid()`]
+  email text [unique, not null, note: 'Google Workspace email. Allowlist managed by super_admin.']
+  name text [note: 'Display name']
+  role text [not null, note: 'CHECK: super_admin/admin']
+  permissions jsonb [not null, default: '{}', note: '14-bit: {product_read, product_write, store_read, store_write, brand_read, brand_write, ingredient_read, ingredient_write, clinic_read, clinic_write, treatment_read, treatment_write, doctor_read, doctor_write}']
+  status text [not null, default: 'active', note: 'CHECK: active/inactive']
+  last_login timestamptz
+  created_by uuid [ref: > admin_users.id, note: 'Self-reference: which admin created this account']
+  created_at timestamptz [default: `now()`]
+  updated_at timestamptz [default: `now()`]
+
+  Note: 'Admin accounts. Google SSO + custom JWT (Option B). super_admin has implicit all permissions. Initial super_admin seeded via env var.'
+}
+
+Table audit_logs {
+  id uuid [pk, default: `gen_random_uuid()`]
+  actor_id uuid [not null, ref: > admin_users.id, note: 'ON DELETE RESTRICT. Audit logs must be preserved.']
+  action text [not null, note: '17 events: create/update/deactivate/reactivate/highlight_on/highlight_off/relation_connect/relation_disconnect/login_success/login_failure/logout/admin_create/admin_deactivate/admin_reactivate/permission_change']
+  target_type text [note: 'product/store/brand/ingredient/clinic/treatment/doctor/admin_user/relation']
+  target_id uuid [note: 'ID of affected entity']
+  changes jsonb [note: '{before: {...}, after: {...}} for update. Full data for create. status for deactivate.']
+  ip_address inet
+  created_at timestamptz [default: `now()`]
+
+  Note: 'Immutable audit trail. No updated_at (never modified). No delete. super_admin read-only. ON DELETE RESTRICT from admin_users.'
+}
+
+// ============================================================
+// Table Groups
+// ============================================================
+
+TableGroup user_data {
+  users
+  user_profiles
+  journeys
+  beauty_history
+  learned_preferences
+  conversations
+  messages
+  behavior_logs
+  consent_records
+}
+
+TableGroup domain_shopping {
+  brands
+  ingredients
+  products
+  stores
+  product_stores
+  product_ingredients
+}
+
+TableGroup domain_treatment {
+  clinics
+  treatments
+  doctors
+  clinic_treatments
+}
+
+TableGroup admin_system {
+  admin_users
+  audit_logs
+}
+
+// ============================================================
+// Future Tables (v0.2~v0.3, not yet defined)
+// ============================================================
+// salons (DOM-3) — follow PlaceEntity pattern (country, city, district, location, ...)
+// restaurants (DOM-4) — follow PlaceEntity pattern
+// experiences (DOM-5) — follow PlaceEntity pattern
+// partner_users (v0.2) — partner app accounts
