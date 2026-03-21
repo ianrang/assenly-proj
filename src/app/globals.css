@@ -29,7 +29,7 @@
   --surface-warm: #FAF7F2;
   --border-warm: #E8DDD5;
   --sage: #637260;
-  --gold: #856E40;
+  --teal: #2D7368;
   --coral: #B8503A;
   --success: #5AAF82;
   --warning: #8C6A2C;
@@ -74,6 +74,8 @@
     --primary-light: #3D2028;
     --surface-warm: #302826;
     --border-warm: #4A3835;
+    --sage: #A8B5A0;
+    --teal: #5AB5A8;
     --coral: #E8988A;
     --success: #7EC4A0;
     --warning: #E0B878;
@@ -112,7 +114,7 @@
   --color-surface-warm: var(--surface-warm);
   --color-border-warm: var(--border-warm);
   --color-sage: var(--sage);
-  --color-gold: var(--gold);
+  --color-teal: var(--teal);
   --color-coral: var(--coral);
   --color-success: var(--success);
   --color-warning: var(--warning);

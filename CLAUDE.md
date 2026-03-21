@@ -205,7 +205,7 @@ treatment.ts ──→ derived.ts    ✗  (peer 간 직접 의존 금지)
 |----|------|------|
 | S-1 | 3계층 토큰 구조 | `:root` CSS 변수(값 정의) → `@theme inline`(Tailwind 바인딩) → Tailwind 유틸리티(소비). 계층을 건너뛰지 않는다 |
 | S-2 | 단일 진실 공급원 | 모든 디자인 값은 `globals.css`의 `:root`에서 1번만 정의. 컴포넌트·모듈에서 자체 색상/간격 변수 선언 금지 |
-| S-3 | Dark 모드 = 오버라이드만 | Dark `@media` 블록은 변경이 필요한 변수만 재선언. 양 모드에서 동일한 값(예: `--sage`, `--gold`)은 `:root`에서 1번만 선언하여 상속 |
+| S-3 | Dark 모드 = 오버라이드만 | Dark `@media` 블록은 변경이 필요한 변수만 재선언. 양 모드에서 동일한 값(예: `--radius-*`, `--primary-foreground`)은 `:root`에서 1번만 선언하여 상속 |
 | S-4 | Tailwind 우선 | 스타일은 Tailwind 유틸리티 클래스로 적용. 커스텀 CSS는 Tailwind로 표현 불가능한 경우에만 허용 |
 
 ### 7.2 단일 변경점 + 캡슐화
