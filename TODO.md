@@ -155,8 +155,8 @@
 
 | ID | 작업 | 상세 | 산출물 | 상태 |
 |----|------|------|--------|------|
-| P1-16 | 스키마 수정 (불일치 해소) | stores external_links, products online_links 추가, TDD 인덱스 문구 수정 | 마이그레이션 SQL | ⬜ |
-| P1-17 | 관리자/권한 테이블 설계 | admin_users, roles/permissions, audit_logs | 마이그레이션 SQL | ⬜ |
+| P1-16 | 스키마 수정 | brands_available 삭제, price_range→3컬럼 분리, status/updated_at 추가(3테이블), FK ON DELETE 12건, CHECK 5건 | `004_schema_v2.sql` | ✅ |
+| P1-17 | 관리자 테이블 | admin_users(role CHECK, permissions JSONB) + audit_logs(불변, RESTRICT). RLS + GRANT. CASCADE 검증 통과 | `004_schema_v2.sql` | ✅ |
 | P1-18 | 인덱스 전략 설계 | B-tree, GIN(배열/JSONB), GiST(GEOGRAPHY), 벡터(v0.2+) | 인덱스 설계 문서 | ⬜ |
 
 ## 설계 — API
