@@ -2,23 +2,42 @@
 
 /* ── Light Mode ── */
 :root {
+  /* shadcn core */
+  --background: #FAFAFA;
+  --foreground: #1A1A2E;
+  --card: #FFFFFF;
+  --card-foreground: #1A1A2E;
+  --popover: #FFFFFF;
+  --popover-foreground: #1A1A2E;
   --primary: #D4788A;
+  --primary-foreground: #FFFFFF;
+  --secondary: #FAF7F2;
+  --secondary-foreground: #1A1A2E;
+  --muted: #F3F4F6;
+  --muted-foreground: #6B7280;
+  --accent: #FAF7F2;
+  --accent-foreground: #1A1A2E;
+  --destructive: #D4645E;
+  --destructive-foreground: #FFFFFF;
+  --border: #E5E7EB;
+  --input: #E5E7EB;
+  --ring: #D4788A;
+
+  /* Essenly extensions */
   --primary-hover: #C45870;
   --primary-light: #FDE8EC;
-  --bg: #FAFAFA;
-  --surface: #FFFFFF;
   --surface-warm: #FAF7F2;
-  --text: #1A1A2E;
-  --text-secondary: #6B7280;
-  --text-muted: #9CA3AF;
-  --border: #E5E7EB;
   --border-warm: #E8DDD5;
-  --sage: #A8B5A0;
-  --gold: #C9A96E;
-  --coral: #E07A5F;
-  --error: #D4645E;
+  --sage: #637260;
+  --gold: #856E40;
+  --coral: #B8503A;
   --success: #5AAF82;
-  --warning: #D49F52;
+  --warning: #8C6A2C;
+  --error-bg: #D4645E18;
+  --success-bg: #5AAF8218;
+  --warning-bg: #8C6A2C18;
+
+  /* radius */
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
@@ -29,53 +48,91 @@
 /* ── Dark Mode: Warm Charcoal ── */
 @media (prefers-color-scheme: dark) {
   :root {
+    /* shadcn core */
+    --background: #1C1817;
+    --foreground: #F0ECF4;
+    --card: #272120;
+    --card-foreground: #F0ECF4;
+    --popover: #272120;
+    --popover-foreground: #F0ECF4;
     --primary: #E8899A;
+    --primary-foreground: #FFFFFF;
+    --secondary: #302826;
+    --secondary-foreground: #F0ECF4;
+    --muted: #302826;
+    --muted-foreground: #908E96;
+    --accent: #302826;
+    --accent-foreground: #F0ECF4;
+    --destructive: #E09088;
+    --destructive-foreground: #FFFFFF;
+    --border: #3D3533;
+    --input: #3D3533;
+    --ring: #E8899A;
+
+    /* Essenly extensions */
     --primary-hover: #F2A4B3;
     --primary-light: #3D2028;
-    --bg: #1C1817;
-    --surface: #272120;
     --surface-warm: #302826;
-    --text: #F0ECF4;
-    --text-secondary: #A1A1AA;
-    --text-muted: #71717A;
-    --border: #3D3533;
     --border-warm: #4A3835;
     --coral: #E8988A;
-    --error: #E09088;
     --success: #7EC4A0;
     --warning: #E0B878;
+    --error-bg: #E0908820;
+    --success-bg: #7EC4A020;
+    --warning-bg: #E0B87820;
   }
 }
 
 /* ── Tailwind Theme Binding ── */
 @theme inline {
+  /* shadcn core */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Essenly extensions */
   --color-primary-hover: var(--primary-hover);
   --color-primary-light: var(--primary-light);
-  --color-bg: var(--bg);
-  --color-surface: var(--surface);
   --color-surface-warm: var(--surface-warm);
-  --color-text: var(--text);
-  --color-text-secondary: var(--text-secondary);
-  --color-text-muted: var(--text-muted);
-  --color-border: var(--border);
   --color-border-warm: var(--border-warm);
   --color-sage: var(--sage);
   --color-gold: var(--gold);
   --color-coral: var(--coral);
-  --color-error: var(--error);
   --color-success: var(--success);
   --color-warning: var(--warning);
+  --color-error-bg: var(--error-bg);
+  --color-success-bg: var(--success-bg);
+  --color-warning-bg: var(--warning-bg);
+
+  /* radius */
   --radius-sm: var(--radius-sm);
   --radius-md: var(--radius-md);
   --radius-lg: var(--radius-lg);
   --radius-xl: var(--radius-xl);
   --radius-full: var(--radius-full);
+
+  /* font */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
-  background-color: var(--bg);
-  color: var(--text);
+  background-color: var(--background);
+  color: var(--foreground);
 }
