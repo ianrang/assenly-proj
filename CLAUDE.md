@@ -5,7 +5,7 @@
 ## 프로젝트
 
 - 앱: K-뷰티 AI 의사결정 보조 웹 앱 (외국인 2040 여성 여행객 대상)
-- 스택: Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · Supabase · Vercel AI SDK 5.0
+- 스택: Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS 4 · Supabase · Vercel AI SDK 6.x
 - 상태 관리: useChat + react-hook-form + React Context (Zustand/Redux 금지)
 - 별칭: `@/server`, `@/client`, `@/shared`
 - 설계 문서: `docs/03-design/PRD.md`(WHAT) · `docs/03-design/TDD.md`(HOW) · `docs/03-design/DB-SCHEMA.md`
