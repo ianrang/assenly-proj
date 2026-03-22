@@ -196,10 +196,10 @@ export async function METHOD(req: Request) {
 | 파라미터 | 타입 | 설명 |
 |---------|------|------|
 | `skin_types` | string (comma) | `dry,oily` → 배열 필터 |
-| `concerns` | string (comma) | `acne,pores` → 배열 필터 |
+| `concerns` | string (comma) | `acne,pores` → 배열 겹침 필터 (하나라도 매치) |
 | `category` | string | `skincare`, `makeup` 등 |
 | `budget_max` | number | 최대 가격 (KRW) |
-| `query` | string | 텍스트 검색 |
+| `search` | string | 텍스트 검색 (name ko/en ILIKE) |
 | `limit` | number | 기본 10, 최대 50 |
 | `offset` | number | 기본 0 |
 
@@ -269,9 +269,11 @@ export async function METHOD(req: Request) {
 | 파라미터 | 타입 | 설명 |
 |---------|------|------|
 | `skin_types` | string (comma) | 적합 피부타입 필터 |
-| `concerns` | string (comma) | 대상 고민 필터 |
+| `concerns` | string (comma) | 대상 고민 필터 (overlap — 하나라도 겹침) |
+| `category` | string | `skin`, `laser`, `injection`, `facial`, `body`, `hair` |
 | `budget_max` | number | `price_max <= budget_max` |
 | `max_downtime` | number | `downtime_days <= max_downtime` |
+| `search` | string | 텍스트 검색 (name ko/en) |
 | `limit`, `offset` | number | 페이지네이션 |
 
 ### `GET /api/treatments/:id`
@@ -836,7 +838,7 @@ Vercel AI SDK 6.x `toUIMessageStreamResponse()` 기반.
 | 필터 | 동작 | SQL 패턴 |
 |------|------|---------|
 | `skin_types=dry,oily` | 배열 겹침 (OR) | `skin_types && ARRAY['dry','oily']` |
-| `concerns=acne` | 배열 포함 | `concerns @> ARRAY['acne']` |
+| `concerns=acne,pores` | 배열 겹침 (OR) | `concerns && ARRAY['acne','pores']` (하나라도 겹침) |
 | `category=skincare` | 정확 일치 | `category = 'skincare'` |
 | `budget_max=20000` | 이하 | `price <= 20000` (products) 또는 `price_max <= 20000` (treatments) |
 | `district=gangnam` | 정확 일치 | `district = 'gangnam'` |
