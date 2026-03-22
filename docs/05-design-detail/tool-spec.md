@@ -280,9 +280,9 @@ const extractUserProfileSchema = z.object({
     .nullable()
     .describe('Number of days staying in Korea, if mentioned. null if not.'),
 
-  budget_level: z.enum(['budget', 'mid', 'premium', 'luxury'])
+  budget_level: z.enum(['budget', 'moderate', 'premium', 'luxury'])
     .nullable()
-    .describe('Budget level inferred from amounts: <30K KRW=budget, 30-80K=mid, 80-200K=premium, >200K=luxury. null if not mentioned.'),
+    .describe('Budget level inferred from amounts: <30K KRW=budget, 30-80K=moderate, 80-200K=premium, >200K=luxury. null if not mentioned.'),
 
   age_range: z.enum(['18-24', '25-29', '30-34', '35-39', '40-49', '50+'])
     .nullable()
@@ -302,16 +302,19 @@ const extractUserProfileSchema = z.object({
 
 없음. P0-17 스키마를 그대로 계승 (93% 정확도 검증 완료).
 
-### 변수 매핑
+### 변수 매핑 + DB 저장 대상
 
-| 스키마 필드 | PRD 변수 | system-prompt-spec.md §9.2 티어 |
-|-----------|---------|-------------------------------|
-| `skin_type` | UP-1 | Tier 1 (저장 트리거) |
-| `skin_concerns` | JC-1 | Tier 1 (저장 트리거) |
-| `stay_days` | JC-3 | Tier 2 (추천 품질) |
-| `budget_level` | JC-4 | Tier 2 (추천 품질) |
-| `age_range` | UP-4 | Tier 3 (보조) |
-| `learned_preferences` | BH-4 | Tier 3 (보조) |
+| 스키마 필드 | PRD 변수 | system-prompt-spec.md §9.2 티어 | 저장 테이블 | DB 컬럼 |
+|-----------|---------|-------------------------------|----------|---------|
+| `skin_type` | UP-1 | Tier 1 (저장 트리거) | user_profiles | skin_type |
+| `skin_concerns` | JC-1 | Tier 1 (저장 트리거) | journeys | skin_concerns |
+| `stay_days` | JC-3 | Tier 2 (추천 품질) | journeys | stay_days |
+| `budget_level` | JC-4 | Tier 2 (추천 품질) | journeys | budget_level |
+| `age_range` | UP-4 | Tier 3 (보조) | user_profiles | age_range |
+| `learned_preferences` | BH-4 | Tier 3 (보조) | learned_preferences | category+preference+direction |
+
+> 사용자 동의 후 `POST /api/profile/onboarding`에서 추출 결과를 테이블별로 분할 저장한다 (api-spec.md §3.4 step 11, system-prompt-spec.md §9.3). 동의 전에는 DB 저장하지 않는다 (PRD §4-C).
+> `learned_preferences.direction` 값 변환: tool 출력 `prefer`→DB `like`, `avoid`→DB `dislike` (서비스 레이어에서 변환. schema.dbml preference_direction enum 참조).
 
 ---
 

@@ -65,7 +65,7 @@ layout/     → (없음)     (독립)
 | `brand.name.[locale]` | 헤더 부제목 | tool handler가 JOIN하여 제공 |
 | `price` | 헤더 가격 | ₩ 포맷 |
 | `images[0]` | 이미지 | 첫번째 = 대표 |
-| `why_recommended` | 바디 | AI 생성 추천 이유. tool-result에 포함 |
+| `why_recommended` | 바디 | AI 생성 추천 이유. tool-result의 `reasons[]`를 LLM이 자연어로 가공 (tool-spec.md §1, system-prompt-spec.md §7). LLM 텍스트 응답에서 추출 |
 | `is_highlighted` | HighlightBadge visible | VP-1: 렌더링만. 정렬/필터 미영향 (Q-2) |
 | `highlight_badge` | HighlightBadge 텍스트 | null이면 비표시 |
 | `english_label` | 푸터 배지 | true → "English Label" 배지 |
@@ -102,7 +102,7 @@ layout/     → (없음)     (독립)
 | `name.[locale]` | 헤더 제목 | |
 | `category` | 헤더 카테고리 배지 | |
 | `price_min`, `price_max` | 헤더 가격대 | ₩ min~max 포맷 |
-| `why_recommended` | 바디 | AI 생성 추천 이유. tool-result에 포함 |
+| `why_recommended` | 바디 | AI 생성 추천 이유. tool-result의 `reasons[]`를 LLM이 자연어로 가공 (tool-spec.md §1, system-prompt-spec.md §7). LLM 텍스트 응답에서 추출 |
 | `duration_minutes` | 바디 소요 시간 | "약 N분" |
 | `downtime_days` | 바디 회복 기간 | "회복 N일" |
 | `is_highlighted` | HighlightBadge visible | VP-1: 렌더링만 (Q-2) |

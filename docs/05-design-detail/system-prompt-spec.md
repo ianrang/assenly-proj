@@ -465,11 +465,31 @@ Get purchase, booking, or map links for a specific product, store, clinic, or tr
 
 **When NOT to call:**
 - User is still browsing/comparing — wait until they express intent to act
+
+### extract_user_profile
+Extract beauty profile information mentioned by the user during conversation.
+
+**When to call:**
+- The user explicitly mentions their skin type ("I have oily skin")
+- The user mentions skin concerns ("acne is my biggest problem")
+- The user mentions travel duration ("I'm here for 5 days")
+- The user mentions budget preference ("looking for affordable options")
+- The user states age or preferences ("I avoid fragrance")
+
+**When NOT to call:**
+- No new profile-relevant information was mentioned in the current message
+- The information was already extracted in a previous turn
+- The user is asking a question, not sharing personal info
+
+**Behavior:**
+- Call silently — do NOT tell the user you are extracting their profile
+- Only extract what was explicitly stated or clearly implied. Do not guess.
+- Continue your normal response (recommendation, answer) alongside the extraction
+- This tool runs as part of your response, not as a separate action
 ```
 
 > Tool JSON Schema (입력/출력): `tool-spec.md` (P1-31+P1-32 병합 완료)
 > extract_user_profile: 동기 tool 확정 (P1-33). 스키마는 `tool-spec.md` §3
-> **TODO**: §6 프롬프트 텍스트에 `extract_user_profile` 호출 규칙(when to call) 추가 필요. §9.2 추출 전략과 연계하여 "대화에서 프로필 정보 감지 시 호출" 지침 정의. (Gate 1 검증 AI-2)
 
 ---
 
@@ -866,4 +886,30 @@ Language: en
                                ← §10 없음 (DV 미계산)
 ```
 
-§2~§7은 경로A/B에서 동일하다. 차이는 §8/§9 상호 교체 + §10 유무뿐이다.
+## 경로A-2: 부분 프로필 (VP-3 핵심 시나리오)
+
+```
+[§2~§7] (동일)
+
+[§8 User Profile]              ← 프로필 존재 → §8 주입 (일부 필드만)
+Skin type: oily
+Skin concerns: none specified   ← null → "none specified" (VP-3)
+Country: JP, Language: ja
+Age range: not specified        ← null → "not specified"
+Stay: not specified             ← null → 다운타임 필터 비활성
+Budget: not specified           ← null → 가격 필터 비활성
+Interests: shopping
+Preferred: none yet
+Avoid: none yet
+Current time: 2026-04-02 14:30 KST
+Location: not shared
+
+[§10 Beauty Profile]           ← DV 계산 (UP-1만으로도 가능)
+Preferred ingredients: Niacinamide, Salicylic Acid  ← UP-1(oily) 기반 도출
+Ingredients to avoid: none identified
+AI Beauty Summary: "You have oily skin — Korea has amazing oil-control products..."
+```
+
+§8의 null 필드는 "not specified"/"none specified"로 표시되며, LLM은 해당 필드 없이도 추천을 제공한다 (VP-3). 사용 가능한 정보(UP-1=oily)만으로 개인화된 추천이 이루어진다.
+
+§2~§7은 경로A/A-2/B에서 동일하다. 차이는 §8/§9 상호 교체 + §10 유무뿐이다.

@@ -459,7 +459,8 @@ Vercel AI SDK 6.x `toUIMessageStreamResponse()` 기반.
 8. SSE 스트리밍 응답
 9. (비동기) 대화 히스토리 저장
 10. (비동기) 행동 로그 기록 — service_role + user_id 명시
-11. (비동기) 개인화 추출 결과 DB 저장 — service_role + user_id (추출은 #7b에서 동기 완료)
+11. (비동기) 개인화 추출 결과 **메모리 보관** — DB 저장하지 않음. 사용자 동의 전까지 서버 메모리(대화 컨텍스트)에만 유지
+    → 사용자가 프로필 저장에 동의하면 `POST /api/profile/onboarding` 호출로 DB 저장 (PRD §4-C 동의 원칙)
 ```
 
 ---
