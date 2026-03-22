@@ -198,11 +198,14 @@ export const concernsEnum = z.enum(ALLOWED_CONCERNS);
 > 에러 응답 형식: api-spec §1.2~1.3 참조 (재정의하지 않음).
 
 ```typescript
-// 검증 유틸 함수
+// features/validators/common.ts — 검증 유틸 함수
+
 export async function validateBody<T>(req: Request, schema: z.Schema<T>): Promise<T> {
   const body = await req.json();
   const result = schema.safeParse(body);
   if (!result.success) {
+    // Q-7: 에러 로깅 후 throw (불삼킴 방지)
+    console.warn('[VALIDATION]', result.error.issues);
     throw new ValidationError('VALIDATION_FAILED', 400, {
       fields: result.error.issues.map(i => ({
         path: i.path.join('.'),
@@ -217,6 +220,7 @@ export function validateQuery<T>(url: URL, schema: z.Schema<T>): T {
   const params = Object.fromEntries(url.searchParams);
   const result = schema.safeParse(params);
   if (!result.success) {
+    console.warn('[VALIDATION]', result.error.issues);
     throw new ValidationError('VALIDATION_FAILED', 400, {
       fields: result.error.issues.map(i => ({
         path: i.path.join('.'),
@@ -228,20 +232,27 @@ export function validateQuery<T>(url: URL, schema: z.Schema<T>): T {
 }
 ```
 
+> `ValidationError`는 api-spec §1.2~1.3 에러 응답 형식으로 직렬화된다. Route handler의 catch 블록에서 `errorResponse(e)` 호출 시 `{ error: { code, message, details } }` 형태로 변환.
+
 ### 2.4 이미지 업로드 검증
 
 > 요구사항: 7.2-ADMIN §7.2.5 참조 (재서술하지 않음). 구현 방법만.
 
 ```typescript
+// features/validators/common.ts — 이미지 검증
+// 상수는 shared/constants/에 정의 (G-10: 매직 넘버 금지)
+import { MAX_IMAGE_SIZE, MAX_IMAGE_COUNT, MIN_IMAGE_COUNT } from '@/shared/constants/beauty';
+
 const IMAGE_MAGIC_BYTES: Record<string, number[]> = {
   'image/jpeg': [0xFF, 0xD8, 0xFF],
   'image/png': [0x89, 0x50, 0x4E, 0x47],
   'image/webp': [0x52, 0x49, 0x46, 0x46], // RIFF header
 };
 
-const MAX_IMAGE_SIZE = 5 * 1024 * 1024;  // 5MB
-const MAX_IMAGE_COUNT = 10;
-const MIN_IMAGE_COUNT = 1;
+// 아래 상수는 shared/constants/beauty.ts에 정의
+// MAX_IMAGE_SIZE = 5 * 1024 * 1024 (5MB)
+// MAX_IMAGE_COUNT = 10
+// MIN_IMAGE_COUNT = 1
 
 export function validateImageType(buffer: ArrayBuffer): string | null {
   const bytes = new Uint8Array(buffer);

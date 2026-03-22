@@ -3,7 +3,8 @@
 > 버전: 1.0
 > 작성일: 2026-03-22
 > 근거: TDD §4 PoC 결과, search-engine.md, api-spec.md §4, data-pipeline.md §5
-> 원칙: MVP 최소 캐싱. 측정 후 확장. LLM 캐싱은 data-pipeline.md §5 소관.
+> 원칙: MVP 최소 캐싱. 측정 후 확장.
+> 범위: 인프라 캐싱만 (DB 쿼리, DV, 이미지, 정적 페이지). LLM 응답 캐싱(P1-57)은 data-pipeline.md §5 소관.
 
 ---
 
@@ -52,7 +53,8 @@
 | 검색 결과 (findByFilters) | ❌ 안 함 | 개인화 변수 조합으로 히트율 극히 낮음 |
 | 카드 상세 (findById) | ❌ 안 함 | PK 쿼리 ~5ms. MVP 규모에서 불필요 |
 | LLM 응답 | ❌ 안 함 | data-pipeline.md §5에서 결정: "(a) 캐싱 안 함" |
-| Rate limit 카운터 | Memory Map | api-spec §4.2에서 확정 (본 문서 범위 외) |
+| Rate limit 카운터 | Memory Map | api-spec §4.2에서 확정 (본 문서 범위 외). 만료 엔트리 GC: 윈도우(1분/1일) 경과 시 lazy delete |
+| 임베딩 벡터 | ❌ 안 함 | P1-39 소관 |
 
 ### 2.2 이미지 CDN
 
