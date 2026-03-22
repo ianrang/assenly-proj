@@ -285,6 +285,7 @@ export async function regenerateEmbedding(
   entity: Record<string, unknown>
 ): Promise<void> {
   const textBuilder = TEXT_BUILDERS[entityType];
+  if (!textBuilder) throw new Error(`Unknown entity type for embedding: ${entityType}`);
   const text = textBuilder(entity);
   const embedding = await embedDocument(text);
 
@@ -332,10 +333,26 @@ export async function batchGenerateEmbeddings(
 
 ### 3.4 관리자 CRUD 연동 — 변경 감지 + 비동기 재생성
 
-> 패턴: auth-matrix.md §3.3 auditLogService.record() 비동기 side-effect과 동일.
+> 패턴: 관리자 CRUD 후 비동기 side-effect (감사 로그와 동일 구조).
 
 ```typescript
 // server/features/admin/service.ts (또는 각 entity service)
+
+/** 필드별 깊은 비교 (JSONB 키 순서, 배열 순서 안전) */
+function deepEqual(a: unknown, b: unknown): boolean {
+  if (a === b) return true;
+  if (a == null || b == null) return a === b;
+  if (Array.isArray(a) && Array.isArray(b)) {
+    return a.length === b.length && a.every((v, i) => deepEqual(v, b[i]));
+  }
+  if (typeof a === 'object' && typeof b === 'object') {
+    const keysA = Object.keys(a as Record<string, unknown>).sort();
+    const keysB = Object.keys(b as Record<string, unknown>).sort();
+    return keysA.length === keysB.length
+      && keysA.every((k, i) => k === keysB[i] && deepEqual((a as Record<string, unknown>)[k], (b as Record<string, unknown>)[k]));
+  }
+  return false;
+}
 
 /** 임베딩 텍스트 필드 변경 여부 판단 */
 function shouldRegenerateEmbedding(
@@ -343,13 +360,12 @@ function shouldRegenerateEmbedding(
   oldEntity: Record<string, unknown>,
   newEntity: Record<string, unknown>
 ): boolean {
+  if (!(entityType in EMBEDDING_CONFIG.TEXT_FIELDS)) {
+    // 임베딩 미지원 엔티티 (brands, ingredients, doctors 등)
+    return false;
+  }
   const fields = EMBEDDING_CONFIG.TEXT_FIELDS[entityType];
-  return fields.some(field => {
-    const oldVal = oldEntity[field];
-    const newVal = newEntity[field];
-    // JSONB/배열: 깊은 비교. 기본형: === 비교.
-    return JSON.stringify(oldVal) !== JSON.stringify(newVal);
-  });
+  return fields.some(field => !deepEqual(oldEntity[field], newEntity[field]));
 }
 
 // 관리자 PUT 패턴 (api-spec §5.1 + auth-matrix.md §3.3 참조)
