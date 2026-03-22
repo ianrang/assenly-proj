@@ -450,6 +450,8 @@ app/(user)/[locale]/chat/page.tsx         ← CSR, Composition Root
 
 **프로필 저장 제안 UI**: AI 메시지 버블 내 인라인 제안. "I noticed you have oily skin and are concerned about acne. Want me to save this as your profile?" + [Save] [Not now] 버튼. Save → `POST /api/profile/onboarding` (추출된 변수만).
 
+> **자동 갱신 고지 설계 결정**: Save 후 대화에서 추출된 선호도(learned_preferences)는 자동으로 프로필에 반영된다 (api-spec.md §3.4 step 11 조건부 저장). 별도 UI 고지 불필요 — 대화 기반 학습은 서비스 핵심 가치이며 사용자 기대에 부합. 이용약관에 "대화에서 공유된 뷰티 관련 정보는 추천 개선에 활용됩니다" 문구 포함 (Phase 2 이용약관 작성 시).
+
 ### 6.4 스트리밍 UI 상태 전이
 
 ```

@@ -254,7 +254,7 @@ PoC 대비 변경 없음.
 
 ### 동작 방식
 
-api-spec.md §3.4 7b단계: LLM이 대화 중 **동기 tool_use**로 호출. 추출 결과는 tool-result로 반환되고, 11단계에서 **메모리 보관** (DB 저장하지 않음). 사용자가 프로필 저장에 동의하면 `POST /api/profile/onboarding`으로 DB 저장 (PRD §4-C).
+api-spec.md §3.4 7b단계: LLM이 대화 중 **동기 tool_use**로 호출. 추출 결과는 tool-result로 반환되고, 11단계에서 **조건부 저장**: 프로필 존재 시 비동기 DB 갱신 (learned_preferences UPSERT 등), 프로필 미존재 시 메모리만 보관 (동의 후 `POST /api/profile/onboarding`으로 DB 저장). PRD §4-C.
 
 ### 입력
 
@@ -313,7 +313,9 @@ const extractUserProfileSchema = z.object({
 | `age_range` | UP-4 | Tier 3 (보조) | user_profiles | age_range |
 | `learned_preferences` | BH-4 | Tier 3 (보조) | learned_preferences | category+preference+direction |
 
-> 사용자 동의 후 `POST /api/profile/onboarding`에서 추출 결과를 테이블별로 분할 저장한다 (api-spec.md §3.4 step 11, system-prompt-spec.md §9.3). 동의 전에는 DB 저장하지 않는다 (PRD §4-C).
+> 조건부 저장 (api-spec.md §3.4 step 11, PRD §4-C):
+> - **프로필 존재** (경로A 완료 or 경로B Save 완료): 추출 결과를 비동기로 DB 갱신. user_profiles UPSERT + learned_preferences UPSERT.
+> - **프로필 미존재** (경로B, 동의 전): 메모리만 보관. 동의 시 `POST /api/profile/onboarding`에서 테이블별 분할 저장.
 > `learned_preferences.direction` 값 변환: tool 출력 `prefer`→DB `like`, `avoid`→DB `dislike` (서비스 레이어에서 변환. schema.dbml preference_direction enum 참조).
 
 ---

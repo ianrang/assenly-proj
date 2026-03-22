@@ -596,7 +596,7 @@ SDK 갱신 실패 (네트워크 에러, refresh_token 만료 등)
 |------|--------|------------------|
 | 대화 히스토리 저장 | 채팅 스트림 완료 후 | messages.conversation_id → conversations.user_id |
 | 행동 로그 기록 | 채팅 중 tool 호출 시 | behavior_logs.user_id |
-| 개인화 추출 결과 메모리 보관 | 채팅 스트림 완료 후 | 서버 메모리(대화 컨텍스트)에만 유지. DB 저장 안 함. 사용자 동의 후 POST /api/profile/onboarding으로 DB 저장 (PRD §4-C) |
+| 개인화 추출 결과 조건부 저장 | 채팅 스트림 완료 후 | 프로필 존재 → user_profiles UPSERT + learned_preferences UPSERT (service_role + user_id). 프로필 미존재 → 메모리만 (동의 후 POST /api/profile/onboarding). PRD §4-C |
 
 #### 전달 패턴
 

@@ -144,6 +144,10 @@ Table learned_preferences {
   created_at timestamptz [default: `now()`]
   updated_at timestamptz [default: `now()`]
 
+  indexes {
+    (user_id, category, preference) [unique, note: 'UPSERT key: ON CONFLICT DO UPDATE direction/confidence/source. BH-4 갱신 규칙(PRD §4-A): 동일 항목 충돌 시 최신 우선 + 확신도 조정.']
+  }
+
   Note: 'BH-4: learned user preferences. confidence adjusted over time. ON DELETE CASCADE from users.'
 }
 

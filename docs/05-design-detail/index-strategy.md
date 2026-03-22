@@ -86,7 +86,7 @@ CREATE INDEX IF NOT EXISTS idx_audit_logs_target ON audit_logs(target_type, targ
 | user_profiles | PK(user_id) | 1개 |
 | journeys | PK(id) | 1개 |
 | beauty_history | PK(id) | 1개 |
-| learned_preferences | PK(id) | 1개 |
+| learned_preferences | PK(id), UNIQUE(user_id, category, preference) | 2개 |
 | conversations | PK(id) | 1개 |
 | messages | PK(id) | 1개 |
 | behavior_logs | PK(id) | 1개 |
@@ -105,7 +105,7 @@ CREATE INDEX IF NOT EXISTS idx_audit_logs_target ON audit_logs(target_type, targ
 | admin_users | PK(id), UNIQUE(email) | 2개 |
 | audit_logs | PK(id) | 1개 |
 
-**합계: 명시적 23개 + 암묵적 25개 = 48개**
+**합계: 명시적 23개 + 암묵적 26개 = 49개**
 
 ---
 
@@ -242,6 +242,7 @@ LLM tool(`search_beauty_data`)이 `repository.findByFilters()`를 호출한다. 
 
 #### learned_preferences
 - ✅ idx_learned_preferences_user_id — RLS + DV-1/DV-2 계산 시 사용자별 조회
+- ✅ UNIQUE(user_id, category, preference) — 암묵적 인덱스. UPSERT ON CONFLICT 키 (api-spec §3.4 step 11, BH-4 갱신 규칙)
 
 #### conversations
 - ✅ idx_conversations_user_id — RLS

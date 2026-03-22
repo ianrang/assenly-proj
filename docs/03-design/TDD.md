@@ -187,7 +187,7 @@ Client → POST /api/chat { message }
   │
   ├─ 6. 대화 히스토리 저장 (RLS: 본인 conversation)
   ├─ 7. 행동 로그 기록 (비동기, service_role + user_id 명시)
-  ├─ 8. 개인화 추출 결과 메모리 보관 (DB 저장하지 않음 — 사용자 동의 후 POST /api/profile/onboarding으로 DB 저장. PRD §4-C)
+  ├─ 8. 개인화 추출 결과 조건부 저장 (프로필 존재 → 비동기 DB 갱신 / 프로필 미존재 → 메모리만, 동의 후 DB 저장. PRD §4-C)
   │
   └─ Response: SSE 스트리밍
 ```
@@ -274,7 +274,7 @@ PRD에서 확정된 비즈니스 결정에 따른 기술 구현 결정 기록.
 | A-14 | 비활동 90일 자동 만료 | Supabase cron/Edge Function 스케줄러 |
 | A-15 | 쿠키 기반 간이 재방문 | localStorage UUID → 서버 프로필 조회 |
 | M-6 | 동의: Landing 배너 + Kit CTA 체크박스 | consent_records 테이블 |
-| U-4 | 개인화 추출: **동기 tool 확정** (P1-33) | P0-17: 93% 정확도. extract_user_profile tool. 추출=동기 tool(LLM tool_use), 결과=메모리 보관(동의 전 DB 저장 안 함). 사용자 동의 후 POST /api/profile/onboarding으로 DB 저장 (PRD §4-C). [[api-spec#3.4 서버 플로우|api-spec.md §3.4]] 참조 |
+| U-4 | 개인화 추출: **동기 tool 확정** (P1-33) | P0-17: 93% 정확도. extract_user_profile tool. 추출=동기 tool(LLM tool_use). 결과=조건부 저장: 프로필 존재 시 비동기 DB 갱신, 미존재 시 메모리만(동의 후 DB 저장). PRD §4-C. [[api-spec#3.4 서버 플로우|api-spec.md §3.4]] 참조 |
 | D-1 | 하이브리드 검색 | SQL 필터 + RAG 벡터 (P0-20~22 검증) |
 | D-2 | 하이브리드 판단 | 하드 필터(코드) + 소프트 판단(LLM) |
 | D-3 | 4계층 + core/features | server/core (시스템) + server/features (비즈니스) |
