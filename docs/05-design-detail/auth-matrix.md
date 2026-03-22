@@ -413,7 +413,7 @@ interface AdminJwtPayload {
    → AuthenticatedAdmin 반환
 ```
 
-> **설계 결정**: JWT의 permissions는 빠른 거부(fast reject)용 캐시. 권한 변경 즉시 반영을 위해 `authenticateAdmin`은 매 요청 DB를 조회한다. MVP 트래픽(관리자 수명)에서 부하 무시 가능. v0.2에서 Redis 캐시 도입 시 TTL 기반으로 전환.
+> **설계 결정**: JWT의 permissions는 빠른 거부(fast reject)용 캐시. 권한 변경 즉시 반영을 위해 `authenticateAdmin`은 매 요청 DB를 조회한다. MVP 관리자 수 상한 ~50명, 동시 요청 ~10건 수준에서 부하 무시 가능 (admin_users 소규모 테이블, PK 조회). v0.2에서 Redis 캐시 도입 시 TTL 기반으로 전환.
 
 #### 시나리오 검증
 
@@ -673,7 +673,9 @@ async function getValidToken(): Promise<string> {
 }
 ```
 
-> **v0.2**: Redis 기반 토큰 블랙리스트 도입 시, refresh 응답에 구 토큰 jti를 블랙리스트에 추가하여 단일 토큰만 유효하도록 강제.
+> **한계**: 클라이언트 메모리 기반 중복 방지는 **탭 간 동기화 불가** (각 탭은 독립 refreshPromise). 탭 A와 탭 B가 동시에 갱신하면 서로 다른 토큰 발급. MVP에서 수용 가능 (관리자 수 제한적, 구/신 토큰 모두 유효).
+>
+> **v0.2**: Redis 기반 토큰 블랙리스트 도입 시, refresh 응답에 구 토큰 jti를 블랙리스트에 추가하여 단일 토큰만 유효하도록 강제. 탭 간 동기화는 BroadcastChannel API로 해결.
 
 #### Supabase 사용자 토큰 경쟁 상태
 

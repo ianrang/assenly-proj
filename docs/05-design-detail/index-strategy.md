@@ -327,8 +327,8 @@ LLM tool(`search_beauty_data`)이 `repository.findByFilters()`를 호출한다. 
 
 #### admin_users
 - ✅ PK(id), UNIQUE(email) — 로그인 시 이메일 조회, JWT 검증 시 ID 조회 커버
-- ❌ status: 레코드 수 수 명~수십 명.
-- ❌ role: 카디널리티 2.
+- ❌ status: 레코드 수 수 명~수십 명, 카디널리티 2. auth-matrix.md §5.1에서 authenticateAdmin()이 매 요청 조회하나, MVP 관리자 수(~50명)에서 순차 스캔 충분. v0.2+ 성능 이슈 시 재검토.
+- ❌ role: 카디널리티 2. permissions 비트로 세분 관리.
 
 #### audit_logs
 - ✅ idx_audit_logs_actor_id
