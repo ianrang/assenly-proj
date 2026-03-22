@@ -11,10 +11,10 @@
 |-------|---------|------|--------|------|
 | 사전 완료 | 12 | 12 | 100% | ✅ |
 | Phase 0 | 37 | 37 | 100% | ✅ |
-| Phase 1 | 62 | 54 | 87% | 🔶 진행 중 |
+| Phase 1 | 62 | 55 | 89% | 🔶 진행 중 |
 | Phase 2 | 70 | 0 | 0% | ⬜ 미시작 |
 | Phase 3 | 36 | 0 | 0% | ⬜ 미시작 |
-| **MVP 합계** | **217** | **103** | **47%** | |
+| **MVP 합계** | **217** | **104** | **48%** | |
 
 **✅ Gate 0 통과 (2026-03-21) → Phase 1 (MVP 설계) 착수 준비**
 
@@ -183,7 +183,7 @@
 | P1-31 | Tool 상세 설계 (search_beauty_data) | P1-32와 병합. 입력 스키마(PoC 확장: +category, +max_downtime, limit max 5) + 출력 JSON(ProductCard/TreatmentCard). user-screens.md §1.3~1.4 필드 1:1 대응 검증 | `tool-spec.md` §1 | ✅ |
 | P1-32 | Tool 상세 설계 (get_external_links) | P1-31과 병합. 입력 스키마(PoC 유지) + 출력 JSON(5개 링크 타입). extract_user_profile(P1-33 확정)도 §3에 포함 | `tool-spec.md` §2~3 | ✅ |
 | P1-33 | 개인화 추출 방식 결정 | **동기 tool 확정** (P0-17: 93%). 추출=동기 tool(extract_user_profile), DB 저장=비동기(onFinish). api-spec #7b, TDD U-4, system-prompt-spec §6, auth-matrix §5.4 반영 | 5개 문서 결정 반영 | ✅ |
-| P1-34 | Tool 에러 처리 설계 | 실패 시 LLM 전달 형식, 재시도 정책 | 에러 처리 명세 | ⬜ |
+| P1-34 | Tool 에러 처리 설계 | §4: tool별 에러→LLM 반환 형식, embedQuery 실패→SQL 폴백, extract 실패→graceful degradation+로깅. 재시도 없음(LLM stepCountIs에 위임). P1-40 경계 테이블 | `tool-spec.md` §4 | ✅ |
 | P1-35 | 토큰 예산 분배 | 시스템 프롬프트/히스토리/RAG/응답 토큰 배분 (PoC 기반) | 토큰 예산 문서 | ⬜ |
 | P1-36 | 히스토리 요약 전략 | 20턴 초과 시 요약 방법 | 요약 전략 문서 | ⬜ |
 | P1-37 | RAG 결과 압축 | 검색 결과 필드 선택, 토큰 절약 | 압축 전략 | ⬜ |

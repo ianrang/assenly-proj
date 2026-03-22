@@ -21,7 +21,7 @@
 - 호출 흐름 (chatService → tool → repository → beauty.rank) → search-engine.md §1
 - repository 필터 매핑 (SQL 컬럼, WHERE 절) → search-engine.md §2.3
 - tool-result → UI 컴포넌트 매핑 → user-screens.md §1.3~1.4
-- tool 에러 처리 상세 (재시도, 폴백) → P1-34
+- tool 에러 처리 상세 → 이 문서 §4 (P1-34 완료)
 - SSE 이벤트 구조 (tool-call, tool-result) → api-spec.md §3.2
 
 ### PoC 기반
@@ -311,3 +311,55 @@ const extractUserProfileSchema = z.object({
 | `budget_level` | JC-4 | Tier 2 (추천 품질) |
 | `age_range` | UP-4 | Tier 3 (보조) |
 | `learned_preferences` | BH-4 | Tier 3 (보조) |
+
+---
+
+## 4. Tool 에러 처리 (P1-34)
+
+### 4.1 에러 전달 원칙
+
+tool handler의 execute 함수 내부에서 에러 발생 시, **에러 정보를 tool-result로 LLM에 정상 반환**한다. LLM은 system-prompt-spec.md §6 "Tool error" 규칙에 따라 사용자에게 사과 메시지를 생성한다.
+
+#### P1-34 vs P1-40 경계
+
+| 에러 발생 위치 | 담당 문서 | 처리 방식 |
+|---------------|----------|----------|
+| tool execute 함수 내부 (DB 실패, 임베딩 실패 등) | **이 문서 §4** (P1-34) | 에러 결과를 LLM에 정상 반환 → LLM이 사용자에게 사과 |
+| LLM ↔ tool 왕복 중 SDK 연결 끊김 | llm-resilience.md §2.4 (P1-40) | 전체 턴 폴백 |
+| LLM API 호출 자체 실패 (타임아웃, 429, 500) | llm-resilience.md §2 (P1-40) | callWithFallback 폴백 모델 전환 |
+
+### 4.2 tool별 에러 유형 + 행동
+
+#### search_beauty_data
+
+| 에러 유형 | 행동 | 반환 |
+|----------|------|------|
+| DB 타임아웃 / 접속 실패 | 에러 결과 반환. LLM이 사과 + 재시도 제안 | `{ "cards": [], "total": 0, "error": "DB_UNAVAILABLE" }` |
+| embedQuery 실패 (임베딩 API 장애) | SQL 필터 검색으로 폴백 (벡터 없이 필터만 적용) | 정상 cards 반환 (quality degradation이지만 결과 0건보다 나음) |
+| 부분 JOIN 실패 (brand/store/clinic 누락) | 핵심 데이터(product/treatment) 반환. 관계 필드는 빈 배열/null | `{ "cards": [{ ... "stores": [] }], "total": N }` |
+
+#### get_external_links
+
+| 에러 유형 | 행동 | 반환 |
+|----------|------|------|
+| 링크 조회 실패 | 빈 배열 반환 | `{ "links": [] }` |
+| 특정 링크 타입 누락 | 있는 링크만 반환 | `{ "links": [사용 가능한 것만] }` |
+
+#### extract_user_profile
+
+| 에러 유형 | 행동 | 반환 |
+|----------|------|------|
+| 추출 실패 (파싱 에러 등) | graceful degradation. 서버 로그 기록 (Q-7 준수). 대화 중단 없음 | `{ "status": "extraction_skipped", "reason": "parse_error" }` |
+| 추출 결과 전부 null | 정상 동작 (VP-3). 대화에서 관련 정보 미언급 상태 | `{ "skin_type": null, "skin_concerns": null, ... }` |
+
+> extract_user_profile 실패는 사용자에게 알리지 않는다. 이 tool은 부수적(side-effect)이며 실패해도 추천 대화에 영향 없음.
+
+### 4.3 재시도 정책
+
+**handler 내부 재시도: 없음.**
+
+근거:
+- LLM이 tool-result에서 에러를 인지하면, `stopWhen: stepCountIs(N)` 범위 내에서 파라미터를 조정하여 재호출할 수 있다
+- handler 내부 재시도는 TTFT를 증가시키고 stepCountIs 예산을 낭비한다
+- DB 영구 장애에는 재시도가 무의미하다
+- llm-resilience.md §2.1의 "서버 자동 재시도 없음" 철학과 일관
