@@ -24,6 +24,12 @@
 .DS_Store
 *.pem
 
+# claude code
+.claude/
+
+# design documents (tracked in design branch)
+/docs/
+
 # debug
 npm-debug.log*
 yarn-debug.log*
@@ -44,3 +50,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+supabase/.temp/

@@ -23,7 +23,8 @@ export type HairConcern =
   | "thinning"
   | "oily_scalp"
   | "dryness"
-  | "dandruff";
+  | "dandruff"
+  | "color_treated";
 
 export type SkinConcern =
   | "acne"
@@ -45,7 +46,9 @@ export type TravelStyle =
   | "relaxed"
   | "adventurous"
   | "instagram"
-  | "local_experience";
+  | "local_experience"
+  | "luxury"
+  | "budget";
 
 export type InterestActivity =
   | "shopping"
@@ -82,6 +85,12 @@ export interface ExternalLink {
   label?: string;
 }
 
+export interface PurchaseLink {
+  platform: string;
+  url: string;
+  affiliate_code?: string;
+}
+
 // --- DOM-1: Shopping ---
 
 export interface Product {
@@ -97,6 +106,7 @@ export interface Product {
   key_ingredients: string[] | null; // JSONB
   price: number | null;
   volume: string | null;
+  purchase_links: PurchaseLink[] | null;
   english_label: boolean;
   tourist_popular: boolean;
   is_highlighted: boolean;
@@ -123,10 +133,10 @@ export interface Store {
   operating_hours: Record<string, string> | null;
   english_support: string;
   store_type: string | null;
-  brands_available: string[];
   tourist_services: string[];
   payment_methods: string[];
   nearby_landmarks: string[];
+  external_links: ExternalLink[];
   is_highlighted: boolean;
   highlight_badge: LocalizedText | null;
   rating: number | null;
@@ -145,7 +155,9 @@ export interface Brand {
   tier: string | null;
   is_essenly: boolean;
   specialties: string[];
+  status: string;
   created_at: string;
+  updated_at: string;
 }
 
 export interface Ingredient {
@@ -155,7 +167,9 @@ export interface Ingredient {
   function: string[];
   caution_skin_types: SkinType[];
   common_in: string[];
+  status: string;
   created_at: string;
+  updated_at: string;
 }
 
 // --- DOM-2: Treatment/Clinic ---
@@ -204,7 +218,9 @@ export interface Treatment {
   subcategory: string | null;
   target_concerns: SkinConcern[];
   suitable_skin_types: SkinType[];
-  price_range: { min: number; max: number } | null;
+  price_min: number | null;
+  price_max: number | null;
+  price_currency: string;
   duration_minutes: number | null;
   downtime_days: number | null;
   session_count: string | null;
@@ -228,7 +244,9 @@ export interface Doctor {
   specialties: string[];
   languages: string[];
   certifications: string[];
+  status: string;
   created_at: string;
+  updated_at: string;
 }
 
 // --- Domain Configuration ---

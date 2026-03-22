@@ -35,6 +35,7 @@ export const HAIR_CONCERNS: HairConcern[] = [
   "oily_scalp",
   "dryness",
   "dandruff",
+  "color_treated",
 ] as const;
 
 export const SKIN_CONCERNS: SkinConcern[] = [
@@ -64,6 +65,8 @@ export const TRAVEL_STYLES: TravelStyle[] = [
   "adventurous",
   "instagram",
   "local_experience",
+  "luxury",
+  "budget",
 ] as const;
 
 export const INTEREST_ACTIVITIES: InterestActivity[] = [
@@ -104,5 +107,4 @@ export const CONSENT_ITEMS = [
   { key: "behavior_logging", label: "Behavior logging", required: false },
   { key: "data_retention", label: "Long-term data storage", required: false },
   { key: "marketing", label: "Marketing communications", required: false },
-  { key: "analytics", label: "Data analysis & research", required: false },
 ] as const;

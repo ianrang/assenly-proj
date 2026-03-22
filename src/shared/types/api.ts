@@ -13,7 +13,7 @@ export interface SearchBeautyDataParams {
     hair_types?: string[];
     concerns?: string[];
     district?: string;
-    price_range?: string;
+    budget_max_krw?: number;
     english_support?: boolean;
     travel_style?: string[];
   };
