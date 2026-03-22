@@ -72,7 +72,7 @@
 | §7 Card Format | 기본 구조 + why_recommended + 매장 선택 + 카드 개수 + 비교 | P1-27 완료 |
 | §8 User Profile | 주입 구조 + 매핑 | — |
 | §9 No Profile Mode | 기본 지시 + 전환 트리거 + 첫 응답/추출 전략/저장 제안 | P1-28 완료 |
-| §10 Beauty Profile | 주입 구조 | **P1-29** |
+| §10 Beauty Profile | 주입 구조 + DV-4 생성 프롬프트(별도 LLM 호출) | P1-29 완료 |
 
 ## MVP 비활성 변수/기능
 
@@ -710,7 +710,7 @@ Only suggest once per conversation. If the user declines, do not ask again.
 # 10. Beauty Profile 섹션
 
 > 태그: [프롬프트 출력] — 조건: DV 계산 완료 시 주입
-> 확장: **P1-29**에서 DV-4 생성 프롬프트 상세 추가
+> 태그 보조: P1-29에서 DV-4 생성 프롬프트 추가 완료
 
 ## 주입 조건
 
@@ -742,7 +742,59 @@ Exclude or warn about products containing these.
 
 DV-3(사용자 세그먼트)은 §0 비활성 변수에 정의된 대로 주입하지 않는다.
 
-> P1-29에서 추가: DV-4 생성 프롬프트 (15개 변수 + DV-1~3 → 자연어 프로필 요약 생성 지시)
+## 10.1 DV-4 생성 프롬프트 (P1-29)
+
+DV-4는 채팅 시스템 프롬프트(§2~§9)와 **별도 LLM 호출**로 생성된다. `POST /api/profile/onboarding` 또는 프로필 저장 시점에 서버에서 호출하며, 생성된 결과를 §10 "AI Beauty Summary" 필드에 주입한다.
+
+DV-1(선호 성분)과 DV-2(기피 성분)는 `derived.ts` 순수 함수가 구조화 데이터(성분 목록)로 생성한다. DV-4는 이를 포함한 전체 프로필을 **자연어 요약**으로 종합하는 역할이며, 성분 목록을 중복 생성하지 않는다.
+
+### 생성 프롬프트
+
+```
+You are generating a personalized K-beauty profile summary for a user visiting Korea.
+
+**Input data:**
+- Skin type: {UP-1}
+- Skin concerns: {JC-1}
+- Hair type & concerns: {UP-2, if available}
+- Country: {UP-3.country}
+- Age range: {UP-4, if available}
+- Stay duration: {JC-3} days
+- Budget: {JC-4}
+- Interests: {JC-2}
+- Travel style: {JC-5, if available}
+- Preferred ingredients: {DV-1}
+- Ingredients to avoid: {DV-2}
+
+**Task:** Write a 2-3 sentence beauty profile summary that:
+1. Describes the user's skin/beauty situation in a warm, personal way
+2. Highlights what matters most for their K-beauty experience in Korea
+3. Connects their concerns to what Korean beauty can offer them
+
+**Rules:**
+- Write in the user's language ({UP-3.language})
+- Do NOT list ingredients — DV-1/DV-2 are displayed separately as structured data
+- Do NOT mention budget amounts or age
+- Keep it warm and encouraging, like a friend summarizing what they know about you
+- If some inputs are missing, write based on what's available without mentioning gaps
+
+**Example output (English):**
+"You have combination skin with acne and pore concerns — Korea is perfect for
+finding targeted serums and gentle exfoliants. With 5 days in Seoul, you'll have
+time to explore both flagship stores in Myeongdong and top-rated clinics in Gangnam
+for a quick brightening treatment."
+```
+
+### 입력/출력 명세
+
+| 항목 | 내용 |
+|------|------|
+| 호출 시점 | `POST /api/profile/onboarding` 응답 생성 시 / 프로필 수정 저장 시 |
+| 입력 | UP-1~4, JC-1~5, DV-1~2 (null 허용 — VP-3). DV-3(세그먼트)은 마케팅 전용이므로 제외 |
+| 출력 | 자연어 텍스트 2~3문장 |
+| 출력 언어 | UP-3.language (사용자 대화 언어) |
+| 저장 | user_profiles.beauty_summary (TEXT) |
+| 코드 위치 | `server/features/profile/` (프로필 도메인, 채팅이 아님) |
 
 ---
 
