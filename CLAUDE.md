@@ -154,6 +154,7 @@ treatment.ts ──→ derived.ts    ✗  (peer 간 직접 의존 금지)
 | G-8 | any 타입 금지 | unknown + 타입 가드 또는 제네릭 사용 |
 | G-9 | export 최소화 | 외부에서 사용하는 함수/타입만 export. 내부 헬퍼는 비공개 |
 | G-10 | 매직 넘버 금지 | 상수는 shared/constants/ 또는 모듈 상단에 명명된 상수로 선언 |
+| G-11 | AI 확장 최적화 | 코드 구조를 AI가 점진적으로 확장할 수 있도록 설계. 명시적 인터페이스, 패턴 일관성, 자기 설명적 구조 |
 
 ---
 
@@ -192,6 +193,9 @@ treatment.ts ──→ derived.ts    ✗  (peer 간 직접 의존 금지)
 | Q-5 | 컴포넌트 ≤ 200줄 | 초과 시 분리 |
 | Q-6 | 함수 ≤ 40줄 | 초과 시 헬퍼로 분리 |
 | Q-7 | 에러 불삼킴 | try-catch에서 에러를 무시하지 않는다 |
+| Q-8 | env 런타임 검증 | `process.env` 직접 접근 금지. 설정 모듈(server/core)을 통해 검증된 값만 사용 |
+| Q-9 | exact versions | package.json 버전에 `^`, `~`, 범위 금지. 정확한 버전만 기입 |
+| Q-10 | lockfile 불변 | package-lock.json 커밋 필수. CI에서 `npm ci` 사용 |
 
 ---
 
