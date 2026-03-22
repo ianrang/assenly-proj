@@ -162,6 +162,7 @@ interface AdminPermissions {
 | `/api/chat` | POST | 필수 | 본인만 |
 | `/api/chat/history` | GET | 필수 | 본인만 |
 | `/api/kit/claim` | POST | 필수 | 본인만 |
+| `/api/events` | POST | 필수 | 본인만 |
 
 **관리자 앱 API**
 
@@ -180,8 +181,18 @@ interface AdminPermissions {
 | `/api/admin/ingredients` | GET/POST/PUT/DELETE | JWT | ingredient_read / ingredient_write |
 | `/api/admin/doctors` | GET/POST/PUT/DELETE | JWT | doctor_read / doctor_write |
 | `/api/admin/users` | GET/POST/PUT | JWT | **super_admin 전용** |
+| `/api/admin/users/:id/deactivate` | PUT | JWT | **super_admin 전용** |
+| `/api/admin/users/:id/reactivate` | PUT | JWT | **super_admin 전용** |
+| `/api/admin/auth/refresh` | POST | JWT | 인증된 admin |
+| `/api/admin/auth/logout` | POST | JWT | 인증된 admin |
+| `/api/admin/relations/{type}` | POST/DELETE | JWT | 양쪽 엔티티의 write 권한 (§2.2) |
+| `/api/admin/{entity}/:id/highlight` | PUT | JWT | {entity}_write |
+| `/api/admin/{entity}/:id/images` | POST/DELETE | JWT | {entity}_write |
+| `/api/admin/{entity}/:id/images/order` | PUT | JWT | {entity}_write |
 | `/api/admin/audit-logs` | GET | JWT | **super_admin 전용** |
-| `/api/admin/sync` | POST/GET | JWT | **super_admin 전용** |
+| `/api/admin/sync` | POST/GET | JWT | **super_admin 전용** · v0.2 (V2-2) |
+
+> 서브 엔드포인트(relations, highlight, images)는 상위 엔티티의 write 권한을 따른다. 상세 스키마는 api-spec.md §5.2~§5.4 참조.
 
 ---
 
@@ -449,6 +460,8 @@ interface AdminJwtPayload {
 | `authenticateAdmin` — 계정 비활성 | 401 | `ADMIN_AUTH_ACCOUNT_INACTIVE` | ✅ `login_failure` (이메일+IP) | 동일 |
 | `checkPermission` — 권한 부족 | 403 | `ADMIN_AUTH_INSUFFICIENT_PERMISSION` | ✅ (actor_id + 요청 resource/action) | `{ error: { code, message, details: { resource, action } } }` |
 | `authenticateUser` — Supabase 세션 무효 | 401 | `AUTH_SESSION_NOT_FOUND` | ❌ | 동일 |
+
+> **로그인 에러**: `ADMIN_AUTH_EMAIL_NOT_REGISTERED`는 미들웨어가 아닌 로그인 route handler에서 발생. api-spec.md §6.1 참조.
 
 > **감사 로그 시점**: 에러 throw 직전이 아니라, 에러 응답 생성 직전에 기록한다. 이유: actor 식별이 가능한 경우에만 기록하며, 로그 실패가 에러 응답을 방해하지 않도록 한다.
 

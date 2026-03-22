@@ -39,6 +39,7 @@
 | `RATE_LIMIT_CHAT_PER_DAY` | ❌ | 서버 | number | 기본: `100` |
 | `RATE_LIMIT_PUBLIC_PER_MIN` | ❌ | 서버 | number | 기본: `60` |
 | `RATE_LIMIT_ANON_CREATE_PER_MIN` | ❌ | 서버 | number | 기본: `3` |
+| `RATE_LIMIT_ADMIN_PER_MIN` | ❌ | 서버 | number | 기본: `60` (api-spec §4.1) |
 | **Cron** | | | | |
 | `CRON_SECRET` | ✅ | 서버 | string | Vercel Cron Job 인증 토큰 |
 | **App** | | | | |
@@ -91,6 +92,7 @@ const envSchema = z.object({
   RATE_LIMIT_CHAT_PER_DAY: z.coerce.number().default(100),
   RATE_LIMIT_PUBLIC_PER_MIN: z.coerce.number().default(60),
   RATE_LIMIT_ANON_CREATE_PER_MIN: z.coerce.number().default(3),
+  RATE_LIMIT_ADMIN_PER_MIN: z.coerce.number().default(60),
 
   // Cron
   CRON_SECRET: z.string().min(1),
@@ -145,6 +147,8 @@ src/
     │   └── schema.ts           # chatMessageSchema
     ├── kit/
     │   └── schema.ts           # kitClaimSchema
+    ├── analytics/
+    │   └── schema.ts           # eventSchema (path_a_entry, card_exposure, card_click, external_link_click)
     └── admin/
         └── schemas/
             ├── product.ts      # productCreateSchema, productUpdateSchema

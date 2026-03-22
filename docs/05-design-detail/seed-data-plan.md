@@ -351,5 +351,5 @@ data-pipeline.md §3.3의 zod 검증 스키마를 재사용.
 | 관리자 앱 (CRUD, 다국어 입력) | `docs/03-design/7.2-ADMIN-REQUIREMENTS.md` | §7.2.2 CRUD, §7.2.4 다국어 |
 | KB 지식 유형 정의 | `docs/03-design/PRD.md` §4-B | 4유형: 성분/시술/지역/상식 |
 | MVP 엔티티 수량 | `docs/03-design/PRD.md` §5.4 | products 200+, stores 50+ 등 |
-| 임베딩 대상 텍스트 | P1-38 (미작성) | KB 청크 전략 |
-| 임베딩 생성 파이프라인 | P1-39 (미작성) | 변경 시 재생성 |
+| 임베딩 대상 텍스트 | `docs/05-design-detail/embedding-strategy.md` §1-2 | KB 청크 전략, TEXT_FIELDS |
+| 임베딩 생성 파이프라인 | `docs/05-design-detail/embedding-strategy.md` §3 | 변경 감지, 배치 생성 |

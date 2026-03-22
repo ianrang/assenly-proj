@@ -66,9 +66,9 @@ const searchBeautyDataSchema = z.object({
       .optional()
       .describe('Maximum recovery days (treatment only). Filters out treatments with longer downtime'),
 
-    english_support: z.boolean()
+    english_support: z.enum(['none', 'basic', 'good', 'fluent'])
       .optional()
-      .describe('Requires English-speaking staff (store/clinic)'),
+      .describe('Required English support level (store/clinic). Exact match filter'),
   }).optional()
     .describe('Optional filters to narrow results'),
 
@@ -85,6 +85,7 @@ const searchBeautyDataSchema = z.object({
 |------|-----|---------|------|
 | `filters.category` | 없음 | 추가 | search-engine.md §2.3: Products/Treatments 모두 category 필터 지원 |
 | `filters.max_downtime` | 없음 | 추가 | search-engine.md §2.3: Treatments 다운타임 필터. PRD §4-A 시술 추천 규칙 |
+| `filters.english_support` | `z.boolean()` | `z.enum(['none','basic','good','fluent'])` | schema.dbml english_support text 타입과 일치. applyExact 정확 일치 |
 | `limit` 최대값 | 무제한 | max 5 | system-prompt-spec.md §7 "Never present more than 5 results" |
 
 ### 출력 구조 — domain: shopping

@@ -192,7 +192,8 @@ Client → POST /api/chat { message }
   └─ Response: SSE 스트리밍
 ```
 
-> API 엔드포인트 상세 명세, Rate limiting, 에러 처리는 Phase 1에서 설계 (P1-19~P1-24).
+> 상세 플로우 (11단계): [[api-spec#3.4 서버 플로우|api-spec.md §3.4]] — conversation 조회/생성, 프로필 로드, 비동기 후처리 등 세분화된 정본.
+> API 엔드포인트 상세 명세, Rate limiting, 에러 처리: [[api-spec|api-spec.md]] §1~§4 (P1-19~P1-24).
 
 ---
 

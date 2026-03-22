@@ -144,6 +144,20 @@ layout/     → (없음)     (독립)
 
 SalonCard, DiningCard, ExperienceCard — 도메인별 표시 필드는 PRD §3.5 참조. 카드 공통 구조(헤더/바디/푸터/오버레이)는 ProductCard와 동일 패턴. 상세 레이아웃은 v0.2 화면 설계 시 정의.
 
+### 1.9 KPI 이벤트 발화 (ANALYTICS.md §3.2)
+
+카드 컴포넌트와 Landing에서 behavior_logs 이벤트를 `POST /api/events`로 전송한다.
+
+| 컴포넌트 | 이벤트 | 트리거 |
+|----------|--------|--------|
+| ProductCard / TreatmentCard | `card_exposure` | Intersection Observer (뷰포트 50% 진입, 1회만) |
+| ProductCard / TreatmentCard | `card_click` | 카드 영역 클릭/탭 |
+| 카드 푸터 링크 | `external_link_click` | 외부 링크 클릭 |
+| Landing PathA 버튼 | `path_a_entry` | "Start with profile" 클릭 |
+
+> 메타데이터 필드(필수/선택, zod 스키마): **ANALYTICS.md §3.2** 정본 참조. 이중 정의 방지.
+> 이벤트 배치 전송: 1초 디바운스 후 누적 이벤트를 `POST /api/events`에 배열로 전송. 전송 실패 시 무시 (fire-and-forget).
+
 ---
 
 ## 2. 공통 패턴

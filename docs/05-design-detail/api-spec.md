@@ -376,6 +376,31 @@ export async function METHOD(req: Request) {
 
 **응답**: messages 배열 (role, content, card_data, created_at).
 
+## 2.7 행동 로그
+
+### `POST /api/events`
+
+**인증**: 필수. **Rate limit**: `RATE_LIMIT_PUBLIC_PER_MIN` 공유.
+
+**요청:**
+```json
+{
+  "events": [
+    {
+      "event_type": "card_click",
+      "target_id": "uuid",
+      "target_type": "product",
+      "metadata": { "domain": "shopping", "position": 1 }
+    }
+  ]
+}
+```
+
+**이벤트 타입**: `path_a_entry`, `card_exposure`, `card_click`, `external_link_click` (ANALYTICS.md §3.2)
+**검증**: 이벤트별 zod 스키마 (features/analytics/schema.ts). `kit_cta_submit`은 서버에서 직접 기록 (`POST /api/kit/claim` handler).
+**응답**: `{ "data": { "recorded": 3 } }` (기록 건수)
+**비동기 처리**: DB INSERT 실패 시 응답에 영향 없음 (fire-and-forget). 에러는 서버 로그만.
+
 ---
 
 # 3. Chat API 스트리밍 (P1-21)
@@ -394,7 +419,7 @@ export async function METHOD(req: Request) {
 }
 ```
 
-`conversation_id` null이면 새 대화 자동 생성.
+`conversation_id` null이면 새 대화 자동 생성. 새 대화 생성 시 URL `[locale]` 파라미터를 `conversations.locale`에 저장 (K6 KPI 측정용, ANALYTICS.md §2 참조). locale은 `Accept-Language` 헤더 또는 referer URL에서 추출.
 
 ## 3.2 SSE 이벤트 타입
 
@@ -878,6 +903,8 @@ Vercel AI SDK 6.x `toUIMessageStreamResponse()` 기반.
 **토큰 갱신**: 갱신 후 구 토큰은 자연 만료까지 유효 (stateless). 보안 이벤트 시 super_admin이 해당 admin 비활성화로 대응.
 
 **Supabase anonymous 세션 갱신**: Supabase SDK가 자동 처리 (`onAuthStateChange`). 서버 API에서 별도 갱신 엔드포인트 불필요.
+
+**세션 비활동 타임아웃 (30분)**: 클라이언트 타이머로 구현 (PRD §3.9). API 호출/사용자 인터랙션으로 타이머 리셋. 30분 경과 시 세션 만료 오버레이 표시 → Landing 이동 (user-screens.md §2.1). 서버 세션(Supabase JWT)은 별도 만료 주기 (기본 1시간). 프로필 데이터는 서버에 유지.
 
 ## B.6 범위 외 (v0.2)
 

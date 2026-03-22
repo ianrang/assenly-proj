@@ -19,6 +19,9 @@
 | RLS `auth.uid() = user_id` 패턴의 user_id | JSONB 내부 키 (MVP 데이터 규모에서 sequential scan 충분) |
 | 배열 겹침(`&&`)/포함(`@>`) 연산 대상 (GIN) | 벡터 컬럼 (MVP: sequential scan, v0.2+: IVFFlat/HNSW) |
 | 관리자 감사 로그 필터 (시간 범위 + actor) | display-only JSONB (card_data, tool_calls, metadata) |
+| search-engine.md 쿼리 패턴이 존재하는 필터 컬럼 (데이터 성장 대비 사전 생성) | — |
+
+> **저카디널리티 text 컬럼 참고**: english_support(4값), store_type(6값), clinic_type(4값) 등은 MVP 규모에서 Planner가 sequential scan을 선택할 수 있으나, B-tree 쓰기 오버헤드가 무시 가능(수백 건에서 마이크로초)하고 데이터 성장(v0.2 서울 외 확장) 시 즉시 효과가 발생하므로 사전 생성한다. boolean(선택도 50%)과 달리 카디널리티 4~6은 선택도 17~25%로 인덱스 효과가 있는 구간이다.
 
 ### 1.2 네이밍 규칙
 
@@ -98,10 +101,11 @@ CREATE INDEX IF NOT EXISTS idx_audit_logs_target ON audit_logs(target_type, targ
 | product_stores | PK(product_id, store_id) | 1개 (복합) |
 | product_ingredients | PK(product_id, ingredient_id) | 1개 (복합) |
 | clinic_treatments | PK(clinic_id, treatment_id) | 1개 (복합) |
+| kit_subscribers | PK(id), UNIQUE(email_hash) | 2개 |
 | admin_users | PK(id), UNIQUE(email) | 2개 |
 | audit_logs | PK(id) | 1개 |
 
-**합계: 명시적 23개 + 암묵적 23개 = 46개**
+**합계: 명시적 23개 + 암묵적 25개 = 48개**
 
 ---
 
@@ -197,6 +201,7 @@ LLM tool(`search_beauty_data`)이 `repository.findByFilters()`를 호출한다. 
 | learned_preferences | auth.uid() = user_id | idx_learned_preferences_user_id ✅ |
 | behavior_logs | auth.uid() = user_id | idx_behavior_logs_user_id ✅ |
 | consent_records | auth.uid() = user_id | PK(user_id) ✅ |
+| kit_subscribers | auth.uid() = user_id | **없음** ⚠️ |
 
 ### 3.5 감사 로그 (api-spec.md §6.6)
 
@@ -253,6 +258,11 @@ LLM tool(`search_beauty_data`)이 `repository.findByFilters()`를 호출한다. 
 
 #### consent_records
 - ✅ PK(user_id) — 1:1, 모든 조회 커버
+
+#### kit_subscribers
+- ✅ PK(id), UNIQUE(email_hash) — 암묵적 인덱스 2개
+- ⚠️ **idx_kit_subscribers_user_id** — RLS `auth.uid() = user_id` + CASCADE 삭제 시 FK lookup. **누락됨.**
+- ❌ conversation_id: 역방향 조회 패턴 없음 (conversation에서 kit_subscriber를 찾는 쿼리 없음). SET NULL이므로 삭제 시 순차 갱신 가능, MVP 데이터 소규모.
 
 ### 4.2 도메인 데이터 — 쇼핑 (DOM-1)
 
@@ -356,6 +366,10 @@ LLM tool(`search_beauty_data`)이 `repository.findByFilters()`를 호출한다. 
 CREATE INDEX IF NOT EXISTS idx_beauty_history_user_id
   ON beauty_history(user_id);
 
+-- kit_subscribers: RLS auth.uid() = user_id + CASCADE FK lookup
+CREATE INDEX IF NOT EXISTS idx_kit_subscribers_user_id
+  ON kit_subscribers(user_id);
+
 -- ============================================================
 -- 5.2 도메인 데이터 — 쇼핑 (DOM-1)
 -- ============================================================
@@ -419,24 +433,25 @@ CREATE INDEX IF NOT EXISTS idx_clinic_treatments_treatment_id
   ON clinic_treatments(treatment_id);
 ```
 
-**신규 인덱스 합계: 14개**
+**신규 인덱스 합계: 15개**
 
 | # | 인덱스명 | 테이블 | 타입 | 근거 |
 |---|---------|--------|------|------|
 | 1 | idx_beauty_history_user_id | beauty_history | B-tree | RLS 누락 |
-| 2 | idx_products_brand_id | products | B-tree | FK JOIN + 관리자 필터 |
-| 3 | idx_products_price | products | B-tree | AI 검색 budget_max |
-| 4 | idx_stores_store_type | stores | B-tree | AI + 관리자 필터 |
-| 5 | idx_stores_english_support | stores | B-tree | AI 검색 필터 |
-| 6 | idx_treatments_status | treatments | B-tree | 모든 경로 WHERE |
-| 7 | idx_treatments_price_max | treatments | B-tree | AI 검색 budget_max |
-| 8 | idx_treatments_downtime_days | treatments | B-tree | AI 검색 max_downtime |
-| 9 | idx_clinics_clinic_type | clinics | B-tree | AI + 관리자 필터 |
-| 10 | idx_clinics_english_support | clinics | B-tree | AI 검색 필터 |
-| 11 | idx_doctors_clinic_id | doctors | B-tree | FK JOIN + 관리자 필터 |
-| 12 | idx_product_stores_store_id | product_stores | B-tree | 역방향 JOIN |
-| 13 | idx_product_ingredients_ingredient_id | product_ingredients | B-tree | 역방향 JOIN |
-| 14 | idx_clinic_treatments_treatment_id | clinic_treatments | B-tree | 역방향 JOIN |
+| 2 | idx_kit_subscribers_user_id | kit_subscribers | B-tree | RLS + CASCADE FK lookup |
+| 3 | idx_products_brand_id | products | B-tree | FK JOIN + 관리자 필터 |
+| 4 | idx_products_price | products | B-tree | AI 검색 budget_max |
+| 5 | idx_stores_store_type | stores | B-tree | AI + 관리자 필터 |
+| 6 | idx_stores_english_support | stores | B-tree | AI 검색 필터 |
+| 7 | idx_treatments_status | treatments | B-tree | 모든 경로 WHERE |
+| 8 | idx_treatments_price_max | treatments | B-tree | AI 검색 budget_max |
+| 9 | idx_treatments_downtime_days | treatments | B-tree | AI 검색 max_downtime |
+| 10 | idx_clinics_clinic_type | clinics | B-tree | AI + 관리자 필터 |
+| 11 | idx_clinics_english_support | clinics | B-tree | AI 검색 필터 |
+| 12 | idx_doctors_clinic_id | doctors | B-tree | FK JOIN + 관리자 필터 |
+| 13 | idx_product_stores_store_id | product_stores | B-tree | 역방향 JOIN |
+| 14 | idx_product_ingredients_ingredient_id | product_ingredients | B-tree | 역방향 JOIN |
+| 15 | idx_clinic_treatments_treatment_id | clinic_treatments | B-tree | 역방향 JOIN |
 
 ---
 
@@ -446,8 +461,9 @@ CREATE INDEX IF NOT EXISTS idx_clinic_treatments_treatment_id
 
 ```
 [x] D-1: 모든 인덱스 컬럼이 schema.dbml에 존재하는가?
-    → 14개 신규 인덱스의 모든 컬럼을 schema.dbml에서 확인 완료.
+    → 15개 신규 인덱스의 모든 컬럼을 schema.dbml에서 확인 완료.
     → price_max, downtime_days는 004_schema_v2.sql에서 추가된 컬럼.
+    → kit_subscribers.user_id는 schema.dbml line 198에 존재.
 
 [x] D-1: search-engine.md §2.3 필터 매핑의 모든 컬럼이 커버되는가?
     → Products: skin_types(GIN), concerns(GIN), category, price — 모두 커버
@@ -467,11 +483,11 @@ CREATE INDEX IF NOT EXISTS idx_clinic_treatments_treatment_id
 [x] D-4: 인덱스 타입이 컬럼 타입과 호환되는가?
     → text[] 컬럼: GIN (기존 유지, 신규 해당 없음)
     → geography: GiST (v0.2 예정, MVP 미생성)
-    → text, int, uuid: B-tree (기본, 신규 14개 모두)
+    → text, int, uuid: B-tree (기본, 신규 15개 모두)
     → vector(1024): MVP 미생성 (§1.3)
 
 [x] 기존 23개 인덱스와 중복이 없는가?
-    → 14개 신규 인덱스명이 기존과 겹치지 않음을 확인.
+    → 15개 신규 인덱스명이 기존과 겹치지 않음을 확인.
     → 동일 컬럼 중복 없음 (treatments.status만 기존에 누락).
 
 [x] 불필요한 인덱스가 포함되지 않았는가?

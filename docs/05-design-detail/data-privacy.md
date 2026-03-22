@@ -195,7 +195,7 @@ query.neq('id', SYSTEM_ACCOUNT_ID);
 
 - `BATCH_SIZE = 100`: 한 번에 최대 100명 삭제
 - MVP 예상: 비활동 사용자 ~10~50명 → 1회 실행으로 충분
-- 100명 × (DELETE + CASCADE 9테이블) ≈ 5초 < 10초 타임아웃
+- 100명 × (DELETE + CASCADE 10테이블) ≈ 5초 < 10초 타임아웃
 - 100명 초과 시: 다음 날 cron에서 나머지 처리 (멱등)
 - Phase 2 부하 테스트에서 실제 타이밍 검증 권장. 지연 시 BATCH_SIZE를 50으로 축소
 
@@ -262,5 +262,7 @@ async function authenticateUser(req: Request): Promise<AuthenticatedUser> {
 | 6 | learned_preferences | user_id → users.id | CASCADE |
 | 7 | behavior_logs | user_id → users.id | CASCADE |
 | 8 | consent_records | user_id → users.id | CASCADE |
+| 9 | kit_subscribers | user_id → users.id | CASCADE |
 
 > conversations.journey_id → journeys.id: ON DELETE SET NULL (journey 삭제 시 conversation은 유지하나, user 삭제 시 conversation도 CASCADE로 삭제되므로 무관).
+> kit_subscribers.conversation_id → conversations.id: ON DELETE SET NULL (conversation 삭제 시 conversation_id만 NULL로 갱신).

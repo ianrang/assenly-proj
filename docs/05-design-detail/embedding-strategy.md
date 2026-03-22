@@ -250,9 +250,29 @@ async function updateEmbedding(
     .eq('id', id);
   if (error) throw error;
 }
+
+// 배치용: 전체 active 엔티티 조회
+async function findActiveEntities(
+  client: SupabaseClient
+): Promise<{ data: Record<string, unknown>[] | null; error: Error | null }> {
+  return client.from('products').select('*').eq('status', 'active');
+}
 ```
 
 > 동일 패턴을 store-repository, clinic-repository, treatment-repository에 적용.
+
+```typescript
+// generator.ts에서 repository를 엔티티 타입별로 가져오는 헬퍼
+function getEmbeddingRepository(entityType: EntityType) {
+  const repos: Record<EntityType, { updateEmbedding: Function; findActiveEntities: Function }> = {
+    products: productRepository,
+    stores: storeRepository,
+    clinics: clinicRepository,
+    treatments: treatmentRepository,
+  };
+  return repos[entityType];
+}
+```
 
 ### 3.3 Generator 함수
 
@@ -289,12 +309,9 @@ export async function regenerateEmbedding(
   const text = textBuilder(entity);
   const embedding = await embedDocument(text);
 
-  const { error } = await client
-    .from(entityType)
-    .update({ embedding })
-    .eq('id', entityId);
-
-  if (error) throw error;
+  // §3.1 의존성 준수: repository 경유 (R-8, L-8)
+  const repository = getEmbeddingRepository(entityType);
+  await repository.updateEmbedding(client, entityId, embedding);
 }
 
 /** 배치 임베딩 생성 (초기 적재/전수 재생성용) */
@@ -302,10 +319,9 @@ export async function batchGenerateEmbeddings(
   client: SupabaseClient,
   entityType: EntityType
 ): Promise<{ success: number; failed: number }> {
-  const { data: entities, error } = await client
-    .from(entityType)
-    .select('*')
-    .eq('status', 'active');
+  // §3.1 의존성 준수: repository 경유 (R-8, L-8)
+  const repository = getEmbeddingRepository(entityType);
+  const { data: entities, error } = await repository.findActiveEntities(client);
 
   if (error) throw error;
   if (!entities) return { success: 0, failed: 0 };

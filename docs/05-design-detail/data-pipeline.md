@@ -173,6 +173,9 @@ stores/clinics의 `district` 필드: 주소에서 서울 구(區) 추출.
 
 ### 3.3.2 값 범위 검증
 
+> 정본: schema.dbml CHECK 제약 + PRD §4-A. ETL 파이프라인 자기 완결성을 위해 의도적으로 재서술.
+> 변경 시 D-6 교차 검증 필수: schema.dbml, 7.2-ADMIN §7.2.6과 동기화.
+
 | 필드 | 타입 | 제약 | 근거 |
 |------|------|------|------|
 | status | text | `active` / `inactive` / `temporarily_closed` | schema.dbml CHECK |

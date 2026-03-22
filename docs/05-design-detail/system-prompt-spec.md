@@ -156,7 +156,7 @@ app/api/chat/route.ts (Composition Root)
 - **새 고정 섹션 추가**: 배열에 상수 추가. `prompts.ts` 1개 파일 수정 (P-7)
 - **새 조건부 섹션 추가**: 배열에 조건식 추가 + `SystemPromptContext` 타입 확장
 - **새 도메인 추가 (v0.2)**: `DOMAINS_SECTION` 상수만 수정. `core/` 변경 불필요 (L-6)
-- **토큰 예산**: P1-35에서 확정. 각 섹션 상수의 크기를 예산 내로 유지
+- **토큰 예산**: P1-35(token-management.md)에서 확인. MVP 시스템 프롬프트 총량 ~3-4K 토큰 (200K의 2%). 영역별 세밀한 예산 불필요 (근거: token-management.md §2)
 
 ---
 
@@ -469,6 +469,7 @@ Get purchase, booking, or map links for a specific product, store, clinic, or tr
 
 > Tool JSON Schema (입력/출력): `tool-spec.md` (P1-31+P1-32 병합 완료)
 > extract_user_profile: 동기 tool 확정 (P1-33). 스키마는 `tool-spec.md` §3
+> **TODO**: §6 프롬프트 텍스트에 `extract_user_profile` 호출 규칙(when to call) 추가 필요. §9.2 추출 전략과 연계하여 "대화에서 프로필 정보 감지 시 호출" 지침 정의. (Gate 1 검증 AI-2)
 
 ---
 
