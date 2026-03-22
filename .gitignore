@@ -48,3 +48,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 supabase/.temp/
+
+# docs - 초기 기획 문서 (PDF 등 바이너리)
+/docs/01-first-plainning/

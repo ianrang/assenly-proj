@@ -1,7 +1,7 @@
 // ============================================================
 // Essenly K-Beauty AI Agent — Database Schema (DBML)
-// Version: 2.0
-// Updated: 2026-03-21
+// Version: 2.1
+// Updated: 2026-03-22
 // Source of Truth: This file is the structural schema definition.
 // Supplements: RLS policies, extensions, functions → migration SQL files
 //
@@ -13,6 +13,8 @@
 //   - Arrays: bounded vocabulary enums only. No entity FK arrays.
 //   - JSONB: display-only or complex nested structure. Never for query targets.
 //   - ON DELETE: user data CASCADE, domain soft-delete RESTRICT/SET NULL
+//   - Future domains: DOM-3~5 tables are fully defined but [v0.2/v0.3 구현 예정].
+//     Migration SQL is NOT generated until the implementation version.
 // ============================================================
 
 // ============================================================
@@ -62,6 +64,9 @@ Enum beauty_history_entity_type {
   store
   clinic
   treatment
+  salon           // v0.2
+  restaurant      // v0.2
+  experience      // v0.3
 }
 
 Enum behavior_log_target_type {
@@ -69,6 +74,9 @@ Enum behavior_log_target_type {
   store
   clinic
   treatment
+  salon           // v0.2
+  restaurant      // v0.2
+  experience      // v0.3
   card
   link
 }
@@ -124,7 +132,7 @@ Table beauty_history {
   user_id uuid [ref: > users.id, note: 'ON DELETE CASCADE']
   type text [not null, note: 'treatment/purchase/visit']
   entity_id uuid [note: 'Polymorphic FK — not DB-enforced. CHECK on entity_type.']
-  entity_type text [note: 'CHECK: product/store/clinic/treatment']
+  entity_type text [note: 'CHECK: product/store/clinic/treatment. v0.2: +salon/restaurant. v0.3: +experience']
   date date
   satisfaction int [note: 'CHECK: 1-5']
   notes text [note: 'BH-2: user memo']
@@ -178,7 +186,7 @@ Table behavior_logs {
   user_id uuid [ref: > users.id, note: 'ON DELETE CASCADE']
   event_type text [not null, note: 'click, card_view, link_click, search, etc.']
   target_id uuid [note: 'Polymorphic FK — not DB-enforced.']
-  target_type text [note: 'CHECK: product/store/clinic/treatment/card/link']
+  target_type text [note: 'CHECK: product/store/clinic/treatment/card/link. v0.2: +salon/restaurant. v0.3: +experience']
   metadata jsonb [note: 'Event-specific data. Variable structure.']
   created_at timestamptz [default: `now()`]
 
@@ -434,7 +442,7 @@ Table admin_users {
   email text [unique, not null, note: 'Google Workspace email. Allowlist managed by super_admin.']
   name text [note: 'Display name']
   role text [not null, note: 'CHECK: super_admin/admin']
-  permissions jsonb [not null, default: '{}', note: '14-bit: {product_read, product_write, store_read, store_write, brand_read, brand_write, ingredient_read, ingredient_write, clinic_read, clinic_write, treatment_read, treatment_write, doctor_read, doctor_write}']
+  permissions jsonb [not null, default: '{}', note: '14-bit: {product_read, product_write, store_read, store_write, brand_read, brand_write, ingredient_read, ingredient_write, clinic_read, clinic_write, treatment_read, treatment_write, doctor_read, doctor_write}. v0.2: +salon_*, stylist_*, restaurant_*. v0.3: +experience_*']
   status text [not null, default: 'active', note: 'CHECK: active/inactive']
   last_login timestamptz
   created_by uuid [ref: > admin_users.id, note: 'Self-reference: which admin created this account']
@@ -448,7 +456,7 @@ Table audit_logs {
   id uuid [pk, default: `gen_random_uuid()`]
   actor_id uuid [not null, ref: > admin_users.id, note: 'ON DELETE RESTRICT. Audit logs must be preserved.']
   action text [not null, note: '17 events: create/update/deactivate/reactivate/highlight_on/highlight_off/relation_connect/relation_disconnect/login_success/login_failure/logout/admin_create/admin_deactivate/admin_reactivate/permission_change']
-  target_type text [note: 'product/store/brand/ingredient/clinic/treatment/doctor/admin_user/relation']
+  target_type text [note: 'product/store/brand/ingredient/clinic/treatment/doctor/admin_user/relation. v0.2: +salon/salon_service/stylist/restaurant. v0.3: +experience']
   target_id uuid [note: 'ID of affected entity']
   changes jsonb [note: '{before: {...}, after: {...}} for update. Full data for create. status for deactivate.']
   ip_address inet
@@ -490,15 +498,190 @@ TableGroup domain_treatment {
   clinic_treatments
 }
 
+TableGroup domain_salon { // v0.2
+  salons
+  salon_services
+  stylists
+  salon_stylists_services
+}
+
+TableGroup domain_dining { // v0.2
+  restaurants
+}
+
+TableGroup domain_experience { // v0.3
+  experiences
+}
+
 TableGroup admin_system {
   admin_users
   audit_logs
 }
 
 // ============================================================
-// Future Tables (v0.2~v0.3, not yet defined)
+// Domain Data — Salon (DOM-3) [v0.2 구현 예정]
 // ============================================================
-// salons (DOM-3) — follow PlaceEntity pattern (country, city, district, location, ...)
-// restaurants (DOM-4) — follow PlaceEntity pattern
-// experiences (DOM-5) — follow PlaceEntity pattern
+// 아래 테이블은 v0.2에서 구현 예정. 마이그레이션 SQL은 v0.2 시점에 생성.
+// PlaceEntity 패턴(stores/clinics)과 동일한 공통 속성 구조를 따른다.
+
+Table salons {
+  id uuid [pk, default: `gen_random_uuid()`]
+  name jsonb [not null, note: 'LocalizedText']
+  description jsonb [note: 'LocalizedText']
+  country text [default: 'KR', note: 'VP-2: country-independent']
+  city text [default: 'seoul', note: 'Intentional denormalization']
+  district text [note: 'Seoul district for location filter']
+  location "geography(point, 4326)" [note: 'PostGIS point']
+  address jsonb [note: 'LocalizedText']
+  operating_hours jsonb [note: 'Complex schedule structure. Not queried relationally.']
+  english_support text [default: 'none', note: 'none/basic/good/fluent']
+  salon_type text [note: 'hair/headspa/nail/lash/complex']
+  atmosphere_tags text[] [note: 'trendy, cozy, luxury, instagram, etc.']
+  foreigner_friendly jsonb [note: 'ForeignerSupport: {languages, interpreter, overseas_card}']
+  booking_url text
+  external_links jsonb [note: 'ExternalLink[]: {type, url, label?}']
+  is_highlighted boolean [default: false, note: 'VP-1: badge display only']
+  highlight_badge jsonb [note: 'LocalizedText']
+  rating float [note: '0.0~5.0']
+  review_count int [default: 0]
+  images text[] [note: 'CDN URLs. Ordered. First = thumbnail.']
+  tags text[]
+  status text [default: 'active', note: 'CHECK: active/inactive/temporarily_closed']
+  embedding "vector(1024)" [note: 'RAG vector search']
+  created_at timestamptz [default: `now()`]
+  updated_at timestamptz [default: `now()`]
+
+  Note: 'DOM-3 Salon: beauty salons. [v0.2 구현 예정] PlaceEntity pattern.'
+}
+
+Table salon_services {
+  id uuid [pk, default: `gen_random_uuid()`]
+  salon_id uuid [not null, ref: > salons.id, note: 'ON DELETE CASCADE']
+  name jsonb [not null, note: 'LocalizedText']
+  category text [note: 'cut/color/perm/treatment/headspa/nail/lash/scalp_care']
+  suitable_hair_types text[] [note: 'straight/wavy/curly/coily']
+  price_min int [note: 'KRW']
+  price_max int [note: 'KRW']
+  duration_minutes int
+  status text [default: 'active', note: 'CHECK: active/inactive/temporarily_closed']
+  created_at timestamptz [default: `now()`]
+  updated_at timestamptz [default: `now()`]
+
+  Note: 'DOM-3: salon service menu. [v0.2 구현 예정] price_min/max pattern from treatments.'
+}
+
+Table stylists {
+  id uuid [pk, default: `gen_random_uuid()`]
+  salon_id uuid [not null, ref: > salons.id, note: 'ON DELETE RESTRICT']
+  name jsonb [not null, note: 'LocalizedText']
+  specialties text[] [note: 'color, perm, cut, headspa, etc.']
+  languages text[] [note: 'Languages the stylist speaks']
+  portfolio_url text [note: 'Instagram or portfolio link']
+  status text [default: 'active', note: 'CHECK: active/inactive/temporarily_closed']
+  created_at timestamptz [default: `now()`]
+  updated_at timestamptz [default: `now()`]
+
+  Note: 'DOM-3: stylists at salons. [v0.2 구현 예정] Pattern follows doctors table.'
+}
+
+// ============================================================
+// Domain Data — Dining (DOM-4) [v0.2 구현 예정]
+// ============================================================
+// 아래 테이블은 v0.2에서 구현 예정. 마이그레이션 SQL은 v0.2 시점에 생성.
+
+Table restaurants {
+  id uuid [pk, default: `gen_random_uuid()`]
+  name jsonb [not null, note: 'LocalizedText']
+  description jsonb [note: 'LocalizedText']
+  country text [default: 'KR', note: 'VP-2: country-independent']
+  city text [default: 'seoul', note: 'Intentional denormalization']
+  district text
+  location "geography(point, 4326)" [note: 'PostGIS point']
+  address jsonb [note: 'LocalizedText']
+  operating_hours jsonb
+  english_support text [default: 'none', note: 'none/basic/good/fluent']
+  restaurant_type text [note: 'korean/cafe/dessert/fusion/street_food/fine_dining']
+  atmosphere_tags text[] [note: 'instagram, hidden_gem, local_popular, tourist_friendly']
+  price_per_person int [note: 'KRW approximate']
+  recommended_menu jsonb [note: 'MenuItem[]: {name: LocalizedText, price: int, description: LocalizedText, image?: string}']
+  dietary_options text[] [note: 'vegetarian/halal/gluten_free/vegan']
+  english_menu boolean [default: false]
+  wait_time_estimate text [note: 'none/short/moderate/long']
+  reservation_required boolean [default: false]
+  beauty_context_tags text[] [note: 'post_treatment_friendly, skin_food, instagram_cafe, etc.']
+  nearby_beauty_places jsonb [note: 'NearbyRef[]: {entity_type: store/clinic/salon, entity_id, distance_meters}. Display only. Not DB-enforced.']
+  external_links jsonb [note: 'ExternalLink[]: {type, url, label?}']
+  is_highlighted boolean [default: false, note: 'VP-1']
+  highlight_badge jsonb [note: 'LocalizedText']
+  rating float
+  review_count int [default: 0]
+  images text[]
+  tags text[]
+  status text [default: 'active', note: 'CHECK: active/inactive/temporarily_closed']
+  embedding "vector(1024)"
+  created_at timestamptz [default: `now()`]
+  updated_at timestamptz [default: `now()`]
+
+  Note: 'DOM-4 Dining: local restaurants. [v0.2 구현 예정] PlaceEntity pattern. beauty_context_tags for journey context linking.'
+}
+
+// ============================================================
+// Domain Data — Experience (DOM-5) [v0.3 구현 예정]
+// ============================================================
+// 아래 테이블은 v0.3에서 구현 예정. 마이그레이션 SQL은 v0.3 시점에 생성.
+
+Table experiences {
+  id uuid [pk, default: `gen_random_uuid()`]
+  name jsonb [not null, note: 'LocalizedText']
+  description jsonb [note: 'LocalizedText']
+  country text [default: 'KR', note: 'VP-2: country-independent']
+  city text [default: 'seoul', note: 'Intentional denormalization']
+  district text
+  location "geography(point, 4326)" [note: 'PostGIS point']
+  address jsonb [note: 'LocalizedText']
+  experience_type text [note: 'class/tour/workshop/popup/exhibition/market']
+  beauty_relevance text [note: 'direct/related/lifestyle']
+  category text [note: 'skincare_class/kbeauty_tour/temple_spa/hanbok/kpop/etc.']
+  price_min int [note: 'KRW']
+  price_max int [note: 'KRW']
+  duration_minutes int
+  max_participants int
+  reservation_required boolean [default: false]
+  available_languages text[] [note: 'Languages the experience is offered in']
+  schedule jsonb [note: 'Schedule: {type: daily|weekly|specific|on_demand, time_slots: [], unavailable_dates: []}']
+  inclusions jsonb [note: 'LocalizedText. What is included.']
+  beauty_connection jsonb [note: 'LocalizedText. How this connects to K-beauty journey.']
+  external_links jsonb [note: 'ExternalLink[]: {type, url, label?}']
+  is_highlighted boolean [default: false, note: 'VP-1']
+  highlight_badge jsonb [note: 'LocalizedText']
+  rating float
+  review_count int [default: 0]
+  images text[]
+  tags text[]
+  status text [default: 'active', note: 'CHECK: active/inactive/temporarily_closed']
+  embedding "vector(1024)"
+  created_at timestamptz [default: `now()`]
+  updated_at timestamptz [default: `now()`]
+
+  Note: 'DOM-5 Experience: cultural activities. [v0.3 구현 예정] PlaceEntity pattern. beauty_relevance classifies connection to K-beauty.'
+}
+
+// ============================================================
+// Junction Tables — Future Domains [v0.2~v0.3 구현 예정]
+// ============================================================
+
+Table salon_stylists_services {
+  stylist_id uuid [ref: > stylists.id]
+  service_id uuid [ref: > salon_services.id]
+
+  indexes {
+    (stylist_id, service_id) [pk]
+  }
+
+  Note: 'Which stylists offer which services. [v0.2 구현 예정]'
+}
+
+// ============================================================
+// Future Tables (v0.2+, not yet defined)
+// ============================================================
 // partner_users (v0.2) — partner app accounts
