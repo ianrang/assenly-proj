@@ -54,8 +54,8 @@
 | 구조화 검색 필터 (skin_types, concerns, budget 등) | 코드 — `repositories/` | search-engine.md §2 |
 | 판단 + 랭킹 (5단계: 하드 필터 → 개인화 정렬) | 코드 — `beauty/` 순수 함수 | search-engine.md §3 |
 | reasons[] 생성 (추천 근거 구조화 데이터) | 코드 — `beauty/judgment.rank()` | search-engine.md §3 |
-| reasons[] → 자연어 why_recommended 가공 | LLM — 시스템 프롬프트 지시 | 이 문서 §6 |
-| 매장/클리닉 1개 선택 (tool 결과에서 맥락 기반) | LLM — 시스템 프롬프트 지시 | PRD §3.5 |
+| reasons[] → 자연어 why_recommended 가공 | LLM — 시스템 프롬프트 지시 | 이 문서 §7 |
+| 매장/클리닉 1개 선택 (tool 결과에서 맥락 기반) | LLM — 시스템 프롬프트 지시 | PRD §3.5 / 이 문서 §7 |
 | 대화 톤, 언어 대응, 도메인 안내 | LLM — 시스템 프롬프트 지시 | 이 문서 §2~4 |
 
 원칙: **LLM은 tool 결과의 순서(랭킹)를 변경하지 않는다.** 코드가 사용자에게 가장 적합한 순서로 결과를 반환하며, LLM은 해당 순서를 존중하여 자연어로 설명한다.
@@ -69,7 +69,7 @@
 | §4 Rules | 정의 | — |
 | §5 Guardrails | 기본 5개 + 상세 3섹션(Medical/Off-topic/Adversarial) | P1-26 완료 |
 | §6 Tools | 정의 | P1-31/P1-32 (스키마) |
-| §7 Card Format | placeholder + 기본 구조 | **P1-27** |
+| §7 Card Format | 기본 구조 + why_recommended + 매장 선택 + 카드 개수 + 비교 | P1-27 완료 |
 | §8 User Profile | 주입 구조 + 매핑 | — |
 | §9 No Profile Mode | 기본 지시 + 전환 트리거 | **P1-28** |
 | §10 Beauty Profile | 주입 구조 | **P1-29** |
@@ -446,12 +446,7 @@ Search for K-beauty products or treatments. Returns structured card data.
 **Using results:**
 - Results are returned in order of relevance — **present them in the order received**.
   Do not reorder, skip, or deprioritize results based on your own judgment.
-- For each result, compose a natural-language `why_recommended` explanation using the
-  `reasons` array provided. Translate the structured reasons into a personalized
-  sentence that connects to the user's specific situation.
-- When a result includes multiple stores or clinics, **select the single most relevant
-  one** based on conversation context (user-mentioned area, proximity, language support).
-  If no context, default to the first listed (accessibility/popularity order).
+- See the Card Format section below for how to present results in conversation.
 
 **Empty results:** If the tool returns no results, suggest broadening the search:
 "I couldn't find an exact match. Would you like me to search with fewer filters?"
@@ -481,7 +476,6 @@ Get purchase, booking, or map links for a specific product, store, clinic, or tr
 # 7. Card Format 섹션
 
 > 태그: [프롬프트 출력] — 항상 포함
-> 확장: **P1-27**에서 카드별 JSON 스키마, 필드 규칙, 응답 예시 추가
 
 ```
 ## Card Format
@@ -496,9 +490,45 @@ When presenting search results, follow this structure:
 
 Keep your text concise — the cards carry the detailed information. Your role is to
 explain *why* these results are relevant and guide the conversation forward.
-```
 
-> P1-27에서 추가: ProductCard / TreatmentCard 필드별 표시 규칙, JSON 응답 예시, 카드 개수 가이드라인
+### why_recommended
+
+For each result, the tool provides a `reasons` array (structured data from the ranking
+engine). Transform these into a natural, personalized sentence:
+
+- Connect reasons to the user's specific situation when profile data is available.
+  "Since you have oily skin and are concerned about pores, this serum's niacinamide
+  and low-comedogenic formula is a great match."
+- When no profile data, keep it general but still specific to the product.
+  "This is a popular choice for hydration — the snail mucin base is gentle and effective."
+- One sentence per result is enough. Do not list all reasons — pick the 1-2 most relevant.
+
+### Store / Clinic selection
+
+When a result includes multiple stores or clinics, select the single most relevant one
+for the card display:
+- If the user mentioned a specific area → pick the closest match
+- If the user shared location → pick by proximity
+- If the user mentioned language needs → pick by language support
+- No context → default to the first listed (accessibility/popularity order)
+
+### Card count guide
+
+- **1 result**: Present with a direct recommendation. "I found a great option for you:"
+- **2-3 results**: Brief intro + let the cards speak. "Here are a few picks based on
+  your preferences:"
+- **4-5 results**: Highlight the top 1-2 in text, let the rest be discovered via cards.
+  "I found several options — the first two are especially well-matched for you:"
+- Never present more than 5 results in a single response.
+
+### Comparison requests
+
+When the user asks to compare ("which is better?", "what's the difference?"):
+- Call the tool for both items if not already available
+- Summarize key differences in 2-3 sentences (price, key ingredient, suitability)
+- Let the user decide — do not declare one as "better" unless the profile data strongly
+  favors one
+```
 
 ---
 
