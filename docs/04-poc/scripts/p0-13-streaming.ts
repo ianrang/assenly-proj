@@ -67,7 +67,7 @@ interface StreamResult {
   toolCallCount: number;
   events: StreamChunkEvent[];
   interrupted: boolean;
-  usage: { promptTokens: number; completionTokens: number } | null;
+  usage: { inputTokens: number; outputTokens: number } | null;
   pass: boolean;
   reason: string;
 }
@@ -93,7 +93,7 @@ async function runStreamScenario(
   let interrupted = false;
   const events: StreamChunkEvent[] = [];
 
-  let usageData: { promptTokens: number; completionTokens: number } | null = null;
+  let usageData: { inputTokens: number; outputTokens: number } | null = null;
 
   try {
     const result = streamText({
@@ -101,15 +101,15 @@ async function runStreamScenario(
       system: SYSTEM_PROMPT,
       tools: pocTools,
       stopWhen: stepCountIs(2),
-      maxTokens: 1024,
+      maxOutputTokens: 1024,
       prompt: scenario.prompt,
       onStepFinish({ usage }) {
         if (usage) {
           if (!usageData) {
-            usageData = { promptTokens: 0, completionTokens: 0 };
+            usageData = { inputTokens: 0, outputTokens: 0 };
           }
-          usageData.promptTokens += usage.promptTokens;
-          usageData.completionTokens += usage.completionTokens;
+          usageData.inputTokens += usage.inputTokens;
+          usageData.outputTokens += usage.outputTokens;
         }
       },
     });
@@ -307,8 +307,8 @@ async function main() {
   console.log(`\nStream interruptions: ${interruptions}`);
 
   // 토큰 합계
-  const totalInput = results.reduce((sum, r) => sum + (r.usage?.promptTokens ?? 0), 0);
-  const totalOutput = results.reduce((sum, r) => sum + (r.usage?.completionTokens ?? 0), 0);
+  const totalInput = results.reduce((sum, r) => sum + (r.usage?.inputTokens ?? 0), 0);
+  const totalOutput = results.reduce((sum, r) => sum + (r.usage?.outputTokens ?? 0), 0);
   console.log(`Total tokens: input=${totalInput}, output=${totalOutput}`);
 
   // 판정

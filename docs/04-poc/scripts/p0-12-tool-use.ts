@@ -77,7 +77,7 @@ interface RunResult {
   run: number;
   toolCalls: Array<{ toolName: string; args: unknown }>;
   text: string;
-  usage: { promptTokens: number; completionTokens: number };
+  usage: { inputTokens: number; outputTokens: number };
   pass: boolean;
   reason: string;
 }
@@ -95,7 +95,7 @@ async function runScenario(scenario: Scenario, runIndex: number): Promise<RunRes
     messages: scenario.messages,
     tools: pocTools,
     stopWhen: stepCountIs(2),
-    maxTokens: 1024,
+    maxOutputTokens: 1024,
   });
 
   const toolCalls = result.steps.flatMap((s) => s.toolCalls);
@@ -142,8 +142,8 @@ async function runScenario(scenario: Scenario, runIndex: number): Promise<RunRes
     toolCalls: toolCalls.map((tc) => ({ toolName: tc.toolName, input: (tc as any).input })),
     text: result.text.slice(0, 200),
     usage: {
-      promptTokens: result.usage.promptTokens,
-      completionTokens: result.usage.completionTokens,
+      inputTokens: result.usage.inputTokens,
+      outputTokens: result.usage.outputTokens,
     },
     pass,
     reason,
@@ -172,7 +172,7 @@ async function main() {
         if (result.toolCalls.length > 0) {
           console.log(`         Input: ${JSON.stringify(result.toolCalls[0].input)}`);
         }
-        console.log(`         Tokens: in=${result.usage.promptTokens} out=${result.usage.completionTokens}`);
+        console.log(`         Tokens: in=${result.usage.inputTokens} out=${result.usage.outputTokens}`);
 
         // Rate limit 방지
         if (i < RUNS_PER_SCENARIO - 1) await sleep(DELAY_BETWEEN_CALLS_MS);
@@ -183,7 +183,7 @@ async function main() {
           run: i + 1,
           toolCalls: [],
           text: '',
-          usage: { promptTokens: 0, completionTokens: 0 },
+          usage: { inputTokens: 0, outputTokens: 0 },
           pass: false,
           reason: `Error: ${err instanceof Error ? err.message : String(err)}`,
         });
@@ -212,8 +212,8 @@ async function main() {
   }
 
   // 토큰 합계
-  const totalInput = results.reduce((sum, r) => sum + r.usage.promptTokens, 0);
-  const totalOutput = results.reduce((sum, r) => sum + r.usage.completionTokens, 0);
+  const totalInput = results.reduce((sum, r) => sum + r.usage.inputTokens, 0);
+  const totalOutput = results.reduce((sum, r) => sum + r.usage.outputTokens, 0);
   console.log(`\nTotal tokens: input=${totalInput}, output=${totalOutput}`);
 
   // 판정

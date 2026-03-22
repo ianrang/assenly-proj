@@ -119,7 +119,7 @@ async function main() {
             system: SYSTEM_PROMPT,
             tools: pocTools,
             stopWhen: stepCountIs(2),
-            maxTokens: 1024,
+            maxOutputTokens: 1024,
             prompt: question,
           });
 

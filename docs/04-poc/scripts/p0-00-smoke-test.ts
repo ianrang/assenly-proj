@@ -54,11 +54,11 @@ async function main() {
     const model = await getModel();
     const result = await generateText({
       model,
-      maxTokens: 100,
+      maxOutputTokens: 100,
       prompt: 'Say "Hello from Essenly" in one sentence.',
     });
     console.log(`  Response: "${result.text.slice(0, 100)}"`);
-    console.log(`  Tokens: input=${result.usage.promptTokens}, output=${result.usage.completionTokens}`);
+    console.log(`  Tokens: input=${result.usage.inputTokens}, output=${result.usage.outputTokens}`);
     console.log('  Text generation: OK');
   } catch (err) {
     console.error('  Text generation: FAILED');
@@ -81,7 +81,7 @@ async function main() {
 
     const result = await generateText({
       model,
-      maxTokens: 256,
+      maxOutputTokens: 256,
       tools: { echo: echoTool },
       stopWhen: stepCountIs(2),
       prompt: 'Use the echo tool to echo "K-beauty rocks"',
@@ -90,7 +90,7 @@ async function main() {
     const toolCalls = result.steps.flatMap((s) => s.toolCalls);
     if (toolCalls.length > 0) {
       console.log(`  Tool called: ${toolCalls[0].toolName}`);
-      console.log(`  Args: ${JSON.stringify(toolCalls[0].args)}`);
+      console.log(`  Args: ${JSON.stringify(toolCalls[0].input)}`);
       console.log(`  Response: "${result.text.slice(0, 100)}"`);
       console.log('  Tool use: OK');
     } else {

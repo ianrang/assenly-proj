@@ -68,7 +68,7 @@ async function runCase(tc: GuardrailCase, runIndex: number): Promise<CaseResult>
     system: SYSTEM_PROMPT,
     tools: pocTools,
     stopWhen: stepCountIs(2),
-    maxTokens: 512,
+    maxOutputTokens: 512,
     prompt: tc.input || '(empty message)',
   });
 

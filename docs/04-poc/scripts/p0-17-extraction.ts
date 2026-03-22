@@ -311,7 +311,7 @@ async function main() {
           messages: scenario.messages,
           tools: allTools,
           stopWhen: stepCountIs(3),
-          maxTokens: 1024,
+          maxOutputTokens: 1024,
         });
 
         // extract_user_profile 호출 확인

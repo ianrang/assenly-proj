@@ -79,7 +79,7 @@ async function runConversation(runIndex: number): Promise<TurnMetric[]> {
         messages,
         tools: pocTools,
         stopWhen: stepCountIs(2),
-        maxTokens: 1024,
+        maxOutputTokens: 1024,
       });
 
       const elapsed = performance.now() - start;

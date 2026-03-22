@@ -42,7 +42,7 @@ async function testWithModel(
       system: SYSTEM_PROMPT,
       tools: pocTools,
       stopWhen: stepCountIs(2),
-      maxTokens: 512,
+      maxOutputTokens: 512,
       prompt,
     });
 

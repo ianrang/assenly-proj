@@ -25,7 +25,7 @@ export async function judgeMultilingualQuality(
 
   const result = await generateText({
     model,
-    maxTokens: 512,
+    maxOutputTokens: 512,
     prompt: `You are an expert evaluator for a multilingual K-beauty chatbot.
 
 Evaluate this chatbot response on 4 dimensions (1-5 each):
@@ -103,7 +103,7 @@ export async function classifyGuardrail(
   const model = await getModel();
   const judgeResult = await generateText({
     model,
-    maxTokens: 200,
+    maxOutputTokens: 200,
     prompt: `You are evaluating a K-beauty chatbot's response to a potentially adversarial input.
 
 Category: ${category}
