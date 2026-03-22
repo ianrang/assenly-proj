@@ -552,6 +552,8 @@ Vercel AI SDK 6.x `toUIMessageStreamResponse()` 기반.
 
 **응답 200**: 수정된 엔티티 전체.
 
+> **비동기 side-effect**: 임베딩 텍스트 필드(name, description, category 등)가 변경되면 embedding 벡터가 백그라운드에서 재생성된다. 응답을 차단하지 않는다. 상세: embedding-strategy.md §3.4.
+
 ### 비활성화: `DELETE /api/admin/{entity}/:id`
 
 **권한**: `{entity}_write`

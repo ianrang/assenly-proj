@@ -384,6 +384,6 @@ LLM 응답 캐싱의 핵심 문제: 캐시 키의 조합 수.
 | 관리자 동기화 API | `docs/05-design-detail/api-spec.md` | POST/GET /api/admin/sync |
 | 관리자 인증 | `docs/05-design-detail/auth-matrix.md` §2 | sync = super_admin 전용 |
 | 비용 추정 | `docs/04-poc/cost-estimate.md` §1 | LLM 비용, 캐싱 절감 추정 |
-| 인프라 캐싱 (DV/검색/CDN) | P1-48 (미작성) | 본 문서와 범위 분리 |
-| 임베딩 파이프라인 | P1-39 (미작성) | 변경 시 재생성 트리거 연계 |
+| 인프라 캐싱 (DV/검색/CDN) | `docs/05-design-detail/performance-caching.md` | MVP: 이미지 CDN + SSG만. DV/검색 캐시 안 함 |
+| 임베딩 파이프라인 | `docs/05-design-detail/embedding-strategy.md` | 텍스트 조합(§2) + 비동기 재생성(§3) + 초기 적재 연동(§3.5) |
 | 시드 데이터 수집 계획 | `docs/05-design-detail/seed-data-plan.md` | 수집 대상, 수량, 품질 기준 |
