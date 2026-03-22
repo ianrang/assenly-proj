@@ -163,12 +163,12 @@
 
 | ID | 작업 | 상세 | 산출물 | 상태 |
 |----|------|------|--------|------|
-| P1-19 | API 공통 규격 | 응답 형식, 에러 코드 체계, HTTP 상태 매핑 | API 규격 문서 | ⬜ |
-| P1-20 | 사용자 앱 API 상세 명세 | 각 엔드포인트 요청/응답 스키마, 인증, rate limit | API 명세서 | ⬜ |
-| P1-21 | Chat API 스트리밍 명세 | SSE 이벤트 타입, 에러 복구 | Chat API 명세 | ⬜ |
-| P1-22 | Rate Limiting 설계 | Chat: 분당/일일 제한. 기타 API: 분당 제한 | Rate limit 설계 | ⬜ |
-| P1-23 | 관리자 CRUD API 명세 | 7 엔티티 × CRUD + 관계 관리 + 이미지 업로드 | 관리자 API 명세 | ⬜ |
-| P1-24 | 관리자 인증 API 명세 | 로그인, 로그아웃, 세션, 비밀번호 변경 | 관리자 인증 명세 | ⬜ |
+| P1-19 | API 공통 규격 | 응답 형식({data,error,meta}), 에러 코드(도메인별), HTTP 상태, 페이지네이션, Rate limit 헤더 | `api-spec.md` §1 | ✅ |
+| P1-20 | 사용자 앱 API | 14개 엔드포인트. 인증(선택/필수), 요청/응답 스키마, 필터 파라미터 | `api-spec.md` §2 | ✅ |
+| P1-21 | Chat API 스트리밍 | SSE 6개 이벤트 타입, 에러 이벤트 3종, 서버 11단계 플로우. 에러 복구 상세→P1-40 | `api-spec.md` §3 | ✅ |
+| P1-22 | Rate Limiting | Chat 분당5/일100, 공개API 분당60, 익명생성 분당3/IP. MVP 메모리Map, v0.2 Redis(V2-3) | `api-spec.md` §4 | ✅ |
+| P1-23 | 관리자 CRUD API | 제네릭 CRUD(7엔티티), 관계 관리, 하이라이트, 이미지 업로드. withAuditLog 미들웨어 | `api-spec.md` §5 | ✅ |
+| P1-24 | 관리자 인증 API | Google SSO→자체JWT(24h), 토큰 갱신, 계정 관리(super_admin), 감사 로그 조회 | `api-spec.md` §6 | ✅ |
 
 ## 설계 — AI
 
