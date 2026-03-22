@@ -140,8 +140,8 @@
 | P1-8 | 관리자 앱 사이트맵 (MVP) | Route Group (admin)/admin/ 구조. 7엔티티×3페이지 + 감사로그 + Admin관리. i18n 없음 | `sitemap.md` | ✅ |
 | P1-9 | 사용자 앱 화면 상세 | Landing, 온보딩 4단계, 프로필, Chat, 카드, Kit CTA, 에러 | 화면 명세서 | ⬜ |
 | P1-10 | 관리자 앱 화면 설계 | 로그인, 대시보드, 목록/상세/생성/수정 공통, 관계 관리 | 관리자 화면 명세 | ⬜ |
-| P1-11 | SEO 전략 | Landing만 SEO 대상 (SSG). 정적 OG 1장, hreflang 6개 언어, JSON-LD (WebApplication), sitemap.xml 6 URL, robots.txt (admin/api 차단). 모든 구현 app/ 계층 | `seo-strategy.md` | ✅ |
-| P1-12 | 접근성 기준 | WCAG 2.1 AA 전체. 키보드 내비게이션, aria-live polite (채팅 스트리밍 완료 시 알림), 포커스 트랩 (Radix 내장), 터치 44x44px, prefers-reduced-motion. axe-core + 수동 체크리스트. client/ 계층만 해당 | `accessibility.md` | ✅ |
+| P1-11 | SEO 전략 | Landing만 SEO 대상 (SSG). 정적 OG 1장, MVP en canonical only (v0.2 hreflang), JSON-LD (WebApplication), sitemap.xml 1 URL, robots.txt (admin/api 차단). 모든 구현 app/ 계층 | `seo-strategy.md` | ✅ |
+| P1-12 | 접근성 기준 | WCAG 2.1 AA 전체. Skip link, 키보드 내비게이션, aria-live polite (채팅 스트리밍 완료 시 알림), 포커스 트랩 (Radix 내장), 터치 44x44px, prefers-reduced-motion, autocomplete. axe-core + 수동 체크리스트. client/ 계층만 해당 | `accessibility.md` | ✅ |
 
 ## 기획 — 권한 체계
 
