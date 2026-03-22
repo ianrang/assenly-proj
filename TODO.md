@@ -13,9 +13,9 @@
 | 사전 완료      | 12      | 12      | 100%    | ✅     |
 | Phase 0    | 37      | 37      | 100%    | ✅     |
 | Phase 1    | 60      | 60      | 100%    | ✅     |
-| Phase 2    | 75      | 0       | 0%      | ⬜ 미시작 |
+| Phase 2    | 79      | 0       | 0%      | ⬜ 미시작 |
 | Phase 3    | 36      | 0       | 0%      | ⬜ 미시작 |
-| **MVP 합계** | **220** | **109** | **50%** |       |
+| **MVP 합계** | **224** | **109** | **49%** |       |
 
 
 **✅ Gate 0 통과 (2026-03-21) → Phase 1 (MVP 설계) 착수 준비**
@@ -291,7 +291,7 @@
 
 | ID   | 작업                    | 상세                           | 상태  |
 | ---- | --------------------- | ---------------------------- | --- |
-| P2-1 | 환경변수 + 설정 모듈          | server/core 설정, 환경별 분기       | ⬜   |
+| P2-1 | 환경변수 + 설정 모듈          | server/core 설정, 환경별 분기 + shared/constants/ai.ts (LLM_CONFIG + TOKEN_CONFIG) | ⬜   |
 | P2-2 | Supabase 서버 클라이언트     | server/core DB 접근 모듈         | ⬜   |
 | P2-3 | Supabase 브라우저 클라이언트   | client/core 클라이언트 모듈         | ⬜   |
 | P2-4 | 관리자 DB 마이그레이션 실행      | P1-17에서 작성한 SQL 실행           | ⬜   |
@@ -313,8 +313,10 @@
 | P2-13 | 쇼핑 도메인 로직                                  | beauty/ 순수 함수 (shopping)                   | ⬜   |
 | P2-14 | 시술 도메인 로직                                  | beauty/ 순수 함수 (treatment)                  | ⬜   |
 | P2-15 | DV 계산기                                     | 4개 도출 변수 계산 로직                             | ⬜   |
-| P2-16 | Product 리포지토리                              | 제품 데이터 접근 (검색, 필터)                         | ⬜   |
-| P2-17 | Treatment 리포지토리                            | 시술/클리닉 데이터 접근                              | ⬜   |
+| P2-16 | Product 리포지토리                              | 제품 데이터 접근. findByFilters/matchByVector/findById/findAll (search-engine.md §2.1, §2.3 Products) | ⬜   |
+| P2-16a | Store 리포지토리                               | 매장 데이터 접근. findByFilters/findById/findAll (search-engine.md §2.1, §2.3 Stores) | ⬜   |
+| P2-17 | Treatment 리포지토리                            | 시술 데이터 접근. findByFilters/matchByVector/findById/findAll (search-engine.md §2.1, §2.3 Treatments) | ⬜   |
+| P2-17a | Clinic 리포지토리                              | 클리닉 데이터 접근. findByFilters/findById/findAll (search-engine.md §2.1, §2.3 Clinics) | ⬜   |
 | P2-18 | Knowledge 리포지토리                            | RAG 검색 래핑                                  | ⬜   |
 | P2-19 | 채팅 서비스                                     | 대화 오케스트레이션                                 | ⬜   |
 | P2-20 | Chat Tool — search_beauty_data             | 도메인 데이터 검색 tool handler                    | ⬜   |
@@ -333,7 +335,7 @@
 
 | ID    | 작업                        | 상세                                       | 상태  |
 | ----- | ------------------------- | ---------------------------------------- | --- |
-| P2-29 | 공통 레이아웃 + locale 레이아웃     | 루트, [locale] 레이아웃                        | ⬜   |
+| P2-29 | 공통 레이아웃 + locale 레이아웃     | shadcn/ui 초기화 + 루트, [locale] 레이아웃         | ⬜   |
 | P2-30 | 에러 바운더리 + 에러 화면           | 네트워크, LLM, 세션 에러 처리                      | ⬜   |
 | P2-31 | Header + LanguageSelector | 공통 헤더                                    | ⬜   |
 | P2-32 | Landing 페이지               | 2가지 경로 분기                                | ⬜   |
@@ -356,10 +358,12 @@
 
 | ID    | 작업                 | 상세                                                           | 상태  |
 | ----- | ------------------ | ------------------------------------------------------------ | --- |
-| P2-45 | 관리자 인증 서비스 + API   | 로그인, 세션, 권한 확인                                               | ⬜   |
-| P2-46 | 관리자 CRUD 서비스 + API | 7 엔티티 CRUD + 관계 관리                                           | ⬜   |
-| P2-47 | 이미지 업로드 서비스 + API  | Supabase Storage 연동                                          | ⬜   |
-| P2-48 | 감사 로그 기록           | 모든 CRUD에 audit_logs 기록                                       | ⬜   |
+| P2-45 | 관리자 인증 서비스 + API          | 로그인, 세션, 권한 확인 (api-spec.md §6)                                                                                                      | ⬜   |
+| P2-46 | 제네릭 CRUD 서비스              | `features/admin/service.ts` + withAuditLog 미들웨어 + 7엔티티 zod 스키마 (api-spec.md §5.1)                                                       | ⬜   |
+| P2-46a | 복합 엔티티 라우트               | Product/Store/Treatment/Clinic CRUD 라우트 + 하이라이트 API(§5.3) + 관계 API(§5.2). P2-16/16a/17/17a 리포지토리 의존                                     | ⬜   |
+| P2-46b | 단순 엔티티 라우트               | Brand/Ingredient/Doctor CRUD 라우트 + 리포지토리 생성 포함 (findAll/findById/create/update/deactivate, query-utils.ts 재사용)                           | ⬜   |
+| P2-47 | 이미지 업로드 서비스 + API         | Product/Store/Clinic/Treatment 4엔티티. Supabase Storage + magic bytes 검증 + 순서 관리 (api-spec.md §5.4)                                       | ⬜   |
+| P2-48 | 감사 로그 조회 API              | `GET /api/admin/audit-logs` + audit-service.ts. super_admin 전용, 날짜/액터/액션 필터 (api-spec.md §6.6). 기록은 P2-46 withAuditLog가 담당            | ⬜   |
 | P2-49 | 관리자 레이아웃 + 로그인 페이지 | admin 라우트 레이아웃, 인증 UI                                        | ⬜   |
 | P2-50 | 관리자 대시보드 (간단)      | 엔티티별 데이터 건수, 최근 변경                                           | ⬜   |
 | P2-51 | 관리자 공통 컴포넌트 — 목록   | 테이블, 검색, 필터, 페이지네이션                                          | ⬜   |
