@@ -37,9 +37,8 @@
 | R-2 | `server/` → `client/` import 금지 | `import 'client-only'` → 빌드 에러 |
 | R-3 | `core/` → `features/` import 금지 | ESLint `no-restricted-imports` |
 | R-4 | `shared/` → `server/`, `client/` import 금지 | ESLint `no-restricted-imports` |
-| R-11 | `ui/` → `features/` import 금지 | ui/는 비즈니스 로직에 의존하지 않는다 |
+| R-11 | `ui/` import 허용: `shared/` ONLY | core/, features/ 등 그 외 모든 계층 import 금지. ui/는 교체 가능한 독립 단위 |
 | R-12 | `core/` → `ui/` import 금지 | core/는 UI 라이브러리 선택에 무관해야 한다 |
-| R-13 | `ui/` 내 K-뷰티 비즈니스 용어 금지 | ui/는 도메인 무관해야 한다. skin_type, concerns 등 금지 |
 
 ### 2.2 features/ 내부 의존성
 
@@ -47,9 +46,9 @@
 |----|------|------------|
 | R-5 | service.ts — 오케스트레이터 | 자기 도메인 내부 + beauty/ + core/ + shared/. 타 도메인 데이터는 route handler에서 파라미터로 수신 |
 | R-6 | tool handler — LLM 콜백 (유일한 예외) | repositories/ + beauty/ + shared/. LLM 콜백 특성상 직접 import 허용 |
-| R-7 | beauty/*.ts — 순수 함수 | beauty/ 내부(단방향만) + shared/ ONLY. DB/API 호출 금지 |
+| R-7 | beauty/*.ts import 범위 | beauty/ 내부(단방향만) + shared/ ONLY |
 | R-8 | repositories/*.ts — DB CRUD | core/db/ + shared/ ONLY. 비즈니스 로직 금지 |
-| R-9 | service → 타 도메인 service/repository 금지 | cross-domain 데이터는 route handler에서 파라미터로 전달 |
+| R-9 | service → 타 도메인 import 금지 | 타 도메인의 service.ts, repositories/ 직접 import 불가 |
 | R-10 | tool → service 역호출 금지 | tool(③)에서 service(②) 재호출 불가 |
 
 ### 2.3 beauty/ 내부 단방향 규칙
@@ -107,18 +106,9 @@ treatment.ts ──→ derived.ts    ✗  (peer 간 직접 의존 금지)
 | ID | 규칙 |
 |----|------|
 | L-6 | 새 도메인 추가 = features/에 폴더 추가. core/ 수정 불필요해야 한다 (OCP) |
-| L-7 | beauty/ 모듈은 순수 함수만: 입력→출력, 부작용 없음, DB/API 호출 금지 |
+| L-7 | beauty/ 모듈은 순수 함수만: 입력→출력, 부작용(DB 조회, API 호출, 전역 상태 변경) 없음 |
 | L-8 | repositories/는 DB CRUD만: 비즈니스 로직(필터링, 정렬, 계산) 금지 |
-| L-9 | service 간 직접 import/호출 금지. cross-domain 데이터는 route handler에서 파라미터로 전달 |
-
-### client/ui/ (디자인 시스템 — 교체 가능 단위)
-
-| ID | 규칙 |
-|----|------|
-| L-16 | 파일 첫 줄에 `import 'client-only'` 필수. 서버 번들에 포함되면 빌드 에러 |
-| L-17 | K-뷰티 비즈니스 용어(skin_type, concerns 등) 포함 금지. ui/는 도메인 무관해야 한다 |
-| L-18 | 스타일은 시맨틱 토큰(`bg-primary` 등)만 사용. `#hex` 값 직접 기입 금지 |
-| L-19 | `features/` import 금지. `shared/` import만 허용. ui/는 비즈니스 로직에 의존하지 않는다 |
+| L-9 | service는 자기 도메인 범위 내에서만 동작. 타 도메인 데이터는 route handler에서 파라미터로 수신 |
 
 ### client/ (UI)
 
@@ -127,6 +117,14 @@ treatment.ts ──→ derived.ts    ✗  (peer 간 직접 의존 금지)
 | L-10 | 서버 상태 접근은 API 호출만. server/ 직접 import 금지 |
 | L-11 | 상태: useChat(채팅) + react-hook-form(폼) + React Context(프로필). Zustand 금지 |
 | L-12 | 모바일 퍼스트: Tailwind 기본=모바일, md:=태블릿, lg:=데스크톱 |
+
+### client/ui/ (디자인 시스템 — 교체 가능 독립 단위)
+
+| ID | 규칙 |
+|----|------|
+| L-17 | K-뷰티 비즈니스 용어(skin_type, concerns 등) 포함 금지. ui/는 도메인 무관해야 한다 |
+| L-18 | 스타일은 시맨틱 토큰(`bg-primary` 등)만 사용. `#hex` 값 직접 기입 금지 |
+| L-19 | ui/ 컴포넌트는 props와 디자인 토큰만으로 렌더링 완결. 비즈니스 로직 포함 금지 |
 
 ### shared/ (순수 타입/상수/유틸)
 
@@ -260,20 +258,20 @@ treatment.ts ──→ derived.ts    ✗  (peer 간 직접 의존 금지)
 
 | ID | 규칙 | 설명 |
 |----|------|------|
-| D-1 | 교차 문서 원문 대조 | 다른 설계 문서를 참조할 때, 파라미터명·연산자·타입·허용값을 원문에서 직접 확인하고 양쪽이 동일한지 대조한다 |
-| D-2 | 3-페르소나 시뮬레이션 | 수식·로직·점수를 설계할 때, 최소 3개 시나리오로 결과를 시뮬레이션한다: (1) 정상 입력 (프로필 완전), (2) 최소 입력 (프로필 없음/Path B), (3) 부분 입력 (일부 변수만) |
-| D-3 | SQL/코드 분류 기준 | PRD 비즈니스 규칙을 구현에 배치할 때: 단순 비교(=, ≤, 배열 겹침)는 Repository SQL(R-8). 날짜 계산·가중치·조건 분기는 beauty/ 순수 함수(R-7). 동일 로직을 양쪽에 중복 배치하지 않는다 |
-| D-4 | 스키마 타입 기반 검증 | 필터·정렬 허용 필드를 정의할 때, schema.dbml의 컬럼 타입을 확인한다. JSONB 컬럼 직접 정렬 금지 (키 추출 `->>'ko'`는 허용). 배열 컬럼은 overlap(&&) 또는 contains(@>) 연산자만 허용 |
-| D-5 | 데이터 흐름 end-to-end 추적 | 설계 완료 전, 데이터의 전체 경로를 추적한다: 입력 → SQL 쿼리 → 후처리 → 출력. 동일 필터/정렬이 경로의 2곳 이상에서 중복 실행되지 않는지, 중간 단계의 결과가 다음 단계에서 무시되지 않는지 확인한다 |
+| D-1 | 교차 문서 원문 대조 | 다른 설계 문서를 참조할 때, 이름·타입·허용값·동작을 원문에서 직접 확인하고 양쪽이 동일한지 대조한다 |
+| D-2 | 3-시나리오 시뮬레이션 | 수식·로직·흐름을 설계할 때, 최소 3개 시나리오로 결과를 시뮬레이션한다: (1) 정상 입력, (2) 최소/빈 입력, (3) 부분/예외 입력 |
+| D-3 | 계층 책임 분류 | 요구사항을 구현에 배치할 때, 각 로직이 어느 계층(core/features/shared)에 속하는지 아키텍처 규칙(§1~§3)으로 분류한다. 동일 로직을 2개 이상 계층에 중복 배치하지 않는다 |
+| D-4 | 데이터 모델 호환 검증 | 기능을 설계할 때, 해당 기능이 사용하는 데이터의 타입·구조·제약을 schema.dbml에서 확인한다. 설계가 데이터 모델과 호환되지 않으면 설계를 수정한다 |
+| D-5 | 처리 흐름 end-to-end 추적 | 설계 완료 전, 기능의 전체 처리 경로를 입력부터 출력까지 추적한다. 동일 처리가 경로 내 2곳에서 중복되지 않는지, 중간 단계의 결과가 이후 단계에서 무시되지 않는지 확인한다 |
 
 ### 설계 검증 체크리스트
 
 설계 문서 작성/수정 후 반드시 검증:
 
 ```
-□ D-CHK-1  다른 설계 문서의 파라미터명·연산자·타입·허용값을 원문에서 직접 대조했는가?
+□ D-CHK-1  다른 설계 문서의 이름·타입·허용값·동작을 원문에서 직접 대조했는가?
 □ D-CHK-2  수식/로직을 3개 시나리오(정상·최소·부분)로 시뮬레이션하여 의도대로 동작하는가?
-□ D-CHK-3  비즈니스 규칙을 SQL(단순 비교)과 코드(계산/분기)로 분류했으며, 양쪽에 중복 배치 없는가?
-□ D-CHK-4  필터/정렬 허용 필드의 DB 컬럼 타입이 해당 연산을 지원하는가? (JSONB 직접 정렬 금지, 배열은 &&/@>만)
-□ D-CHK-5  데이터의 전체 경로(입력→SQL→후처리→출력)에서 중복 실행이나 무시되는 단계가 없는가?
+□ D-CHK-3  각 로직이 속하는 계층(core/features/shared)을 아키텍처 규칙으로 분류했으며, 2개 이상 계층에 중복 배치 없는가?
+□ D-CHK-4  기능이 사용하는 데이터의 타입·구조·제약이 schema.dbml과 호환되는가?
+□ D-CHK-5  기능의 전체 처리 경로(입력→처리→출력)에서 중복 실행이나 무시되는 단계가 없는가?
 ```
