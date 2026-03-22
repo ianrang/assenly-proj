@@ -11,10 +11,10 @@
 |-------|---------|------|--------|------|
 | 사전 완료 | 12 | 12 | 100% | ✅ |
 | Phase 0 | 37 | 37 | 100% | ✅ |
-| Phase 1 | 62 | 10 | 16% | 🔶 진행 중 |
+| Phase 1 | 62 | 11 | 18% | 🔶 진행 중 |
 | Phase 2 | 68 | 0 | 0% | ⬜ 미시작 |
 | Phase 3 | 36 | 0 | 0% | ⬜ 미시작 |
-| **MVP 합계** | **215** | **59** | **27%** | |
+| **MVP 합계** | **215** | **60** | **28%** | |
 
 **✅ Gate 0 통과 (2026-03-21) → Phase 1 (MVP 설계) 착수 준비**
 
@@ -138,7 +138,7 @@
 |----|------|------|--------|------|
 | P1-7 | 사용자 앱 사이트맵 + URL 설계 | Route Group (user)/[locale]/ 구조. Landing SSG, Chat/Onboarding/Profile CSR. Kit CTA=인라인+bottom sheet | `sitemap.md` | ✅ |
 | P1-8 | 관리자 앱 사이트맵 (MVP) | Route Group (admin)/admin/ 구조. 7엔티티×3페이지 + 감사로그 + Admin관리. i18n 없음 | `sitemap.md` | ✅ |
-| P1-9 | 사용자 앱 화면 상세 | Landing, 온보딩 4단계, 프로필, Chat, 카드, Kit CTA, 에러 | 화면 명세서 | ⬜ |
+| P1-9 | 사용자 앱 화면 상세 | 4페이지(Landing/Onboarding/Profile/Chat) 컴포넌트 분해, 상태 매트릭스, tool-result→UI 매핑. 재사용 컴포넌트(ProductCard/TreatmentCard/ConsentBanner 등) + 공통 패턴(에러/로딩/빈 상태/세션 만료). client/features/ 계층만 | `user-screens.md` | ✅ |
 | P1-10 | 관리자 앱 화면 설계 | 로그인, 대시보드, 목록/상세/생성/수정 공통, 관계 관리 | 관리자 화면 명세 | ⬜ |
 | P1-11 | SEO 전략 | Landing만 SEO 대상 (SSG). 정적 OG 1장, MVP en canonical only (v0.2 hreflang), JSON-LD (WebApplication), sitemap.xml 1 URL, robots.txt (admin/api 차단). 모든 구현 app/ 계층 | `seo-strategy.md` | ✅ |
 | P1-12 | 접근성 기준 | WCAG 2.1 AA 전체. Skip link, 키보드 내비게이션, aria-live polite (채팅 스트리밍 완료 시 알림), 포커스 트랩 (Radix 내장), 터치 44x44px, prefers-reduced-motion, autocomplete. axe-core + 수동 체크리스트. client/ 계층만 해당 | `accessibility.md` | ✅ |
