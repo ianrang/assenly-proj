@@ -1,6 +1,6 @@
 # API 명세 — P1-19 ~ P1-24
 
-> 버전: 1.0
+> 버전: 1.1
 > 작성일: 2026-03-22
 > 근거: auth-matrix.md, schema.dbml, sitemap.md, PRD §3~4, TDD §3.7, 7.2-ADMIN, PoC P0-12~13
 > 아키텍처: CLAUDE.md P-4 (Composition Root), L-1 (thin route), 옵션 B (서버 API 경유)
@@ -157,7 +157,19 @@ export async function METHOD(req: Request) {
 
 ### `POST /api/auth/anonymous`
 
-세션 생성. 인증 불필요.
+세션 생성 + 동의 기록. 인증 불필요.
+
+**요청:**
+```json
+{
+  "consent": {
+    "data_retention": true
+  }
+}
+```
+
+> Landing 하단 동의 배너에서 수집한 data_retention 동의를 세션 생성과 동시에 기록 (PRD §3.2).
+> marketing 동의는 Kit CTA 시점에 별도 수집 (`POST /api/kit/claim`).
 
 **응답 201:**
 ```json
@@ -169,7 +181,9 @@ export async function METHOD(req: Request) {
 }
 ```
 
-**구현**: Supabase `signInAnonymously()` → users 테이블 레코드 생성 (service_role) → 토큰 반환.
+**구현**: Supabase `signInAnonymously()` → users + consent_records INSERT (service_role) → 토큰 반환.
+
+> **세션 복구 (재방문)**: 클라이언트는 session_token을 localStorage에 보관. 재방문 시 Supabase SDK가 세션을 자동 복구하고, `GET /api/profile`을 호출하여 기존 프로필 존재 여부를 확인한다 (200=재방문, 404=신규/미완료). 별도 세션 검증 API 불필요.
 
 ## 2.2 도메인 데이터 (공개 읽기)
 
@@ -212,10 +226,41 @@ export async function METHOD(req: Request) {
 ```
 
 > `embedding` 필드는 반환하지 않음 (서버 전용).
+> 목록 meta에 limit/offset 에코백: `"meta": { "total": 150, "limit": 10, "offset": 0 }`.
 
 ### `GET /api/products/:id`
 
-단일 제품 상세. 전체 필드 반환 (embedding 제외).
+단일 제품 상세. 전체 필드 반환 (embedding 제외). brand 정보 포함 (JOIN).
+
+**응답 200:**
+```json
+{
+  "data": {
+    "id": "uuid",
+    "name": { "en": "...", "ko": "..." },
+    "brand": { "id": "uuid", "name": { "en": "COSRX", "ko": "코스알엑스" } },
+    "category": "skincare",
+    "skin_types": ["dry", "combination"],
+    "concerns": ["dryness", "dullness"],
+    "key_ingredients": ["Snail Secretion Filtrate"],
+    "price": 18000,
+    "volume": "96ml",
+    "purchase_links": [{ "platform": "olive_young", "url": "..." }],
+    "english_label": true,
+    "tourist_popular": true,
+    "is_highlighted": false,
+    "highlight_badge": null,
+    "rating": 4.7,
+    "review_count": 2340,
+    "review_summary": { "en": "..." },
+    "images": ["url1", "url2"],
+    "tags": ["essence", "hydrating"],
+    "status": "active"
+  }
+}
+```
+
+> brand/ingredient는 제품 상세 응답에 포함하여 반환. 별도 `GET /api/brands/:id`, `GET /api/ingredients/:id` 엔드포인트는 v0.2에서 필요 시 추가.
 
 ### `GET /api/treatments`
 
@@ -229,9 +274,25 @@ export async function METHOD(req: Request) {
 | `max_downtime` | number | `downtime_days <= max_downtime` |
 | `limit`, `offset` | number | 페이지네이션 |
 
-### `GET /api/stores`, `GET /api/clinics`
+### `GET /api/treatments/:id`
 
-동일 패턴. 필터: `district`, `english_support`, `store_type`/`clinic_type`.
+단일 시술 상세. `price_min`, `price_max`, `price_currency` 포함. clinic 정보는 `clinic_treatments` JOIN으로 제공.
+
+### `GET /api/stores`
+
+**인증**: 선택. **필터**: `district`, `english_support`, `store_type`, `query`, `limit`, `offset`.
+
+### `GET /api/stores/:id`
+
+단일 매장 상세.
+
+### `GET /api/clinics`
+
+**인증**: 선택. **필터**: `district`, `english_support`, `clinic_type`, `query`, `limit`, `offset`.
+
+### `GET /api/clinics/:id`
+
+단일 클리닉 상세. `foreigner_friendly`, `external_links` 포함.
 
 ## 2.3 프로필
 
@@ -541,9 +602,11 @@ Vercel AI SDK 6.x `toUIMessageStreamResponse()` 기반.
 
 ## 5.3 하이라이트 관리
 
+> 대상 엔티티: **Product, Store, Clinic, Treatment** (4개만). Brand, Ingredient, Doctor는 `is_highlighted` 컬럼 없음 (schema.dbml 참조).
+
 ### `PUT /api/admin/{entity}/:id/highlight`
 
-**권한**: `{entity}_write`
+**권한**: `{entity}_write` (entity = products, stores, clinics, treatments만)
 
 **요청:**
 ```json
@@ -744,3 +807,77 @@ Vercel AI SDK 6.x `toUIMessageStreamResponse()` 기반.
 | kit | `app/api/kit/route.ts` | features/kit/service.ts | - |
 
 > `core/`: auth.ts, admin-auth.ts, rate-limit.ts, db.ts, config.ts — 비즈니스 무관.
+
+---
+
+# 부록: 설계 보완 사항
+
+## B.1 DB 클라이언트 3종 (auth-matrix.md §1.4)
+
+| 클라이언트 | 용도 | RLS |
+|-----------|------|-----|
+| `createAuthenticatedClient(token)` | 사용자 API (동기) | ✅ 적용 |
+| `createServiceClient()` | 관리자 API + 비동기 후처리 | ❌ 우회 |
+| `createAnonClient()` | 비인증 사용자 공개 데이터 읽기 | ✅ 적용 (`USING(true)`) |
+
+## B.2 재방문 감지 패턴
+
+```
+1. 클라이언트: localStorage에서 session_token 복구
+2. Supabase SDK: 세션 자동 복구 (token refresh 포함)
+3. GET /api/profile 호출:
+   - 200 + data  → 재방문 (프로필 존재) → PRD §3.2 "Welcome back" 흐름
+   - 404          → 신규 또는 onboarding 미완료 → Landing 흐름
+   - 401          → 세션 만료/무효 → POST /api/auth/anonymous 재호출
+```
+
+## B.3 필터 동작 정의
+
+| 필터 | 동작 | SQL 패턴 |
+|------|------|---------|
+| `skin_types=dry,oily` | 배열 겹침 (OR) | `skin_types && ARRAY['dry','oily']` |
+| `concerns=acne` | 배열 포함 | `concerns @> ARRAY['acne']` |
+| `category=skincare` | 정확 일치 | `category = 'skincare'` |
+| `budget_max=20000` | 이하 | `price <= 20000` (products) 또는 `price_max <= 20000` (treatments) |
+| `district=gangnam` | 정확 일치 | `district = 'gangnam'` |
+| `english_support=fluent` | 정확 일치 | `english_support = 'fluent'` |
+| `search=cosrx` | 부분 일치 (ko/en) | `name->>'ko' ILIKE '%cosrx%' OR name->>'en' ILIKE '%cosrx%'` |
+| `status=all` (관리자) | 필터 미적용 | WHERE 절 생략 |
+| `has_highlight=true` (관리자) | boolean | `is_highlighted = true` |
+
+> `skin_types` (복수, 필터): 제품이 적합한 피부타입 배열에서 겹침 검색.
+> `skin_type` (단수, 프로필): 사용자의 단일 피부타입. 혼동 방지 목적으로 구분.
+
+## B.4 onboarding vs journey 역할 구분
+
+| 엔드포인트 | 용도 | MVP 사용 |
+|-----------|------|---------|
+| `POST /api/profile/onboarding` | 최초 설정: user_profiles + 첫 journey 동시 생성 | ✅ |
+| `POST /api/journey` | 후속 여정 생성 (기존 프로필 유지, 새 JC 변수) | v0.2 (다중 여정) |
+
+> `end_date`: 서버에서 `start_date + stay_days`로 자동 계산. 클라이언트 전송 불필요.
+
+## B.5 보안 보완 사항
+
+**JWT 저장 전략**:
+- 관리자 API 인증: `Authorization: Bearer {jwt}` 헤더만 사용
+- 페이지 가드 (Next.js middleware): `admin_token` httpOnly 쿠키로 로그인 여부 확인 (리다이렉트 용도만, API 인증 아님)
+- CSRF: API는 Authorization 헤더 기반이므로 CSRF 위험 없음 (쿠키 인증 미사용)
+
+**JWT 무효화 (MVP 제한)**:
+- Stateless 설계: 로그아웃 시 클라이언트 토큰 삭제만. 서버 블랙리스트 없음
+- 리스크: 탈취된 JWT는 만료(24h)까지 유효
+- v0.2: 메모리 블랙리스트 도입 예정 (V2-1)
+
+**토큰 갱신**: 갱신 후 구 토큰은 자연 만료까지 유효 (stateless). 보안 이벤트 시 super_admin이 해당 admin 비활성화로 대응.
+
+**Supabase anonymous 세션 갱신**: Supabase SDK가 자동 처리 (`onAuthStateChange`). 서버 API에서 별도 갱신 엔드포인트 불필요.
+
+## B.6 범위 외 (v0.2)
+
+| 엔드포인트 | 이유 |
+|-----------|------|
+| `GET /api/brands/:id`, `GET /api/ingredients/:id` | 제품 상세에 brand 포함. 별도 불필요 |
+| `GET /api/conversations` | MVP 단일 대화. chat/history로 충분 |
+| `POST /api/admin/sync` | V2-2 데이터 동기화 기능 |
+| 토큰 블랙리스트 API | V2-1 관리자 설정 기능 |

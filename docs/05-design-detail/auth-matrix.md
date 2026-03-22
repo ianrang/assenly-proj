@@ -149,8 +149,11 @@ interface AdminPermissions {
 | `/api/products` | GET | 선택 | 공개 읽기 |
 | `/api/products/:id` | GET | 선택 | 공개 읽기 |
 | `/api/treatments` | GET | 선택 | 공개 읽기 |
+| `/api/treatments/:id` | GET | 선택 | 공개 읽기 |
 | `/api/stores` | GET | 선택 | 공개 읽기 |
+| `/api/stores/:id` | GET | 선택 | 공개 읽기 |
 | `/api/clinics` | GET | 선택 | 공개 읽기 |
+| `/api/clinics/:id` | GET | 선택 | 공개 읽기 |
 | `/api/profile` | GET | 필수 | 본인만 |
 | `/api/profile` | PUT | 필수 | 본인만 |
 | `/api/profile/onboarding` | POST | 필수 | 본인만 |
