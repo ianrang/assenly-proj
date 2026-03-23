@@ -13,7 +13,7 @@
 | 사전 완료      | 12      | 12      | 100%    | ✅     |
 | Phase 0    | 37      | 37      | 100%    | ✅     |
 | Phase 1    | 60      | 60      | 100%    | ✅     |
-| Phase 2    | 76      | 0       | 0%      | ⬜ 미시작 |
+| Phase 2    | 76      | 1       | 1%      | 🔶 진행중 |
 | Phase 3    | 36      | 0       | 0%      | ⬜ 미시작 |
 | **MVP 합계** | **221** | **109** | **49%** |       |
 
@@ -291,7 +291,7 @@
 
 | ID   | 작업                    | 상세                           | 상태  |
 | ---- | --------------------- | ---------------------------- | --- |
-| P2-1 | 환경변수 + 설정 모듈          | server/core 설정, 환경별 분기 + shared/constants/ai.ts (LLM_CONFIG + TOKEN_CONFIG) | ⬜   |
+| P2-1 | 환경변수 + 설정 모듈          | server/core 설정, 환경별 분기 + shared/constants/ai.ts (LLM_CONFIG + TOKEN_CONFIG) | ✅   |
 | P2-2 | Supabase 서버 클라이언트     | server/core DB 접근 모듈         | ⬜   |
 | P2-3 | Supabase 브라우저 클라이언트   | client/core 클라이언트 모듈         | ⬜   |
 | P2-4 | DB 마이그레이션 실행            | P1-16(스키마 수정) + P1-17(관리자 테이블) + P1-18(인덱스) + 003_vector_search_functions.sql 전체 실행 | ⬜   |
