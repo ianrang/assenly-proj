@@ -13,9 +13,9 @@
 | 사전 완료      | 12      | 12      | 100%    | ✅     |
 | Phase 0    | 37      | 37      | 100%    | ✅     |
 | Phase 1    | 60      | 60      | 100%    | ✅     |
-| Phase 2    | 79      | 0       | 0%      | ⬜ 미시작 |
+| Phase 2    | 76      | 0       | 0%      | ⬜ 미시작 |
 | Phase 3    | 36      | 0       | 0%      | ⬜ 미시작 |
-| **MVP 합계** | **224** | **109** | **49%** |       |
+| **MVP 합계** | **221** | **109** | **49%** |       |
 
 
 **✅ Gate 0 통과 (2026-03-21) → Phase 1 (MVP 설계) 착수 준비**
@@ -271,7 +271,7 @@
 
 **✅ Gate 1 통과 (2026-03-22)**
 
-- 60/60 설계 문서 작성 완료 (P1-36/P1-37은 v0.2 연기 → P2-71/P2-72)
+- 60/60 설계 문서 작성 완료 (P1-36/P1-37은 v0.2 연기 → V2-13/V2-14)
 - Gate 1 교차 검증: 5개 영역 × 20개 문서 검증, 15건 이슈 → 전체 수정 완료
 - AI 섹션 최종 교차 검증: 3개 전문가 에이전트 병렬 투입, 8건 추가 이슈 발견 → 전체 수정 완료
 - D-6 수정 후 영향 검증: 전수 PASS
@@ -294,8 +294,8 @@
 | P2-1 | 환경변수 + 설정 모듈          | server/core 설정, 환경별 분기 + shared/constants/ai.ts (LLM_CONFIG + TOKEN_CONFIG) | ⬜   |
 | P2-2 | Supabase 서버 클라이언트     | server/core DB 접근 모듈         | ⬜   |
 | P2-3 | Supabase 브라우저 클라이언트   | client/core 클라이언트 모듈         | ⬜   |
-| P2-4 | 관리자 DB 마이그레이션 실행      | P1-17에서 작성한 SQL 실행           | ⬜   |
-| P2-5 | AI 엔진 (LLM 호출 + 스트리밍) | server/core AI 모듈            | ⬜   |
+| P2-4 | DB 마이그레이션 실행            | P1-16(스키마 수정) + P1-17(관리자 테이블) + P1-18(인덱스) + 003_vector_search_functions.sql 전체 실행 | ⬜   |
+| P2-5 | AI 엔진 + Rate Limiter     | server/core AI 모듈 (LLM 호출 + 스트리밍) + server/core/rate-limit.ts (메모리 Map, api-spec §4) | ⬜   |
 | P2-6 | 프롬프트 관리 모듈            | 시스템 프롬프트, 카드, 경로B, DV-4 프롬프트 | ⬜   |
 | P2-7 | Knowledge 검색 (RAG) 모듈 | server/core 벡터 + 메타데이터 검색    | ⬜   |
 | P2-8 | 대화 메모리 관리 모듈          | 히스토리 로드/저장, 요약               | ⬜   |
@@ -318,14 +318,15 @@
 | P2-17 | Treatment 리포지토리                            | 시술 데이터 접근. findByFilters/matchByVector/findById/findAll (search-engine.md §2.1, §2.3 Treatments) | ⬜   |
 | P2-17a | Clinic 리포지토리                              | 클리닉 데이터 접근. findByFilters/findById/findAll (search-engine.md §2.1, §2.3 Clinics) | ⬜   |
 | P2-18 | Knowledge 리포지토리                            | RAG 검색 래핑                                  | ⬜   |
-| P2-19 | 채팅 서비스                                     | 대화 오케스트레이션                                 | ⬜   |
-| P2-20 | Chat Tool — search_beauty_data             | 도메인 데이터 검색 tool handler                    | ⬜   |
+| P2-19 | 채팅 서비스                                     | 대화 오케스트레이션. P2-5/6/8/20/21/22 통합           | ⬜   |
+| P2-20 | Chat Tool — search_beauty_data             | 도메인 데이터 검색 tool handler. P2-7/12~17a 의존    | ⬜   |
 | P2-21 | Chat Tool — get_external_links             | 외부 링크 조회 tool handler                      | ⬜   |
 | P2-22 | Chat Tool — extract_user_profile (동기 tool) | 대화에서 개인화 변수 추출 (P1-33 확정: 동기 tool)         | ⬜   |
 | P2-23 | Chat API (스트리밍)                            | SSE 스트리밍 응답                                | ⬜   |
 | P2-24 | Chat 히스토리 API                              | 대화 히스토리 조회                                 | ⬜   |
 | P2-25 | Kit CTA API                                | 이메일 수집/전환                                  | ⬜   |
-| P2-26 | 행동 로그 서비스                                  | 비동기 행동 기록                                  | ⬜   |
+| P2-26 | 행동 로그 서비스 + API                              | 비동기 행동 기록 + POST /api/events 라우트 (api-spec §2.7) | ⬜   |
+| P2-26b | 도메인 데이터 공개 읽기 API                          | GET /api/products/:id, /api/treatments/:id, /api/stores/:id, /api/clinics/:id 등 (api-spec §2.2, search-engine §1.1 경로2) | ⬜   |
 | P2-27 | 단위 테스트 — beauty/ 순수 함수                     | judgment, shopping, treatment, derived 테스트 | ⬜   |
 | P2-28 | 단위 테스트 — zod 스키마 검증                        | API 입력, tool 파라미터 유효/무효 케이스                | ⬜   |
 
@@ -338,15 +339,15 @@
 | P2-29 | 공통 레이아웃 + locale 레이아웃     | shadcn/ui 초기화 + 루트, [locale] 레이아웃         | ⬜   |
 | P2-30 | 에러 바운더리 + 에러 화면           | 네트워크, LLM, 세션 에러 처리                      | ⬜   |
 | P2-31 | Header + LanguageSelector | 공통 헤더                                    | ⬜   |
-| P2-32 | Landing 페이지               | 2가지 경로 분기                                | ⬜   |
+| P2-32 | Landing 페이지               | 2가지 경로 분기 + ConsentBanner(동의 배너) + ReturnVisitBanner(재방문 흐름) | ⬜   |
 | P2-33 | 온보딩 페이지 + 4단계 컴포넌트        | Step 1~4 (피부/헤어, 고민, 여행, 관심)             | ⬜   |
 | P2-34 | 프로필 전환/확인 화면              | 로딩 애니메이션, 프로필 카드                         | ⬜   |
-| P2-35 | Chat 인터페이스                | 메시지 버블, 입력바, 스트리밍 UI                     | ⬜   |
+| P2-35 | Chat 인터페이스                | 메시지 버블, 입력바, 스트리밍 UI + SuggestedQuestions(경로B 초기 상태) | ⬜   |
 | P2-36 | 5영역 탭 바                   | Shops/Clinic/Salon/Eats/Exp (MVP: 2개 활성) | ⬜   |
 | P2-37 | ProductCard 컴포넌트          | PRD §3.5 기반                              | ⬜   |
 | P2-38 | TreatmentCard 컴포넌트        | PRD §3.5 기반                              | ⬜   |
 | P2-39 | HighlightBadge 컴포넌트       | VP-1 비개입 시각 강조                           | ⬜   |
-| P2-40 | Kit CTA 페이지               | 이메일 입력 폼, 제출                             | ⬜   |
+| P2-40 | Kit CTA 컴포넌트              | KitCtaCard + KitCtaSheet(Bottom sheet). Chat 내 인라인 (user-screens §6.6) | ⬜   |
 | P2-41 | Profile 페이지               | 프로필 조회/수정                                | ⬜   |
 | P2-42 | 프로필 Context               | React Context 상태 관리                      | ⬜   |
 | P2-43 | 면책 조항 페이지                 | 시술 추천 면책, 의료 조언 아닌 정보 제공 명시              | ⬜   |
@@ -359,7 +360,7 @@
 | ID    | 작업                 | 상세                                                           | 상태  |
 | ----- | ------------------ | ------------------------------------------------------------ | --- |
 | P2-45 | 관리자 인증 서비스 + API          | 로그인, 세션, 권한 확인 (api-spec.md §6)                                                                                                      | ⬜   |
-| P2-46 | 제네릭 CRUD 서비스              | `features/admin/service.ts` + withAuditLog 미들웨어 + 7엔티티 zod 스키마 (api-spec.md §5.1)                                                       | ⬜   |
+| P2-46 | 제네릭 CRUD 서비스              | `features/admin/service.ts` + withAuditLog 미들웨어 + 7엔티티 zod 스키마 + CRUD 후 비동기 임베딩 재생성 연동 (api-spec.md §5.1, embedding-strategy §3.4) | ⬜   |
 | P2-46a | 복합 엔티티 라우트               | Product/Store/Treatment/Clinic CRUD 라우트 + 하이라이트 API(§5.3) + 관계 API(§5.2). P2-16/16a/17/17a 리포지토리 의존                                     | ⬜   |
 | P2-46b | 단순 엔티티 라우트               | Brand/Ingredient/Doctor CRUD 라우트 + 리포지토리 생성 포함 (findAll/findById/create/update/deactivate, query-utils.ts 재사용)                           | ⬜   |
 | P2-47 | 이미지 업로드 서비스 + API         | Product/Store/Clinic/Treatment 4엔티티. Supabase Storage + magic bytes 검증 + 순서 관리 (api-spec.md §5.4)                                       | ⬜   |
@@ -368,7 +369,8 @@
 | P2-50 | 관리자 대시보드 (간단)      | 엔티티별 데이터 건수, 최근 변경                                           | ⬜   |
 | P2-51 | 관리자 공통 컴포넌트 — 목록   | 테이블, 검색, 필터, 페이지네이션                                          | ⬜   |
 | P2-52 | 관리자 공통 컴포넌트 — 폼    | 폼 필드, JSONB 다국어 입력, 이미지 업로드                                  | ⬜   |
-| P2-53 | 7 엔티티 CRUD 페이지     | Product, Store, Brand, Ingredient, Clinic, Treatment, Doctor | ⬜   |
+| P2-53a | 복합 엔티티 CRUD 페이지   | Product, Store, Clinic, Treatment — 이미지+관계+하이라이트 포함 (P2-46a 대응) | ⬜   |
+| P2-53b | 단순 엔티티 CRUD 페이지   | Brand, Ingredient, Doctor — 기본 CRUD (P2-46b 대응)              | ⬜   |
 | P2-54 | 관계 관리 UI           | Product↔Store, Product↔Ingredient, Clinic↔Treatment          | ⬜   |
 | P2-55 | 하이라이트 관리 UI        | is_highlighted 토글 + badge 텍스트                                | ⬜   |
 
@@ -385,7 +387,7 @@
 | P2-60 | 브랜드 50건+ / 성분 100건+ | K-뷰티 브랜드, 활성 성분                 | ⬜   |
 | P2-61 | 클리닉 30건+ / 시술 50건+  | 서울 외국인 친화 클리닉                   | ⬜   |
 | P2-62 | 의사 30건+ / 관계 데이터    | 외국어 가능 의사, 3개 관계 테이블            | ⬜   |
-| P2-63 | 임베딩 생성 + 벡터 DB 적재   | 배치 임베딩 스크립트, 품질 검증              | ⬜   |
+| P2-63 | 임베딩 생성 + 벡터 DB 적재   | text-builder.ts + generator.ts (embedding-strategy §2) + 배치 스크립트 + 품질 검증 | ⬜   |
 
 
 ## 통합 테스트
@@ -407,18 +409,6 @@
 | ----- | ------------------ | ------------------------------------------------------------------------------- | --- |
 | P2-69 | P1-30 평가 자동화 구현    | prompt-evaluation.md 20건 시나리오 → scripts/prompt-eval.ts 자동화. PoC(P0-12/16/17) 대체 | ⬜   |
 | P2-70 | 멀티턴 adversarial 검증 | P2-69 평가 실행 후, 멀티턴 탈옥 패턴(점진적 신뢰 구축→공격) 테스트 + 가드레일 강화. P1-26은 단일턴만 커버            | ⬜   |
-
-
-## P1에서 v0.2로 연기된 항목
-
-
-| ID    | 작업               | 트리거 조건                                                                                                                 | 원 ID  | 상태  |
-| ----- | ---------------- | ---------------------------------------------------------------------------------------------------------------------- | ----- | --- |
-| P2-71 | 히스토리 요약 전략       | 계정 인증 + 장기 대화(재방문) 도입 시. 20턴 초과 대화의 요약 방법 설계: 요약 프롬프트, 요약 대상(오래된 턴), 요약 결과 저장/주입 방식. token-management.md §3.3 확장 경로 참조 | P1-36 | ⬜   |
-| P2-72 | RAG 결과 압축        | 데이터 규모 증가 (500→5,000건+) 시. 검색 결과 필드 선택(불필요 필드 제외), 토큰 절약 전략. tool-spec.md §1 출력 JSON 기준으로 LLM 전달용 경량 포맷 설계             | P1-37 | ⬜   |
-| P2-73 | 토큰 카운터 구현        | 비용 모니터링에서 토큰 급증 감지 시                                                                                                   | P1-35 | ⬜   |
-| P2-74 | 모델별 토큰 예산 분리     | 역방향 폴백(Gemini→Claude) 도입 시                                                                                             | P1-35 | ⬜   |
-| P2-75 | 토큰 기반 히스토리 로드 전환 | 턴당 토큰 변동이 커서 턴 수 기반이 부정확할 때 (모니터링 결과 기반)                                                                               | P1-35 | ⬜   |
 
 
 ---
@@ -535,6 +525,12 @@
 | V2-9  | 임베딩 태그 필터링          | 신호 태그(hydrating 등) vs 노이즈 태그(bestseller 등) 분류 규칙 정의 + EMBEDDING_CONFIG.TAG_FILTER 활성화 | P1-38         |
 | V2-10 | 다국어 임베딩 텍스트 확장      | ja/zh/es/fr 사용자 비율 >20% 시 해당 언어 임베딩 텍스트 추가. EMBEDDING_CONFIG.TEXT_LANGUAGES 확장        | P1-38         |
 | V2-11 | 교차 엔티티 임베딩 재생성      | Brand 이름 변경 시 관련 Product 임베딩 CASCADE 재생성                                              | P1-39         |
+| V2-12 | 프롬프트 DB 전환 + 관리자 편집 UI | 코드 상수(prompts.ts) → DB prompt_configs 테이블 마이그레이션. 섹션별 행 관리 + 캐싱(TTL) + 관리자 UI 편집(super_admin) + 버전 히스토리 | system-prompt-spec.md §1 |
+| V2-13 | 히스토리 요약 전략       | 트리거: 계정 인증 + 장기 대화(재방문) 도입 시. 20턴 초과 요약 설계. token-management.md §3.3          | P1-36         |
+| V2-14 | RAG 결과 압축        | 트리거: 데이터 규모 증가 (500→5,000건+) 시. 검색 결과 경량 포맷 설계. tool-spec.md §1               | P1-37         |
+| V2-15 | 토큰 카운터 구현        | 트리거: 비용 모니터링에서 토큰 급증 감지 시                                                         | P1-35         |
+| V2-16 | 모델별 토큰 예산 분리     | 트리거: 역방향 폴백(Gemini→Claude) 도입 시                                                    | P1-35         |
+| V2-17 | 토큰 기반 히스토리 로드 전환 | 트리거: 턴당 토큰 변동이 커서 턴 수 기반 부정확 시                                                   | P1-35         |
 
 
 ### v0.3 백로그
