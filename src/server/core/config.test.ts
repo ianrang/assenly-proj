@@ -81,6 +81,12 @@ describe('envSchema', () => {
     expect(env.RATE_LIMIT_ANON_CREATE_PER_MIN).toBe(3);
     expect(env.RATE_LIMIT_ADMIN_PER_MIN).toBe(60);
   });
+
+  it('AI_FALLBACK_PROVIDER=google인데 GOOGLE_GENERATIVE_AI_API_KEY 없으면 실패', async () => {
+    stubValidEnv({ AI_FALLBACK_PROVIDER: 'google' });
+    vi.stubEnv('GOOGLE_GENERATIVE_AI_API_KEY', '');
+    await expect(import('@/server/core/config')).rejects.toThrow();
+  });
 });
 
 describe('getModel', () => {

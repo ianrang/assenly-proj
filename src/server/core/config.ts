@@ -65,6 +65,21 @@ const envSchema = z.object({
       path: ['GOOGLE_GENERATIVE_AI_API_KEY'],
     });
   }
+  // 폴백 프로바이더 API 키 검증 — 설정됐으면 해당 키도 필수
+  if (data.AI_FALLBACK_PROVIDER === 'anthropic' && !data.ANTHROPIC_API_KEY) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: 'ANTHROPIC_API_KEY is required when AI_FALLBACK_PROVIDER is anthropic',
+      path: ['ANTHROPIC_API_KEY'],
+    });
+  }
+  if (data.AI_FALLBACK_PROVIDER === 'google' && !data.GOOGLE_GENERATIVE_AI_API_KEY) {
+    ctx.addIssue({
+      code: z.ZodIssueCode.custom,
+      message: 'GOOGLE_GENERATIVE_AI_API_KEY is required when AI_FALLBACK_PROVIDER is google',
+      path: ['GOOGLE_GENERATIVE_AI_API_KEY'],
+    });
+  }
 });
 
 /** 검증된 환경변수. 다른 파일은 이 객체만 import (Q-8). */
