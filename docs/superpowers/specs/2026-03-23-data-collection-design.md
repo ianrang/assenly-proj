@@ -1,6 +1,6 @@
 # MVP 데이터 수집 설계서
 
-> 버전: 1.2
+> 버전: 1.3
 > 작성일: 2026-03-23
 > 성격: MVP(v0.1) 도메인 데이터 수집의 종합 설계 — 소스, 법적 검토, 큐레이션, 파이프라인, 리스크
 > 정본 참조: schema.dbml (DB), PRD.md (요구사항), data-strategy.md (PoC 결정), data-pipeline.md (ETL)
@@ -468,6 +468,15 @@ downtime_days 다양성: 0일 20개+, 1~3일 15개+, 4일+ 10개+
 
 # 7. 파이프라인 아키텍처
 
+## 7.0 에러 격리 정책
+
+| 범위 | 정책 | 구현 |
+|------|------|------|
+| **프로바이더 간** | S1 실패해도 S2 독립 실행 | `Promise.allSettled` 사용. 실패 프로바이더 로그 + 스킵 |
+| **AI enrichment 건별** | 200건 중 1건 실패 시 해당 건만 스킵 | 건별 try-catch. 실패 건 `enrichment_status: 'failed'` 마킹 → 수동 보완 |
+| **Stage 간 임계치** | 이전 Stage 최소 성공률 50% 미달 시 중단 | Stage 2에서 100건 시도 → 50건 미만 성공 시 원인 조사 후 재실행 |
+| **DB 적재** | 엔티티 타입별 독립 트랜잭션, 100건 단위 청크 | 청크 실패 시 해당 청크만 롤백 (data-pipeline.md §3.4.2 계승) |
+
 ## 7.1 5단계 흐름
 
 ```
@@ -478,7 +487,30 @@ Stage 4: 수동 보완+검수  → ValidatedRecord[] (관리자 검수 완료)
 Stage 5: 적재+임베딩    → DB rows + embedding vectors
 ```
 
-## 7.2 코드 아키텍처 (4계층 준수)
+## 7.2 코드 아키텍처 — 2단계 전략
+
+### scripts/의 DAG 내 위치
+
+CLAUDE.md 4계층 DAG에서 `scripts/`는 **DAG 외부의 보조 Composition Root**이다. `app/`과 동일한 조합 루트 자격:
+
+- `scripts/ → server/core/, shared/` : 허용 (app/과 동일 방향)
+- `server/ → scripts/` : **금지** (역방향)
+- `client/ → scripts/` : **금지** (역방향)
+
+> 향후 CLAUDE.md 반영 권장: P-4a로 `scripts/`를 보조 Composition Root로 명시.
+
+### `server-only` guard 정책
+
+`server/core/` 파일은 L-0a에 따라 `import 'server-only'`가 있다. CLI(`npx tsx`) 실행 시 `server-only`는 Node.js 환경에서 noop으로 동작하므로 에러 없음. 이는 패키지의 설계 의도(브라우저 번들 방지)와 일치하며, CLI는 브라우저가 아니므로 정상 동작이다.
+
+### 파이프라인 전용 환경변수
+
+| 변수 유형 | 위치 | 근거 |
+|----------|------|------|
+| 파이프라인 전용 (KAKAO_API_KEY, NAVER_CLIENT_ID, MFDS_SERVICE_KEY) | `scripts/seed/config.ts` | 런타임 서비스에서 미사용. core 범위 확장 방지 (P-2) |
+| 공통 (SUPABASE_URL, LLM_API_KEY) | `server/core/config.ts` 참조 | 런타임 + 파이프라인 양쪽 사용 |
+
+### Phase 2 초반: CLI 전용
 
 ```
 scripts/seed/                          ← CLI 진입점 (thin: manifest 읽기 → 서비스 호출)
@@ -512,18 +544,38 @@ shared/validation/                     ← zod 스키마 (파이프라인 + API 
   ├── store-schema.ts
   └── ...
 
-> **아키텍처 결정**: 파이프라인 로직을 `server/features/pipeline/`이 아닌 `scripts/seed/lib/`에 배치한다.
-> 이유: 파이프라인 모듈은 외부 API 호출 + LLM 호출 + bulk DB insert를 포함하는 배치 성격으로, CLAUDE.md L-7(beauty=순수함수)·L-8(repositories=DB CRUD만)의 features/ 규칙과 맞지 않는다.
-> 관리자 앱(`POST /api/admin/sync`)에서 필요 시 `scripts/seed/lib/`를 직접 import한다.
-> **Phase 2 착수 전 재검토**: CLAUDE.md 아키텍처와 정확한 배치 위치를 확정한다.
+### Phase 2 중반: 관리자 앱 통합 시 (로직 이동)
+
+관리자 앱 동기화 기능 구현 시, `scripts/seed/lib/` 로직을 `server/features/pipeline/`으로 **이동**:
+
+```
+server/features/pipeline/              ← import 'server-only' 추가. L-0a 준수.
+  ├── providers/, enrichment/, services, loader, types
+  └── config.ts                        ← 파이프라인 전용 env (core/config.ts와 분리)
+
+scripts/seed/                          ← thin CLI (server/features/pipeline/ 호출만)
+app/api/admin/sync/route.ts            ← 동일 server/features/pipeline/ 호출
+```
+
+이 시점에서 `scripts/seed/lib/`는 삭제. 양쪽(CLI + 관리자 API)이 동일 로직을 사용.
+
+### Import 규칙 (Phase 2 초반 기준)
+
+| 소스 | 허용 import | 금지 import |
+|------|-----------|-----------|
+| `scripts/seed/*.ts` (CLI) | `scripts/seed/lib/*`, `server/core/*`, `shared/*` | `server/features/*`, `client/*` |
+| `scripts/seed/lib/providers/*` | `lib/types.ts`, `shared/types/*`, HTTP API | `server/core/*`, `server/features/*` |
+| `scripts/seed/lib/enrichment/*` | `lib/types.ts`, `server/core/ai-engine.ts`, `shared/*` | `server/features/*` |
+| `scripts/seed/lib/loader.ts` | `lib/types.ts`, `server/core/db.ts`, `shared/*` | `server/features/*` |
+| `scripts/seed/lib/types.ts` | `shared/types/*` | 그 외 전부 |
 ```
 
 ## 7.3 실행 환경 (단계적 전환)
 
-| 시점 | 환경 | 진입점 |
-|------|------|--------|
-| Phase 2 초반 | CLI | `npx tsx scripts/seed/run-all.ts --milestone=M1` |
-| Phase 2 중반 | 관리자 앱 | `POST /api/admin/sync` (동일 server/features/pipeline/ 호출) |
+| 시점 | 환경 | 진입점 | 로직 위치 |
+|------|------|--------|----------|
+| Phase 2 초반 | CLI | `npx tsx scripts/seed/run-all.ts --milestone=M1` | `scripts/seed/lib/` |
+| Phase 2 중반 | CLI + 관리자 앱 | CLI 동일 + `POST /api/admin/sync` | `server/features/pipeline/` (이동 후) |
 
 ## 7.4 수집 순서 (FK 의존성)
 
