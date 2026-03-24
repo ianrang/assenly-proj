@@ -384,7 +384,7 @@
 
 | ID    | 작업                        | 상세                                                                                | 의존  | 상태  |
 | ----- | ------------------------- | --------------------------------------------------------------------------------- | --- | --- |
-| P2-V1 | 네이버 쇼핑 API 약관 확인 (U-5)    | 네이버 개발자 이용약관 정독. "검색 결과 가공하여 별도 서비스 구축" 허용 여부 확인. **불가 시 S2 제거 → products 전량 수동** | 없음  | ⬜   |
+| P2-V1 | ~~네이버 약관~~ + 쿠팡 파트너스 가입 (U-5 확정, U-12) | **U-5 완료**: 네이버 API 약관 7.3③ DB 금지 확정 → S2 제거. **신규**: 쿠팡 파트너스 가입 + API 활성화 확인 (U-12). 올리브영 어필리에이트 동시 가입 (U-9) | 없음 | 🔶 |
 | P2-V2 | 식약처 API 응답 형식 검증 (U-2)    | data.go.kr API 키 발급 → S3(원료성분)/S4(사용제한)/S5(보고품목) 각 1회 호출. 실제 필드명·형식 확인            | 없음  | ⬜   |
 | P2-V3 | 브랜드 공식 이미지 정책 확인 (U-6)    | 이니스프리, 라네즈, 설화수, 미샤, 코스알엑스 5개 브랜드 프레스킷/이미지 사용 정책 확인. 불가 시 placeholder 전략          | 없음  | ⬜   |
 | P2-V4 | EU CosIng CSV 다운로드 + 커버리지 | CSV 다운로드 → 타깃 100 성분 중 CAS번호 매칭률 측정 (U-3). 50% 미만 시 전량 수동                         | 없음  | ⬜   |
@@ -403,7 +403,7 @@
 | P2-56b | scripts/seed/config.ts 파이프라인 환경변수            | KAKAO_API_KEY, NAVER_CLIENT_ID, MFDS_SERVICE_KEY 등 파이프라인 전용 env. core/config.ts 수정 없음 (P-2)              | P2-V1, P2-V2   | ⬜   |
 | P2-56c | scripts/seed/lib/types.ts 파이프라인 타입           | RawRecord, EnrichedRecord, ValidatedRecord, PipelineResult. shared/types/domain.ts import만               | P2-56a         | ⬜   |
 | P2-56d | 카카오 로컬 프로바이더 (S1)                            | scripts/seed/lib/providers/kakao-local.ts. P0-33 PoC 계승. PlaceProvider 인터페이스                             | P2-56b, P2-56c | ⬜   |
-| P2-56e | 네이버 쇼핑 프로바이더 (S2)                            | scripts/seed/lib/providers/naver-shopping.ts. **P2-V1 결과 "불가" 시 스킵**. HTML 태그 제거, 중복 제거(brand+title 정규화) | P2-V1, P2-56c  | ⬜   |
+| P2-56e | **쿠팡 파트너스 프로바이더 (S7)** | scripts/seed/lib/providers/coupang-partners.ts. Search API → 제품명, 가격, 이미지, 카테고리, 구매링크. ~~S2 네이버 쇼핑 확정 제거 (약관 7.3③).~~ U-12 활성화 조건 확인 후 구현 | P2-V1, P2-56c | ⬜   |
 | P2-56f | 식약처 원료성분 프로바이더 (S3)                          | scripts/seed/lib/providers/mfds-ingredient.ts. P2-V2 응답 형식 기반                                            | P2-V2, P2-56c  | ⬜   |
 | P2-56g | 식약처 사용제한 프로바이더 (S4)                          | scripts/seed/lib/providers/mfds-restricted.ts. S3 CAS번호 기반 LEFT JOIN                                     | P2-56f         | ⬜   |
 | P2-56h | 식약처 보고품목 프로바이더 (S5)                          | scripts/seed/lib/providers/mfds-functional.ts. 제품 교차 검증용. 퍼지 매칭                                          | P2-V2, P2-56c  | ⬜   |
