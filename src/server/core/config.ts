@@ -121,3 +121,22 @@ export async function getModel(provider?: AIProvider, model?: string) {
       throw new Error(`Unsupported AI provider: ${p}`);
   }
 }
+
+// ============================================================
+// 임베딩 모델 팩토리 — search-engine.md §4.2
+// ⚠️ L-4: core/ 수정. 비즈니스 무관 팩토리 (L-5 준수).
+// P-7: 프로바이더 변경 = .env만.
+// ============================================================
+
+/** 임베딩 모델 인스턴스 반환. 프로바이더는 env.EMBEDDING_PROVIDER. */
+export async function getEmbeddingModel() {
+  const provider = env.EMBEDDING_PROVIDER;
+  switch (provider) {
+    case 'google': {
+      const { google } = await import('@ai-sdk/google');
+      return google.textEmbeddingModel('gemini-embedding-001');
+    }
+    default:
+      throw new Error(`Unsupported embedding provider: ${provider}`);
+  }
+}

@@ -136,3 +136,23 @@ describe('getModel', () => {
     await expect(getModel('mistral' as any)).rejects.toThrow('Unsupported AI provider');
   });
 });
+
+describe('getEmbeddingModel', () => {
+  beforeEach(() => {
+    vi.resetModules();
+    vi.unstubAllEnvs();
+  });
+
+  it('google 임베딩 모델 반환 (기본값)', async () => {
+    stubValidEnv();
+    const { getEmbeddingModel } = await import('@/server/core/config');
+    const model = await getEmbeddingModel();
+    expect(model).toBeDefined();
+    expect(model.modelId).toContain('embedding');
+  });
+
+  it('지원하지 않는 EMBEDDING_PROVIDER는 envSchema에서 거부', async () => {
+    stubValidEnv({ EMBEDDING_PROVIDER: 'cohere' });
+    await expect(import('@/server/core/config')).rejects.toThrow();
+  });
+});
