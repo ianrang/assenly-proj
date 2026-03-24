@@ -33,6 +33,9 @@ describe('embedQuery', () => {
     expect(mockEmbed).toHaveBeenCalledWith({
       model: fakeModel,
       value: 'test query',
+      experimental_providerMetadata: {
+        google: { taskType: 'RETRIEVAL_QUERY' },
+      },
     });
   });
 
@@ -49,7 +52,7 @@ describe('embedDocument', () => {
     mockGetEmbeddingModel.mockReset();
   });
 
-  it('텍스트를 벡터로 변환한다', async () => {
+  it('텍스트를 벡터로 변환한다 (RETRIEVAL_DOCUMENT)', async () => {
     const fakeModel = { modelId: 'gemini-embedding-001' };
     const fakeEmbedding = [0.4, 0.5, 0.6];
     mockGetEmbeddingModel.mockResolvedValue(fakeModel);
@@ -62,6 +65,9 @@ describe('embedDocument', () => {
     expect(mockEmbed).toHaveBeenCalledWith({
       model: fakeModel,
       value: 'test document',
+      experimental_providerMetadata: {
+        google: { taskType: 'RETRIEVAL_DOCUMENT' },
+      },
     });
   });
 
