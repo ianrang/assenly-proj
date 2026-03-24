@@ -1,6 +1,36 @@
-import "server-only";
+import 'server-only';
+import { embed } from 'ai';
+import { getEmbeddingModel } from './config';
 
-// TODO: Implement RAG search — TDD §3.2
-// - pgvector similarity search
-// - Metadata filtering
-// - No K-beauty business terms (L-5)
+// ============================================================
+// Knowledge 모듈 — search-engine.md §4.2
+// 텍스트 → 벡터 변환. 비즈니스 무관 (L-5).
+// G-9: export 2개만 (embedQuery, embedDocument).
+// ⚠️ L-4: core/ 파일 수정. 비즈니스 용어 없음.
+// ============================================================
+
+/**
+ * 검색 쿼리 텍스트를 벡터로 변환.
+ * search-handler에서 벡터 검색 시 사용.
+ */
+export async function embedQuery(text: string): Promise<number[]> {
+  if (!text) {
+    throw new Error('Embedding text must not be empty');
+  }
+  const model = await getEmbeddingModel();
+  const { embedding } = await embed({ model, value: text });
+  return embedding;
+}
+
+/**
+ * 문서 텍스트를 벡터로 변환.
+ * 임베딩 생성 파이프라인에서 사용 (admin CRUD 후 비동기).
+ */
+export async function embedDocument(text: string): Promise<number[]> {
+  if (!text) {
+    throw new Error('Embedding text must not be empty');
+  }
+  const model = await getEmbeddingModel();
+  const { embedding } = await embed({ model, value: text });
+  return embedding;
+}
