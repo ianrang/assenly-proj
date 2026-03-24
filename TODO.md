@@ -13,9 +13,9 @@
 | 사전 완료      | 12      | 12      | 100%    | ✅      |
 | Phase 0    | 37      | 37      | 100%    | ✅      |
 | Phase 1    | 60      | 60      | 100%    | ✅      |
-| Phase 2    | 103     | 7       | 7%      | 🔶 진행중 |
+| Phase 2    | 103     | 8       | 8%      | 🔶 진행중 |
 | Phase 3    | 36      | 0       | 0%      | ⬜ 미시작  |
-| **MVP 합계** | **248** | **116** | **47%** |        |
+| **MVP 합계** | **248** | **117** | **47%** |        |
 
 
 **✅ Gate 0 통과 (2026-03-21) → Phase 1 (MVP 설계) 착수 준비**
@@ -299,7 +299,7 @@
 | P2-5 | AI 엔진 + Rate Limiter  | core/rate-limit.ts(메모리Map, window구분자) + features/chat/llm-client.ts(callWithFallback+shouldFallback). ai-engine.ts 삭제. 테스트 13개 | ✅   |
 | P2-6 | 프롬프트 관리 모듈            | features/chat/prompts.ts: 고정 6개 상수(§2~§7) + 동적 3개 함수(§8~§10) + buildSystemPrompt 조립. 순수 함수. 테스트 6개 | ✅   |
 | P2-7 | Knowledge 검색 (RAG) 모듈 | config.ts: getEmbeddingModel() + knowledge.ts: embedQuery(RETRIEVAL_QUERY) + embedDocument(RETRIEVAL_DOCUMENT). 테스트 6개 | ✅   |
-| P2-8 | 대화 메모리 관리 모듈          | 히스토리 로드/저장, 요약                                                                       | ⬜   |
+| P2-8 | 대화 메모리 관리 모듈          | core/memory.ts: loadRecentMessages(턴 기반) + saveMessages(DB INSERT). SupabaseClient 파라미터 주입(P-4). 테스트 8개 | ✅   |
 
 
 ## 사용자 앱 — 서비스 + API (2~3주)
