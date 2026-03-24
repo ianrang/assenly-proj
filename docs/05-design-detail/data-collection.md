@@ -1,7 +1,7 @@
 # MVP 데이터 수집 설계서
 
-> 버전: 1.3
-> 작성일: 2026-03-23
+> 버전: 2.0
+> 작성일: 2026-03-24
 > 성격: MVP(v0.1) 도메인 데이터 수집의 종합 설계 — 소스, 법적 검토, 큐레이션, 파이프라인, 리스크
 > 정본 참조: schema.dbml (DB), PRD.md (요구사항), data-strategy.md (PoC 결정), data-pipeline.md (ETL)
 > 범위: DOM-1 쇼핑 + DOM-2 시술 (7 엔티티 + 3 junction)
@@ -34,18 +34,67 @@
 
 ## 1.2 데이터 확보 단계별 전략 — 3단계 로드맵
 
-### Stage 1 (MVP v0.1): 수동 + 쿠팡 파트너스 API + CSV 일괄
+### Stage 1 (MVP v0.1): 3채널 수집 + AI 분류 + 전수 검수
 
-| 항목 | 방법 | 도구 |
-|------|------|------|
-| **products 200+** | **(1) 쿠팡 파트너스 API** (Search API로 K-뷰티 제품 검색 → 제품명, 가격, 이미지, 카테고리, 구매링크 자동 수집. 어필리에이트 계약에 의한 합법적 데이터 제공). **(2) 수동 보완** — 쿠팡에 없는 올리브영 전용 제품은 브라우저에서 올리브영/시코르 웹사이트 참조 → 구글시트/CSV 작성. **(3) AI 보강** — skin_types, concerns, description 자동 분류/생성 | 쿠팡 파트너스 프로바이더 + CSV 로더 + AI 분류/번역 |
-| **stores/clinics** | 카카오 API 자동 수집 → 관리자 수동 보완 | 카카오 프로바이더 + 관리자 앱 |
-| **ingredients** | 식약처 API(S3) + CosIng(S6) + AI 보강 | 파이프라인 자동 |
-| **treatments/doctors** | 전량 수동 입력 | 관리자 앱 + CSV |
-| **purchase_links** | 쿠팡 파트너스 API (자동) + 올리브영 글로벌 어필리에이트 (가입 후) | 쿠팡 딥링크 API + Involve Asia |
-| **목표** | 200제품, 50매장, 30클리닉 — 개인화 정확도 우선 | |
+**수집 워크플로우**:
 
-> **쿠팡 파트너스 API**: 어필리에이트 목적으로 제품 데이터를 공식 제공하는 API. 네이버 쇼핑 API와 달리 DB 구축이 어필리에이트의 본래 목적(제품 추천 → 구매 링크 → 커미션)에 해당하므로 합법. 활성화 조건: 판매 실적 15만원. 1시간 10회 검색 제한 (MVP 200건에 충분).
+```
+[Stage 1] 데이터 수집 — 3채널 병렬
+  Channel A: 쿠팡 파트너스 API (S7 활성 시) → 자동
+  Channel B: CSV/엑셀 임포트 (구글시트 수동 작성) → 반자동
+  Channel C: 관리자 앱 CRUD → 수동
+  → RawRecord[] (통합, source 채널 추적)
+
+[Stage 2] AI 처리
+  번역(6언어) → 분류(skin_types, concerns + confidence 점수) → 설명 생성
+  → EnrichedRecord[] + confidence scores
+
+[Stage 3] 전수 검수 (D-7 준수)
+  AI 결과를 CSV export → 구글시트에서 전수 검수
+  confidence 점수는 검수 우선순위 참고용 (자동 승인 없음)
+  검수 완료 → CSV import → ValidatedRecord[]
+
+[Stage 4] 검증 + 적재 + 임베딩
+  zod 검증 → DB UPSERT (FK 순서) → 임베딩 생성
+```
+
+**엔티티별 수집 채널**:
+
+| 항목 | Channel A (S7 쿠팡 API) | Channel B (CSV) | Channel C (수동) |
+|------|----------------------|----------------|----------------|
+| **products** | S7 활성 시 자동 수집 (제품명, 가격, 이미지, 카테고리, 구매링크) | S7 미활성 시 또는 쿠팡 미등록 제품 — 브라우저에서 올리브영/시코르 참조 → 구글시트 | 개별 보완 |
+| **stores/clinics** | — | — | 카카오 API(S1) 자동 + 수동 보완 |
+| **ingredients** | — | — | 식약처 API(S3) + CosIng(S6) 자동 + AI 보강 |
+| **treatments/doctors** | — | 구글시트 일괄 | 개별 입력 |
+| **purchase_links** | 쿠팡 딥링크 API (자동) | 올리브영 어필리에이트 링크 (수동) | — |
+| **목표** | | 200제품, 50매장, 30클리닉 — 개인화 정확도 우선 | |
+
+> **쿠팡 파트너스 API(S7)**: 어필리에이트 목적으로 제품 데이터를 공식 제공. 활성화 조건: 판매 실적 15만원 (U-12). **미활성 시 전량 Channel B(CSV) 폴백.**
+> **올리브영 크롤링은 사용하지 않음**: robots.txt 전체 차단 + 향후 파트너십 훼손 리스크. 브라우저 수동 참조만 허용.
+
+### AI 처리 상세
+
+| 처리 | 입력 | 출력 | 비용 (200건) |
+|------|------|------|------------|
+| 번역 (ko→en+4언어) | name_ko, description_ko | 6언어 LocalizedText | ~$1 |
+| 분류 (skin_types, concerns) | name + category + brand | 배열 + confidence 0.0~1.0 | ~$2 |
+| 설명 생성 | name + brand + category | description_ko/en | ~$2 |
+| 리뷰 요약 | 제품 특성 | review_summary ("AI 생성" 면책) | ~$1 |
+| **합계** | | | **~$6** |
+
+> confidence 점수는 검수자가 "AI가 얼마나 확신하는가"를 참고하여 검수 우선순위를 정하는 용도. **자동 승인에 사용하지 않음** (D-7: 개인화 핵심 필드 전수 검수).
+
+### 검수 워크플로우
+
+```
+AI 처리 완료 → CSV export (enriched-products.csv)
+  → 구글시트에서 열기
+  → 컬럼: name_ko | brand | skin_types (AI) | confidence | concerns (AI) | confidence | ...
+  → 검수자가 AI 결과 확인/수정 (confidence 낮은 건 우선)
+  → 검수 완료 시트 → CSV 내보내기 → import → DB 적재
+```
+
+**CLI-only 검수 대안**: `scripts/seed/review.ts`로 터미널에서 건별 확인도 가능하나, 200건은 구글시트가 더 효율적.
 
 ### MVP = 수익 검증 단계
 
@@ -584,7 +633,7 @@ downtime_days 다양성: 0일 20개+, 1~3일 15개+, 4일+ 10개+
 | stores | name, address, location, district, links, type | 번역(6언어), description | operating_hours, english_support, tourist_services, images, rating | ~50% |
 | clinics | name, address, location, district, links, type | 번역, description | foreigner_friendly, license_verified, images, rating | ~45% |
 | products | **S7 쿠팡**: name.ko, price, image, category, purchase_links. 쿠팡 미등록 제품은 수동 | 번역, skin_types, concerns (**→ 전수 검수 D-7**), description, review_summary | 매장 정가 조정, volume, english_label, key_ingredients | ~45% (S7 활성화 시) |
-| brands | name.ko (S2에서 추출) | 번역 | origin, tier, specialties | ~30% |
+| brands | name.ko (S7 또는 CSV에서 추출) | 번역 | origin, tier, specialties | ~30% |
 | ingredients | name.ko, name.en, CAS (S3) + inci_name (S6) + 제한 여부 (S4) | function 변환, caution 추론, 번역 | caution_skin_types 검수, common_in | ~50% |
 | treatments | — | 번역, target_concerns, suitable_skin_types, description | 전 필드 수동 입력 (의학 정보) | ~25% |
 | doctors | — | 번역 | 전 필드 수동 입력 | ~5% |
@@ -602,14 +651,15 @@ downtime_days 다양성: 0일 20개+, 1~3일 15개+, 4일+ 10개+
 | **Stage 간 임계치** | 이전 Stage 최소 성공률 50% 미달 시 중단 | Stage 2에서 100건 시도 → 50건 미만 성공 시 원인 조사 후 재실행 |
 | **DB 적재** | 엔티티 타입별 독립 트랜잭션, 100건 단위 청크 | 청크 실패 시 해당 청크만 롤백 (data-pipeline.md §3.4.2 계승) |
 
-## 7.1 5단계 흐름
+## 7.1 4단계 워크플로우
 
 ```
-Stage 1: 큐레이션       → YAML manifest (수집 대상 리스트)
-Stage 2: 자동 수집      → RawRecord[] (6개 API/CSV)
-Stage 3: AI 보강       → EnrichedRecord[] (번역, 분류, 생성)
-Stage 4: 수동 보완+검수  → ValidatedRecord[] (관리자 검수 완료)
-Stage 5: 적재+임베딩    → DB rows + embedding vectors
+Stage 1: 데이터 수집     → RawRecord[] (3채널: S7 API / CSV 임포트 / 관리자 수동)
+Stage 2: AI 처리        → EnrichedRecord[] (번역, 분류+confidence, 설명 생성)
+Stage 3: 전수 검수       → ValidatedRecord[] (CSV export → 구글시트 검수 → CSV import)
+Stage 4: 검증+적재+임베딩 → DB rows + embedding vectors
+
+[M3 이후] 품질 검증 도구: 커버리지 갭 분석 (skin_type × concern × budget 교차)
 ```
 
 ## 7.2 코드 아키텍처 — 2단계 전략
@@ -638,32 +688,49 @@ CLAUDE.md 4계층 DAG에서 `scripts/`는 **DAG 외부의 보조 Composition Roo
 ### Phase 2 초반: CLI 전용
 
 ```
-scripts/seed/                          ← CLI 진입점 (thin: manifest 읽기 → 서비스 호출)
-  ├── manifests/*.yaml                 ← Stage 1 수집 대상
-  ├── fetch.ts                         ← Stage 2 CLI
-  ├── enrich.ts                        ← Stage 3 CLI
-  ├── validate.ts                      ← Stage 4 CLI
-  ├── load.ts                          ← Stage 5 CLI
-  └── run-all.ts                       ← 전체 파이프라인
+scripts/seed/                          ← CLI 진입점 (보조 Composition Root, P-9)
+  ├── config.ts                        ← 파이프라인 전용 env (KAKAO_KEY, COUPANG_KEY, MFDS_KEY)
+  ├── fetch.ts                         ← Stage 1 CLI (Channel A: API 프로바이더 호출)
+  ├── import-csv.ts                    ← Stage 1 CLI (Channel B: CSV/엑셀 임포트)
+  ├── enrich.ts                        ← Stage 2 CLI (AI 처리)
+  ├── export-review.ts                 ← Stage 3 CLI (AI 결과 → 검수용 CSV export)
+  ├── import-review.ts                 ← Stage 3 CLI (검수 완료 CSV → ValidatedRecord)
+  ├── validate.ts                      ← Stage 4 CLI (zod 검증)
+  ├── load.ts                          ← Stage 4 CLI (DB 적재)
+  ├── run-all.ts                       ← 전체 파이프라인
+  ├── manifests/                       ← 수집 대상 YAML (큐레이션 리스트)
+  └── templates/                       ← CSV 템플릿 (드롭다운 값 정의)
+      ├── products-template.csv
+      └── treatments-template.csv
 
-scripts/seed/lib/                      ← 수집 파이프라인 로직 (CLI 전용 + 관리자 앱 공유)
-  ├── providers/
-  │   ├── kakao-local.ts               ← S1 (P0-33 PoC 계승)
-  │   ├── ~~naver-shopping.ts~~         ← S2 확정 제거 (약관 7.3③ DB 구축 금지)
-  │   ├── coupang-partners.ts          ← **S7 쿠팡 파트너스** (Search API → 제품명, 가격, 이미지, 구매링크)
-  │   ├── mfds-ingredient.ts           ← S3
-  │   ├── mfds-restricted.ts           ← S4
-  │   ├── mfds-functional.ts           ← S5
-  │   ├── cosing-csv.ts                ← S6
-  │   └── csv-loader.ts               ← 수동 CSV
-  ├── enrichment/
-  │   ├── translator.ts                ← LLM 번역
-  │   ├── classifier.ts                ← AI 분류 (skin_types, concerns)
-  │   └── description-generator.ts     ← AI 생성
-  ├── fetch-service.ts                 ← Stage 2 오케스트레이션
-  ├── enrich-service.ts                ← Stage 3 오케스트레이션
-  ├── loader.ts                        ← Stage 5 DB 적재
-  └── types.ts                         ← RawRecord, EnrichedRecord 등
+scripts/seed/lib/                      ← 파이프라인 비즈니스 로직
+  ├── providers/                       ← Stage 1: 데이터 소스별 어댑터
+  │   ├── kakao-local.ts               ← S1 (stores/clinics)
+  │   ├── coupang-partners.ts          ← S7 (products — U-12 활성화 후)
+  │   ├── mfds-ingredient.ts           ← S3 (ingredients)
+  │   ├── mfds-restricted.ts           ← S4 (ingredients 안전성)
+  │   ├── mfds-functional.ts           ← S5 (products 검증)
+  │   ├── cosing-csv.ts                ← S6 (ingredients INCI)
+  │   └── csv-loader.ts               ← Channel B (CSV/엑셀 → RawRecord)
+  ├── enrichment/                      ← Stage 2: AI 처리
+  │   ├── translator.ts                ← 번역 (ko→en+4언어)
+  │   ├── classifier.ts                ← 분류 (skin_types, concerns + confidence)
+  │   └── description-generator.ts     ← 설명 + 리뷰 요약 생성
+  ├── fetch-service.ts                 ← Stage 1 오케스트레이션 (프로바이더 호출, Promise.allSettled)
+  ├── enrich-service.ts                ← Stage 2 오케스트레이션 (건별 try-catch)
+  ├── review-exporter.ts               ← Stage 3 검수용 CSV 생성 (confidence 포함)
+  ├── loader.ts                        ← Stage 4 DB 적재 (FK 순서, 청크 트랜잭션)
+  └── types.ts                         ← RawRecord, EnrichedRecord, ValidatedRecord, ClassificationResult
+
+shared/validation/                     ← zod 스키마 (파이프라인 + API 입력 검증 공유)
+  ├── product-schema.ts
+  ├── store-schema.ts
+  └── ...
+```
+
+> **올리브영 크롤링 관련 코드는 포함하지 않음**: robots.txt 전체 차단 + 향후 파트너십 훼손 리스크. 올리브영 제품은 브라우저 수동 참조 → CSV(Channel B)로 입력.
+> **S2(네이버 쇼핑 API) 확정 제거**: 약관 7.3③ "별도 데이터베이스로 관리" 명시 금지.
+> **AI 큐레이션(gap-analyzer)**: M3 이후 품질 검증 도구로 별도 구현. MVP 파이프라인에 미포함.
 
 shared/validation/                     ← zod 스키마 (파이프라인 + API 입력 검증 공유)
   ├── product-schema.ts
@@ -778,7 +845,7 @@ M2 시점:     U-4 (쿠팡 API 데이터 품질), U-7 (가격 현실성)
 
 | 엔티티 | 건당 소요 | 건수 | 총 공수 | 비고 |
 |--------|---------|------|--------|------|
-| products (S7 자동 + 수동 보완) | ~8분 | 200 | ~27시간 | **쿠팡 API 활성화 시**: Search API로 K-뷰티 제품 자동 수집 (~120건 예상) + 쿠팡 미등록 올리브영 전용 제품 수동 보완 (~80건) → AI 분류/번역 → 전수 검수. **API 미활성 시**: 전량 수동 ~50시간 (폴백) |
+| products (3채널 + AI + 전수 검수) | ~10분 | 200 | ~33시간 | **S7 활성 시**: 쿠팡 API 자동 ~120건 + CSV 수동 ~80건 + AI 분류 자동 + 전수 검수(구글시트). **S7 미활성 시**: CSV 전량 수동 ~40시간 + AI 분류 + 전수 검수 = ~45시간 (폴백) |
 | stores (수동 보완) | ~10분 | 50 | ~8시간 | API 골격 후 영업시간·영어지원 보완 |
 | clinics (수동 보완) | ~15분 | 30 | ~8시간 | foreigner_friendly 상세 확인 필요 |
 | treatments (전부 수동) | ~20분 | 50 | ~17시간 | 의학 정보 조사 포함 |
@@ -786,9 +853,9 @@ M2 시점:     U-4 (쿠팡 API 데이터 품질), U-7 (가격 현실성)
 | brands (수동) | ~5분 | 50 | ~4시간 | 간단한 필드 |
 | doctors (수동) | ~5분 | 30 | ~3시간 | 클리닉 종속 |
 | junction (수동 매핑) | ~2분 | ~500 (수동 대상만) | ~17시간 | 유형 기반 매핑 ~2,200건은 자동 스크립트. 수동은 product_ingredients ~400 + 개별 매장 ~100건 |
-| **합계** | | | **~101시간** (S7 활성 시) / **~124시간** (폴백) | **1인 풀타임(8h/일) 약 13~16일** |
+| **합계** | | | **~107시간** (S7 활성) / **~119시간** (폴백) | **1인 풀타임(8h/일) 약 14~15일** |
 
-> 쿠팡 파트너스 API(S7) 활성화 시 products 공수 50→27시간으로 감소. 코딩(~5-7주)과 데이터 입력(~2.5~3주)을 병행. M1→M2→M3 단계적 진행.
+> 3채널 수집 + AI 분류 + 전수 검수(구글시트) 워크플로우. 코딩(~5-7주)과 데이터 입력(~3주)을 병행. M1→M2→M3 단계적 진행. AI 처리 비용 ~$6 (200건 기준).
 
 ---
 

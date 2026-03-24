@@ -412,10 +412,11 @@
 | P2-56k | AI 번역 모듈                                     | scripts/seed/lib/enrichment/translator.ts. ko→en 필수 + ja/zh/es/fr 선택. server/core/ai-engine.ts 호출        | P2-56c, P2-5   | ⬜   |
 | P2-56l | AI 분류 모듈                                     | scripts/seed/lib/enrichment/classifier.ts. skin_types[], concerns[] 분류. 허용값 제한 프롬프트 + zod 출력 검증          | P2-56c, P2-5   | ⬜   |
 | P2-56m | AI 설명 생성 모듈                                  | scripts/seed/lib/enrichment/description-generator.ts. description + review_summary 생성                    | P2-56c, P2-5   | ⬜   |
-| P2-56n | fetch-service (Stage 2 오케스트레이션)              | scripts/seed/lib/fetch-service.ts. manifest YAML 파싱 → 프로바이더 호출 → Promise.allSettled → RawRecord[]        | P2-56d~j       | ⬜   |
-| P2-56o | enrich-service (Stage 3 오케스트레이션)             | scripts/seed/lib/enrich-service.ts. RawRecord → 번역+분류+생성 → EnrichedRecord[]. 건별 try-catch 에러 격리          | P2-56k~m       | ⬜   |
-| P2-56p | loader (Stage 5 DB 적재)                       | scripts/seed/lib/loader.ts. zod 검증 → DB UPSERT. FK 순서 보장, 100건 청크 트랜잭션. server/core/db.ts 참조             | P2-56a, P2-2   | ⬜   |
-| P2-56q | CLI 진입점 (fetch/enrich/validate/load/run-all) | scripts/seed/fetch.ts 등 5개 CLI. thin layer: 인자 파싱 → lib/ 호출 → 로그 출력                                      | P2-56n~p       | ⬜   |
+| P2-56n | fetch-service (Stage 1 오케스트레이션)              | scripts/seed/lib/fetch-service.ts. 프로바이더 호출 → Promise.allSettled → RawRecord[]                             | P2-56d~j       | ⬜   |
+| P2-56o | enrich-service (Stage 2 오케스트레이션)             | scripts/seed/lib/enrich-service.ts. RawRecord → 번역+분류(confidence)+생성 → EnrichedRecord[]. 건별 try-catch      | P2-56k~m       | ⬜   |
+| P2-56o2 | review-exporter (Stage 3 검수 CSV)             | scripts/seed/lib/review-exporter.ts. EnrichedRecord → 검수용 CSV export (confidence 포함). 구글시트 검수 후 CSV import | P2-56o         | ⬜   |
+| P2-56p | loader (Stage 4 DB 적재)                       | scripts/seed/lib/loader.ts. zod 검증 → DB UPSERT. FK 순서 보장, 100건 청크 트랜잭션                                   | P2-56a, P2-2   | ⬜   |
+| P2-56q | CLI 진입점 (fetch/import-csv/enrich/export-review/import-review/validate/load) | scripts/seed/*.ts 7개 CLI. thin layer: 인자 파싱 → lib/ 호출                               | P2-56n~p       | ⬜   |
 | P2-56r | AI 분류 정확도 PoC (U-1)                          | M1 스켈레톤 10건으로 skin_types/concerns AI 분류 → 전문가 대조. **80% 미달 시 수동 전환 결정**                                  | P2-56l         | ⬜   |
 
 
@@ -434,7 +435,7 @@
 | P2-61  | Phase A: stores 50+ (S1 자동수집)          | 카카오 API 수집 → 분류 → AI 번역 → 수동 보완(영업시간, english_support, tourist_services, 이미지)                                        | M2    | ⬜   |
 | P2-62  | Phase A: clinics 30+ (S1 자동수집)         | 카카오 API 수집 → 분류 → AI 번역 → 수동 보완(foreigner_friendly, license_verified, 이미지). english_support >= basic 필수              | M2    | ⬜   |
 | P2-63  | Phase A: treatments 50+                | 수동 입력 + AI 보강(target_concerns, suitable_skin_types, description, precautions). 전문가 검수 필수. downtime_days 정확성          | M2    | ⬜   |
-| P2-64a | Phase B: products 200+ (S2+수동)         | S2 네이버 쇼핑(U-5 허용 시) 또는 전량 수동. AI 분류(skin_types, concerns) → **전수 검수(D-7)**. 매장 정가 수동 입력. 브랜드 공식 이미지                  | M3    | ⬜   |
+| P2-64a | Phase B: products 200+ (S7+CSV+수동)      | 쿠팡 API(S7 활성 시) + CSV 임포트(브라우저 수동 참조) + 관리자 수동. AI 분류 → **전수 검수(D-7, 구글시트)**. 브랜드 공식 이미지         | M3    | ⬜   |
 | P2-64b | Phase B: doctors 30+                   | 수동 입력. 클리닉당 1명+. languages 영어 포함 필수                                                                                  | M3    | ⬜   |
 | P2-64c | Phase C: junction 데이터                  | product_stores(유형 기반+개별 혼합 ~~2,700건), product_ingredients(~~400건 수동 + key/avoid 분류), clinic_treatments(~150건)        | M3    | ⬜   |
 | P2-64d | Phase D: 임베딩 생성 + 벡터 DB 적재             | text-builder.ts + generator.ts (embedding-strategy §2) + 배치 스크립트. products, stores, clinics, treatments              | M3    | ⬜   |
