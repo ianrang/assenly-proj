@@ -168,14 +168,20 @@ ALTER TABLE admin_users ENABLE ROW LEVEL SECURITY;
 
 -- 사용자 앱(anon/authenticated)에서 접근 차단
 -- service_role은 RLS를 자동 우회하므로 admin API에서만 접근 가능
-CREATE POLICY "admin_users: no public access" ON admin_users
-  FOR ALL USING (false);
+DO $$ BEGIN
+  CREATE POLICY "admin_users: no public access" ON admin_users
+    FOR ALL USING (false);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
 
 -- audit_logs: RLS ON + 불변 (INSERT만 service_role에서)
 ALTER TABLE audit_logs ENABLE ROW LEVEL SECURITY;
 
-CREATE POLICY "audit_logs: no public access" ON audit_logs
-  FOR ALL USING (false);
+DO $$ BEGIN
+  CREATE POLICY "audit_logs: no public access" ON audit_logs
+    FOR ALL USING (false);
+EXCEPTION WHEN duplicate_object THEN NULL;
+END $$;
 
 -- ============================================================
 -- GRANT
