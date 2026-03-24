@@ -128,4 +128,28 @@ describe('callWithFallback', () => {
       tools: {},
     })).rejects.toThrow('Fallback fail');
   });
+
+  it('fallbackProvider 미설정 시 폴백 없이 즉시 throw', async () => {
+    vi.doMock('@/server/core/config', () => ({
+      env: {
+        AI_PROVIDER: 'anthropic',
+        AI_FALLBACK_PROVIDER: undefined,
+        LLM_TIMEOUT_MS: 30000,
+      },
+      getModel: (...args: unknown[]) => mockGetModel(...args),
+    }));
+
+    const serverError = Object.assign(new Error('Server Error'), { status: 500 });
+    mockGetModel.mockResolvedValue('anthropic-model');
+    mockStreamText.mockRejectedValue(serverError);
+
+    const { callWithFallback } = await import('@/server/features/chat/llm-client');
+    await expect(callWithFallback({
+      messages: [],
+      system: 'test',
+      tools: {},
+    })).rejects.toThrow('Server Error');
+
+    expect(mockStreamText).toHaveBeenCalledTimes(1);
+  });
 });

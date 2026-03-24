@@ -17,6 +17,8 @@ interface RateLimitConfig {
   limit: number;
   /** 윈도우 크기 (ms) */
   windowMs: number;
+  /** 윈도우 식별자 (같은 endpoint에 분당+일일 이중 제한 구분). api-spec.md §4.1 */
+  window: string;
 }
 
 interface RateLimitResult {
@@ -25,7 +27,7 @@ interface RateLimitResult {
   resetAt: number;
 }
 
-/** key = `${identifier}:${endpoint}` */
+/** key = `${identifier}:${endpoint}:${window}` */
 const store = new Map<string, RateLimitEntry>();
 
 /**
@@ -40,7 +42,7 @@ export function checkRateLimit(
   endpoint: string,
   config: RateLimitConfig,
 ): RateLimitResult {
-  const key = `${identifier}:${endpoint}`;
+  const key = `${identifier}:${endpoint}:${config.window}`;
   const now = Date.now();
   const entry = store.get(key);
 
