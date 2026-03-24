@@ -11,9 +11,8 @@
 CREATE INDEX IF NOT EXISTS idx_beauty_history_user_id
   ON beauty_history(user_id);
 
--- kit_subscribers: RLS auth.uid() = user_id + CASCADE FK lookup
-CREATE INDEX IF NOT EXISTS idx_kit_subscribers_user_id
-  ON kit_subscribers(user_id);
+-- kit_subscribers: 테이블이 001에 미포함 (schema.dbml에만 존재).
+-- kit_subscribers CREATE TABLE 마이그레이션 시 인덱스도 함께 추가할 것.
 
 -- ============================================================
 -- 5.2 도메인 데이터 — 쇼핑 (DOM-1)
