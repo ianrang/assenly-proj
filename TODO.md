@@ -13,9 +13,9 @@
 | 사전 완료      | 12      | 12      | 100%    | ✅      |
 | Phase 0    | 37      | 37      | 100%    | ✅      |
 | Phase 1    | 60      | 60      | 100%    | ✅      |
-| Phase 2    | 105     | 13      | 12%     | 🔶 진행중 |
+| Phase 2    | 105     | 14      | 13%     | 🔶 진행중 |
 | Phase 3    | 36      | 0       | 0%      | ⬜ 미시작  |
-| **MVP 합계** | **250** | **122** | **49%** |        |
+| **MVP 합계** | **250** | **123** | **49%** |        |
 
 
 **✅ Gate 0 통과 (2026-03-21) → Phase 1 (MVP 설계) 착수 준비**
@@ -310,7 +310,7 @@
 | P2-9   | Anonymous 인증 서비스 + API                     | 익명 세션 생성/관리. core/auth.ts(인증 미들웨어) + features/auth/service.ts + route. 테스트 21개                                          | ✅   |
 | P2-10  | 프로필 서비스 + API                              | profile service(upsert/get/update) + journey service(createOrUpdate/getActive) + onboarding/profile route. 테스트 30개         | ✅   |
 | P2-11  | 여정 서비스 + API                               | P2-10에서 완료: createOrUpdateJourney + getActiveJourney. POST /api/journey route는 v0.2 (api-spec B.4)                        | ✅   |
-| P2-12  | 뷰티 판단 엔진                                   | 5단계 판단 로직 (필터→매칭→제약→개인화→하이라이트)                                                                                          | ⬜   |
+| P2-12  | 뷰티 판단 엔진                                   | judgment.ts: rank() 공통 정렬 + ScoredItem/RankedResult 계약 인터페이스. 순수 함수. 테스트 6개                                              | ✅   |
 | P2-13  | 쇼핑 도메인 로직                                  | beauty/ 순수 함수 (shopping)                                                                                                | ⬜   |
 | P2-14  | 시술 도메인 로직                                  | beauty/ 순수 함수 (treatment)                                                                                               | ⬜   |
 | P2-15  | DV 계산기                                     | 4개 도출 변수 계산 로직                                                                                                          | ⬜   |
