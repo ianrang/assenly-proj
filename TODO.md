@@ -112,7 +112,7 @@
 | P0-32 | 데이터 갱신 전략       | 관리자 앱에서 동기화 주기 설정 + 인터페이스로 카카오 API 동기화 트리거. 관리자 앱 요구사항에 "데이터 동기화" 메뉴 추가 필요                                                          | 전략 결정                 | ✅   |
 | P0-33 | 초기 데이터 적재 파이프라인 | 멀티 프로바이더(Google/카카오/네이버+mock) 플러그인 구조. 변환→적재 검증 완료. clinics 2/2 적재 성공. stores는 external_links 컬럼 미존재(X-2)로 실패 — Phase 1 마이그레이션에서 해결 | 파이프라인 동작 확인           | ✅   |
 | P0-34 | 다국어 번역          | LLM 번역 채택 (P0-14에서 Gemini 6개 언어 4.6/5.0 검증). 200제품×6언어 ≈ $0.50. MVP에 충분                                                             | 번역 방법 결정              | ✅   |
-| P0-35 | 이미지 출처/저작권      | 브랜드 공식 이미지 우선 + Google Places 보조. 올리브영/쿠팡 이미지 사용 불가. 저장소: Supabase Storage(P0-27 검증 완료)                                             | 확보 전략 결정              | ✅   |
+| P0-35 | 이미지 출처/저작권      | ~~브랜드 공식 이미지 우선~~ → **P2-V3 갱신: MVP placeholder 전략 확정 (D-14)**. 4/5 브랜드 서면 승인 필요. 저장소: Supabase Storage. 정본: data-collection.md §4 | 확보 전략 결정              | ✅   |
 | P0-36 | 리뷰 데이터 전략       | AI 생성 요약 확정. "AI 생성" 면책 표시. rating은 공개 평점 수동 참조                                                                                     | 전략 결정                 | ✅   |
 | P0-37 | 비용 추정 문서화       | 실측: MVP $10~~$346/월 (Gemini~~Claude Sonnet). Supabase Free 충분. 외부 API 무료. `cost-estimate.md` 작성                                     | MASTER-PLAN §4.2 업데이트 | ✅   |
 
@@ -443,7 +443,7 @@
 | P2-61  | Phase A: stores 50+ (S1 자동수집)          | 카카오 API 수집 → 분류 → AI 번역 → 수동 보완(영업시간, english_support, tourist_services, 이미지)                                        | M2    | ⬜   |
 | P2-62  | Phase A: clinics 30+ (S1 자동수집)         | 카카오 API 수집 → 분류 → AI 번역 → 수동 보완(foreigner_friendly, license_verified, 이미지). english_support >= basic 필수              | M2    | ⬜   |
 | P2-63  | Phase A: treatments 50+                | 수동 입력 + AI 보강(target_concerns, suitable_skin_types, description, precautions). 전문가 검수 필수. downtime_days 정확성          | M2    | ⬜   |
-| P2-64a | Phase B: products 200+ (S7+CSV+수동)      | 쿠팡 API(S7 활성 시) + CSV 임포트(브라우저 수동 참조) + 관리자 수동. AI 분류 → **전수 검수(D-7, 구글시트)**. 브랜드 공식 이미지         | M3    | ⬜   |
+| P2-64a | Phase B: products 200+ (A-3+CSV+수동)      | A-3 시드 크롤링 + CSV 임포트 + 관리자 수동. AI 분류 → **전수 검수(D-7, 구글시트)**. image_url 수집+DB 저장, UI placeholder (D-14) | M3    | ⬜   |
 | P2-64b | Phase B: doctors 30+                   | 수동 입력. 클리닉당 1명+. languages 영어 포함 필수                                                                                  | M3    | ⬜   |
 | P2-64c | Phase C: junction 데이터                  | product_stores(유형 기반+개별 혼합 ~~2,700건), product_ingredients(~~400건 수동 + key/avoid 분류), clinic_treatments(~150건)        | M3    | ⬜   |
 | P2-64d | Phase D: 임베딩 생성 + 벡터 DB 적재             | text-builder.ts + generator.ts (embedding-strategy §2) + 배치 스크립트. products, stores, clinics, treatments              | M3    | ⬜   |

@@ -113,7 +113,7 @@ data-strategy.md U-6, U-8 결정 기반.
 | 등급 | 기준 | 적용 |
 |------|------|------|
 | A (출시 필수) | 필수 필드 100% 완성 | name (ko+en), status, category/type |
-| B (권장) | 권장 필드 95%+ 완성 | description (ko+en), rating, images 1장+ |
+| B (권장) | 권장 필드 95%+ 완성 | description (ko+en), rating. images: MVP placeholder (D-14), 서면 승인 후 전환 |
 | C (선택) | 선택 필드 적절히 채움 | tags, tourist_services, nearby_landmarks |
 
 **출시 게이트**: A 등급 100% + B 등급 90% 달성 시 출시 가능.
