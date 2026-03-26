@@ -13,9 +13,9 @@
 | 사전 완료      | 12      | 12      | 100%    | ✅      |
 | Phase 0    | 37      | 37      | 100%    | ✅      |
 | Phase 1    | 60      | 60      | 100%    | ✅      |
-| Phase 2    | 105     | 16      | 15%     | 🔶 진행중 |
+| Phase 2    | 105     | 17      | 16%     | 🔶 진행중 |
 | Phase 3    | 36      | 0       | 0%      | ⬜ 미시작  |
-| **MVP 합계** | **250** | **125** | **50%** |        |
+| **MVP 합계** | **250** | **126** | **50%** |        |
 
 
 **✅ Gate 0 통과 (2026-03-21) → Phase 1 (MVP 설계) 착수 준비**
@@ -313,7 +313,7 @@
 | P2-12  | 뷰티 판단 엔진                                   | judgment.ts: rank() 공통 정렬 + ScoredItem/RankedResult 계약 인터페이스. 순수 함수. 테스트 6개                                              | ✅   |
 | P2-13  | 쇼핑 도메인 로직                                  | shopping.ts: scoreProducts (DV-1/2 성분 매칭). ScoredItem 계약 구현. 순수 함수. 테스트 8개                                              | ✅   |
 | P2-14  | 시술 도메인 로직                                  | treatment.ts: scoreTreatments (다운타임 필터 + checkDowntimeSafety 재사용). 순수 함수. 테스트 11개                                       | ✅   |
-| P2-15  | DV 계산기                                     | 4개 도출 변수 계산 로직                                                                                                          | ⬜   |
+| P2-15  | DV 계산기                                     | derived.ts: DV-1(선호 성분) + DV-2(기피 성분) + DV-3(세그먼트). 독립 순수 함수. 테스트 10개                                               | ✅   |
 | P2-16  | Product 리포지토리                              | 제품 데이터 접근. findByFilters/matchByVector/findById/findAll (search-engine.md §2.1, §2.3 Products)                          | ⬜   |
 | P2-16a | Store 리포지토리                                | 매장 데이터 접근. findByFilters/findById/findAll (search-engine.md §2.1, §2.3 Stores)                                          | ⬜   |
 | P2-17  | Treatment 리포지토리                            | 시술 데이터 접근. findByFilters/matchByVector/findById/findAll (search-engine.md §2.1, §2.3 Treatments)                        | ⬜   |
