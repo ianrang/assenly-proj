@@ -1,0 +1,1747 @@
+products:
+- name_ko: 이니스프리 그린티 씨드 히알루로닉 크림
+  name_en: Innisfree Green Tea Seed Hyaluronic Cream
+  brand: Innisfree
+  category: skincare
+  subcategory: moisturizer
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - combination
+  - normal
+  expected_concerns:
+  - dryness
+  - dullness
+  available_at:
+  - olive_young
+  - innisfree_store
+- name_ko: 라네즈 워터 슬리핑 마스크 EX
+  name_en: Laneige Water Sleeping Mask EX
+  brand: Laneige
+  category: skincare
+  subcategory: moisturizer
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - combination
+  - normal
+  - sensitive
+  expected_concerns:
+  - dryness
+  - dullness
+  available_at:
+  - olive_young
+  - chicor
+  - laneige_store
+- name_ko: 코스알엑스 어드밴스드 스네일 92 올인원 크림
+  name_en: COSRX Advanced Snail 92 All in One Cream
+  brand: COSRX
+  category: skincare
+  subcategory: moisturizer
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - combination
+  - normal
+  - sensitive
+  expected_concerns:
+  - dryness
+  - wrinkles
+  - dullness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 토리든 다이브인 저분자 히알루론산 수분크림
+  name_en: Torriden DIVE-IN Low Molecular Hyaluronic Acid Moisture Cream
+  brand: Torriden
+  category: skincare
+  subcategory: moisturizer
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - sensitive
+  - normal
+  expected_concerns:
+  - dryness
+  - redness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 닥터지 레드 블레미쉬 클리어 수딩 크림
+  name_en: Dr.G Red Blemish Clear Soothing Cream
+  brand: Dr.G
+  category: skincare
+  subcategory: moisturizer
+  budget_level: moderate
+  expected_skin_types:
+  - sensitive
+  - combination
+  - oily
+  expected_concerns:
+  - redness
+  - acne
+  - dryness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 일리윤 세라마이드 아토 집중 수분 크림
+  name_en: Illiyoon Ceramide Ato Concentrate Cream
+  brand: Illiyoon
+  category: skincare
+  subcategory: moisturizer
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - sensitive
+  - normal
+  expected_concerns:
+  - dryness
+  - eczema
+  - redness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 설화수 자음생크림
+  name_en: Sulwhasoo Concentrated Ginseng Renewing Cream
+  brand: Sulwhasoo
+  category: skincare
+  subcategory: moisturizer
+  budget_level: luxury
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  expected_concerns:
+  - wrinkles
+  - dullness
+  - dark_spots
+  available_at:
+  - department_store
+  - chicor
+- name_ko: 벨리프 더 트루 크림 아쿠아 밤
+  name_en: belif The True Cream Aqua Bomb
+  brand: belif
+  category: skincare
+  subcategory: moisturizer
+  budget_level: moderate
+  expected_skin_types:
+  - oily
+  - combination
+  - normal
+  expected_concerns:
+  - dryness
+  - pores
+  available_at:
+  - olive_young
+  - chicor
+  - brand_store
+- name_ko: 라운드랩 자작나무 수분 크림
+  name_en: Round Lab Birch Juice Moisturizing Cream
+  brand: Round Lab
+  category: skincare
+  subcategory: moisturizer
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - sensitive
+  - normal
+  expected_concerns:
+  - dryness
+  - redness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 아이소이 불가리안 로즈 인텐시브 에너자이징 크림 EX
+  name_en: isoi Bulgarian Rose Intensive Energizing Cream EX
+  brand: isoi
+  category: skincare
+  subcategory: moisturizer
+  budget_level: premium
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  expected_concerns:
+  - wrinkles
+  - dullness
+  - dryness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 스킨1004 마다가스카르 센텔라 크림
+  name_en: SKIN1004 Madagascar Centella Cream
+  brand: SKIN1004
+  category: skincare
+  subcategory: moisturizer
+  budget_level: budget
+  expected_skin_types:
+  - sensitive
+  - oily
+  - combination
+  expected_concerns:
+  - redness
+  - acne
+  available_at:
+  - olive_young
+- name_ko: 구달 맑은 어성초 진정 수분크림
+  name_en: Goodal Houttuynia Cordata Calming Moisture Cream
+  brand: Goodal
+  category: skincare
+  subcategory: moisturizer
+  budget_level: budget
+  expected_skin_types:
+  - sensitive
+  - oily
+  - combination
+  expected_concerns:
+  - redness
+  - acne
+  - pores
+  available_at:
+  - olive_young
+- name_ko: 에스트라 아토베리어 365 크림
+  name_en: Aestura Atobarrier 365 Cream
+  brand: Aestura
+  category: skincare
+  subcategory: moisturizer
+  budget_level: moderate
+  expected_skin_types:
+  - sensitive
+  - dry
+  - normal
+  expected_concerns:
+  - eczema
+  - redness
+  - dryness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 뷰티오브조선 왕조크림
+  name_en: Beauty of Joseon Dynasty Cream
+  brand: Beauty of Joseon
+  category: skincare
+  subcategory: moisturizer
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  expected_concerns:
+  - dryness
+  - dullness
+  - wrinkles
+  available_at:
+  - olive_young
+- name_ko: 에뛰드 순정 모이스트 풀 콜라겐 크림
+  name_en: ETUDE SoonJung Moist Relief All in One Gel
+  brand: ETUDE
+  category: skincare
+  subcategory: moisturizer
+  budget_level: budget
+  expected_skin_types:
+  - sensitive
+  - oily
+  - combination
+  expected_concerns:
+  - redness
+  - dryness
+  - eczema
+  available_at:
+  - olive_young
+  - etude_store
+- name_ko: 한율 달빛유자 수면팩
+  name_en: Hanyul Yuja Sleeping Mask
+  brand: Hanyul
+  category: skincare
+  subcategory: moisturizer
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  expected_concerns:
+  - dullness
+  - dark_spots
+  - dryness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 정샘물 타임 에너지 크림
+  name_en: Jung Saem Mool Time Energy Cream
+  brand: Jung Saem Mool
+  category: skincare
+  subcategory: moisturizer
+  budget_level: premium
+  expected_skin_types:
+  - dry
+  - normal
+  expected_concerns:
+  - wrinkles
+  - dryness
+  - dullness
+  available_at:
+  - chicor
+  - department_store
+- name_ko: 바이오더마 아토덤 인텐시브 밤
+  name_en: Bioderma Atoderm Intensive Baume
+  brand: Bioderma
+  category: skincare
+  subcategory: moisturizer
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - sensitive
+  expected_concerns:
+  - eczema
+  - dryness
+  - redness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 메디힐 마데카소사이드 크림
+  name_en: Mediheal Madecassoside Cream
+  brand: Mediheal
+  category: skincare
+  subcategory: moisturizer
+  budget_level: budget
+  expected_skin_types:
+  - sensitive
+  - combination
+  - normal
+  expected_concerns:
+  - redness
+  - acne
+  available_at:
+  - olive_young
+- name_ko: 프리메라 알파인 베리 워터리 크림
+  name_en: primera Alpine Berry Watery Cream
+  brand: primera
+  category: skincare
+  subcategory: moisturizer
+  budget_level: premium
+  expected_skin_types:
+  - oily
+  - combination
+  - normal
+  expected_concerns:
+  - pores
+  - dullness
+  available_at:
+  - chicor
+  - brand_store
+- name_ko: 네오젠 리얼 시카패드
+  name_en: Neogen Real Cica Pad
+  brand: Neogen
+  category: skincare
+  subcategory: moisturizer
+  budget_level: budget
+  expected_skin_types:
+  - sensitive
+  - oily
+  - combination
+  expected_concerns:
+  - redness
+  - acne
+  available_at:
+  - olive_young
+- name_ko: 바이위시트렌드 프로바이옴 밸런스 크림
+  name_en: By Wishtrend Pro-Biome Balance Cream
+  brand: By Wishtrend
+  category: skincare
+  subcategory: moisturizer
+  budget_level: moderate
+  expected_skin_types:
+  - sensitive
+  - dry
+  - normal
+  expected_concerns:
+  - redness
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 오휘 에이지 리커버리 크림
+  name_en: OHUI Age Recovery Cream
+  brand: OHUI
+  category: skincare
+  subcategory: moisturizer
+  budget_level: luxury
+  expected_skin_types:
+  - dry
+  - normal
+  expected_concerns:
+  - wrinkles
+  - dullness
+  - dark_spots
+  available_at:
+  - department_store
+  - chicor
+- name_ko: 미샤 타임 레볼루션 나이트 리페어 크림
+  name_en: MISSHA Time Revolution Night Repair Ampoule Cream 5X
+  brand: MISSHA
+  category: skincare
+  subcategory: moisturizer
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  expected_concerns:
+  - wrinkles
+  - dullness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 달바 화이트 트러플 파밍 크림
+  name_en: d'Alba White Truffle Return Oil Cream
+  brand: d'Alba
+  category: skincare
+  subcategory: moisturizer
+  budget_level: premium
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  expected_concerns:
+  - wrinkles
+  - dryness
+  - dullness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 코스알엑스 어드밴스드 스네일 96 뮤신 파워 에센스
+  name_en: COSRX Advanced Snail 96 Mucin Power Essence
+  brand: COSRX
+  category: skincare
+  subcategory: serum
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - combination
+  - normal
+  - sensitive
+  - oily
+  expected_concerns:
+  - dryness
+  - dullness
+  - wrinkles
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 토리든 다이브인 저분자 히알루론산 세럼
+  name_en: Torriden DIVE-IN Low Molecular Hyaluronic Acid Serum
+  brand: Torriden
+  category: skincare
+  subcategory: serum
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - sensitive
+  - normal
+  - combination
+  - oily
+  expected_concerns:
+  - dryness
+  - dullness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 뷰티오브조선 맑은쌀 맑은 세럼
+  name_en: 'Beauty of Joseon Glow Serum: Rice + Alpha-Arbutin'
+  brand: Beauty of Joseon
+  category: skincare
+  subcategory: serum
+  budget_level: budget
+  expected_skin_types:
+  - normal
+  - combination
+  - dry
+  - oily
+  expected_concerns:
+  - dark_spots
+  - dullness
+  - uneven_tone
+  available_at:
+  - olive_young
+- name_ko: 아누아 어성초 77 수딩 토너
+  name_en: Anua Heartleaf 77% Soothing Toner
+  brand: Anua
+  category: skincare
+  subcategory: serum
+  budget_level: budget
+  expected_skin_types:
+  - oily
+  - combination
+  - sensitive
+  expected_concerns:
+  - redness
+  - acne
+  - pores
+  available_at:
+  - olive_young
+- name_ko: 미샤 타임 레볼루션 더 퍼스트 트리트먼트 에센스 RX
+  name_en: MISSHA Time Revolution The First Treatment Essence RX
+  brand: MISSHA
+  category: skincare
+  subcategory: serum
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  - oily
+  expected_concerns:
+  - dullness
+  - wrinkles
+  - uneven_tone
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 이니스프리 그린티 씨드 세럼
+  name_en: Innisfree Green Tea Seed Serum
+  brand: Innisfree
+  category: skincare
+  subcategory: serum
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - combination
+  - normal
+  expected_concerns:
+  - dryness
+  - dullness
+  available_at:
+  - olive_young
+  - innisfree_store
+- name_ko: 설화수 윤조에센스 EX
+  name_en: Sulwhasoo First Care Activating Serum EX
+  brand: Sulwhasoo
+  category: skincare
+  subcategory: serum
+  budget_level: luxury
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  - sensitive
+  expected_concerns:
+  - wrinkles
+  - dullness
+  - uneven_tone
+  available_at:
+  - department_store
+  - chicor
+- name_ko: 라운드랩 독도 토너
+  name_en: Round Lab Dokdo Toner
+  brand: Round Lab
+  category: skincare
+  subcategory: serum
+  budget_level: budget
+  expected_skin_types:
+  - oily
+  - combination
+  - normal
+  expected_concerns:
+  - pores
+  - dullness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 코스알엑스 더 비타민 C 23 세럼
+  name_en: COSRX The Vitamin C 23 Serum
+  brand: COSRX
+  category: skincare
+  subcategory: serum
+  budget_level: moderate
+  expected_skin_types:
+  - normal
+  - oily
+  - combination
+  expected_concerns:
+  - dark_spots
+  - dullness
+  - uneven_tone
+  - sun_damage
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 구달 청귤 비타C 잡티 세럼
+  name_en: Goodal Green Tangerine Vita C Dark Spot Serum
+  brand: Goodal
+  category: skincare
+  subcategory: serum
+  budget_level: budget
+  expected_skin_types:
+  - normal
+  - combination
+  - oily
+  expected_concerns:
+  - dark_spots
+  - dullness
+  - uneven_tone
+  available_at:
+  - olive_young
+- name_ko: 스킨1004 마다가스카르 센텔라 앰플
+  name_en: SKIN1004 Madagascar Centella Asiatica 100 Ampoule
+  brand: SKIN1004
+  category: skincare
+  subcategory: serum
+  budget_level: budget
+  expected_skin_types:
+  - sensitive
+  - oily
+  - combination
+  expected_concerns:
+  - redness
+  - acne
+  available_at:
+  - olive_young
+- name_ko: 닥터지 레드 블레미쉬 클리어 수딩 액티브 에센스
+  name_en: Dr.G Red Blemish Clear Soothing Active Essence
+  brand: Dr.G
+  category: skincare
+  subcategory: serum
+  budget_level: moderate
+  expected_skin_types:
+  - sensitive
+  - combination
+  expected_concerns:
+  - redness
+  - acne
+  - dryness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: AHC 프리미엄 히드라 B5 수딩 에센스
+  name_en: AHC Premium Hydra B5 Soothing Enhancer
+  brand: AHC
+  category: skincare
+  subcategory: serum
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - normal
+  - sensitive
+  expected_concerns:
+  - dryness
+  - redness
+  available_at:
+  - olive_young
+- name_ko: 헉슬리 오일 에센스 에센스 라이크, 오일 라이크
+  name_en: 'Huxley Oil Essence: Essence-Like, Oil-Like'
+  brand: Huxley
+  category: skincare
+  subcategory: serum
+  budget_level: premium
+  expected_skin_types:
+  - dry
+  - normal
+  expected_concerns:
+  - dryness
+  - dullness
+  - wrinkles
+  available_at:
+  - chicor
+  - brand_store
+- name_ko: 마녀공장 갈락토미 나이아신 에센스
+  name_en: ma:nyo Galactomy Niacin Essence
+  brand: ma:nyo
+  category: skincare
+  subcategory: serum
+  budget_level: moderate
+  expected_skin_types:
+  - oily
+  - combination
+  - normal
+  expected_concerns:
+  - pores
+  - dullness
+  - uneven_tone
+  available_at:
+  - olive_young
+- name_ko: 달바 화이트 트러플 퍼스트 스프레이 세럼
+  name_en: d'Alba White Truffle First Spray Serum
+  brand: d'Alba
+  category: skincare
+  subcategory: serum
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  expected_concerns:
+  - dryness
+  - dullness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 넘버즈인 3번 비타민 C 기미 세럼
+  name_en: numbuzin No.3 Super Glowing Vitamin C Serum
+  brand: numbuzin
+  category: skincare
+  subcategory: serum
+  budget_level: budget
+  expected_skin_types:
+  - normal
+  - combination
+  - oily
+  expected_concerns:
+  - dark_spots
+  - dullness
+  - uneven_tone
+  available_at:
+  - olive_young
+- name_ko: 바이오힐보 프로바이오덤 리프팅 크림
+  name_en: Bio Heal BOH Probioderm Lifting Ampoule
+  brand: Bio Heal BOH
+  category: skincare
+  subcategory: serum
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  expected_concerns:
+  - wrinkles
+  - dullness
+  available_at:
+  - olive_young
+- name_ko: 원씽 프로폴리스 + 꿀 에센스
+  name_en: One Thing Propolis + Honey Extract
+  brand: One Thing
+  category: skincare
+  subcategory: serum
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - sensitive
+  - normal
+  expected_concerns:
+  - dryness
+  - dullness
+  - redness
+  available_at:
+  - olive_young
+- name_ko: 후 비첩 자생 에센스
+  name_en: The History of Whoo Bichup Self-Generating Anti-Aging Essence
+  brand: The History of Whoo
+  category: skincare
+  subcategory: serum
+  budget_level: luxury
+  expected_skin_types:
+  - dry
+  - normal
+  expected_concerns:
+  - wrinkles
+  - dullness
+  - dark_spots
+  available_at:
+  - department_store
+- name_ko: VT 리들샷 100 에센스
+  name_en: VT Reedle Shot 100 Essence
+  brand: VT
+  category: skincare
+  subcategory: serum
+  budget_level: moderate
+  expected_skin_types:
+  - normal
+  - combination
+  - oily
+  expected_concerns:
+  - wrinkles
+  - pores
+  - dullness
+  available_at:
+  - olive_young
+- name_ko: 넘버즈인 5번 판테놀 진정 세럼
+  name_en: numbuzin No.5 Vitamin B5 + Cica Serum
+  brand: numbuzin
+  category: skincare
+  subcategory: serum
+  budget_level: budget
+  expected_skin_types:
+  - sensitive
+  - dry
+  - combination
+  expected_concerns:
+  - redness
+  - dryness
+  - eczema
+  available_at:
+  - olive_young
+- name_ko: 에스트라 더모시카 리페어 시카 앰플
+  name_en: Aestura Theracne 365 Active Ampoule
+  brand: Aestura
+  category: skincare
+  subcategory: serum
+  budget_level: moderate
+  expected_skin_types:
+  - sensitive
+  - oily
+  - combination
+  expected_concerns:
+  - acne
+  - redness
+  - pores
+  available_at:
+  - olive_young
+- name_ko: 클레어스 프레쉬리 쥬스드 비타민 드롭
+  name_en: dear, Klairs Freshly Juiced Vitamin Drop
+  brand: dear, Klairs
+  category: skincare
+  subcategory: serum
+  budget_level: moderate
+  expected_skin_types:
+  - normal
+  - combination
+  - sensitive
+  expected_concerns:
+  - dark_spots
+  - dullness
+  - uneven_tone
+  available_at:
+  - olive_young
+- name_ko: 조선미녀 인삼 에센스워터
+  name_en: Beauty of Joseon Ginseng Essence Water
+  brand: Beauty of Joseon
+  category: skincare
+  subcategory: serum
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  expected_concerns:
+  - wrinkles
+  - dullness
+  available_at:
+  - olive_young
+- name_ko: 코스알엑스 로우 pH 굿모닝 젤 클렌저
+  name_en: COSRX Low pH Good Morning Gel Cleanser
+  brand: COSRX
+  category: skincare
+  subcategory: cleanser
+  budget_level: budget
+  expected_skin_types:
+  - oily
+  - combination
+  - normal
+  - sensitive
+  expected_concerns:
+  - acne
+  - pores
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 이니스프리 그린티 폼 클렌저
+  name_en: Innisfree Green Tea Foam Cleanser
+  brand: Innisfree
+  category: skincare
+  subcategory: cleanser
+  budget_level: budget
+  expected_skin_types:
+  - oily
+  - combination
+  - normal
+  expected_concerns:
+  - pores
+  - dullness
+  available_at:
+  - olive_young
+  - innisfree_store
+- name_ko: 라운드랩 독도 클렌징 오일
+  name_en: Round Lab Dokdo Cleansing Oil
+  brand: Round Lab
+  category: skincare
+  subcategory: cleanser
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  - oily
+  expected_concerns:
+  - pores
+  - dullness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 마녀공장 퓨어 클렌징 오일
+  name_en: ma:nyo Pure Cleansing Oil
+  brand: ma:nyo
+  category: skincare
+  subcategory: cleanser
+  budget_level: budget
+  expected_skin_types:
+  - oily
+  - combination
+  - normal
+  expected_concerns:
+  - pores
+  - acne
+  available_at:
+  - olive_young
+- name_ko: 에뛰드 순정 pH 6.5 워터리 클렌저
+  name_en: ETUDE SoonJung pH 6.5 Whip Cleanser
+  brand: ETUDE
+  category: skincare
+  subcategory: cleanser
+  budget_level: budget
+  expected_skin_types:
+  - sensitive
+  - dry
+  - normal
+  expected_concerns:
+  - redness
+  - eczema
+  - dryness
+  available_at:
+  - olive_young
+  - etude_store
+- name_ko: 아누아 어성초 클렌징 오일
+  name_en: Anua Heartleaf Pore Control Cleansing Oil
+  brand: Anua
+  category: skincare
+  subcategory: cleanser
+  budget_level: budget
+  expected_skin_types:
+  - oily
+  - combination
+  expected_concerns:
+  - pores
+  - acne
+  available_at:
+  - olive_young
+- name_ko: 라네즈 크림 스킨 토너 & 모이스처라이저
+  name_en: Laneige Cream Skin Toner & Moisturizer
+  brand: Laneige
+  category: skincare
+  subcategory: toner
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - sensitive
+  - normal
+  expected_concerns:
+  - dryness
+  - redness
+  available_at:
+  - olive_young
+  - chicor
+  - laneige_store
+- name_ko: 손앤박 뷰티워터
+  name_en: Son & Park Beauty Water
+  brand: Son & Park
+  category: skincare
+  subcategory: toner
+  budget_level: moderate
+  expected_skin_types:
+  - oily
+  - combination
+  - normal
+  expected_concerns:
+  - pores
+  - dullness
+  available_at:
+  - chicor
+  - brand_store
+- name_ko: 클레어스 서플 프레퍼레이션 페이셜 토너
+  name_en: dear, Klairs Supple Preparation Facial Toner
+  brand: dear, Klairs
+  category: skincare
+  subcategory: toner
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - sensitive
+  - normal
+  expected_concerns:
+  - dryness
+  - redness
+  available_at:
+  - olive_young
+- name_ko: Some By Mi AHA BHA PHA 30 데이즈 미라클 토너
+  name_en: Some By Mi AHA BHA PHA 30 Days Miracle Toner
+  brand: Some By Mi
+  category: skincare
+  subcategory: toner
+  budget_level: budget
+  expected_skin_types:
+  - oily
+  - combination
+  expected_concerns:
+  - acne
+  - pores
+  - dullness
+  available_at:
+  - olive_young
+- name_ko: 넘버즈인 1번 맑은 어성초 토너패드
+  name_en: numbuzin No.1 Heartleaf Soothing Toner Pad
+  brand: numbuzin
+  category: skincare
+  subcategory: toner
+  budget_level: budget
+  expected_skin_types:
+  - sensitive
+  - oily
+  - combination
+  expected_concerns:
+  - redness
+  - pores
+  - acne
+  available_at:
+  - olive_young
+- name_ko: 토리든 다이브인 저분자 히알루론산 토너
+  name_en: Torriden DIVE-IN Low Molecular Hyaluronic Acid Toner
+  brand: Torriden
+  category: skincare
+  subcategory: toner
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - sensitive
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 보나쥬르 그린티 워터 밤 토너
+  name_en: Bonajour Green Tea Water Bomb Toner
+  brand: Bonajour
+  category: skincare
+  subcategory: toner
+  budget_level: budget
+  expected_skin_types:
+  - oily
+  - combination
+  - normal
+  expected_concerns:
+  - pores
+  - dullness
+  available_at:
+  - olive_young
+- name_ko: 리얼배리어 시카 릴리프 토너
+  name_en: Real Barrier Cicarelief RX Fade In Serum
+  brand: Real Barrier
+  category: skincare
+  subcategory: toner
+  budget_level: moderate
+  expected_skin_types:
+  - sensitive
+  - dry
+  expected_concerns:
+  - dryness
+  - redness
+  available_at:
+  - olive_young
+- name_ko: 헤라 셀 에센스
+  name_en: HERA Cell Essence
+  brand: HERA
+  category: skincare
+  subcategory: toner
+  budget_level: premium
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  expected_concerns:
+  - dullness
+  - wrinkles
+  - uneven_tone
+  available_at:
+  - department_store
+  - chicor
+- name_ko: 닥터자르트 시카페어 폼 클렌저
+  name_en: Dr.Jart+ Cicapair Foam Cleanser
+  brand: Dr.Jart+
+  category: skincare
+  subcategory: cleanser
+  budget_level: moderate
+  expected_skin_types:
+  - sensitive
+  - combination
+  - normal
+  expected_concerns:
+  - redness
+  - acne
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 닥터자르트 시카페어 토너
+  name_en: Dr.Jart+ Cicapair Toner
+  brand: Dr.Jart+
+  category: skincare
+  subcategory: toner
+  budget_level: moderate
+  expected_skin_types:
+  - sensitive
+  - combination
+  expected_concerns:
+  - redness
+  - acne
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 설화수 순행클렌징폼 EX
+  name_en: Sulwhasoo Gentle Cleansing Foam EX
+  brand: Sulwhasoo
+  category: skincare
+  subcategory: cleanser
+  budget_level: premium
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  expected_concerns:
+  - dullness
+  - dryness
+  available_at:
+  - department_store
+  - chicor
+- name_ko: 바이오더마 센시비오 H2O
+  name_en: Bioderma Sensibio H2O
+  brand: Bioderma
+  category: skincare
+  subcategory: cleanser
+  budget_level: moderate
+  expected_skin_types:
+  - sensitive
+  - dry
+  - normal
+  expected_concerns:
+  - redness
+  - dryness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 프리메라 마일드 컴포팅 클렌저
+  name_en: primera Mild Comforting Cleanser
+  brand: primera
+  category: skincare
+  subcategory: cleanser
+  budget_level: moderate
+  expected_skin_types:
+  - sensitive
+  - dry
+  - normal
+  expected_concerns:
+  - dryness
+  - redness
+  available_at:
+  - chicor
+  - brand_store
+- name_ko: 뷰티오브조선 맑은쌀 선크림
+  name_en: 'Beauty of Joseon Relief Sun: Rice + Probiotics SPF50+ PA++++'
+  brand: Beauty of Joseon
+  category: skincare
+  subcategory: sunscreen
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - normal
+  - sensitive
+  - combination
+  expected_concerns:
+  - sun_damage
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 라운드랩 자작나무 수분 선크림
+  name_en: Round Lab Birch Juice Moisturizing Sun Cream SPF50+ PA++++
+  brand: Round Lab
+  category: skincare
+  subcategory: sunscreen
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - sensitive
+  - normal
+  expected_concerns:
+  - sun_damage
+  - dryness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 이니스프리 데일리 UV 디펜스 선크림
+  name_en: Innisfree Daily UV Defense Sunscreen SPF36 PA+++
+  brand: Innisfree
+  category: skincare
+  subcategory: sunscreen
+  budget_level: budget
+  expected_skin_types:
+  - normal
+  - combination
+  - oily
+  expected_concerns:
+  - sun_damage
+  available_at:
+  - olive_young
+  - innisfree_store
+- name_ko: 넘버즈인 1번 맑은 선크림
+  name_en: numbuzin No.1 Pure Glass Clean Sun SPF50+ PA++++
+  brand: numbuzin
+  category: skincare
+  subcategory: sunscreen
+  budget_level: budget
+  expected_skin_types:
+  - oily
+  - combination
+  - normal
+  expected_concerns:
+  - sun_damage
+  - pores
+  available_at:
+  - olive_young
+- name_ko: 닥터지 그린 마일드 업 선플러스 SPF50+ PA++++
+  name_en: Dr.G Green Mild Up Sun Plus SPF50+ PA++++
+  brand: Dr.G
+  category: skincare
+  subcategory: sunscreen
+  budget_level: budget
+  expected_skin_types:
+  - sensitive
+  - normal
+  - combination
+  expected_concerns:
+  - sun_damage
+  - redness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 코스알엑스 알로에 수딩 선크림 SPF50+ PA+++
+  name_en: COSRX Aloe Soothing Sun Cream SPF50+ PA+++
+  brand: COSRX
+  category: skincare
+  subcategory: sunscreen
+  budget_level: budget
+  expected_skin_types:
+  - sensitive
+  - dry
+  - normal
+  expected_concerns:
+  - sun_damage
+  - redness
+  available_at:
+  - olive_young
+- name_ko: 에스트라 아토베리어 365 하이드로 수딩 선크림
+  name_en: Aestura Atobarrier 365 Hydro Soothing Sun Cream SPF50+ PA++++
+  brand: Aestura
+  category: skincare
+  subcategory: sunscreen
+  budget_level: moderate
+  expected_skin_types:
+  - sensitive
+  - dry
+  expected_concerns:
+  - sun_damage
+  - eczema
+  - redness
+  available_at:
+  - olive_young
+- name_ko: 아이소이 선밀크 스킨 모이스처 SPF50+
+  name_en: isoi Sun Milk Skin Moisture SPF50+ PA++++
+  brand: isoi
+  category: skincare
+  subcategory: sunscreen
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - normal
+  expected_concerns:
+  - sun_damage
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 닥터자르트 에브리 선 데이 UV 썬 플루이드
+  name_en: Dr.Jart+ Every Sun Day UV Sun Fluid SPF50+ PA++++
+  brand: Dr.Jart+
+  category: skincare
+  subcategory: sunscreen
+  budget_level: moderate
+  expected_skin_types:
+  - oily
+  - combination
+  - normal
+  expected_concerns:
+  - sun_damage
+  - pores
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 달바 워터풀 에센스 선크림
+  name_en: d'Alba Waterfull Essence Sun Cream SPF50+ PA++++
+  brand: d'Alba
+  category: skincare
+  subcategory: sunscreen
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  expected_concerns:
+  - sun_damage
+  - dryness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 스킨1004 마다가스카르 센텔라 에어핏 선크림
+  name_en: SKIN1004 Madagascar Centella Air-Fit Suncream SPF50+ PA++++
+  brand: SKIN1004
+  category: skincare
+  subcategory: sunscreen
+  budget_level: budget
+  expected_skin_types:
+  - sensitive
+  - oily
+  - combination
+  expected_concerns:
+  - sun_damage
+  - redness
+  available_at:
+  - olive_young
+- name_ko: 셀퓨전씨 톤업 선크림 SPF50+
+  name_en: Cell Fusion C Derma Relief Sunscreen SPF50+ PA++++
+  brand: Cell Fusion C
+  category: skincare
+  subcategory: sunscreen
+  budget_level: moderate
+  expected_skin_types:
+  - sensitive
+  - normal
+  expected_concerns:
+  - sun_damage
+  - redness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 에뛰드 순정 선크림 SPF50+
+  name_en: ETUDE SoonJung Mild Defence Sun Cream SPF49 PA++
+  brand: ETUDE
+  category: skincare
+  subcategory: sunscreen
+  budget_level: budget
+  expected_skin_types:
+  - sensitive
+  - normal
+  - combination
+  expected_concerns:
+  - sun_damage
+  - redness
+  available_at:
+  - olive_young
+  - etude_store
+- name_ko: 클리오 킬커버 선크림 SPF50+
+  name_en: CLIO Kill Cover Skin Fixer Sun Cream SPF50+ PA++++
+  brand: CLIO
+  category: skincare
+  subcategory: sunscreen
+  budget_level: moderate
+  expected_skin_types:
+  - oily
+  - combination
+  - normal
+  expected_concerns:
+  - sun_damage
+  available_at:
+  - olive_young
+- name_ko: 프리메라 스킨 릴리프 UV 프로텍터 SPF50+
+  name_en: primera Skin Relief UV Protector SPF50+ PA++++
+  brand: primera
+  category: skincare
+  subcategory: sunscreen
+  budget_level: moderate
+  expected_skin_types:
+  - sensitive
+  - dry
+  expected_concerns:
+  - sun_damage
+  - redness
+  - eczema
+  available_at:
+  - chicor
+  - brand_store
+- name_ko: 메디힐 N.M.F 아쿠아링 앰플 마스크
+  name_en: Mediheal N.M.F Aquaring Ampoule Mask EX
+  brand: Mediheal
+  category: skincare
+  subcategory: mask
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  - sensitive
+  expected_concerns:
+  - dryness
+  - dullness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 닥터자르트 시카페어 시카 칼밍 마스크
+  name_en: Dr.Jart+ Cicapair Calming Mask
+  brand: Dr.Jart+
+  category: skincare
+  subcategory: mask
+  budget_level: moderate
+  expected_skin_types:
+  - sensitive
+  - combination
+  expected_concerns:
+  - redness
+  - acne
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 이니스프리 수퍼 화산송이 포어 클레이 마스크 2X
+  name_en: Innisfree Super Volcanic Pore Clay Mask 2X
+  brand: Innisfree
+  category: skincare
+  subcategory: mask
+  budget_level: budget
+  expected_skin_types:
+  - oily
+  - combination
+  expected_concerns:
+  - pores
+  - acne
+  available_at:
+  - olive_young
+  - innisfree_store
+- name_ko: 설화수 여윤팩
+  name_en: Sulwhasoo Overnight Vitalizing Mask
+  brand: Sulwhasoo
+  category: skincare
+  subcategory: mask
+  budget_level: premium
+  expected_skin_types:
+  - dry
+  - normal
+  expected_concerns:
+  - wrinkles
+  - dullness
+  available_at:
+  - department_store
+  - chicor
+- name_ko: 메디힐 티트리 케어 솔루션 에센셜 마스크 EX
+  name_en: Mediheal Tea Tree Care Solution Essential Mask EX
+  brand: Mediheal
+  category: skincare
+  subcategory: mask
+  budget_level: budget
+  expected_skin_types:
+  - oily
+  - combination
+  - sensitive
+  expected_concerns:
+  - acne
+  - pores
+  - redness
+  available_at:
+  - olive_young
+- name_ko: 라네즈 립 슬리핑 마스크
+  name_en: Laneige Lip Sleeping Mask
+  brand: Laneige
+  category: skincare
+  subcategory: mask
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  - oily
+  - sensitive
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+  - chicor
+  - laneige_store
+- name_ko: 스킨푸드 블랙슈가 퍼펙트 에센셜 스크럽 2X
+  name_en: Skinfood Black Sugar Perfect Essential Scrub 2X
+  brand: Skinfood
+  category: skincare
+  subcategory: mask
+  budget_level: budget
+  expected_skin_types:
+  - oily
+  - combination
+  - normal
+  expected_concerns:
+  - pores
+  - dullness
+  available_at:
+  - olive_young
+- name_ko: 아비브 어성초 스트레스 릴리프 캄 시트 마스크
+  name_en: Abib Heartleaf Stress Relief Calming Sheet Mask
+  brand: Abib
+  category: skincare
+  subcategory: mask
+  budget_level: budget
+  expected_skin_types:
+  - sensitive
+  - oily
+  - combination
+  expected_concerns:
+  - redness
+  - acne
+  available_at:
+  - olive_young
+- name_ko: 코스알엑스 아크네 핌플 마스터 패치
+  name_en: COSRX Acne Pimple Master Patch
+  brand: COSRX
+  category: skincare
+  subcategory: mask
+  budget_level: budget
+  expected_skin_types:
+  - oily
+  - combination
+  - normal
+  - sensitive
+  expected_concerns:
+  - acne
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 파파레서피 봄비 꿀단지 마스크
+  name_en: Papa Recipe Bombee Honey Mask
+  brand: Papa Recipe
+  category: skincare
+  subcategory: mask
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - normal
+  - sensitive
+  expected_concerns:
+  - dryness
+  - dullness
+  available_at:
+  - olive_young
+- name_ko: 라운드랩 독도 토너패드
+  name_en: Round Lab Dokdo Toner Pad
+  brand: Round Lab
+  category: skincare
+  subcategory: mask
+  budget_level: budget
+  expected_skin_types:
+  - oily
+  - combination
+  - normal
+  expected_concerns:
+  - pores
+  - dullness
+  available_at:
+  - olive_young
+- name_ko: VT 시카 데일리 수딩 마스크
+  name_en: VT Cica Daily Soothing Mask
+  brand: VT
+  category: skincare
+  subcategory: mask
+  budget_level: budget
+  expected_skin_types:
+  - sensitive
+  - combination
+  - normal
+  expected_concerns:
+  - redness
+  - acne
+  available_at:
+  - olive_young
+- name_ko: JM솔루션 꿀 광채 로얄 프로폴리스 마스크
+  name_en: JM Solution Honey Luminous Royal Propolis Mask
+  brand: JM Solution
+  category: skincare
+  subcategory: mask
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  expected_concerns:
+  - dryness
+  - dullness
+  available_at:
+  - olive_young
+- name_ko: 헤이미쉬 데일리즘 워터 시트 마스크
+  name_en: Heimish Dailism Water Sheet Mask
+  brand: Heimish
+  category: skincare
+  subcategory: mask
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  expected_concerns:
+  - dryness
+  - dullness
+  available_at:
+  - olive_young
+- name_ko: 토니모리 I'm Real 아보카도 마스크 시트
+  name_en: TONYMOLY I'm Real Avocado Mask Sheet
+  brand: TONYMOLY
+  category: skincare
+  subcategory: mask
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - normal
+  expected_concerns:
+  - dryness
+  - dullness
+  available_at:
+  - olive_young
+- name_ko: AHC 텐 레볼루션 리얼 아이크림 포 페이스
+  name_en: AHC Ten Revolution Real Eye Cream for Face
+  brand: AHC
+  category: skincare
+  subcategory: eye_care
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  expected_concerns:
+  - wrinkles
+  - dark_circles
+  available_at:
+  - olive_young
+- name_ko: 이니스프리 그린티 씨드 아이크림
+  name_en: Innisfree Green Tea Seed Eye Cream
+  brand: Innisfree
+  category: skincare
+  subcategory: eye_care
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  expected_concerns:
+  - wrinkles
+  - dark_circles
+  - dryness
+  available_at:
+  - olive_young
+  - innisfree_store
+- name_ko: 설화수 자음생 아이크림
+  name_en: Sulwhasoo Concentrated Ginseng Renewing Eye Cream
+  brand: Sulwhasoo
+  category: skincare
+  subcategory: eye_care
+  budget_level: luxury
+  expected_skin_types:
+  - dry
+  - normal
+  expected_concerns:
+  - wrinkles
+  - dark_circles
+  - dullness
+  available_at:
+  - department_store
+- name_ko: 미샤 타임 레볼루션 나이트 리페어 아이크림
+  name_en: MISSHA Time Revolution Night Repair Probio Eye Cream
+  brand: MISSHA
+  category: skincare
+  subcategory: eye_care
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  expected_concerns:
+  - wrinkles
+  - dark_circles
+  available_at:
+  - olive_young
+- name_ko: 코스알엑스 어드밴스드 스네일 펩타이드 아이크림
+  name_en: COSRX Advanced Snail Peptide Eye Cream
+  brand: COSRX
+  category: skincare
+  subcategory: eye_care
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  - sensitive
+  expected_concerns:
+  - wrinkles
+  - dark_circles
+  available_at:
+  - olive_young
+- name_ko: 후 비첩 자생 아이크림
+  name_en: The History of Whoo Bichup Ja Yoon Eye Cream
+  brand: The History of Whoo
+  category: skincare
+  subcategory: eye_care
+  budget_level: luxury
+  expected_skin_types:
+  - dry
+  - normal
+  expected_concerns:
+  - wrinkles
+  - dark_circles
+  - dark_spots
+  available_at:
+  - department_store
+- name_ko: 닥터자르트 시카페어 아이크림
+  name_en: Dr.Jart+ Cicapair Eye Cream
+  brand: Dr.Jart+
+  category: skincare
+  subcategory: eye_care
+  budget_level: moderate
+  expected_skin_types:
+  - sensitive
+  - combination
+  - normal
+  expected_concerns:
+  - dark_circles
+  - redness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 더샘 세미 에센셜 아이크림
+  name_en: The SAEM Cell Renew Bio Eye Cream
+  brand: The SAEM
+  category: skincare
+  subcategory: eye_care
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  expected_concerns:
+  - wrinkles
+  - dark_circles
+  available_at:
+  - olive_young
+- name_ko: 이자녹스 에이지 포커스 피토프로 레티놀 아이크림
+  name_en: ISA KNOX Age Focus Phyto Pro Retinol Eye Cream
+  brand: ISA KNOX
+  category: skincare
+  subcategory: eye_care
+  budget_level: premium
+  expected_skin_types:
+  - dry
+  - normal
+  expected_concerns:
+  - wrinkles
+  - dark_circles
+  - dullness
+  available_at:
+  - department_store
+  - chicor
+- name_ko: 넘버즈인 4번 레티놀 아이크림
+  name_en: numbuzin No.4 Collagen 73 Dewy Focus Eye Serum
+  brand: numbuzin
+  category: skincare
+  subcategory: eye_care
+  budget_level: budget
+  expected_skin_types:
+  - normal
+  - combination
+  - dry
+  expected_concerns:
+  - wrinkles
+  - dark_circles
+  available_at:
+  - olive_young

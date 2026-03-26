@@ -1,0 +1,1305 @@
+products:
+- name_ko: 롬앤 쥬시 래스팅 틴트
+  name_en: rom&nd Juicy Lasting Tint
+  brand: rom&nd
+  category: makeup
+  subcategory: lip_tint
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - olive_young
+- name_ko: 롬앤 글래스팅 멜팅 밤
+  name_en: rom&nd Glasting Melting Balm
+  brand: rom&nd
+  category: makeup
+  subcategory: lip_balm
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 페리페라 잉크 무드 매트 틴트
+  name_en: Peripera Ink Mood Matte Tint
+  brand: Peripera
+  category: makeup
+  subcategory: lip_tint
+  budget_level: budget
+  expected_skin_types:
+  - oily
+  - combination
+  - normal
+  expected_concerns: []
+  available_at:
+  - olive_young
+- name_ko: 페리페라 잉크 더 벨벳
+  name_en: Peripera Ink The Velvet
+  brand: Peripera
+  category: makeup
+  subcategory: lip_tint
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - olive_young
+- name_ko: 클리오 멜팅 디유 틴트
+  name_en: Clio Melting Dewy Tint
+  brand: Clio
+  category: makeup
+  subcategory: lip_tint
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - combination
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 에뛰드 픽싱 틴트
+  name_en: Etude Fixing Tint
+  brand: Etude
+  category: makeup
+  subcategory: lip_tint
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - olive_young
+  - brand_store
+- name_ko: 헤라 센슈얼 파우더 매트 립스틱
+  name_en: Hera Sensual Powder Matte Lipstick
+  brand: Hera
+  category: makeup
+  subcategory: lip_stick
+  budget_level: luxury
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - department_store
+  - chicor
+- name_ko: 에스쁘아 쿠튀르 립 틴트 벨벳
+  name_en: espoir Couture Lip Tint Velvet
+  brand: espoir
+  category: makeup
+  subcategory: lip_tint
+  budget_level: premium
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - chicor
+  - olive_young
+- name_ko: 라네즈 투톤 립 틴트
+  name_en: Laneige Two Tone Tint Lip Bar
+  brand: Laneige
+  category: makeup
+  subcategory: lip_tint
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - olive_young
+  - department_store
+- name_ko: 마몽드 크리미 틴트 컬러 밤 인텐스
+  name_en: Mamonde Creamy Tint Color Balm Intense
+  brand: Mamonde
+  category: makeup
+  subcategory: lip_balm
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - combination
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+  - department_store
+- name_ko: 투쿨포스쿨 글로우 핏 립 글레이즈
+  name_en: too cool for school Glaze Lip Gloss
+  brand: too cool for school
+  category: makeup
+  subcategory: lip_gloss
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - olive_young
+- name_ko: 설화수 에센셜 립 세럼 스틱
+  name_en: Sulwhasoo Essential Lip Serum Stick
+  brand: Sulwhasoo
+  category: makeup
+  subcategory: lip_stick
+  budget_level: luxury
+  expected_skin_types:
+  - dry
+  - sensitive
+  - normal
+  expected_concerns:
+  - dryness
+  - wrinkles
+  available_at:
+  - department_store
+- name_ko: 웨이크메이크 워터 블러링 글로우 립스틱
+  name_en: Wakemake Water Blurring Glow Lipstick
+  brand: Wakemake
+  category: makeup
+  subcategory: lip_stick
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - olive_young
+- name_ko: 릴리바이레드 무드 라이어 벨벳 틴트
+  name_en: lilybyred Mood Liar Velvet Tint
+  brand: lilybyred
+  category: makeup
+  subcategory: lip_tint
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - olive_young
+- name_ko: 3CE 벨벳 립 틴트
+  name_en: 3CE Velvet Lip Tint
+  brand: 3CE
+  category: makeup
+  subcategory: lip_tint
+  budget_level: premium
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - chicor
+  - brand_store
+- name_ko: 클리오 킬커버 파운웨어 쿠션 올 뉴
+  name_en: Clio Kill Cover Foun-Wear Cushion All New
+  brand: Clio
+  category: makeup
+  subcategory: cushion
+  budget_level: moderate
+  expected_skin_types:
+  - oily
+  - combination
+  expected_concerns:
+  - pores
+  - uneven_tone
+  available_at:
+  - olive_young
+- name_ko: 미샤 매직 쿠션 커버 래스팅
+  name_en: Missha Magic Cushion Cover Lasting
+  brand: Missha
+  category: makeup
+  subcategory: cushion
+  budget_level: budget
+  expected_skin_types:
+  - oily
+  - combination
+  - normal
+  expected_concerns:
+  - uneven_tone
+  - pores
+  available_at:
+  - olive_young
+- name_ko: 라네즈 네오 쿠션 매트
+  name_en: Laneige Neo Cushion Matte
+  brand: Laneige
+  category: makeup
+  subcategory: cushion
+  budget_level: premium
+  expected_skin_types:
+  - oily
+  - combination
+  expected_concerns:
+  - pores
+  - uneven_tone
+  available_at:
+  - olive_young
+  - department_store
+- name_ko: 헤라 블랙 쿠션
+  name_en: Hera Black Cushion
+  brand: Hera
+  category: makeup
+  subcategory: cushion
+  budget_level: premium
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - normal
+  expected_concerns:
+  - uneven_tone
+  - dullness
+  available_at:
+  - department_store
+  - chicor
+- name_ko: 에뛰드 더블 래스팅 쿠션 글로우
+  name_en: Etude Double Lasting Cushion Glow
+  brand: Etude
+  category: makeup
+  subcategory: cushion
+  budget_level: premium
+  expected_skin_types:
+  - dry
+  - normal
+  expected_concerns:
+  - dryness
+  - dullness
+  available_at:
+  - olive_young
+  - brand_store
+- name_ko: 설화수 퍼펙팅 쿠션
+  name_en: Sulwhasoo Perfecting Cushion
+  brand: Sulwhasoo
+  category: makeup
+  subcategory: cushion
+  budget_level: luxury
+  expected_skin_types:
+  - dry
+  - combination
+  - normal
+  expected_concerns:
+  - wrinkles
+  - dullness
+  - uneven_tone
+  available_at:
+  - department_store
+- name_ko: 이니스프리 노세범 파우더 쿠션
+  name_en: Innisfree No-Sebum Powder Cushion
+  brand: Innisfree
+  category: makeup
+  subcategory: cushion
+  budget_level: premium
+  expected_skin_types:
+  - oily
+  - combination
+  expected_concerns:
+  - pores
+  - acne
+  available_at:
+  - olive_young
+  - brand_store
+- name_ko: 에스쁘아 프로 테일러 비 파운데이션
+  name_en: espoir Pro Tailor Be Foundation
+  brand: espoir
+  category: makeup
+  subcategory: foundation
+  budget_level: premium
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - normal
+  expected_concerns:
+  - uneven_tone
+  - pores
+  available_at:
+  - chicor
+  - olive_young
+- name_ko: 미샤 M 퍼펙트 커버 BB크림
+  name_en: Missha M Perfect Cover BB Cream SPF42
+  brand: Missha
+  category: makeup
+  subcategory: bb_cream
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - combination
+  - normal
+  - sensitive
+  expected_concerns:
+  - uneven_tone
+  - dark_spots
+  - dullness
+  available_at:
+  - olive_young
+- name_ko: 아모레퍼시픽 타임 레스폰스 스킨 리저브 쿠션
+  name_en: Amorepacific Time Response Skin Reserve Cushion
+  brand: Amorepacific
+  category: makeup
+  subcategory: cushion
+  budget_level: luxury
+  expected_skin_types:
+  - dry
+  - normal
+  expected_concerns:
+  - wrinkles
+  - dullness
+  - dryness
+  available_at:
+  - department_store
+- name_ko: 클리오 프로 아이 팔레트
+  name_en: Clio Pro Eye Palette
+  brand: Clio
+  category: makeup
+  subcategory: eye_shadow
+  budget_level: premium
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - olive_young
+- name_ko: 페리페라 올 테이크 무드 팔레트
+  name_en: Peripera All Take Mood Palette
+  brand: Peripera
+  category: makeup
+  subcategory: eye_shadow
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - olive_young
+- name_ko: 에뛰드 플레이 컬러 아이즈
+  name_en: Etude Play Color Eyes
+  brand: Etude
+  category: makeup
+  subcategory: eye_shadow
+  budget_level: premium
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - olive_young
+  - brand_store
+- name_ko: 클리오 킬 래쉬 슈퍼프루프 마스카라
+  name_en: Clio Kill Lash Superproof Mascara
+  brand: Clio
+  category: makeup
+  subcategory: mascara
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - olive_young
+- name_ko: 롬앤 한올 슈퍼 프루프 마스카라
+  name_en: rom&nd Han All Sharp Proof Mascara
+  brand: rom&nd
+  category: makeup
+  subcategory: mascara
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - olive_young
+- name_ko: 웨이크메이크 소프트 블러링 아이 팔레트
+  name_en: Wakemake Soft Blurring Eye Palette
+  brand: Wakemake
+  category: makeup
+  subcategory: eye_shadow
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - olive_young
+- name_ko: 클리오 샤프 소 심플 워터프루프 펜슬 라이너
+  name_en: Clio Sharp So Simple Waterproof Pencil Liner
+  brand: Clio
+  category: makeup
+  subcategory: eye_liner
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - olive_young
+- name_ko: 페리페라 잉크 씬씬 아이 펜슬
+  name_en: Peripera Ink Thin Thin Eye Pencil
+  brand: Peripera
+  category: makeup
+  subcategory: eye_liner
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - olive_young
+- name_ko: 3CE 아이 스위치
+  name_en: 3CE Eye Switch
+  brand: 3CE
+  category: makeup
+  subcategory: eye_shadow
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - chicor
+  - brand_store
+- name_ko: 헤라 아이 디자이너 팔레트
+  name_en: Hera Eye Designer Palette
+  brand: Hera
+  category: makeup
+  subcategory: eye_shadow
+  budget_level: luxury
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - department_store
+  - chicor
+- name_ko: 라네즈 글로위 메이크업 세럼
+  name_en: Laneige Glowy Makeup Serum
+  brand: Laneige
+  category: makeup
+  subcategory: primer
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - combination
+  - normal
+  expected_concerns:
+  - dryness
+  - dullness
+  available_at:
+  - olive_young
+  - department_store
+- name_ko: 이니스프리 노세범 미네랄 파우더
+  name_en: Innisfree No-Sebum Mineral Powder
+  brand: Innisfree
+  category: makeup
+  subcategory: setting_powder
+  budget_level: budget
+  expected_skin_types:
+  - oily
+  - combination
+  expected_concerns:
+  - pores
+  available_at:
+  - olive_young
+  - brand_store
+- name_ko: 페리페라 순수 베베 블러셔
+  name_en: Peripera Pure Bebe Blusher
+  brand: Peripera
+  category: makeup
+  subcategory: blush
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - olive_young
+- name_ko: 클리오 킬커버 피시저 프라이머
+  name_en: Clio Kill Cover Fixer Primer
+  brand: Clio
+  category: makeup
+  subcategory: primer
+  budget_level: moderate
+  expected_skin_types:
+  - oily
+  - combination
+  expected_concerns:
+  - pores
+  - uneven_tone
+  available_at:
+  - olive_young
+- name_ko: 에뛰드 꽃잎 블러셔
+  name_en: Etude Lovely Cookie Blusher
+  brand: Etude
+  category: makeup
+  subcategory: blush
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - olive_young
+  - brand_store
+- name_ko: 쿤달 허니 앤 마카다미아 네이처 샴푸
+  name_en: Kundal Honey & Macadamia Nature Shampoo
+  brand: Kundal
+  category: haircare
+  subcategory: shampoo
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 라보에이치 탈모 증상 완화 샴푸
+  name_en: La'dor Anti Hair Loss Shampoo
+  brand: La'dor
+  category: haircare
+  subcategory: shampoo
+  budget_level: budget
+  expected_skin_types:
+  - oily
+  - combination
+  - normal
+  expected_concerns: []
+  available_at:
+  - olive_young
+- name_ko: 아모스 녹차 실감 샴푸
+  name_en: Amos Green Tea Refresh Shampoo
+  brand: Amos Professional
+  category: haircare
+  subcategory: shampoo
+  budget_level: premium
+  expected_skin_types:
+  - oily
+  - combination
+  expected_concerns: []
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 미장센 퍼펙트 세럼 샴푸
+  name_en: Mise en Scene Perfect Serum Shampoo
+  brand: Mise en Scene
+  category: haircare
+  subcategory: shampoo
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - combination
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 려 자양윤모 샴푸
+  name_en: Ryo Jayang Yunmo Anti Hair Loss Shampoo
+  brand: Ryo
+  category: haircare
+  subcategory: shampoo
+  budget_level: moderate
+  expected_skin_types:
+  - oily
+  - combination
+  - normal
+  - sensitive
+  expected_concerns: []
+  available_at:
+  - olive_young
+- name_ko: 쿤달 허니 & 마카다미아 샴푸
+  name_en: Kundal Honey & Macadamia Nature Shampoo
+  brand: Kundal
+  category: haircare
+  subcategory: shampoo
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - normal
+  - sensitive
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 모레모 워터 트리트먼트 미라클 10
+  name_en: Moremo Water Treatment Miracle 10
+  brand: Moremo
+  category: haircare
+  subcategory: treatment
+  budget_level: premium
+  expected_skin_types:
+  - dry
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 라도르 퍼펙트 헤어 필 업
+  name_en: La'dor Perfect Hair Fill-Up
+  brand: La'dor
+  category: haircare
+  subcategory: treatment
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - combination
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 미장센 퍼펙트 세럼 트리트먼트 팩
+  name_en: Mise en Scene Perfect Serum Treatment Pack
+  brand: Mise en Scene
+  category: haircare
+  subcategory: treatment
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - combination
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 쿤달 허니 앤 마카다미아 헤어 트리트먼트
+  name_en: Kundal Honey & Macadamia Hair Treatment
+  brand: Kundal
+  category: haircare
+  subcategory: treatment
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 아모스 리커버 크림 트리트먼트
+  name_en: Amos Professional Recovery Cream Treatment
+  brand: Amos Professional
+  category: haircare
+  subcategory: treatment
+  budget_level: premium
+  expected_skin_types:
+  - dry
+  - combination
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 모레모 헤어 에센스 딜라이트풀 오일
+  name_en: Moremo Hair Essence Delightful Oil
+  brand: Moremo
+  category: haircare
+  subcategory: hair_oil
+  budget_level: premium
+  expected_skin_types:
+  - dry
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 미장센 퍼펙트 오리지널 세럼
+  name_en: Mise en Scene Perfect Original Serum
+  brand: Mise en Scene
+  category: haircare
+  subcategory: hair_serum
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - combination
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 라도르 퍼펙트 헤어 필 업 에센스
+  name_en: La'dor Perfect Hair Fill-Up Essence
+  brand: La'dor
+  category: haircare
+  subcategory: hair_essence
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - combination
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 헤라 시그니아 헤어 오일
+  name_en: Hera Signia Hair Oil
+  brand: Hera
+  category: haircare
+  subcategory: hair_oil
+  budget_level: premium
+  expected_skin_types:
+  - dry
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - department_store
+- name_ko: 쿤달 아르간 헤어 세럼
+  name_en: Kundal Argan Hair Serum
+  brand: Kundal
+  category: haircare
+  subcategory: hair_serum
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - combination
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 미장센 헬로 버블 폼 컬러
+  name_en: Mise en Scene Hello Bubble Foam Color
+  brand: Mise en Scene
+  category: haircare
+  subcategory: hair_color
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns: []
+  available_at:
+  - olive_young
+- name_ko: 아모스 커링 에센스 2X
+  name_en: Amos Professional Curling Essence 2X
+  brand: Amos Professional
+  category: haircare
+  subcategory: styling
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - combination
+  - normal
+  expected_concerns: []
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 려 더블 이펙터 루트 볼륨 세팅
+  name_en: Ryo Double Effector Root Volume Setting
+  brand: Ryo
+  category: haircare
+  subcategory: styling
+  budget_level: moderate
+  expected_skin_types:
+  - oily
+  - combination
+  - normal
+  expected_concerns: []
+  available_at:
+  - olive_young
+- name_ko: 모레모 헤어 세럼 R
+  name_en: Moremo Hair Serum R
+  brand: Moremo
+  category: haircare
+  subcategory: styling
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - combination
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 쿤달 퓨어 바디워시
+  name_en: Kundal Pure Body Wash
+  brand: Kundal
+  category: bodycare
+  subcategory: body_wash
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 해피바스 그린티 바디워시
+  name_en: Happy Bath Green Tea Body Wash
+  brand: Happy Bath
+  category: bodycare
+  subcategory: body_wash
+  budget_level: budget
+  expected_skin_types:
+  - oily
+  - combination
+  - normal
+  expected_concerns:
+  - acne
+  - pores
+  available_at:
+  - olive_young
+- name_ko: 한율 달빛유자 바디워시
+  name_en: Hanyul Moonlight Citron Body Wash
+  brand: Hanyul
+  category: bodycare
+  subcategory: body_wash
+  budget_level: premium
+  expected_skin_types:
+  - dry
+  - combination
+  - normal
+  expected_concerns:
+  - dryness
+  - dullness
+  available_at:
+  - olive_young
+  - department_store
+- name_ko: 스크럽 버디 코코넛 바디 스크럽
+  name_en: Scrub Buddy Coconut Body Scrub
+  brand: Scrub Buddy
+  category: bodycare
+  subcategory: body_scrub
+  budget_level: budget
+  expected_skin_types:
+  - oily
+  - combination
+  - normal
+  expected_concerns:
+  - dullness
+  - acne
+  available_at:
+  - olive_young
+- name_ko: 메디힐 티트리 바디워시
+  name_en: Mediheal Tea Tree Body Wash
+  brand: Mediheal
+  category: bodycare
+  subcategory: body_wash
+  budget_level: budget
+  expected_skin_types:
+  - oily
+  - combination
+  - sensitive
+  expected_concerns:
+  - acne
+  - redness
+  available_at:
+  - olive_young
+- name_ko: 아모레퍼시픽 바디 리추얼 클렌징 오일
+  name_en: Amorepacific Body Ritual Cleansing Oil
+  brand: Amorepacific
+  category: bodycare
+  subcategory: body_wash
+  budget_level: luxury
+  expected_skin_types:
+  - dry
+  - sensitive
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - department_store
+- name_ko: 쿤달 허니 앤 마카다미아 퓨어 바디 로션
+  name_en: Kundal Honey & Macadamia Pure Body Lotion
+  brand: Kundal
+  category: bodycare
+  subcategory: body_lotion
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - combination
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 일리윤 세라마이드 아토 로션
+  name_en: Illiyoon Ceramide Ato Lotion
+  brand: Illiyoon
+  category: bodycare
+  subcategory: body_lotion
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - sensitive
+  expected_concerns:
+  - dryness
+  - eczema
+  - redness
+  available_at:
+  - olive_young
+- name_ko: 세타필 바디 모이스처라이저
+  name_en: Cetaphil Daily Advance Body Moisturizer
+  brand: Cetaphil
+  category: bodycare
+  subcategory: body_lotion
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - sensitive
+  - normal
+  expected_concerns:
+  - dryness
+  - eczema
+  available_at:
+  - olive_young
+- name_ko: 한율 달빛유자 바디 로션
+  name_en: Hanyul Moonlight Citron Body Lotion
+  brand: Hanyul
+  category: bodycare
+  subcategory: body_lotion
+  budget_level: premium
+  expected_skin_types:
+  - dry
+  - combination
+  - normal
+  expected_concerns:
+  - dryness
+  - dullness
+  available_at:
+  - olive_young
+  - department_store
+- name_ko: 설화수 윤조 바디 크림
+  name_en: Sulwhasoo First Care Activating Body Cream
+  brand: Sulwhasoo
+  category: bodycare
+  subcategory: body_cream
+  budget_level: luxury
+  expected_skin_types:
+  - dry
+  - normal
+  expected_concerns:
+  - dryness
+  - wrinkles
+  - dullness
+  available_at:
+  - department_store
+- name_ko: 일리윤 세라마이드 아토 컨센트레이트 크림
+  name_en: Illiyoon Ceramide Ato Concentrate Cream
+  brand: Illiyoon
+  category: bodycare
+  subcategory: body_cream
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - sensitive
+  expected_concerns:
+  - dryness
+  - eczema
+  - redness
+  available_at:
+  - olive_young
+- name_ko: 더페이스샵 테라피가든 핸드크림
+  name_en: The Face Shop Therapy Garden Hand Cream
+  brand: The Face Shop
+  category: bodycare
+  subcategory: hand_cream
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 라네즈 립 앤 핸드 블루밍 세트
+  name_en: Laneige Lip & Hand Blooming Set
+  brand: Laneige
+  category: bodycare
+  subcategory: hand_cream
+  budget_level: premium
+  expected_skin_types:
+  - dry
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+  - department_store
+- name_ko: 탬버린즈 퍼퓸 핸드크림
+  name_en: Tamburins Perfume Hand Cream
+  brand: Tamburins
+  category: bodycare
+  subcategory: hand_cream
+  budget_level: luxury
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - brand_store
+  - chicor
+- name_ko: 토니모리 피치 핸드크림
+  name_en: Tony Moly Peach Hand Cream
+  brand: Tony Moly
+  category: bodycare
+  subcategory: hand_cream
+  budget_level: budget
+  expected_skin_types:
+  - dry
+  - normal
+  expected_concerns:
+  - dryness
+  available_at:
+  - olive_young
+  - brand_store
+- name_ko: 라운드랩 자작나무 수분 선크림 바디
+  name_en: Round Lab Birch Moisturizing Sun Cream Body
+  brand: Round Lab
+  category: bodycare
+  subcategory: body_sunscreen
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - combination
+  - sensitive
+  - normal
+  expected_concerns:
+  - sun_damage
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 아이소이 선 밀크 바디 SPF50+
+  name_en: isoi Sun Milk Body SPF50+
+  brand: isoi
+  category: bodycare
+  subcategory: body_sunscreen
+  budget_level: moderate
+  expected_skin_types:
+  - sensitive
+  - dry
+  - normal
+  expected_concerns:
+  - sun_damage
+  - redness
+  available_at:
+  - olive_young
+  - chicor
+- name_ko: 메디힐 마데카소사이드 바디 세럼
+  name_en: Mediheal Madecassoside Body Serum
+  brand: Mediheal
+  category: bodycare
+  subcategory: body_serum
+  budget_level: moderate
+  expected_skin_types:
+  - sensitive
+  - dry
+  expected_concerns:
+  - redness
+  - acne
+  - dryness
+  available_at:
+  - olive_young
+- name_ko: 일리윤 프로바이오틱 스킨 배리어 크림 워시
+  name_en: Illiyoon Probiotics Skin Barrier Cera Balm
+  brand: Illiyoon
+  category: bodycare
+  subcategory: body_balm
+  budget_level: moderate
+  expected_skin_types:
+  - dry
+  - sensitive
+  expected_concerns:
+  - eczema
+  - dryness
+  - redness
+  available_at:
+  - olive_young
+- name_ko: 에뛰드 마이 뷰티 툴 실리콘 퍼프
+  name_en: ETUDE My Beauty Tool Silicone Puff
+  brand: ETUDE
+  category: tools
+  subcategory: application_sponge
+  budget_level: budget
+  expected_skin_types:
+  - all
+  expected_concerns: []
+  available_at:
+  - olive_young
+- name_ko: 클린씽 네이처 실리콘 세안 브러시
+  name_en: Cleansing Nature Silicone Face Brush
+  brand: Cleansing Nature
+  category: tools
+  subcategory: cleansing_brush
+  budget_level: budget
+  expected_skin_types:
+  - all
+  expected_concerns:
+  - pores
+  available_at:
+  - olive_young
+  - daiso
+- name_ko: 페이스 팩토리 딥클린 이중 모공 브러시
+  name_en: Face Factory Deep Clean Dual Pore Brush
+  brand: Face Factory
+  category: tools
+  subcategory: cleansing_brush
+  budget_level: budget
+  expected_skin_types:
+  - all
+  expected_concerns:
+  - pores
+  - acne
+  available_at:
+  - olive_young
+- name_ko: 에뛰드 마이 뷰티 툴 에어리 퍼프
+  name_en: Etude My Beauty Tool Airy Puff
+  brand: Etude
+  category: tools
+  subcategory: makeup_puff
+  budget_level: budget
+  expected_skin_types:
+  - all
+  expected_concerns: []
+  available_at:
+  - olive_young
+  - brand_store
+- name_ko: 필리밀리 페이스 소프트 벨벳 스펀지
+  name_en: Fillimilli Face Soft Velvet Sponge
+  brand: Fillimilli
+  category: tools
+  subcategory: makeup_sponge
+  budget_level: budget
+  expected_skin_types:
+  - all
+  expected_concerns: []
+  available_at:
+  - olive_young
+- name_ko: 필리밀리 아이 섀도우 브러시 세트
+  name_en: Fillimilli Eye Shadow Brush Set
+  brand: Fillimilli
+  category: tools
+  subcategory: makeup_brush
+  budget_level: premium
+  expected_skin_types:
+  - all
+  expected_concerns: []
+  available_at:
+  - olive_young
+- name_ko: 다이소 실리콘 마스크 팩 커버
+  name_en: Daiso Silicone Mask Pack Cover
+  brand: Daiso
+  category: tools
+  subcategory: mask_cover
+  budget_level: budget
+  expected_skin_types:
+  - all
+  expected_concerns: []
+  available_at:
+  - daiso
+- name_ko: 에뛰드 마이 뷰티 툴 마스크 시트 후크
+  name_en: Etude My Beauty Tool Mask Sheet Hook
+  brand: Etude
+  category: tools
+  subcategory: mask_accessory
+  budget_level: budget
+  expected_skin_types:
+  - all
+  expected_concerns: []
+  available_at:
+  - olive_young
+  - brand_store
+- name_ko: 필리밀리 LED 컴팩트 거울
+  name_en: Fillimilli LED Compact Mirror
+  brand: Fillimilli
+  category: tools
+  subcategory: mirror
+  budget_level: premium
+  expected_skin_types:
+  - all
+  expected_concerns: []
+  available_at:
+  - olive_young
+- name_ko: 에뛰드 마이 뷰티 툴 브러시 파우치
+  name_en: Etude My Beauty Tool Brush Pouch
+  brand: Etude
+  category: tools
+  subcategory: organizer
+  budget_level: budget
+  expected_skin_types:
+  - all
+  expected_concerns: []
+  available_at:
+  - olive_young
+  - brand_store
