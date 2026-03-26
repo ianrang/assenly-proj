@@ -1,0 +1,411 @@
+# Essenly MVP Seed Data — K-Beauty Treatments
+# Total: 50 treatments
+# Category: laser(15) skin(10) injection(10) facial(8) body(4) hair(3)
+# Downtime: 0 days(22) 1-3 days(18) 4+ days(10)
+
+treatments:
+  # ── Laser (15) ──────────────────────────────────────────────
+  - name_ko: "레이저 토닝"
+    name_en: "Laser Toning"
+    category: "laser"
+    expected_concerns: ["dark_spots", "uneven_tone"]
+    expected_skin_types: ["oily", "combination", "normal"]
+    downtime_days: 1
+    price_range_krw: [50000, 150000]
+
+  - name_ko: "피코 토닝"
+    name_en: "Pico Toning"
+    category: "laser"
+    expected_concerns: ["dark_spots", "uneven_tone", "pores"]
+    expected_skin_types: ["oily", "combination", "normal", "sensitive"]
+    downtime_days: 0
+    price_range_krw: [80000, 200000]
+
+  - name_ko: "피코슈어 레이저"
+    name_en: "PicoSure Laser"
+    category: "laser"
+    expected_concerns: ["dark_spots", "uneven_tone", "acne"]
+    expected_skin_types: ["oily", "combination", "normal"]
+    downtime_days: 2
+    price_range_krw: [150000, 350000]
+
+  - name_ko: "프락셀 레이저"
+    name_en: "Fraxel Laser"
+    category: "laser"
+    expected_concerns: ["acne", "wrinkles", "pores", "dark_spots"]
+    expected_skin_types: ["oily", "combination", "normal"]
+    downtime_days: 5
+    price_range_krw: [200000, 500000]
+
+  - name_ko: "CO2 프락셔널 레이저"
+    name_en: "CO2 Fractional Laser"
+    category: "laser"
+    expected_concerns: ["acne", "wrinkles", "pores"]
+    expected_skin_types: ["oily", "combination", "normal"]
+    downtime_days: 7
+    price_range_krw: [200000, 600000]
+
+  - name_ko: "제네시스 레이저"
+    name_en: "Genesis Laser"
+    category: "laser"
+    expected_concerns: ["redness", "pores", "dullness"]
+    expected_skin_types: ["sensitive", "combination", "normal"]
+    downtime_days: 0
+    price_range_krw: [50000, 150000]
+
+  - name_ko: "엑셀V 레이저"
+    name_en: "Excel V Laser"
+    category: "laser"
+    expected_concerns: ["redness", "dark_spots", "sun_damage"]
+    expected_skin_types: ["sensitive", "normal", "combination"]
+    downtime_days: 1
+    price_range_krw: [100000, 250000]
+
+  - name_ko: "클라리티 레이저"
+    name_en: "Clarity Laser"
+    category: "laser"
+    expected_concerns: ["dullness", "uneven_tone", "sun_damage"]
+    expected_skin_types: ["normal", "combination", "oily"]
+    downtime_days: 1
+    price_range_krw: [80000, 200000]
+
+  - name_ko: "IPL 광선 치료"
+    name_en: "IPL Phototherapy"
+    category: "laser"
+    expected_concerns: ["dark_spots", "redness", "sun_damage"]
+    expected_skin_types: ["normal", "combination"]
+    downtime_days: 1
+    price_range_krw: [60000, 180000]
+
+  - name_ko: "울쎄라 리프팅"
+    name_en: "Ulthera Lifting"
+    category: "laser"
+    expected_concerns: ["wrinkles"]
+    expected_skin_types: ["dry", "normal", "combination"]
+    downtime_days: 0
+    price_range_krw: [500000, 2000000]
+
+  - name_ko: "써마지 FLX"
+    name_en: "Thermage FLX"
+    category: "laser"
+    expected_concerns: ["wrinkles", "pores"]
+    expected_skin_types: ["dry", "normal", "combination", "oily"]
+    downtime_days: 0
+    price_range_krw: [500000, 2500000]
+
+  - name_ko: "슈링크 유니버스"
+    name_en: "Shurink Universe"
+    category: "laser"
+    expected_concerns: ["wrinkles", "pores"]
+    expected_skin_types: ["normal", "combination", "oily"]
+    downtime_days: 0
+    price_range_krw: [200000, 800000]
+
+  - name_ko: "브이빔 레이저"
+    name_en: "V-Beam Laser"
+    category: "laser"
+    expected_concerns: ["redness", "acne"]
+    expected_skin_types: ["sensitive", "normal", "combination"]
+    downtime_days: 2
+    price_range_krw: [80000, 200000]
+
+  - name_ko: "레블라이트 레이저"
+    name_en: "RevLite Laser"
+    category: "laser"
+    expected_concerns: ["dark_spots", "uneven_tone"]
+    expected_skin_types: ["normal", "combination", "oily"]
+    downtime_days: 1
+    price_range_krw: [60000, 180000]
+
+  - name_ko: "루트로닉 할리우드 필링"
+    name_en: "Lutronic Hollywood Peel"
+    category: "laser"
+    expected_concerns: ["dullness", "pores", "uneven_tone"]
+    expected_skin_types: ["oily", "combination", "normal"]
+    downtime_days: 0
+    price_range_krw: [100000, 250000]
+
+  # ── Skin (10) ──────────────────────────────────────────────
+  - name_ko: "아쿠아필"
+    name_en: "Aqua Peel"
+    category: "skin"
+    expected_concerns: ["pores", "dullness", "acne"]
+    expected_skin_types: ["oily", "combination"]
+    downtime_days: 0
+    price_range_krw: [50000, 120000]
+
+  - name_ko: "살리실산 필링"
+    name_en: "Salicylic Acid Peel"
+    category: "skin"
+    expected_concerns: ["acne", "pores", "dullness"]
+    expected_skin_types: ["oily", "combination"]
+    downtime_days: 2
+    price_range_krw: [30000, 80000]
+
+  - name_ko: "미백 필링"
+    name_en: "Brightening Peel"
+    category: "skin"
+    expected_concerns: ["dark_spots", "dullness", "uneven_tone"]
+    expected_skin_types: ["normal", "combination", "dry"]
+    downtime_days: 3
+    price_range_krw: [50000, 120000]
+
+  - name_ko: "젖산 필링"
+    name_en: "Lactic Acid Peel"
+    category: "skin"
+    expected_concerns: ["dullness", "dryness", "uneven_tone"]
+    expected_skin_types: ["dry", "sensitive", "normal"]
+    downtime_days: 1
+    price_range_krw: [30000, 80000]
+
+  - name_ko: "글루타치온 화이트닝"
+    name_en: "Glutathione Whitening Treatment"
+    category: "skin"
+    expected_concerns: ["dullness", "dark_spots", "uneven_tone"]
+    expected_skin_types: ["dry", "normal", "combination", "oily", "sensitive"]
+    downtime_days: 0
+    price_range_krw: [80000, 200000]
+
+  - name_ko: "더마펜 MTS"
+    name_en: "Dermapen Microneedling (MTS)"
+    category: "skin"
+    expected_concerns: ["acne", "wrinkles", "pores", "dark_spots"]
+    expected_skin_types: ["normal", "combination", "oily"]
+    downtime_days: 5
+    price_range_krw: [100000, 250000]
+
+  - name_ko: "리쥬란 힐러"
+    name_en: "Rejuran Healer"
+    category: "skin"
+    expected_concerns: ["wrinkles", "dullness", "pores"]
+    expected_skin_types: ["dry", "normal", "combination", "sensitive"]
+    downtime_days: 5
+    price_range_krw: [200000, 400000]
+
+  - name_ko: "연어주사 (PDRN)"
+    name_en: "Salmon DNA Injection (PDRN)"
+    category: "skin"
+    expected_concerns: ["wrinkles", "dullness", "dryness"]
+    expected_skin_types: ["dry", "normal", "sensitive"]
+    downtime_days: 1
+    price_range_krw: [150000, 350000]
+
+  - name_ko: "줄기세포 피부 재생"
+    name_en: "Stem Cell Skin Rejuvenation"
+    category: "skin"
+    expected_concerns: ["wrinkles", "dullness", "dryness"]
+    expected_skin_types: ["dry", "normal", "combination"]
+    downtime_days: 2
+    price_range_krw: [200000, 500000]
+
+  - name_ko: "LDM 초음파 보습"
+    name_en: "LDM Ultrasound Moisturizing"
+    category: "skin"
+    expected_concerns: ["dryness", "dullness", "redness"]
+    expected_skin_types: ["dry", "sensitive", "normal"]
+    downtime_days: 0
+    price_range_krw: [50000, 130000]
+
+  # ── Injection (10) ─────────────────────────────────────────
+  - name_ko: "보톡스 이마"
+    name_en: "Botox Forehead"
+    category: "injection"
+    expected_concerns: ["wrinkles"]
+    expected_skin_types: ["dry", "normal", "combination", "oily", "sensitive"]
+    downtime_days: 0
+    price_range_krw: [50000, 150000]
+
+  - name_ko: "보톡스 눈가"
+    name_en: "Botox Crow's Feet"
+    category: "injection"
+    expected_concerns: ["wrinkles"]
+    expected_skin_types: ["dry", "normal", "combination", "oily", "sensitive"]
+    downtime_days: 0
+    price_range_krw: [50000, 120000]
+
+  - name_ko: "보톡스 턱 (사각턱)"
+    name_en: "Botox Jawline (Masseter)"
+    category: "injection"
+    expected_concerns: ["wrinkles"]
+    expected_skin_types: ["dry", "normal", "combination", "oily", "sensitive"]
+    downtime_days: 0
+    price_range_krw: [80000, 200000]
+
+  - name_ko: "필러 팔자주름"
+    name_en: "Filler Nasolabial Folds"
+    category: "injection"
+    expected_concerns: ["wrinkles"]
+    expected_skin_types: ["dry", "normal", "combination", "oily", "sensitive"]
+    downtime_days: 5
+    price_range_krw: [200000, 500000]
+
+  - name_ko: "필러 입술"
+    name_en: "Lip Filler"
+    category: "injection"
+    expected_concerns: ["wrinkles", "dryness"]
+    expected_skin_types: ["dry", "normal", "combination", "oily", "sensitive"]
+    downtime_days: 4
+    price_range_krw: [200000, 500000]
+
+  - name_ko: "스킨보톡스"
+    name_en: "Skin Botox (Meso-Botox)"
+    category: "injection"
+    expected_concerns: ["pores", "wrinkles"]
+    expected_skin_types: ["oily", "combination", "normal"]
+    downtime_days: 0
+    price_range_krw: [100000, 250000]
+
+  - name_ko: "볼륨 필러 (이마/관자놀이)"
+    name_en: "Volume Filler (Forehead/Temple)"
+    category: "injection"
+    expected_concerns: ["wrinkles"]
+    expected_skin_types: ["dry", "normal", "combination", "oily", "sensitive"]
+    downtime_days: 5
+    price_range_krw: [300000, 800000]
+
+  - name_ko: "물광주사"
+    name_en: "Water Glow Injection (Skinbooster)"
+    category: "injection"
+    expected_concerns: ["dryness", "dullness", "wrinkles"]
+    expected_skin_types: ["dry", "normal", "combination", "sensitive"]
+    downtime_days: 1
+    price_range_krw: [150000, 350000]
+
+  - name_ko: "쥬베덤 볼보 필러"
+    name_en: "Juvederm Voluma Filler"
+    category: "injection"
+    expected_concerns: ["wrinkles"]
+    expected_skin_types: ["dry", "normal", "combination", "oily", "sensitive"]
+    downtime_days: 5
+    price_range_krw: [300000, 700000]
+
+  - name_ko: "턱끝 필러"
+    name_en: "Chin Filler"
+    category: "injection"
+    expected_concerns: ["wrinkles"]
+    expected_skin_types: ["dry", "normal", "combination", "oily", "sensitive"]
+    downtime_days: 5
+    price_range_krw: [200000, 500000]
+
+  # ── Facial (8) ─────────────────────────────────────────────
+  - name_ko: "수분 관리"
+    name_en: "Hydrating Facial"
+    category: "facial"
+    expected_concerns: ["dryness", "dullness"]
+    expected_skin_types: ["dry", "sensitive", "normal"]
+    downtime_days: 0
+    price_range_krw: [50000, 120000]
+
+  - name_ko: "진정 관리"
+    name_en: "Calming Facial"
+    category: "facial"
+    expected_concerns: ["redness", "eczema", "dryness"]
+    expected_skin_types: ["sensitive", "dry"]
+    downtime_days: 0
+    price_range_krw: [50000, 120000]
+
+  - name_ko: "미백 관리"
+    name_en: "Brightening Facial"
+    category: "facial"
+    expected_concerns: ["dark_spots", "dullness", "uneven_tone"]
+    expected_skin_types: ["normal", "combination", "dry"]
+    downtime_days: 0
+    price_range_krw: [60000, 150000]
+
+  - name_ko: "한방 관리"
+    name_en: "Korean Herbal Facial"
+    category: "facial"
+    expected_concerns: ["dullness", "wrinkles", "dryness"]
+    expected_skin_types: ["dry", "normal", "sensitive"]
+    downtime_days: 0
+    price_range_krw: [80000, 180000]
+
+  - name_ko: "여드름 관리"
+    name_en: "Acne Treatment Facial"
+    category: "facial"
+    expected_concerns: ["acne", "pores"]
+    expected_skin_types: ["oily", "combination"]
+    downtime_days: 1
+    price_range_krw: [60000, 150000]
+
+  - name_ko: "LED 테라피"
+    name_en: "LED Light Therapy"
+    category: "facial"
+    expected_concerns: ["acne", "redness", "wrinkles"]
+    expected_skin_types: ["sensitive", "normal", "combination", "oily"]
+    downtime_days: 0
+    price_range_krw: [30000, 80000]
+
+  - name_ko: "산소 관리"
+    name_en: "Oxygen Facial"
+    category: "facial"
+    expected_concerns: ["dullness", "dryness"]
+    expected_skin_types: ["dry", "normal", "sensitive"]
+    downtime_days: 0
+    price_range_krw: [60000, 150000]
+
+  - name_ko: "골드 마스크 관리"
+    name_en: "Gold Mask Facial"
+    category: "facial"
+    expected_concerns: ["wrinkles", "dullness", "dryness"]
+    expected_skin_types: ["dry", "normal", "combination"]
+    downtime_days: 0
+    price_range_krw: [80000, 200000]
+
+  # ── Body (4) ───────────────────────────────────────────────
+  - name_ko: "지방 분해 주사 (턱 아래)"
+    name_en: "Fat Dissolving Injection (Double Chin)"
+    category: "body"
+    expected_concerns: ["wrinkles"]
+    expected_skin_types: ["dry", "normal", "combination", "oily", "sensitive"]
+    downtime_days: 5
+    price_range_krw: [150000, 400000]
+
+  - name_ko: "쿨스컬프팅 (냉동 지방 분해)"
+    name_en: "CoolSculpting (Cryolipolysis)"
+    category: "body"
+    expected_concerns: ["wrinkles"]
+    expected_skin_types: ["dry", "normal", "combination", "oily", "sensitive"]
+    downtime_days: 3
+    price_range_krw: [200000, 600000]
+
+  - name_ko: "인모드 바디 타이트닝"
+    name_en: "InMode Body Tightening"
+    category: "body"
+    expected_concerns: ["wrinkles"]
+    expected_skin_types: ["dry", "normal", "combination", "oily", "sensitive"]
+    downtime_days: 1
+    price_range_krw: [150000, 400000]
+
+  - name_ko: "바디 리프팅 레이저"
+    name_en: "Body Lifting Laser"
+    category: "body"
+    expected_concerns: ["wrinkles"]
+    expected_skin_types: ["dry", "normal", "combination", "oily", "sensitive"]
+    downtime_days: 2
+    price_range_krw: [200000, 500000]
+
+  # ── Hair (3) ───────────────────────────────────────────────
+  - name_ko: "두피 스케일링"
+    name_en: "Scalp Scaling"
+    category: "hair"
+    expected_concerns: ["dryness"]
+    expected_skin_types: ["dry", "normal", "oily", "sensitive"]
+    downtime_days: 0
+    price_range_krw: [50000, 120000]
+
+  - name_ko: "헤어 메조테라피"
+    name_en: "Hair Mesotherapy"
+    category: "hair"
+    expected_concerns: ["dryness"]
+    expected_skin_types: ["dry", "normal", "oily", "sensitive"]
+    downtime_days: 0
+    price_range_krw: [100000, 250000]
+
+  - name_ko: "PRP 모발 재생"
+    name_en: "PRP Hair Rejuvenation"
+    category: "hair"
+    expected_concerns: ["dryness"]
+    expected_skin_types: ["dry", "normal", "oily", "sensitive"]
+    downtime_days: 1
+    price_range_krw: [200000, 500000]

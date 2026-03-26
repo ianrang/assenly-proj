@@ -1,0 +1,315 @@
+# Essenly MVP Seed Data — K-Beauty Stores in Seoul
+# Total: 50 stores
+# District: myeongdong(10) gangnam(8) hongdae(7) itaewon(5) jamsil(4) seongsu(4) yeouido(3) dongdaemun(3) apgujeong(3) other(3)
+# Type: olive_young(20) brand_store(12) department_store(8) chicor(5) pharmacy(2) other(3)
+
+stores:
+  # ── Myeongdong (10) ──────────────────────────────────────────
+  - name_ko: "올리브영 명동본점"
+    name_en: "Olive Young Myeongdong Main"
+    district: "myeongdong"
+    store_type: "olive_young"
+    kakao_query: "올리브영 명동본점"
+
+  - name_ko: "올리브영 명동역점"
+    name_en: "Olive Young Myeongdong Station"
+    district: "myeongdong"
+    store_type: "olive_young"
+    kakao_query: "올리브영 명동역"
+
+  - name_ko: "올리브영 명동중앙점"
+    name_en: "Olive Young Myeongdong Jungang"
+    district: "myeongdong"
+    store_type: "olive_young"
+    kakao_query: "올리브영 명동중앙"
+
+  - name_ko: "올리브영 명동타운점"
+    name_en: "Olive Young Myeongdong Town"
+    district: "myeongdong"
+    store_type: "olive_young"
+    kakao_query: "올리브영 명동타운"
+
+  - name_ko: "이니스프리 명동점"
+    name_en: "Innisfree Myeongdong"
+    district: "myeongdong"
+    store_type: "brand_store"
+    kakao_query: "이니스프리 명동"
+
+  - name_ko: "라네즈 명동 플래그십"
+    name_en: "Laneige Myeongdong Flagship"
+    district: "myeongdong"
+    store_type: "brand_store"
+    kakao_query: "라네즈 명동"
+
+  - name_ko: "시코르 명동점"
+    name_en: "CHICOR Myeongdong"
+    district: "myeongdong"
+    store_type: "chicor"
+    kakao_query: "시코르 명동"
+
+  - name_ko: "롯데백화점 명동본점"
+    name_en: "Lotte Department Store Myeongdong Main"
+    district: "myeongdong"
+    store_type: "department_store"
+    kakao_query: "롯데백화점 명동본점"
+
+  - name_ko: "신세계백화점 본점"
+    name_en: "Shinsegae Department Store Main"
+    district: "myeongdong"
+    store_type: "department_store"
+    kakao_query: "신세계백화점 본점"
+
+  - name_ko: "3CE 시네마 명동점"
+    name_en: "3CE Cinema Myeongdong"
+    district: "myeongdong"
+    store_type: "brand_store"
+    kakao_query: "3CE 시네마 명동"
+
+  # ── Gangnam (8) ──────────────────────────────────────────────
+  - name_ko: "올리브영 강남역점"
+    name_en: "Olive Young Gangnam Station"
+    district: "gangnam"
+    store_type: "olive_young"
+    kakao_query: "올리브영 강남역"
+
+  - name_ko: "올리브영 강남타운점"
+    name_en: "Olive Young Gangnam Town"
+    district: "gangnam"
+    store_type: "olive_young"
+    kakao_query: "올리브영 강남타운"
+
+  - name_ko: "올리브영 강남대로점"
+    name_en: "Olive Young Gangnam-daero"
+    district: "gangnam"
+    store_type: "olive_young"
+    kakao_query: "올리브영 강남대로"
+
+  - name_ko: "시코르 강남역점"
+    name_en: "CHICOR Gangnam Station"
+    district: "gangnam"
+    store_type: "chicor"
+    kakao_query: "시코르 강남역"
+
+  - name_ko: "시코르 신세계 강남점"
+    name_en: "CHICOR Shinsegae Gangnam"
+    district: "gangnam"
+    store_type: "chicor"
+    kakao_query: "시코르 신세계 강남"
+
+  - name_ko: "신세계백화점 강남점"
+    name_en: "Shinsegae Department Store Gangnam"
+    district: "gangnam"
+    store_type: "department_store"
+    kakao_query: "신세계백화점 강남점"
+
+  - name_ko: "닥터자르트 플래그십 강남"
+    name_en: "Dr. Jart+ Flagship Gangnam"
+    district: "gangnam"
+    store_type: "brand_store"
+    kakao_query: "닥터자르트 강남"
+
+  - name_ko: "아모레성수 강남점"
+    name_en: "Amore Gangnam"
+    district: "gangnam"
+    store_type: "brand_store"
+    kakao_query: "아모레 강남"
+
+  # ── Hongdae (7) ──────────────────────────────────────────────
+  - name_ko: "올리브영 홍대입구역점"
+    name_en: "Olive Young Hongdae Station"
+    district: "hongdae"
+    store_type: "olive_young"
+    kakao_query: "올리브영 홍대입구역"
+
+  - name_ko: "올리브영 홍대중앙점"
+    name_en: "Olive Young Hongdae Jungang"
+    district: "hongdae"
+    store_type: "olive_young"
+    kakao_query: "올리브영 홍대중앙"
+
+  - name_ko: "올리브영 홍대타운점"
+    name_en: "Olive Young Hongdae Town"
+    district: "hongdae"
+    store_type: "olive_young"
+    kakao_query: "올리브영 홍대타운"
+
+  - name_ko: "스타일난다 홍대 플래그십"
+    name_en: "Stylenanda Hongdae Flagship"
+    district: "hongdae"
+    store_type: "brand_store"
+    kakao_query: "스타일난다 홍대"
+
+  - name_ko: "에뛰드 홍대 플래그십"
+    name_en: "Etude Hongdae Flagship"
+    district: "hongdae"
+    store_type: "brand_store"
+    kakao_query: "에뛰드 홍대"
+
+  - name_ko: "토니모리 홍대점"
+    name_en: "Tony Moly Hongdae"
+    district: "hongdae"
+    store_type: "brand_store"
+    kakao_query: "토니모리 홍대"
+
+  - name_ko: "시코르 홍대점"
+    name_en: "CHICOR Hongdae"
+    district: "hongdae"
+    store_type: "chicor"
+    kakao_query: "시코르 홍대"
+
+  # ── Itaewon (5) ──────────────────────────────────────────────
+  - name_ko: "올리브영 이태원역점"
+    name_en: "Olive Young Itaewon Station"
+    district: "itaewon"
+    store_type: "olive_young"
+    kakao_query: "올리브영 이태원역"
+
+  - name_ko: "올리브영 한남동점"
+    name_en: "Olive Young Hannam-dong"
+    district: "itaewon"
+    store_type: "olive_young"
+    kakao_query: "올리브영 한남동"
+
+  - name_ko: "탬버린즈 한남 플래그십"
+    name_en: "Tamburins Hannam Flagship"
+    district: "itaewon"
+    store_type: "brand_store"
+    kakao_query: "탬버린즈 한남"
+
+  - name_ko: "논픽션 한남점"
+    name_en: "Nonfiction Hannam"
+    district: "itaewon"
+    store_type: "brand_store"
+    kakao_query: "논픽션 한남"
+
+  - name_ko: "용산아이파크몰"
+    name_en: "Yongsan I'Park Mall"
+    district: "itaewon"
+    store_type: "other"
+    kakao_query: "아이파크몰 용산"
+
+  # ── Jamsil (4) ──────────────────────────────────────────────
+  - name_ko: "올리브영 잠실역점"
+    name_en: "Olive Young Jamsil Station"
+    district: "jamsil"
+    store_type: "olive_young"
+    kakao_query: "올리브영 잠실역"
+
+  - name_ko: "롯데백화점 잠실점"
+    name_en: "Lotte Department Store Jamsil"
+    district: "jamsil"
+    store_type: "department_store"
+    kakao_query: "롯데백화점 잠실점"
+
+  - name_ko: "롯데월드몰"
+    name_en: "Lotte World Mall"
+    district: "jamsil"
+    store_type: "department_store"
+    kakao_query: "롯데월드몰"
+
+  - name_ko: "올리브영 잠실롯데월드몰점"
+    name_en: "Olive Young Jamsil Lotte World Mall"
+    district: "jamsil"
+    store_type: "olive_young"
+    kakao_query: "올리브영 잠실롯데월드몰"
+
+  # ── Seongsu (4) ──────────────────────────────────────────────
+  - name_ko: "아모레성수"
+    name_en: "Amore Seongsu"
+    district: "seongsu"
+    store_type: "brand_store"
+    kakao_query: "아모레성수"
+
+  - name_ko: "올리브영 성수역점"
+    name_en: "Olive Young Seongsu Station"
+    district: "seongsu"
+    store_type: "olive_young"
+    kakao_query: "올리브영 성수역"
+
+  - name_ko: "헤라 서울 성수"
+    name_en: "Hera Seoul Seongsu"
+    district: "seongsu"
+    store_type: "other"
+    kakao_query: "헤라 성수"
+
+  - name_ko: "시코르 성수점"
+    name_en: "CHICOR Seongsu"
+    district: "seongsu"
+    store_type: "chicor"
+    kakao_query: "시코르 성수"
+
+  # ── Yeouido (3) ──────────────────────────────────────────────
+  - name_ko: "더현대 서울"
+    name_en: "The Hyundai Seoul"
+    district: "yeouido"
+    store_type: "department_store"
+    kakao_query: "더현대 서울"
+
+  - name_ko: "올리브영 여의도IFC점"
+    name_en: "Olive Young Yeouido IFC"
+    district: "yeouido"
+    store_type: "olive_young"
+    kakao_query: "올리브영 여의도 IFC"
+
+  - name_ko: "올리브영 여의도역점"
+    name_en: "Olive Young Yeouido Station"
+    district: "yeouido"
+    store_type: "olive_young"
+    kakao_query: "올리브영 여의도역"
+
+  # ── Dongdaemun (3) ──────────────────────────────────────────
+  - name_ko: "올리브영 동대문역점"
+    name_en: "Olive Young Dongdaemun Station"
+    district: "dongdaemun"
+    store_type: "olive_young"
+    kakao_query: "올리브영 동대문역"
+
+  - name_ko: "현대시티아울렛 동대문점"
+    name_en: "Hyundai City Outlets Dongdaemun"
+    district: "dongdaemun"
+    store_type: "department_store"
+    kakao_query: "현대시티아울렛 동대문"
+
+  - name_ko: "삼익약국"
+    name_en: "Samik Pharmacy"
+    district: "dongdaemun"
+    store_type: "pharmacy"
+    kakao_query: "삼익약국 동대문"
+
+  # ── Apgujeong (3) ──────────────────────────────────────────
+  - name_ko: "갤러리아백화점 압구정점"
+    name_en: "Galleria Department Store Apgujeong"
+    district: "apgujeong"
+    store_type: "department_store"
+    kakao_query: "갤러리아백화점 압구정"
+
+  - name_ko: "설화수 북촌 플래그십"
+    name_en: "Sulwhasoo Bukchon Flagship"
+    district: "apgujeong"
+    store_type: "brand_store"
+    kakao_query: "설화수 플래그십 압구정"
+
+  - name_ko: "올리브영 압구정로데오점"
+    name_en: "Olive Young Apgujeong Rodeo"
+    district: "apgujeong"
+    store_type: "olive_young"
+    kakao_query: "올리브영 압구정로데오"
+
+  # ── Other (3) ──────────────────────────────────────────────
+  - name_ko: "올리브영 인사동점"
+    name_en: "Olive Young Insadong"
+    district: "jongno"
+    store_type: "olive_young"
+    kakao_query: "올리브영 인사동"
+
+  - name_ko: "종로약국"
+    name_en: "Jongno Pharmacy"
+    district: "jongno"
+    store_type: "pharmacy"
+    kakao_query: "종로약국"
+
+  - name_ko: "뷰티플레이 가로수길"
+    name_en: "Beauty Play Garosugil"
+    district: "sinsa"
+    store_type: "other"
+    kakao_query: "뷰티플레이 가로수길"
