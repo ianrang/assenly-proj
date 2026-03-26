@@ -1,0 +1,1019 @@
+# =============================================================
+# M1 Skeleton Seed Data — Essenly K-Beauty AI Agent
+# Generated: 2026-03-26
+# Records: ~50 across 7 entities
+# Field names match src/shared/types/domain.ts exactly
+# =============================================================
+
+brands:
+  - id: "b001-innisfree"
+    name: { ko: "이니스프리", en: "Innisfree" }
+    origin: "KR"
+    tier: "mid"
+    is_essenly: false
+    specialties: ["green tea", "volcanic clay", "natural ingredients"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "b002-laneige"
+    name: { ko: "라네즈", en: "Laneige" }
+    origin: "KR"
+    tier: "mid-premium"
+    is_essenly: false
+    specialties: ["hydration", "sleeping masks", "lip care"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "b003-sulwhasoo"
+    name: { ko: "설화수", en: "Sulwhasoo" }
+    origin: "KR"
+    tier: "luxury"
+    is_essenly: false
+    specialties: ["ginseng", "anti-aging", "hanbang"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "b004-cosrx"
+    name: { ko: "코스알엑스", en: "COSRX" }
+    origin: "KR"
+    tier: "budget"
+    is_essenly: false
+    specialties: ["acne care", "snail mucin", "minimal ingredients"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "b005-missha"
+    name: { ko: "미샤", en: "MISSHA" }
+    origin: "KR"
+    tier: "budget"
+    is_essenly: false
+    specialties: ["BB cream", "first treatment essence", "affordable skincare"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+# -------------------------------------------------------------
+products:
+  # Innisfree
+  - id: "p001-green-tea-seed-serum"
+    name: { ko: "그린티 씨드 세럼", en: "Green Tea Seed Serum" }
+    description: null
+    brand_id: "b001-innisfree"
+    category: "skincare"
+    subcategory: "serum"
+    skin_types: ["combination", "oily", "normal"]
+    hair_types: []
+    concerns: ["dryness", "dullness"]
+    key_ingredients: ["green tea extract", "green tea seed oil"]
+    price: 25000
+    volume: "80ml"
+    purchase_links: null
+    english_label: true
+    tourist_popular: true
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.3
+    review_count: 0
+    review_summary: null
+    images: []
+    tags: ["bestseller", "hydrating"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "p002-volcanic-pore-clay-mask"
+    name: { ko: "수퍼 화산송이 모공 마스크", en: "Super Volcanic Pore Clay Mask 2X" }
+    description: null
+    brand_id: "b001-innisfree"
+    category: "skincare"
+    subcategory: "mask"
+    skin_types: ["oily", "combination"]
+    hair_types: []
+    concerns: ["pores", "acne"]
+    key_ingredients: ["volcanic cluster", "AHA"]
+    price: 15000
+    volume: "100ml"
+    purchase_links: null
+    english_label: true
+    tourist_popular: true
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.1
+    review_count: 0
+    review_summary: null
+    images: []
+    tags: ["pore care", "clay mask"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  # Laneige
+  - id: "p003-water-sleeping-mask"
+    name: { ko: "워터 슬리핑 마스크", en: "Water Sleeping Mask EX" }
+    description: null
+    brand_id: "b002-laneige"
+    category: "skincare"
+    subcategory: "sleeping_mask"
+    skin_types: ["dry", "combination", "normal"]
+    hair_types: []
+    concerns: ["dryness", "dullness"]
+    key_ingredients: ["squalane", "probiotic complex"]
+    price: 33000
+    volume: "70ml"
+    purchase_links: null
+    english_label: true
+    tourist_popular: true
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.5
+    review_count: 0
+    review_summary: null
+    images: []
+    tags: ["bestseller", "overnight", "hydrating"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "p004-lip-sleeping-mask"
+    name: { ko: "립 슬리핑 마스크", en: "Lip Sleeping Mask" }
+    description: null
+    brand_id: "b002-laneige"
+    category: "skincare"
+    subcategory: "lip_care"
+    skin_types: ["dry", "normal", "sensitive"]
+    hair_types: []
+    concerns: ["dryness"]
+    key_ingredients: ["berry complex", "vitamin C"]
+    price: 18000
+    volume: "20g"
+    purchase_links: null
+    english_label: true
+    tourist_popular: true
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.7
+    review_count: 0
+    review_summary: null
+    images: []
+    tags: ["bestseller", "lip care"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  # Sulwhasoo
+  - id: "p005-first-care-activating-serum"
+    name: { ko: "퍼스트 케어 액티베이팅 세럼", en: "First Care Activating Serum" }
+    description: null
+    brand_id: "b003-sulwhasoo"
+    category: "skincare"
+    subcategory: "serum"
+    skin_types: ["dry", "combination", "normal", "sensitive"]
+    hair_types: []
+    concerns: ["wrinkles", "dullness", "dryness"]
+    key_ingredients: ["JAUM balancing complex", "ginseng"]
+    price: 93000
+    volume: "60ml"
+    purchase_links: null
+    english_label: true
+    tourist_popular: true
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.6
+    review_count: 0
+    review_summary: null
+    images: []
+    tags: ["luxury", "anti-aging", "hanbang"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "p006-concentrated-ginseng-cream"
+    name: { ko: "자음생 크림", en: "Concentrated Ginseng Renewing Cream" }
+    description: null
+    brand_id: "b003-sulwhasoo"
+    category: "skincare"
+    subcategory: "cream"
+    skin_types: ["dry", "normal"]
+    hair_types: []
+    concerns: ["wrinkles", "dryness", "dullness"]
+    key_ingredients: ["ginseng extract", "ginseng oil"]
+    price: 170000
+    volume: "60ml"
+    purchase_links: null
+    english_label: true
+    tourist_popular: false
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.5
+    review_count: 0
+    review_summary: null
+    images: []
+    tags: ["luxury", "anti-aging", "ginseng"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  # COSRX
+  - id: "p007-snail-mucin-essence"
+    name: { ko: "어드밴스드 스네일 96 뮤신 파워 에센스", en: "Advanced Snail 96 Mucin Power Essence" }
+    description: null
+    brand_id: "b004-cosrx"
+    category: "skincare"
+    subcategory: "essence"
+    skin_types: ["dry", "combination", "normal", "sensitive"]
+    hair_types: []
+    concerns: ["dryness", "dullness", "dark_spots"]
+    key_ingredients: ["snail secretion filtrate"]
+    price: 15000
+    volume: "100ml"
+    purchase_links: null
+    english_label: true
+    tourist_popular: true
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.6
+    review_count: 0
+    review_summary: null
+    images: []
+    tags: ["bestseller", "snail mucin", "hydrating"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "p008-bha-blackhead-power-liquid"
+    name: { ko: "BHA 블랙헤드 파워 리퀴드", en: "BHA Blackhead Power Liquid" }
+    description: null
+    brand_id: "b004-cosrx"
+    category: "skincare"
+    subcategory: "exfoliant"
+    skin_types: ["oily", "combination"]
+    hair_types: []
+    concerns: ["acne", "pores"]
+    key_ingredients: ["betaine salicylate"]
+    price: 14000
+    volume: "100ml"
+    purchase_links: null
+    english_label: true
+    tourist_popular: true
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.3
+    review_count: 0
+    review_summary: null
+    images: []
+    tags: ["exfoliant", "BHA", "acne care"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  # MISSHA
+  - id: "p009-time-revolution-essence"
+    name: { ko: "타임 레볼루션 더 퍼스트 트리트먼트 에센스", en: "Time Revolution The First Treatment Essence RX" }
+    description: null
+    brand_id: "b005-missha"
+    category: "skincare"
+    subcategory: "essence"
+    skin_types: ["dry", "combination", "normal"]
+    hair_types: []
+    concerns: ["dullness", "wrinkles", "uneven_tone"]
+    key_ingredients: ["fermented yeast extract", "niacinamide"]
+    price: 30000
+    volume: "150ml"
+    purchase_links: null
+    english_label: true
+    tourist_popular: true
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.4
+    review_count: 0
+    review_summary: null
+    images: []
+    tags: ["first essence", "fermented", "brightening"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "p010-perfect-cover-bb-cream"
+    name: { ko: "퍼펙트 커버 비비 크림", en: "M Perfect Cover BB Cream SPF42" }
+    description: null
+    brand_id: "b005-missha"
+    category: "makeup"
+    subcategory: "bb_cream"
+    skin_types: ["combination", "normal", "oily"]
+    hair_types: []
+    concerns: ["uneven_tone", "dark_spots"]
+    key_ingredients: ["ceramide", "hyaluronic acid"]
+    price: 12000
+    volume: "50ml"
+    purchase_links: null
+    english_label: true
+    tourist_popular: true
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.2
+    review_count: 0
+    review_summary: null
+    images: []
+    tags: ["BB cream", "SPF", "coverage"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+# -------------------------------------------------------------
+ingredients:
+  - id: "i001-niacinamide"
+    name: { ko: "나이아신아마이드", en: "Niacinamide" }
+    inci_name: "Niacinamide"
+    function: ["brightening", "pore minimizing", "barrier strengthening"]
+    caution_skin_types: []
+    common_in: ["serum", "essence", "cream"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "i002-hyaluronic-acid"
+    name: { ko: "히알루론산", en: "Hyaluronic Acid" }
+    inci_name: "Sodium Hyaluronate"
+    function: ["hydration", "moisture retention", "plumping"]
+    caution_skin_types: []
+    common_in: ["serum", "essence", "cream", "sleeping mask"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "i003-retinol"
+    name: { ko: "레티놀", en: "Retinol" }
+    inci_name: "Retinol"
+    function: ["anti-aging", "cell turnover", "wrinkle reduction"]
+    caution_skin_types: ["sensitive", "dry"]
+    common_in: ["serum", "cream", "eye cream"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "i004-salicylic-acid"
+    name: { ko: "살리실산", en: "Salicylic Acid" }
+    inci_name: "Salicylic Acid"
+    function: ["exfoliation", "pore cleansing", "anti-acne"]
+    caution_skin_types: ["sensitive", "dry"]
+    common_in: ["toner", "exfoliant", "cleanser"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "i005-centella-asiatica"
+    name: { ko: "병풀 추출물", en: "Centella Asiatica Extract" }
+    inci_name: "Centella Asiatica Extract"
+    function: ["soothing", "healing", "anti-inflammatory"]
+    caution_skin_types: []
+    common_in: ["serum", "cream", "toner"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "i006-ceramide-np"
+    name: { ko: "세라마이드 NP", en: "Ceramide NP" }
+    inci_name: "Ceramide NP"
+    function: ["barrier repair", "moisture retention", "skin strengthening"]
+    caution_skin_types: []
+    common_in: ["cream", "lotion", "serum"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "i007-adenosine"
+    name: { ko: "아데노신", en: "Adenosine" }
+    inci_name: "Adenosine"
+    function: ["anti-wrinkle", "skin smoothing", "cell energy"]
+    caution_skin_types: []
+    common_in: ["cream", "serum", "eye cream"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "i008-panthenol"
+    name: { ko: "판테놀", en: "Panthenol" }
+    inci_name: "Panthenol"
+    function: ["hydration", "soothing", "barrier repair"]
+    caution_skin_types: []
+    common_in: ["cream", "lotion", "toner"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "i009-snail-secretion-filtrate"
+    name: { ko: "달팽이 분비 여과물", en: "Snail Secretion Filtrate" }
+    inci_name: "Snail Secretion Filtrate"
+    function: ["repair", "hydration", "soothing"]
+    caution_skin_types: []
+    common_in: ["essence", "cream", "serum"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "i010-arbutin"
+    name: { ko: "알부틴", en: "Arbutin" }
+    inci_name: "Alpha-Arbutin"
+    function: ["brightening", "dark spot reduction", "tyrosinase inhibition"]
+    caution_skin_types: []
+    common_in: ["serum", "essence", "cream"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+# -------------------------------------------------------------
+stores:
+  - id: "s001-oliveyoung-gangnam"
+    name: { ko: "올리브영 강남타운점", en: "Olive Young Gangnam Town" }
+    description: null
+    country: "KR"
+    city: "Seoul"
+    district: "Gangnam-gu"
+    location: { lat: 37.4979, lng: 127.0276 }
+    address: { ko: "서울 강남구 강남대로 396", en: "396 Gangnam-daero, Gangnam-gu, Seoul" }
+    operating_hours: null
+    english_support: "partial"
+    store_type: "multi-brand"
+    tourist_services: ["tax_refund", "english_signage"]
+    payment_methods: ["credit_card", "cash", "mobile_pay"]
+    nearby_landmarks: ["Gangnam Station"]
+    external_links: []
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.2
+    review_count: 0
+    images: []
+    tags: ["olive young", "multi-brand", "gangnam"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "s002-oliveyoung-myeongdong"
+    name: { ko: "올리브영 명동본점", en: "Olive Young Myeongdong Flagship" }
+    description: null
+    country: "KR"
+    city: "Seoul"
+    district: "Jung-gu"
+    location: { lat: 37.5636, lng: 126.9850 }
+    address: { ko: "서울 중구 명동8가길 10", en: "10 Myeongdong 8-gil, Jung-gu, Seoul" }
+    operating_hours: null
+    english_support: "full"
+    store_type: "multi-brand"
+    tourist_services: ["tax_refund", "english_signage", "multilingual_staff"]
+    payment_methods: ["credit_card", "cash", "mobile_pay"]
+    nearby_landmarks: ["Myeongdong Station", "Myeongdong Cathedral"]
+    external_links: []
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.4
+    review_count: 0
+    images: []
+    tags: ["olive young", "flagship", "myeongdong", "tourist"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "s003-chicor-gangnam"
+    name: { ko: "시코르 강남점", en: "CHICOR Gangnam" }
+    description: null
+    country: "KR"
+    city: "Seoul"
+    district: "Gangnam-gu"
+    location: { lat: 37.5014, lng: 127.0260 }
+    address: { ko: "서울 강남구 강남대로 438 신세계백화점 B1", en: "Shinsegae Dept. B1, 438 Gangnam-daero, Gangnam-gu, Seoul" }
+    operating_hours: null
+    english_support: "partial"
+    store_type: "multi-brand"
+    tourist_services: ["tax_refund"]
+    payment_methods: ["credit_card", "cash", "mobile_pay"]
+    nearby_landmarks: ["Gangnam Station", "Shinsegae Department Store"]
+    external_links: []
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.1
+    review_count: 0
+    images: []
+    tags: ["chicor", "premium", "gangnam"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "s004-innisfree-myeongdong"
+    name: { ko: "이니스프리 명동점", en: "Innisfree Myeongdong" }
+    description: null
+    country: "KR"
+    city: "Seoul"
+    district: "Jung-gu"
+    location: { lat: 37.5630, lng: 126.9860 }
+    address: { ko: "서울 중구 명동길 44", en: "44 Myeongdong-gil, Jung-gu, Seoul" }
+    operating_hours: null
+    english_support: "partial"
+    store_type: "brand_flagship"
+    tourist_services: ["tax_refund", "english_signage"]
+    payment_methods: ["credit_card", "cash", "mobile_pay"]
+    nearby_landmarks: ["Myeongdong Station"]
+    external_links: []
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.0
+    review_count: 0
+    images: []
+    tags: ["innisfree", "brand store", "myeongdong"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "s005-laneige-flagship-gangnam"
+    name: { ko: "라네즈 플래그십 강남", en: "Laneige Flagship Gangnam" }
+    description: null
+    country: "KR"
+    city: "Seoul"
+    district: "Gangnam-gu"
+    location: { lat: 37.5100, lng: 127.0593 }
+    address: { ko: "서울 강남구 압구정로 343", en: "343 Apgujeong-ro, Gangnam-gu, Seoul" }
+    operating_hours: null
+    english_support: "partial"
+    store_type: "brand_flagship"
+    tourist_services: ["tax_refund", "skin_consultation"]
+    payment_methods: ["credit_card", "cash", "mobile_pay"]
+    nearby_landmarks: ["Apgujeong Rodeo Station"]
+    external_links: []
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.3
+    review_count: 0
+    images: []
+    tags: ["laneige", "flagship", "gangnam"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+# -------------------------------------------------------------
+clinics:
+  - id: "c001-id-hospital"
+    name: { ko: "아이디병원", en: "ID Hospital" }
+    description: null
+    country: "KR"
+    city: "Seoul"
+    district: "Gangnam-gu"
+    location: { lat: 37.5072, lng: 127.0394 }
+    address: { ko: "서울 강남구 봉은사로 2길 29", en: "29 Bongeunsa-ro 2-gil, Gangnam-gu, Seoul" }
+    operating_hours: null
+    english_support: "full"
+    clinic_type: "dermatology"
+    license_verified: true
+    consultation_type: ["in_person", "online"]
+    foreigner_friendly:
+      consultation_languages: ["en", "zh", "ja"]
+      interpreter_available: true
+      english_consent_form: true
+      international_cards: true
+      pickup_service: true
+    booking_url: null
+    external_links: []
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.3
+    review_count: 0
+    images: []
+    tags: ["foreigner friendly", "gangnam", "dermatology"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "c002-oracle-clinic"
+    name: { ko: "오라클 피부과 강남점", en: "Oracle Dermatology Gangnam" }
+    description: null
+    country: "KR"
+    city: "Seoul"
+    district: "Gangnam-gu"
+    location: { lat: 37.4986, lng: 127.0280 }
+    address: { ko: "서울 강남구 강남대로 416", en: "416 Gangnam-daero, Gangnam-gu, Seoul" }
+    operating_hours: null
+    english_support: "full"
+    clinic_type: "dermatology"
+    license_verified: true
+    consultation_type: ["in_person", "online"]
+    foreigner_friendly:
+      consultation_languages: ["en", "zh", "ja"]
+      interpreter_available: true
+      english_consent_form: true
+      international_cards: true
+      pickup_service: false
+    booking_url: null
+    external_links: []
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.4
+    review_count: 0
+    images: []
+    tags: ["foreigner friendly", "gangnam", "dermatology"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "c003-banobagi"
+    name: { ko: "바노바기 성형외과 피부과", en: "Banobagi Plastic Surgery & Dermatology" }
+    description: null
+    country: "KR"
+    city: "Seoul"
+    district: "Gangnam-gu"
+    location: { lat: 37.5070, lng: 127.0390 }
+    address: { ko: "서울 강남구 논현로 815", en: "815 Nonhyeon-ro, Gangnam-gu, Seoul" }
+    operating_hours: null
+    english_support: "full"
+    clinic_type: "plastic_surgery_dermatology"
+    license_verified: true
+    consultation_type: ["in_person", "online"]
+    foreigner_friendly:
+      consultation_languages: ["en", "zh", "ja", "vi"]
+      interpreter_available: true
+      english_consent_form: true
+      international_cards: true
+      pickup_service: true
+    booking_url: null
+    external_links: []
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.5
+    review_count: 0
+    images: []
+    tags: ["foreigner friendly", "gangnam", "plastic surgery"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "c004-hus-hu-dermatology"
+    name: { ko: "허스허 피부과", en: "Hus'Hu Dermatology Clinic" }
+    description: null
+    country: "KR"
+    city: "Seoul"
+    district: "Gangnam-gu"
+    location: { lat: 37.5015, lng: 127.0250 }
+    address: { ko: "서울 강남구 테헤란로 119", en: "119 Teheran-ro, Gangnam-gu, Seoul" }
+    operating_hours: null
+    english_support: "partial"
+    clinic_type: "dermatology"
+    license_verified: true
+    consultation_type: ["in_person"]
+    foreigner_friendly:
+      consultation_languages: ["en"]
+      interpreter_available: false
+      english_consent_form: true
+      international_cards: true
+      pickup_service: false
+    booking_url: null
+    external_links: []
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.2
+    review_count: 0
+    images: []
+    tags: ["gangnam", "dermatology", "skin laser"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "c005-seoul-guide-medical"
+    name: { ko: "서울가이드의원", en: "Seoul Guide Medical" }
+    description: null
+    country: "KR"
+    city: "Seoul"
+    district: "Gangnam-gu"
+    location: { lat: 37.5020, lng: 127.0380 }
+    address: { ko: "서울 강남구 선릉로 614", en: "614 Seolleung-ro, Gangnam-gu, Seoul" }
+    operating_hours: null
+    english_support: "full"
+    clinic_type: "medical_tourism"
+    license_verified: true
+    consultation_type: ["in_person", "online"]
+    foreigner_friendly:
+      consultation_languages: ["en", "zh", "ja"]
+      interpreter_available: true
+      english_consent_form: true
+      international_cards: true
+      pickup_service: true
+    booking_url: null
+    external_links: []
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.6
+    review_count: 0
+    images: []
+    tags: ["foreigner friendly", "medical tourism", "gangnam"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+# -------------------------------------------------------------
+treatments:
+  # Laser (3)
+  - id: "t001-pico-laser-toning"
+    name: { ko: "피코 레이저 토닝", en: "Pico Laser Toning" }
+    description: null
+    category: "laser"
+    subcategory: "pigmentation"
+    target_concerns: ["dark_spots", "uneven_tone", "dullness"]
+    suitable_skin_types: ["normal", "combination", "oily"]
+    price_min: 100000
+    price_max: 300000
+    price_currency: "KRW"
+    duration_minutes: 30
+    downtime_days: 1
+    session_count: "5-10"
+    precautions: null
+    aftercare: null
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.4
+    review_count: 0
+    images: []
+    tags: ["laser", "pigmentation", "popular"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "t002-fractional-co2-laser"
+    name: { ko: "프락셔널 CO2 레이저", en: "Fractional CO2 Laser" }
+    description: null
+    category: "laser"
+    subcategory: "resurfacing"
+    target_concerns: ["acne", "pores", "wrinkles"]
+    suitable_skin_types: ["normal", "oily", "combination"]
+    price_min: 200000
+    price_max: 500000
+    price_currency: "KRW"
+    duration_minutes: 45
+    downtime_days: 7
+    session_count: "3-5"
+    precautions: null
+    aftercare: null
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.2
+    review_count: 0
+    images: []
+    tags: ["laser", "resurfacing", "acne scars"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "t003-ipl-photorejuvenation"
+    name: { ko: "IPL 광회춘", en: "IPL Photorejuvenation" }
+    description: null
+    category: "laser"
+    subcategory: "rejuvenation"
+    target_concerns: ["redness", "sun_damage", "dark_spots"]
+    suitable_skin_types: ["normal", "dry", "combination"]
+    price_min: 80000
+    price_max: 200000
+    price_currency: "KRW"
+    duration_minutes: 30
+    downtime_days: 1
+    session_count: "3-5"
+    precautions: null
+    aftercare: null
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.3
+    review_count: 0
+    images: []
+    tags: ["IPL", "redness", "rejuvenation"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  # Skin (2)
+  - id: "t004-hydrafacial"
+    name: { ko: "하이드라페이셜", en: "HydraFacial" }
+    description: null
+    category: "skin"
+    subcategory: "deep_cleansing"
+    target_concerns: ["pores", "dullness", "dryness"]
+    suitable_skin_types: ["normal", "dry", "combination", "oily", "sensitive"]
+    price_min: 150000
+    price_max: 300000
+    price_currency: "KRW"
+    duration_minutes: 60
+    downtime_days: 0
+    session_count: "monthly"
+    precautions: null
+    aftercare: null
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.5
+    review_count: 0
+    images: []
+    tags: ["hydrafacial", "deep cleansing", "no downtime"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "t005-chemical-peel"
+    name: { ko: "케미컬 필링", en: "Chemical Peel" }
+    description: null
+    category: "skin"
+    subcategory: "exfoliation"
+    target_concerns: ["acne", "dark_spots", "uneven_tone"]
+    suitable_skin_types: ["normal", "oily", "combination"]
+    price_min: 50000
+    price_max: 150000
+    price_currency: "KRW"
+    duration_minutes: 30
+    downtime_days: 3
+    session_count: "4-6"
+    precautions: null
+    aftercare: null
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.1
+    review_count: 0
+    images: []
+    tags: ["peel", "exfoliation", "brightening"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  # Injection (2)
+  - id: "t006-botox-forehead"
+    name: { ko: "보톡스 이마", en: "Botox Forehead" }
+    description: null
+    category: "injection"
+    subcategory: "botox"
+    target_concerns: ["wrinkles"]
+    suitable_skin_types: ["normal", "dry", "combination", "oily", "sensitive"]
+    price_min: 100000
+    price_max: 250000
+    price_currency: "KRW"
+    duration_minutes: 15
+    downtime_days: 0
+    session_count: "every 3-6 months"
+    precautions: null
+    aftercare: null
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.3
+    review_count: 0
+    images: []
+    tags: ["botox", "wrinkle", "quick"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "t007-filler-nasolabial"
+    name: { ko: "필러 팔자주름", en: "Filler Nasolabial Folds" }
+    description: null
+    category: "injection"
+    subcategory: "filler"
+    target_concerns: ["wrinkles"]
+    suitable_skin_types: ["normal", "dry", "combination", "oily", "sensitive"]
+    price_min: 200000
+    price_max: 500000
+    price_currency: "KRW"
+    duration_minutes: 30
+    downtime_days: 2
+    session_count: "every 6-12 months"
+    precautions: null
+    aftercare: null
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.2
+    review_count: 0
+    images: []
+    tags: ["filler", "nasolabial", "volume"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  # Facial (2)
+  - id: "t008-oxygen-facial"
+    name: { ko: "산소 페이셜", en: "Oxygen Facial" }
+    description: null
+    category: "facial"
+    subcategory: "hydration"
+    target_concerns: ["dryness", "dullness"]
+    suitable_skin_types: ["normal", "dry", "sensitive"]
+    price_min: 100000
+    price_max: 200000
+    price_currency: "KRW"
+    duration_minutes: 60
+    downtime_days: 0
+    session_count: "weekly-biweekly"
+    precautions: null
+    aftercare: null
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.4
+    review_count: 0
+    images: []
+    tags: ["facial", "hydration", "relaxing"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "t009-led-therapy"
+    name: { ko: "LED 테라피", en: "LED Light Therapy" }
+    description: null
+    category: "facial"
+    subcategory: "light_therapy"
+    target_concerns: ["acne", "redness", "wrinkles"]
+    suitable_skin_types: ["normal", "oily", "sensitive", "combination"]
+    price_min: 50000
+    price_max: 100000
+    price_currency: "KRW"
+    duration_minutes: 20
+    downtime_days: 0
+    session_count: "8-12"
+    precautions: null
+    aftercare: null
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.0
+    review_count: 0
+    images: []
+    tags: ["LED", "light therapy", "no downtime"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  # Body (1)
+  - id: "t010-body-contouring-coolsculpting"
+    name: { ko: "쿨스컬프팅 바디 컨투어링", en: "CoolSculpting Body Contouring" }
+    description: null
+    category: "body"
+    subcategory: "fat_reduction"
+    target_concerns: []
+    suitable_skin_types: ["normal", "dry", "combination", "oily", "sensitive"]
+    price_min: 300000
+    price_max: 800000
+    price_currency: "KRW"
+    duration_minutes: 60
+    downtime_days: 1
+    session_count: "2-4"
+    precautions: null
+    aftercare: null
+    is_highlighted: false
+    highlight_badge: null
+    rating: 4.1
+    review_count: 0
+    images: []
+    tags: ["body", "fat reduction", "non-invasive"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+# -------------------------------------------------------------
+doctors:
+  - id: "d001-kim-id-hospital"
+    clinic_id: "c001-id-hospital"
+    name: { ko: "김성훈", en: "Dr. Kim Sung-Hoon" }
+    specialties: ["dermatology", "laser treatment"]
+    languages: ["ko", "en"]
+    certifications: ["Korean Board of Dermatology"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "d002-lee-oracle"
+    clinic_id: "c002-oracle-clinic"
+    name: { ko: "이지현", en: "Dr. Lee Ji-Hyun" }
+    specialties: ["dermatology", "cosmetic dermatology"]
+    languages: ["ko", "en"]
+    certifications: ["Korean Board of Dermatology"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "d003-park-banobagi"
+    clinic_id: "c003-banobagi"
+    name: { ko: "박재현", en: "Dr. Park Jae-Hyun" }
+    specialties: ["plastic surgery", "skin rejuvenation"]
+    languages: ["ko", "en", "zh"]
+    certifications: ["Korean Board of Plastic Surgery"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "d004-choi-hushu"
+    clinic_id: "c004-hus-hu-dermatology"
+    name: { ko: "최윤정", en: "Dr. Choi Yun-Jung" }
+    specialties: ["dermatology", "acne treatment"]
+    languages: ["ko", "en"]
+    certifications: ["Korean Board of Dermatology"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
+
+  - id: "d005-jung-sgm"
+    clinic_id: "c005-seoul-guide-medical"
+    name: { ko: "정민수", en: "Dr. Jung Min-Su" }
+    specialties: ["aesthetic medicine", "injection"]
+    languages: ["ko", "en", "ja"]
+    certifications: ["Korean Board of Dermatology", "Korean Medical Association"]
+    status: "active"
+    created_at: "2026-03-26T00:00:00Z"
+    updated_at: "2026-03-26T00:00:00Z"
