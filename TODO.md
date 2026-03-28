@@ -13,9 +13,9 @@
 | 사전 완료      | 12      | 12      | 100%    | ✅      |
 | Phase 0    | 37      | 37      | 100%    | ✅      |
 | Phase 1    | 60      | 60      | 100%    | ✅      |
-| Phase 2    | 105     | 25      | 24%     | 🔶 진행중 |
+| Phase 2    | 105     | 26      | 25%     | 🔶 진행중 |
 | Phase 3    | 36      | 0       | 0%      | ⬜ 미시작  |
-| **MVP 합계** | **250** | **134** | **54%** |        |
+| **MVP 합계** | **250** | **135** | **54%** |        |
 
 
 **✅ Gate 0 통과 (2026-03-21) → Phase 1 (MVP 설계) 착수 준비**
@@ -322,7 +322,7 @@
 | P2-21  | Chat Tool — get_external_links             | links-handler.ts: entity_type별 링크 조회 + LinkType 확장(purchase/booking/map). 테스트 7개                                       | ✅   |
 | P2-22  | Chat Tool — extract_user_profile (동기 tool) | extraction-handler.ts: zod 스키마 6개 변수 + parse→반환. DB 없음. budget 'moderate'. 테스트 5개                                      | ✅   |
 | P2-19  | 채팅 서비스                                     | service.ts: conversation CRUD + prompt + LLM(callWithFallback+stopWhen) + 3 tools. 테스트 7개                                  | ✅   |
-| P2-23  | Chat API (스트리밍)                            | POST /api/chat SSE 스트리밍 응답. P2-19(chatService) 호출. api-spec.md §2.1                                                     | ⬜   |
+| P2-23  | Chat API (스트리밍)                            | route.ts: 인증+검증+rate limit(5/분+100/일)+cross-domain+chatService+SSE+비동기후처리. 테스트 8개                                      | ✅   |
 | P2-18  | Knowledge 리포지토리                            | 🔶 **v0.2 연기**. 사유: (1) KB 테이블 미설계(schema.dbml 미정의) (2) search_beauty_data에 knowledge 도메인 없음(tool-spec.md §1: shopping/treatment만) (3) MVP KB는 시스템 프롬프트 인라인(embedding-strategy.md §2.4). 선행: KB 테이블 마이그레이션(v0.2) + tool domain 확장 | 🔶   |
 | P2-24  | Chat 히스토리 API                              | 대화 히스토리 조회                                                                                                              | ⬜   |
 | P2-25  | Kit CTA API                                | 이메일 수집/전환                                                                                                               | ⬜   |
