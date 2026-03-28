@@ -135,7 +135,7 @@ async function getTreatmentLinks(
 
   const links: ExternalLink[] = [];
   for (const row of junctions ?? []) {
-    const clinic = (row as { clinic: { booking_url: string | null; name: unknown } | null }).clinic;
+    const clinic = (row as unknown as { clinic: { booking_url: string | null; name: unknown } | null }).clinic;
     if (clinic?.booking_url) {
       links.push({
         type: 'booking' as LinkType,

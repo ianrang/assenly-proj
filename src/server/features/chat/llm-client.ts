@@ -1,4 +1,5 @@
 import 'server-only';
+import type { ModelMessage, ToolSet } from 'ai';
 import { streamText } from 'ai';
 import { env, getModel } from '@/server/core/config';
 import { LLM_CONFIG } from '@/shared/constants/ai';
@@ -10,10 +11,10 @@ import { LLM_CONFIG } from '@/shared/constants/ai';
 // ============================================================
 
 interface CallOptions {
-  messages: unknown[];
+  messages: ModelMessage[];
   system: string;
-  tools: Record<string, unknown>;
-  stopWhen?: unknown;  // AI SDK stopWhen (stepCountIs 등)
+  tools: ToolSet;
+  stopWhen?: Parameters<typeof streamText>[0]['stopWhen'];
 }
 
 /**
