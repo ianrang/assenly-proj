@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essenly Design System Preview — P1-1~P1-3</title>
+<style>
+  @font-face {
+    font-family: 'Geist';
+    src: url('https://cdn.jsdelivr.net/npm/geist@1.3.1/dist/fonts/geist-sans/Geist-Variable.woff2') format('woff2');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  /* ── Light Mode Tokens (synced with globals.css) ── */
+  :root {
+    /* shadcn core */
+    --background: #FAFAFA;
+    --foreground: #1A1A2E;
+    --card: #FFFFFF;
+    --card-foreground: #1A1A2E;
+    --primary: #D4788A;
+    --primary-foreground: #FFFFFF;
+    --secondary: #FAF7F2;
+    --secondary-foreground: #1A1A2E;
+    --muted: #F3F4F6;
+    --muted-foreground: #6B7280;
+    --accent: #FAF7F2;
+    --accent-foreground: #1A1A2E;
+    --popover: #FFFFFF;
+    --popover-foreground: #1A1A2E;
+    --destructive: #D4645E;
+    --destructive-foreground: #FFFFFF;
+    --border: #E5E7EB;
+    --input: #E5E7EB;
+    --ring: #D4788A;
+    /* Essenly extensions */
+    --primary-hover: #C45870;
+    --primary-light: #FDE8EC;
+    --surface-warm: #FAF7F2;
+    --border-warm: #E8DDD5;
+    --sage: #637260;
+    --teal: #2D7368;
+    --coral: #B8503A;
+    --success: #5AAF82;
+    --warning: #8C6A2C;
+    --error-bg: #D4645E18;
+    --success-bg: #5AAF8218;
+    --warning-bg: #8C6A2C18;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 20px;
+    --radius-full: 9999px;
+  }
+
+  /* ── Dark Mode: Warm Charcoal (synced with globals.css) ── */
+  [data-theme="dark"] {
+    /* shadcn core */
+    --background: #1C1817;
+    --foreground: #F0ECF4;
+    --card: #272120;
+    --card-foreground: #F0ECF4;
+    --primary: #E8899A;
+    --primary-foreground: #FFFFFF;
+    --secondary: #302826;
+    --secondary-foreground: #F0ECF4;
+    --muted: #302826;
+    --muted-foreground: #908E96;
+    --accent: #302826;
+    --accent-foreground: #F0ECF4;
+    --popover: #272120;
+    --popover-foreground: #F0ECF4;
+    --destructive: #E09088;
+    --destructive-foreground: #FFFFFF;
+    --border: #3D3533;
+    --input: #3D3533;
+    --ring: #E8899A;
+    /* Essenly extensions */
+    --primary-hover: #F2A4B3;
+    --primary-light: #3D2028;
+    --surface-warm: #302826;
+    --border-warm: #4A3835;
+    --sage: #A8B5A0;
+    --teal: #5AB5A8;
+    --coral: #E8988A;
+    --success: #7EC4A0;
+    --warning: #E0B878;
+    --error-bg: #E0908820;
+    --success-bg: #7EC4A020;
+    --warning-bg: #E0B87820;
+  }
+
+  /* ── Base ── */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--background);
+    color: var(--foreground);
+    line-height: 1.5;
+    transition: background 0.3s, color 0.3s;
+  }
+
+  .container { max-width: 768px; margin: 0 auto; padding: 32px 16px; }
+
+  /* ── Header ── */
+  .header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 40px; padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap; gap: 12px;
+  }
+  .header h1 { font-size: 24px; font-weight: 700; }
+  .mode-toggle {
+    display: flex; gap: 4px; background: var(--card);
+    border: 1px solid var(--border); border-radius: var(--radius-md); padding: 4px;
+  }
+  .mode-btn {
+    padding: 6px 12px; border: none; border-radius: var(--radius-sm);
+    font-size: 12px; font-weight: 500; cursor: pointer;
+    background: transparent; color: var(--muted-foreground);
+    transition: all 0.2s; white-space: nowrap;
+  }
+  .mode-btn.active { background: var(--primary); color: #fff; }
+
+  /* ── Section ── */
+  .section { margin-bottom: 48px; }
+  .section-title { font-size: 20px; font-weight: 600; margin-bottom: 20px; }
+  .section-subtitle { font-size: 14px; color: var(--muted-foreground); margin-top: -12px; margin-bottom: 20px; }
+
+  /* ── 2-way Comparison ── */
+  .compare-2 {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    border-radius: var(--radius-lg); overflow: hidden;
+    border: 1px solid var(--border); margin-bottom: 16px;
+  }
+  .compare-2 .c-side { padding: 20px; }
+  .compare-2 .c-side + .c-side { border-left: 1px solid rgba(128,128,128,0.2); }
+  .c-label {
+    font-size: 10px; opacity: 0.5; margin-bottom: 6px;
+    text-transform: uppercase; letter-spacing: 1px; font-weight: 600;
+  }
+  .c-heading { font-size: 18px; font-weight: 600; margin-bottom: 6px; }
+  .c-body { font-size: 13px; opacity: 0.8; margin-bottom: 10px; }
+  .c-btn {
+    padding: 7px 14px; border-radius: 10px;
+    font-size: 12px; font-weight: 500; border: none; cursor: pointer;
+    display: inline-block; margin-bottom: 10px;
+  }
+  .c-card {
+    padding: 10px; border-radius: 8px; margin-bottom: 8px;
+  }
+  .c-card-title { font-size: 13px; font-weight: 600; margin-bottom: 3px; }
+  .c-card-desc { font-size: 11px; opacity: 0.65; }
+  .c-bubble { padding: 8px 12px; border-radius: 10px; font-size: 12px; margin-bottom: 6px; }
+  .c-input {
+    width: 100%; padding: 7px 10px; border-radius: 8px; font-size: 12px;
+    border: 1px solid; outline: none; font-family: inherit;
+  }
+  .c-tag { display: inline-block; padding: 2px 8px; border-radius: 9999px; font-size: 10px; font-weight: 500; }
+  .c-swatch { display: flex; gap: 6px; margin-bottom: 8px; flex-wrap: wrap; }
+  .c-swatch-item { width: 36px; height: 36px; border-radius: 6px; border: 1px solid rgba(128,128,128,0.3); }
+  .c-swatch-row { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+  .c-swatch-label { font-size: 10px; opacity: 0.5; min-width: 50px; }
+  .c-hex { font-size: 9px; font-family: monospace; opacity: 0.5; }
+
+  @media (max-width: 700px) {
+    .compare-2 { grid-template-columns: 1fr; }
+    .compare-2 .c-side + .c-side { border-left: none; border-top: 1px solid rgba(128,128,128,0.2); }
+  }
+
+  /* ── Color Swatches ── */
+  .swatch-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 12px;
+  }
+  .swatch { border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border); }
+  .swatch-color { height: 64px; }
+  .swatch-info { padding: 8px 10px; background: var(--card); }
+  .swatch-name { font-size: 12px; font-weight: 600; }
+  .swatch-hex { font-size: 11px; color: var(--muted-foreground); font-family: monospace; }
+
+  /* ── Typography ── */
+  .type-scale { display: flex; flex-direction: column; gap: 16px; }
+  .type-row {
+    display: flex; align-items: baseline; gap: 16px;
+    padding: 12px 0; border-bottom: 1px solid var(--border);
+  }
+  .type-label { min-width: 80px; font-size: 11px; color: var(--muted-foreground); text-transform: uppercase; letter-spacing: 0.5px; }
+  .type-display { font-size: 28px; font-weight: 700; line-height: 1.2; }
+  .type-h1 { font-size: 24px; font-weight: 700; line-height: 1.3; }
+  .type-h2 { font-size: 20px; font-weight: 600; line-height: 1.35; }
+  .type-h3 { font-size: 16px; font-weight: 600; line-height: 1.4; }
+  .type-body { font-size: 14px; font-weight: 400; line-height: 1.5; }
+  .type-small { font-size: 12px; font-weight: 400; line-height: 1.5; }
+  .type-caption { font-size: 11px; font-weight: 400; line-height: 1.4; color: var(--muted-foreground); }
+
+  /* ── Radius ── */
+  .radius-grid { display: flex; gap: 16px; flex-wrap: wrap; }
+  .radius-item { text-align: center; }
+  .radius-box { width: 64px; height: 64px; background: var(--primary-light); border: 2px solid var(--primary); margin-bottom: 6px; }
+  .radius-label { font-size: 11px; color: var(--muted-foreground); }
+
+  /* ── Buttons ── */
+  .btn-group { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+  .btn {
+    padding: 10px 20px; border: none; border-radius: var(--radius-md);
+    font-size: 14px; font-weight: 500; cursor: pointer; transition: all 0.2s; font-family: inherit;
+  }
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-primary:hover { background: var(--primary-hover); }
+  .btn-outline { background: transparent; color: var(--primary); border: 1.5px solid var(--primary); }
+  .btn-ghost { background: transparent; color: var(--muted-foreground); border: 1px solid var(--border); }
+  .btn-sm { padding: 6px 14px; font-size: 13px; border-radius: var(--radius-sm); }
+  .btn-disabled { opacity: 0.4; cursor: not-allowed; pointer-events: none; }
+  .btn-primary:focus-visible, .btn-outline:focus-visible, .btn-ghost:focus-visible {
+    outline: 2px solid var(--primary); outline-offset: 2px;
+  }
+
+  /* ── Cards ── */
+  .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 640px) { .card-grid { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 20px; transition: border-color 0.2s;
+  }
+  .card:hover { border-color: var(--primary); }
+
+  /* ── Tags ── */
+  .tag-group { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 4px 10px; border-radius: var(--radius-full); font-size: 12px; font-weight: 500;
+  }
+  .tag-sm { font-size: 11px; padding: 2px 8px; }
+  .tag-primary { background: var(--primary-light); color: var(--primary); }
+  .tag-sage { background: #63726018; color: var(--sage); border: 1px solid var(--sage); }
+  .tag-teal { background: #2D736818; color: var(--teal); border: 1px solid var(--teal); }
+  .tag-coral-outline { background: transparent; color: var(--coral); border: 1px solid var(--coral); }
+  .tag-muted { background: transparent; color: var(--muted-foreground); border: 1px solid var(--border); }
+  .highlight-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 3px 8px; border-radius: var(--radius-sm);
+    font-size: 11px; font-weight: 600;
+    background: #2D736820; color: var(--teal); border: 1px solid var(--teal);
+  }
+
+  /* ── Badge ── */
+  .badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 2px 8px; border-radius: var(--radius-sm); font-size: 11px; font-weight: 600;
+  }
+  .badge-success { background: var(--success-bg); color: var(--success); }
+  .badge-warning { background: var(--warning-bg); color: var(--warning); }
+  .badge-error { background: var(--error-bg); color: var(--destructive); }
+
+  /* ── Input ── */
+  .input-group { display: flex; flex-direction: column; gap: 12px; max-width: 400px; }
+  .input {
+    padding: 10px 14px; border: 1px solid var(--border); border-radius: var(--radius-md);
+    font-size: 14px; background: var(--card); color: var(--foreground);
+    font-family: inherit; outline: none; transition: border-color 0.2s;
+  }
+  .input:focus { border-color: var(--primary); outline: none; box-shadow: 0 0 0 3px var(--primary-light); }
+  .input::placeholder { color: var(--muted-foreground); }
+  .input-disabled { opacity: 0.4; cursor: not-allowed; background: var(--background); }
+
+  /* ── Chat ── */
+  .chat-area {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); padding: 20px;
+    display: flex; flex-direction: column; gap: 12px;
+  }
+  .bubble { max-width: 80%; padding: 10px 14px; border-radius: var(--radius-md); font-size: 14px; line-height: 1.5; }
+  .bubble-user { align-self: flex-end; background: var(--primary); color: #fff; border-bottom-right-radius: 4px; }
+  .bubble-ai {
+    align-self: flex-start; background: var(--surface-warm);
+    border: 1px solid var(--border-warm); color: var(--foreground); border-bottom-left-radius: 4px;
+  }
+  .chat-input-row { display: flex; gap: 8px; margin-top: 8px; }
+  .chat-input-row .input { flex: 1; }
+
+  /* ── Product Card ── */
+  .product-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: var(--radius-lg); overflow: hidden; transition: border-color 0.2s;
+  }
+  .product-card:hover { border-color: var(--primary); }
+  .product-img {
+    height: 160px; background: var(--surface-warm);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted-foreground); font-size: 13px; position: relative;
+  }
+  .product-body { padding: 16px; }
+  .product-brand { font-size: 12px; color: var(--muted-foreground); margin-bottom: 4px; }
+  .product-name { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+  .product-price { font-size: 16px; font-weight: 700; color: var(--primary); margin-bottom: 8px; }
+  .product-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+
+  /* ── Semantic ── */
+  .semantic-grid { display: flex; gap: 16px; flex-wrap: wrap; }
+  .semantic-item { text-align: center; }
+  .semantic-dot { width: 48px; height: 48px; border-radius: var(--radius-full); margin: 0 auto 6px; }
+  .semantic-label { font-size: 11px; color: var(--muted-foreground); }
+
+  /* ── Spacing ── */
+  .spacing-row { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+  .spacing-bar { height: 24px; background: var(--primary-light); border: 1px solid var(--primary); border-radius: 3px; }
+  .spacing-label { font-size: 11px; color: var(--muted-foreground); min-width: 60px; font-family: monospace; }
+  .spacing-px { font-size: 11px; color: var(--muted-foreground); font-family: monospace; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div>
+      <h1>Essenly Design Preview</h1>
+      <p style="font-size:13px; color:var(--muted-foreground); margin-top:4px;">P1-1 Color · P1-2 Typography · P1-3 Spacing</p>
+    </div>
+    <div class="mode-toggle">
+      <button class="mode-btn active" onclick="setTheme('light', this)">Light</button>
+      <button class="mode-btn" onclick="setTheme('dark', this)">Dark</button>
+    </div>
+  </div>
+
+  <!-- ═══ 0. LIGHT vs DARK COMPARISON ═══ -->
+  <div class="section">
+    <h2 class="section-title">Light vs Dark Comparison</h2>
+    <p class="section-subtitle">동일 UI 요소로 두 모드 차이 확인</p>
+
+    <div class="compare-2">
+      <!-- Light -->
+      <div class="c-side" style="background:#FAFAFA; color:#1A1A2E;">
+        <div class="c-label" style="color:#6B7280;">Light</div>
+        <div class="c-swatch">
+          <div class="c-swatch-row"><div class="c-swatch-label">background</div><div class="c-swatch-item" style="background:#FAFAFA;"></div><span class="c-hex">#FAFAFA</span></div>
+          <div class="c-swatch-row"><div class="c-swatch-label">card</div><div class="c-swatch-item" style="background:#FFFFFF;"></div><span class="c-hex">#FFFFFF</span></div>
+          <div class="c-swatch-row"><div class="c-swatch-label">secondary</div><div class="c-swatch-item" style="background:#FAF7F2;"></div><span class="c-hex">#FAF7F2</span></div>
+        </div>
+        <div class="c-heading">K-Beauty for You</div>
+        <div class="c-body">Personalized beauty recommendations.</div>
+        <button class="c-btn" style="background:#D4788A; color:#fff;">Get Started</button>
+        <div class="c-card" style="background:#FFFFFF; border: 1px solid #E5E7EB;">
+          <div class="c-card-title">Hydrating Serum</div>
+          <div class="c-card-desc">For dry, sensitive skin</div>
+        </div>
+        <div class="c-card" style="background:#FAF7F2; border: 1px solid #E8DDD5;">
+          <div class="c-card-title">Warm Card</div>
+          <div class="c-card-desc">Special content area</div>
+        </div>
+        <div class="c-bubble" style="background:#D4788A; color:#fff; text-align:right;">I need skincare help</div>
+        <div class="c-bubble" style="background:#FAF7F2; border:1px solid #E8DDD5;">Try this hydrating toner!</div>
+        <input class="c-input" style="background:#FFFFFF; color:#1A1A2E; border-color:#E5E7EB;" placeholder="Search..." readonly>
+        <div style="margin-top:8px;">
+          <span class="c-tag" style="background:#FDE8EC; color:#D4788A;">Dry Skin</span>
+          <span class="c-tag" style="background:#63726020; color:#637260; border:1px solid #637260;">Natural</span>
+        </div>
+      </div>
+
+      <!-- Dark: Warm Charcoal -->
+      <div class="c-side" style="background:#1C1817; color:#F0ECF4;">
+        <div class="c-label" style="color:#908E96;">Dark (Warm Charcoal)</div>
+        <div class="c-swatch">
+          <div class="c-swatch-row"><div class="c-swatch-label" style="color:#908E96;">background</div><div class="c-swatch-item" style="background:#1C1817;"></div><span class="c-hex" style="color:#908E96;">#1C1817</span></div>
+          <div class="c-swatch-row"><div class="c-swatch-label" style="color:#908E96;">card</div><div class="c-swatch-item" style="background:#272120;"></div><span class="c-hex" style="color:#908E96;">#272120</span></div>
+          <div class="c-swatch-row"><div class="c-swatch-label" style="color:#908E96;">secondary</div><div class="c-swatch-item" style="background:#302826;"></div><span class="c-hex" style="color:#908E96;">#302826</span></div>
+        </div>
+        <div class="c-heading">K-Beauty for You</div>
+        <div class="c-body">Personalized beauty recommendations.</div>
+        <button class="c-btn" style="background:#E8899A; color:#fff;">Get Started</button>
+        <div class="c-card" style="background:#272120; border: 1px solid #3D3533;">
+          <div class="c-card-title">Hydrating Serum</div>
+          <div class="c-card-desc">For dry, sensitive skin</div>
+        </div>
+        <div class="c-card" style="background:#302826; border: 1px solid #4A3835;">
+          <div class="c-card-title">Warm Card</div>
+          <div class="c-card-desc">Special content area</div>
+        </div>
+        <div class="c-bubble" style="background:#E8899A; color:#fff; text-align:right;">I need skincare help</div>
+        <div class="c-bubble" style="background:#302826; border:1px solid #4A3835; color:#F0ECF4;">Try this hydrating toner!</div>
+        <input class="c-input" style="background:#272120; color:#F0ECF4; border-color:#3D3533;" placeholder="Search..." readonly>
+        <div style="margin-top:8px;">
+          <span class="c-tag" style="background:#3D2028; color:#E8899A;">Dry Skin</span>
+          <span class="c-tag" style="background:#A8B5A020; color:#A8B5A0; border:1px solid #A8B5A0;">Natural</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 1. Color Palette ═══ -->
+  <div class="section">
+    <h2 class="section-title">Color Palette</h2>
+    <p class="section-subtitle">상단 토글로 Light / Dark 전환</p>
+
+    <h3 style="font-size:14px; font-weight:600; margin-bottom:12px;">Primary</h3>
+    <div class="swatch-grid" style="margin-bottom:24px;">
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--primary);"></div>
+        <div class="swatch-info"><div class="swatch-name">Primary</div><div class="swatch-hex" data-light="#D4788A" data-dark="#E8899A"></div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--primary-hover);"></div>
+        <div class="swatch-info"><div class="swatch-name">Primary Hover</div><div class="swatch-hex" data-light="#C45870" data-dark="#F2A4B3"></div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--primary-light);"></div>
+        <div class="swatch-info"><div class="swatch-name">Primary Light</div><div class="swatch-hex" data-light="#FDE8EC" data-dark="#3D2028"></div></div>
+      </div>
+    </div>
+
+    <h3 style="font-size:14px; font-weight:600; margin-bottom:12px;">Background & Surface</h3>
+    <div class="swatch-grid" style="margin-bottom:24px;">
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--background);"></div>
+        <div class="swatch-info"><div class="swatch-name">Background</div><div class="swatch-hex" data-light="#FAFAFA" data-dark="#1C1817"></div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--card);"></div>
+        <div class="swatch-info"><div class="swatch-name">Card</div><div class="swatch-hex" data-light="#FFFFFF" data-dark="#272120"></div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--surface-warm);"></div>
+        <div class="swatch-info"><div class="swatch-name">Secondary</div><div class="swatch-hex" data-light="#FAF7F2" data-dark="#302826"></div></div>
+      </div>
+    </div>
+
+    <h3 style="font-size:14px; font-weight:600; margin-bottom:12px;">Text</h3>
+    <div class="swatch-grid" style="margin-bottom:24px;">
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--foreground);"></div>
+        <div class="swatch-info"><div class="swatch-name">Foreground</div><div class="swatch-hex" data-light="#1A1A2E" data-dark="#F0ECF4"></div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--muted-foreground);"></div>
+        <div class="swatch-info"><div class="swatch-name">Muted Foreground</div><div class="swatch-hex" data-light="#6B7280" data-dark="#908E96"></div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--muted-foreground);"></div>
+        <div class="swatch-info"><div class="swatch-name">Muted</div><div class="swatch-hex" data-light="#F3F4F6" data-dark="#302826"></div></div>
+      </div>
+    </div>
+
+    <h3 style="font-size:14px; font-weight:600; margin-bottom:12px;">Border</h3>
+    <div class="swatch-grid" style="margin-bottom:24px;">
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--border);"></div>
+        <div class="swatch-info"><div class="swatch-name">Border</div><div class="swatch-hex" data-light="#E5E7EB" data-dark="#3D3533"></div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--border-warm);"></div>
+        <div class="swatch-info"><div class="swatch-name">Border Warm</div><div class="swatch-hex" data-light="#E8DDD5" data-dark="#4A3835"></div></div>
+      </div>
+    </div>
+
+    <h3 style="font-size:14px; font-weight:600; margin-bottom:12px;">Accent</h3>
+    <div class="swatch-grid" style="margin-bottom:24px;">
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--sage);"></div>
+        <div class="swatch-info"><div class="swatch-name">Sage</div><div class="swatch-hex" data-light="#637260" data-dark="#A8B5A0">#637260</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--teal);"></div>
+        <div class="swatch-info"><div class="swatch-name">Teal</div><div class="swatch-hex" data-light="#2D7368" data-dark="#5AB5A8">#2D7368</div></div>
+      </div>
+      <div class="swatch">
+        <div class="swatch-color" style="background:var(--coral);"></div>
+        <div class="swatch-info"><div class="swatch-name">Coral</div><div class="swatch-hex" data-light="#B8503A" data-dark="#E8988A"></div></div>
+      </div>
+    </div>
+
+    <h3 style="font-size:14px; font-weight:600; margin-bottom:12px;">Semantic</h3>
+    <div class="semantic-grid" style="margin-bottom:12px;">
+      <div class="semantic-item"><div class="semantic-dot" style="background:var(--destructive);"></div><div class="semantic-label">Error</div><div style="font-size:9px;font-family:monospace;color:var(--muted-foreground);" class="semantic-hex" data-light="#D4645E" data-dark="#E09088"></div></div>
+      <div class="semantic-item"><div class="semantic-dot" style="background:var(--success);"></div><div class="semantic-label">Success</div><div style="font-size:9px;font-family:monospace;color:var(--muted-foreground);" class="semantic-hex" data-light="#5AAF82" data-dark="#7EC4A0"></div></div>
+      <div class="semantic-item"><div class="semantic-dot" style="background:var(--warning);"></div><div class="semantic-label">Warning</div><div style="font-size:9px;font-family:monospace;color:var(--muted-foreground);" class="semantic-hex" data-light="#8C6A2C" data-dark="#E0B878"></div></div>
+    </div>
+    <div style="display:flex;gap:6px;">
+      <span class="badge badge-error">Sold Out</span>
+      <span class="badge badge-success">In Stock</span>
+      <span class="badge badge-warning">Limited</span>
+    </div>
+  </div>
+
+  <!-- ═══ 2. Typography ═══ -->
+  <div class="section">
+    <h2 class="section-title">Typography Scale</h2>
+    <p class="section-subtitle">Font: Geist Sans · 7-step scale</p>
+    <div class="type-scale">
+      <div class="type-row"><span class="type-label">Display<br>28px / 700</span><span class="type-display">Your Beauty Journey</span></div>
+      <div class="type-row"><span class="type-label">H1<br>24px / 700</span><span class="type-h1">Recommended Products</span></div>
+      <div class="type-row"><span class="type-label">H2<br>20px / 600</span><span class="type-h2">Skincare for Dry Skin</span></div>
+      <div class="type-row"><span class="type-label">H3<br>16px / 600</span><span class="type-h3">Hydrating Toner</span></div>
+      <div class="type-row"><span class="type-label">Body<br>14px / 400</span><span class="type-body">This lightweight toner delivers deep hydration with hyaluronic acid and ceramides, perfect for dehydrated skin during travel.</span></div>
+      <div class="type-row"><span class="type-label">Small<br>12px / 400</span><span class="type-small">Available at Olive Young Myeongdong · Tax-free eligible</span></div>
+      <div class="type-row"><span class="type-label">Caption<br>11px / 400</span><span class="type-caption">Results may vary. Not a medical recommendation.</span></div>
+    </div>
+  </div>
+
+  <!-- ═══ 3. Radius ═══ -->
+  <div class="section">
+    <h2 class="section-title">Border Radius</h2>
+    <div class="radius-grid">
+      <div class="radius-item"><div class="radius-box" style="border-radius:var(--radius-sm);"></div><div class="radius-label">sm · 6px</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:var(--radius-md);"></div><div class="radius-label">md · 10px</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:var(--radius-lg);"></div><div class="radius-label">lg · 14px</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:var(--radius-xl);"></div><div class="radius-label">xl · 20px</div></div>
+      <div class="radius-item"><div class="radius-box" style="border-radius:var(--radius-full);"></div><div class="radius-label">full · 9999px</div></div>
+    </div>
+  </div>
+
+  <!-- ═══ 4. Spacing ═══ -->
+  <div class="section">
+    <h2 class="section-title">Spacing Scale</h2>
+    <p class="section-subtitle">Tailwind default 4px base</p>
+    <div class="spacing-row"><span class="spacing-label">4px</span><div class="spacing-bar" style="width:16px;"></div><span class="spacing-px">gap-1</span></div>
+    <div class="spacing-row"><span class="spacing-label">8px</span><div class="spacing-bar" style="width:32px;"></div><span class="spacing-px">gap-2</span></div>
+    <div class="spacing-row"><span class="spacing-label">12px</span><div class="spacing-bar" style="width:48px;"></div><span class="spacing-px">gap-3</span></div>
+    <div class="spacing-row"><span class="spacing-label">16px</span><div class="spacing-bar" style="width:64px;"></div><span class="spacing-px">gap-4</span></div>
+    <div class="spacing-row"><span class="spacing-label">20px</span><div class="spacing-bar" style="width:80px;"></div><span class="spacing-px">gap-5</span></div>
+    <div class="spacing-row"><span class="spacing-label">24px</span><div class="spacing-bar" style="width:96px;"></div><span class="spacing-px">gap-6</span></div>
+    <div class="spacing-row"><span class="spacing-label">32px</span><div class="spacing-bar" style="width:128px;"></div><span class="spacing-px">gap-8</span></div>
+  </div>
+
+  <!-- ═══ 5. Buttons ═══ -->
+  <div class="section">
+    <h2 class="section-title">Buttons</h2>
+    <div style="font-size:12px; font-weight:600; margin-bottom:8px; color:var(--muted-foreground);">DEFAULT</div>
+    <div class="btn-group">
+      <button class="btn btn-primary">Get Started</button>
+      <button class="btn btn-outline">Learn More</button>
+      <button class="btn btn-ghost">Cancel</button>
+    </div>
+    <div style="font-size:12px; font-weight:600; margin-bottom:8px; color:var(--muted-foreground);">SMALL</div>
+    <div class="btn-group">
+      <button class="btn btn-primary btn-sm">Save</button>
+      <button class="btn btn-outline btn-sm">Edit Profile</button>
+      <button class="btn btn-ghost btn-sm">Skip</button>
+    </div>
+    <div style="font-size:12px; font-weight:600; margin-bottom:8px; color:var(--muted-foreground);">DISABLED</div>
+    <div class="btn-group">
+      <button class="btn btn-primary btn-disabled">Get Started</button>
+      <button class="btn btn-outline btn-disabled">Learn More</button>
+      <button class="btn btn-ghost btn-disabled">Cancel</button>
+    </div>
+    <div style="font-size:12px; font-weight:600; margin-bottom:8px; color:var(--muted-foreground);">FOCUS</div>
+    <div class="btn-group">
+      <button class="btn btn-primary" style="outline:2px solid var(--primary); outline-offset:2px;">Focused</button>
+    </div>
+  </div>
+
+  <!-- ═══ 6. Tag System ═══ -->
+  <div class="section">
+    <h2 class="section-title">Tag System</h2>
+    <p class="section-subtitle">5 visual styles + highlight badge (VP-1)</p>
+
+    <div style="background:var(--card); border:1px solid var(--border); border-radius:var(--radius-md); padding:16px; margin-bottom:20px;">
+      <div style="font-size:12px; font-weight:600; margin-bottom:12px; color:var(--muted-foreground);">TAG COLOR LEGEND</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="tag tag-primary tag-sm">Dry Skin</span>
+          <span style="font-size:11px; color:var(--muted-foreground);">Personalization match</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="tag tag-sage tag-sm">Hydrating</span>
+          <span style="font-size:11px; color:var(--muted-foreground);">Benefit / ingredient</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="tag tag-teal tag-sm">English Label</span>
+          <span style="font-size:11px; color:var(--muted-foreground);">Tourist convenience</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="tag tag-coral-outline tag-sm">3-day downtime</span>
+          <span style="font-size:11px; color:var(--muted-foreground);">Constraint / warning</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="tag tag-muted tag-sm">Serum</span>
+          <span style="font-size:11px; color:var(--muted-foreground);">Category / supplementary</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="highlight-badge">★ Essenly Pick</span>
+          <span style="font-size:11px; color:var(--muted-foreground);">Highlight badge (VP-1)</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-bottom:16px;">
+      <div style="font-size:12px; font-weight:600; margin-bottom:8px; color:var(--muted-foreground);">STATUS BADGES</div>
+      <span class="badge badge-success">In Stock</span>&nbsp;
+      <span class="badge badge-warning">Limited</span>&nbsp;
+      <span class="badge badge-error">Sold Out</span>
+    </div>
+  </div>
+
+  <!-- ═══ 7. Input Fields ═══ -->
+  <div class="section">
+    <h2 class="section-title">Input Fields</h2>
+    <div class="input-group">
+      <div>
+        <div style="font-size:11px; color:var(--muted-foreground); margin-bottom:4px;">Placeholder</div>
+        <input class="input" type="text" placeholder="Search products or treatments...">
+      </div>
+      <div>
+        <div style="font-size:11px; color:var(--muted-foreground); margin-bottom:4px;">Filled</div>
+        <input class="input" type="text" value="Hyaluronic acid serum">
+      </div>
+      <div>
+        <div style="font-size:11px; color:var(--muted-foreground); margin-bottom:4px;">Focused (click to see)</div>
+        <input class="input" type="text" placeholder="Focus ring appears on click...">
+      </div>
+      <div>
+        <div style="font-size:11px; color:var(--muted-foreground); margin-bottom:4px;">Disabled</div>
+        <input class="input input-disabled" type="text" value="Cannot edit" disabled>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 8. Product Cards ═══ -->
+  <div class="section">
+    <h2 class="section-title">Product Cards</h2>
+    <p class="section-subtitle">Max 3 tags per card, AI selects one per group</p>
+
+    <div class="card-grid">
+      <div class="product-card">
+        <div class="product-img"><span>Product Image</span></div>
+        <div class="product-body">
+          <div class="product-brand">COSRX</div>
+          <div class="product-name">Advanced Snail 96 Mucin Power Essence</div>
+          <div class="product-price">₩16,900</div>
+          <div style="font-size:13px; color:var(--muted-foreground); margin-bottom:8px;">Deep hydration for dehydrated skin during travel.</div>
+          <div class="product-tags">
+            <span class="tag tag-primary tag-sm">Dry Skin</span>
+            <span class="tag tag-sage tag-sm">Hydrating</span>
+            <span class="tag tag-teal tag-sm">English Label</span>
+          </div>
+          <div style="font-size:10px; color:var(--muted-foreground); margin-top:6px;">Olive Young Myeongdong</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img">
+          <span class="highlight-badge" style="position:absolute; top:8px; left:8px;">★ Essenly Pick</span>
+          <span>Product Image</span>
+        </div>
+        <div class="product-body">
+          <div class="product-brand">Beauty of Joseon</div>
+          <div class="product-name">Glow Serum : Propolis + Niacinamide</div>
+          <div class="product-price">₩12,000</div>
+          <div style="font-size:13px; color:var(--muted-foreground); margin-bottom:8px;">Brightens dull skin with natural propolis extract.</div>
+          <div class="product-tags">
+            <span class="tag tag-primary tag-sm">Oily Skin</span>
+            <span class="tag tag-sage tag-sm">Brightening</span>
+            <span class="tag tag-teal tag-sm">Tax-free</span>
+          </div>
+          <div style="font-size:10px; color:var(--muted-foreground); margin-top:6px;">Olive Young Hongdae</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img"><span>Product Image</span></div>
+        <div class="product-body">
+          <div class="product-brand">Laneige</div>
+          <div class="product-name">Cream Skin Toner & Moisturizer</div>
+          <div class="product-price">₩28,000</div>
+          <div style="font-size:13px; color:var(--muted-foreground); margin-bottom:8px;">2-in-1 toner that also moisturizes.</div>
+          <div class="product-tags">
+            <span class="tag tag-sage tag-sm">Hydrating</span>
+            <span class="tag tag-sage tag-sm">Soothing</span>
+            <span class="tag tag-teal tag-sm">Tourist Fav</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img"><span>Product Image</span></div>
+        <div class="product-body">
+          <div class="product-brand">Innisfree</div>
+          <div class="product-name">Retinol Cica Repair Ampoule</div>
+          <div class="product-price">₩22,000</div>
+          <div style="font-size:13px; color:var(--muted-foreground); margin-bottom:8px;">Gentle retinol for first-time users.</div>
+          <div class="product-tags">
+            <span class="tag tag-primary tag-sm">Sensitive Skin</span>
+            <span class="tag tag-sage tag-sm">Anti-aging</span>
+            <span class="tag tag-muted tag-sm">Ampoule</span>
+          </div>
+          <div style="font-size:10px; color:var(--muted-foreground); margin-top:6px;">Innisfree Gangnam</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 9. Treatment Cards ═══ -->
+  <div class="section">
+    <h2 class="section-title">Treatment Cards</h2>
+    <p class="section-subtitle">Treatment cards include constraint/warning tags (coral outline)</p>
+
+    <div class="card-grid">
+      <div class="product-card">
+        <div class="product-img" style="height:120px;"><span>Treatment Image</span></div>
+        <div class="product-body">
+          <div class="product-brand">Skin Seoul Clinic</div>
+          <div class="product-name">Aqua Peel Facial</div>
+          <div class="product-price">₩80,000~120,000</div>
+          <div style="font-size:13px; color:var(--muted-foreground); margin-bottom:8px;">Deep cleansing facial with no downtime.</div>
+          <div class="product-tags">
+            <span class="tag tag-primary tag-sm">Oily Skin</span>
+            <span class="tag tag-sage tag-sm">Pore Care</span>
+            <span class="tag tag-teal tag-sm">English Staff</span>
+          </div>
+          <div style="font-size:10px; color:var(--muted-foreground); margin-top:6px;">30 min · No downtime · Gangnam</div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-img" style="height:120px;"><span>Treatment Image</span></div>
+        <div class="product-body">
+          <div class="product-brand">Banobagi Clinic</div>
+          <div class="product-name">Fractional CO2 Laser</div>
+          <div class="product-price">₩200,000~350,000</div>
+          <div style="font-size:13px; color:var(--muted-foreground); margin-bottom:8px;">Skin resurfacing for acne scars and texture.</div>
+          <div class="product-tags">
+            <span class="tag tag-primary tag-sm">Acne Scars</span>
+            <span class="tag tag-sage tag-sm">Resurfacing</span>
+            <span class="tag tag-coral-outline tag-sm">5-day downtime</span>
+          </div>
+          <div style="font-size:10px; color:var(--warning); margin-top:6px;">⚠ Recovery overlaps 80% of your stay</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ 10. Chat Interface + Kit CTA ═══ -->
+  <div class="section">
+    <h2 class="section-title">Chat Interface + Kit CTA</h2>
+    <p class="section-subtitle">Inline suggestion card → Bottom sheet form (click "Claim" to preview)</p>
+    <div class="chat-area" style="position:relative;">
+      <div class="bubble bubble-user">I have dry, sensitive skin and I'm visiting Seoul for 5 days. What products should I try?</div>
+      <div class="bubble bubble-ai">
+        Great question! For dry, sensitive skin in Seoul, I'd recommend starting with a gentle hydrating toner. The <strong>Laneige Cream Skin Toner</strong> is a tourist favorite.
+      </div>
+      <div class="bubble bubble-user">That sounds great! Anything else I should try?</div>
+      <div class="bubble bubble-ai" style="max-width:100%;">
+        Based on your profile, I've put together something special for you:
+        <!-- Kit CTA Inline Card -->
+        <div style="margin-top:12px; background:var(--card); border:1.5px solid var(--primary); border-radius:var(--radius-lg); padding:20px; position:relative; overflow:hidden;">
+          <div style="position:absolute; top:0; left:0; right:0; height:3px; background:linear-gradient(90deg, var(--primary), var(--primary-hover));"></div>
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+            <span style="font-size:20px;">🎁</span>
+            <span style="font-size:16px; font-weight:700; color:var(--foreground);">Your Essenly Kit</span>
+          </div>
+          <div style="font-size:13px; color:var(--muted-foreground); margin-bottom:14px; line-height:1.5;">
+            3 products hand-picked for your dry, sensitive skin — delivered before your trip.
+          </div>
+          <div style="display:flex; gap:6px; margin-bottom:14px; flex-wrap:wrap;">
+            <span class="tag tag-primary tag-sm">Dry Skin Match</span>
+            <span class="tag tag-sage tag-sm">Hydrating</span>
+            <span class="tag tag-teal tag-sm">Travel Size</span>
+          </div>
+          <div style="display:flex; gap:8px; align-items:center; flex-wrap:wrap;">
+            <button class="btn btn-primary btn-sm" onclick="openKitSheet()" style="padding:8px 20px;">Claim my free kit →</button>
+            <button class="btn btn-ghost btn-sm" style="padding:8px 14px; font-size:12px;">No thanks</button>
+          </div>
+        </div>
+      </div>
+      <div class="chat-input-row">
+        <input class="input" type="text" placeholder="Ask about K-beauty...">
+        <button class="btn btn-primary btn-sm" style="padding:10px 16px;">Send</button>
+      </div>
+
+      <!-- Bottom Sheet Overlay (hidden by default) -->
+      <div id="kit-sheet-overlay" onclick="closeKitSheet()" style="display:none; position:fixed; top:0; left:0; right:0; bottom:0; background:rgba(0,0,0,0.4); z-index:100; opacity:0; transition:opacity 0.3s;">
+      </div>
+      <div id="kit-sheet" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:101; background:var(--card); border-top-left-radius:var(--radius-xl); border-top-right-radius:var(--radius-xl); padding:0 20px 32px; max-width:480px; margin:0 auto; left:50%; transform:translateX(-50%) translateY(100%); box-shadow:0 -4px 24px rgba(0,0,0,0.12); transition:transform 0.3s ease-out;">
+        <!-- Drag handle -->
+        <div style="display:flex; justify-content:center; padding:12px 0 16px;">
+          <div style="width:36px; height:4px; border-radius:2px; background:var(--border);"></div>
+        </div>
+        <!-- Sheet content -->
+        <div style="font-size:18px; font-weight:700; margin-bottom:4px;">Almost there!</div>
+        <div style="font-size:13px; color:var(--muted-foreground); margin-bottom:20px; line-height:1.5;">
+          Enter your email and we'll send your personalized K-Beauty kit details — curated for dry, sensitive skin.
+        </div>
+        <div style="margin-bottom:12px;">
+          <input class="input" type="email" placeholder="your@email.com" style="width:100%;">
+        </div>
+        <label style="display:flex; align-items:flex-start; gap:8px; margin-bottom:20px; font-size:12px; color:var(--muted-foreground); cursor:pointer;">
+          <input type="checkbox" style="margin-top:2px; accent-color:var(--primary);">
+          <span>I'd like to receive K-beauty tips and offers from Essenly</span>
+        </label>
+        <div id="kit-form">
+          <button class="btn btn-primary" style="width:100%; padding:12px;" onclick="submitKit()">Send my kit details →</button>
+          <div style="text-align:center; margin-top:12px;">
+            <button onclick="closeKitSheet()" style="background:none; border:none; color:var(--muted-foreground); font-size:13px; cursor:pointer; font-family:inherit;">Maybe later</button>
+          </div>
+        </div>
+        <div id="kit-success" style="display:none; text-align:center; padding:20px 0;">
+          <div style="font-size:32px; margin-bottom:12px;">✓</div>
+          <div style="font-size:18px; font-weight:700; margin-bottom:8px;">You're all set!</div>
+          <div style="font-size:13px; color:var(--muted-foreground); margin-bottom:20px; line-height:1.5;">We'll send your personalized K-Beauty kit details to your email soon.</div>
+          <button class="btn btn-primary btn-sm" onclick="closeKitSheet()" style="padding:10px 24px;">Back to chat</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div style="text-align:center; padding:32px 0; color:var(--muted-foreground); font-size:12px; border-top:1px solid var(--border); margin-top:48px;">
+    Essenly Design System Preview · Primary #D4788A · Geist Sans · Dark: Warm Charcoal
+  </div>
+
+</div>
+
+<script>
+let currentTheme = 'light';
+
+function setTheme(theme, btn) {
+  currentTheme = theme;
+  if (theme === 'light') {
+    document.documentElement.removeAttribute('data-theme');
+  } else {
+    document.documentElement.setAttribute('data-theme', theme);
+  }
+  document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  // Update hex values for swatches
+  const isDark = theme !== 'light';
+  document.querySelectorAll('.swatch-hex[data-light]').forEach(el => {
+    el.textContent = isDark ? el.dataset.dark : el.dataset.light;
+  });
+
+  // Update semantic hex values
+  document.querySelectorAll('.semantic-hex[data-light]').forEach(el => {
+    el.textContent = isDark ? el.dataset.dark : el.dataset.light;
+  });
+}
+
+// Init hex values
+document.querySelectorAll('.swatch-hex[data-light]').forEach(el => {
+  el.textContent = el.dataset.light;
+});
+document.querySelectorAll('.semantic-hex[data-light]').forEach(el => {
+  el.textContent = el.dataset.light;
+});
+
+// Kit CTA Bottom Sheet
+function openKitSheet() {
+  const overlay = document.getElementById('kit-sheet-overlay');
+  const sheet = document.getElementById('kit-sheet');
+  overlay.style.display = 'block';
+  sheet.style.display = 'block';
+  // Force reflow before transition
+  void sheet.offsetHeight;
+  overlay.style.opacity = '1';
+  sheet.style.transform = 'translateX(-50%) translateY(0)';
+}
+function submitKit() {
+  document.getElementById('kit-form').style.display = 'none';
+  document.getElementById('kit-success').style.display = 'block';
+}
+function closeKitSheet() {
+  // Reset form state for re-demo
+  setTimeout(() => {
+    document.getElementById('kit-form').style.display = 'block';
+    document.getElementById('kit-success').style.display = 'none';
+  }, 350);
+  const overlay = document.getElementById('kit-sheet-overlay');
+  const sheet = document.getElementById('kit-sheet');
+  sheet.style.transform = 'translateX(-50%) translateY(100%)';
+  overlay.style.opacity = '0';
+  setTimeout(() => {
+    overlay.style.display = 'none';
+    sheet.style.display = 'none';
+  }, 300);
+}
+</script>
+</body>
+</html>
