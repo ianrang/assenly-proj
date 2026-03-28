@@ -436,8 +436,8 @@ stores:
     location: { lat: 37.4979, lng: 127.0276 }
     address: { ko: "서울 강남구 강남대로 396", en: "396 Gangnam-daero, Gangnam-gu, Seoul" }
     operating_hours: null
-    english_support: "partial"
-    store_type: "multi-brand"
+    english_support: "basic"
+    store_type: "olive_young"
     tourist_services: ["tax_refund", "english_signage"]
     payment_methods: ["credit_card", "cash", "mobile_pay"]
     nearby_landmarks: ["Gangnam Station"]
@@ -461,8 +461,8 @@ stores:
     location: { lat: 37.5636, lng: 126.9850 }
     address: { ko: "서울 중구 명동8가길 10", en: "10 Myeongdong 8-gil, Jung-gu, Seoul" }
     operating_hours: null
-    english_support: "full"
-    store_type: "multi-brand"
+    english_support: "fluent"
+    store_type: "olive_young"
     tourist_services: ["tax_refund", "english_signage", "multilingual_staff"]
     payment_methods: ["credit_card", "cash", "mobile_pay"]
     nearby_landmarks: ["Myeongdong Station", "Myeongdong Cathedral"]
@@ -486,8 +486,8 @@ stores:
     location: { lat: 37.5014, lng: 127.0260 }
     address: { ko: "서울 강남구 강남대로 438 신세계백화점 B1", en: "Shinsegae Dept. B1, 438 Gangnam-daero, Gangnam-gu, Seoul" }
     operating_hours: null
-    english_support: "partial"
-    store_type: "multi-brand"
+    english_support: "basic"
+    store_type: "chicor"
     tourist_services: ["tax_refund"]
     payment_methods: ["credit_card", "cash", "mobile_pay"]
     nearby_landmarks: ["Gangnam Station", "Shinsegae Department Store"]
@@ -511,8 +511,8 @@ stores:
     location: { lat: 37.5630, lng: 126.9860 }
     address: { ko: "서울 중구 명동길 44", en: "44 Myeongdong-gil, Jung-gu, Seoul" }
     operating_hours: null
-    english_support: "partial"
-    store_type: "brand_flagship"
+    english_support: "basic"
+    store_type: "brand_store"
     tourist_services: ["tax_refund", "english_signage"]
     payment_methods: ["credit_card", "cash", "mobile_pay"]
     nearby_landmarks: ["Myeongdong Station"]
@@ -536,8 +536,8 @@ stores:
     location: { lat: 37.5100, lng: 127.0593 }
     address: { ko: "서울 강남구 압구정로 343", en: "343 Apgujeong-ro, Gangnam-gu, Seoul" }
     operating_hours: null
-    english_support: "partial"
-    store_type: "brand_flagship"
+    english_support: "basic"
+    store_type: "brand_store"
     tourist_services: ["tax_refund", "skin_consultation"]
     payment_methods: ["credit_card", "cash", "mobile_pay"]
     nearby_landmarks: ["Apgujeong Rodeo Station"]
@@ -563,7 +563,7 @@ clinics:
     location: { lat: 37.5072, lng: 127.0394 }
     address: { ko: "서울 강남구 봉은사로 2길 29", en: "29 Bongeunsa-ro 2-gil, Gangnam-gu, Seoul" }
     operating_hours: null
-    english_support: "full"
+    english_support: "fluent"
     clinic_type: "dermatology"
     license_verified: true
     consultation_type: ["in_person", "online"]
@@ -594,7 +594,7 @@ clinics:
     location: { lat: 37.4986, lng: 127.0280 }
     address: { ko: "서울 강남구 강남대로 416", en: "416 Gangnam-daero, Gangnam-gu, Seoul" }
     operating_hours: null
-    english_support: "full"
+    english_support: "fluent"
     clinic_type: "dermatology"
     license_verified: true
     consultation_type: ["in_person", "online"]
@@ -625,8 +625,8 @@ clinics:
     location: { lat: 37.5070, lng: 127.0390 }
     address: { ko: "서울 강남구 논현로 815", en: "815 Nonhyeon-ro, Gangnam-gu, Seoul" }
     operating_hours: null
-    english_support: "full"
-    clinic_type: "plastic_surgery_dermatology"
+    english_support: "fluent"
+    clinic_type: "plastic_surgery"
     license_verified: true
     consultation_type: ["in_person", "online"]
     foreigner_friendly:
@@ -656,7 +656,7 @@ clinics:
     location: { lat: 37.5015, lng: 127.0250 }
     address: { ko: "서울 강남구 테헤란로 119", en: "119 Teheran-ro, Gangnam-gu, Seoul" }
     operating_hours: null
-    english_support: "partial"
+    english_support: "basic"
     clinic_type: "dermatology"
     license_verified: true
     consultation_type: ["in_person"]
@@ -687,8 +687,8 @@ clinics:
     location: { lat: 37.5020, lng: 127.0380 }
     address: { ko: "서울 강남구 선릉로 614", en: "614 Seolleung-ro, Gangnam-gu, Seoul" }
     operating_hours: null
-    english_support: "full"
-    clinic_type: "medical_tourism"
+    english_support: "fluent"
+    clinic_type: "aesthetic"
     license_verified: true
     consultation_type: ["in_person", "online"]
     foreigner_friendly:

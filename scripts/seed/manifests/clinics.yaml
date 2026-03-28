@@ -33,13 +33,13 @@ clinics:
   name_en: Larapeel Clinic Gangnam
   district: gangnam
   clinic_type: aesthetic
-  english_support: intermediate
+  english_support: good
   kakao_query: 라라필의원 강남
 - name_ko: 에이바클리닉 강남점
   name_en: Abar Clinic Gangnam
   district: gangnam
   clinic_type: aesthetic
-  english_support: intermediate
+  english_support: good
   kakao_query: 에이바클리닉 강남
 - name_ko: 뷰티풀라인의원 강남점
   name_en: Beautifulline Clinic Gangnam
@@ -51,7 +51,7 @@ clinics:
   name_en: Mine Clinic Gangnam
   district: gangnam
   clinic_type: dermatology
-  english_support: intermediate
+  english_support: good
   kakao_query: 마인클리닉 강남
 - name_ko: 리즈온피부과 강남점
   name_en: Reason Dermatology Gangnam
@@ -99,7 +99,7 @@ clinics:
   name_en: La Vien Dermatology Apgujeong
   district: apgujeong
   clinic_type: dermatology
-  english_support: intermediate
+  english_support: good
   kakao_query: 라비앙피부과 압구정
 - name_ko: 청담엘의원
   name_en: Cheongdam L Clinic
@@ -129,7 +129,7 @@ clinics:
   name_en: Beauty Skin Clinic Myeongdong
   district: myeongdong
   clinic_type: aesthetic
-  english_support: intermediate
+  english_support: good
   kakao_query: 뷰티스킨의원 명동
 - name_ko: 명동스킨클리닉
   name_en: Myeongdong Skin Clinic
@@ -141,13 +141,13 @@ clinics:
   name_en: Beauty Plus Myeongdong
   district: myeongdong
   clinic_type: aesthetic
-  english_support: intermediate
+  english_support: good
   kakao_query: 뷰티플러스 명동
 - name_ko: 차앤박피부과 신사점
   name_en: CNP Dermatology Sinsa
   district: sinsa
   clinic_type: dermatology
-  english_support: intermediate
+  english_support: good
   kakao_query: 차앤박피부과 신사
 - name_ko: 리프트업 의원 가로수길
   name_en: Lift Up Clinic Garosugil
@@ -159,13 +159,13 @@ clinics:
   name_en: J Skin Clinic Sinsa
   district: sinsa
   clinic_type: med_spa
-  english_support: intermediate
+  english_support: good
   kakao_query: 제이스킨의원 신사
 - name_ko: 연세스타피부과 홍대점
   name_en: Yonsei Star Dermatology Hongdae
   district: hongdae
   clinic_type: dermatology
-  english_support: intermediate
+  english_support: good
   kakao_query: 연세스타피부과 홍대
 - name_ko: 뷰티인성형외과 잠실점
   name_en: Beautyin Plastic Surgery Jamsil

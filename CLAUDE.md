@@ -71,12 +71,13 @@ treatment.ts ──→ derived.ts    ✗  (peer 간 직접 의존 금지)
 
 ### 2.4 shared/ 내부 규칙
 
-shared/는 3개 서브 모듈(types/, constants/, utils/)로 구성. 각 모듈은 단일 책임을 갖고, 의존 방향은 단방향만 허용.
+shared/는 4개 서브 모듈(types/, constants/, utils/, validation/)로 구성. 각 모듈은 단일 책임을 갖고, 의존 방향은 단방향만 허용.
 
 ```
-types/     ── 순수 타입/인터페이스만. 런타임 코드 금지.
-constants/ ── 순수 상수만 (as const / 리터럴). 런타임 부작용 금지.
-utils/     ── 순수 유틸 함수만. 부작용 금지. DB/API 호출 금지.
+types/      ── 순수 타입/인터페이스만. 런타임 코드 금지.
+constants/  ── 순수 상수만 (as const / 리터럴). 런타임 부작용 금지.
+utils/      ── 순수 유틸 함수만. 부작용 금지. DB/API 호출 금지.
+validation/ ── zod 스키마(런타임 검증 객체). 순수 검증만. DB/API 호출 금지.
 ```
 
 #### 의존 방향 (단방향만 허용, 순환 금지)
@@ -86,25 +87,31 @@ types/ 내부:
   각 파일은 독립 또는 types/ 내 다른 파일 참조만 허용 (type import만)
   예: profile.ts → domain.ts ✓ / domain.ts → profile.ts ✗
 
-constants/ → types/ ✓ (type import만)
-utils/     → types/ ✓ (타입 참조)
+constants/  → types/      ✓ (type import만)
+utils/      → types/      ✓ (타입 참조)
+validation/ → types/      ✓ (타입 참조)
+validation/ → constants/  ✓ (열거값 참조)
 
-constants/ → utils/     ✗ (금지)
-constants/ → constants/ ✗ (peer 간 직접 의존 금지)
-utils/     → constants/ ✗ (금지)
-utils/     → utils/     ✗ (peer 간 직접 의존 금지. 공통 로직은 별도 파일로 분리)
-types/     → constants/ ✗ (역방향 금지)
-types/     → utils/     ✗ (역방향 금지)
+constants/  → utils/       ✗ (금지)
+constants/  → constants/   ✗ (peer 간 직접 의존 금지)
+constants/  → validation/  ✗ (역방향 금지)
+utils/      → constants/   ✗ (금지)
+utils/      → utils/       ✗ (peer 간 직접 의존 금지. 공통 로직은 별도 파일로 분리)
+utils/      → validation/  ✗ (금지)
+validation/ → utils/       ✗ (peer 간 금지)
+types/      → constants/   ✗ (역방향 금지)
+types/      → utils/       ✗ (역방향 금지)
+types/      → validation/  ✗ (역방향 금지)
 ```
 
 #### 모듈 분류 기준
 
-| 기준 | types/ | constants/ | utils/ |
-|------|--------|-----------|--------|
-| 내용물 | type, interface, enum 타입 | 값 상수 (as const, 리터럴) | 순수 함수 |
-| import 허용 | types/ 내부만 | types/ 타입만 (type import) | types/ 타입만 |
-| export 대상 | 2개 이상 모듈에서 사용하는 타입 | 프로젝트 전역 상수 | 2개 이상 모듈에서 사용하는 유틸 |
-| 금지 | 값, 함수, 런타임 코드 | 함수, 로직, 계산 | DB/API 호출, 부작용 |
+| 기준 | types/ | constants/ | utils/ | validation/ |
+|------|--------|-----------|--------|------------|
+| 내용물 | type, interface, enum 타입 | 값 상수 (as const, 리터럴) | 순수 함수 | zod 스키마 (검증 객체) |
+| import 허용 | types/ 내부만 | types/ 타입만 (type import) | types/ 타입만 | types/ + constants/ |
+| export 대상 | 2개 이상 모듈에서 사용하는 타입 | 프로젝트 전역 상수 | 2개 이상 모듈에서 사용하는 유틸 | 파이프라인 + API 공유 스키마 |
+| 금지 | 값, 함수, 런타임 코드 | 함수, 로직, 계산 | DB/API 호출, 부작용 | DB/API 호출, 부작용 |
 
 #### 새 파일 추가 기준
 
@@ -165,14 +172,14 @@ types/     → utils/     ✗ (역방향 금지)
 | L-18 | 스타일은 시맨틱 토큰(`bg-primary` 등)만 사용. `#hex` 값 직접 기입 금지 |
 | L-19 | ui/ 컴포넌트는 props와 디자인 토큰만으로 렌더링 완결. 비즈니스 로직 포함 금지 |
 
-### shared/ (순수 타입/상수/유틸)
+### shared/ (순수 타입/상수/유틸/검증)
 
 | ID | 규칙 |
 |----|------|
 | L-13 | 타입, 상수, 순수 유틸 함수만 허용. 런타임 부작용 금지 |
 | L-14 | 모듈 내부 전용 타입은 해당 모듈에 선언. shared/에 넣지 않는다 |
 | L-15 | 내부 import 깊이 ≤ 2. flat 구조 유지 |
-| L-16 | shared/ 단방향 의존: constants/→types/ ✓, utils/→types/ ✓. 역방향·peer 간 import 금지. §2.4 참조 |
+| L-16 | shared/ 단방향 의존: constants/→types/ ✓, utils/→types/ ✓, validation/→types/+constants/ ✓. 역방향·peer 간 import 금지. §2.4 참조 |
 
 ---
 
@@ -295,7 +302,7 @@ types/     → utils/     ✗ (역방향 금지)
 □ V-13 디자인 토큰: 색상·radius·그림자를 #hex로 하드코딩하지 않았는가?
 □ V-14 토큰 동기화: :root 변수와 @theme inline 바인딩이 1:1 대응하는가?
 □ V-15 ui/ 순수성: client/ui/ 파일에 비즈니스 용어나 features/ import가 없는가?
-□ V-16 shared/ 단방향: constants/→types/ ✓, utils/→types/ ✓. 역방향·peer 간·순환 import 없는가?
+□ V-16 shared/ 단방향: constants/→types/ ✓, utils/→types/ ✓, validation/→types/+constants/ ✓. 역방향·peer 간·순환 import 없는가?
 □ V-17 제거 안전성: 이 모듈을 삭제해도 core/, 기존 features/, client/에 빌드 에러가 없는가?
 □ V-18 scripts/ 의존 방향: scripts/ → server/core/, shared/ 만 import하는가? 역방향 없는가?
 □ V-19 복합 쓰기: 2개+ 테이블 쓰기 시 전체 성공/전체 실패가 보장되는가?

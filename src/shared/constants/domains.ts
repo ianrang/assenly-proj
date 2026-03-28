@@ -59,12 +59,25 @@ export const ENGLISH_SUPPORT_LEVELS = [
   "fluent",
 ] as const;
 
-/** Link types for external links */
+/** Entity status — shared across all domain entities (schema.dbml entity_status enum) */
+export const ENTITY_STATUSES = [
+  "active",
+  "inactive",
+  "temporarily_closed",
+] as const;
+
+/** Ingredient relation types (product_ingredients.type CHECK) */
+export const INGREDIENT_RELATION_TYPES = ["key", "avoid"] as const;
+
+/** Link types for external links (domain.ts LinkType 전수 반영) */
 export const LINK_TYPES = [
   "naver_map",
   "kakao_map",
+  "map",
   "website",
   "instagram",
+  "purchase",
+  "booking",
   "naver_booking",
   "coupang",
   "amazon",

@@ -123,22 +123,37 @@ export const env = envSchema.parse(process.env);
 
 ### 2.1 검증 파일 구조
 
-> L-13: shared/ = 순수 타입/상수만. zod 스키마(런타임 검증 함수)는 features/에 배치.
+> L-13: shared/ = 순수 타입/상수/검증만. DB/API 호출 금지.
 > L-14: 모듈 내부 전용 타입은 해당 모듈에 선언.
+> data-pipeline.md §3.3.3: 공유 검증 스키마는 shared/validation/에 배치하여 파이프라인과 API에서 재사용.
+> 도메인 전용 스키마(profile, journey, chat 등)는 features/에 배치.
 
 ```
 src/
 ├── shared/
-│   ├── types/          # TypeScript 순수 타입만 (interface, type)
-│   │   ├── domain.ts   # Product, Store, Treatment 등
-│   │   ├── api.ts      # ApiResponse, PaginationMeta 등
-│   │   └── profile.ts  # UserProfile, Journey 등
-│   └── constants/
-│       └── beauty.ts   # MAX_CONCERNS, ALLOWED_SKIN_TYPES 등 (검증에서 참조)
+│   ├── types/            # TypeScript 순수 타입만 (interface, type)
+│   │   ├── domain.ts     # Product, Store, Treatment 등
+│   │   ├── api.ts        # ApiResponse, PaginationMeta 등
+│   │   └── profile.ts    # UserProfile, Journey 등
+│   ├── constants/
+│   │   ├── beauty.ts     # SKIN_TYPES, SKIN_CONCERNS 등
+│   │   └── domains.ts    # ENTITY_STATUSES, STORE_TYPES 등
+│   └── validation/       # 공유 zod 스키마 (파이프라인 + API)
+│       ├── common.ts     # 공통 패턴 (localizedText, statusEnum, pagination 등)
+│       ├── product.ts    # productCreateSchema, productUpdateSchema
+│       ├── store.ts
+│       ├── clinic.ts
+│       ├── treatment.ts
+│       ├── brand.ts
+│       ├── ingredient.ts
+│       ├── doctor.ts
+│       ├── relation.ts   # junction table 관계 스키마
+│       ├── highlight.ts  # highlightUpdateSchema
+│       └── index.ts
 │
 └── server/features/
     ├── validators/
-    │   └── common.ts           # 공통 zod 패턴 (아래 §2.2)
+    │   └── helpers.ts          # validateBody(), validateQuery() 유틸 (server-only)
     ├── profile/
     │   └── schema.ts           # profileOnboardingSchema, profileUpdateSchema
     ├── journey/
@@ -147,29 +162,18 @@ src/
     │   └── schema.ts           # chatMessageSchema
     ├── kit/
     │   └── schema.ts           # kitClaimSchema
-    ├── analytics/
-    │   └── schema.ts           # eventSchema (path_a_entry, card_exposure, card_click, external_link_click)
-    └── admin/
-        └── schemas/
-            ├── product.ts      # productCreateSchema, productUpdateSchema
-            ├── store.ts
-            ├── clinic.ts
-            ├── treatment.ts
-            ├── brand.ts
-            ├── ingredient.ts
-            ├── doctor.ts
-            ├── relation.ts     # relationConnectSchema
-            └── highlight.ts    # highlightUpdateSchema
+    └── analytics/
+        └── schema.ts           # eventSchema
 ```
 
-### 2.2 공통 검증 패턴 (features/validators/common.ts)
+### 2.2 공통 검증 패턴 (shared/validation/common.ts)
 
 ```typescript
-import 'server-only';
+// shared/validation/common.ts — L-0c: server-only/client-only import 금지
 import { z } from 'zod';
 import {
-  ALLOWED_SKIN_TYPES, ALLOWED_CONCERNS, ALLOWED_LANGUAGES,
-} from '@/shared/constants/beauty';
+  ENTITY_STATUSES, ENGLISH_SUPPORT_LEVELS, LINK_TYPES,
+} from '@/shared/constants';
 
 // 다국어 텍스트 (7.2-ADMIN §7.2.6 DV-C1~C3 구현)
 export const localizedTextRequired = z.object({
@@ -181,7 +185,7 @@ export const localizedTextRequired = z.object({
   fr: z.string().optional(),
 });
 
-export const localizedTextOptional = localizedTextRequired.partial();
+export const localizedTextOptional = localizedTextRequired.partial().nullable().optional();
 
 // 배열 필터 파싱 (쿼리 파라미터 "dry,oily" → ['dry', 'oily'])
 export const commaSeparatedArray = z.string().transform(s => s.split(',').filter(Boolean));
