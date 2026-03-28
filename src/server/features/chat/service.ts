@@ -1,8 +1,7 @@
 import 'server-only';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import type { UserProfile, Journey, LearnedPreference, DerivedVariables } from '@/shared/types/profile';
-import type { ModelMessage } from 'ai';
-import { tool, stepCountIs } from 'ai';
+import { zodSchema, stepCountIs } from 'ai';
 import { z } from 'zod';
 import { callWithFallback } from './llm-client';
 import { buildSystemPrompt } from './prompts';
@@ -106,7 +105,7 @@ export async function streamChat(params: StreamChatParams): Promise<StreamChatRe
   // step 7: tool 등록 + LLM 호출
   const tools = buildTools(searchContext, linksContext, extractionResults);
 
-  const messages: ModelMessage[] = [
+  const messages = [
     ...history.map(m => ({ role: m.role as 'user' | 'assistant', content: m.content })),
     { role: 'user' as const, content: message },
   ];
@@ -176,35 +175,41 @@ const getExternalLinksSchema = z.object({
   entity_type: z.enum(['product', 'store', 'clinic', 'treatment']).describe('Type of entity'),
 });
 
-/** 3개 tool 등록. AI SDK tool() 패턴 (PoC tools.ts 계승). */
+/** 3개 tool 등록. AI SDK zodSchema + execute 패턴 (PoC tools.ts 계승). */
 function buildTools(
   searchContext: SearchToolContext,
   linksContext: LinksToolContext,
   extractionResults: ExtractionResult[],
-) {
+): Record<string, { description: string; inputSchema: unknown; execute: (args: unknown) => Promise<unknown> }> {
   return {
-    search_beauty_data: tool({
+    search_beauty_data: {
       description: 'Search K-beauty products or treatments matching user criteria. Returns recommendation cards.',
-      inputSchema: searchBeautyDataSchema,
-      execute: async (args) =>
-        executeSearchBeautyData(args as Parameters<typeof executeSearchBeautyData>[0], searchContext),
-    }),
-    get_external_links: tool({
+      inputSchema: zodSchema(searchBeautyDataSchema),
+      execute: async (args: unknown) =>
+        executeSearchBeautyData(
+          args as Parameters<typeof executeSearchBeautyData>[0],
+          searchContext,
+        ),
+    },
+    get_external_links: {
       description: 'Get purchase, booking, or map links for a product, store, clinic, or treatment.',
-      inputSchema: getExternalLinksSchema,
-      execute: async (args) =>
-        executeGetExternalLinks(args, linksContext),
-    }),
-    extract_user_profile: tool({
+      inputSchema: zodSchema(getExternalLinksSchema),
+      execute: async (args: unknown) =>
+        executeGetExternalLinks(
+          args as Parameters<typeof executeGetExternalLinks>[0],
+          linksContext,
+        ),
+    },
+    extract_user_profile: {
       description: 'Extract beauty profile info mentioned by user. Call when user mentions skin type, concerns, budget, travel plans.',
-      inputSchema: extractUserProfileSchema,
-      execute: async (args) => {
+      inputSchema: zodSchema(extractUserProfileSchema),
+      execute: async (args: unknown) => {
         const result = await executeExtractUserProfile(args);
         if (!('status' in result)) {
           extractionResults.push(result);
         }
         return result;
       },
-    }),
+    },
   };
 }

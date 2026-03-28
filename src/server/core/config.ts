@@ -86,18 +86,7 @@ const envSchema = z.object({
 });
 
 /** 검증된 환경변수. 다른 파일은 이 객체만 import (Q-8). */
-// 지연 초기화: 빌드 타임에는 환경변수가 없으므로, 런타임 첫 접근 시 검증.
-type EnvType = z.infer<typeof envSchema>;
-let _env: EnvType | null = null;
-
-export const env: EnvType = new Proxy({} as EnvType, {
-  get(_target, prop: string) {
-    if (!_env) {
-      _env = envSchema.parse(process.env);
-    }
-    return _env[prop as keyof EnvType];
-  },
-});
+export const env = envSchema.parse(process.env);
 
 // ============================================================
 // LLM 모델 팩토리 — llm-resilience.md §1.1

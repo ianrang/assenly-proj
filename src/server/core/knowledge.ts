@@ -22,7 +22,7 @@ export async function embedQuery(text: string): Promise<number[]> {
   const { embedding } = await embed({
     model,
     value: text,
-    providerOptions: {
+    experimental_providerMetadata: {
       google: { taskType: 'RETRIEVAL_QUERY' },
     },
   });
@@ -42,7 +42,7 @@ export async function embedDocument(text: string): Promise<number[]> {
   const { embedding } = await embed({
     model,
     value: text,
-    providerOptions: {
+    experimental_providerMetadata: {
       google: { taskType: 'RETRIEVAL_DOCUMENT' },
     },
   });
