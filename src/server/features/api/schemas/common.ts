@@ -1,3 +1,4 @@
+import 'server-only';
 import { z } from 'zod';
 
 /** 공통 에러 응답 스키마 — details는 null 또는 객체 */

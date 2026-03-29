@@ -68,7 +68,8 @@ export function registerAuthRoutes(app: AppType) {
         { data: result, meta: { timestamp: new Date().toISOString() } },
         201,
       );
-    } catch {
+    } catch (error) {
+      console.error('[auth/anonymous] session creation failed', String(error));
       return c.json(
         {
           error: {

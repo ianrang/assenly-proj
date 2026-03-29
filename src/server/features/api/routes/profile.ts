@@ -277,7 +277,8 @@ export function registerProfileRoutes(app: AppType) {
         },
         201,
       );
-    } catch {
+    } catch (error) {
+      console.error('[profile/onboarding] failed', String(error));
       return c.json(
         {
           error: {
@@ -325,7 +326,8 @@ export function registerProfileRoutes(app: AppType) {
         },
         200,
       );
-    } catch {
+    } catch (error) {
+      console.error('[GET /api/profile] failed', String(error));
       return c.json(
         {
           error: {
@@ -355,7 +357,8 @@ export function registerProfileRoutes(app: AppType) {
         },
         200,
       );
-    } catch {
+    } catch (error) {
+      console.error('[PUT /api/profile] failed', String(error));
       return c.json(
         {
           error: {
