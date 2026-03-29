@@ -164,4 +164,34 @@ describe("fetchAllMfdsIngredients", () => {
     expect(calledUrl).toContain("numOfRows=100");
     expect(calledUrl).toContain("pageNo=1");
   });
+
+  it("items 직접 배열 형태 응답 처리", async () => {
+    const items = [FULL_ITEM];
+    const directArrayResponse = {
+      ok: true,
+      json: async () => ({
+        header: { resultCode: "00", resultMsg: "NORMAL SERVICE" },
+        body: { numOfRows: 100, pageNo: 1, totalCount: 1, items },
+      }),
+    } as unknown as Response;
+    mockFetchWithRetry.mockResolvedValueOnce(directArrayResponse);
+
+    const result = await fetchAllMfdsIngredients();
+
+    expect(result).toHaveLength(1);
+    expect(result[0].sourceId).toBe("나이아신아마이드");
+  });
+
+  it("INGR_KOR_NAME 없는 레코드 — sourceId 빈 문자열은 skip", async () => {
+    const items = [
+      { INGR_ENG_NAME: "Unknown", CAS_NO: null },
+      FULL_ITEM,
+    ];
+    mockFetchWithRetry.mockResolvedValueOnce(createMockResponse(items, 2));
+
+    const result = await fetchAllMfdsIngredients();
+
+    expect(result).toHaveLength(1);
+    expect(result[0].sourceId).toBe("나이아신아마이드");
+  });
 });
