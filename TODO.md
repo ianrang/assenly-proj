@@ -13,9 +13,9 @@
 | 사전 완료      | 12      | 12      | 100%    | ✅      |
 | Phase 0    | 37      | 37      | 100%    | ✅      |
 | Phase 1    | 60      | 60      | 100%    | ✅      |
-| Phase 2    | 102     | 39      | 38%     | 🔶 진행중 |
+| Phase 2    | 102     | 40      | 39%     | 🔶 진행중 |
 | Phase 3    | 36      | 0       | 0%      | ⬜ 미시작  |
-| **MVP 합계** | **247** | **148** | **60%** |        |
+| **MVP 합계** | **247** | **149** | **60%** |        |
 
 
 **✅ Gate 0 통과 (2026-03-21) → Phase 1 (MVP 설계) 착수 준비**
@@ -412,7 +412,7 @@
 | | **── Layer 1: 프로바이더 (Stage 1 도구, 각각 독립) ──** | | | |
 | P2-56j | CSV 로더 프로바이더                                 | **완료 (2026-03-29)**. csv-loader.ts + csv-parser.ts(공유 유틸, P-7). csv-parse 라이브러리. loadCsvAsRawRecords(filePath, entityType) → RawRecord[]. 테스트 12개. cosing-csv/review-exporter도 csv-parser.ts 공유 예정 | P2-56c         | ✅   |
 | P2-56f | 식약처 원료성분 프로바이더 (S3)                          | **완료 (2026-03-29)**. mfds-ingredient.ts. 전체 풀 다운로드(페이지네이션) + sourceId=INGR_KOR_NAME dedup. fetchWithRetry 재사용. 공공데이터포털 items 구조 방어. 테스트 10개 | P2-V2, P2-56c  | ✅   |
-| P2-56i | CosIng CSV 프로바이더 (S6)                        | scripts/seed/lib/providers/cosing-csv.ts. CSV 파싱 + **INCI name 텍스트 매칭(1차)** + CAS번호(보조) → inci_name + function + restriction 보강. P2-56f와 독립 구현 가능 (매칭은 fetch-service에서) | P2-V4, P2-56c  | ⬜   |
+| P2-56i | CosIng CSV 프로바이더 (S6)                        | **완료 (2026-03-29)**. cosing-csv.ts. csv-parser.ts 공유(P-7). sourceId=INCI name, delimiter=";". config COSING_CSV_PATH 자체 참조. S3↔S6 매칭은 fetch-service(P2-56n) 담당. 테스트 10개 | P2-V4, P2-56c  | ✅   |
 | P2-56g | 식약처 사용제한 프로바이더 (S4)                          | scripts/seed/lib/providers/mfds-restricted.ts. S3 INGR_ENG_NAME 기반 매칭 (CAS_NO 보조). 전체 다운로드+클라이언트 필터링. **⚠️ P2-56f 체인 의존** | P2-56f         | ⬜   |
 | P2-56h | 식약처 보고품목 프로바이더 (S5)                          | scripts/seed/lib/providers/mfds-functional.ts. 제품 교차 검증용. 퍼지 매칭                                          | P2-V2, P2-56c  | ⬜   |
 | P2-56e2 | **웹 스크래퍼 프로바이더 (Channel A-3)** | scripts/seed/lib/providers/web-scraper.ts. Playwright 헤드리스 브라우저. 브랜드 공식 사이트(1순위) + 올리브영 글로벌(2순위 보조). name_en, brand, price, category, image_url, description 수집. Crawl-delay 5초 준수 | P2-56b, P2-56c, P2-V7 | ⬜   |
