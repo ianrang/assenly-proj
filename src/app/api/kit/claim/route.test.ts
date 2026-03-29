@@ -89,6 +89,15 @@ describe('POST /api/kit/claim', () => {
     expect(res.headers.get('Retry-After')).toBeDefined();
   });
 
+  it('marketing_consent 누락 → 400 VALIDATION_FAILED', async () => {
+    const { POST } = await import('@/app/api/kit/claim/route');
+    const res = await POST(createRequest({ email: 'test@example.com' }));
+    const json = await res.json();
+
+    expect(res.status).toBe(400);
+    expect(json.error.code).toBe('VALIDATION_FAILED');
+  });
+
   it('잘못된 이메일 → 400 VALIDATION_FAILED', async () => {
     const { POST } = await import('@/app/api/kit/claim/route');
     const res = await POST(createRequest({ email: 'not-an-email', marketing_consent: true }));

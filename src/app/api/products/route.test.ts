@@ -108,6 +108,15 @@ describe('GET /api/products', () => {
     expect(json.error.code).toBe('NOT_FOUND');
   });
 
+  it('잘못된 limit (음수) → 400 VALIDATION_FAILED', async () => {
+    const { GET } = await import('@/app/api/products/route');
+    const res = await GET(new Request('http://localhost/api/products?limit=-1'));
+    const json = await res.json();
+
+    expect(res.status).toBe(400);
+    expect(json.error.code).toBe('VALIDATION_FAILED');
+  });
+
   it('인증 없어도 목록 정상 반환 (optional auth)', async () => {
     mockOptionalAuthenticateUser.mockResolvedValue(null);
     mockFindAllProducts.mockResolvedValue({ data: [], total: 0 });
