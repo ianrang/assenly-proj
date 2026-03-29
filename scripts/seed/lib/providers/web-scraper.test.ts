@@ -224,6 +224,31 @@ describe("scrapeProducts", () => {
     );
   });
 
+  it("개별 제품 에러 시 해당 건만 skip — 나머지 계속 수집", async () => {
+    mockPage.$$eval.mockResolvedValueOnce([
+      "https://test-brand.com/p1",
+      "https://test-brand.com/p2",
+    ]);
+
+    let callCount = 0;
+    mockPage.goto.mockImplementation(async (url: string) => {
+      // 목록 페이지(첫 호출)는 성공, p1(두 번째)은 에러, p2(세 번째)는 성공
+      callCount++;
+      if (callCount === 2) throw new Error("Product page error");
+      return undefined;
+    });
+    mockPage.$.mockImplementation(async (selector: string) => {
+      if (selector === "h1.name") return mockTextField("Product 2");
+      return null;
+    });
+
+    const result = await scrapeProducts([TEST_CONFIG]);
+
+    // p1은 에러로 skip, p2는 정상 수집
+    expect(result).toHaveLength(1);
+    expect(result[0].sourceId).toBe("https://test-brand.com/p2");
+  });
+
   it("optional 필드 미정의 시 data에 미포함", async () => {
     const minimalConfig: SiteConfig = {
       name: "minimal",
