@@ -330,7 +330,7 @@
 | P2-26b | 도메인 데이터 공개 읽기 API                          | 8개 route (4목록+4상세). findAll* 재사용(offset→page). embedding 제외. optionalAuth. 테스트 20개                                    | ✅   |
 | P2-27  | 단위 테스트 — beauty/ 순수 함수                     | P2-12~15에서 TDD로 구현 완료. judgment 6 + shopping 8 + treatment 11 + derived 10 = 35개 테스트                                  | ✅   |
 | P2-28  | 단위 테스트 — zod 스키마 검증                        | 각 route/tool 테스트에서 유효/무효 입력 이미 검증. onboarding 3, chat 2, events 3, extraction 2 등. 추가 불필요                            | ✅   |
-| P2-28a | API 레이어 Hono 전환 + OpenAPI 자동 문서화          | Next.js route → Hono + @hono/zod-openapi. middleware 추출(인증/rate limit/검증). Swagger UI 자동. server/core/features/shared 무수정 | ⬜   |
+| P2-28a | API 레이어 Hono 전환 + OpenAPI 자동 문서화          | 15 route → Hono. middleware(auth+rateLimit). GET /api/docs Swagger UI 자동. core/features/shared 무수정. 테스트 30개              | ✅   |
 
 
 ## 사용자 앱 — UI (2~3주, 병렬 가능)
