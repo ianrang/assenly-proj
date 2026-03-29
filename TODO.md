@@ -338,7 +338,7 @@
 
 | ID    | 작업                        | 상세                                                                     | 의존        | 상태  |
 | ----- | ------------------------- | ---------------------------------------------------------------------- | --------- | --- |
-| P2-29 | 공통 레이아웃 + locale 레이아웃     | shadcn/ui 초기화 + 루트/[locale] 레이아웃 + viewport 메타태그 + safe-area 패딩 + dvh 전환 + touch-action:manipulation | —         | ⬜   |
+| P2-29 | 공통 레이아웃 + locale 레이아웃     | shadcn/ui 초기화(18컴포넌트) + cn.ts + viewport 메타태그 + safe-area + touch-action + Sonner Toaster. globals.css 모바일 호환성 | —         | ✅   |
 | P2-30 | 에러 바운더리 + 에러 화면           | error.tsx, not-found.tsx. 네트워크, LLM, 세션 에러 처리. shadcn 불필요              | —         | ⬜   |
 | P2-31 | Header + LanguageSelector | 공통 헤더 + shadcn Select 기반 언어 선택                                         | P2-29     | ⬜   |
 | P2-32 | Landing 페이지               | 풀 너비 마케팅 랜딩 (4섹션: Hero+CTA, HowItWorks, Benefits, Trust+FinalCTA) + ConsentBanner + ReturnVisitBanner. 자체 LandingHeader. (app)/ 라우트 그룹 분리 | P2-29     | ⬜   |
