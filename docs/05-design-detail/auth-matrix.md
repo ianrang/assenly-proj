@@ -601,8 +601,8 @@ SDK 갱신 실패 (네트워크 에러, refresh_token 만료 등)
 #### 전달 패턴
 
 ```typescript
-// 채팅 Hono handler (features/api/routes/chat.ts — Composition Root)
-// 인증·rate limit는 Hono middleware가 처리 (features/api/middleware/)
+// 채팅 Hono handler (Composition Root — CLAUDE.md L-21)
+// 인증·rate limit는 Hono middleware가 처리 (CLAUDE.md L-22)
 app.post('/api/chat', async (c) => {
   const user = c.get('user')!;  // ← requireAuth middleware에서 설정
   const client = c.get('client');
@@ -625,7 +625,7 @@ app.post('/api/chat', async (c) => {
 ```
 
 ```typescript
-// 비동기 후처리 (Hono handler 내부 afterWork 함수)
+// 비동기 후처리 (Composition Root 내부 afterWork — Q-15 격리)
 const afterWork = async () => {
   try {
     const serviceClient = createServiceClient();  // RLS 우회, 토큰 만료 대비

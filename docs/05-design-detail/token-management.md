@@ -179,7 +179,7 @@ shared/constants/ai.ts (TOKEN_CONFIG + LLM_CONFIG) → shared/types/ai.ts
   ↑
 features/chat/service.ts → shared/constants/ai.ts
   ↑
-features/api/routes/chat.ts → features/chat/service.ts (Hono handler, Composition Root)
+[Composition Root — CLAUDE.md L-21] → features/chat/service.ts
 ```
 
 기존 llm-resilience.md §3.2 의존성 체인에 추가 레이어 없음. `TOKEN_CONFIG`는 `LLM_CONFIG`와 동일 파일에 배치.

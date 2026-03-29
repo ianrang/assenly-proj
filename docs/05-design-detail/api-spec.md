@@ -825,26 +825,24 @@ Vercel AI SDK 6.x `toUIMessageStreamResponse()` 기반.
 
 ---
 
-# 부록: 구현 파일 매핑
+# 부록: 구현 아키텍처 매핑
 
-> API 레이어는 Hono + @hono/zod-openapi로 구현. 엔트리포인트: `app/api/[[...route]]/route.ts`.
+> API 레이어: Hono + @hono/zod-openapi (CLAUDE.md L-20~L-23).
 > 자동 문서화: `GET /api/docs` (Swagger UI), `GET /api/docs/openapi.json`.
+> Route 파일 위치: CLAUDE.md L-20 참조. 이 문서에 파일 경로를 중복 기재하지 않는다 (D-7 단방향 참조).
 
-| API 그룹 | Route 정의 | Service | Repository |
-|---------|-----------|---------|------------|
-| auth | `features/api/routes/auth.ts` | features/auth/service.ts | - |
-| profile | `features/api/routes/profile.ts` | features/profile/service.ts + features/journey/service.ts | - |
-| chat | `features/api/routes/chat.ts` | features/chat/service.ts | repositories/* |
-| kit | `features/api/routes/kit.ts` | - (직접 DB + core/crypto) | - |
-| events | `features/api/routes/events.ts` | - (직접 DB) | - |
-| products | `features/api/routes/products.ts` | - | repositories/product-repository.ts |
-| treatments | `features/api/routes/treatments.ts` | - | repositories/treatment-repository.ts |
-| stores | `features/api/routes/stores.ts` | - | repositories/store-repository.ts |
-| clinics | `features/api/routes/clinics.ts` | - | repositories/clinic-repository.ts |
-| admin CRUD | `features/api/routes/admin.ts` (P2-46) | features/admin/service.ts | repositories/* |
-
-> `core/`: auth.ts, admin-auth.ts, rate-limit.ts, db.ts, config.ts, crypto.ts, memory.ts, knowledge.ts — 비즈니스 무관.
-> `features/api/middleware/`: auth.ts(인증), rate-limit.ts(속도 제한) — core/ 래핑, 비즈니스 로직 없음.
+| API 그룹 | Service | Repository |
+|---------|---------|------------|
+| auth | features/auth/service.ts | - |
+| profile | features/profile/service.ts + features/journey/service.ts | - |
+| chat | features/chat/service.ts | repositories/* |
+| kit | - (직접 DB + core/crypto) | - |
+| events | - (직접 DB) | - |
+| products | - | repositories/product-repository.ts |
+| treatments | - | repositories/treatment-repository.ts |
+| stores | - | repositories/store-repository.ts |
+| clinics | - | repositories/clinic-repository.ts |
+| admin CRUD (P2-46) | features/admin/service.ts | repositories/* |
 
 ---
 

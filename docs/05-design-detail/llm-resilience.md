@@ -249,7 +249,7 @@ features/chat/llm-client.ts → shared/constants/ai.ts + core/config.ts
   ↑
 features/chat/service.ts → features/chat/llm-client.ts
   ↑
-features/api/routes/chat.ts → features/chat/service.ts (Hono handler)
+[Composition Root — CLAUDE.md L-21] → features/chat/service.ts
 ```
 
 > 순환 참조 없음. core/ → features/ import 없음 (R-3).
