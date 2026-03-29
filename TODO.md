@@ -13,9 +13,9 @@
 | 사전 완료      | 12      | 12      | 100%    | ✅      |
 | Phase 0    | 37      | 37      | 100%    | ✅      |
 | Phase 1    | 60      | 60      | 100%    | ✅      |
-| Phase 2    | 102     | 41      | 40%     | 🔶 진행중 |
+| Phase 2    | 102     | 42      | 41%     | 🔶 진행중 |
 | Phase 3    | 36      | 0       | 0%      | ⬜ 미시작  |
-| **MVP 합계** | **247** | **150** | **61%** |        |
+| **MVP 합계** | **247** | **151** | **61%** |        |
 
 
 **✅ Gate 0 통과 (2026-03-21) → Phase 1 (MVP 설계) 착수 준비**
@@ -338,7 +338,7 @@
 
 | ID    | 작업                        | 상세                                                                     | 의존        | 상태  |
 | ----- | ------------------------- | ---------------------------------------------------------------------- | --------- | --- |
-| P2-29 | 공통 레이아웃 + locale 레이아웃     | shadcn/ui 초기화 + 루트, [locale] 레이아웃                                      | —         | ⬜   |
+| P2-29 | 공통 레이아웃 + locale 레이아웃     | shadcn/ui 초기화 + 루트, [locale] 레이아웃 + safe-area 패딩 (`env(safe-area-inset-*)`) + viewport-fit=cover | —         | ⬜   |
 | P2-30 | 에러 바운더리 + 에러 화면           | error.tsx, not-found.tsx. 네트워크, LLM, 세션 에러 처리. shadcn 불필요              | —         | ⬜   |
 | P2-31 | Header + LanguageSelector | 공통 헤더 + shadcn Select 기반 언어 선택                                         | P2-29     | ⬜   |
 | P2-32 | Landing 페이지               | 2가지 경로 분기 + ConsentBanner(동의 배너) + ReturnVisitBanner(재방문 흐름)           | P2-29     | ⬜   |
@@ -414,7 +414,7 @@
 | P2-56f | 식약처 원료성분 프로바이더 (S3)                          | **완료 (2026-03-29)**. mfds-ingredient.ts. 전체 풀 다운로드(페이지네이션) + sourceId=INGR_KOR_NAME dedup. fetchWithRetry 재사용. 공공데이터포털 items 구조 방어. 테스트 10개 | P2-V2, P2-56c  | ✅   |
 | P2-56i | CosIng CSV 프로바이더 (S6)                        | **완료 (2026-03-29)**. cosing-csv.ts. csv-parser.ts 공유(P-7). sourceId=INCI name, delimiter=";". config COSING_CSV_PATH 자체 참조. S3↔S6 매칭은 fetch-service(P2-56n) 담당. 테스트 10개 | P2-V4, P2-56c  | ✅   |
 | P2-56g | 식약처 사용제한 프로바이더 (S4)                          | **완료 (2026-03-29)**. mfds-restricted.ts. 전체 다운로드(31K건) + 복합키 sourceId(INGR_ENG_NAME:COUNTRY_NAME) dedup. 국가별 레코드 모두 보존(6개국 서비스). 비즈니스 필터링은 Stage 2~3 담당. 테스트 15개 | P2-56f         | ✅   |
-| P2-56h | 식약처 보고품목 프로바이더 (S5)                          | scripts/seed/lib/providers/mfds-functional.ts. 제품 교차 검증용. 퍼지 매칭                                          | P2-V2, P2-56c  | ⬜   |
+| P2-56h | 식약처 보고품목 프로바이더 (S5)                          | **완료 (2026-03-29)**. mfds-functional.ts. 키워드 검색(item_name) + 페이지네이션. entityType="product", sourceId=COSMETIC_REPORT_SEQ. 퍼지 매칭은 P2-64e(Phase E) 담당. 테스트 14개 | P2-V2, P2-56c  | ✅   |
 | P2-56e2 | **웹 스크래퍼 프로바이더 (Channel A-3)** | scripts/seed/lib/providers/web-scraper.ts. Playwright 헤드리스 브라우저. 브랜드 공식 사이트(1순위) + 올리브영 글로벌(2순위 보조). name_en, brand, price, category, image_url, description 수집. Crawl-delay 5초 준수 | P2-56b, P2-56c, P2-V7 | ⬜   |
 | | **── Layer 2: AI 모듈 (Stage 2 도구, 각각 독립) ──** | | | |
 | P2-56k | AI 번역 모듈                                     | scripts/seed/lib/enrichment/translator.ts. ko→en 필수 + ja/zh/es/fr 선택. server/core/ai-engine.ts 호출        | P2-56c, P2-5   | ⬜   |
