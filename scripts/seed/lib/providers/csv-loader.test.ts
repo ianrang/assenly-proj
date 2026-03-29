@@ -19,6 +19,9 @@ const PRODUCT_ROWS: Record<string, string>[] = [
 
 // ── loadCsvAsRawRecords 테스트 ─────────────────────────────
 
+/** ISO 8601 형식 정규식 (RawRecord.fetchedAt 계약) */
+const ISO_8601_REGEX = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{3}Z$/;
+
 describe("loadCsvAsRawRecords", () => {
   it("CSV → RawRecord[] 정상 변환", () => {
     mockParseCsvFile.mockReturnValue(PRODUCT_ROWS);
@@ -30,7 +33,7 @@ describe("loadCsvAsRawRecords", () => {
     expect(result[0].sourceId).toBe("p001");
     expect(result[0].entityType).toBe("product");
     expect(result[0].data).toBe(PRODUCT_ROWS[0]);
-    expect(result[0].fetchedAt).toBeTruthy();
+    expect(result[0].fetchedAt).toMatch(ISO_8601_REGEX);
   });
 
   it("sourceId — id 컬럼 매핑", () => {
@@ -69,5 +72,22 @@ describe("loadCsvAsRawRecords", () => {
     const result = loadCsvAsRawRecords("./data/empty.csv", "product");
 
     expect(result).toEqual([]);
+  });
+
+  it("parseCsvFile에 filePath와 options 전달 검증", () => {
+    mockParseCsvFile.mockReturnValue([]);
+    const options = { delimiter: ";", idColumn: "inci_name" };
+
+    loadCsvAsRawRecords("./data/cosing.csv", "ingredient", options);
+
+    expect(mockParseCsvFile).toHaveBeenCalledWith("./data/cosing.csv", options);
+  });
+
+  it("fetchedAt — 동일 배치 내 일관된 타임스탬프", () => {
+    mockParseCsvFile.mockReturnValue(PRODUCT_ROWS);
+
+    const result = loadCsvAsRawRecords("./data/products.csv", "product");
+
+    expect(result[0].fetchedAt).toBe(result[1].fetchedAt);
   });
 });

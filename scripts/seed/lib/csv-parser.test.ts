@@ -74,4 +74,18 @@ describe("parseCsvString", () => {
     expect(result).toHaveLength(1);
     expect(result[0].name).toBe("Serum");
   });
+
+  it("skipEmptyLines: false — 빈 행에서 컬럼 수 불일치 에러", () => {
+    const csv = "id,name\n1,A\n\n2,B";
+
+    expect(() => parseCsvString(csv, { skipEmptyLines: false })).toThrow();
+  });
+
+  it("trim: false — 공백 유지", () => {
+    const csv = "name,price\n Serum , 25000 ";
+    const result = parseCsvString(csv, { trim: false });
+
+    expect(result[0].name).toBe(" Serum ");
+    expect(result[0].price).toBe(" 25000 ");
+  });
 });
