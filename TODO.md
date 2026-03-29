@@ -328,7 +328,7 @@
 | P2-25  | Kit CTA API                                | 008_kit_subscribers migration + core/crypto.ts(AES-256+SHA-256) + POST /api/kit/claim. 테스트 11개                             | ✅   |
 | P2-26  | 행동 로그 서비스 + API                            | POST /api/events: 4개 이벤트(path_a_entry/card_exposure/card_click/external_link_click) + metadata zod + Q-15. 테스트 7개       | ✅   |
 | P2-26b | 도메인 데이터 공개 읽기 API                          | 8개 route (4목록+4상세). findAll* 재사용(offset→page). embedding 제외. optionalAuth. 테스트 20개                                    | ✅   |
-| P2-27  | 단위 테스트 — beauty/ 순수 함수                     | judgment, shopping, treatment, derived 테스트                                                                              | ⬜   |
+| P2-27  | 단위 테스트 — beauty/ 순수 함수                     | P2-12~15에서 TDD로 구현 완료. judgment 6 + shopping 8 + treatment 11 + derived 10 = 35개 테스트                                  | ✅   |
 | P2-28  | 단위 테스트 — zod 스키마 검증                        | API 입력, tool 파라미터 유효/무효 케이스                                                                                             | ⬜   |
 
 
