@@ -13,9 +13,9 @@
 | 사전 완료      | 12      | 12      | 100%    | ✅      |
 | Phase 0    | 37      | 37      | 100%    | ✅      |
 | Phase 1    | 60      | 60      | 100%    | ✅      |
-| Phase 2    | 105     | 37      | 35%     | 🔶 진행중 |
+| Phase 2    | 102     | 38      | 37%     | 🔶 진행중 |
 | Phase 3    | 36      | 0       | 0%      | ⬜ 미시작  |
-| **MVP 합계** | **250** | **146** | **58%** |        |
+| **MVP 합계** | **247** | **147** | **60%** |        |
 
 
 **✅ Gate 0 통과 (2026-03-21) → Phase 1 (MVP 설계) 착수 준비**
@@ -330,6 +330,7 @@
 | P2-26b | 도메인 데이터 공개 읽기 API                          | 8개 route (4목록+4상세). findAll* 재사용(offset→page). embedding 제외. optionalAuth. 테스트 20개                                    | ✅   |
 | P2-27  | 단위 테스트 — beauty/ 순수 함수                     | P2-12~15에서 TDD로 구현 완료. judgment 6 + shopping 8 + treatment 11 + derived 10 = 35개 테스트                                  | ✅   |
 | P2-28  | 단위 테스트 — zod 스키마 검증                        | 각 route/tool 테스트에서 유효/무효 입력 이미 검증. onboarding 3, chat 2, events 3, extraction 2 등. 추가 불필요                            | ✅   |
+| P2-28a | API 레이어 Hono 전환 + OpenAPI 자동 문서화          | Next.js route → Hono + @hono/zod-openapi. middleware 추출(인증/rate limit/검증). Swagger UI 자동. server/core/features/shared 무수정 | ⬜   |
 
 
 ## 사용자 앱 — UI (2~3주, 병렬 가능)
@@ -390,12 +391,9 @@
 | P2-V5 | 시술 가격 범위 현실성 검증 (U-7)     | M2 시점. 5개 클리닉 실제 상담 가격과 DB price_min/max 대조. 50%+ 불일치 시 가격 표시 방식 재검토             | P2-62 | ⬜   |
 | P2-V7 | 올리브영 글로벌 이용약관 검토 (U-13) | **완료 (2026-03-25)**. 제14조② 상업적 목적 데이터 금지. robots.txt /product Allow. 판정: 브랜드 사이트 1순위, 올리브영 글로벌 2순위(보조). cosrx/laneige/innisfree robots.txt 허용 확인 | 없음 | ✅ |
 
-### 후순위 대기 (MVP 수익 발생 후)
+### ~~후순위 대기~~ → MVP 제외 (v0.2 백로그로 이동)
 
-| ID    | 작업                        | 상세                                                                                | 의존  | 상태  |
-| ----- | ------------------------- | --------------------------------------------------------------------------------- | --- | --- |
-| P2-V1 | 쿠팡 파트너스 API 활성화 (U-12) | 판매 실적 15만원 미달 → API 비활성. MVP 수익 없어 CSV 폴백 확정. 수익 발생 후 재검토 | 없음 | 🔶 보류 |
-| P2-V6 | 올리브영/CJ 어필리에이트 약관 (U-10, U-11) | 올리브영 Involve Asia 승인 후 제품 정보 사용 범위 확인. P2-V1과 함께 후순위 | P2-V1 | ⬜ 보류 |
+> P2-V1, P2-V6, P2-56e: 어필리에이트 활성화가 현실적으로 어려워 MVP 범위에서 제외 (2026-03-29). 제품 데이터는 A-3 시드 크롤링 + CSV 수동으로 대체. purchase_links는 affiliate_code 없이 일반 URL로 운용.
 
 
 ## 데이터 준비 — 파이프라인 구현 (코어 구현과 병렬)
@@ -410,22 +408,26 @@
 | P2-56b | scripts/seed/config.ts 파이프라인 환경변수            | **완료 (2026-03-28)**. zod 검증 14개 변수 (파이프라인 전용 4 + DB 3 + AI 5 + App 2). core/config.ts 독립 — ADMIN_JWT_SECRET 등 불필요 변수 미포함. superRefine AI 키 조건부 필수 | P2-V2   | ✅   |
 | P2-56c | scripts/seed/lib/types.ts 파이프라인 타입           | **완료 (2026-03-28)**. EntityType, RawRecord, EnrichedRecord, ValidatedRecord, LoadResult, PipelineResult, PipelineError, PlaceProvider, RawPlace. shared/types import만 | P2-56a         | ✅   |
 | P2-56d | 카카오 로컬 프로바이더 (S1)                            | **완료 (2026-03-29)**. scripts/seed/lib/providers/kakao-local.ts. PlaceProvider 구현 + 페이지네이션(size=15, is_end, MAX_PAGES=45) + 지수 백오프 재시도(3회) + sourceId dedup. mapDocumentToRawPlace 분리 + 단위 테스트 11개. vitest.config.ts scripts/ include 추가 | P2-56b, P2-56c | ✅   |
-| P2-56e | ~~쿠팡 파트너스 프로바이더 (S7)~~ → **보류** | ~~coupang-partners.ts~~. U-12 활성화 불가 (수익 없음) → CSV 폴백 확정. 수익 발생 후 재검토 | P2-V1 | 🔶 보류 |
-| P2-56e2 | **웹 스크래퍼 프로바이더 (Channel A-3)** | scripts/seed/lib/providers/web-scraper.ts. Playwright 헤드리스 브라우저. 브랜드 공식 사이트(1순위) + 올리브영 글로벌(2순위 보조). name_en, brand, price, category, image_url, description 수집. Crawl-delay 5초 준수 | P2-56b, P2-56c, P2-V7 | ⬜   |
-| P2-56f | 식약처 원료성분 프로바이더 (S3)                          | scripts/seed/lib/providers/mfds-ingredient.ts. P2-V2 응답 형식 기반                                            | P2-V2, P2-56c  | ⬜   |
-| P2-56g | 식약처 사용제한 프로바이더 (S4)                          | scripts/seed/lib/providers/mfds-restricted.ts. S3 INGR_ENG_NAME 기반 매칭 (CAS_NO 보조). 전체 다운로드+클라이언트 필터링 | P2-56f         | ⬜   |
+| ~~P2-56e~~ | ~~쿠팡 파트너스 프로바이더 (S7)~~ → **MVP 제외** | v0.2 백로그로 이동. 어필리에이트 활성화 후 coupang-partners.ts 구현 예정 | ~~P2-V1~~ | ❌ 제외 |
+| | **── Layer 1: 프로바이더 (Stage 1 도구, 각각 독립) ──** | | | |
+| P2-56j | CSV 로더 프로바이더                                 | **완료 (2026-03-29)**. csv-loader.ts + csv-parser.ts(공유 유틸, P-7). csv-parse 라이브러리. loadCsvAsRawRecords(filePath, entityType) → RawRecord[]. 테스트 12개. cosing-csv/review-exporter도 csv-parser.ts 공유 예정 | P2-56c         | ✅   |
+| P2-56f | 식약처 원료성분 프로바이더 (S3)                          | scripts/seed/lib/providers/mfds-ingredient.ts. P2-V2 응답 형식 기반. ingredients 1순위 소스                                            | P2-V2, P2-56c  | ⬜   |
+| P2-56i | CosIng CSV 프로바이더 (S6)                        | scripts/seed/lib/providers/cosing-csv.ts. CSV 파싱 + **INCI name 텍스트 매칭(1차)** + CAS번호(보조) → inci_name + function + restriction 보강. P2-56f와 독립 구현 가능 (매칭은 fetch-service에서) | P2-V4, P2-56c  | ⬜   |
+| P2-56g | 식약처 사용제한 프로바이더 (S4)                          | scripts/seed/lib/providers/mfds-restricted.ts. S3 INGR_ENG_NAME 기반 매칭 (CAS_NO 보조). 전체 다운로드+클라이언트 필터링. **⚠️ P2-56f 체인 의존** | P2-56f         | ⬜   |
 | P2-56h | 식약처 보고품목 프로바이더 (S5)                          | scripts/seed/lib/providers/mfds-functional.ts. 제품 교차 검증용. 퍼지 매칭                                          | P2-V2, P2-56c  | ⬜   |
-| P2-56i | CosIng CSV 프로바이더 (S6)                        | scripts/seed/lib/providers/cosing-csv.ts. CSV 파싱 + **INCI name 텍스트 매칭(1차)** + CAS번호(보조) → inci_name + function + restriction 보강 | P2-V4, P2-56c  | ⬜   |
-| P2-56j | CSV 로더 프로바이더                                 | scripts/seed/lib/providers/csv-loader.ts. 수동 CSV → RawRecord 변환. products/ingredients/treatments         | P2-56c         | ⬜   |
+| P2-56e2 | **웹 스크래퍼 프로바이더 (Channel A-3)** | scripts/seed/lib/providers/web-scraper.ts. Playwright 헤드리스 브라우저. 브랜드 공식 사이트(1순위) + 올리브영 글로벌(2순위 보조). name_en, brand, price, category, image_url, description 수집. Crawl-delay 5초 준수 | P2-56b, P2-56c, P2-V7 | ⬜   |
+| | **── Layer 2: AI 모듈 (Stage 2 도구, 각각 독립) ──** | | | |
 | P2-56k | AI 번역 모듈                                     | scripts/seed/lib/enrichment/translator.ts. ko→en 필수 + ja/zh/es/fr 선택. server/core/ai-engine.ts 호출        | P2-56c, P2-5   | ⬜   |
 | P2-56l | AI 분류 모듈                                     | scripts/seed/lib/enrichment/classifier.ts. skin_types[], concerns[] 분류. 허용값 제한 프롬프트 + zod 출력 검증          | P2-56c, P2-5   | ⬜   |
 | P2-56m | AI 설명 생성 모듈                                  | scripts/seed/lib/enrichment/description-generator.ts. description + review_summary 생성                    | P2-56c, P2-5   | ⬜   |
-| P2-56n | fetch-service (Stage 1 오케스트레이션)              | scripts/seed/lib/fetch-service.ts. 프로바이더 호출 → Promise.allSettled → RawRecord[]. **classifyPlace(RawPlace→EntityType) 포함**. **중복 제거: 2차 placeUrl + 3차 name+좌표(50m) + 4차 name+address 정규화 (data-collection.md §3.2)** | P2-56d,56e2,56f~j | ⬜   |
-| P2-56o | enrich-service (Stage 2 오케스트레이션)             | scripts/seed/lib/enrich-service.ts. RawRecord → 번역+분류(confidence)+생성 → EnrichedRecord[]. 건별 try-catch      | P2-56k~m       | ⬜   |
+| P2-56r | AI 분류 정확도 PoC (U-1)                          | M1 스켈레톤 10건으로 skin_types/concerns AI 분류 → 전문가 대조. **80% 미달 시 수동 전환 결정 → P2-56o 설계에 영향**. **⚠️ P2-56l 체인 의존** | P2-56l         | ⬜   |
+| | **── Layer 3: 오케스트레이션 + DB 적재 ──** | | | |
+| P2-56p | loader (Stage 4 DB 적재)                       | scripts/seed/lib/loader.ts. zod 검증 → DB UPSERT. FK 순서 보장, 100건 청크 트랜잭션. 프로바이더와 독립 (P2-56a+P2-2만 의존) | P2-56a, P2-2   | ⬜   |
+| P2-56n | fetch-service (Stage 1 오케스트레이션)              | scripts/seed/lib/fetch-service.ts. 프로바이더 호출 → Promise.allSettled → RawRecord[]. **classifyPlace(RawPlace→EntityType) 포함**. **중복 제거: 2차 placeUrl + 3차 name+좌표(50m) + 4차 name+address 정규화 (data-collection.md §3.2)**. **⚠️ Layer 1 전체 완료 필요** | P2-56d,56e2,56f~j (~~56e 제외~~) | ⬜   |
+| P2-56o | enrich-service (Stage 2 오케스트레이션)             | scripts/seed/lib/enrich-service.ts. RawRecord → 번역+분류(confidence)+생성 → EnrichedRecord[]. 건별 try-catch. **⚠️ Layer 2 + P2-56r 완료 필요**      | P2-56k~m, P2-56r       | ⬜   |
+| | **── Layer 4: 최종 통합 ──** | | | |
 | P2-56o2 | review-exporter (Stage 3 검수 CSV)             | scripts/seed/lib/review-exporter.ts. EnrichedRecord → 검수용 CSV export (confidence 포함). 구글시트 검수 후 CSV import | P2-56o         | ⬜   |
-| P2-56p | loader (Stage 4 DB 적재)                       | scripts/seed/lib/loader.ts. zod 검증 → DB UPSERT. FK 순서 보장, 100건 청크 트랜잭션                                   | P2-56a, P2-2   | ⬜   |
 | P2-56q | CLI 진입점 (fetch/import-csv/enrich/export-review/import-review/validate/load) | scripts/seed/*.ts 7개 CLI. thin layer: 인자 파싱 → lib/ 호출                               | P2-56n~p       | ⬜   |
-| P2-56r | AI 분류 정확도 PoC (U-1)                          | M1 스켈레톤 10건으로 skin_types/concerns AI 분류 → 전문가 대조. **80% 미달 시 수동 전환 결정**                                  | P2-56l         | ⬜   |
 
 
 ## 데이터 준비 — 데이터 입력 + 검수 (코어 구현과 병렬)
@@ -594,6 +596,8 @@
 | V2-18 | 채팅 UI 가상 스크롤 최적화       | 트리거: 계정 인증 + 재방문 + 장기 대화 도입 시. MessageList 가상 스크롤, DOM 수 제한. MVP는 Rate limit(100회/일) + 세션 타임아웃(30분)으로 충분 | user-screens.md §6       |
 | V2-19 | 복합 쓰기 rpc 트랜잭션 도입      | 트리거: UPSERT + 보상 전략으로 불충분한 복합 쓰기 시나리오 등장 시. MVP는 모든 시나리오(auth, onboarding, chat, kit)가 UPSERT 멱등성 + 보상 삭제 + 재시도로 해결 가능하여 rpc 불필요. 복잡한 multi-entity 트랜잭션 추가 시 Postgres 함수(rpc) 설계 | Q-11                     |
 | V2-20 | domain.ts 열거값 타입 강화     | `status: string` → `EntityStatus`, `english_support: string` → `EnglishSupportLevel` 등 유니온 타입으로 강화. 기존 repositories/route handlers 전반 영향 → 다른 세션 작업 완료 후 일괄 진행. P-7(단일 변경점) 보장 | Q-14, P-7 |
+| V2-21 | 쿠팡 파트너스 API 활성화 (P2-V1) | 판매 실적 15만원 달성 후 API 활성화. coupang-partners.ts 프로바이더 구현 (P2-56e) | U-12 |
+| V2-22 | 올리브영/CJ 어필리에이트 약관 확인 (P2-V6) | Involve Asia 승인 후 제품 정보 사용 범위 확인 (U-10, U-11). V2-21 선행 | V2-21 |
 
 
 ### v0.3 백로그
