@@ -13,9 +13,9 @@
 | 사전 완료      | 12      | 12      | 100%    | ✅      |
 | Phase 0    | 37      | 37      | 100%    | ✅      |
 | Phase 1    | 60      | 60      | 100%    | ✅      |
-| Phase 2    | 102     | 43      | 42%     | 🔶 진행중 |
+| Phase 2    | 102     | 44      | 43%     | 🔶 진행중 |
 | Phase 3    | 36      | 0       | 0%      | ⬜ 미시작  |
-| **MVP 합계** | **247** | **152** | **62%** |        |
+| **MVP 합계** | **247** | **153** | **62%** |        |
 
 
 **✅ Gate 0 통과 (2026-03-21) → Phase 1 (MVP 설계) 착수 준비**
@@ -417,7 +417,7 @@
 | P2-56h | 식약처 보고품목 프로바이더 (S5)                          | **완료 (2026-03-29)**. mfds-functional.ts. 키워드 검색(item_name) + 페이지네이션. entityType="product", sourceId=COSMETIC_REPORT_SEQ. 퍼지 매칭은 P2-64e(Phase E) 담당. 테스트 14개 | P2-V2, P2-56c  | ✅   |
 | P2-56e2 | **웹 스크래퍼 프로바이더 (Channel A-3)** | **완료 (2026-03-29)**. web-scraper.ts(엔진) + site-configs.ts(설정 분리, P-7). Playwright 헤드리스. source 분리: scraper-brand/scraper-oliveyoung. Crawl-delay 5초. 사이트 에러 격리. 테스트 10개 | P2-56b, P2-56c, P2-V7 | ✅   |
 | | **── Layer 2: AI 모듈 (Stage 2 도구, 각각 독립) ──** | | | |
-| P2-56k | AI 번역 모듈                                     | scripts/seed/lib/enrichment/translator.ts. ko→en 필수 + ja/zh/es/fr 선택. server/core/ai-engine.ts 호출        | P2-56c, P2-5   | ⬜   |
+| P2-56k | AI 번역 모듈                                     | **완료 (2026-03-29)**. translator.ts + ai-client.ts(파이프라인 전용 모델 팩토리). ko→en 필수 + ja/zh/es/fr 선택. LocalizedText 출력. 번역 실패 시 ko 폴백. 테스트 19개        | P2-56c, P2-5   | ✅   |
 | P2-56l | AI 분류 모듈                                     | scripts/seed/lib/enrichment/classifier.ts. skin_types[], concerns[] 분류. 허용값 제한 프롬프트 + zod 출력 검증          | P2-56c, P2-5   | ⬜   |
 | P2-56m | AI 설명 생성 모듈                                  | scripts/seed/lib/enrichment/description-generator.ts. description + review_summary 생성                    | P2-56c, P2-5   | ⬜   |
 | P2-56r | AI 분류 정확도 PoC (U-1)                          | M1 스켈레톤 10건으로 skin_types/concerns AI 분류 → 전문가 대조. **80% 미달 시 수동 전환 결정 → P2-56o 설계에 영향**. **⚠️ P2-56l 체인 의존** | P2-56l         | ⬜   |
