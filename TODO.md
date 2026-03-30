@@ -13,9 +13,9 @@
 | 사전 완료      | 12      | 12      | 100%    | ✅      |
 | Phase 0    | 37      | 37      | 100%    | ✅      |
 | Phase 1    | 60      | 60      | 100%    | ✅      |
-| Phase 2    | 102     | 45      | 44%     | 🔶 진행중 |
+| Phase 2    | 102     | 46      | 45%     | 🔶 진행중 |
 | Phase 3    | 36      | 0       | 0%      | ⬜ 미시작  |
-| **MVP 합계** | **247** | **154** | **62%** |        |
+| **MVP 합계** | **247** | **155** | **63%** |        |
 
 
 **✅ Gate 0 통과 (2026-03-21) → Phase 1 (MVP 설계) 착수 준비**
@@ -419,7 +419,7 @@
 | | **── Layer 2: AI 모듈 (Stage 2 도구, 각각 독립) ──** | | | |
 | P2-56k | AI 번역 모듈                                     | **완료 (2026-03-29)**. translator.ts + ai-client.ts(파이프라인 전용 모델 팩토리). ko→en 필수 + ja/zh/es/fr 선택. LocalizedText 출력. 번역 실패 시 ko 폴백. 테스트 19개        | P2-56c, P2-5   | ✅   |
 | P2-56l | AI 분류 모듈                                     | **완료 (2026-03-30)**. classifier.ts. classifyFields(inputData, fieldSpecs) 범용 함수. FieldSpec.promptHint로 분류 의미 구분. 허용값 필터링 + confidence 클램핑. 테스트 16개        | P2-56c, P2-5   | ✅   |
-| P2-56m | AI 설명 생성 모듈                                  | scripts/seed/lib/enrichment/description-generator.ts. description + review_summary 생성                    | P2-56c, P2-5   | ⬜   |
+| P2-56m | AI 설명 생성 모듈                                  | **완료 (2026-03-30)**. description-generator.ts. generateDescriptions(inputData, fieldSpecs) 범용 함수. GenerationFieldSpec 전용 인터페이스. ko+en 동시 생성. 테스트 14개        | P2-56c, P2-5   | ✅   |
 | P2-56r | AI 분류 정확도 PoC (U-1)                          | M1 스켈레톤 10건으로 skin_types/concerns AI 분류 → 전문가 대조. **80% 미달 시 수동 전환 결정 → P2-56o 설계에 영향**. **⚠️ P2-56l 체인 의존** | P2-56l         | ⬜   |
 | | **── Layer 3: 오케스트레이션 + DB 적재 ──** | | | |
 | P2-56p | loader (Stage 4 DB 적재)                       | scripts/seed/lib/loader.ts. zod 검증 → DB UPSERT. FK 순서 보장, 100건 청크 트랜잭션. 프로바이더와 독립 (P2-56a+P2-2만 의존) | P2-56a, P2-2   | ⬜   |
