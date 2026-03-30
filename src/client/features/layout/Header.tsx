@@ -21,7 +21,7 @@ export default function Header({
         <div className="flex min-w-[60px] items-center">
           {leftContent}
         </div>
-        <span className="text-lg font-bold tracking-tight text-primary">
+        <span className="text-xl font-bold tracking-tight text-primary">
           Essenly
         </span>
         <div className="flex min-w-[60px] items-center justify-end gap-2">
