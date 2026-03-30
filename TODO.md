@@ -13,9 +13,9 @@
 | 사전 완료      | 12      | 12      | 100%    | ✅      |
 | Phase 0    | 37      | 37      | 100%    | ✅      |
 | Phase 1    | 60      | 60      | 100%    | ✅      |
-| Phase 2    | 102     | 49      | 48%     | 🔶 진행중 |
+| Phase 2    | 102     | 50      | 49%     | 🔶 진행중 |
 | Phase 3    | 36      | 0       | 0%      | ⬜ 미시작  |
-| **MVP 합계** | **247** | **158** | **64%** |        |
+| **MVP 합계** | **247** | **159** | **64%** |        |
 
 
 **✅ Gate 0 통과 (2026-03-21) → Phase 1 (MVP 설계) 착수 준비**
@@ -424,7 +424,7 @@
 | | **── Layer 3: 오케스트레이션 + DB 적재 ──** | | | |
 | P2-56p | loader (Stage 4 DB 적재)                       | **완료 (2026-03-30)**. loader.ts + db-client.ts + id-generator.ts. deterministic UUID v5(entityType별 namespace) → zod 재검증 → Phase A→B→C FK순서 → 100건 청크 UPSERT. LoadOptions(dryRun/insertOnly/batchSize/entityTypes) 회차별 유연성. Junction 복합PK ON CONFLICT. 테스트 24개 | P2-56a, P2-2   | ✅   |
 | P2-56n | fetch-service (Stage 1 오케스트레이션)              | **완료 (2026-03-30)**. fetch-service.ts + place-mapper.ts. Promise.allSettled 병렬 호출. classifyPlace(store/clinic) + 4단계 dedup. S3↔S6↔S4 ingredients 텍스트 매칭 합병. FetchOptions(targets/placeQueries/csvFiles/siteConfigs). 에러 격리. 테스트 35개 | P2-56d,56e2,56f~j (~~56e 제외~~) | ✅   |
-| P2-56o | enrich-service (Stage 2 오케스트레이션)             | scripts/seed/lib/enrich-service.ts. RawRecord → 번역+분류(confidence)+생성 → EnrichedRecord[]. 건별 try-catch. **⚠️ Layer 2 + P2-56r 완료 필요**      | P2-56k~m, P2-56r       | ⬜   |
+| P2-56o | enrich-service (Stage 2 오케스트레이션)             | **완료 (2026-03-30)**. enrich-service.ts. ENRICHMENT_CONFIG 7엔티티별 매핑. 5단계: UUID→번역→분류(confidence)→생성(ko+en)→재번역(4언어). EnrichOptions(entityTypes/targetLangs/skip*). 건별 try-catch 에러 격리. 테스트 14개 | P2-56k~m, P2-56r       | ✅   |
 | | **── Layer 4: 최종 통합 ──** | | | |
 | P2-56o2 | review-exporter (Stage 3 검수 CSV)             | scripts/seed/lib/review-exporter.ts. EnrichedRecord → 검수용 CSV export (confidence 포함). 구글시트 검수 후 CSV import | P2-56o         | ⬜   |
 | P2-56q | CLI 진입점 (fetch/import-csv/enrich/export-review/import-review/validate/load) | scripts/seed/*.ts 7개 CLI. thin layer: 인자 파싱 → lib/ 호출                               | P2-56n~p       | ⬜   |
