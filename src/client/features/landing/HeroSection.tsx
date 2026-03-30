@@ -45,6 +45,11 @@ export default function HeroSection({ ctaEnabled, locale }: HeroSectionProps) {
             <span className="mt-0.5 text-xs opacity-75">{t("pathBDescription")}</span>
           </button>
         </div>
+        {!ctaEnabled && (
+          <p className="mt-3 text-xs text-muted-foreground">
+            {t("ctaDisabledHint")}
+          </p>
+        )}
       </div>
     </div>
   );

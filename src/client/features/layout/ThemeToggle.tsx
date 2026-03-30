@@ -4,6 +4,12 @@ import "client-only";
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+} from "@/client/ui/primitives/tooltip";
 
 export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
@@ -21,16 +27,20 @@ export default function ThemeToggle() {
 
   const icon = theme === "dark" ? "🌙" : theme === "light" ? "☀️" : "💻";
   const label =
-    theme === "dark" ? "Dark" : theme === "light" ? "Light" : "System";
+    theme === "dark" ? "Dark mode" : theme === "light" ? "Light mode" : "System";
 
   return (
-    <button
-      onClick={cycleTheme}
-      aria-label={`Theme: ${label}. Click to change.`}
-      title={`Theme: ${label}`}
-      className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-sm transition-colors hover:bg-muted"
-    >
-      {icon}
-    </button>
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger
+          onClick={cycleTheme}
+          aria-label={`Theme: ${label}`}
+          className="flex h-9 w-9 items-center justify-center rounded-md border border-border text-sm transition-colors hover:bg-muted"
+        >
+          {icon}
+        </TooltipTrigger>
+        <TooltipContent>{label}</TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 }
