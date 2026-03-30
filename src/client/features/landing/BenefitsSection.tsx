@@ -32,8 +32,8 @@ export default function BenefitsSection() {
               <span className="mb-2 block text-2xl" aria-hidden="true">
                 {icon}
               </span>
-              <p className="text-[15px] font-semibold">{t(titleKey)}</p>
-              <p className="text-[13px] leading-snug text-muted-foreground">
+              <p className="text-base font-semibold">{t(titleKey)}</p>
+              <p className="text-sm leading-snug text-muted-foreground">
                 {t(descKey)}
               </p>
             </div>

@@ -16,7 +16,7 @@ export default function ConsentBanner({ onConsent, isLoading, locale }: ConsentB
   return (
     <div className="fixed inset-x-0 bottom-0 z-10 border-t border-border bg-card shadow-[0_-2px_8px_rgba(0,0,0,0.06)]">
       <div className="mx-auto flex max-w-[960px] items-center gap-4 px-5 py-3">
-        <p className="flex-1 text-xs leading-snug text-muted-foreground">
+        <p className="flex-1 text-sm leading-snug text-muted-foreground">
           {t("description")}
         </p>
         <div className="flex shrink-0 items-center gap-2">

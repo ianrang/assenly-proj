@@ -28,10 +28,10 @@ export default function HowItWorksSection() {
                 {n}
               </div>
               <div>
-                <p className="text-[15px] font-semibold">
+                <p className="text-base font-semibold">
                   {t(`step${n}Title` as `step1Title`)}
                 </p>
-                <p className="text-[13px] leading-snug text-muted-foreground">
+                <p className="text-sm leading-snug text-muted-foreground">
                   {t(`step${n}Desc` as `step1Desc`)}
                 </p>
               </div>

@@ -33,7 +33,7 @@ export default function TrustSection() {
                 >
                   {icon}
                 </div>
-                <div className="text-[13px]">
+                <div className="text-sm">
                   <p className="font-semibold">{t(titleKey)}</p>
                   <p className="text-muted-foreground">{t(descKey)}</p>
                 </div>

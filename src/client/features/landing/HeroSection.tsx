@@ -24,7 +24,7 @@ export default function HeroSection({ ctaEnabled, locale }: HeroSectionProps) {
         <h1 className="mb-3 text-[28px] font-bold leading-tight tracking-tight lg:text-[40px]">
           {t("title")}
         </h1>
-        <p className="mx-auto mb-7 max-w-[420px] text-[15px] leading-relaxed text-muted-foreground lg:max-w-[500px] lg:text-[17px]">
+        <p className="mx-auto mb-7 max-w-[420px] text-base leading-relaxed text-muted-foreground lg:max-w-[500px] lg:text-lg">
           {t("subtitle")}
         </p>
         <div className="mx-auto flex max-w-[360px] flex-col gap-3 lg:max-w-[480px] lg:flex-row">
