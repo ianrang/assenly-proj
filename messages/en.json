@@ -97,6 +97,14 @@
     "claim": "Claim my free kit",
     "back": "Back to results"
   },
+  "error": {
+    "title": "Something went wrong",
+    "description": "An unexpected error occurred. Please try again.",
+    "retry": "Try again",
+    "home": "Back to home",
+    "notFoundTitle": "Page not found",
+    "notFoundDescription": "The page you're looking for doesn't exist or has been moved."
+  },
   "common": {
     "loading": "Loading...",
     "error": "Something went wrong",
