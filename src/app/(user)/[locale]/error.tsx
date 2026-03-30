@@ -35,9 +35,12 @@ export default function ErrorPage({ error, reset }: Props) {
           <Button onClick={reset} size="lg" className="w-full min-h-11">
             {t("retry")}
           </Button>
-          <Button variant="outline" size="lg" asChild className="w-full min-h-11">
-            <a href="/">{t("home")}</a>
-          </Button>
+          <a
+            href="/"
+            className="flex min-h-11 w-full items-center justify-center rounded-lg border border-border text-sm font-medium text-foreground transition-colors hover:bg-muted"
+          >
+            {t("home")}
+          </a>
         </div>
       </div>
     </div>
