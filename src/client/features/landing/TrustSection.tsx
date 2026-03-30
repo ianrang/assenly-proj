@@ -3,6 +3,7 @@
 import "client-only";
 
 import { useTranslations } from "next-intl";
+import { ModalTitle, CardTitle, CardDescription } from "@/client/ui/primitives/typography";
 
 const TRUST_ITEMS = [
   { icon: "🔓", titleKey: "trustNoSignup", descKey: "trustNoSignupDesc" },
@@ -17,7 +18,7 @@ export default function TrustSection() {
     <section className="border-t border-border py-12 lg:py-16">
       <div className="mx-auto max-w-[960px] px-5">
         <div className="mx-auto max-w-[640px] rounded-xl border border-border bg-card p-6 text-center lg:p-9">
-          <h2 className="mb-1 text-lg font-bold">{t("trustTitle")}</h2>
+          <ModalTitle className="mb-1">{t("trustTitle")}</ModalTitle>
           <p className="mb-5 text-sm text-muted-foreground">
             {t("trustSubtitle")}
           </p>
@@ -33,9 +34,9 @@ export default function TrustSection() {
                 >
                   {icon}
                 </div>
-                <div className="text-sm">
-                  <p className="font-semibold">{t(titleKey)}</p>
-                  <p className="text-muted-foreground">{t(descKey)}</p>
+                <div>
+                  <CardTitle className="text-sm">{t(titleKey)}</CardTitle>
+                  <CardDescription>{t(descKey)}</CardDescription>
                 </div>
               </div>
             ))}

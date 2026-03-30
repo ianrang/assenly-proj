@@ -4,6 +4,7 @@ import "client-only";
 
 import { useTranslations } from "next-intl";
 import Link from "next/link";
+import { ModalTitle } from "@/client/ui/primitives/typography";
 
 type ReturnVisitBannerProps = {
   locale: string;
@@ -15,7 +16,7 @@ export default function ReturnVisitBanner({ locale }: ReturnVisitBannerProps) {
   return (
     <div className="fixed inset-0 z-20 flex items-center justify-center bg-background/80 backdrop-blur-sm">
       <div className="mx-5 w-full max-w-sm rounded-xl border border-border bg-card p-6 text-center shadow-lg">
-        <h2 className="mb-2 text-lg font-bold">{t("returnTitle")}</h2>
+        <ModalTitle className="mb-2">{t("returnTitle")}</ModalTitle>
         <p className="mb-6 text-sm text-muted-foreground">
           {t("returnDescription")}
         </p>

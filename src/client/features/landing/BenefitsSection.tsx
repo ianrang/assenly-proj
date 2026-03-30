@@ -3,6 +3,7 @@
 import "client-only";
 
 import { useTranslations } from "next-intl";
+import { SectionLabel, SectionTitle, CardTitle, CardDescription } from "@/client/ui/primitives/typography";
 
 const BENEFITS = [
   { icon: "🧴", titleKey: "benefitProductsTitle", descKey: "benefitProductsDesc" },
@@ -17,12 +18,8 @@ export default function BenefitsSection() {
   return (
     <section className="border-t border-border py-12 lg:py-16">
       <div className="mx-auto max-w-[960px] px-5">
-        <p className="mb-1.5 text-center text-[11px] font-semibold uppercase tracking-widest text-primary">
-          {t("benefitsLabel")}
-        </p>
-        <h2 className="mb-8 text-center text-xl font-bold lg:text-[26px]">
-          {t("benefitsTitle")}
-        </h2>
+        <SectionLabel>{t("benefitsLabel")}</SectionLabel>
+        <SectionTitle>{t("benefitsTitle")}</SectionTitle>
         <div className="grid grid-cols-2 gap-3 lg:grid-cols-4 lg:gap-4">
           {BENEFITS.map(({ icon, titleKey, descKey }) => (
             <div
@@ -32,10 +29,8 @@ export default function BenefitsSection() {
               <span className="mb-2 block text-2xl" aria-hidden="true">
                 {icon}
               </span>
-              <p className="text-base font-semibold">{t(titleKey)}</p>
-              <p className="text-sm leading-snug text-muted-foreground">
-                {t(descKey)}
-              </p>
+              <CardTitle className="text-center">{t(titleKey)}</CardTitle>
+              <CardDescription className="text-center">{t(descKey)}</CardDescription>
             </div>
           ))}
         </div>

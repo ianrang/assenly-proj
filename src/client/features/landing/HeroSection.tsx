@@ -4,6 +4,7 @@ import "client-only";
 
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
+import { PageTitle, BodyText } from "@/client/ui/primitives/typography";
 
 type HeroSectionProps = {
   ctaEnabled: boolean;
@@ -21,12 +22,12 @@ export default function HeroSection({ ctaEnabled, locale }: HeroSectionProps) {
         aria-hidden="true"
       />
       <div className="relative z-10 mx-auto max-w-[960px] px-5 py-14 text-center lg:py-20">
-        <h1 className="mb-3 text-[28px] font-bold leading-tight tracking-tight lg:text-[40px]">
+        <PageTitle className="mb-3">
           {t("title")}
-        </h1>
-        <p className="mx-auto mb-7 max-w-[420px] text-base leading-relaxed text-muted-foreground lg:max-w-[500px] lg:text-lg">
+        </PageTitle>
+        <BodyText className="mx-auto mb-7 max-w-[420px] lg:max-w-[500px]">
           {t("subtitle")}
-        </p>
+        </BodyText>
         <div className="mx-auto flex max-w-[360px] flex-col gap-3 lg:max-w-[480px] lg:flex-row">
           <button
             onClick={() => router.push(`/${locale}/onboarding`)}
