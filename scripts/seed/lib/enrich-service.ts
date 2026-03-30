@@ -155,7 +155,7 @@ const DEFAULT_LOG_DIR = join(
   typeof __dirname !== "undefined"
     ? __dirname
     : new URL(".", import.meta.url).pathname,
-  "../../docs/data-logs",
+  "../../../docs/data-logs",
 );
 
 // ── 공개 API ────────────────────────────────────────────────
