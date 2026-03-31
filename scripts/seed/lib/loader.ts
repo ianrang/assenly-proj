@@ -11,19 +11,13 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 import type { z } from "zod";
 
 import {
-  brandCreateSchema,
-  ingredientCreateSchema,
-  productCreateSchema,
-  storeCreateSchema,
-  clinicCreateSchema,
-  treatmentCreateSchema,
-  doctorCreateSchema,
   productStoreRelationSchema,
   productIngredientRelationSchema,
   clinicTreatmentRelationSchema,
 } from "@/shared/validation";
 
 import { pipelineEnv } from "../config";
+import { ENTITY_SCHEMAS } from "./entity-schemas";
 import type {
   EntityType,
   ValidatedRecord,
@@ -67,13 +61,13 @@ interface EntityConfig {
 }
 
 const ENTITY_CONFIG: Record<EntityType, EntityConfig> = {
-  brand: { tableName: "brands", schema: brandCreateSchema, onConflict: "id" },
-  ingredient: { tableName: "ingredients", schema: ingredientCreateSchema, onConflict: "id" },
-  product: { tableName: "products", schema: productCreateSchema, onConflict: "id" },
-  store: { tableName: "stores", schema: storeCreateSchema, onConflict: "id" },
-  clinic: { tableName: "clinics", schema: clinicCreateSchema, onConflict: "id" },
-  treatment: { tableName: "treatments", schema: treatmentCreateSchema, onConflict: "id" },
-  doctor: { tableName: "doctors", schema: doctorCreateSchema, onConflict: "id" },
+  brand: { tableName: "brands", schema: ENTITY_SCHEMAS.brand, onConflict: "id" },
+  ingredient: { tableName: "ingredients", schema: ENTITY_SCHEMAS.ingredient, onConflict: "id" },
+  product: { tableName: "products", schema: ENTITY_SCHEMAS.product, onConflict: "id" },
+  store: { tableName: "stores", schema: ENTITY_SCHEMAS.store, onConflict: "id" },
+  clinic: { tableName: "clinics", schema: ENTITY_SCHEMAS.clinic, onConflict: "id" },
+  treatment: { tableName: "treatments", schema: ENTITY_SCHEMAS.treatment, onConflict: "id" },
+  doctor: { tableName: "doctors", schema: ENTITY_SCHEMAS.doctor, onConflict: "id" },
 };
 
 const JUNCTION_CONFIG: Record<JunctionType, EntityConfig> = {

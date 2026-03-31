@@ -43,18 +43,7 @@ type ClassifyInputData = Record<
 
 // ── 프롬프트 구성 ───────────────────────────────────────────
 
-/** 입력 데이터를 프롬프트용 문자열로 직렬화 */
-function serializeInputData(inputData: ClassifyInputData): string {
-  return Object.entries(inputData)
-    .filter(([, v]) => v != null)
-    .map(([key, value]) => {
-      if (Array.isArray(value)) {
-        return `- ${key}: ${value.join(", ")}`;
-      }
-      return `- ${key}: ${String(value)}`;
-    })
-    .join("\n");
-}
+import { serializeInputData } from "./prompt-utils";
 
 /** 분류 프롬프트 생성 */
 function buildClassificationPrompt(

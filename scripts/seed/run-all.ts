@@ -12,7 +12,7 @@ import { enrichRecords } from "./lib/enrich-service";
 import { exportForReview } from "./lib/review-exporter";
 import { createPipelineClient } from "./lib/db-client";
 import { loadRecords } from "./lib/loader";
-import { ENTITY_SCHEMAS } from "./lib/entity-schemas";
+import { validateWithSchemas } from "./lib/entity-schemas";
 
 import type { EnrichedRecord, ValidatedRecord } from "./lib/types";
 import type { EnrichOptions } from "./lib/enrich-service";
@@ -79,7 +79,8 @@ async function runAutoApproveAndLoad(
   console.log(`[Stage 3] ${validated.length} auto-approved`);
 
   console.log("\n[Stage 4a] Validating...");
-  const { passed, failed } = validateRecords(validated);
+  const { passed, failed, errors: valErrors } = validateWithSchemas(validated);
+  for (const err of valErrors) console.error(`  [FAIL] ${err}`);
   console.log(`[Stage 4a] ${passed} passed, ${failed} failed`);
 
   if (failed > 0) {
@@ -105,33 +106,6 @@ function autoApproveRecords(records: EnrichedRecord[]): ValidatedRecord[] {
     isApproved: true,
     reviewedBy: "auto-pipeline",
   }));
-}
-
-/** ValidatedRecord[] zod 검증 (DB 없이) */
-function validateRecords(
-  records: ValidatedRecord[],
-): { passed: number; failed: number } {
-  let passed = 0;
-  let failed = 0;
-
-  for (const record of records) {
-    const schema = ENTITY_SCHEMAS[record.entityType];
-    if (!schema) {
-      failed++;
-      console.error(`  [FAIL] Unknown entityType: ${record.entityType}`);
-      continue;
-    }
-    const result = schema.safeParse(record.data);
-    if (result.success) {
-      passed++;
-    } else {
-      failed++;
-      const id = (record.data as Record<string, unknown>).id ?? "?";
-      console.error(`  [FAIL] ${record.entityType} ${id}: ${result.error.issues.map((i) => i.message).join("; ")}`);
-    }
-  }
-
-  return { passed, failed };
 }
 
 main().catch((err) => { console.error("[run-all] Fatal:", err); process.exit(1); });
