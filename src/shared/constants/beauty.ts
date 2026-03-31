@@ -98,6 +98,57 @@ export const SUPPORTED_LANGUAGES: SupportedLanguage[] = [
 /** Onboarding UI: max 3 skin concerns selectable */
 export const MAX_ONBOARDING_SKIN_CONCERNS = 3;
 
+/** PRD §4-A JC-1: 온보딩 UI에 표시하는 7개 피부 고민 (나머지 4개는 대화 추출) */
+export const ONBOARDING_SKIN_CONCERNS: SkinConcern[] = [
+  "acne",
+  "wrinkles",
+  "dark_spots",
+  "redness",
+  "dryness",
+  "pores",
+  "dullness",
+] as const;
+
+/** PRD §4-A JC-5: 온보딩 UI에 표시하는 5개 여행 스타일 (luxury/budget은 JC-4와 중복, 대화 추출) */
+export const ONBOARDING_TRAVEL_STYLES: TravelStyle[] = [
+  "efficient",
+  "relaxed",
+  "adventurous",
+  "instagram",
+  "local_experience",
+] as const;
+
+/** 온보딩 국가 목록 (주요 K-뷰티 관광 출발국) */
+export const ONBOARDING_COUNTRIES = [
+  { value: "US", label: "United States" },
+  { value: "JP", label: "Japan" },
+  { value: "CN", label: "China" },
+  { value: "TW", label: "Taiwan" },
+  { value: "TH", label: "Thailand" },
+  { value: "VN", label: "Vietnam" },
+  { value: "SG", label: "Singapore" },
+  { value: "MY", label: "Malaysia" },
+  { value: "ID", label: "Indonesia" },
+  { value: "PH", label: "Philippines" },
+  { value: "IN", label: "India" },
+  { value: "GB", label: "United Kingdom" },
+  { value: "DE", label: "Germany" },
+  { value: "FR", label: "France" },
+  { value: "ES", label: "Spain" },
+  { value: "IT", label: "Italy" },
+  { value: "NL", label: "Netherlands" },
+  { value: "SE", label: "Sweden" },
+  { value: "AU", label: "Australia" },
+  { value: "CA", label: "Canada" },
+  { value: "BR", label: "Brazil" },
+  { value: "MX", label: "Mexico" },
+  { value: "RU", label: "Russia" },
+  { value: "SA", label: "Saudi Arabia" },
+  { value: "AE", label: "UAE" },
+  { value: "KR", label: "South Korea" },
+  { value: "OTHER", label: "Other" },
+] as const;
+
 /** DB: max 5 skin concerns storable */
 export const MAX_STORED_SKIN_CONCERNS = 5;
 

@@ -7,7 +7,7 @@ import { useForm, FormProvider } from "react-hook-form";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import type { OnboardingFormData } from "@/shared/types/profile";
-import { SectionTitle, BodyText } from "@/client/ui/primitives/typography";
+import { SectionTitle, BodyText, CardTitle } from "@/client/ui/primitives/typography";
 import { Button } from "@/client/ui/primitives/button";
 import ProgressBar from "./ProgressBar";
 import StepSkinHair from "./StepSkinHair";
@@ -40,6 +40,7 @@ export default function OnboardingWizard({ locale }: OnboardingWizardProps) {
   const router = useRouter();
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
   const methods = useForm<OnboardingFormData>({ defaultValues: DEFAULT_VALUES });
   const { watch, reset, getValues } = methods;
@@ -98,6 +99,7 @@ export default function OnboardingWizard({ locale }: OnboardingWizardProps) {
   async function handleSubmit() {
     const values = getValues();
     setIsSubmitting(true);
+    setSubmitError(null);
     try {
       const res = await fetch("/api/profile/onboarding", {
         method: "POST",
@@ -113,9 +115,11 @@ export default function OnboardingWizard({ locale }: OnboardingWizardProps) {
         localStorage.removeItem(STORAGE_KEY);
         router.push(`/${locale}/profile`);
       } else {
+        setSubmitError(t("submitError"));
         console.error("Onboarding submit failed:", res.status);
       }
     } catch (err) {
+      setSubmitError(t("submitError"));
       console.error("Onboarding submit error:", err);
     } finally {
       setIsSubmitting(false);
@@ -132,12 +136,18 @@ export default function OnboardingWizard({ locale }: OnboardingWizardProps) {
 
         <ProgressBar current={step} total={TOTAL_STEPS} />
 
-        <h2 className="mb-5 text-lg font-semibold text-foreground">{stepTitles[step - 1]}</h2>
+        <CardTitle className="mb-5 text-lg">{stepTitles[step - 1]}</CardTitle>
 
         {step === 1 && <StepSkinHair />}
         {step === 2 && <StepConcerns />}
         {step === 3 && <StepTravel />}
         {step === 4 && <StepInterests />}
+
+        {submitError && (
+          <p className="mt-4 text-center text-sm text-destructive" role="alert">
+            {submitError}
+          </p>
+        )}
 
         <div className="mt-8 flex gap-3">
           {step > 1 && (

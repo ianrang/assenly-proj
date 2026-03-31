@@ -4,22 +4,10 @@ import "client-only";
 
 import { useTranslations } from "next-intl";
 import { useFormContext } from "react-hook-form";
-import { HAIR_CONCERNS, MAX_ONBOARDING_SKIN_CONCERNS } from "@/shared/constants/beauty";
-import type { SkinConcern } from "@/shared/types/domain";
+import { HAIR_CONCERNS, MAX_ONBOARDING_SKIN_CONCERNS, ONBOARDING_SKIN_CONCERNS } from "@/shared/constants/beauty";
 import type { OnboardingFormData } from "@/shared/types/profile";
 import { CardTitle } from "@/client/ui/primitives/typography";
 import OptionGroup from "./OptionGroup";
-
-/** PRD §4-A JC-1: UI에 표시하는 7개 피부 고민 (나머지 4개는 대화 추출) */
-const ONBOARDING_SKIN_CONCERNS: SkinConcern[] = [
-  "acne",
-  "wrinkles",
-  "dark_spots",
-  "redness",
-  "dryness",
-  "pores",
-  "dullness",
-];
 
 export default function StepConcerns() {
   const t = useTranslations("onboarding");

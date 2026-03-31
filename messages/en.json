@@ -103,7 +103,8 @@
     "interest_salon": "Salon / Headspa",
     "interest_dining": "Local dining",
     "interest_cultural": "Cultural experience",
-    "submitting": "Creating your profile..."
+    "submitting": "Creating your profile...",
+    "submitError": "Something went wrong. Please try again."
   },
   "profile": {
     "title": "Your Beauty Profile",
