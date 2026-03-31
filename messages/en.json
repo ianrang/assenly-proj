@@ -104,17 +104,30 @@
     "interest_dining": "Local dining",
     "interest_cultural": "Cultural experience",
     "submitting": "Creating your profile...",
-    "submitError": "Something went wrong. Please try again."
+    "submitError": "Something went wrong. Please try again.",
+    "transitionTitle": "Creating your K-Beauty profile",
+    "transitionSub": "This takes just a moment...",
+    "transitionStep1": "Analyzing skin type",
+    "transitionStep2": "Matching ingredients",
+    "transitionStep3": "Finding best spots"
   },
   "profile": {
     "title": "Your Beauty Profile",
-    "edit": "Edit",
+    "edit": "Edit profile",
     "continue": "Show my picks",
     "skinType": "Skin Type",
-    "concerns": "Concerns",
-    "budget": "Budget",
+    "hairType": "Hair Type",
+    "skinConcerns": "Skin Concerns",
+    "hairConcerns": "Hair Concerns",
+    "country": "Country",
+    "age": "Age",
     "stayDays": "Stay",
-    "days": "days"
+    "daysInKorea": "{days} days in Korea",
+    "budget": "Budget",
+    "travelStyle": "Travel Style",
+    "interests": "Interests",
+    "loading": "Loading your profile...",
+    "notSet": "Not set"
   },
   "chat": {
     "placeholder": "Ask me anything about K-beauty...",

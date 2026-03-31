@@ -14,6 +14,7 @@ import StepSkinHair from "./StepSkinHair";
 import StepConcerns from "./StepConcerns";
 import StepTravel from "./StepTravel";
 import StepInterests from "./StepInterests";
+import ProfileTransition from "./ProfileTransition";
 
 const TOTAL_STEPS = 4;
 const STORAGE_KEY = "onboarding_draft";
@@ -41,6 +42,7 @@ export default function OnboardingWizard({ locale }: OnboardingWizardProps) {
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [showTransition, setShowTransition] = useState(false);
 
   const methods = useForm<OnboardingFormData>({ defaultValues: DEFAULT_VALUES });
   const { watch, reset, getValues } = methods;
@@ -113,7 +115,7 @@ export default function OnboardingWizard({ locale }: OnboardingWizardProps) {
       });
       if (res.ok) {
         localStorage.removeItem(STORAGE_KEY);
-        router.push(`/${locale}/profile`);
+        setShowTransition(true);
       } else {
         setSubmitError(t("submitError"));
         console.error("Onboarding submit failed:", res.status);
@@ -127,6 +129,10 @@ export default function OnboardingWizard({ locale }: OnboardingWizardProps) {
   }
 
   const stepTitles = [t("step1Title"), t("step2Title"), t("step3Title"), t("step4Title")];
+
+  if (showTransition) {
+    return <ProfileTransition onComplete={() => router.push(`/${locale}/profile`)} />;
+  }
 
   return (
     <FormProvider {...methods}>
