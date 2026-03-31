@@ -6,6 +6,7 @@ import { useState } from "react";
 import type { Product, LocalizedText } from "@/shared/types/domain";
 import { Skeleton } from "@/client/ui/primitives/skeleton";
 import { cn } from "@/shared/utils/cn";
+import { localized } from "@/shared/utils/localized";
 import HighlightBadge from "./HighlightBadge";
 
 type ProductCardProps = {
@@ -15,11 +16,6 @@ type ProductCardProps = {
   whyRecommended?: string;
   locale: string;
 };
-
-function localized(text: LocalizedText | null | undefined, locale: string): string {
-  if (!text) return "";
-  return text[locale as keyof LocalizedText] ?? text.en ?? "";
-}
 
 function formatPrice(price: number | null): string {
   if (price === null) return "";
