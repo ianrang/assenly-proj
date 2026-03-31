@@ -25,7 +25,7 @@ function formatPriceRange(min: number | null, max: number | null): string {
 
 export default function TreatmentCard({ treatment, clinic, whyRecommended, stayDays, locale }: TreatmentCardProps) {
   const isHighlighted = treatment.is_highlighted && treatment.highlight_badge !== null;
-  const downtimeWarning = stayDays && treatment.downtime_days
+  const downtimeWarning = stayDays !== null && stayDays !== undefined && treatment.downtime_days !== null && treatment.downtime_days > 0
     ? treatment.downtime_days >= stayDays * 0.5
     : false;
 
@@ -94,7 +94,7 @@ export default function TreatmentCard({ treatment, clinic, whyRecommended, stayD
       </div>
 
       {/* Downtime Warning */}
-      {downtimeWarning && stayDays && treatment.downtime_days && (
+      {downtimeWarning && stayDays !== null && stayDays !== undefined && stayDays > 0 && treatment.downtime_days !== null && (
         <p className="mb-3 text-[10px] font-medium text-coral">
           ⚠ Recovery overlaps {Math.round((treatment.downtime_days / stayDays) * 100)}% of your stay
         </p>

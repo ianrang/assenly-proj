@@ -3,6 +3,7 @@
 import "client-only";
 
 import type { LocalizedText } from "@/shared/types/domain";
+import { localized } from "@/shared/utils/localized";
 
 type HighlightBadgeProps = {
   isHighlighted: boolean;
@@ -17,7 +18,7 @@ type HighlightBadgeProps = {
 export default function HighlightBadge({ isHighlighted, badge, locale }: HighlightBadgeProps) {
   if (!isHighlighted || !badge) return null;
 
-  const text = badge[locale as keyof LocalizedText] ?? badge.en;
+  const text = localized(badge, locale);
   if (!text) return null;
 
   return (
