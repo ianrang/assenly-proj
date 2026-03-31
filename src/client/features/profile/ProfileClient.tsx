@@ -22,13 +22,19 @@ type ProfileState =
 
 export default function ProfileClient({ locale }: ProfileClientProps) {
   const t = useTranslations("profile");
+  const tc = useTranslations("common");
   const router = useRouter();
   const [state, setState] = useState<ProfileState>({ status: "loading" });
 
   useEffect(() => {
+    const controller = new AbortController();
+
     async function fetchProfile() {
       try {
-        const res = await fetch("/api/profile", { credentials: "include" });
+        const res = await fetch("/api/profile", {
+          credentials: "include",
+          signal: controller.signal,
+        });
         if (res.ok) {
           const json = await res.json();
           setState({
@@ -38,14 +44,19 @@ export default function ProfileClient({ locale }: ProfileClientProps) {
           });
         } else if (res.status === 404) {
           router.replace(`/${locale}/onboarding`);
+        } else if (res.status === 401) {
+          router.replace(`/${locale}`);
         } else {
           setState({ status: "error" });
         }
-      } catch {
+      } catch (err) {
+        if (err instanceof DOMException && err.name === "AbortError") return;
         setState({ status: "error" });
       }
     }
+
     fetchProfile();
+    return () => controller.abort();
   }, [locale, router]);
 
   if (state.status === "loading") {
@@ -65,9 +76,9 @@ export default function ProfileClient({ locale }: ProfileClientProps) {
   if (state.status === "error") {
     return (
       <div className="flex min-h-[50dvh] flex-col items-center justify-center px-5 text-center">
-        <p className="mb-4 text-sm text-muted-foreground">{t("loading")}</p>
+        <p className="mb-4 text-sm text-muted-foreground">{tc("error")}</p>
         <Button size="cta" onClick={() => window.location.reload()}>
-          Retry
+          {tc("retry")}
         </Button>
       </div>
     );

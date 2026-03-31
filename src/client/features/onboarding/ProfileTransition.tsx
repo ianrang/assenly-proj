@@ -2,7 +2,7 @@
 
 import "client-only";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { SectionTitle, BodyText } from "@/client/ui/primitives/typography";
 
@@ -16,15 +16,19 @@ type ProfileTransitionProps = {
 export default function ProfileTransition({ onComplete }: ProfileTransitionProps) {
   const t = useTranslations("onboarding");
   const [completedSteps, setCompletedSteps] = useState(0);
+  const onCompleteRef = useRef(onComplete);
+  onCompleteRef.current = onComplete;
 
   useEffect(() => {
     if (completedSteps >= STEPS.length) {
-      const timer = setTimeout(onComplete, STEP_DELAY_MS);
+      const timer = setTimeout(() => {
+        try { onCompleteRef.current(); } catch { /* 라우팅 에러는 Next.js가 처리 */ }
+      }, STEP_DELAY_MS);
       return () => clearTimeout(timer);
     }
     const timer = setTimeout(() => setCompletedSteps((s) => s + 1), STEP_DELAY_MS);
     return () => clearTimeout(timer);
-  }, [completedSteps, onComplete]);
+  }, [completedSteps]);
 
   return (
     <div className="flex min-h-[50dvh] flex-col items-center justify-center px-5 text-center">
