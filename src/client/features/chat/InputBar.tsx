@@ -45,7 +45,10 @@ export default function InputBar({ onSend, disabled }: InputBarProps) {
     if (!trimmed || disabled) return;
     onSend(trimmed);
     setValue("");
-    textareaRef.current?.focus();
+    if (textareaRef.current) {
+      textareaRef.current.style.height = "auto";
+      textareaRef.current.focus();
+    }
   }
 
   return (
@@ -57,13 +60,19 @@ export default function InputBar({ onSend, disabled }: InputBarProps) {
         <textarea
           ref={textareaRef}
           value={value}
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => {
+            setValue(e.target.value);
+            // Auto-grow: JS 기반 (fieldSizing 미지원 브라우저 호환)
+            const el = e.target;
+            el.style.height = "auto";
+            el.style.height = `${Math.min(el.scrollHeight, 120)}px`;
+          }}
           onKeyDown={handleKeyDown}
           placeholder={t("placeholder")}
           disabled={disabled}
           rows={1}
           className="flex-1 resize-none rounded-lg border border-border bg-transparent px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:border-primary focus:outline-none focus:ring-2 focus:ring-ring/50 disabled:opacity-50"
-          style={{ maxHeight: "120px", fieldSizing: "content" } as React.CSSProperties}
+          style={{ maxHeight: "120px" }}
         />
         <Button
           size="sm"

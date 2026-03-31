@@ -20,9 +20,11 @@ type MessageListProps = {
 export default function MessageList({ messages, isStreaming }: MessageListProps) {
   const bottomRef = useRef<HTMLDivElement>(null);
 
+  const lastContent = messages[messages.length - 1]?.content ?? "";
+
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages.length, isStreaming]);
+  }, [messages.length, isStreaming, lastContent]);
 
   return (
     <div className="flex-1 overflow-y-auto px-4 py-4" role="log" aria-live="polite">
