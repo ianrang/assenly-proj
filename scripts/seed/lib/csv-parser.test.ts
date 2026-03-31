@@ -1,7 +1,7 @@
 // @vitest-environment node
 import { describe, it, expect } from "vitest";
 
-import { parseCsvString } from "./csv-parser";
+import { parseCsvString, stringifyCsvRows } from "./csv-parser";
 
 // ── parseCsvString 테스트 ─────────────────────────────────
 
@@ -87,5 +87,44 @@ describe("parseCsvString", () => {
 
     expect(result[0].name).toBe(" Serum ");
     expect(result[0].price).toBe(" 25000 ");
+  });
+});
+
+// ── stringifyCsvRows 테스트 ─────────────────────────────────
+
+describe("stringifyCsvRows", () => {
+  it("기본: 객체 배열 → CSV 문자열 (헤더 포함)", () => {
+    const rows = [
+      { name: "Serum", price: "25000" },
+      { name: "Toner", price: "18000" },
+    ];
+
+    const csv = stringifyCsvRows(rows, ["name", "price"]);
+
+    // BOM + 헤더 + 2행
+    expect(csv).toContain("name,price");
+    expect(csv).toContain("Serum,25000");
+    expect(csv).toContain("Toner,18000");
+  });
+
+  it("특수 문자: 콤마/따옴표 포함 필드 이스케이프", () => {
+    const rows = [
+      { name: "Green Tea, Serum", desc: 'with "quotes"' },
+    ];
+
+    const csv = stringifyCsvRows(rows, ["name", "desc"]);
+
+    // 콤마 포함 → 인용 부호 감싸기, 따옴표 → 이중 따옴표
+    expect(csv).toContain('"Green Tea, Serum"');
+    expect(csv).toContain('"with ""quotes"""');
+  });
+
+  it("빈 배열: 헤더만 출력", () => {
+    const csv = stringifyCsvRows([], ["name", "price"]);
+
+    expect(csv).toContain("name,price");
+    // 데이터 행 없음 — 헤더 줄만
+    const lines = csv.trim().split("\n");
+    expect(lines).toHaveLength(1);
   });
 });

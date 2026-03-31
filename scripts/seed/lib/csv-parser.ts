@@ -6,6 +6,7 @@
 
 import { readFileSync } from "node:fs";
 import { parse } from "csv-parse/sync";
+import { stringify } from "csv-stringify/sync";
 
 // ── 옵션 ──────────────────────────────────────────────────────
 
@@ -46,4 +47,18 @@ export function parseCsvFile(
     encoding: options?.encoding ?? "utf-8",
   });
   return parseCsvString(content, options);
+}
+
+// ── CSV 쓰기 ─────────────────────────────────────────────────
+
+/** Record 배열 → CSV 문자열 (BOM 포함, 구글시트 호환) */
+export function stringifyCsvRows(
+  rows: Record<string, string>[],
+  columns?: string[],
+): string {
+  return stringify(rows, {
+    header: true,
+    columns,
+    bom: true,
+  });
 }
