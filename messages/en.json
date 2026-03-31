@@ -132,11 +132,13 @@
   "chat": {
     "placeholder": "Ask me anything about K-beauty...",
     "send": "Send",
-    "suggestedQuestions": [
-      "What skincare products are good for my skin type?",
-      "Recommend a clinic near Gangnam",
-      "I want a facial treatment with no downtime"
-    ]
+    "streaming": "AI is thinking...",
+    "greeting": "Hi! I'm your K-Beauty guide in Seoul. Ask me anything, or tell me about yourself for better picks.",
+    "suggestedQ1": "What skincare products are good for my skin type?",
+    "suggestedQ2": "Recommend a clinic near Gangnam",
+    "suggestedQ3": "I want a facial treatment with no downtime",
+    "errorRetry": "Something went wrong. Tap to retry.",
+    "rateLimited": "Please wait a moment before sending another message."
   },
   "tabs": {
     "shops": "Shops",

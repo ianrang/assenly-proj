@@ -2,9 +2,28 @@
 
 import "client-only";
 
-// TODO: Implement message bubble — TDD §3.2
-// - User/Assistant message rendering
-// - Card data inline display
-export default function MessageBubble() {
-  return <div>MessageBubble — TODO</div>;
+import { cn } from "@/shared/utils/cn";
+
+type MessageBubbleProps = {
+  role: "user" | "assistant";
+  children: React.ReactNode;
+};
+
+export default function MessageBubble({ role, children }: MessageBubbleProps) {
+  const isUser = role === "user";
+
+  return (
+    <div className={cn("flex", isUser ? "justify-end" : "justify-start")}>
+      <div
+        className={cn(
+          "max-w-[80%] rounded-[10px] px-3.5 py-2.5 text-sm leading-relaxed",
+          isUser
+            ? "rounded-br-sm bg-primary text-primary-foreground"
+            : "rounded-bl-sm border border-border-warm bg-surface-warm text-foreground"
+        )}
+      >
+        {children}
+      </div>
+    </div>
+  );
 }
