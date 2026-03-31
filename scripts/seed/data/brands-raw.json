@@ -1,0 +1,1243 @@
+[
+  {
+    "source": "manual",
+    "sourceId": "3ce",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "쓰리씨이",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "makeup",
+        "lip products",
+        "color cosmetics"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "abib",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "아비브",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "heartleaf",
+        "calming skincare",
+        "pH balanced"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "ahc",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "에이에이치씨",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "eye cream",
+        "anti-aging",
+        "aesthetic skincare"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "aestura",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "에스트라",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "sensitive skin",
+        "dermatologist-tested",
+        "atobarrier"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "amorepacific",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "아모레퍼시픽",
+      "origin": "KR",
+      "tier": "luxury",
+      "is_essenly": false,
+      "specialties": [
+        "green tea",
+        "anti-aging",
+        "premium skincare"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "amos-professional",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "아모스프로페셔널",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "hair care",
+        "scalp treatment",
+        "salon quality"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "anua",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "아누아",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "heartleaf",
+        "toner",
+        "gentle cleansing"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "atopalm",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "아토팜",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "sensitive skin",
+        "ceramide",
+        "derma skincare"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "banila-co",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "바닐라코",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "cleansing balm",
+        "makeup remover",
+        "clean beauty"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "beauty-of-joseon",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "조선미녀",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "traditional ingredients",
+        "ginseng",
+        "rice water"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "belif",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "빌리프",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "herbal skincare",
+        "moisturizer",
+        "napier formula"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "bio-heal-boh",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "바이오힐보",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "probioderm",
+        "microbiome",
+        "barrier care"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "bioderma",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "바이오더마",
+      "origin": "FR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "micellar water",
+        "sensitive skin",
+        "dermatological"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "bonajour",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "보나쥬르",
+      "origin": "KR",
+      "tier": "indie",
+      "is_essenly": false,
+      "specialties": [
+        "natural ingredients",
+        "green tea",
+        "vegan"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "by-wishtrend",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "바이위시트렌드",
+      "origin": "KR",
+      "tier": "indie",
+      "is_essenly": false,
+      "specialties": [
+        "vitamin C",
+        "propolis",
+        "active ingredients"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "cell-fusion-c",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "셀퓨전씨",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "sunscreen",
+        "derma cosmetics",
+        "post-procedure care"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "cetaphil",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "세타필",
+      "origin": "US",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "sensitive skin",
+        "gentle cleanser",
+        "dermatologist-recommended"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "clio",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "클리오",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "makeup",
+        "cushion foundation",
+        "eye makeup"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "cosrx",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "코스알엑스",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "acne care",
+        "snail mucin",
+        "minimal ingredients"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "dalba",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "달바",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "white truffle",
+        "vegan",
+        "luxury natural"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "dear-klairs",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "디어클레어스",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "sensitive skin",
+        "vitamin C",
+        "gentle formulas"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "dr-g",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "닥터지",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "red blemish",
+        "cleansing",
+        "derma skincare"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "dr-jart",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "닥터자르트",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "ceramidin",
+        "cicapair",
+        "derma skincare"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "espoir",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "에스쁘아",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "makeup",
+        "foundation",
+        "professional beauty"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "etude",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "에뛰드",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "makeup",
+        "lip tint",
+        "playful beauty"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "fillimilli",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "필리밀리",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "beauty tools",
+        "brushes",
+        "accessories"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "goodal",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "구달",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "green tangerine",
+        "vitamin C",
+        "brightening"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "hanyul",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "한율",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "artemisia",
+        "traditional Korean ingredients",
+        "hanbang"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "happy-bath",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "해피바스",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "body wash",
+        "bath products",
+        "family care"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "heimish",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "헤이미쉬",
+      "origin": "KR",
+      "tier": "indie",
+      "is_essenly": false,
+      "specialties": [
+        "cleansing balm",
+        "Bulgarian rose",
+        "natural"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "hera",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "헤라",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "cushion foundation",
+        "luxury makeup",
+        "anti-aging"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "huxley",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "헉슬리",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "prickly pear seed oil",
+        "Saharan ingredients",
+        "minimal luxury"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "illiyoon",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "일리윤",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "ceramide",
+        "sensitive skin",
+        "family skincare"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "innisfree",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "이니스프리",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "green tea",
+        "volcanic clay",
+        "natural ingredients"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "isa-knox",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "이자녹스",
+      "origin": "KR",
+      "tier": "luxury",
+      "is_essenly": false,
+      "specialties": [
+        "anti-aging",
+        "premium skincare",
+        "LG household"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "isoi",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "아이소이",
+      "origin": "KR",
+      "tier": "indie",
+      "is_essenly": false,
+      "specialties": [
+        "Bulgarian rose",
+        "natural",
+        "EWG verified"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "jm-solution",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "제이엠솔루션",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "sheet masks",
+        "honey",
+        "marine pearl"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "jung-saem-mool",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "정샘물",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "makeup artist brand",
+        "skin luminizer",
+        "base makeup"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "kundal",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "쿤달",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "hair care",
+        "honey",
+        "natural fragrance"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "lador",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "라도어",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "hair treatment",
+        "protein care",
+        "damage repair"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "laneige",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "라네즈",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "hydration",
+        "sleeping masks",
+        "lip care"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "lilybyred",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "릴리바이레드",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "lip tint",
+        "trendy makeup",
+        "Gen-Z beauty"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "mamonde",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "마몽드",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "flower-based",
+        "rose water",
+        "natural beauty"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "manyo",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "마녀공장",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "bifida",
+        "galactomyces",
+        "fermented skincare"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "mediheal",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "메디힐",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "sheet masks",
+        "ampoule",
+        "NMF"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "mise-en-scene",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "미장센",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "hair styling",
+        "hair serum",
+        "damage care"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "missha",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "미샤",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "BB cream",
+        "first treatment essence",
+        "affordable skincare"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "moremo",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "모레모",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "hair care",
+        "water treatment",
+        "scalp care"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "neogen",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "네오젠",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "dermalogy",
+        "peeling pads",
+        "real ferment"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "numbuzin",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "넘버즈인",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "numbered skincare",
+        "toner",
+        "brightening"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "ohui",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "오휘",
+      "origin": "KR",
+      "tier": "luxury",
+      "is_essenly": false,
+      "specialties": [
+        "anti-aging",
+        "luxury skincare",
+        "cell revolution"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "one-thing",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "원씽",
+      "origin": "KR",
+      "tier": "indie",
+      "is_essenly": false,
+      "specialties": [
+        "single ingredient",
+        "toner",
+        "minimal formulas"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "papa-recipe",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "파파레서피",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "honey",
+        "bombee masks",
+        "natural ingredients"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "peripera",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "페리페라",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "lip tint",
+        "ink products",
+        "affordable makeup"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "primera",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "프리메라",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "seed energy",
+        "organience",
+        "natural premium"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "real-barrier",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "리얼배리어",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "barrier cream",
+        "sensitive skin",
+        "ceramide"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "romand",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "롬앤",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "lip products",
+        "juicy lasting tint",
+        "K-beauty makeup"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "round-lab",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "라운드랩",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "dokdo",
+        "birch juice",
+        "Korean nature ingredients"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "ryo",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "려",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "hair loss prevention",
+        "hanbang",
+        "scalp care"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "skin1004",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "스킨1004",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "centella asiatica",
+        "Madagascar",
+        "soothing"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "skinfood",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "스킨푸드",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "food-based skincare",
+        "black sugar",
+        "egg white"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "some-by-mi",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "썸바이미",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "AHA BHA PHA",
+        "miracle toner",
+        "acne care"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "son-and-park",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "손앤박",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "beauty water",
+        "makeup artist brand",
+        "multi-use"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "sulwhasoo",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "설화수",
+      "origin": "KR",
+      "tier": "luxury",
+      "is_essenly": false,
+      "specialties": [
+        "ginseng",
+        "anti-aging",
+        "hanbang"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "tamburins",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "탬버린즈",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "hand cream",
+        "fragrance",
+        "artistic beauty"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "the-face-shop",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "더페이스샵",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "rice water",
+        "natural ingredients",
+        "affordable skincare"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "the-history-of-whoo",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "더후",
+      "origin": "KR",
+      "tier": "luxury",
+      "is_essenly": false,
+      "specialties": [
+        "royal court",
+        "hanbang luxury",
+        "anti-aging"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "the-saem",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "더샘",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "concealer",
+        "tip concealer",
+        "affordable makeup"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "tonymoly",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "토니모리",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "fun packaging",
+        "fruit-based",
+        "affordable skincare"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "too-cool-for-school",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "투쿨포스쿨",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "egg mellow",
+        "artclass",
+        "playful beauty"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "torriden",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "토리든",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "hyaluronic acid",
+        "dive-in serum",
+        "hydration"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "vt",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "브이티",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "reedle shot",
+        "cica",
+        "innovative textures"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "wakemake",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "웨이크메이크",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "olive young exclusive",
+        "trendy makeup",
+        "lip products"
+      ]
+    },
+    "fetchedAt": "2026-03-31T00:00:00Z"
+  }
+]

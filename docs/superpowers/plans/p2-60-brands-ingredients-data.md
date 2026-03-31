@@ -170,59 +170,82 @@ ingredient: [
 
 ---
 
-## Step 2: Brands 50+ 데이터 (JSON → enrich → review → load)
+## Step 2: Brands 73건 데이터 (JSON → enrich → review → load)
 
 ### 데이터 소스
 
-P2-59 manifests에서 브랜드명 추출:
-- products-skincare.yaml: brand 필드에서 고유 브랜드 추출
-- products-other.yaml: 동일
-- M1 스켈레톤 5개 브랜드 포함
+P2-59 manifests에서 73개 고유 브랜드 추출 (대소문자 정규화: Clio/CLIO→Clio 등).
+M1 스켈레톤 5개(Innisfree, Laneige, Sulwhasoo, COSRX, MISSHA)의 origin/tier/specialties 재사용.
 
-### JSON 형식 (RawRecord[])
+### 2-A. brands-raw.json 생성
+
+파일 위치: `scripts/seed/data/brands-raw.json`
 
 ```json
-[
-  {
-    "source": "manual",
-    "sourceId": "innisfree",
-    "entityType": "brand",
-    "data": {
-      "name_ko": "이니스프리",
-      "origin": "KR",
-      "tier": "moderate",
-      "is_essenly": false,
-      "specialties": ["green tea", "volcanic clay", "natural ingredients"]
-    },
-    "fetchedAt": "2026-03-31T00:00:00Z"
-  }
-]
+{
+  "source": "manual",
+  "sourceId": "innisfree",       // 소문자 slug — deterministic UUID 키
+  "entityType": "brand",
+  "data": {
+    "name_ko": "이니스프리",
+    "origin": "KR",
+    "tier": "moderate",
+    "is_essenly": false,
+    "specialties": ["green tea", "volcanic clay", "natural ingredients"]
+  },
+  "fetchedAt": "2026-03-31T00:00:00Z"
+}
 ```
 
-### 실행 경로
+sourceId 규칙: 브랜드 영문명 소문자 + 공백→하이픈 (`"beauty-of-joseon"`, `"dr-jart"`).
+동일 sourceId → 동일 UUID v5 → Q-12 멱등성 보장.
+
+### tier 분류 기준 (data-collection.md §5.5)
+
+| tier | 가격대 기준 | 예시 | 목표 |
+|------|----------|------|------|
+| budget | 대표 제품 ~₩15,000 이하 | COSRX, MISSHA, The SAEM, TONYMOLY | 15+ |
+| moderate | ₩15,000~₩40,000 | Innisfree, Round Lab, Anua, Torriden | 15+ |
+| premium | ₩40,000~₩80,000 | Laneige, Dr.Jart+, Hera, primera | 10+ |
+| luxury | ₩80,000+ | Sulwhasoo, The History of Whoo, OHUI | 5+ |
+| indie | 소규모/독립 브랜드 | One Thing, Bonajour, Heimish | 5+ |
+
+### 비한국 브랜드
+
+| 브랜드 | origin |
+|--------|--------|
+| Bioderma | FR |
+| Cetaphil | US |
+| 나머지 전부 | KR |
+
+### 2-B~E. CLI 실행 (환경변수 필요)
 
 ```bash
-# 1. enrich (번역만 — classifySpecs=[], generateSpecs=[])
-npx tsx scripts/seed/enrich.ts --input data/brands-raw.json --entity-types brand
+# .env.local 로딩 후 실행
+npx dotenv -e .env.local -- npx tsx scripts/seed/enrich.ts \
+  --input scripts/seed/data/brands-raw.json --entity-types brand
 
-# 2. review export
-npx tsx scripts/seed/export-review.ts --input data/brands-enriched.json --entity-types brand
+npx tsx scripts/seed/export-review.ts \
+  --input scripts/seed/data/brands-enriched.json --entity-types brand
 
-# 3. 사용자 검수 (origin, tier 정확성)
+# 사용자 검수 (origin, tier 정확성)
 
-# 4. review import
-npx tsx scripts/seed/import-review.ts --enriched data/brands-enriched.json --reviewed data/review/brand.csv
+npx dotenv -e .env.local -- npx tsx scripts/seed/import-review.ts \
+  --enriched scripts/seed/data/brands-enriched.json \
+  --reviewed scripts/seed/data/review/brand.csv
 
-# 5. validate
-npx tsx scripts/seed/validate.ts --input data/brands-validated.json
+npx tsx scripts/seed/validate.ts --input scripts/seed/data/brands-validated.json
 
-# 6. load
-npx tsx scripts/seed/load.ts --input data/brands-validated.json
+npx dotenv -e .env.local -- npx tsx scripts/seed/load.ts \
+  --input scripts/seed/data/brands-validated.json
 ```
 
-### Tier 분포 기준 (data-collection.md §5.5)
+### 독립성 검증
 
-budget 15+ / moderate 15+ / premium 10+ / luxury 5+ / indie 5+ = 50+
+- brands-raw.json은 순수 데이터 파일 → 코드 변경 0
+- 기존 CLI(enrich/export-review/import-review/validate/load) 그대로 사용
+- server/, client/, shared/ 무수정
+- M1 스켈레톤과 ID 다름 → 공존 (방안 A, P2-63b에서 정리)
 
 ---
 
