@@ -119,7 +119,7 @@ describe("loadCosIngIngredients", () => {
 
     expect(mockParseCsvFile).toHaveBeenCalledWith(
       "./data/cosing.csv",
-      { delimiter: ";" },
+      { delimiter: "," },
     );
   });
 
@@ -131,7 +131,7 @@ describe("loadCosIngIngredients", () => {
 
     expect(mockParseCsvFile).toHaveBeenCalledWith(
       "/custom/path/cosing.csv",
-      { delimiter: ";" },
+      { delimiter: "," },
     );
   });
 

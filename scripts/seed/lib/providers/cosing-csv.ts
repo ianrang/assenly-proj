@@ -13,8 +13,8 @@ import type { RawRecord } from "../types";
 
 // ── 상수 (G-10 매직넘버 금지) ──────────────────────────────
 
-/** EU CosIng CSV 구분자 (EU 표준 세미콜론) */
-const COSING_DELIMITER = ";";
+/** EU CosIng CSV 구분자 (2020-12-30 Wayback 버전: 콤마) */
+const COSING_DELIMITER = ",";
 
 // ── CSV 행 → RawRecord 변환 ───────────────────────────────
 
