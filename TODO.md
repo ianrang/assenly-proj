@@ -345,7 +345,7 @@
 | P2-33 | 온보딩 페이지 + 4단계 컴포넌트        | Step 1~4 (피부/헤어, 고민, 여행, 관심). react-hook-form + OptionGroup + ProgressBar + localStorage 백업                    | P2-29       | ✅   |
 | P2-34 | 프로필 전환/확인 화면              | ProfileTransition 3단계 체크 애니메이션 + ProfileCard(UP+JC) + ProfileClient(로딩/에러/404) + Edit/ShowPicks 버튼             | P2-29       | ✅   |
 | P2-39 | HighlightBadge 컴포넌트       | VP-1 비개입 시각 강조. is_highlighted+badge 조건부 렌더링. teal 토큰. 다국어 폴백                                                  | P2-29       | ✅   |
-| P2-36 | 5영역 탭 바                   | Tabs 프리미티브 variant=line 재사용. 5탭 (shops/clinic 활성, salon/eats/exp Coming soon)                                    | P2-29       | ✅   |
+| P2-36 | 5영역 탭 바                   | 🔶 **MVP 보류**: Chat에서 TabBar 제거. 대화 흐름 내 AI 카드 삽입 방식이 VP-4에 부합. v0.2에서 필요성 재검토 (PRD §3.4 탭 구성 보류 참조) | P2-29       | 🔶  |
 | P2-37 | ProductCard 컴포넌트          | 4상태(normal/highlighted/skeleton/img-error) + HighlightBadge + localized() + Skeleton                              | P2-39       | ✅   |
 | P2-38 | TreatmentCard 컴포넌트        | 시술 카드(가격 범위/시간/다운타임 경고 coral) + HighlightBadge + localized() 공용 추출                                             | P2-39       | ✅   |
 | P2-35 | Chat 인터페이스                | AI SDK v6 useChat + MessageBubble/List + InputBar(visualViewport) + SuggestedQuestions(경로B) + StreamingIndicator + TabBar | P2-36~P2-38 | ✅   |
@@ -441,7 +441,7 @@
 | P2-57  | 뷰티 지식 KB 작성 (K1)                       | **완료 (2026-03-26)**. 성분 가이드 20종 + 시술 가이드 15종 = 35종 AI 초안. 전체 품질 검증 통과 (면책, 필수 섹션, 200-2000자). K2(지역+상식)는 MVP 출시 전 별도                                        | K1→K2 | ✅   |
 | P2-58  | M1 스켈레톤 데이터 적재                         | **완료 (2026-03-26)**. 7엔티티 50건 YAML. FK 정합성 검증, 열거값 검증, D-14(images=[]) 모두 통과. domain.ts 전체 필드 준수                                                            | M1    | ✅   |
 | P2-59  | 큐레이션 리스트 확정                            | **완료 (2026-03-26)**. products 200 + stores 50 + clinics 30 + treatments 50 = 330건. 커버리지 검증: skin_type 5종 ✅, concerns 11종 ✅, 브랜드 80개(최대8/브랜드) ✅, 관광객접근 95% ✅ | M1    | ✅   |
-| P2-60  | Phase A: brands 50+ / ingredients 100+ | **Step 2 Brands 완료 (2026-04-01)**. Step 1: classifier strict + function spec + inci_name 매핑. Step 2: brands 73건 JSON→enrich(6언어)→검수(영문명 15건 수정)→validate→DB 적재. §5.5 tier 전수 충족(budget 27/moderate 23/premium 13/luxury 5/indie 5). Step 3(ingredients) 대기 중 | M2    | 🔶   |
+| P2-60  | Phase A: brands 50+ / ingredients 100+ | **완료 (2026-04-01)**. Step 1: classifier strict + function spec + inci_name 매핑 (테스트 6건). Step 2: brands 73건 JSON→enrich(6언어)→검수(영문명 15건 수정)→DB 적재. Step 3: ingredients S3(21,722)+S6+S4→105건 필터→enrich(번역+function+caution)→DB 적재. CosIng 구분자 수정(;→,) | M2    | ✅   |
 | P2-61  | Phase A: stores 50+ (S1 자동수집)          | 카카오 API 수집 → 분류 → AI 번역 → 수동 보완(영업시간, english_support, tourist_services, 이미지)                                                                               | M2    | ⬜   |
 | P2-62  | Phase A: clinics 30+ (S1 자동수집)         | 카카오 API 수집 → 분류 → AI 번역 → 수동 보완(foreigner_friendly, license_verified, 이미지). english_support >= basic 필수                                                     | M2    | ⬜   |
 | P2-63  | Phase A: treatments 50+                | 수동 입력 + AI 보강(target_concerns, suitable_skin_types, description, precautions). 전문가 검수 필수. downtime_days 정확성                                                 | M2    | ⬜   |
