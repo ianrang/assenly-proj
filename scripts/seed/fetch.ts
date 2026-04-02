@@ -3,7 +3,7 @@
 // Usage: npx tsx scripts/seed/fetch.ts [--targets places,ingredients,products] [--output ./data/raw.json]
 // ============================================================
 
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { parseArgs, splitArg } from "./parse-args";
 import { fetchAllRecords } from "./lib/fetch-service";
 import type { FetchOptions } from "./lib/fetch-service";
@@ -15,6 +15,12 @@ async function main() {
 
   const options: FetchOptions = {};
   if (targets && targets.length > 0) options.targets = targets;
+
+  if (args["place-queries"]) {
+    options.placeQueries = JSON.parse(
+      readFileSync(args["place-queries"], "utf-8"),
+    );
+  }
 
   console.log(`[fetch] targets: ${targets?.join(", ") ?? "all"}`);
 

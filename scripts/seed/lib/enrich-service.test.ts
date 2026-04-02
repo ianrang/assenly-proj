@@ -260,6 +260,61 @@ describe("enrichRecords", () => {
     expect(enriched[0].enrichments.confidence.suitable_skin_types).toBe(0.9);
   });
 
+  // ── store 보강: store_type + district 매핑 ──
+
+  it("store: store_type 자동분류 + district 매핑 + description 생성", async () => {
+    mockTranslateFields.mockResolvedValue({
+      translated: { name: { ko: "올리브영 강남역점", en: "Olive Young Gangnam" } },
+      translatedFields: ["name"],
+    });
+    mockGenerateDescriptions.mockResolvedValue({
+      generated: { description: { ko: "K-뷰티 매장", en: "K-beauty store" } },
+      generatedFields: ["description"],
+    });
+
+    const records = [makeRecord("store", {
+      name: { ko: "올리브영 강남역점", en: "" },
+      address: { ko: "서울 강남구 강남대로 396" },
+      location: { lat: 37.4979, lng: 127.0276 },
+      raw: { category_name: "가정,생활 > 화장품" },
+    })];
+
+    const { records: enriched } = await enrichRecords(records, { logDir: "/tmp" });
+
+    // store_type 자동분류 (FIELD_MAPPINGS)
+    expect(enriched[0].data.store_type).toBe("olive_young");
+
+    // district 자동매핑 (FIELD_MAPPINGS)
+    expect(enriched[0].data.district).toBe("gangnam");
+
+    // description 생성
+    expect(mockGenerateDescriptions).toHaveBeenCalled();
+
+    // 분류 미호출 (classifySpecs=[])
+    expect(mockClassifyFields).not.toHaveBeenCalled();
+  });
+
+  it("store: district 매핑 — 주소 없으면 null", async () => {
+    mockTranslateFields.mockResolvedValue({
+      translated: { name: { ko: "매장", en: "Store" } },
+      translatedFields: ["name"],
+    });
+    mockGenerateDescriptions.mockResolvedValue({
+      generated: { description: { ko: "설명", en: "Desc" } },
+      generatedFields: ["description"],
+    });
+
+    const records = [makeRecord("store", {
+      name: { ko: "뷰티 매장", en: "" },
+      raw: {},
+    })];
+
+    const { records: enriched } = await enrichRecords(records, { logDir: "/tmp" });
+
+    expect(enriched[0].data.district).toBeNull();
+    expect(enriched[0].data.store_type).toBe("other");
+  });
+
   // ── 건별 try-catch ──
 
   it("3건 중 2번째 에러 → 1,3번째 성공 + PipelineError 1건", async () => {
@@ -341,7 +396,7 @@ describe("enrichRecords", () => {
       generatedFields: ["description"],
     });
 
-    const records = [makeRecord("store", { name_ko: "매장" })];
+    const records = [makeRecord("store", { name: { ko: "매장", en: "" } })];
     await enrichRecords(records, { targetLangs: ["en"], logDir: "/tmp" });
 
     // 번역 1회만 (재번역 없음)

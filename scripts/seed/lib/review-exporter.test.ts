@@ -191,6 +191,43 @@ describe("exportForReview", () => {
     expect(csvRows[0].description_en).toBe("Store desc");
   });
 
+  it("store: 8개 검수 컬럼 전체 출력", () => {
+    const records = [makeEnriched("store", {
+      store_type: "olive_young",
+      district: "gangnam",
+      address: { ko: "서울 강남구 강남대로 396" },
+      phone: "02-1234-5678",
+      english_support: "basic",
+      tourist_services: ["tax_refund", "multilingual_staff"],
+      description: { ko: "K-뷰티 매장", en: "K-beauty store" },
+    })];
+
+    exportForReview(records, { outputDir: "/tmp/review", timestamp: FIXED_TIMESTAMP });
+
+    const [csvRows, csvColumns] = mockStringifyCsvRows.mock.calls[0];
+
+    // 공통(4) + store 전용(8) + 검수메타(2) = 14 컬럼
+    expect(csvColumns).toHaveLength(14);
+    expect(csvColumns).toContain("store_type");
+    expect(csvColumns).toContain("district");
+    expect(csvColumns).toContain("address_ko");
+    expect(csvColumns).toContain("phone");
+    expect(csvColumns).toContain("english_support");
+    expect(csvColumns).toContain("tourist_services");
+    expect(csvColumns).toContain("description_ko");
+    expect(csvColumns).toContain("description_en");
+
+    // 행 값 검증
+    expect(csvRows[0].store_type).toBe("olive_young");
+    expect(csvRows[0].district).toBe("gangnam");
+    expect(csvRows[0].address_ko).toBe("서울 강남구 강남대로 396");
+    expect(csvRows[0].phone).toBe("02-1234-5678");
+    expect(csvRows[0].english_support).toBe("basic");
+    expect(csvRows[0].tourist_services).toBe("tax_refund|multilingual_staff");
+    expect(csvRows[0].description_ko).toBe("K-뷰티 매장");
+    expect(csvRows[0].description_en).toBe("K-beauty store");
+  });
+
   it("confidence 포함: enrichments.confidence 값 CSV에 반영", () => {
     const records = [makeEnriched("treatment", {
       suitable_skin_types: ["dry"],

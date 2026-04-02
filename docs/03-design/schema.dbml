@@ -297,7 +297,7 @@ Table stores {
   address jsonb [note: 'LocalizedText']
   operating_hours jsonb [note: 'Complex schedule structure. Not queried relationally.']
   english_support text [default: 'none', note: 'none/basic/good/fluent']
-  store_type text [note: 'olive_young/chicor/department_store/brand_store/pharmacy/other']
+  store_type text [note: 'olive_young/chicor/daiso/department_store/brand_store/pharmacy/other']
   tourist_services text[] [note: 'tax_refund, multilingual_staff, etc.']
   payment_methods text[] [note: 'cash, card, mobile_pay, etc.']
   nearby_landmarks text[] [note: 'Navigation reference']

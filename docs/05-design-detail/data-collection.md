@@ -72,7 +72,7 @@
 | **ingredients** | A-1 식약처 API(S3) + CosIng(S6) 자동 | — | AI 보강 + 수동 검수 |
 | **treatments/doctors** | — | 구글시트 일괄 | 개별 입력 |
 | **purchase_links** | — | 올리브영/쿠팡 링크 (수동) | — |
-| **목표** | | 200제품, 50매장, 30클리닉 — 개인화 정확도 우선 | |
+| **목표** | | 200제품, 200매장, 30클리닉 — 개인화 정확도 우선 | |
 
 > **쿠팡 파트너스 API(S7)**: MVP에서 활성화 불가 (판매 실적 15만원 미달, U-12). **보류 — 수익 발생 후 재검토.** 대체: A-3 시드 크롤링 + Channel B CSV.
 > **올리브영 한국(co.kr) 크롤링 불가**: 403 접근 차단. **올리브영 글로벌(global.oliveyoung.com)은 robots.txt /product Allow** — 단, 약관 제14조② 상업적 목적 금지 (U-13). 브랜드 사이트 1순위, 올리브영 글로벌 2순위(보조+수동검수 경유)로 운용.
@@ -543,20 +543,23 @@ LLM 번역 + 분류 → 다국어 + function 뷰티 용어 변환 (SKIN CONDITIO
 - Reddit r/AsianBeauty 상위 게시물 (수동)
 - 에센리 도메인 전문가 직접 큐레이션
 
-## 5.2 Stores (50+) 선정 기준
+## 5.2 Stores (200+) 선정 기준
 
-| 지역 | 수량 | 매장 유형 | 수량 |
+> 카카오 API(S1) 자동 수집 → 4단계 dedup → StoreTypeClassifier 자동 분류 → AI 번역+설명 → 검수.
+> P2-61: 200건+ 수집. 수동 보완(operating_hours, english_support 등)은 P2-61b에서 전수 입력.
+
+| 지역 | 비율 | 매장 유형 | 비율 |
 |------|------|---------|------|
-| 명동 | 10 | olive_young | 20 |
-| 강남 | 8 | brand_store | 12 |
-| 홍대 | 7 | department_store | 8 |
-| 이태원 | 5 | chicor | 5 |
-| 잠실 | 4 | pharmacy | 2 |
-| 성수 | 4 | other | 3 |
-| 여의도 | 3 | | |
-| 동대문 | 3 | | |
-| 압구정 | 3 | | |
-| 기타 | 3 | | |
+| 명동 | 15% | olive_young | 30% |
+| 강남 | 12% | daiso | 15% |
+| 홍대 | 10% | brand_store | 15% |
+| 이태원 | 8% | department_store | 10% |
+| 잠실 | 6% | chicor | 8% |
+| 성수 | 6% | pharmacy | 5% |
+| 여의도 | 5% | other | 17% |
+| 동대문 | 5% | | |
+| 압구정 | 5% | | |
+| 기타 | 28% | | |
 
 ## 5.3 Clinics (30+) 선정 기준
 

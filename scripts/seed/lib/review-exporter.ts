@@ -104,6 +104,12 @@ const ENTITY_REVIEW_COLUMNS: Record<EntityType, ReviewColumnDef[]> = {
     { header: "caution_skin_types_confidence", source: "enrichments", path: "confidence.caution_skin_types", format: "number", editable: false },
   ],
   store: [
+    { header: "store_type", source: "data", path: "store_type", format: "string", editable: true },
+    { header: "district", source: "data", path: "district", format: "string", editable: true },
+    { header: "address_ko", source: "data", path: "address.ko", format: "string", editable: false },
+    { header: "phone", source: "data", path: "phone", format: "string", editable: false },
+    { header: "english_support", source: "data", path: "english_support", format: "string", editable: true },
+    { header: "tourist_services", source: "data", path: "tourist_services", format: "array", editable: true },
     { header: "description_ko", source: "data", path: "description.ko", format: "string", editable: true },
     { header: "description_en", source: "data", path: "description.en", format: "string", editable: true },
   ],

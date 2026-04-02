@@ -13,9 +13,10 @@
 | 사전 완료      | 12      | 12      | 100%    | ✅      |
 | Phase 0    | 37      | 37      | 100%    | ✅      |
 | Phase 1    | 60      | 60      | 100%    | ✅      |
-| Phase 2    | 104     | 53      | 51%     | 🔶 진행중 |
-| Phase 3    | 36      | 0       | 0%      | ⬜ 미시작  |
-| **MVP 합계** | **249** | **162** | **65%** |        |
+| Phase 2    | 89      | 54      | 61%     | 🔶 진행중 |
+| Phase 3    | 33      | 0       | 0%      | ⬜ 미시작  |
+| **MVP 합계** | **231** | **163** | **71%** |        |
+| 관리자 앱 (펜딩) | 19      | 0       | 0%      | ⏸️ 펜딩  |
 
 
 **✅ Gate 0 통과 (2026-03-21) → Phase 1 (MVP 설계) 착수 준비**
@@ -282,7 +283,7 @@
 
 # Phase 2: MVP 개발
 
-> 목표: 사용자 앱 + 관리자 기본 CRUD 구현
+> 목표: 사용자 앱 구현 (관리자 앱은 Gate 2 이후 별도 진행)
 > 예상: 5~~7주 (1인) / 4~~5주 (2인)
 > 전제: Gate 1 통과
 > **실행 순서: P2-V(사전 검증) → 인프라 코드 → 이하 병렬 진행. P2-V는 Phase 0 성격의 기술 검증이나, Phase 0/1 완료 후 신규 발견 항목이므로 Phase 2 선두에 배치. 코드 작성 전 반드시 완료.**
@@ -351,7 +352,7 @@
 | P2-35 | Chat 인터페이스                | AI SDK v6 useChat + MessageBubble/List + InputBar(visualViewport) + SuggestedQuestions(경로B) + StreamingIndicator + TabBar | P2-36~P2-38 | ✅   |
 | P2-46 | MVP 흐름 재설계 — 설계 확정         | Chat-First 단일 경로 설계 문서 작성 완료. Landing 단일 CTA + 채팅 내 온보딩 + 카드 결과 + Kit CTA. 프로필/이메일 로그인 v0.2 연기. 설계: `mvp-flow-redesign.md` | P2-35       | ✅   |
 | P2-47 | Landing 단일 CTA + Chat-First 적용 | HeroSection 단일 CTA + ReturnVisitBanner 닫기 버튼 + ChatInterface hasProfile 제거 + chat.ts afterWork 프로필 INSERT + scrollbar-thin + createMinimalProfile 테스트 2개. 커밋 `4830325` | P2-46       | ✅   |
-| P2-48 | PRD/설계 문서 v0.2 범위 동기화     | **PRD 변경 범위**: (1) §3.2 분기 로직 — 재방문 흐름 "[프로필 확인]+[바로 대화]" → "Continue chatting" 단일 (2) §3.3 본문 — v0.2 범위 명시 부족, 전체 섹션에 v0.2 스코프 주석 추가 (3) §3.4 헤더 "[← 프로필]" → "[← Landing]" 또는 제거 (MVP에 프로필 없음) (4) §3.4 "경로B" 표현 → MVP 유일 경로로 재기술 (5) §3.7 흐름 전환 표 — Onboarding/Profile 경로 v0.2 명시 (6) §3.8 경로별 데이터 상태 — "경로A" 컬럼 v0.2 명시. **기타 문서**: user-screens §3/§6, data-privacy, ANALYTICS 동기화 | P2-46       | ⬜   |
+| P2-48 | PRD/설계 문서 v0.2 범위 동기화     | PRD §3.1~3.8 + §5.1/5.6 Chat-First 반영. user-screens §2.3/§3.1/§3.4/§3.5/§6.3 동기화. ANALYTICS K1 측정식 + path_a_entry v0.2 보류. data-privacy, sitemap, api-spec, tool-spec 동기화. 커밋 `aa13980` | P2-46       | ✅   |
 | P2-51 | Chat 카드 렌더링 파이프라인         | ChatInterface에서 `tool-result` 파트를 ProductCard/TreatmentCard로 렌더링. **현재 `text` 파트만 처리, tool-result 폐기 중**. 변경: (1) ChatMessage 타입 확장 — string content → parts 배열 (text + card) (2) MessageList/MessageBubble에서 card 파트 렌더링 (3) tool-result JSON → ProductCard/TreatmentCard props 매핑 (4) is_highlighted 감지 → KitCtaCard 삽입 트리거 준비. VP-4(대화+카드 하이브리드) 핵심. user-screens §6.1 컴포넌트 트리 참조 | P2-47       | ⬜   |
 | P2-40 | Kit CTA 컴포넌트 (UI만)        | KitCtaCard + KitCtaSheet(Bottom sheet/Drawer). **UI 컴포넌트만 구현**. Chat 내 인라인 삽입은 P2-51(카드 렌더링) 이후 연동. user-screens §6.6 참조 | P2-51       | ⬜   |
 | P2-49 | "Show recommendations" 버튼 | 채팅 내 온보딩 완료 후 액션 버튼. SuggestedQuestions 패턴 재사용. 클릭 → 추천 요청 자동 전송. **P2-51(카드 렌더링) 선행 필요** — 카드 인라인 삽입 기능이 있어야 추천 결과 표시 가능 | P2-51       | ⬜   |
@@ -361,30 +362,6 @@
 | P2-45 | 동의 시점 채팅 내 이동 검토           | Landing 동의 → Chat 첫 메시지 전 동의로 이동. ChatInterface 내 동의 UI + 세션 생성. data-privacy §1.2 연동. 별도 검토 태스크        | P2-47       | ⬜   |
 | P2-41 | Profile 페이지               | 🔶 **v0.2 연기**: 이메일 로그인 후 프로필 조회/편집. 기존 컴포넌트(ProfileClient/ProfileCard) 재사용. mvp-flow-redesign.md §3 참조  | v0.2        | 🔶  |
 | P2-42 | 프로필 Context               | 🔶 **v0.2 연기**: 이메일 로그인 후 React Context 상태 관리. mvp-flow-redesign.md §3 참조                                     | v0.2        | 🔶  |
-
-
-## 관리자 앱 — MVP (병렬 가능)
-
-
-> ID 재부여 (2026-04-02): 사용자 앱 UI P2-45~P2-50과 충돌 해소. 기존 P2-45~P2-55 → P2-80~P2-90 이동. 설계 문서 내 구 ID 참조는 괄호로 병기.
-
-
-| ID      | 작업                 | 상세                                                                                                                                 | 상태  |
-| ------- | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- | --- |
-| P2-80   | 관리자 인증 서비스 + API   | 로그인, 세션, 권한 확인 (api-spec.md §6). (구 P2-45)                                                                                        | ⬜   |
-| P2-81   | 제네릭 CRUD 서비스       | `features/admin/service.ts` + withAuditLog 미들웨어 + 7엔티티 zod 스키마 + CRUD 후 비동기 임베딩 재생성 연동 (api-spec.md §5.1, embedding-strategy §3.4). (구 P2-46) | ⬜   |
-| P2-81a  | 복합 엔티티 라우트         | Product/Store/Treatment/Clinic CRUD 라우트 + 하이라이트 API(§5.3) + 관계 API(§5.2). P2-16/16a/17/17a 리포지토리 의존. (구 P2-46a)                    | ⬜   |
-| P2-81b  | 단순 엔티티 라우트         | Brand/Ingredient/Doctor CRUD 라우트 + 리포지토리 생성 포함 (findAll/findById/create/update/deactivate, query-utils.ts 재사용). (구 P2-46b)         | ⬜   |
-| P2-82   | 이미지 업로드 서비스 + API  | Product/Store/Clinic/Treatment 4엔티티. Supabase Storage + magic bytes 검증 + 순서 관리 (api-spec.md §5.4). (구 P2-47)                       | ⬜   |
-| P2-83   | 감사 로그 조회 API       | `GET /api/admin/audit-logs` + audit-service.ts. super_admin 전용, 날짜/액터/액션 필터 (api-spec.md §6.6). 기록은 P2-81 withAuditLog가 담당. (구 P2-48) | ⬜   |
-| P2-84   | 관리자 레이아웃 + 로그인 페이지 | admin 라우트 레이아웃, 인증 UI. (구 P2-49)                                                                                                   | ⬜   |
-| P2-85   | 관리자 대시보드 (간단)      | 엔티티별 데이터 건수, 최근 변경. (구 P2-50)                                                                                                     | ⬜   |
-| P2-86   | 관리자 공통 컴포넌트 — 목록   | 테이블, 검색, 필터, 페이지네이션. (구 P2-51)                                                                                                    | ⬜   |
-| P2-87   | 관리자 공통 컴포넌트 — 폼    | 폼 필드, JSONB 다국어 입력, 이미지 업로드. (구 P2-52)                                                                                            | ⬜   |
-| P2-88a  | 복합 엔티티 CRUD 페이지    | Product, Store, Clinic, Treatment — 이미지+관계+하이라이트 포함 (P2-81a 대응). (구 P2-53a)                                                        | ⬜   |
-| P2-88b  | 단순 엔티티 CRUD 페이지    | Brand, Ingredient, Doctor — 기본 CRUD (P2-81b 대응). (구 P2-53b)                                                                        | ⬜   |
-| P2-89   | 관계 관리 UI           | Product↔Store, Product↔Ingredient, Clinic↔Treatment. (구 P2-54)                                                                     | ⬜   |
-| P2-90   | 하이라이트 관리 UI        | is_highlighted 토글 + badge 텍스트. (구 P2-55)                                                                                           | ⬜   |
 
 
 ## 데이터 준비 — 사전 검증 (Phase 2 착수 전 필수)
@@ -473,8 +450,7 @@
 | P2-71 | API route 통합 테스트 | profile, journey, auth — 실제 DB 연동     | ⬜   |
 | P2-72 | 검색 통합 테스트        | 검색 API + repository + DB 필터 정확성       | ⬜   |
 | P2-73 | Chat API 통합 테스트  | chat route + service + tools (LLM 모킹) | ⬜   |
-| P2-74 | 관리자 CRUD 통합 테스트  | admin API + DB + 감사 로그                | ⬜   |
-| P2-75 | 인증 통합 테스트        | anonymous + admin 세션/권한               | ⬜   |
+| P2-75 | 익명 인증 통합 테스트     | anonymous 세션 생성/유지/권한 검증. 관리자 인증은 관리자 앱 펜딩 섹션 PA-15로 이동 | ⬜   |
 
 
 ## 프롬프트 평가 실행
@@ -502,7 +478,6 @@
 | P3-1 | 경로A 플로우      | Landing → 온보딩 4단계 → 프로필 → Chat → 카드 → 외부 링크 | ⬜   |
 | P3-2 | 경로B 플로우      | Landing → "Just ask" → Chat → 점진적 개인화       | ⬜   |
 | P3-3 | Kit CTA 플로우  | Chat → Kit 카드 → 이메일 입력 → 제출                 | ⬜   |
-| P3-4 | 관리자 CRUD 플로우 | 로그인 → 생성 → 수정 → 관계 설정 → 삭제                  | ⬜   |
 | P3-5 | 모바일 반응형      | 주요 플로우를 모바일 뷰포트에서 테스트                       | ⬜   |
 | P3-6 | 에러 시나리오      | 네트워크 끊김, LLM 타임아웃, 잘못된 입력                   | ⬜   |
 
@@ -537,10 +512,8 @@
 | ----- | ----------------------- | -------------------------------------- | --- |
 | P3-16 | OWASP Top 10 점검         | Injection, Auth, XSS, Access Control 등 | ⬜   |
 | P3-17 | API 키 노출 확인             | Git 이력, 환경변수 클라이언트 노출                  | ⬜   |
-| P3-18 | Admin 미인증 접근 테스트        | /admin/* 미인증 시 차단 확인                   | ⬜   |
 | P3-19 | SQL injection / XSS 테스트 | 주요 입력 필드 대상                            | ⬜   |
-| P3-20 | 파일 업로드 검증               | 악성 파일, MIME 타입, 크기 제한                  | ⬜   |
-| P3-21 | Rate limit 동작 확인        | Chat API, Admin API                    | ⬜   |
+| P3-21 | Rate limit 동작 확인        | Chat API                               | ⬜   |
 | P3-22 | 의존성 취약점 스캔              | npm audit                              | ⬜   |
 
 
@@ -566,7 +539,7 @@
 
 | ID    | 작업               | 상세                                    | 상태  |
 | ----- | ---------------- | ------------------------------------- | --- |
-| P3-33 | 버그 수정 + 최적화      | P3-1~22에서 발견된 이슈 해결                   | ⬜   |
+| P3-33 | 버그 수정 + 최적화      | P3-1~22(관리자 제외)에서 발견된 이슈 해결            | ⬜   |
 | P3-34 | 프로덕션 배포          | 최종 배포                                 | ⬜   |
 | P3-35 | 소프트 런칭           | 제한 사용자 테스트 (대상/규모 별도 결정)              | ⬜   |
 | P3-36 | 사용자 피드백 수집 채널 구축 | 인앱 피드백 버튼/폼, 버그 리포트 채널. 소프트 런칭 피드백 수집 | ⬜   |
@@ -579,6 +552,57 @@
 - 성능 SLA 충족
 - 보안 체크리스트 100% 통과
 - 모니터링 + 백업 작동 확인
+
+---
+
+# 관리자 앱 (Gate 2 이후)
+
+> 목표: 관리자 CRUD + 인증 + UI 구현
+> 전제: Gate 2 통과 (사용자 앱 배포 완료)
+> 설계 완료: Phase 0 (P0-4~P0-11) + Phase 1 (P1-8, P1-10, P1-13~P1-17, P1-23~P1-24)
+> 펜딩 사유: 사용자 앱과 아키텍처 의존 없음 (P-3 Last Leaf). MVP 출시 우선.
+> ID 이력: Phase 2 관리자 앱 섹션에서 이동 (2026-04-02). 구 ID: P2-45~P2-55 → P2-80~P2-90 → PA-*.
+
+
+## 구현
+
+
+| ID     | 작업                 | 상세                                                                                                                                 | 상태  |
+| ------ | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- | --- |
+| PA-1   | 관리자 인증 서비스 + API   | 로그인, 세션, 권한 확인 (api-spec.md §6). (구 P2-80)                                                                                        | ⬜   |
+| PA-2   | 제네릭 CRUD 서비스       | `features/admin/service.ts` + withAuditLog 미들웨어 + 7엔티티 zod 스키마 + CRUD 후 비동기 임베딩 재생성 연동 (api-spec.md §5.1, embedding-strategy §3.4). (구 P2-81) | ⬜   |
+| PA-3   | 복합 엔티티 라우트         | Product/Store/Treatment/Clinic CRUD 라우트 + 하이라이트 API(§5.3) + 관계 API(§5.2). P2-16/16a/17/17a 리포지토리 의존. (구 P2-81a)                    | ⬜   |
+| PA-4   | 단순 엔티티 라우트         | Brand/Ingredient/Doctor CRUD 라우트 + 리포지토리 생성 포함 (findAll/findById/create/update/deactivate, query-utils.ts 재사용). (구 P2-81b)         | ⬜   |
+| PA-5   | 이미지 업로드 서비스 + API  | Product/Store/Clinic/Treatment 4엔티티. Supabase Storage + magic bytes 검증 + 순서 관리 (api-spec.md §5.4). (구 P2-82)                       | ⬜   |
+| PA-6   | 감사 로그 조회 API       | `GET /api/admin/audit-logs` + audit-service.ts. super_admin 전용, 날짜/액터/액션 필터 (api-spec.md §6.6). 기록은 PA-2 withAuditLog가 담당. (구 P2-83) | ⬜   |
+| PA-7   | 관리자 레이아웃 + 로그인 페이지 | admin 라우트 레이아웃, 인증 UI. (구 P2-84)                                                                                                   | ⬜   |
+| PA-8   | 관리자 대시보드 (간단)      | 엔티티별 데이터 건수, 최근 변경. (구 P2-85)                                                                                                     | ⬜   |
+| PA-9   | 관리자 공통 컴포넌트 — 목록   | 테이블, 검색, 필터, 페이지네이션. (구 P2-86)                                                                                                    | ⬜   |
+| PA-10  | 관리자 공통 컴포넌트 — 폼    | 폼 필드, JSONB 다국어 입력, 이미지 업로드. (구 P2-87)                                                                                            | ⬜   |
+| PA-11  | 복합 엔티티 CRUD 페이지    | Product, Store, Clinic, Treatment — 이미지+관계+하이라이트 포함 (PA-3 대응). (구 P2-88a)                                                          | ⬜   |
+| PA-12  | 단순 엔티티 CRUD 페이지    | Brand, Ingredient, Doctor — 기본 CRUD (PA-4 대응). (구 P2-88b)                                                                          | ⬜   |
+| PA-13  | 관계 관리 UI           | Product↔Store, Product↔Ingredient, Clinic↔Treatment. (구 P2-89)                                                                     | ⬜   |
+| PA-14  | 하이라이트 관리 UI        | is_highlighted 토글 + badge 텍스트. (구 P2-90)                                                                                           | ⬜   |
+
+
+## 통합 테스트
+
+
+| ID    | 작업              | 상세                         | 상태  |
+| ----- | --------------- | -------------------------- | --- |
+| PA-15 | 관리자 인증 통합 테스트   | admin 세션/권한 검증. (구 P2-75 admin 부분, P2-74 포함) | ⬜   |
+| PA-16 | 관리자 CRUD 통합 테스트 | admin API + DB + 감사 로그. (구 P2-74)     | ⬜   |
+
+
+## E2E + 보안 테스트
+
+
+| ID    | 작업              | 상세                                   | 상태  |
+| ----- | --------------- | ------------------------------------ | --- |
+| PA-17 | 관리자 CRUD E2E 플로우 | 로그인 → 생성 → 수정 → 관계 설정 → 삭제. (구 P3-4)  | ⬜   |
+| PA-18 | Admin 미인증 접근 테스트 | /admin/* 미인증 시 차단 확인. (구 P3-18)       | ⬜   |
+| PA-19 | 파일 업로드 검증       | 악성 파일, MIME 타입, 크기 제한. (구 P3-20)      | ⬜   |
+
 
 ---
 

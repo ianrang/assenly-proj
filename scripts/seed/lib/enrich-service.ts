@@ -37,6 +37,7 @@ import {
   generateDescriptions,
   type GenerationFieldSpec,
 } from "./enrichment/description-generator";
+import { defaultStoreTypeClassifier } from "./store-type-classifier";
 
 // ── 타입 ────────────────────────────────────────────────────
 
@@ -129,17 +130,17 @@ const ENRICHMENT_CONFIG: Record<EntityType, EnrichmentConfig> = {
     ],
   },
   store: {
-    translateKeys: { name: "name_ko", description: "description_ko" },
+    translateKeys: { name: "name.ko" },
     classifySpecs: [],
     generateSpecs: [
-      { fieldName: "description", promptHint: "Store features, product selection, and shopping experience in 2-3 sentences.", maxLength: 300 },
+      { fieldName: "description", promptHint: "This store's key features, product selection, and shopping experience for tourists. Write naturally in BOTH Korean and English — Korean must be native-quality, not translated. 2-3 sentences.", maxLength: 300 },
     ],
   },
   clinic: {
-    translateKeys: { name: "name_ko", description: "description_ko" },
+    translateKeys: { name: "name.ko" },
     classifySpecs: [],
     generateSpecs: [
-      { fieldName: "description", promptHint: "Clinic specialties, services, and patient experience in 2-3 sentences.", maxLength: 300 },
+      { fieldName: "description", promptHint: "This clinic's specialties, services, and patient experience for foreign visitors. Write naturally in BOTH Korean and English — Korean must be native-quality, not translated. 2-3 sentences.", maxLength: 300 },
     ],
   },
   treatment: {
@@ -170,12 +171,58 @@ const ENRICHMENT_CONFIG: Record<EntityType, EnrichmentConfig> = {
 
 type FieldExtractor = (data: Record<string, unknown>) => unknown;
 
+// ── 한국 주소 → district 매핑 (서울 25개 구 → 관광 지역명) ──
+
+const DISTRICT_MAP: Record<string, string> = {
+  "강남구": "gangnam",
+  "서초구": "seocho",
+  "중구": "myeongdong",
+  "종로구": "jongno",
+  "마포구": "hongdae",
+  "용산구": "itaewon",
+  "송파구": "jamsil",
+  "성동구": "seongsu",
+  "영등포구": "yeouido",
+  "동대문구": "dongdaemun",
+  "강동구": "gangdong",
+  "강서구": "gangseo",
+  "강북구": "gangbuk",
+  "관악구": "gwanak",
+  "광진구": "gwangjin",
+  "구로구": "guro",
+  "금천구": "geumcheon",
+  "노원구": "nowon",
+  "도봉구": "dobong",
+  "동작구": "dongjak",
+  "서대문구": "seodaemun",
+  "성북구": "seongbuk",
+  "양천구": "yangcheon",
+  "은평구": "eunpyeong",
+  "중랑구": "jungnang",
+};
+
+/** 한국어 주소에서 구 이름 추출 → 영문 district 반환 */
+function extractDistrictFromAddress(
+  data: Record<string, unknown>,
+): string | null {
+  const address = data.address as Record<string, string> | undefined;
+  const koAddr = address?.ko ?? "";
+  const match = koAddr.match(/([가-힣]+구)(?:\s|$)/);
+  if (!match) return null;
+  return DISTRICT_MAP[match[1]] ?? null;
+}
+
 const FIELD_MAPPINGS: Partial<Record<EntityType, Record<string, FieldExtractor>>> = {
   ingredient: {
     inci_name: (data) => {
       const cosing = data._cosing as Record<string, unknown> | undefined;
       return data.INGR_ENG_NAME ?? cosing?.inciName ?? null;
     },
+  },
+  store: {
+    store_type: (data) => defaultStoreTypeClassifier.classify(data),
+    district: (data) => extractDistrictFromAddress(data),
+    english_support: (data) => data.english_support ?? "none",
   },
 };
 

@@ -18,6 +18,7 @@ export const MVP_DOMAINS = DOMAINS.filter((d) => d.enabled);
 export const STORE_TYPES = [
   "olive_young",
   "chicor",
+  "daiso",
   "department_store",
   "brand_store",
   "pharmacy",
