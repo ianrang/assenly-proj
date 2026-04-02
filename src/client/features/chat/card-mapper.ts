@@ -22,7 +22,14 @@ export type UIPartLike = {
 export type ChatMessagePart =
   | { type: "text"; text: string }
   | ProductCardPart
-  | TreatmentCardPart;
+  | TreatmentCardPart
+  | KitCtaCardPart;
+
+export type KitCtaCardPart = {
+  type: "kit-cta-card";
+  productName: LocalizedText;
+  highlightBadge: LocalizedText | null;
+};
 
 export type ProductCardPart = {
   type: "product-card";
@@ -115,24 +122,37 @@ function mapToolCards(cards: unknown[], domain: string | undefined, result: Chat
     if (!card || typeof card !== "object") continue;
 
     if (domain === "shopping") {
-      result.push(mapProductCard(card as ToolProductCard));
+      result.push(...mapProductCard(card as ToolProductCard));
     } else if (domain === "treatment") {
       result.push(mapTreatmentCard(card as ToolTreatmentCard));
     }
   }
 }
 
-function mapProductCard(card: ToolProductCard): ProductCardPart {
+function mapProductCard(card: ToolProductCard): ChatMessagePart[] {
   const { reasons, stores, ...product } = card;
   const firstStore = stores[0] ?? null;
 
-  return {
-    type: "product-card",
-    product,
-    brand: null,
-    store: firstStore ? { name: firstStore.name } : null,
-    whyRecommended: reasons[0] ?? undefined,
-  };
+  const parts: ChatMessagePart[] = [
+    {
+      type: "product-card",
+      product,
+      brand: null,
+      store: firstStore ? { name: firstStore.name } : null,
+      whyRecommended: reasons[0] ?? undefined,
+    },
+  ];
+
+  // VP-1: is_highlighted → KitCtaCard 삽입 (렌더링만, 정렬/필터 미영향)
+  if (product.is_highlighted && product.highlight_badge !== null) {
+    parts.push({
+      type: "kit-cta-card",
+      productName: product.name,
+      highlightBadge: product.highlight_badge,
+    });
+  }
+
+  return parts;
 }
 
 function mapTreatmentCard(card: ToolTreatmentCard): TreatmentCardPart {

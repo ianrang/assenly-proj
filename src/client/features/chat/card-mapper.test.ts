@@ -257,6 +257,48 @@ describe("mapUIMessageToParts", () => {
     expect(result[0].whyRecommended).toBe("reason");
   });
 
+  it("highlighted product → product-card + kit-cta-card", () => {
+    const product = makeProduct({
+      is_highlighted: true,
+      highlight_badge: { en: "Essenly Pick" },
+    });
+    const toolOutput = {
+      cards: [{ ...product, reasons: ["Top pick"], stores: [] }],
+      total: 1,
+    };
+
+    const parts: UIPartLike[] = [
+      makeToolPart("search_beauty_data", toolOutput, "output-available", "shopping"),
+    ];
+    const result = mapUIMessageToParts(parts);
+
+    expect(result).toHaveLength(2);
+    expect(result[0].type).toBe("product-card");
+    expect(result[1].type).toBe("kit-cta-card");
+    if (result[1].type !== "kit-cta-card") throw new Error("unreachable");
+    expect(result[1].productName).toEqual({ en: "Gentle Cleanser" });
+    expect(result[1].highlightBadge).toEqual({ en: "Essenly Pick" });
+  });
+
+  it("is_highlighted but highlight_badge null → no kit-cta-card", () => {
+    const product = makeProduct({
+      is_highlighted: true,
+      highlight_badge: null,
+    });
+    const toolOutput = {
+      cards: [{ ...product, reasons: ["reason"], stores: [] }],
+      total: 1,
+    };
+
+    const parts: UIPartLike[] = [
+      makeToolPart("search_beauty_data", toolOutput, "output-available", "shopping"),
+    ];
+    const result = mapUIMessageToParts(parts);
+
+    expect(result).toHaveLength(1);
+    expect(result[0].type).toBe("product-card");
+  });
+
   it("empty reasons → whyRecommended undefined", () => {
     const product = makeProduct();
     const toolOutput = {
