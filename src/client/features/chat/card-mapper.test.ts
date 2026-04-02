@@ -214,6 +214,49 @@ describe("mapUIMessageToParts", () => {
     expect((result[1] as { store: unknown }).store).toEqual({ name: { en: "Store A" } });
   });
 
+  it("output 형식 불량 (null, cards 미존재) → 무시", () => {
+    const nullOutput: UIPartLike[] = [
+      makeToolPart("search_beauty_data", null, "output-available", "shopping"),
+    ];
+    expect(mapUIMessageToParts(nullOutput)).toHaveLength(0);
+
+    const noCards: UIPartLike[] = [
+      makeToolPart("search_beauty_data", { total: 1 }, "output-available", "shopping"),
+    ];
+    expect(mapUIMessageToParts(noCards)).toHaveLength(0);
+  });
+
+  it("domain undefined → 카드 미생성", () => {
+    const product = makeProduct();
+    const toolOutput = {
+      cards: [{ ...product, reasons: ["reason"], stores: [] }],
+      total: 1,
+    };
+
+    // domain 미전달
+    const parts: UIPartLike[] = [makeToolPart("search_beauty_data", toolOutput)];
+    const result = mapUIMessageToParts(parts);
+
+    expect(result).toHaveLength(0);
+  });
+
+  it("treatment clinics 빈 배열 → clinic: null", () => {
+    const treatment = makeTreatment();
+    const toolOutput = {
+      cards: [{ ...treatment, reasons: ["reason"], clinics: [] }],
+      total: 1,
+    };
+
+    const parts: UIPartLike[] = [makeToolPart("search_beauty_data", toolOutput, "output-available", "treatment")];
+    const result = mapUIMessageToParts(parts);
+
+    expect(result).toHaveLength(1);
+    expect(result[0].type).toBe("treatment-card");
+    if (result[0].type !== "treatment-card") throw new Error("unreachable");
+    expect(result[0].clinic).toBeNull();
+    expect(result[0].whyRecommended).toBe("reason");
+  });
+
   it("empty reasons → whyRecommended undefined", () => {
     const product = makeProduct();
     const toolOutput = {
