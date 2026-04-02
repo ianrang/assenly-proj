@@ -12,10 +12,10 @@
 | ---------- | ------- | ------- | ------- | ------ |
 | 사전 완료      | 12      | 12      | 100%    | ✅      |
 | Phase 0    | 37      | 37      | 100%    | ✅      |
-| Phase 1    | 60      | 60      | 100%    | ✅      |
-| Phase 2    | 89      | 54      | 61%     | 🔶 진행중 |
+| Phase 1    | 62      | 60      | 97%     | ✅      |
+| Phase 2    | 101     | 71      | 70%     | 🔶 진행중 |
 | Phase 3    | 33      | 0       | 0%      | ⬜ 미시작  |
-| **MVP 합계** | **231** | **163** | **71%** |        |
+| **MVP 합계** | **245** | **180** | **73%** |        |
 | 관리자 앱 (펜딩) | 19      | 0       | 0%      | ⏸️ 펜딩  |
 
 
@@ -430,7 +430,7 @@
 | P2-59  | 큐레이션 리스트 확정                            | **완료 (2026-03-26)**. products 200 + stores 50 + clinics 30 + treatments 50 = 330건. 커버리지 검증: skin_type 5종 ✅, concerns 11종 ✅, 브랜드 80개(최대8/브랜드) ✅, 관광객접근 95% ✅ | M1    | ✅   |
 | P2-60  | Phase A: brands 50+ / ingredients 100+ | **완료 (2026-04-01)**. Step 1: classifier strict + function spec + inci_name 매핑 (테스트 6건). Step 2: brands 73건 JSON→enrich(6언어)→검수(영문명 15건 수정)→DB 적재. Step 3: ingredients S3(21,722)+S6+S4→105건 필터→enrich(번역+function+caution)→DB 적재. CosIng 구분자 수정(;→,) | M2    | ✅   |
 | P2-61  | Phase A: stores 200+ (S1 자동수집)         | **완료 (2026-04-02)**. Step 1: STORE_TYPES daiso 추가 + StoreTypeClassifier 인터페이스(정규식 MVP, 30+패턴) + FIELD_MAPPINGS.store(store_type/district/english_support) + review-exporter 8컬럼 + translateKeys name.ko 수정. Step 2: fetch.ts --place-queries 파일 지원 + 카카오 10쿼리 278건 → AI 6언어 번역+설명 → 검수 → DB 적재. description.ko 한국어 번역 보정. classifiers/ 서브디렉토리 정리 | M2    | ✅   |
-| P2-61b | stores 수동 보완 전수 입력                    | P2-61 적재 후. operating_hours, english_support, tourist_services 200건 전수 입력. 체인별 공통값 일괄 + 개별 매장 보완                                                              | M2    | ⬜   |
+| P2-61b | stores 수동 보완 전수 입력                    | **완료 (2026-04-03)**. 체인별 공통값 일괄 적용(operating_hours, english_support, tourist_services, payment_methods) 272건 전수. 비매장 6건 삭제(사옥 3+서비스 3). A 방식(파이프라인 validated JSON → load.ts UPSERT) | M2    | ✅   |
 | P2-61c | LLM store_type 분류 검증 (선택)             | 정규식 분류기 → LLM 분류기 교체/보강. StoreTypeClassifier 인터페이스 구현. 정규식 미매칭 other 건 LLM 재분류                                                                              | M2    | ⬜   |
 | P2-62  | Phase A: clinics 30+ (S1 자동수집)         | 카카오 API 수집 → 분류 → AI 번역 → 수동 보완(foreigner_friendly, license_verified, 이미지). english_support >= basic 필수                                                     | M2    | ⬜   |
 | P2-63  | Phase A: treatments 50+                | 수동 입력 + AI 보강(target_concerns, suitable_skin_types, description, precautions). 전문가 검수 필수. downtime_days 정확성                                                 | M2    | ⬜   |
