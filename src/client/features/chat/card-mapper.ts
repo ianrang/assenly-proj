@@ -13,6 +13,7 @@ export type UIPartLike = {
   type: string;
   text?: string;
   state?: string;
+  input?: { domain?: string };
   output?: unknown;
 };
 
@@ -96,7 +97,8 @@ export function mapUIMessageToParts(parts: UIPartLike[]): ChatMessagePart[] {
     if (!raw || typeof raw !== "object" || !("cards" in raw)) continue;
 
     const output = raw as ToolOutput;
-    mapToolCards(output.cards, result);
+    const domain = part.input?.domain;
+    mapToolCards(output.cards, domain, result);
   }
 
   return result;
@@ -108,13 +110,13 @@ function isWhitelistedToolPart(part: UIPartLike): boolean {
   return TOOL_WHITELIST.some((name) => part.type === `tool-${name}`);
 }
 
-function mapToolCards(cards: unknown[], result: ChatMessagePart[]): void {
+function mapToolCards(cards: unknown[], domain: string | undefined, result: ChatMessagePart[]): void {
   for (const card of cards) {
     if (!card || typeof card !== "object") continue;
 
-    if ("stores" in card) {
+    if (domain === "shopping") {
       result.push(mapProductCard(card as ToolProductCard));
-    } else if ("clinics" in card) {
+    } else if (domain === "treatment") {
       result.push(mapTreatmentCard(card as ToolTreatmentCard));
     }
   }

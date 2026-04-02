@@ -71,10 +71,12 @@ function makeToolPart(
   toolName: string,
   output: unknown,
   state: string = "output-available",
+  domain?: string,
 ): UIPartLike {
   return {
     type: `tool-${toolName}`,
     state,
+    input: domain ? { domain } : undefined,
     output,
   };
 }
@@ -104,7 +106,7 @@ describe("mapUIMessageToParts", () => {
       total: 1,
     };
 
-    const parts: UIPartLike[] = [makeToolPart("search_beauty_data", toolOutput)];
+    const parts: UIPartLike[] = [makeToolPart("search_beauty_data", toolOutput, "output-available", "shopping")];
     const result = mapUIMessageToParts(parts);
 
     expect(result).toHaveLength(1);
@@ -140,7 +142,7 @@ describe("mapUIMessageToParts", () => {
       total: 1,
     };
 
-    const parts: UIPartLike[] = [makeToolPart("search_beauty_data", toolOutput)];
+    const parts: UIPartLike[] = [makeToolPart("search_beauty_data", toolOutput, "output-available", "treatment")];
     const result = mapUIMessageToParts(parts);
 
     expect(result).toHaveLength(1);
@@ -184,7 +186,7 @@ describe("mapUIMessageToParts", () => {
     };
 
     const parts: UIPartLike[] = [
-      makeToolPart("search_beauty_data", toolOutput, "pending"),
+      makeToolPart("search_beauty_data", toolOutput, "pending", "shopping"),
     ];
     const result = mapUIMessageToParts(parts);
 
@@ -202,7 +204,7 @@ describe("mapUIMessageToParts", () => {
       total: 2,
     };
 
-    const parts: UIPartLike[] = [makeToolPart("search_beauty_data", toolOutput)];
+    const parts: UIPartLike[] = [makeToolPart("search_beauty_data", toolOutput, "output-available", "shopping")];
     const result = mapUIMessageToParts(parts);
 
     expect(result).toHaveLength(2);
@@ -219,7 +221,7 @@ describe("mapUIMessageToParts", () => {
       total: 1,
     };
 
-    const parts: UIPartLike[] = [makeToolPart("search_beauty_data", toolOutput)];
+    const parts: UIPartLike[] = [makeToolPart("search_beauty_data", toolOutput, "output-available", "shopping")];
     const result = mapUIMessageToParts(parts);
 
     expect(result).toHaveLength(1);

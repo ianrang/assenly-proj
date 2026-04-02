@@ -6,7 +6,7 @@ import { useState, useEffect, useMemo } from "react";
 import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport } from "ai";
 import { useTranslations } from "next-intl";
-import { mapUIMessageToParts } from "./card-mapper";
+import { mapUIMessageToParts, type UIPartLike } from "./card-mapper";
 import MessageList from "./MessageList";
 import MessageBubble from "./MessageBubble";
 import InputBar from "./InputBar";
@@ -42,9 +42,7 @@ export default function ChatInterface({ locale }: ChatInterfaceProps) {
   const chatMessages = messages.map((m) => ({
     id: m.id,
     role: m.role as "user" | "assistant",
-    parts: mapUIMessageToParts(
-      m.parts as Array<{ type: string; text?: string; state?: string; output?: unknown }>
-    ),
+    parts: mapUIMessageToParts(m.parts as UIPartLike[]),
   }));
 
   return (
