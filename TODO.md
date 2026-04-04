@@ -363,6 +363,9 @@
 | P2-43 | 면책 조항 페이지                 | Terms 페이지 내 Disclaimer 섹션으로 통합. 시술 추천 면책, 의료 조언 아닌 정보 제공, 제3자 서비스 면책, 정확성 한계 명시. system-prompt-spec §5 Guardrails 기반 | P2-29       | ✅   |
 | P2-44 | 이용약관 + 개인정보처리방침 페이지       | Terms(/terms) + Privacy(/privacy) 별도 페이지. PRD §4-C + data-privacy.md 기반 실제 콘텐츠. 법률 상수(shared/constants/legal.ts) 단일 관리. PA-20에서 관리자 화면 전환 예정 | P2-29       | ✅   |
 | P2-45 | 동의 시점 채팅 내 이동 검토           | Landing 동의 → Chat 첫 메시지 전 동의로 이동. ChatInterface 내 ConsentOverlay + 세션 생성. data-privacy §1.2, PRD §4-C, mvp-flow-redesign §2.3 갱신 완료        | P2-47       | ✅   |
+| P2-66 | ProductCard purchase_links 렌더링 | 카드 푸터에 구매 링크 표시 (첫번째만, 새 탭 외부 링크). user-screens.md "푸터 구매 링크" 사양. 데이터: P2-64a에서 products 투입 시 purchase_links 포함 | P2-64a      | ⬜   |
+| P2-67 | ProductCard english_label 배지   | english_label===true 시 "English Label" 푸터 배지. user-screens.md "푸터 배지" 사양. 수동 데이터 필드 (CSV 기입)                    | P2-64a      | ⬜   |
+| P2-68 | store map_url E2E 검증           | 010 마이그레이션 + buildExternalLinks 파이프라인 적용 후, store external_links → card-mapper → ProductCard 지도 링크 동작 E2E 검증    | P2-64a      | ⬜   |
 | P2-41 | Profile 페이지               | 🔶 **v0.2 연기**: 이메일 로그인 후 프로필 조회/편집. 기존 컴포넌트(ProfileClient/ProfileCard) 재사용. mvp-flow-redesign.md §3 참조  | v0.2        | 🔶  |
 | P2-42 | 프로필 Context               | 🔶 **v0.2 연기**: 이메일 로그인 후 React Context 상태 관리. mvp-flow-redesign.md §3 참조                                     | v0.2        | 🔶  |
 

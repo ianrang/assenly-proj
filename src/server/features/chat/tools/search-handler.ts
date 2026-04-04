@@ -209,7 +209,7 @@ async function loadRelatedStores(
 
   const { data: junctions } = await client
     .from('product_stores')
-    .select('product_id, store:stores(id, name, district, english_support, store_type, rating)')
+    .select('product_id, store:stores(id, name, district, english_support, store_type, rating, external_links)')
     .in('product_id', productIds);
 
   const map = new Map<string, unknown[]>();

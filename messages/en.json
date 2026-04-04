@@ -150,7 +150,8 @@
     "consentNotice": "We'll store your beauty profile to personalize recommendations. Data is auto-deleted after 90 days of inactivity.",
     "accept": "Continue",
     "cancel": "Cancel",
-    "learnMore": "Learn more"
+    "learnMore": "Learn more",
+    "error": "Something went wrong. Please try again."
   },
   "kit": {
     "title": "Get your personalized K-Beauty Starter Kit",
@@ -212,7 +213,7 @@
     "collectionNot": "We do not collect location data, browsing behavior, or analytics in the current version.",
     "consentTitle": "Consent",
     "consentIntro": "We obtain your explicit consent before collecting data:",
-    "consentRetention": "Data storage consent — required before starting the service, collected when you click \"Continue\" on the landing page",
+    "consentRetention": "Data storage consent — required before starting the service, collected when you begin your first chat",
     "consentMarketing": "Marketing consent — optional, collected only if you submit your email for the K-Beauty Kit offer",
     "useTitle": "How We Use Your Data",
     "useRecommendations": "To provide personalized K-beauty recommendations based on your profile",

@@ -119,8 +119,10 @@ describe("mapUIMessageToParts", () => {
     });
     // brand must be null (search-handler doesn't join brand)
     expect((result[0] as { brand: unknown }).brand).toBeNull();
-    // store must only have name (no map_url, no id, no district)
-    expect((result[0] as { store: unknown }).store).toEqual({ name: { en: "Olive Young Myeongdong" } });
+    // store: name + map_url only (no id, no district). external_links 미제공 시 map_url undefined
+    const store = (result[0] as ProductCardPart).store;
+    expect(store?.name).toEqual({ en: "Olive Young Myeongdong" });
+    expect(store?.map_url).toBeUndefined();
     // product must not have reasons or stores
     const productCard = result[0] as unknown as ProductCardPart;
     expect(productCard.product).not.toHaveProperty("reasons");
@@ -211,7 +213,7 @@ describe("mapUIMessageToParts", () => {
     expect((result[0] as { product: { id: string } }).product.id).toBe("prod-1");
     expect((result[0] as { store: unknown }).store).toBeNull();
     expect((result[1] as { product: { id: string } }).product.id).toBe("prod-2");
-    expect((result[1] as { store: unknown }).store).toEqual({ name: { en: "Store A" } });
+    expect((result[1] as ProductCardPart).store?.name).toEqual({ en: "Store A" });
   });
 
   it("output 형식 불량 (null, cards 미존재) → 무시", () => {
@@ -297,6 +299,97 @@ describe("mapUIMessageToParts", () => {
 
     expect(result).toHaveLength(1);
     expect(result[0].type).toBe("product-card");
+  });
+
+  it("store with external_links → map_url extracted", () => {
+    const product = makeProduct();
+    const toolOutput = {
+      cards: [
+        {
+          ...product,
+          reasons: ["reason"],
+          stores: [
+            {
+              id: "s1",
+              name: { en: "Olive Young" },
+              district: null,
+              english_support: "full",
+              store_type: null,
+              rating: null,
+              external_links: [{ type: "kakao_map", url: "http://place.map.kakao.com/123" }],
+            },
+          ],
+        },
+      ],
+      total: 1,
+    };
+
+    const parts: UIPartLike[] = [makeToolPart("search_beauty_data", toolOutput, "output-available", "shopping")];
+    const result = mapUIMessageToParts(parts);
+
+    expect(result).toHaveLength(1);
+    const card = result[0] as ProductCardPart;
+    expect(card.store?.map_url).toBe("http://place.map.kakao.com/123");
+  });
+
+  it("store with external_links but no map type → map_url undefined", () => {
+    const product = makeProduct();
+    const toolOutput = {
+      cards: [
+        {
+          ...product,
+          reasons: ["reason"],
+          stores: [
+            {
+              id: "s1",
+              name: { en: "Store" },
+              district: null,
+              english_support: "none",
+              store_type: null,
+              rating: null,
+              external_links: [{ type: "website", url: "https://example.com" }],
+            },
+          ],
+        },
+      ],
+      total: 1,
+    };
+
+    const parts: UIPartLike[] = [makeToolPart("search_beauty_data", toolOutput, "output-available", "shopping")];
+    const result = mapUIMessageToParts(parts);
+
+    const card = result[0] as ProductCardPart;
+    expect(card.store?.map_url).toBeUndefined();
+  });
+
+  it("store with external_links null → map_url undefined", () => {
+    const product = makeProduct();
+    const toolOutput = {
+      cards: [
+        {
+          ...product,
+          reasons: ["reason"],
+          stores: [
+            {
+              id: "s1",
+              name: { en: "Store" },
+              district: null,
+              english_support: "none",
+              store_type: null,
+              rating: null,
+              external_links: null,
+            },
+          ],
+        },
+      ],
+      total: 1,
+    };
+
+    const parts: UIPartLike[] = [makeToolPart("search_beauty_data", toolOutput, "output-available", "shopping")];
+    const result = mapUIMessageToParts(parts);
+
+    const card = result[0] as ProductCardPart;
+    expect(card.store?.map_url).toBeUndefined();
   });
 
   it("empty reasons → whyRecommended undefined", () => {

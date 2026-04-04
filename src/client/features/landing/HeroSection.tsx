@@ -2,40 +2,27 @@
 
 import "client-only";
 
-import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import { PageTitle, BodyText } from "@/client/ui/primitives/typography";
 import { Button } from "@/client/ui/primitives/button";
 
+// ============================================================
+// HeroSection — P2-45: 동의 UI 제거, CTA → /chat 직접 이동
+// 동의는 ChatInterface에서 수집 (P2-45 ConsentOverlay).
+// ============================================================
+
 type HeroSectionProps = {
-  state: "loading" | "new" | "consented" | "returning";
-  onConsent: () => Promise<boolean>;
-  isConsenting: boolean;
+  state: "loading" | "new" | "returning";
   locale: string;
 };
 
-export default function HeroSection({ state, onConsent, isConsenting, locale }: HeroSectionProps) {
+export default function HeroSection({ state, locale }: HeroSectionProps) {
   const t = useTranslations("landing");
-  const tc = useTranslations("consent");
   const router = useRouter();
-  const [showConsent, setShowConsent] = useState(false);
-
-  const ctaEnabled = state === "consented" || state === "returning";
 
   function handleCtaClick() {
-    if (ctaEnabled) {
-      router.push(`/${locale}/chat`);
-      return;
-    }
-    setShowConsent(true);
-  }
-
-  async function handleConsentConfirm() {
-    const success = await onConsent();
-    if (success) {
-      router.push(`/${locale}/chat`);
-    }
+    router.push(`/${locale}/chat`);
   }
 
   return (
@@ -52,51 +39,19 @@ export default function HeroSection({ state, onConsent, isConsenting, locale }: 
           {t("subtitle")}
         </BodyText>
 
-        {showConsent ? (
-          <div className="mx-auto max-w-[360px] lg:max-w-[480px]">
-            <p className="mb-3 text-sm leading-relaxed text-foreground/70">
-              {tc("consentNotice")}{" "}
-              <a
-                href={`/${locale}/terms`}
-                className="underline transition-colors hover:text-primary"
-              >
-                {tc("learnMore")}
-              </a>
-            </p>
-            <div className="flex gap-3">
-              <Button
-                variant="outline"
-                size="cta"
-                onClick={() => setShowConsent(false)}
-                className="flex-1"
-              >
-                {tc("cancel")}
-              </Button>
-              <Button
-                size="cta"
-                onClick={handleConsentConfirm}
-                disabled={isConsenting}
-                className="flex-1"
-              >
-                {tc("accept")}
-              </Button>
-            </div>
-          </div>
-        ) : (
-          <div className="mx-auto max-w-[360px] lg:max-w-[480px]">
-            <Button
-              size="cta"
-              onClick={handleCtaClick}
-              disabled={state === "loading"}
-              className="w-full"
-            >
-              {t("pathA")}
-            </Button>
-            <p className="mt-2.5 text-center text-xs text-foreground/50">
-              {t("ctaDescription")}
-            </p>
-          </div>
-        )}
+        <div className="mx-auto max-w-[360px] lg:max-w-[480px]">
+          <Button
+            size="cta"
+            onClick={handleCtaClick}
+            disabled={state === "loading"}
+            className="w-full"
+          >
+            {t("pathA")}
+          </Button>
+          <p className="mt-2.5 text-center text-xs text-foreground/50">
+            {t("ctaDescription")}
+          </p>
+        </div>
       </div>
     </div>
   );

@@ -113,7 +113,7 @@ AI 기반 대화형 에이전트:
 └──────────────────────────────────────────────────────────┘
 ```
 
-> **MVP Chat-First 단일 경로**: Landing → 동의 → Chat. 온보딩은 채팅 내 AI 대화로 수행 (VP-3). Onboarding 폼/Profile 페이지는 v0.2(이메일 로그인) 범위. 상세: `mvp-flow-redesign.md`
+> **MVP Chat-First 단일 경로**: Landing → Chat → 동의 → 채팅 시작. 온보딩은 채팅 내 AI 대화로 수행 (VP-3). Onboarding 폼/Profile 페이지는 v0.2(이메일 로그인) 범위. 상세: `mvp-flow-redesign.md`
 
 ## 3.2 Landing 화면
 
@@ -168,7 +168,7 @@ Landing 진입
   │                           └─ [✕ 닫기] → Landing 콘텐츠 표시
   │
   └─ NO (신규) ──> [신규 흐름]
-                    └─ [Start chatting] → 인라인 동의 → /chat (VP-3 점진적 개인화)
+                    └─ [Start chatting] → /chat → 인라인 동의 → 채팅 시작 (VP-3 점진적 개인화)
 ```
 
 > **v0.2 범위**: "Set up my profile" 보조 CTA + Onboarding 폼 + Profile 페이지는 이메일 로그인 도입 시 활성화. `mvp-flow-redesign.md` §3 참조.
@@ -179,7 +179,7 @@ Landing 진입
 - 프로필 존재 여부: 저장된 프로필 존재 여부 확인
 
 ### 동의 수집
-- CTA 클릭 시 인라인 동의 확인: 데이터 보관 동의를 Hero 영역 내에서 수집 (CTA → 동의 확인 → 세션 생성 + 이동)
+- Chat 진입 시 인라인 동의 확인: 데이터 보관 동의를 Chat 화면에서 수집 (CTA → /chat → ConsentOverlay → 동의 확인 → 세션 생성)
 - 마케팅 동의는 Kit CTA 이메일 제출 시점에 별도 체크박스로 수집
 - MVP 필요 동의: 장기 보관(필수) + 마케팅(Kit CTA 시점). 위치/행동로깅은 MVP 제외
 
@@ -504,7 +504,7 @@ Chat 화면 내에서 발생. 핵심 흐름의 외부.
 
 | From | To | 조건 | MVP |
 |---|---|---|---|
-| Landing | Chat | 신규 + "Start chatting" → 동의 → 세션 생성 | ✅ |
+| Landing | Chat | 신규 + "Start chatting" → /chat → 동의(ConsentOverlay) → 세션 생성 | ✅ |
 | Landing | Chat | 재방문 + "Continue chatting" | ✅ |
 | Chat | Kit CTA | 에센리 하이라이트 카드 탭 (유일한 트리거) | ✅ |
 | Chat | External Link | 카드 내 외부 링크 클릭 | ✅ |
@@ -773,11 +773,11 @@ Chat 화면 내에서 발생. 핵심 흐름의 외부.
 동의 항목:
 - 위치 추적 동의 (RT-1 수집) — MVP 제외
 - 행동 로깅 동의 (BH 자동 수집) — MVP 제외
-- 장기 데이터 보관 동의 — MVP 필요: CTA 클릭 시 인라인 동의로 수집
+- 장기 데이터 보관 동의 — MVP 필요: Chat 진입 시 인라인 동의로 수집 (첫 메시지 전)
 - 마케팅 활용 동의 — MVP 필요: Kit CTA 이메일 제출 시 체크박스
 
 동의 수집 시점:
-- 장기 보관: Landing CTA 클릭 시 인라인 동의 확인 (Hero 영역 내)
+- 장기 보관: Chat 진입 시 인라인 동의 확인 (첫 메시지 전, ConsentOverlay)
 - 마케팅: Kit CTA 이메일 제출 폼에 체크박스
 - 위치/행동 로깅: v0.2에서 해당 기능 활성화 시 수집
 

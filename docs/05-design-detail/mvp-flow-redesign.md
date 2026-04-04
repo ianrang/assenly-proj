@@ -30,7 +30,7 @@
 ### 2.1 주력 흐름 (유일한 경로)
 
 ```
-Landing → "Start chatting" (단일 CTA) → 동의(인라인) → /chat 이동
+Landing → "Start chatting" (단일 CTA) → /chat 이동 → 동의(ConsentOverlay) → 채팅 시작
 → AI 인사 + 제안 질문 3개
 → AI가 대화로 자연스럽게 정보 수집 (= 채팅 내 온보딩)
    "What's your skin type?" → "Any concerns?" → "How long in Seoul?"
@@ -55,13 +55,13 @@ Landing → 세션 감지 → ReturnVisitBanner
 → 기존 대화 히스토리 로드 → 이어서 대화
 ```
 
-### 2.3 동의 흐름
+### 2.3 동의 흐름 (P2-45 적용)
 
 ```
-시점: Landing CTA 클릭 시 (신규 사용자만)
-방식: Hero 영역 내 인라인 동의 확인 → "Continue" → 세션 생성
-재방문: 이미 동의 완료 → 동의 건너뜀, 바로 /chat 이동
-향후 검토: 동의 시점을 Chat 첫 메시지 전으로 이동 (P2-45)
+시점: Chat 진입 시, 첫 메시지 전 (신규 사용자만)
+방식: ChatInterface 내 ConsentOverlay → "Accept" → 세션 생성 → 채팅 활성화
+재방문: 이미 동의 완료 → 동의 건너뜀, 바로 채팅 시작
+Cancel: Landing으로 복귀
 ```
 
 ---
@@ -149,7 +149,8 @@ AI 인사 메시지 + SuggestedQuestions (제안 질문 3개)
 - ChatInterface.tsx: hasProfile 분기 제거 (항상 SuggestedQuestions 표시) [P2-47]
 - messages/en.json: CTA 설명 텍스트 조정 [P2-47]
 - features/api/routes/chat.ts: afterWork 프로필 INSERT 분기 추가 (profile===null 시 INSERT) [P2-47]
-- LandingClient.tsx: 변경 없음 (handleConsent 로직 유지)
+- LandingClient.tsx: handleConsent 제거, 상태 단순화 (P2-45)
+- ConsentOverlay.tsx: 신규 — Chat 내 동의 UI (P2-45)
 
 ### 추가 구현 (P2-51)
 - ChatInterface.tsx: tool-result 파트 → ProductCard/TreatmentCard 인라인 렌더링 [P2-51]

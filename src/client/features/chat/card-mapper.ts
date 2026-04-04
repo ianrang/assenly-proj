@@ -35,7 +35,7 @@ export type ProductCardPart = {
   type: "product-card";
   product: Product;
   brand: null;
-  store: { name: LocalizedText } | null;
+  store: { name: LocalizedText; map_url?: string } | null;
   whyRecommended: string | undefined;
 };
 
@@ -65,6 +65,7 @@ interface ToolStore {
   english_support: string;
   store_type: string | null;
   rating: number | null;
+  external_links: Array<{ type: string; url: string }> | null;
 }
 
 interface ToolClinic {
@@ -138,7 +139,7 @@ function mapProductCard(card: ToolProductCard): ChatMessagePart[] {
       type: "product-card",
       product,
       brand: null,
-      store: firstStore ? { name: firstStore.name } : null,
+      store: firstStore ? { name: firstStore.name, map_url: extractMapUrl(firstStore.external_links) } : null,
       whyRecommended: reasons[0] ?? undefined,
     },
   ];
@@ -167,4 +168,12 @@ function mapTreatmentCard(card: ToolTreatmentCard): TreatmentCardPart {
       : null,
     whyRecommended: reasons[0] ?? undefined,
   };
+}
+
+const MAP_LINK_TYPES = ["kakao_map", "naver_map", "map"];
+
+function extractMapUrl(links: Array<{ type: string; url: string }> | null): string | undefined {
+  if (!links) return undefined;
+  const mapLink = links.find((l) => MAP_LINK_TYPES.includes(l.type));
+  return mapLink?.url;
 }

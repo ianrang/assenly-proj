@@ -10,15 +10,19 @@ import BenefitsSection from "@/client/features/landing/BenefitsSection";
 import TrustSection from "@/client/features/landing/TrustSection";
 import ReturnVisitBanner from "@/client/features/landing/ReturnVisitBanner";
 
+// ============================================================
+// LandingClient — P2-45: 동의 로직 제거 (Chat으로 이동)
+// 상태: loading | new | returning (consented 제거)
+// ============================================================
+
 type LandingClientProps = {
   locale: string;
 };
 
-type LandingState = "loading" | "new" | "consented" | "returning";
+type LandingState = "loading" | "new" | "returning";
 
 export default function LandingClient({ locale }: LandingClientProps) {
   const [state, setState] = useState<LandingState>("loading");
-  const [isConsenting, setIsConsenting] = useState(false);
   const [bannerDismissed, setBannerDismissed] = useState(false);
 
   useEffect(() => {
@@ -27,8 +31,6 @@ export default function LandingClient({ locale }: LandingClientProps) {
         const res = await fetch("/api/profile", { credentials: "include" });
         if (res.ok) {
           setState("returning");
-        } else if (res.status === 404) {
-          setState("consented");
         } else {
           setState("new");
         }
@@ -39,33 +41,11 @@ export default function LandingClient({ locale }: LandingClientProps) {
     checkSession();
   }, []);
 
-  async function handleConsent(): Promise<boolean> {
-    setIsConsenting(true);
-    try {
-      const res = await fetch("/api/auth/anonymous", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ consent: { data_retention: true } }),
-        credentials: "include",
-      });
-      if (res.ok) {
-        setState("consented");
-        return true;
-      }
-      return false;
-    } catch (err) {
-      console.error("Consent failed:", err);
-      return false;
-    } finally {
-      setIsConsenting(false);
-    }
-  }
-
   return (
     <div className="flex min-h-[100dvh] flex-col">
       <LandingHeader />
       <main className="flex-1">
-        <HeroSection state={state} onConsent={handleConsent} isConsenting={isConsenting} locale={locale} />
+        <HeroSection state={state} locale={locale} />
         <HowItWorksSection />
         <BenefitsSection />
         <TrustSection />

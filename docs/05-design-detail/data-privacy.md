@@ -19,21 +19,22 @@
 
 | 동의 항목 | 수집 시점 | API | 구현 |
 |-----------|----------|-----|------|
-| `data_retention` (필수) | CTA 클릭 시 인라인 동의 | `POST /api/auth/anonymous` | 세션 생성과 동시에 consent_records INSERT |
+| `data_retention` (필수) | Chat 진입 시 인라인 동의 (첫 메시지 전) | `POST /api/auth/anonymous` | 세션 생성과 동시에 consent_records INSERT |
 | `marketing` (선택) | Kit CTA 이메일 제출 시 | `POST /api/kit/claim` | consent_records.marketing UPDATE |
 | `location_tracking` | MVP 제외 | - | consent_records 기본값 false 유지 |
 | `behavior_logging` | MVP 제외 | - | consent_records 기본값 false 유지 |
 | `analytics` | MVP 제외 | - | consent_records 기본값 false 유지 |
 
-**Landing → 세션 생성 흐름:**
+**Chat → 세션 생성 흐름 (P2-45):**
 ```
-1. 사용자 CTA 버튼 클릭 ("Start chatting")
-2. Hero 영역 내 인라인 동의 확인 표시
-3. 사용자 "Continue" 클릭
-4. 클라이언트: POST /api/auth/anonymous { consent: { data_retention: true } }
-5. 서버: signInAnonymously() → users INSERT → consent_records INSERT
-6. 응답: { user_id, session_token }
-7. 클라이언트: session_token을 localStorage에 저장 + /[locale]/chat으로 이동
+1. 사용자 Landing CTA 클릭 ("Start chatting") → /chat 이동
+2. ChatInterface 마운트 → 세션 확인 (fetch /api/chat/history)
+3. 401 응답 → ConsentOverlay 표시 (동의 안내 + Terms 링크)
+4. 사용자 "Accept" 클릭
+5. 클라이언트: POST /api/auth/anonymous { consent: { data_retention: true } }
+6. 서버: signInAnonymously() → users INSERT → consent_records INSERT
+7. 응답: { user_id, session_token }
+8. 클라이언트: 세션 확인 재시도 → 채팅 활성화
 ```
 
 **Kit CTA 마케팅 동의 흐름:**
