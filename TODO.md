@@ -360,8 +360,8 @@
 | P2-50a | 기술 검증: AI SDK 메시지 저장/복원 PoC | 비즈니스·코어 코드 무수정. AI SDK 타입 정의 + 공식 문서 기반 정적 분석: (1) onFinish UIMessage[] 구조 확인 — tool parts 포함 확정 (2) UIPartLike ↔ UIMessagePart 호환성 확인 — 완전 호환 (3) 저장 전략 결정: UIMessage[] 통째 저장 (conversations.ui_messages jsonb). (4) afterWork→onFinish 통합 + 요청 파싱 변경 영향 분석. **결과물**: `message-persistence-strategy.md` | P2-24 | ✅   |
 | P2-50b | 메시지 저장 + LLM 컨텍스트 연속성 | conversations.ui_messages jsonb 추가(009 migration + schema.dbml). chat.ts: UIMessage 파싱(Q-1 text-only 검증) + 서버 권위적 히스토리(convertToModelMessages) + onFinish(UIMessage[] 저장 + 추출 저장 통합) + messageMetadata(conversationId 전달) + consumeStream + rate limit 5→15/분. service.ts: history:ModelMessage[] 파라미터 + loadRecentMessages 제거. ChatInterface: prepareSendMessagesRequest + conversationId 상태. api-spec rate limit 동기화. 테스트 592/592 통과 | P2-50a | ✅   |
 | P2-50c | Chat 히스토리 클라이언트 로드 | ChatInterface: 마운트 시 fetch('/api/chat/history') → useChat({ messages }) 카드 포함 복원 + conversationId 초기화. ChatSkeleton 로딩 UI. ChatContent 분리(조건부 렌더링으로 useChat 초기화 시점 제어). P2-50b 테스트 보강 4건: onFinish 저장 + messageMetadata conversationId + 손상 ui_messages 폴백 + convertToModelMessages 실패 폴백. 테스트 596/596 통과 | P2-50b | ✅   |
-| P2-43 | 면책 조항 페이지                 | 시술 추천 면책, 의료 조언 아닌 정보 제공 명시                                                                                    | P2-29       | ⬜   |
-| P2-44 | 이용약관 + 개인정보처리방침 페이지       | 서비스 이용약관, 데이터 수집/보관/삭제 정책                                                                                      | P2-29       | ⬜   |
+| P2-43 | 면책 조항 페이지                 | Terms 페이지 내 Disclaimer 섹션으로 통합. 시술 추천 면책, 의료 조언 아닌 정보 제공, 제3자 서비스 면책, 정확성 한계 명시. system-prompt-spec §5 Guardrails 기반 | P2-29       | ✅   |
+| P2-44 | 이용약관 + 개인정보처리방침 페이지       | Terms(/terms) + Privacy(/privacy) 별도 페이지. PRD §4-C + data-privacy.md 기반 실제 콘텐츠. 법률 상수(shared/constants/legal.ts) 단일 관리. PA-20에서 관리자 화면 전환 예정 | P2-29       | ✅   |
 | P2-45 | 동의 시점 채팅 내 이동 검토           | Landing 동의 → Chat 첫 메시지 전 동의로 이동. ChatInterface 내 동의 UI + 세션 생성. data-privacy §1.2 연동. 별도 검토 태스크        | P2-47       | ⬜   |
 | P2-41 | Profile 페이지               | 🔶 **v0.2 연기**: 이메일 로그인 후 프로필 조회/편집. 기존 컴포넌트(ProfileClient/ProfileCard) 재사용. mvp-flow-redesign.md §3 참조  | v0.2        | 🔶  |
 | P2-42 | 프로필 Context               | 🔶 **v0.2 연기**: 이메일 로그인 후 React Context 상태 관리. mvp-flow-redesign.md §3 참조                                     | v0.2        | 🔶  |
@@ -607,6 +607,7 @@
 | PA-17 | 관리자 CRUD E2E 플로우 | 로그인 → 생성 → 수정 → 관계 설정 → 삭제. (구 P3-4)  | ⬜   |
 | PA-18 | Admin 미인증 접근 테스트 | /admin/* 미인증 시 차단 확인. (구 P3-18)       | ⬜   |
 | PA-19 | 파일 업로드 검증       | 악성 파일, MIME 타입, 크기 제한. (구 P3-20)      | ⬜   |
+| PA-20 | 시스템 설정 관리 API + UI | 삭제 요청 이메일(`privacy@essenly.com`) 등 법률 페이지에 표시되는 운영 상수를 관리자 화면에서 수정 가능하게. site_settings 테이블 또는 KV 방식. MVP에서는 shared/constants에 하드코딩, 관리자 앱에서 DB 기반으로 전환 | ⬜   |
 
 
 ---
