@@ -277,7 +277,7 @@ PRD에서 확정된 비즈니스 결정에 따른 기술 구현 결정 기록.
 | C-7 | Budget level만 사용 | TEXT 단일 컬럼 |
 | A-14 | 비활동 90일 자동 만료 | Supabase cron/Edge Function 스케줄러 |
 | A-15 | 쿠키 기반 간이 재방문 | localStorage UUID → 서버 프로필 조회 |
-| M-6 | 동의: CTA 인라인 동의 + Kit CTA 체크박스 | consent_records 테이블 |
+| M-6 | 동의: Chat 진입 시 인라인 동의 (ConsentOverlay) + Kit CTA 체크박스 | consent_records 테이블 |
 | U-4 | 개인화 추출: **동기 tool 확정** (P1-33) | P0-17: 93% 정확도. extract_user_profile tool. 추출=동기 tool(LLM tool_use). 결과=조건부 저장: 프로필 존재 시 비동기 DB 갱신, 미존재 시 메모리만(동의 후 DB 저장). PRD §4-C. [[api-spec#3.4 서버 플로우|api-spec.md §3.4]] 참조 |
 | D-1 | 하이브리드 검색 | SQL 필터 + RAG 벡터 (P0-20~22 검증) |
 | D-2 | 하이브리드 판단 | 하드 필터(코드) + 소프트 판단(LLM) |

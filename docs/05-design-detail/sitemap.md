@@ -10,6 +10,8 @@
 ```
 src/app/
   layout.tsx                         # Root layout (html, body, font)
+  not-found.tsx                      # Root 404 (locale 밖 — 영어 하드코딩, 브랜드 스타일)
+  global-error.tsx                   # Root error boundary (layout 자체 실패 시 — globals.css import)
   (user)/                            # User app group (not in URL)
     [locale]/
       layout.tsx                     # Locale layout (i18n provider만. 풀 너비)
@@ -17,6 +19,8 @@ src/app/
       (app)/                         # App route group (not in URL)
         layout.tsx                   # App layout (640px 중앙 + 공통 Header)
         chat/page.tsx                # Chat + Cards + Kit CTA (inline + bottom sheet) — MVP 핵심
+        terms/page.tsx               # Terms of Service + Disclaimer (P2-43/44)
+        privacy/page.tsx             # Privacy Policy (P2-44)
         onboarding/page.tsx          # 4-step onboarding wizard — v0.2 (라우트 비활성, 코드 유지)
         profile/page.tsx             # Profile confirm / edit — v0.2 (라우트 비활성, 코드 유지)
       error.tsx                      # Error boundary (Phase 2)
@@ -88,8 +92,11 @@ Chat ←── "Edit profile" ──→ Profile
 
 ### Error Handling
 
-- `error.tsx`: Runtime error boundary per Next.js convention
-- `not-found.tsx`: 404 page
+- `error.tsx`: Locale 내 runtime error boundary (i18n 지원)
+- `not-found.tsx`: Locale 내 404 (i18n 지원)
+- Root `not-found.tsx`: Locale 밖 404 (영어 하드코딩)
+- Root `global-error.tsx`: 루트 레이아웃 실패 시 최후 방어선 (globals.css import)
+- 모든 에러 페이지: 브랜드 primary 색상 코드 + 설명 + "Back to home" CTA 통일
 - No separate `/error` URL needed
 
 ## 3. Admin App URLs (P1-8)
