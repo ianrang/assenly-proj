@@ -1,0 +1,1009 @@
+[
+  {
+    "source": "csv",
+    "sourceId": "treat-laser-toning",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-laser-toning",
+      "name_ko": "레이저 토닝",
+      "name_en": "Laser Toning",
+      "category": "laser",
+      "target_concerns": "dark_spots|uneven_tone",
+      "suitable_skin_types": "oily|combination|normal",
+      "price_min": "50000",
+      "price_max": "150000",
+      "downtime_days": "1",
+      "duration_minutes": "30",
+      "session_count": "5~10회 (1~2주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-pico-toning",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-pico-toning",
+      "name_ko": "피코 토닝",
+      "name_en": "Pico Toning",
+      "category": "laser",
+      "target_concerns": "dark_spots|uneven_tone|pores",
+      "suitable_skin_types": "oily|combination|normal|sensitive",
+      "price_min": "80000",
+      "price_max": "200000",
+      "downtime_days": "3",
+      "duration_minutes": "30",
+      "session_count": "3~5회 (3~4주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-picosure-laser",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-picosure-laser",
+      "name_ko": "피코슈어 레이저",
+      "name_en": "PicoSure Laser",
+      "category": "laser",
+      "target_concerns": "dark_spots|uneven_tone|acne",
+      "suitable_skin_types": "oily|combination|normal",
+      "price_min": "150000",
+      "price_max": "350000",
+      "downtime_days": "2",
+      "duration_minutes": "30",
+      "session_count": "3~5회 (3~4주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-fraxel-laser",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-fraxel-laser",
+      "name_ko": "프락셀 레이저",
+      "name_en": "Fraxel Laser",
+      "category": "laser",
+      "target_concerns": "acne|wrinkles|pores|dark_spots",
+      "suitable_skin_types": "oily|combination|normal",
+      "price_min": "200000",
+      "price_max": "500000",
+      "downtime_days": "5",
+      "duration_minutes": "60",
+      "session_count": "3~5회 (4~6주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-co2-fractional-laser",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-co2-fractional-laser",
+      "name_ko": "CO2 프락셔널 레이저",
+      "name_en": "CO2 Fractional Laser",
+      "category": "laser",
+      "target_concerns": "acne|wrinkles|pores",
+      "suitable_skin_types": "oily|combination|normal",
+      "price_min": "200000",
+      "price_max": "600000",
+      "downtime_days": "14",
+      "duration_minutes": "45",
+      "session_count": "1~3회 (6~8주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-genesis-laser",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-genesis-laser",
+      "name_ko": "제네시스 레이저",
+      "name_en": "Genesis Laser",
+      "category": "laser",
+      "target_concerns": "redness|pores|dullness",
+      "suitable_skin_types": "sensitive|combination|normal",
+      "price_min": "50000",
+      "price_max": "150000",
+      "downtime_days": "0",
+      "duration_minutes": "30",
+      "session_count": "3~5회 (2~4주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-excel-v-laser",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-excel-v-laser",
+      "name_ko": "엑셀V 레이저",
+      "name_en": "Excel V Laser",
+      "category": "laser",
+      "target_concerns": "redness|dark_spots|sun_damage",
+      "suitable_skin_types": "sensitive|normal|combination",
+      "price_min": "100000",
+      "price_max": "250000",
+      "downtime_days": "1",
+      "duration_minutes": "30",
+      "session_count": "3~5회 (2~4주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-clarity-laser",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-clarity-laser",
+      "name_ko": "클라리티 레이저",
+      "name_en": "Clarity Laser",
+      "category": "laser",
+      "target_concerns": "dullness|uneven_tone|sun_damage",
+      "suitable_skin_types": "normal|combination|oily",
+      "price_min": "80000",
+      "price_max": "200000",
+      "downtime_days": "1",
+      "duration_minutes": "30",
+      "session_count": "3~5회 (2~4주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-ipl-phototherapy",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-ipl-phototherapy",
+      "name_ko": "IPL 광선 치료",
+      "name_en": "IPL Phototherapy",
+      "category": "laser",
+      "target_concerns": "dark_spots|redness|sun_damage",
+      "suitable_skin_types": "normal|combination",
+      "price_min": "60000",
+      "price_max": "180000",
+      "downtime_days": "1",
+      "duration_minutes": "40",
+      "session_count": "3~5회 (3~4주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-ulthera-lifting",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-ulthera-lifting",
+      "name_ko": "울쎄라 리프팅",
+      "name_en": "Ulthera Lifting",
+      "category": "laser",
+      "target_concerns": "wrinkles",
+      "suitable_skin_types": "dry|normal|combination",
+      "price_min": "500000",
+      "price_max": "2000000",
+      "downtime_days": "0",
+      "duration_minutes": "30",
+      "session_count": "1~2회 (12~18개월 유지)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-thermage-flx",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-thermage-flx",
+      "name_ko": "써마지 FLX",
+      "name_en": "Thermage FLX",
+      "category": "laser",
+      "target_concerns": "wrinkles|pores",
+      "suitable_skin_types": "dry|normal|combination|oily",
+      "price_min": "500000",
+      "price_max": "2500000",
+      "downtime_days": "0",
+      "duration_minutes": "30",
+      "session_count": "1회 (12~24개월 유지)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-shurink-universe",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-shurink-universe",
+      "name_ko": "슈링크 유니버스",
+      "name_en": "Shurink Universe",
+      "category": "laser",
+      "target_concerns": "wrinkles|pores",
+      "suitable_skin_types": "normal|combination|oily",
+      "price_min": "200000",
+      "price_max": "800000",
+      "downtime_days": "0",
+      "duration_minutes": "30",
+      "session_count": "1~2회 (6~12개월 유지)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-v-beam-laser",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-v-beam-laser",
+      "name_ko": "브이빔 레이저",
+      "name_en": "V-Beam Laser",
+      "category": "laser",
+      "target_concerns": "redness|acne",
+      "suitable_skin_types": "sensitive|normal|combination",
+      "price_min": "80000",
+      "price_max": "200000",
+      "downtime_days": "2",
+      "duration_minutes": "30",
+      "session_count": "3~5회 (2~4주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-revlite-laser",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-revlite-laser",
+      "name_ko": "레블라이트 레이저",
+      "name_en": "RevLite Laser",
+      "category": "laser",
+      "target_concerns": "dark_spots|uneven_tone",
+      "suitable_skin_types": "normal|combination|oily",
+      "price_min": "60000",
+      "price_max": "180000",
+      "downtime_days": "1",
+      "duration_minutes": "30",
+      "session_count": "5~10회 (1~2주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-lutronic-hollywood-peel",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-lutronic-hollywood-peel",
+      "name_ko": "루트로닉 할리우드 필링",
+      "name_en": "Lutronic Hollywood Peel",
+      "category": "laser",
+      "target_concerns": "dullness|pores|uneven_tone",
+      "suitable_skin_types": "oily|combination|normal",
+      "price_min": "100000",
+      "price_max": "250000",
+      "downtime_days": "0",
+      "duration_minutes": "30",
+      "session_count": "3~5회 (2~4주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-aqua-peel",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-aqua-peel",
+      "name_ko": "아쿠아필",
+      "name_en": "Aqua Peel",
+      "category": "skin",
+      "target_concerns": "pores|dullness|acne|dryness",
+      "suitable_skin_types": "dry|oily|combination|sensitive|normal",
+      "price_min": "50000",
+      "price_max": "120000",
+      "downtime_days": "0",
+      "duration_minutes": "30",
+      "session_count": "2~4주 간격 반복"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-salicylic-acid-peel",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-salicylic-acid-peel",
+      "name_ko": "살리실산 필링",
+      "name_en": "Salicylic Acid Peel",
+      "category": "skin",
+      "target_concerns": "acne|pores|dullness",
+      "suitable_skin_types": "oily|combination",
+      "price_min": "30000",
+      "price_max": "80000",
+      "downtime_days": "2",
+      "duration_minutes": "30",
+      "session_count": "3~6회 (2~4주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-brightening-peel",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-brightening-peel",
+      "name_ko": "미백 필링",
+      "name_en": "Brightening Peel",
+      "category": "skin",
+      "target_concerns": "dark_spots|dullness|uneven_tone",
+      "suitable_skin_types": "normal|combination|dry",
+      "price_min": "50000",
+      "price_max": "120000",
+      "downtime_days": "3",
+      "duration_minutes": "30",
+      "session_count": "3~6회 (2~4주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-lactic-acid-peel",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-lactic-acid-peel",
+      "name_ko": "젖산 필링",
+      "name_en": "Lactic Acid Peel",
+      "category": "skin",
+      "target_concerns": "dullness|dryness|uneven_tone",
+      "suitable_skin_types": "dry|sensitive|normal",
+      "price_min": "30000",
+      "price_max": "80000",
+      "downtime_days": "1",
+      "duration_minutes": "30",
+      "session_count": "3~6회 (2~4주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-glutathione-whitening-treatment",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-glutathione-whitening-treatment",
+      "name_ko": "글루타치온 화이트닝",
+      "name_en": "Glutathione Whitening Treatment",
+      "category": "skin",
+      "target_concerns": "dullness|dark_spots|uneven_tone",
+      "suitable_skin_types": "dry|normal|combination|oily|sensitive",
+      "price_min": "80000",
+      "price_max": "200000",
+      "downtime_days": "0",
+      "duration_minutes": "45",
+      "session_count": "1~2주 간격 반복"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-dermapen-microneedling-mts",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-dermapen-microneedling-mts",
+      "name_ko": "더마펜 MTS",
+      "name_en": "Dermapen Microneedling (MTS)",
+      "category": "skin",
+      "target_concerns": "acne|wrinkles|pores|dark_spots",
+      "suitable_skin_types": "normal|combination|oily",
+      "price_min": "100000",
+      "price_max": "250000",
+      "downtime_days": "5",
+      "duration_minutes": "60",
+      "session_count": "3~6회 (4주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-rejuran-healer",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-rejuran-healer",
+      "name_ko": "리쥬란 힐러",
+      "name_en": "Rejuran Healer",
+      "category": "skin",
+      "target_concerns": "wrinkles|dullness|pores",
+      "suitable_skin_types": "dry|normal|combination|sensitive",
+      "price_min": "200000",
+      "price_max": "400000",
+      "downtime_days": "5",
+      "duration_minutes": "45",
+      "session_count": "3~4회 (2~4주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-salmon-dna-injection-pdrn",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-salmon-dna-injection-pdrn",
+      "name_ko": "연어주사 (PDRN)",
+      "name_en": "Salmon DNA Injection (PDRN)",
+      "category": "skin",
+      "target_concerns": "wrinkles|dullness|dryness",
+      "suitable_skin_types": "dry|normal|sensitive",
+      "price_min": "150000",
+      "price_max": "350000",
+      "downtime_days": "1",
+      "duration_minutes": "45",
+      "session_count": "3~4회 (2~4주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-stem-cell-skin-rejuvenation",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-stem-cell-skin-rejuvenation",
+      "name_ko": "줄기세포 피부 재생",
+      "name_en": "Stem Cell Skin Rejuvenation",
+      "category": "skin",
+      "target_concerns": "wrinkles|dullness|dryness",
+      "suitable_skin_types": "dry|normal|combination",
+      "price_min": "200000",
+      "price_max": "500000",
+      "downtime_days": "2",
+      "duration_minutes": "45",
+      "session_count": "3~5회 (2~4주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-ldm-ultrasound-moisturizing",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-ldm-ultrasound-moisturizing",
+      "name_ko": "LDM 초음파 보습",
+      "name_en": "LDM Ultrasound Moisturizing",
+      "category": "skin",
+      "target_concerns": "dryness|dullness|redness",
+      "suitable_skin_types": "dry|sensitive|normal",
+      "price_min": "50000",
+      "price_max": "130000",
+      "downtime_days": "0",
+      "duration_minutes": "45",
+      "session_count": "주 1~2회, 8~12회"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-botox-forehead",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-botox-forehead",
+      "name_ko": "보톡스 이마",
+      "name_en": "Botox Forehead",
+      "category": "injection",
+      "target_concerns": "wrinkles",
+      "suitable_skin_types": "dry|normal|combination|oily|sensitive",
+      "price_min": "50000",
+      "price_max": "150000",
+      "downtime_days": "0",
+      "duration_minutes": "20",
+      "session_count": "3~6개월마다 반복"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-botox-crow-s-feet",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-botox-crow-s-feet",
+      "name_ko": "보톡스 눈가",
+      "name_en": "Botox Crow's Feet",
+      "category": "injection",
+      "target_concerns": "wrinkles",
+      "suitable_skin_types": "dry|normal|combination|oily|sensitive",
+      "price_min": "50000",
+      "price_max": "120000",
+      "downtime_days": "0",
+      "duration_minutes": "20",
+      "session_count": "3~6개월마다 반복"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-botox-jawline-masseter",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-botox-jawline-masseter",
+      "name_ko": "보톡스 턱 (사각턱)",
+      "name_en": "Botox Jawline (Masseter)",
+      "category": "injection",
+      "target_concerns": "wrinkles",
+      "suitable_skin_types": "dry|normal|combination|oily|sensitive",
+      "price_min": "80000",
+      "price_max": "200000",
+      "downtime_days": "0",
+      "duration_minutes": "20",
+      "session_count": "3~6개월마다 반복"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-filler-nasolabial-folds",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-filler-nasolabial-folds",
+      "name_ko": "필러 팔자주름",
+      "name_en": "Filler Nasolabial Folds",
+      "category": "injection",
+      "target_concerns": "wrinkles",
+      "suitable_skin_types": "dry|normal|combination|oily|sensitive",
+      "price_min": "200000",
+      "price_max": "500000",
+      "downtime_days": "5",
+      "duration_minutes": "30",
+      "session_count": "6~18개월마다 반복"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-lip-filler",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-lip-filler",
+      "name_ko": "필러 입술",
+      "name_en": "Lip Filler",
+      "category": "injection",
+      "target_concerns": "wrinkles|dryness",
+      "suitable_skin_types": "dry|normal|combination|oily|sensitive",
+      "price_min": "200000",
+      "price_max": "500000",
+      "downtime_days": "4",
+      "duration_minutes": "30",
+      "session_count": "6~18개월마다 반복"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-skin-botox-meso-botox",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-skin-botox-meso-botox",
+      "name_ko": "스킨보톡스",
+      "name_en": "Skin Botox (Meso-Botox)",
+      "category": "injection",
+      "target_concerns": "pores|wrinkles",
+      "suitable_skin_types": "oily|combination|normal",
+      "price_min": "100000",
+      "price_max": "250000",
+      "downtime_days": "0",
+      "duration_minutes": "20",
+      "session_count": "3~6개월마다 반복"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-volume-filler-forehead-temple",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-volume-filler-forehead-temple",
+      "name_ko": "볼륨 필러 (이마/관자놀이)",
+      "name_en": "Volume Filler (Forehead/Temple)",
+      "category": "injection",
+      "target_concerns": "wrinkles",
+      "suitable_skin_types": "dry|normal|combination|oily|sensitive",
+      "price_min": "300000",
+      "price_max": "800000",
+      "downtime_days": "5",
+      "duration_minutes": "30",
+      "session_count": "6~18개월마다 반복"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-water-glow-injection-skinbooster",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-water-glow-injection-skinbooster",
+      "name_ko": "물광주사",
+      "name_en": "Water Glow Injection (Skinbooster)",
+      "category": "injection",
+      "target_concerns": "dryness|dullness|wrinkles",
+      "suitable_skin_types": "dry|normal|combination|sensitive",
+      "price_min": "150000",
+      "price_max": "350000",
+      "downtime_days": "3",
+      "duration_minutes": "30",
+      "session_count": "3~4회 (2~4주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-juvederm-voluma-filler",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-juvederm-voluma-filler",
+      "name_ko": "쥬베덤 볼보 필러",
+      "name_en": "Juvederm Voluma Filler",
+      "category": "injection",
+      "target_concerns": "wrinkles",
+      "suitable_skin_types": "dry|normal|combination|oily|sensitive",
+      "price_min": "300000",
+      "price_max": "700000",
+      "downtime_days": "5",
+      "duration_minutes": "30",
+      "session_count": "12~18개월마다 반복"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-chin-filler",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-chin-filler",
+      "name_ko": "턱끝 필러",
+      "name_en": "Chin Filler",
+      "category": "injection",
+      "target_concerns": "wrinkles",
+      "suitable_skin_types": "dry|normal|combination|oily|sensitive",
+      "price_min": "200000",
+      "price_max": "500000",
+      "downtime_days": "5",
+      "duration_minutes": "30",
+      "session_count": "6~18개월마다 반복"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-hydrating-facial",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-hydrating-facial",
+      "name_ko": "수분 관리",
+      "name_en": "Hydrating Facial",
+      "category": "facial",
+      "target_concerns": "dryness|dullness",
+      "suitable_skin_types": "dry|sensitive|normal",
+      "price_min": "50000",
+      "price_max": "120000",
+      "downtime_days": "0",
+      "duration_minutes": "45",
+      "session_count": "2~4주 간격 반복"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-calming-facial",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-calming-facial",
+      "name_ko": "진정 관리",
+      "name_en": "Calming Facial",
+      "category": "facial",
+      "target_concerns": "redness|eczema|dryness",
+      "suitable_skin_types": "sensitive|dry",
+      "price_min": "50000",
+      "price_max": "120000",
+      "downtime_days": "0",
+      "duration_minutes": "45",
+      "session_count": "2~4주 간격 반복"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-brightening-facial",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-brightening-facial",
+      "name_ko": "미백 관리",
+      "name_en": "Brightening Facial",
+      "category": "facial",
+      "target_concerns": "dark_spots|dullness|uneven_tone",
+      "suitable_skin_types": "normal|combination|dry",
+      "price_min": "60000",
+      "price_max": "150000",
+      "downtime_days": "0",
+      "duration_minutes": "45",
+      "session_count": "2~4주 간격 반복"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-korean-herbal-facial",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-korean-herbal-facial",
+      "name_ko": "한방 관리",
+      "name_en": "Korean Herbal Facial",
+      "category": "facial",
+      "target_concerns": "dullness|wrinkles|dryness",
+      "suitable_skin_types": "dry|normal|sensitive",
+      "price_min": "80000",
+      "price_max": "180000",
+      "downtime_days": "0",
+      "duration_minutes": "45",
+      "session_count": "2~4주 간격 반복"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-acne-treatment-facial",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-acne-treatment-facial",
+      "name_ko": "여드름 관리",
+      "name_en": "Acne Treatment Facial",
+      "category": "facial",
+      "target_concerns": "acne|pores",
+      "suitable_skin_types": "oily|combination",
+      "price_min": "60000",
+      "price_max": "150000",
+      "downtime_days": "1",
+      "duration_minutes": "45",
+      "session_count": "2~4주 간격 반복"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-led-light-therapy",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-led-light-therapy",
+      "name_ko": "LED 테라피",
+      "name_en": "LED Light Therapy",
+      "category": "facial",
+      "target_concerns": "acne|redness|wrinkles|dullness",
+      "suitable_skin_types": "sensitive|normal|combination|oily",
+      "price_min": "30000",
+      "price_max": "80000",
+      "downtime_days": "0",
+      "duration_minutes": "20",
+      "session_count": "주 2~3회, 8~12회"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-oxygen-facial",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-oxygen-facial",
+      "name_ko": "산소 관리",
+      "name_en": "Oxygen Facial",
+      "category": "facial",
+      "target_concerns": "dullness|dryness",
+      "suitable_skin_types": "dry|normal|sensitive",
+      "price_min": "60000",
+      "price_max": "150000",
+      "downtime_days": "0",
+      "duration_minutes": "45",
+      "session_count": "2~4주 간격 반복"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-gold-mask-facial",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-gold-mask-facial",
+      "name_ko": "골드 마스크 관리",
+      "name_en": "Gold Mask Facial",
+      "category": "facial",
+      "target_concerns": "wrinkles|dullness|dryness",
+      "suitable_skin_types": "dry|normal|combination",
+      "price_min": "80000",
+      "price_max": "200000",
+      "downtime_days": "0",
+      "duration_minutes": "45",
+      "session_count": "2~4주 간격 반복"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-fat-dissolving-injection-double-chin",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-fat-dissolving-injection-double-chin",
+      "name_ko": "지방 분해 주사 (턱 아래)",
+      "name_en": "Fat Dissolving Injection (Double Chin)",
+      "category": "body",
+      "target_concerns": "",
+      "suitable_skin_types": "dry|normal|combination|oily|sensitive",
+      "price_min": "150000",
+      "price_max": "400000",
+      "downtime_days": "5",
+      "duration_minutes": "20",
+      "session_count": "2~4회 (4~8주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-coolsculpting-cryolipolysis",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-coolsculpting-cryolipolysis",
+      "name_ko": "쿨스컬프팅 (냉동 지방 분해)",
+      "name_en": "CoolSculpting (Cryolipolysis)",
+      "category": "body",
+      "target_concerns": "",
+      "suitable_skin_types": "dry|normal|combination|oily|sensitive",
+      "price_min": "200000",
+      "price_max": "600000",
+      "downtime_days": "3",
+      "duration_minutes": "45",
+      "session_count": "2~4회 (4~8주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-inmode-body-tightening",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-inmode-body-tightening",
+      "name_ko": "인모드 바디 타이트닝",
+      "name_en": "InMode Body Tightening",
+      "category": "body",
+      "target_concerns": "",
+      "suitable_skin_types": "dry|normal|combination|oily|sensitive",
+      "price_min": "150000",
+      "price_max": "400000",
+      "downtime_days": "1",
+      "duration_minutes": "45",
+      "session_count": "2~4회 (4~8주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-body-lifting-laser",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-body-lifting-laser",
+      "name_ko": "바디 리프팅 레이저",
+      "name_en": "Body Lifting Laser",
+      "category": "body",
+      "target_concerns": "",
+      "suitable_skin_types": "dry|normal|combination|oily|sensitive",
+      "price_min": "200000",
+      "price_max": "500000",
+      "downtime_days": "2",
+      "duration_minutes": "45",
+      "session_count": "2~4회 (4~8주 간격)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-scalp-scaling",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-scalp-scaling",
+      "name_ko": "두피 스케일링",
+      "name_en": "Scalp Scaling",
+      "category": "hair",
+      "target_concerns": "dryness|redness",
+      "suitable_skin_types": "dry|normal|oily|sensitive",
+      "price_min": "50000",
+      "price_max": "120000",
+      "downtime_days": "0",
+      "duration_minutes": "60",
+      "session_count": "주 1회, 8~12회"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-hair-mesotherapy",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-hair-mesotherapy",
+      "name_ko": "헤어 메조테라피",
+      "name_en": "Hair Mesotherapy",
+      "category": "hair",
+      "target_concerns": "dryness",
+      "suitable_skin_types": "dry|normal|oily|sensitive",
+      "price_min": "100000",
+      "price_max": "250000",
+      "downtime_days": "0",
+      "duration_minutes": "45",
+      "session_count": "주 1회, 8~12회"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-prp-hair-rejuvenation",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-prp-hair-rejuvenation",
+      "name_ko": "PRP 모발 재생",
+      "name_en": "PRP Hair Rejuvenation",
+      "category": "hair",
+      "target_concerns": "dryness",
+      "suitable_skin_types": "dry|normal|oily|sensitive",
+      "price_min": "200000",
+      "price_max": "500000",
+      "downtime_days": "1",
+      "duration_minutes": "45",
+      "session_count": "주 1회, 8~12회"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-hydrafacial",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-hydrafacial",
+      "name_ko": "하이드라페이셜",
+      "name_en": "HydraFacial",
+      "category": "facial",
+      "target_concerns": "pores|dullness|dryness|acne|uneven_tone",
+      "suitable_skin_types": "dry|oily|combination|sensitive|normal",
+      "price_min": "80000",
+      "price_max": "200000",
+      "downtime_days": "0",
+      "duration_minutes": "45",
+      "session_count": "2~4주 간격 반복"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-thread-lift",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-thread-lift",
+      "name_ko": "실리프팅 (쓰레드 리프트)",
+      "name_en": "Thread Lift",
+      "category": "injection",
+      "target_concerns": "wrinkles",
+      "suitable_skin_types": "dry|normal|combination|oily|sensitive",
+      "price_min": "300000",
+      "price_max": "1500000",
+      "downtime_days": "7",
+      "duration_minutes": "60",
+      "session_count": "1~2회 (12~18개월 유지)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  },
+  {
+    "source": "csv",
+    "sourceId": "treat-vitamin-iv-drip-glutathione",
+    "entityType": "treatment",
+    "data": {
+      "id": "treat-vitamin-iv-drip-glutathione",
+      "name_ko": "비타민 수액 (글루타치온 IV)",
+      "name_en": "Vitamin IV Drip (Glutathione)",
+      "category": "injection",
+      "target_concerns": "dullness|dryness",
+      "suitable_skin_types": "dry|oily|combination|sensitive|normal",
+      "price_min": "50000",
+      "price_max": "200000",
+      "downtime_days": "0",
+      "duration_minutes": "30",
+      "session_count": "1~2주 간격 (여행 중 1회도 가능)"
+    },
+    "fetchedAt": "2026-04-04T13:41:47.026Z"
+  }
+]
