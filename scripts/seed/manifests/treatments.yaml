@@ -13,6 +13,8 @@ treatments:
   price_range_krw:
   - 50000
   - 150000
+  duration_minutes: 30
+  session_count: "5~10회 (1~2주 간격)"
 - name_ko: 피코 토닝
   name_en: Pico Toning
   category: laser
@@ -25,10 +27,12 @@ treatments:
   - combination
   - normal
   - sensitive
-  downtime_days: 0
+  downtime_days: 3
   price_range_krw:
   - 80000
   - 200000
+  duration_minutes: 30
+  session_count: "3~5회 (3~4주 간격)"
 - name_ko: 피코슈어 레이저
   name_en: PicoSure Laser
   category: laser
@@ -44,6 +48,8 @@ treatments:
   price_range_krw:
   - 150000
   - 350000
+  duration_minutes: 30
+  session_count: "3~5회 (3~4주 간격)"
 - name_ko: 프락셀 레이저
   name_en: Fraxel Laser
   category: laser
@@ -60,6 +66,8 @@ treatments:
   price_range_krw:
   - 200000
   - 500000
+  duration_minutes: 60
+  session_count: "3~5회 (4~6주 간격)"
 - name_ko: CO2 프락셔널 레이저
   name_en: CO2 Fractional Laser
   category: laser
@@ -71,10 +79,12 @@ treatments:
   - oily
   - combination
   - normal
-  downtime_days: 7
+  downtime_days: 14
   price_range_krw:
   - 200000
   - 600000
+  duration_minutes: 45
+  session_count: "1~3회 (6~8주 간격)"
 - name_ko: 제네시스 레이저
   name_en: Genesis Laser
   category: laser
@@ -90,6 +100,8 @@ treatments:
   price_range_krw:
   - 50000
   - 150000
+  duration_minutes: 30
+  session_count: "3~5회 (2~4주 간격)"
 - name_ko: 엑셀V 레이저
   name_en: Excel V Laser
   category: laser
@@ -105,6 +117,8 @@ treatments:
   price_range_krw:
   - 100000
   - 250000
+  duration_minutes: 30
+  session_count: "3~5회 (2~4주 간격)"
 - name_ko: 클라리티 레이저
   name_en: Clarity Laser
   category: laser
@@ -120,6 +134,8 @@ treatments:
   price_range_krw:
   - 80000
   - 200000
+  duration_minutes: 30
+  session_count: "3~5회 (2~4주 간격)"
 - name_ko: IPL 광선 치료
   name_en: IPL Phototherapy
   category: laser
@@ -134,6 +150,8 @@ treatments:
   price_range_krw:
   - 60000
   - 180000
+  duration_minutes: 40
+  session_count: "3~5회 (3~4주 간격)"
 - name_ko: 울쎄라 리프팅
   name_en: Ulthera Lifting
   category: laser
@@ -147,6 +165,8 @@ treatments:
   price_range_krw:
   - 500000
   - 2000000
+  duration_minutes: 30
+  session_count: "1~2회 (12~18개월 유지)"
 - name_ko: 써마지 FLX
   name_en: Thermage FLX
   category: laser
@@ -162,6 +182,8 @@ treatments:
   price_range_krw:
   - 500000
   - 2500000
+  duration_minutes: 30
+  session_count: "1회 (12~24개월 유지)"
 - name_ko: 슈링크 유니버스
   name_en: Shurink Universe
   category: laser
@@ -176,6 +198,8 @@ treatments:
   price_range_krw:
   - 200000
   - 800000
+  duration_minutes: 30
+  session_count: "1~2회 (6~12개월 유지)"
 - name_ko: 브이빔 레이저
   name_en: V-Beam Laser
   category: laser
@@ -190,6 +214,8 @@ treatments:
   price_range_krw:
   - 80000
   - 200000
+  duration_minutes: 30
+  session_count: "3~5회 (2~4주 간격)"
 - name_ko: 레블라이트 레이저
   name_en: RevLite Laser
   category: laser
@@ -204,6 +230,8 @@ treatments:
   price_range_krw:
   - 60000
   - 180000
+  duration_minutes: 30
+  session_count: "5~10회 (1~2주 간격)"
 - name_ko: 루트로닉 할리우드 필링
   name_en: Lutronic Hollywood Peel
   category: laser
@@ -219,6 +247,8 @@ treatments:
   price_range_krw:
   - 100000
   - 250000
+  duration_minutes: 30
+  session_count: "3~5회 (2~4주 간격)"
 - name_ko: 아쿠아필
   name_en: Aqua Peel
   category: skin
@@ -226,13 +256,19 @@ treatments:
   - pores
   - dullness
   - acne
+  - dryness
   expected_skin_types:
+  - dry
   - oily
   - combination
+  - sensitive
+  - normal
   downtime_days: 0
   price_range_krw:
   - 50000
   - 120000
+  duration_minutes: 30
+  session_count: "2~4주 간격 반복"
 - name_ko: 살리실산 필링
   name_en: Salicylic Acid Peel
   category: skin
@@ -247,6 +283,8 @@ treatments:
   price_range_krw:
   - 30000
   - 80000
+  duration_minutes: 30
+  session_count: "3~6회 (2~4주 간격)"
 - name_ko: 미백 필링
   name_en: Brightening Peel
   category: skin
@@ -262,6 +300,8 @@ treatments:
   price_range_krw:
   - 50000
   - 120000
+  duration_minutes: 30
+  session_count: "3~6회 (2~4주 간격)"
 - name_ko: 젖산 필링
   name_en: Lactic Acid Peel
   category: skin
@@ -277,6 +317,8 @@ treatments:
   price_range_krw:
   - 30000
   - 80000
+  duration_minutes: 30
+  session_count: "3~6회 (2~4주 간격)"
 - name_ko: 글루타치온 화이트닝
   name_en: Glutathione Whitening Treatment
   category: skin
@@ -294,6 +336,8 @@ treatments:
   price_range_krw:
   - 80000
   - 200000
+  duration_minutes: 45
+  session_count: "1~2주 간격 반복"
 - name_ko: 더마펜 MTS
   name_en: Dermapen Microneedling (MTS)
   category: skin
@@ -310,6 +354,8 @@ treatments:
   price_range_krw:
   - 100000
   - 250000
+  duration_minutes: 60
+  session_count: "3~6회 (4주 간격)"
 - name_ko: 리쥬란 힐러
   name_en: Rejuran Healer
   category: skin
@@ -326,6 +372,8 @@ treatments:
   price_range_krw:
   - 200000
   - 400000
+  duration_minutes: 45
+  session_count: "3~4회 (2~4주 간격)"
 - name_ko: 연어주사 (PDRN)
   name_en: Salmon DNA Injection (PDRN)
   category: skin
@@ -341,6 +389,8 @@ treatments:
   price_range_krw:
   - 150000
   - 350000
+  duration_minutes: 45
+  session_count: "3~4회 (2~4주 간격)"
 - name_ko: 줄기세포 피부 재생
   name_en: Stem Cell Skin Rejuvenation
   category: skin
@@ -356,6 +406,8 @@ treatments:
   price_range_krw:
   - 200000
   - 500000
+  duration_minutes: 45
+  session_count: "3~5회 (2~4주 간격)"
 - name_ko: LDM 초음파 보습
   name_en: LDM Ultrasound Moisturizing
   category: skin
@@ -371,6 +423,8 @@ treatments:
   price_range_krw:
   - 50000
   - 130000
+  duration_minutes: 45
+  session_count: "주 1~2회, 8~12회"
 - name_ko: 보톡스 이마
   name_en: Botox Forehead
   category: injection
@@ -386,6 +440,8 @@ treatments:
   price_range_krw:
   - 50000
   - 150000
+  duration_minutes: 20
+  session_count: "3~6개월마다 반복"
 - name_ko: 보톡스 눈가
   name_en: Botox Crow's Feet
   category: injection
@@ -401,6 +457,8 @@ treatments:
   price_range_krw:
   - 50000
   - 120000
+  duration_minutes: 20
+  session_count: "3~6개월마다 반복"
 - name_ko: 보톡스 턱 (사각턱)
   name_en: Botox Jawline (Masseter)
   category: injection
@@ -416,6 +474,8 @@ treatments:
   price_range_krw:
   - 80000
   - 200000
+  duration_minutes: 20
+  session_count: "3~6개월마다 반복"
 - name_ko: 필러 팔자주름
   name_en: Filler Nasolabial Folds
   category: injection
@@ -431,6 +491,8 @@ treatments:
   price_range_krw:
   - 200000
   - 500000
+  duration_minutes: 30
+  session_count: "6~18개월마다 반복"
 - name_ko: 필러 입술
   name_en: Lip Filler
   category: injection
@@ -447,6 +509,8 @@ treatments:
   price_range_krw:
   - 200000
   - 500000
+  duration_minutes: 30
+  session_count: "6~18개월마다 반복"
 - name_ko: 스킨보톡스
   name_en: Skin Botox (Meso-Botox)
   category: injection
@@ -461,6 +525,8 @@ treatments:
   price_range_krw:
   - 100000
   - 250000
+  duration_minutes: 20
+  session_count: "3~6개월마다 반복"
 - name_ko: 볼륨 필러 (이마/관자놀이)
   name_en: Volume Filler (Forehead/Temple)
   category: injection
@@ -476,6 +542,8 @@ treatments:
   price_range_krw:
   - 300000
   - 800000
+  duration_minutes: 30
+  session_count: "6~18개월마다 반복"
 - name_ko: 물광주사
   name_en: Water Glow Injection (Skinbooster)
   category: injection
@@ -488,10 +556,12 @@ treatments:
   - normal
   - combination
   - sensitive
-  downtime_days: 1
+  downtime_days: 3
   price_range_krw:
   - 150000
   - 350000
+  duration_minutes: 30
+  session_count: "3~4회 (2~4주 간격)"
 - name_ko: 쥬베덤 볼보 필러
   name_en: Juvederm Voluma Filler
   category: injection
@@ -507,6 +577,8 @@ treatments:
   price_range_krw:
   - 300000
   - 700000
+  duration_minutes: 30
+  session_count: "12~18개월마다 반복"
 - name_ko: 턱끝 필러
   name_en: Chin Filler
   category: injection
@@ -522,6 +594,8 @@ treatments:
   price_range_krw:
   - 200000
   - 500000
+  duration_minutes: 30
+  session_count: "6~18개월마다 반복"
 - name_ko: 수분 관리
   name_en: Hydrating Facial
   category: facial
@@ -536,6 +610,8 @@ treatments:
   price_range_krw:
   - 50000
   - 120000
+  duration_minutes: 45
+  session_count: "2~4주 간격 반복"
 - name_ko: 진정 관리
   name_en: Calming Facial
   category: facial
@@ -550,6 +626,8 @@ treatments:
   price_range_krw:
   - 50000
   - 120000
+  duration_minutes: 45
+  session_count: "2~4주 간격 반복"
 - name_ko: 미백 관리
   name_en: Brightening Facial
   category: facial
@@ -565,6 +643,8 @@ treatments:
   price_range_krw:
   - 60000
   - 150000
+  duration_minutes: 45
+  session_count: "2~4주 간격 반복"
 - name_ko: 한방 관리
   name_en: Korean Herbal Facial
   category: facial
@@ -580,6 +660,8 @@ treatments:
   price_range_krw:
   - 80000
   - 180000
+  duration_minutes: 45
+  session_count: "2~4주 간격 반복"
 - name_ko: 여드름 관리
   name_en: Acne Treatment Facial
   category: facial
@@ -593,6 +675,8 @@ treatments:
   price_range_krw:
   - 60000
   - 150000
+  duration_minutes: 45
+  session_count: "2~4주 간격 반복"
 - name_ko: LED 테라피
   name_en: LED Light Therapy
   category: facial
@@ -600,6 +684,7 @@ treatments:
   - acne
   - redness
   - wrinkles
+  - dullness
   expected_skin_types:
   - sensitive
   - normal
@@ -609,6 +694,8 @@ treatments:
   price_range_krw:
   - 30000
   - 80000
+  duration_minutes: 20
+  session_count: "주 2~3회, 8~12회"
 - name_ko: 산소 관리
   name_en: Oxygen Facial
   category: facial
@@ -623,6 +710,8 @@ treatments:
   price_range_krw:
   - 60000
   - 150000
+  duration_minutes: 45
+  session_count: "2~4주 간격 반복"
 - name_ko: 골드 마스크 관리
   name_en: Gold Mask Facial
   category: facial
@@ -638,6 +727,8 @@ treatments:
   price_range_krw:
   - 80000
   - 200000
+  duration_minutes: 45
+  session_count: "2~4주 간격 반복"
 - name_ko: 지방 분해 주사 (턱 아래)
   name_en: Fat Dissolving Injection (Double Chin)
   category: body
@@ -652,6 +743,8 @@ treatments:
   price_range_krw:
   - 150000
   - 400000
+  duration_minutes: 20
+  session_count: "2~4회 (4~8주 간격)"
 - name_ko: 쿨스컬프팅 (냉동 지방 분해)
   name_en: CoolSculpting (Cryolipolysis)
   category: body
@@ -666,6 +759,8 @@ treatments:
   price_range_krw:
   - 200000
   - 600000
+  duration_minutes: 45
+  session_count: "2~4회 (4~8주 간격)"
 - name_ko: 인모드 바디 타이트닝
   name_en: InMode Body Tightening
   category: body
@@ -680,6 +775,8 @@ treatments:
   price_range_krw:
   - 150000
   - 400000
+  duration_minutes: 45
+  session_count: "2~4회 (4~8주 간격)"
 - name_ko: 바디 리프팅 레이저
   name_en: Body Lifting Laser
   category: body
@@ -694,10 +791,14 @@ treatments:
   price_range_krw:
   - 200000
   - 500000
+  duration_minutes: 45
+  session_count: "2~4회 (4~8주 간격)"
 - name_ko: 두피 스케일링
   name_en: Scalp Scaling
   category: hair
-  expected_concerns: []
+  expected_concerns:
+  - dryness
+  - redness
   expected_skin_types:
   - dry
   - normal
@@ -707,10 +808,13 @@ treatments:
   price_range_krw:
   - 50000
   - 120000
+  duration_minutes: 60
+  session_count: "주 1회, 8~12회"
 - name_ko: 헤어 메조테라피
   name_en: Hair Mesotherapy
   category: hair
-  expected_concerns: []
+  expected_concerns:
+  - dryness
   expected_skin_types:
   - dry
   - normal
@@ -720,10 +824,13 @@ treatments:
   price_range_krw:
   - 100000
   - 250000
+  duration_minutes: 45
+  session_count: "주 1회, 8~12회"
 - name_ko: PRP 모발 재생
   name_en: PRP Hair Rejuvenation
   category: hair
-  expected_concerns: []
+  expected_concerns:
+  - dryness
   expected_skin_types:
   - dry
   - normal
@@ -733,3 +840,61 @@ treatments:
   price_range_krw:
   - 200000
   - 500000
+  duration_minutes: 45
+  session_count: "주 1회, 8~12회"
+- name_ko: 하이드라페이셜
+  name_en: HydraFacial
+  category: facial
+  expected_concerns:
+  - pores
+  - dullness
+  - dryness
+  - acne
+  - uneven_tone
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  downtime_days: 0
+  price_range_krw:
+  - 80000
+  - 200000
+  duration_minutes: 45
+  session_count: "2~4주 간격 반복"
+- name_ko: 실리프팅 (쓰레드 리프트)
+  name_en: Thread Lift
+  category: injection
+  expected_concerns:
+  - wrinkles
+  expected_skin_types:
+  - dry
+  - normal
+  - combination
+  - oily
+  - sensitive
+  downtime_days: 7
+  price_range_krw:
+  - 300000
+  - 1500000
+  duration_minutes: 60
+  session_count: "1~2회 (12~18개월 유지)"
+- name_ko: 비타민 수액 (글루타치온 IV)
+  name_en: Vitamin IV Drip (Glutathione)
+  category: injection
+  expected_concerns:
+  - dullness
+  - dryness
+  expected_skin_types:
+  - dry
+  - oily
+  - combination
+  - sensitive
+  - normal
+  downtime_days: 0
+  price_range_krw:
+  - 50000
+  - 200000
+  duration_minutes: 30
+  session_count: "1~2주 간격 (여행 중 1회도 가능)"
