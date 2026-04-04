@@ -474,6 +474,33 @@ describe("enrichRecords", () => {
     expect(result.records[0].data.price_max).toBe(150000);
   });
 
+  it("treatment: FIELD_MAPPINGS — null/missing 필드 → null 반환", async () => {
+    const records: RawRecord[] = [
+      {
+        source: "csv",
+        sourceId: "treat-minimal",
+        entityType: "treatment",
+        data: {
+          name_ko: "테스트 시술",
+          name_en: "Test Treatment",
+          category: "facial",
+        },
+        fetchedAt: new Date().toISOString(),
+      },
+    ];
+
+    const result = await enrichRecords(records, {
+      skipTranslation: true,
+      skipClassification: true,
+      skipGeneration: true,
+    });
+
+    expect(result.records[0].data.duration_minutes).toBeNull();
+    expect(result.records[0].data.session_count).toBeNull();
+    expect(result.records[0].data.price_min).toBeNull();
+    expect(result.records[0].data.price_max).toBeNull();
+  });
+
   // ── 빈 레코드 ──
 
   it("빈 배열 → 빈 결과 + PipelineResult.total=0", async () => {
