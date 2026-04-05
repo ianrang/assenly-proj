@@ -20,11 +20,13 @@ interface KbEntry {
 function readKbFiles(subDir: string, category: 'ingredient' | 'treatment'): KbEntry[] {
   const dir = join(KB_DIR, subDir);
   const files = readdirSync(dir).filter(f => f.endsWith('.md')).sort();
-  return files.map(file => ({
-    topic: basename(file, '.md'),
-    category,
-    content: readFileSync(join(dir, file), 'utf-8'),
-  }));
+  return files.map(file => {
+    const topic = basename(file, '.md');
+    if (!/^[a-z0-9-]+$/.test(topic)) {
+      throw new Error(`Invalid KB filename: ${file}. Use kebab-case only (a-z, 0-9, hyphen).`);
+    }
+    return { topic, category, content: readFileSync(join(dir, file), 'utf-8') };
+  });
 }
 
 function escapeTemplate(s: string): string {
