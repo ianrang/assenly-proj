@@ -58,3 +58,9 @@ supabase/.temp/
 
 # docs - 초기 기획 문서 (PDF 등 바이너리)
 /docs/01-first-plainning/
+
+# pipeline raw data (로컬 전용, 파이프라인 소스 데이터)
+/data/
+
+# screenshots (로컬 참조용)
+*.png
