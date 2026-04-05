@@ -1263,9 +1263,9 @@ products:
   available_at:
   - olive_young
   - brand_store
-- name_ko: 스킨푸드 블랙 슈가 퍼펙트 에센셜 스크럽 2X
-  name_en: Skinfood Black Sugar Perfect Essential Scrub 2X
-  brand: Skinfood
+- name_ko: 토니모리 플로리아 너리싱 바디 스크럽
+  name_en: TONYMOLY Floria Nutra Energy Body Scrub
+  brand: TONYMOLY
   category: bodycare
   subcategory: body_scrub
   budget_level: budget
@@ -1275,7 +1275,7 @@ products:
   - normal
   expected_concerns:
   - dullness
-  - pores
+  - dryness
   available_at:
   - olive_young
 - name_ko: 이니스프리 에코 뷰티 툴 실리콘 클렌저

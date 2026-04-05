@@ -1,0 +1,201 @@
+﻿id,name_ko,name_en,brand,category,subcategory,budget_level,expected_skin_types,expected_concerns,available_at
+prod-innisfree-green-tea-seed-hyaluronic-cream,이니스프리 그린티 씨드 히알루로닉 크림,Innisfree Green Tea Seed Hyaluronic Cream,Innisfree,skincare,moisturizer,moderate,dry|combination|normal,dryness|dullness,olive_young|innisfree_store
+prod-laneige-water-sleeping-mask-ex,라네즈 워터 슬리핑 마스크 EX,Laneige Water Sleeping Mask EX,Laneige,skincare,moisturizer,moderate,dry|combination|normal|sensitive,dryness|dullness,olive_young|chicor|laneige_store
+prod-cosrx-advanced-snail-92-all-in-one-cream,코스알엑스 어드밴스드 스네일 92 올인원 크림,COSRX Advanced Snail 92 All in One Cream,COSRX,skincare,moisturizer,moderate,dry|combination|normal|sensitive,dryness|wrinkles|dullness,olive_young|chicor
+prod-torriden-dive-in-low-molecular-hyaluronic-acid-moisture-cream,토리든 다이브인 저분자 히알루론산 수분크림,Torriden DIVE-IN Low Molecular Hyaluronic Acid Moisture Cream,Torriden,skincare,moisturizer,moderate,dry|sensitive|normal,dryness|redness,olive_young|chicor
+prod-drg-red-blemish-clear-soothing-cream,닥터지 레드 블레미쉬 클리어 수딩 크림,Dr.G Red Blemish Clear Soothing Cream,Dr.G,skincare,moisturizer,moderate,sensitive|combination|oily,redness|acne|dryness,olive_young|chicor
+prod-illiyoon-ceramide-ato-concentrate-cream,일리윤 세라마이드 아토 집중 수분 크림,Illiyoon Ceramide Ato Concentrate Cream,Illiyoon,skincare,moisturizer,budget,dry|sensitive|normal,dryness|eczema|redness,olive_young|chicor
+prod-sulwhasoo-concentrated-ginseng-renewing-cream,설화수 자음생크림,Sulwhasoo Concentrated Ginseng Renewing Cream,Sulwhasoo,skincare,moisturizer,luxury,dry|normal|combination,wrinkles|dullness|dark_spots,department_store|chicor
+prod-belif-the-true-cream-aqua-bomb,벨리프 더 트루 크림 아쿠아 밤,belif The True Cream Aqua Bomb,belif,skincare,moisturizer,moderate,oily|combination|normal,dryness|pores,olive_young|chicor|brand_store
+prod-round-lab-birch-juice-moisturizing-cream,라운드랩 자작나무 수분 크림,Round Lab Birch Juice Moisturizing Cream,Round Lab,skincare,moisturizer,moderate,dry|sensitive|normal,dryness|redness,olive_young|chicor
+prod-isoi-bulgarian-rose-intensive-energizing-cream-ex,아이소이 불가리안 로즈 인텐시브 에너자이징 크림 EX,isoi Bulgarian Rose Intensive Energizing Cream EX,isoi,skincare,moisturizer,premium,dry|normal|combination,wrinkles|dullness|dryness,olive_young|chicor
+prod-skin1004-madagascar-centella-cream,스킨1004 마다가스카르 센텔라 크림,SKIN1004 Madagascar Centella Cream,SKIN1004,skincare,moisturizer,budget,sensitive|oily|combination,redness|acne,olive_young
+prod-goodal-houttuynia-cordata-calming-moisture-cream,구달 맑은 어성초 진정 수분크림,Goodal Houttuynia Cordata Calming Moisture Cream,Goodal,skincare,moisturizer,budget,sensitive|oily|combination,redness|acne|pores,olive_young
+prod-aestura-atobarrier-365-cream,에스트라 아토베리어 365 크림,Aestura Atobarrier 365 Cream,Aestura,skincare,moisturizer,moderate,sensitive|dry|normal,eczema|redness|dryness,olive_young|chicor
+prod-beauty-of-joseon-dynasty-cream,뷰티오브조선 왕조크림,Beauty of Joseon Dynasty Cream,Beauty of Joseon,skincare,moisturizer,budget,dry|normal|combination,dryness|dullness|wrinkles,olive_young
+prod-etude-soonjung-moist-relief-all-in-one-gel,에뛰드 순정 모이스트 풀 콜라겐 크림,ETUDE SoonJung Moist Relief All in One Gel,ETUDE,skincare,moisturizer,budget,sensitive|oily|combination,redness|dryness|eczema,olive_young|etude_store
+prod-hanyul-yuja-sleeping-mask,한율 달빛유자 수면팩,Hanyul Yuja Sleeping Mask,Hanyul,skincare,moisturizer,moderate,dry|normal|combination,dullness|dark_spots|dryness,olive_young|chicor
+prod-jung-saem-mool-time-energy-cream,정샘물 타임 에너지 크림,Jung Saem Mool Time Energy Cream,Jung Saem Mool,skincare,moisturizer,premium,dry|normal,wrinkles|dryness|dullness,chicor|department_store
+prod-bioderma-atoderm-intensive-baume,바이오더마 아토덤 인텐시브 밤,Bioderma Atoderm Intensive Baume,Bioderma,skincare,moisturizer,moderate,dry|sensitive,eczema|dryness|redness,olive_young|chicor
+prod-mediheal-madecassoside-cream,메디힐 마데카소사이드 크림,Mediheal Madecassoside Cream,Mediheal,skincare,moisturizer,budget,sensitive|combination|normal,redness|acne,olive_young
+prod-primera-alpine-berry-watery-cream,프리메라 알파인 베리 워터리 크림,primera Alpine Berry Watery Cream,primera,skincare,moisturizer,premium,oily|combination|normal,pores|dullness,chicor|brand_store
+prod-neogen-real-cica-pad,네오젠 리얼 시카패드,Neogen Real Cica Pad,Neogen,skincare,moisturizer,budget,sensitive|oily|combination,redness|acne,olive_young
+prod-by-wishtrend-pro-biome-balance-cream,바이위시트렌드 프로바이옴 밸런스 크림,By Wishtrend Pro-Biome Balance Cream,By Wishtrend,skincare,moisturizer,moderate,sensitive|dry|normal,redness|dryness,olive_young
+prod-ohui-age-recovery-cream,오휘 에이지 리커버리 크림,OHUI Age Recovery Cream,O HUI,skincare,moisturizer,luxury,dry|normal,wrinkles|dullness|dark_spots,department_store|chicor
+prod-missha-time-revolution-night-repair-ampoule-cream-5x,미샤 타임 레볼루션 나이트 리페어 크림,MISSHA Time Revolution Night Repair Ampoule Cream 5X,MISSHA,skincare,moisturizer,moderate,dry|normal|combination,wrinkles|dullness,olive_young|chicor
+prod-dalba-white-truffle-return-oil-cream,달바 화이트 트러플 파밍 크림,d'Alba White Truffle Return Oil Cream,d'Alba,skincare,moisturizer,premium,dry|normal|combination,wrinkles|dryness|dullness,olive_young|chicor
+prod-cosrx-advanced-snail-96-mucin-power-essence,코스알엑스 어드밴스드 스네일 96 뮤신 파워 에센스,COSRX Advanced Snail 96 Mucin Power Essence,COSRX,skincare,serum,moderate,dry|combination|normal|sensitive|oily,dryness|dullness|wrinkles,olive_young|chicor
+prod-torriden-dive-in-low-molecular-hyaluronic-acid-serum,토리든 다이브인 저분자 히알루론산 세럼,Torriden DIVE-IN Low Molecular Hyaluronic Acid Serum,Torriden,skincare,serum,budget,dry|sensitive|normal|combination|oily,dryness|dullness,olive_young|chicor
+prod-beauty-of-joseon-glow-serum-rice-alpha-arbutin,뷰티오브조선 맑은쌀 맑은 세럼,Beauty of Joseon Glow Serum: Rice + Alpha-Arbutin,Beauty of Joseon,skincare,serum,budget,normal|combination|dry|oily,dark_spots|dullness|uneven_tone,olive_young
+prod-anua-heartleaf-77-soothing-toner,아누아 어성초 77 수딩 토너,Anua Heartleaf 77% Soothing Toner,Anua,skincare,serum,budget,oily|combination|sensitive,redness|acne|pores,olive_young
+prod-missha-time-revolution-the-first-treatment-essence-rx,미샤 타임 레볼루션 더 퍼스트 트리트먼트 에센스 RX,MISSHA Time Revolution The First Treatment Essence RX,MISSHA,skincare,serum,moderate,dry|normal|combination|oily,dullness|wrinkles|uneven_tone,olive_young|chicor
+prod-innisfree-green-tea-seed-serum,이니스프리 그린티 씨드 세럼,Innisfree Green Tea Seed Serum,Innisfree,skincare,serum,moderate,dry|combination|normal,dryness|dullness,olive_young|innisfree_store
+prod-sulwhasoo-first-care-activating-serum-ex,설화수 윤조에센스 EX,Sulwhasoo First Care Activating Serum EX,Sulwhasoo,skincare,serum,luxury,dry|normal|combination|sensitive,wrinkles|dullness|uneven_tone,department_store|chicor
+prod-round-lab-dokdo-toner,라운드랩 독도 토너,Round Lab Dokdo Toner,Round Lab,skincare,serum,budget,oily|combination|normal,pores|dullness,olive_young|chicor
+prod-cosrx-the-vitamin-c-23-serum,코스알엑스 더 비타민 C 23 세럼,COSRX The Vitamin C 23 Serum,COSRX,skincare,serum,moderate,normal|oily|combination,dark_spots|dullness|uneven_tone|sun_damage,olive_young|chicor
+prod-goodal-green-tangerine-vita-c-dark-spot-serum,구달 청귤 비타C 잡티 세럼,Goodal Green Tangerine Vita C Dark Spot Serum,Goodal,skincare,serum,budget,normal|combination|oily,dark_spots|dullness|uneven_tone,olive_young
+prod-skin1004-madagascar-centella-asiatica-100-ampoule,스킨1004 마다가스카르 센텔라 앰플,SKIN1004 Madagascar Centella Asiatica 100 Ampoule,SKIN1004,skincare,serum,budget,sensitive|oily|combination,redness|acne,olive_young
+prod-drg-red-blemish-clear-soothing-active-essence,닥터지 레드 블레미쉬 클리어 수딩 액티브 에센스,Dr.G Red Blemish Clear Soothing Active Essence,Dr.G,skincare,serum,moderate,sensitive|combination,redness|acne|dryness,olive_young|chicor
+prod-ahc-premium-hydra-b5-soothing-enhancer,AHC 프리미엄 히드라 B5 수딩 에센스,AHC Premium Hydra B5 Soothing Enhancer,AHC,skincare,serum,moderate,dry|normal|sensitive,dryness|redness,olive_young
+prod-huxley-oil-essence-essence-like-oil-like,"헉슬리 오일 에센스 에센스 라이크, 오일 라이크","Huxley Oil Essence: Essence-Like, Oil-Like",Huxley,skincare,serum,premium,dry|normal,dryness|dullness|wrinkles,chicor|brand_store
+prod-manyo-galactomy-niacin-essence,마녀공장 갈락토미 나이아신 에센스,ma:nyo Galactomy Niacin Essence,ma:nyo,skincare,serum,moderate,oily|combination|normal,pores|dullness|uneven_tone,olive_young
+prod-dalba-white-truffle-first-spray-serum,달바 화이트 트러플 퍼스트 스프레이 세럼,d'Alba White Truffle First Spray Serum,d'Alba,skincare,serum,moderate,dry|normal|combination,dryness|dullness,olive_young|chicor
+prod-numbuzin-no3-super-glowing-vitamin-c-serum,넘버즈인 3번 비타민 C 기미 세럼,numbuzin No.3 Super Glowing Vitamin C Serum,numbuzin,skincare,serum,budget,normal|combination|oily,dark_spots|dullness|uneven_tone,olive_young
+prod-bio-heal-boh-probioderm-lifting-ampoule,바이오힐보 프로바이오덤 리프팅 크림,Bio Heal BOH Probioderm Lifting Ampoule,Bio Heal BOH,skincare,serum,moderate,dry|normal|combination,wrinkles|dullness,olive_young
+prod-one-thing-propolis-honey-extract,원씽 프로폴리스 + 꿀 에센스,One Thing Propolis + Honey Extract,One Thing,skincare,serum,budget,dry|sensitive|normal,dryness|dullness|redness,olive_young
+prod-the-history-of-whoo-bichup-self-generating-anti-aging-essence,후 비첩 자생 에센스,The History of Whoo Bichup Self-Generating Anti-Aging Essence,The History of Whoo,skincare,serum,luxury,dry|normal,wrinkles|dullness|dark_spots,department_store
+prod-vt-reedle-shot-100-essence,VT 리들샷 100 에센스,VT Reedle Shot 100 Essence,VT,skincare,serum,moderate,normal|combination|oily,wrinkles|pores|dullness,olive_young
+prod-numbuzin-no5-vitamin-b5-cica-serum,넘버즈인 5번 판테놀 진정 세럼,numbuzin No.5 Vitamin B5 + Cica Serum,numbuzin,skincare,serum,budget,sensitive|dry|combination,redness|dryness|eczema,olive_young
+prod-aestura-theracne-365-active-ampoule,에스트라 더모시카 리페어 시카 앰플,Aestura Theracne 365 Active Ampoule,Aestura,skincare,serum,moderate,sensitive|oily|combination,acne|redness|pores,olive_young
+prod-dear-klairs-freshly-juiced-vitamin-drop,클레어스 프레쉬리 쥬스드 비타민 드롭,"dear, Klairs Freshly Juiced Vitamin Drop","dear, Klairs",skincare,serum,moderate,normal|combination|sensitive,dark_spots|dullness|uneven_tone,olive_young
+prod-beauty-of-joseon-ginseng-essence-water,조선미녀 인삼 에센스워터,Beauty of Joseon Ginseng Essence Water,Beauty of Joseon,skincare,serum,budget,dry|normal|combination,wrinkles|dullness,olive_young
+prod-cosrx-low-ph-good-morning-gel-cleanser,코스알엑스 로우 pH 굿모닝 젤 클렌저,COSRX Low pH Good Morning Gel Cleanser,COSRX,skincare,cleanser,budget,oily|combination|normal|sensitive,acne|pores,olive_young|chicor
+prod-innisfree-green-tea-foam-cleanser,이니스프리 그린티 폼 클렌저,Innisfree Green Tea Foam Cleanser,Innisfree,skincare,cleanser,budget,oily|combination|normal,pores|dullness,olive_young|innisfree_store
+prod-round-lab-dokdo-cleansing-oil,라운드랩 독도 클렌징 오일,Round Lab Dokdo Cleansing Oil,Round Lab,skincare,cleanser,budget,dry|normal|combination|oily,pores|dullness,olive_young|chicor
+prod-manyo-pure-cleansing-oil,마녀공장 퓨어 클렌징 오일,ma:nyo Pure Cleansing Oil,ma:nyo,skincare,cleanser,budget,oily|combination|normal,pores|acne,olive_young
+prod-etude-soonjung-ph-65-whip-cleanser,에뛰드 순정 pH 6.5 워터리 클렌저,ETUDE SoonJung pH 6.5 Whip Cleanser,ETUDE,skincare,cleanser,budget,sensitive|dry|normal,redness|eczema|dryness,olive_young|etude_store
+prod-anua-heartleaf-pore-control-cleansing-oil,아누아 어성초 클렌징 오일,Anua Heartleaf Pore Control Cleansing Oil,Anua,skincare,cleanser,budget,oily|combination,pores|acne,olive_young
+prod-laneige-cream-skin-toner-moisturizer,라네즈 크림 스킨 토너 & 모이스처라이저,Laneige Cream Skin Toner & Moisturizer,Laneige,skincare,toner,moderate,dry|sensitive|normal,dryness|redness,olive_young|chicor|laneige_store
+prod-son-park-beauty-water,손앤박 뷰티워터,Son & Park Beauty Water,Son & Park,skincare,toner,moderate,oily|combination|normal,pores|dullness,chicor|brand_store
+prod-dear-klairs-supple-preparation-facial-toner,클레어스 서플 프레퍼레이션 페이셜 토너,"dear, Klairs Supple Preparation Facial Toner","dear, Klairs",skincare,toner,moderate,dry|sensitive|normal,dryness|redness,olive_young
+prod-some-by-mi-aha-bha-pha-30-days-miracle-toner,Some By Mi AHA BHA PHA 30 데이즈 미라클 토너,Some By Mi AHA BHA PHA 30 Days Miracle Toner,Some By Mi,skincare,toner,budget,oily|combination,acne|pores|dullness,olive_young
+prod-numbuzin-no1-heartleaf-soothing-toner-pad,넘버즈인 1번 맑은 어성초 토너패드,numbuzin No.1 Heartleaf Soothing Toner Pad,numbuzin,skincare,toner,budget,sensitive|oily|combination,redness|pores|acne,olive_young
+prod-torriden-dive-in-low-molecular-hyaluronic-acid-toner,토리든 다이브인 저분자 히알루론산 토너,Torriden DIVE-IN Low Molecular Hyaluronic Acid Toner,Torriden,skincare,toner,budget,dry|sensitive|normal,dryness,olive_young
+prod-bonajour-green-tea-water-bomb-toner,보나쥬르 그린티 워터 밤 토너,Bonajour Green Tea Water Bomb Toner,Bonajour,skincare,toner,budget,oily|combination|normal,pores|dullness,olive_young
+prod-real-barrier-cicarelief-rx-fade-in-serum,리얼배리어 시카 릴리프 토너,Real Barrier Cicarelief RX Fade In Serum,Real Barrier,skincare,toner,moderate,sensitive|dry,dryness|redness,olive_young
+prod-hera-cell-essence,헤라 셀 에센스,HERA Cell Essence,HERA,skincare,toner,premium,dry|normal|combination,dullness|wrinkles|uneven_tone,department_store|chicor
+prod-drjart-cicapair-foam-cleanser,닥터자르트 시카페어 폼 클렌저,Dr.Jart+ Cicapair Foam Cleanser,Dr.Jart+,skincare,cleanser,moderate,sensitive|combination|normal,redness|acne,olive_young|chicor
+prod-drjart-cicapair-toner,닥터자르트 시카페어 토너,Dr.Jart+ Cicapair Toner,Dr.Jart+,skincare,toner,moderate,sensitive|combination,redness|acne,olive_young|chicor
+prod-sulwhasoo-gentle-cleansing-foam-ex,설화수 순행클렌징폼 EX,Sulwhasoo Gentle Cleansing Foam EX,Sulwhasoo,skincare,cleanser,premium,dry|normal|combination,dullness|dryness,department_store|chicor
+prod-bioderma-sensibio-h2o,바이오더마 센시비오 H2O,Bioderma Sensibio H2O,Bioderma,skincare,cleanser,moderate,sensitive|dry|normal,redness|dryness,olive_young|chicor
+prod-primera-mild-comforting-cleanser,프리메라 마일드 컴포팅 클렌저,primera Mild Comforting Cleanser,primera,skincare,cleanser,moderate,sensitive|dry|normal,dryness|redness,chicor|brand_store
+prod-beauty-of-joseon-relief-sun-rice-probiotics-spf50-pa,뷰티오브조선 맑은쌀 선크림,Beauty of Joseon Relief Sun: Rice + Probiotics SPF50+ PA++++,Beauty of Joseon,skincare,sunscreen,budget,dry|normal|sensitive|combination,sun_damage|dryness,olive_young
+prod-round-lab-birch-juice-moisturizing-sun-cream-spf50-pa,라운드랩 자작나무 수분 선크림,Round Lab Birch Juice Moisturizing Sun Cream SPF50+ PA++++,Round Lab,skincare,sunscreen,budget,dry|sensitive|normal,sun_damage|dryness,olive_young|chicor
+prod-innisfree-daily-uv-defense-sunscreen-spf36-pa,이니스프리 데일리 UV 디펜스 선크림,Innisfree Daily UV Defense Sunscreen SPF36 PA+++,Innisfree,skincare,sunscreen,budget,normal|combination|oily,sun_damage,olive_young|innisfree_store
+prod-numbuzin-no1-pure-glass-clean-sun-spf50-pa,넘버즈인 1번 맑은 선크림,numbuzin No.1 Pure Glass Clean Sun SPF50+ PA++++,numbuzin,skincare,sunscreen,budget,oily|combination|normal,sun_damage|pores,olive_young
+prod-drg-green-mild-up-sun-plus-spf50-pa,닥터지 그린 마일드 업 선플러스 SPF50+ PA++++,Dr.G Green Mild Up Sun Plus SPF50+ PA++++,Dr.G,skincare,sunscreen,budget,sensitive|normal|combination,sun_damage|redness,olive_young|chicor
+prod-cosrx-aloe-soothing-sun-cream-spf50-pa,코스알엑스 알로에 수딩 선크림 SPF50+ PA+++,COSRX Aloe Soothing Sun Cream SPF50+ PA+++,COSRX,skincare,sunscreen,budget,sensitive|dry|normal,sun_damage|redness,olive_young
+prod-aestura-atobarrier-365-hydro-soothing-sun-cream-spf50-pa,에스트라 아토베리어 365 하이드로 수딩 선크림,Aestura Atobarrier 365 Hydro Soothing Sun Cream SPF50+ PA++++,Aestura,skincare,sunscreen,moderate,sensitive|dry,sun_damage|eczema|redness,olive_young
+prod-isoi-sun-milk-skin-moisture-spf50-pa,아이소이 선밀크 스킨 모이스처 SPF50+,isoi Sun Milk Skin Moisture SPF50+ PA++++,isoi,skincare,sunscreen,moderate,dry|normal,sun_damage|dryness,olive_young
+prod-drjart-every-sun-day-uv-sun-fluid-spf50-pa,닥터자르트 에브리 선 데이 UV 썬 플루이드,Dr.Jart+ Every Sun Day UV Sun Fluid SPF50+ PA++++,Dr.Jart+,skincare,sunscreen,moderate,oily|combination|normal,sun_damage|pores,olive_young|chicor
+prod-dalba-waterfull-essence-sun-cream-spf50-pa,달바 워터풀 에센스 선크림,d'Alba Waterfull Essence Sun Cream SPF50+ PA++++,d'Alba,skincare,sunscreen,moderate,dry|normal|combination,sun_damage|dryness,olive_young|chicor
+prod-skin1004-madagascar-centella-air-fit-suncream-spf50-pa,스킨1004 마다가스카르 센텔라 에어핏 선크림,SKIN1004 Madagascar Centella Air-Fit Suncream SPF50+ PA++++,SKIN1004,skincare,sunscreen,budget,sensitive|oily|combination,sun_damage|redness,olive_young
+prod-cell-fusion-c-derma-relief-sunscreen-spf50-pa,셀퓨전씨 톤업 선크림 SPF50+,Cell Fusion C Derma Relief Sunscreen SPF50+ PA++++,Cell Fusion C,skincare,sunscreen,moderate,sensitive|normal,sun_damage|redness,olive_young|chicor
+prod-etude-soonjung-mild-defence-sun-cream-spf49-pa,에뛰드 순정 선크림 SPF50+,ETUDE SoonJung Mild Defence Sun Cream SPF49 PA++,ETUDE,skincare,sunscreen,budget,sensitive|normal|combination,sun_damage|redness,olive_young|etude_store
+prod-clio-kill-cover-skin-fixer-sun-cream-spf50-pa,클리오 킬커버 선크림 SPF50+,CLIO Kill Cover Skin Fixer Sun Cream SPF50+ PA++++,CLIO,skincare,sunscreen,moderate,oily|combination|normal,sun_damage,olive_young
+prod-primera-skin-relief-uv-protector-spf50-pa,프리메라 스킨 릴리프 UV 프로텍터 SPF50+,primera Skin Relief UV Protector SPF50+ PA++++,primera,skincare,sunscreen,moderate,sensitive|dry,sun_damage|redness|eczema,chicor|brand_store
+prod-mediheal-nmf-aquaring-ampoule-mask-ex,메디힐 N.M.F 아쿠아링 앰플 마스크,Mediheal N.M.F Aquaring Ampoule Mask EX,Mediheal,skincare,mask,budget,dry|normal|combination|sensitive,dryness|dullness,olive_young|chicor
+prod-drjart-cicapair-calming-mask,닥터자르트 시카페어 시카 칼밍 마스크,Dr.Jart+ Cicapair Calming Mask,Dr.Jart+,skincare,mask,moderate,sensitive|combination,redness|acne,olive_young|chicor
+prod-innisfree-super-volcanic-pore-clay-mask-2x,이니스프리 수퍼 화산송이 포어 클레이 마스크 2X,Innisfree Super Volcanic Pore Clay Mask 2X,Innisfree,skincare,mask,budget,oily|combination,pores|acne,olive_young|innisfree_store
+prod-sulwhasoo-overnight-vitalizing-mask,설화수 여윤팩,Sulwhasoo Overnight Vitalizing Mask,Sulwhasoo,skincare,mask,premium,dry|normal,wrinkles|dullness,department_store|chicor
+prod-mediheal-tea-tree-care-solution-essential-mask-ex,메디힐 티트리 케어 솔루션 에센셜 마스크 EX,Mediheal Tea Tree Care Solution Essential Mask EX,Mediheal,skincare,mask,budget,oily|combination|sensitive,acne|pores|redness,olive_young
+prod-laneige-lip-sleeping-mask,라네즈 립 슬리핑 마스크,Laneige Lip Sleeping Mask,Laneige,skincare,mask,moderate,dry|normal|combination|oily|sensitive,dryness,olive_young|chicor|laneige_store
+prod-skinfood-black-sugar-perfect-essential-scrub-2x,스킨푸드 블랙슈가 퍼펙트 에센셜 스크럽 2X,Skinfood Black Sugar Perfect Essential Scrub 2X,Skinfood,skincare,mask,budget,oily|combination|normal,pores|dullness,olive_young
+prod-abib-heartleaf-stress-relief-calming-sheet-mask,아비브 어성초 스트레스 릴리프 캄 시트 마스크,Abib Heartleaf Stress Relief Calming Sheet Mask,Abib,skincare,mask,budget,sensitive|oily|combination,redness|acne,olive_young
+prod-cosrx-acne-pimple-master-patch,코스알엑스 아크네 핌플 마스터 패치,COSRX Acne Pimple Master Patch,COSRX,skincare,mask,budget,oily|combination|normal|sensitive,acne,olive_young|chicor
+prod-papa-recipe-bombee-honey-mask,파파레서피 봄비 꿀단지 마스크,Papa Recipe Bombee Honey Mask,Papa Recipe,skincare,mask,budget,dry|normal|sensitive,dryness|dullness,olive_young
+prod-round-lab-dokdo-toner-pad,라운드랩 독도 토너패드,Round Lab Dokdo Toner Pad,Round Lab,skincare,mask,budget,oily|combination|normal,pores|dullness,olive_young
+prod-vt-cica-daily-soothing-mask,VT 시카 데일리 수딩 마스크,VT Cica Daily Soothing Mask,VT,skincare,mask,budget,sensitive|combination|normal,redness|acne,olive_young
+prod-jm-solution-honey-luminous-royal-propolis-mask,JM솔루션 꿀 광채 로얄 프로폴리스 마스크,JM Solution Honey Luminous Royal Propolis Mask,JM Solution,skincare,mask,budget,dry|normal|combination,dryness|dullness,olive_young
+prod-heimish-dailism-water-sheet-mask,헤이미쉬 데일리즘 워터 시트 마스크,Heimish Dailism Water Sheet Mask,Heimish,skincare,mask,budget,dry|normal|combination,dryness|dullness,olive_young
+prod-tonymoly-im-real-avocado-mask-sheet,토니모리 I'm Real 아보카도 마스크 시트,TONYMOLY I'm Real Avocado Mask Sheet,TONYMOLY,skincare,mask,budget,dry|normal,dryness|dullness,olive_young
+prod-ahc-ten-revolution-real-eye-cream-for-face,AHC 텐 레볼루션 리얼 아이크림 포 페이스,AHC Ten Revolution Real Eye Cream for Face,AHC,skincare,eye_care,moderate,dry|normal|combination,wrinkles|dark_circles,olive_young
+prod-innisfree-green-tea-seed-eye-cream,이니스프리 그린티 씨드 아이크림,Innisfree Green Tea Seed Eye Cream,Innisfree,skincare,eye_care,moderate,dry|normal|combination,wrinkles|dark_circles|dryness,olive_young|innisfree_store
+prod-sulwhasoo-concentrated-ginseng-renewing-eye-cream,설화수 자음생 아이크림,Sulwhasoo Concentrated Ginseng Renewing Eye Cream,Sulwhasoo,skincare,eye_care,luxury,dry|normal,wrinkles|dark_circles|dullness,department_store
+prod-missha-time-revolution-night-repair-probio-eye-cream,미샤 타임 레볼루션 나이트 리페어 아이크림,MISSHA Time Revolution Night Repair Probio Eye Cream,MISSHA,skincare,eye_care,moderate,dry|normal|combination,wrinkles|dark_circles,olive_young
+prod-cosrx-advanced-snail-peptide-eye-cream,코스알엑스 어드밴스드 스네일 펩타이드 아이크림,COSRX Advanced Snail Peptide Eye Cream,COSRX,skincare,eye_care,moderate,dry|normal|combination|sensitive,wrinkles|dark_circles,olive_young
+prod-the-history-of-whoo-bichup-ja-yoon-eye-cream,후 비첩 자생 아이크림,The History of Whoo Bichup Ja Yoon Eye Cream,The History of Whoo,skincare,eye_care,luxury,dry|normal,wrinkles|dark_circles|dark_spots,department_store
+prod-drjart-cicapair-eye-cream,닥터자르트 시카페어 아이크림,Dr.Jart+ Cicapair Eye Cream,Dr.Jart+,skincare,eye_care,moderate,sensitive|combination|normal,dark_circles|redness,olive_young|chicor
+prod-the-saem-cell-renew-bio-eye-cream,더샘 세미 에센셜 아이크림,The SAEM Cell Renew Bio Eye Cream,The SAEM,skincare,eye_care,budget,dry|normal|combination,wrinkles|dark_circles,olive_young
+prod-isa-knox-age-focus-phyto-pro-retinol-eye-cream,이자녹스 에이지 포커스 피토프로 레티놀 아이크림,ISA KNOX Age Focus Phyto Pro Retinol Eye Cream,ISA KNOX,skincare,eye_care,premium,dry|normal,wrinkles|dark_circles|dullness,department_store|chicor
+prod-numbuzin-no4-collagen-73-dewy-focus-eye-serum,넘버즈인 4번 레티놀 아이크림,numbuzin No.4 Collagen 73 Dewy Focus Eye Serum,numbuzin,skincare,eye_care,budget,normal|combination|dry,wrinkles|dark_circles,olive_young
+prod-romnd-juicy-lasting-tint,롬앤 쥬시 래스팅 틴트,rom&nd Juicy Lasting Tint,rom&nd,makeup,lip_tint,budget,dry|oily|combination|sensitive|normal,,olive_young
+prod-romnd-glasting-melting-balm,롬앤 글래스팅 멜팅 밤,rom&nd Glasting Melting Balm,rom&nd,makeup,lip_balm,moderate,dry|oily|combination|sensitive|normal,dryness,olive_young
+prod-peripera-ink-mood-matte-tint,페리페라 잉크 무드 매트 틴트,Peripera Ink Mood Matte Tint,Peripera,makeup,lip_tint,budget,oily|combination|normal,,olive_young
+prod-peripera-ink-the-velvet,페리페라 잉크 더 벨벳,Peripera Ink The Velvet,Peripera,makeup,lip_tint,budget,dry|oily|combination|sensitive|normal,,olive_young
+prod-clio-melting-dewy-tint,클리오 멜팅 디유 틴트,Clio Melting Dewy Tint,CLIO,makeup,lip_tint,moderate,dry|combination|normal,dryness,olive_young
+prod-etude-fixing-tint,에뛰드 픽싱 틴트,Etude Fixing Tint,ETUDE,makeup,lip_tint,moderate,dry|oily|combination|sensitive|normal,,olive_young|brand_store
+prod-hera-sensual-powder-matte-lipstick,헤라 센슈얼 파우더 매트 립스틱,Hera Sensual Powder Matte Lipstick,HERA,makeup,lip_stick,luxury,dry|oily|combination|sensitive|normal,,department_store|chicor
+prod-espoir-couture-lip-tint-velvet,에스쁘아 쿠튀르 립 틴트 벨벳,espoir Couture Lip Tint Velvet,espoir,makeup,lip_tint,premium,dry|oily|combination|sensitive|normal,,chicor|olive_young
+prod-laneige-two-tone-tint-lip-bar,라네즈 투톤 립 틴트,Laneige Two Tone Tint Lip Bar,Laneige,makeup,lip_tint,moderate,dry|oily|combination|sensitive|normal,,olive_young|department_store
+prod-mamonde-creamy-tint-color-balm-intense,마몽드 크리미 틴트 컬러 밤 인텐스,Mamonde Creamy Tint Color Balm Intense,Mamonde,makeup,lip_balm,moderate,dry|combination|normal,dryness,olive_young|department_store
+prod-too-cool-for-school-glaze-lip-gloss,투쿨포스쿨 글로우 핏 립 글레이즈,too cool for school Glaze Lip Gloss,too cool for school,makeup,lip_gloss,budget,dry|oily|combination|sensitive|normal,,olive_young
+prod-sulwhasoo-essential-lip-serum-stick,설화수 에센셜 립 세럼 스틱,Sulwhasoo Essential Lip Serum Stick,Sulwhasoo,makeup,lip_stick,luxury,dry|sensitive|normal,dryness|wrinkles,department_store
+prod-wakemake-water-blurring-glow-lipstick,웨이크메이크 워터 블러링 글로우 립스틱,Wakemake Water Blurring Glow Lipstick,Wakemake,makeup,lip_stick,moderate,dry|oily|combination|sensitive|normal,,olive_young
+prod-lilybyred-mood-liar-velvet-tint,릴리바이레드 무드 라이어 벨벳 틴트,lilybyred Mood Liar Velvet Tint,lilybyred,makeup,lip_tint,budget,dry|oily|combination|sensitive|normal,,olive_young
+prod-3ce-velvet-lip-tint,3CE 벨벳 립 틴트,3CE Velvet Lip Tint,3CE,makeup,lip_tint,premium,dry|oily|combination|sensitive|normal,,chicor|brand_store
+prod-clio-kill-cover-foun-wear-cushion-all-new,클리오 킬커버 파운웨어 쿠션 올 뉴,Clio Kill Cover Foun-Wear Cushion All New,CLIO,makeup,cushion,moderate,oily|combination,pores|uneven_tone,olive_young
+prod-missha-magic-cushion-cover-lasting,미샤 매직 쿠션 커버 래스팅,Missha Magic Cushion Cover Lasting,MISSHA,makeup,cushion,budget,oily|combination|normal,uneven_tone|pores,olive_young
+prod-laneige-neo-cushion-matte,라네즈 네오 쿠션 매트,Laneige Neo Cushion Matte,Laneige,makeup,cushion,premium,oily|combination,pores|uneven_tone,olive_young|department_store
+prod-hera-black-cushion,헤라 블랙 쿠션,Hera Black Cushion,HERA,makeup,cushion,premium,dry|oily|combination|normal,uneven_tone|dullness,department_store|chicor
+prod-etude-double-lasting-cushion-glow,에뛰드 더블 래스팅 쿠션 글로우,Etude Double Lasting Cushion Glow,ETUDE,makeup,cushion,premium,dry|normal,dryness|dullness,olive_young|brand_store
+prod-sulwhasoo-perfecting-cushion,설화수 퍼펙팅 쿠션,Sulwhasoo Perfecting Cushion,Sulwhasoo,makeup,cushion,luxury,dry|combination|normal,wrinkles|dullness|uneven_tone,department_store
+prod-innisfree-no-sebum-powder-cushion,이니스프리 노세범 파우더 쿠션,Innisfree No-Sebum Powder Cushion,Innisfree,makeup,cushion,premium,oily|combination,pores|acne,olive_young|brand_store
+prod-espoir-pro-tailor-be-foundation,에스쁘아 프로 테일러 비 파운데이션,espoir Pro Tailor Be Foundation,espoir,makeup,foundation,premium,dry|oily|combination|normal,uneven_tone|pores,chicor|olive_young
+prod-missha-m-perfect-cover-bb-cream-spf42,미샤 M 퍼펙트 커버 BB크림,Missha M Perfect Cover BB Cream SPF42,MISSHA,makeup,bb_cream,budget,dry|combination|normal|sensitive,uneven_tone|dark_spots|dullness,olive_young
+prod-amorepacific-time-response-skin-reserve-cushion,아모레퍼시픽 타임 레스폰스 스킨 리저브 쿠션,Amorepacific Time Response Skin Reserve Cushion,Amorepacific,makeup,cushion,luxury,dry|normal,wrinkles|dullness|dryness,department_store
+prod-clio-pro-eye-palette,클리오 프로 아이 팔레트,Clio Pro Eye Palette,CLIO,makeup,eye_shadow,premium,dry|oily|combination|sensitive|normal,,olive_young
+prod-peripera-all-take-mood-palette,페리페라 올 테이크 무드 팔레트,Peripera All Take Mood Palette,Peripera,makeup,eye_shadow,moderate,dry|oily|combination|sensitive|normal,,olive_young
+prod-etude-play-color-eyes,에뛰드 플레이 컬러 아이즈,Etude Play Color Eyes,ETUDE,makeup,eye_shadow,premium,dry|oily|combination|sensitive|normal,,olive_young|brand_store
+prod-clio-kill-lash-superproof-mascara,클리오 킬 래쉬 슈퍼프루프 마스카라,Clio Kill Lash Superproof Mascara,CLIO,makeup,mascara,moderate,dry|oily|combination|sensitive|normal,,olive_young
+prod-romnd-han-all-sharp-proof-mascara,롬앤 한올 슈퍼 프루프 마스카라,rom&nd Han All Sharp Proof Mascara,rom&nd,makeup,mascara,moderate,dry|oily|combination|sensitive|normal,,olive_young
+prod-wakemake-soft-blurring-eye-palette,웨이크메이크 소프트 블러링 아이 팔레트,Wakemake Soft Blurring Eye Palette,Wakemake,makeup,eye_shadow,moderate,dry|oily|combination|sensitive|normal,,olive_young
+prod-clio-sharp-so-simple-waterproof-pencil-liner,클리오 샤프 소 심플 워터프루프 펜슬 라이너,Clio Sharp So Simple Waterproof Pencil Liner,CLIO,makeup,eye_liner,budget,dry|oily|combination|sensitive|normal,,olive_young
+prod-peripera-ink-thin-thin-eye-pencil,페리페라 잉크 씬씬 아이 펜슬,Peripera Ink Thin Thin Eye Pencil,Peripera,makeup,eye_liner,budget,dry|oily|combination|sensitive|normal,,olive_young
+prod-3ce-eye-switch,3CE 아이 스위치,3CE Eye Switch,3CE,makeup,eye_shadow,moderate,dry|oily|combination|sensitive|normal,,chicor|brand_store
+prod-hera-eye-designer-palette,헤라 아이 디자이너 팔레트,Hera Eye Designer Palette,HERA,makeup,eye_shadow,luxury,dry|oily|combination|sensitive|normal,,department_store|chicor
+prod-laneige-glowy-makeup-serum,라네즈 글로위 메이크업 세럼,Laneige Glowy Makeup Serum,Laneige,makeup,primer,moderate,dry|combination|normal,dryness|dullness,olive_young|department_store
+prod-innisfree-no-sebum-mineral-powder,이니스프리 노세범 미네랄 파우더,Innisfree No-Sebum Mineral Powder,Innisfree,makeup,setting_powder,budget,oily|combination,pores,olive_young|brand_store
+prod-peripera-pure-bebe-blusher,페리페라 순수 베베 블러셔,Peripera Pure Bebe Blusher,Peripera,makeup,blush,budget,dry|oily|combination|sensitive|normal,,olive_young
+prod-clio-kill-cover-fixer-primer,클리오 킬커버 피시저 프라이머,Clio Kill Cover Fixer Primer,CLIO,makeup,primer,moderate,oily|combination,pores|uneven_tone,olive_young
+prod-etude-lovely-cookie-blusher,에뛰드 꽃잎 블러셔,Etude Lovely Cookie Blusher,ETUDE,makeup,blush,budget,dry|oily|combination|sensitive|normal,,olive_young|brand_store
+prod-kundal-honey-macadamia-nature-shampoo,쿤달 허니 앤 마카다미아 네이처 샴푸,Kundal Honey & Macadamia Nature Shampoo,Kundal,haircare,shampoo,budget,dry|normal,dryness,olive_young
+prod-lador-anti-hair-loss-shampoo,라보에이치 탈모 증상 완화 샴푸,La'dor Anti Hair Loss Shampoo,La'dor,haircare,shampoo,budget,oily|combination|normal,,olive_young
+prod-amos-green-tea-refresh-shampoo,아모스 녹차 실감 샴푸,Amos Green Tea Refresh Shampoo,Amos Professional,haircare,shampoo,premium,oily|combination,,olive_young|chicor
+prod-mise-en-scene-perfect-serum-shampoo,미장센 퍼펙트 세럼 샴푸,Mise en Scene Perfect Serum Shampoo,Mise en Scène,haircare,shampoo,budget,dry|combination|normal,dryness,olive_young
+prod-ryo-jayang-yunmo-anti-hair-loss-shampoo,려 자양윤모 샴푸,Ryo Jayang Yunmo Anti Hair Loss Shampoo,Ryo,haircare,shampoo,moderate,oily|combination|normal|sensitive,,olive_young
+prod-amos-professional-green-tea-real-fresh-shampoo,아모스 프로페셔널 녹차 실감 샴푸,Amos Professional Green Tea Real Fresh Shampoo,Amos Professional,haircare,shampoo,moderate,oily|combination|normal,pores,olive_young
+prod-moremo-water-treatment-miracle-10,모레모 워터 트리트먼트 미라클 10,Moremo Water Treatment Miracle 10,Moremo,haircare,treatment,premium,dry|normal,dryness,olive_young
+prod-lador-perfect-hair-fill-up,라도르 퍼펙트 헤어 필 업,La'dor Perfect Hair Fill-Up,La'dor,haircare,treatment,moderate,dry|combination|normal,dryness,olive_young
+prod-mise-en-scene-perfect-serum-treatment-pack,미장센 퍼펙트 세럼 트리트먼트 팩,Mise en Scene Perfect Serum Treatment Pack,Mise en Scène,haircare,treatment,budget,dry|combination|normal,dryness,olive_young
+prod-kundal-honey-macadamia-hair-treatment,쿤달 허니 앤 마카다미아 헤어 트리트먼트,Kundal Honey & Macadamia Hair Treatment,Kundal,haircare,treatment,moderate,dry|normal,dryness,olive_young
+prod-amos-professional-recovery-cream-treatment,아모스 리커버 크림 트리트먼트,Amos Professional Recovery Cream Treatment,Amos Professional,haircare,treatment,premium,dry|combination|normal,dryness,olive_young|chicor
+prod-moremo-hair-essence-delightful-oil,모레모 헤어 에센스 딜라이트풀 오일,Moremo Hair Essence Delightful Oil,Moremo,haircare,hair_oil,premium,dry|normal,dryness,olive_young
+prod-mise-en-scene-perfect-original-serum,미장센 퍼펙트 오리지널 세럼,Mise en Scene Perfect Original Serum,Mise en Scène,haircare,hair_serum,budget,dry|combination|normal,dryness,olive_young
+prod-lador-perfect-hair-fill-up-essence,라도르 퍼펙트 헤어 필 업 에센스,La'dor Perfect Hair Fill-Up Essence,La'dor,haircare,hair_essence,moderate,dry|combination|normal,dryness,olive_young
+prod-hera-signia-hair-oil,헤라 시그니아 헤어 오일,Hera Signia Hair Oil,HERA,haircare,hair_oil,premium,dry|normal,dryness,department_store
+prod-kundal-argan-hair-serum,쿤달 아르간 헤어 세럼,Kundal Argan Hair Serum,Kundal,haircare,hair_serum,budget,dry|combination|normal,dryness,olive_young
+prod-mise-en-scene-hello-bubble-foam-color,미장센 헬로 버블 폼 컬러,Mise en Scene Hello Bubble Foam Color,Mise en Scène,haircare,hair_color,budget,dry|oily|combination|sensitive|normal,,olive_young
+prod-amos-professional-curling-essence-2x,아모스 커링 에센스 2X,Amos Professional Curling Essence 2X,Amos Professional,haircare,styling,moderate,dry|combination|normal,,olive_young|chicor
+prod-ryo-double-effector-root-volume-setting,려 더블 이펙터 루트 볼륨 세팅,Ryo Double Effector Root Volume Setting,Ryo,haircare,styling,moderate,oily|combination|normal,,olive_young
+prod-moremo-hair-serum-r,모레모 헤어 세럼 R,Moremo Hair Serum R,Moremo,haircare,styling,moderate,dry|combination|normal,dryness,olive_young
+prod-kundal-pure-body-wash,쿤달 퓨어 바디워시,Kundal Pure Body Wash,Kundal,bodycare,body_wash,budget,dry|oily|combination|sensitive|normal,dryness,olive_young
+prod-happy-bath-green-tea-body-wash,해피바스 그린티 바디워시,Happy Bath Green Tea Body Wash,Happy Bath,bodycare,body_wash,budget,oily|combination|normal,acne|pores,olive_young
+prod-hanyul-moonlight-citron-body-wash,한율 달빛유자 바디워시,Hanyul Moonlight Citron Body Wash,Hanyul,bodycare,body_wash,premium,dry|combination|normal,dryness|dullness,olive_young|department_store
+prod-mediheal-tea-tree-body-wash,메디힐 티트리 바디워시,Mediheal Tea Tree Body Wash,Mediheal,bodycare,body_wash,budget,oily|combination|sensitive,acne|redness,olive_young
+prod-amorepacific-body-ritual-cleansing-oil,아모레퍼시픽 바디 리추얼 클렌징 오일,Amorepacific Body Ritual Cleansing Oil,Amorepacific,bodycare,body_wash,luxury,dry|sensitive|normal,dryness,department_store
+prod-kundal-honey-macadamia-pure-body-lotion,쿤달 허니 앤 마카다미아 퓨어 바디 로션,Kundal Honey & Macadamia Pure Body Lotion,Kundal,bodycare,body_lotion,budget,dry|combination|normal,dryness,olive_young
+prod-banila-co-clean-it-zero-cleansing-balm,바닐라코 클린 잇 제로 클렌징 밤,Banila Co Clean It Zero Cleansing Balm,Banila Co,bodycare,body_wash,moderate,dry|combination|sensitive|normal,dryness,olive_young|chicor
+prod-cetaphil-daily-advance-body-moisturizer,세타필 바디 모이스처라이저,Cetaphil Daily Advance Body Moisturizer,Cetaphil,bodycare,body_lotion,moderate,dry|sensitive|normal,dryness|eczema,olive_young
+prod-hanyul-moonlight-citron-body-lotion,한율 달빛유자 바디 로션,Hanyul Moonlight Citron Body Lotion,Hanyul,bodycare,body_lotion,premium,dry|combination|normal,dryness|dullness,olive_young|department_store
+prod-sulwhasoo-first-care-activating-body-cream,설화수 윤조 바디 크림,Sulwhasoo First Care Activating Body Cream,Sulwhasoo,bodycare,body_cream,luxury,dry|normal,dryness|wrinkles|dullness,department_store
+prod-atopalm-mle-body-lotion,아토팜 MLE 바디로션,Atopalm MLE Body Lotion,Atopalm,bodycare,body_lotion,moderate,dry|sensitive|normal,dryness|eczema,olive_young
+prod-the-face-shop-therapy-garden-hand-cream,더페이스샵 테라피가든 핸드크림,The Face Shop Therapy Garden Hand Cream,The Face Shop,bodycare,hand_cream,budget,dry|normal,dryness,olive_young
+prod-laneige-lip-hand-blooming-set,라네즈 립 앤 핸드 블루밍 세트,Laneige Lip & Hand Blooming Set,Laneige,bodycare,hand_cream,premium,dry|normal,dryness,olive_young|department_store
+prod-tamburins-perfume-hand-cream,탬버린즈 퍼퓸 핸드크림,Tamburins Perfume Hand Cream,Tamburins,bodycare,hand_cream,luxury,dry|oily|combination|sensitive|normal,dryness,brand_store|chicor
+prod-tony-moly-peach-hand-cream,토니모리 피치 핸드크림,Tony Moly Peach Hand Cream,TONYMOLY,bodycare,hand_cream,budget,dry|normal,dryness,olive_young|brand_store
+prod-round-lab-birch-moisturizing-sun-cream-body,라운드랩 자작나무 수분 선크림 바디,Round Lab Birch Moisturizing Sun Cream Body,Round Lab,bodycare,body_sunscreen,moderate,dry|combination|sensitive|normal,sun_damage|dryness,olive_young
+prod-isoi-sun-milk-body-spf50,아이소이 선 밀크 바디 SPF50+,isoi Sun Milk Body SPF50+,isoi,bodycare,body_sunscreen,moderate,sensitive|dry|normal,sun_damage|redness,olive_young|chicor
+prod-mediheal-madecassoside-body-serum,메디힐 마데카소사이드 바디 세럼,Mediheal Madecassoside Body Serum,Mediheal,bodycare,body_serum,moderate,sensitive|dry,redness|acne|dryness,olive_young
+prod-illiyoon-probiotics-skin-barrier-cera-balm,일리윤 프로바이오틱 스킨 배리어 크림 워시,Illiyoon Probiotics Skin Barrier Cera Balm,Illiyoon,bodycare,body_balm,moderate,dry|sensitive,eczema|dryness|redness,olive_young
+prod-etude-my-beauty-tool-silicone-puff,에뛰드 마이 뷰티 툴 실리콘 퍼프,ETUDE My Beauty Tool Silicone Puff,ETUDE,tools,application_sponge,budget,all,,olive_young
+prod-etude-my-beauty-tool-airy-puff,에뛰드 마이 뷰티 툴 에어리 퍼프,Etude My Beauty Tool Airy Puff,ETUDE,tools,makeup_puff,budget,all,,olive_young|brand_store
+prod-fillimilli-face-soft-velvet-sponge,필리밀리 페이스 소프트 벨벳 스펀지,Fillimilli Face Soft Velvet Sponge,Fillimilli,tools,makeup_sponge,budget,all,,olive_young
+prod-fillimilli-eye-shadow-brush-set,필리밀리 아이 섀도우 브러시 세트,Fillimilli Eye Shadow Brush Set,Fillimilli,tools,makeup_brush,premium,all,,olive_young
+prod-daiso-silicone-mask-pack-cover,다이소 실리콘 마스크 팩 커버,Daiso Silicone Mask Pack Cover,Daiso,tools,mask_cover,budget,all,,daiso
+prod-etude-my-beauty-tool-mask-sheet-hook,에뛰드 마이 뷰티 툴 마스크 시트 후크,Etude My Beauty Tool Mask Sheet Hook,ETUDE,tools,mask_accessory,budget,all,,olive_young|brand_store
+prod-fillimilli-led-compact-mirror,필리밀리 LED 컴팩트 거울,Fillimilli LED Compact Mirror,Fillimilli,tools,mirror,premium,all,,olive_young
+prod-etude-my-beauty-tool-brush-pouch,에뛰드 마이 뷰티 툴 브러시 파우치,Etude My Beauty Tool Brush Pouch,ETUDE,tools,organizer,budget,all,,olive_young|brand_store
+prod-tonymoly-floria-nutra-energy-body-scrub,토니모리 플로리아 너리싱 바디 스크럽,TONYMOLY Floria Nutra Energy Body Scrub,TONYMOLY,bodycare,body_scrub,budget,oily|combination|normal,dullness|dryness,olive_young
+prod-innisfree-eco-beauty-tool-silicone-cleanser,이니스프리 에코 뷰티 툴 실리콘 클렌저,Innisfree Eco Beauty Tool Silicone Cleanser,Innisfree,tools,cleansing_brush,budget,all,pores,olive_young|innisfree_store
+prod-missha-super-aqua-soft-cleansing-puff,미샤 슈퍼 아쿠아 소프트 클렌징 퍼프,MISSHA Super Aqua Soft Cleansing Puff,MISSHA,tools,cleansing_brush,budget,all,pores|acne,olive_young
