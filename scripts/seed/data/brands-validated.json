@@ -1849,5 +1849,26 @@
     },
     "isApproved": true,
     "reviewedBy": "google-sheets"
+  },
+  {
+    "entityType": "brand",
+    "data": {
+      "id": "e7ec19cf-0f9c-5663-a46f-fc4158e5f465",
+      "name": {
+        "ko": "에센리",
+        "en": "Essenly",
+        "ja": "エッセンリー",
+        "zh": "艾森利",
+        "es": "Essenly",
+        "fr": "Essenly"
+      },
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": true,
+      "specialties": ["haircare", "keratin treatment"],
+      "status": "active"
+    },
+    "isApproved": true,
+    "reviewedBy": "manual-entry"
   }
 ]

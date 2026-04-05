@@ -13,9 +13,9 @@
 | 사전 완료      | 12      | 12      | 100%    | ✅      |
 | Phase 0    | 37      | 37      | 100%    | ✅      |
 | Phase 1    | 62      | 60      | 97%     | ✅      |
-| Phase 2    | 101     | 73      | 72%     | 🔶 진행중 |
+| Phase 2    | 100     | 73      | 73%     | 🔶 진행중 |
 | Phase 3    | 33      | 0       | 0%      | ⬜ 미시작  |
-| **MVP 합계** | **245** | **182** | **74%** |        |
+| **MVP 합계** | **244** | **182** | **75%** |        |
 | 관리자 앱 (펜딩) | 19      | 0       | 0%      | ⏸️ 펜딩  |
 
 
@@ -428,7 +428,7 @@
 ## 데이터 준비 — 데이터 입력 + 검수 (코어 구현과 병렬)
 
 > 설계서 §5 큐레이션 + §6 엔티티별 상세 + §9 타임라인 (M1→M2→M3)
-> 수집 순서: Phase A(brands, ingredients, stores, clinics, treatments 병렬) → Phase B(products, doctors) → Phase C(junction) → Phase D(임베딩)
+> 수집 순서: Phase A(brands, ingredients, stores, clinics, treatments 병렬) → Phase B(products) → Phase C(junction) → Phase D(임베딩)
 
 
 | ID     | 작업                                     | 상세                                                                                                                                                          | 마일스톤  | 상태  |
@@ -448,7 +448,9 @@
 | P2-65a | stores 비소매 데이터 제거                      | other 105건 전수 리뷰. 명확 비소매 11건(사옥 6+유통 2+서비스 2+작업실 1) + 경계 8건(오피스빌딩 3+유통 2+법인 2+한의원 1) = 19건 삭제. validated JSON + DB DELETE. 272→253건. P2-61b(6건)와 합산 총 25건 비소매 정리 완료 | M3    | ✅   |
 | P2-65b | treatments 분류 수동 보정 (8건)               | Critical 4건(Botox Jawline/Chin Filler/Fat Dissolving/Body Lifting — contouring 시술 target_concerns→[] 옵션A 적용) + Moderate 4건(Dermapen +dry, Botox Crow's Feet +sensitive, Water Glow +oily, LED 8→4개 축소). Laser Toning은 이미 정상 → 스킵. validated JSON 수정 + DB UPSERT 53건 완료. db-client.ts import 경로 수정(../config→../../config) | M3    | ✅   |
 | P2-64a | Phase B: products 200+ (CSV+수동)    | **완료 (2026-04-05)**. Step 1: 매니페스트 정규화(브랜드 25건 수정, 니치 3건→대체 3건) + Daiso 브랜드 추가. Step 2: slug.ts(sourceId 자연키, 13테스트) + csv-loader source옵션 + FIELD_MAPPINGS.product(_expected 보존+tags) + review-exporter 8→12컬럼. Step 3: YAML→CSV 200건 변환 + sourceId 유니크 검증. Step 4: brand_id 룩업(case-insensitive+alias 4건, 200/200 매칭) + AI 보강(6언어+분류+생성). Step 5: auto-approve DB 적재 200건. **D-7 전수 검수 완료 — AI+expected 합집합+카테고리별 규칙 적용, 99건 보정**. Step 6: Daiso 매장 84건(카카오 API→enrich→DB적재, stores 253→337). english_support "basic" 보정. 테스트 347/347 pass                                                      | M3    | ✅   |
-| P2-64b | Phase B: doctors 30+                   | 수동 입력. 클리닉당 1명+. languages 영어 포함 필수                                                                                                                         | M3    | ⬜   |
+| P2-64b | ~~Phase B: doctors 30+~~               | **제거 (2026-04-05)**. 분석 결과 doctors 데이터는 서비스에 불필요: PRD 사용자 스토리·TDD·tool-spec·search-engine에서 doctor 참조 0건. MVP 추천 흐름(시술→클리닉 카드)에 doctor 도달 경로 없음. 스키마 완결성 목적의 과설계로 판단 → doctors 테이블·코드·설계 제거 | M3    | 🗑️   |
+| P2-64b2 | 011_drop_doctors.sql Supabase 적용      | **완료 (2026-04-05)**. Dashboard SQL Editor에서 실행. doctors 테이블 DROP 완료                                                                                           | M3    | ✅   |
+| P2-64a2 | Essenly 자사 브랜드 + 제품 등록          | brands: Essenly 브랜드 등록(is_essenly: true). products: 케라틴 헤어팩 1건 등록(is_highlighted: true, haircare, 24000원, 190ml). purchase_links: 쿠팡+Amazon. Kit CTA 연결 검증. 추후 제품 추가 대응 구조 확인 | M3    | ⬜   |
 | P2-64c | Phase C: junction 데이터                  | product_stores(유형 기반+개별 혼합 ~~2,700건), product_ingredients(~~400건 수동 + key/avoid 분류), clinic_treatments(~150건)                                               | M3    | ⬜   |
 | P2-64d | Phase D: 임베딩 생성 + 벡터 DB 적재             | text-builder.ts + generator.ts (embedding-strategy §2) + 배치 스크립트. products, stores, clinics, treatments                                                     | M3    | ⬜   |
 | P2-64e | Phase E: S5 교차 검증 + 품질 게이트             | 식약처 보고품목 교차 검증(기능성화장품 태깅). M3 품질 게이트: A등급 100%, B등급 90%, 커버리지 검증(skin_type×40, concern×5)                                                                   | M3    | ⬜   |
@@ -586,9 +588,9 @@
 | ID     | 작업                 | 상세                                                                                                                                 | 상태  |
 | ------ | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- | --- |
 | PA-1   | 관리자 인증 서비스 + API   | 로그인, 세션, 권한 확인 (api-spec.md §6). (구 P2-80)                                                                                        | ⬜   |
-| PA-2   | 제네릭 CRUD 서비스       | `features/admin/service.ts` + withAuditLog 미들웨어 + 7엔티티 zod 스키마 + CRUD 후 비동기 임베딩 재생성 연동 (api-spec.md §5.1, embedding-strategy §3.4). (구 P2-81) | ⬜   |
+| PA-2   | 제네릭 CRUD 서비스       | `features/admin/service.ts` + withAuditLog 미들웨어 + 6엔티티 zod 스키마 + CRUD 후 비동기 임베딩 재생성 연동 (api-spec.md §5.1, embedding-strategy §3.4). (구 P2-81) | ⬜   |
 | PA-3   | 복합 엔티티 라우트         | Product/Store/Treatment/Clinic CRUD 라우트 + 하이라이트 API(§5.3) + 관계 API(§5.2). P2-16/16a/17/17a 리포지토리 의존. (구 P2-81a)                    | ⬜   |
-| PA-4   | 단순 엔티티 라우트         | Brand/Ingredient/Doctor CRUD 라우트 + 리포지토리 생성 포함 (findAll/findById/create/update/deactivate, query-utils.ts 재사용). (구 P2-81b)         | ⬜   |
+| PA-4   | 단순 엔티티 라우트         | Brand/Ingredient CRUD 라우트 + 리포지토리 생성 포함 (findAll/findById/create/update/deactivate, query-utils.ts 재사용). (구 P2-81b)                  | ⬜   |
 | PA-5   | 이미지 업로드 서비스 + API  | Product/Store/Clinic/Treatment 4엔티티. Supabase Storage + magic bytes 검증 + 순서 관리 (api-spec.md §5.4). (구 P2-82)                       | ⬜   |
 | PA-6   | 감사 로그 조회 API       | `GET /api/admin/audit-logs` + audit-service.ts. super_admin 전용, 날짜/액터/액션 필터 (api-spec.md §6.6). 기록은 PA-2 withAuditLog가 담당. (구 P2-83) | ⬜   |
 | PA-7   | 관리자 레이아웃 + 로그인 페이지 | admin 라우트 레이아웃, 인증 UI. (구 P2-84)                                                                                                   | ⬜   |
@@ -596,7 +598,7 @@
 | PA-9   | 관리자 공통 컴포넌트 — 목록   | 테이블, 검색, 필터, 페이지네이션. (구 P2-86)                                                                                                    | ⬜   |
 | PA-10  | 관리자 공통 컴포넌트 — 폼    | 폼 필드, JSONB 다국어 입력, 이미지 업로드. (구 P2-87)                                                                                            | ⬜   |
 | PA-11  | 복합 엔티티 CRUD 페이지    | Product, Store, Clinic, Treatment — 이미지+관계+하이라이트 포함 (PA-3 대응). (구 P2-88a)                                                          | ⬜   |
-| PA-12  | 단순 엔티티 CRUD 페이지    | Brand, Ingredient, Doctor — 기본 CRUD (PA-4 대응). (구 P2-88b)                                                                          | ⬜   |
+| PA-12  | 단순 엔티티 CRUD 페이지    | Brand, Ingredient — 기본 CRUD (PA-4 대응). (구 P2-88b)                                                                                   | ⬜   |
 | PA-13  | 관계 관리 UI           | Product↔Store, Product↔Ingredient, Clinic↔Treatment. (구 P2-89)                                                                     | ⬜   |
 | PA-14  | 하이라이트 관리 UI        | is_highlighted 토글 + badge 텍스트. (구 P2-90)                                                                                           | ⬜   |
 

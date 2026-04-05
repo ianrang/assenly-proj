@@ -13550,5 +13550,68 @@
     "isApproved": true,
     "reviewedBy": "D-7-review",
     "reviewNotes": "D-7 전수 검수 완료. AI+expected 합집합 기반, 카테고리별 규칙 적용."
+  },
+  {
+    "entityType": "product",
+    "data": {
+      "id": "55265963-37ca-5f7c-ad1b-35ee1f574803",
+      "name": {
+        "ko": "에센리 케라틴 집중케어 벨벳 헤어팩",
+        "en": "Essenly Keratin Hair Mask - Frizz-Taming Mask",
+        "ja": "エッセンリー ケラチン ヘアマスク",
+        "zh": "艾森利角蛋白护发膜",
+        "es": "Essenly Mascarilla Capilar de Queratina",
+        "fr": "Essenly Masque Capillaire à la Kératine"
+      },
+      "description": {
+        "ko": "케라틴과 콜라겐, 시어버터가 손상된 모발을 집중 케어하는 벨벳 제형 헤어팩. 곱슬머리 컨트롤과 광택, 수분 공급. 앰버 바닐라 시그니처 향.",
+        "en": "Velvet-textured hair mask with keratin, collagen, and shea butter for intensive repair. Controls frizz, adds shine and hydration. Signature amber vanilla scent.",
+        "ja": "ケラチン、コラーゲン、シアバター配合のベルベットテクスチャーヘアマスク。くせ毛をコントロールし、ツヤと潤いを与えます。アンバーバニラの香り。",
+        "zh": "含角蛋白、胶原蛋白和乳木果油的丝绒质地发膜。控制毛躁，增添光泽和水分。琥珀香草香味。",
+        "es": "Mascarilla capilar con textura aterciopelada con queratina, colágeno y manteca de karité. Controla el frizz, añade brillo e hidratación. Aroma de ámbar y vainilla.",
+        "fr": "Masque capillaire texture velours à la kératine, collagène et beurre de karité. Contrôle les frisottis, apporte brillance et hydratation. Parfum ambre vanille."
+      },
+      "brand_id": "e7ec19cf-0f9c-5663-a46f-fc4158e5f465",
+      "category": "haircare",
+      "subcategory": null,
+      "skin_types": [],
+      "hair_types": ["straight", "wavy", "curly", "coily"],
+      "concerns": [],
+      "key_ingredients": ["keratin", "collagen", "shea butter", "sweet almond oil"],
+      "price": 24000,
+      "volume": "190ml",
+      "purchase_links": [
+        {
+          "platform": "coupang",
+          "url": "https://www.coupang.com/vp/products/9341625048"
+        },
+        {
+          "platform": "amazon",
+          "url": "https://www.amazon.com/dp/B0FT27QPGP"
+        }
+      ],
+      "english_label": true,
+      "tourist_popular": true,
+      "is_highlighted": true,
+      "highlight_badge": {
+        "ko": "에센리 추천",
+        "en": "Essenly Pick",
+        "ja": "エッセンリーおすすめ",
+        "zh": "艾森利推荐",
+        "es": "Selección Essenly",
+        "fr": "Choix Essenly"
+      },
+      "rating": 4.8,
+      "review_count": 23,
+      "review_summary": {
+        "ko": "곱슬머리 컨트롤과 윤기에 효과적. 앰버 바닐라 잔향이 하루 종일 지속. 극손상모에도 살롱 케어급 결과.",
+        "en": "Effective for frizz control and adding shine. Amber vanilla scent lasts all day. Salon-quality results even for severely damaged hair."
+      },
+      "images": [],
+      "tags": ["essenly-exclusive", "frizz-control", "keratin", "amber-vanilla"],
+      "status": "active"
+    },
+    "isApproved": true,
+    "reviewedBy": "manual-entry"
   }
 ]
