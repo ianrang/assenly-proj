@@ -13,9 +13,9 @@
 | 사전 완료      | 12      | 12      | 100%    | ✅      |
 | Phase 0    | 37      | 37      | 100%    | ✅      |
 | Phase 1    | 62      | 60      | 97%     | ✅      |
-| Phase 2    | 101     | 72      | 71%     | 🔶 진행중 |
+| Phase 2    | 101     | 73      | 72%     | 🔶 진행중 |
 | Phase 3    | 33      | 0       | 0%      | ⬜ 미시작  |
-| **MVP 합계** | **245** | **181** | **74%** |        |
+| **MVP 합계** | **245** | **182** | **74%** |        |
 | 관리자 앱 (펜딩) | 19      | 0       | 0%      | ⏸️ 펜딩  |
 
 
@@ -446,7 +446,7 @@
 | P2-65  | 분류 검증 + 정규식 개선 (Phase A 완료 후)         | **완료 (2026-04-04)**. 전수 데이터 검증: stores 278건(other 111→94, brand_store 60→81, dept 46→42), clinics 225건(99.1% 정확, null 1건 정당), treatments 53건(critical 4+moderate 5 식별). 분류기 개선: brand_store 패턴 21개 추가 + dept_store 백화점→구체적 체인 패턴 교체(화장품백화점 3건 오분류 해소). 테스트 19→39. 후속: P2-65a(stores 비소매 제거), P2-65b(treatments 보정) | M3    | ✅   |
 | P2-65a | stores 비소매 데이터 제거                      | other 105건 전수 리뷰. 명확 비소매 11건(사옥 6+유통 2+서비스 2+작업실 1) + 경계 8건(오피스빌딩 3+유통 2+법인 2+한의원 1) = 19건 삭제. validated JSON + DB DELETE. 272→253건. P2-61b(6건)와 합산 총 25건 비소매 정리 완료 | M3    | ✅   |
 | P2-65b | treatments 분류 수동 보정 (8건)               | Critical 4건(Botox Jawline/Chin Filler/Fat Dissolving/Body Lifting — contouring 시술 target_concerns→[] 옵션A 적용) + Moderate 4건(Dermapen +dry, Botox Crow's Feet +sensitive, Water Glow +oily, LED 8→4개 축소). Laser Toning은 이미 정상 → 스킵. validated JSON 수정 + DB UPSERT 53건 완료. db-client.ts import 경로 수정(../config→../../config) | M3    | ✅   |
-| P2-64a | Phase B: products 200+ (CSV+수동)    | **완료 (2026-04-05)**. Step 1: 매니페스트 정규화(브랜드 25건 수정, 니치 3건→대체 3건) + Daiso 브랜드 추가. Step 2: slug.ts(sourceId 자연키, 13테스트) + csv-loader source옵션 + FIELD_MAPPINGS.product(_expected 보존+tags) + review-exporter 8→12컬럼. Step 3: YAML→CSV 200건 변환 + sourceId 유니크 검증. Step 4: brand_id 룩업(case-insensitive+alias 4건, 200/200 매칭) + AI 보강(6언어+분류+생성). Step 5: auto-approve DB 적재 200건. **D-7 전수 검수 미완료 — review CSV 보존, 추후 구글시트 검수 → re-import**. Step 6: Daiso 매장 84건(카카오 API→enrich→DB적재, stores 253→337). english_support "basic" 보정. 테스트 347/347 pass                                                      | M3    | 🔶   |
+| P2-64a | Phase B: products 200+ (CSV+수동)    | **완료 (2026-04-05)**. Step 1: 매니페스트 정규화(브랜드 25건 수정, 니치 3건→대체 3건) + Daiso 브랜드 추가. Step 2: slug.ts(sourceId 자연키, 13테스트) + csv-loader source옵션 + FIELD_MAPPINGS.product(_expected 보존+tags) + review-exporter 8→12컬럼. Step 3: YAML→CSV 200건 변환 + sourceId 유니크 검증. Step 4: brand_id 룩업(case-insensitive+alias 4건, 200/200 매칭) + AI 보강(6언어+분류+생성). Step 5: auto-approve DB 적재 200건. **D-7 전수 검수 완료 — AI+expected 합집합+카테고리별 규칙 적용, 99건 보정**. Step 6: Daiso 매장 84건(카카오 API→enrich→DB적재, stores 253→337). english_support "basic" 보정. 테스트 347/347 pass                                                      | M3    | ✅   |
 | P2-64b | Phase B: doctors 30+                   | 수동 입력. 클리닉당 1명+. languages 영어 포함 필수                                                                                                                         | M3    | ⬜   |
 | P2-64c | Phase C: junction 데이터                  | product_stores(유형 기반+개별 혼합 ~~2,700건), product_ingredients(~~400건 수동 + key/avoid 분류), clinic_treatments(~150건)                                               | M3    | ⬜   |
 | P2-64d | Phase D: 임베딩 생성 + 벡터 DB 적재             | text-builder.ts + generator.ts (embedding-strategy §2) + 배치 스크립트. products, stores, clinics, treatments                                                     | M3    | ⬜   |

@@ -92,6 +92,69 @@ describe("RegexStoreTypeClassifier", () => {
     expect(classifier.classify(makeData("바닐라코 성수점"))).toBe("brand_store");
   });
 
+  // P2-65: 누락 브랜드 패턴 추가분
+  it("AHC → brand_store", () => {
+    expect(classifier.classify(makeData("AHC PLAYZONE 중앙로점"))).toBe("brand_store");
+  });
+
+  it("러쉬 → brand_store", () => {
+    expect(classifier.classify(makeData("러쉬 명동역점"))).toBe("brand_store");
+  });
+
+  it("바비브라운 → brand_store", () => {
+    expect(classifier.classify(makeData("바비브라운 강남"))).toBe("brand_store");
+  });
+
+  it("투쿨포스쿨 → brand_store", () => {
+    expect(classifier.classify(makeData("투쿨포스쿨 홍대2호 작업실"))).toBe("brand_store");
+  });
+
+  it("코리아나화장품 → brand_store", () => {
+    expect(classifier.classify(makeData("코리아나화장품"))).toBe("brand_store");
+  });
+
+  it("에이지 투웨니스 → brand_store", () => {
+    expect(classifier.classify(makeData("에이지 투웨니스"))).toBe("brand_store");
+  });
+
+  it("오휘 → brand_store", () => {
+    expect(classifier.classify(makeData("오휘 명동대리점"))).toBe("brand_store");
+  });
+
+  it("엔프라니 홀리카 → brand_store", () => {
+    expect(classifier.classify(makeData("엔프라니 홀리카 명동3번가점"))).toBe("brand_store");
+  });
+
+  it("네이처컬렉션 → brand_store", () => {
+    expect(classifier.classify(makeData("네이처컬렉션 강남역사점"))).toBe("brand_store");
+  });
+
+  it("맥코스메틱 (백화점 내 매장) → department_store (백화점 우선)", () => {
+    // 백화점 내 브랜드 카운터 → department_store 규칙이 우선 매칭
+    expect(classifier.classify(makeData("맥코스메틱 롯데백화점본점"))).toBe("department_store");
+  });
+
+  it("맥코스메틱 (독립 매장) → brand_store", () => {
+    expect(classifier.classify(makeData("맥코스메틱 명동점"))).toBe("brand_store");
+  });
+
+  // P2-65: department_store 오분류 수정
+  it("화장품도매백화점 → other (소매시장, 백화점 아님)", () => {
+    expect(classifier.classify(makeData("화장품도매백화점"))).toBe("other");
+  });
+
+  it("굴다리화장품백화점 → other (소매시장, 백화점 아님)", () => {
+    expect(classifier.classify(makeData("굴다리화장품백화점"))).toBe("other");
+  });
+
+  it("화장품백화점 → other (소매시장, 백화점 아님)", () => {
+    expect(classifier.classify(makeData("화장품백화점"))).toBe("other");
+  });
+
+  it("신세계백화점 → department_store (정상)", () => {
+    expect(classifier.classify(makeData("디올 화장품 신세계백화점 강남점"))).toBe("department_store");
+  });
+
   it("미매칭 → other (폴백)", () => {
     expect(classifier.classify(makeData("코스메존 가로수길"))).toBe("other");
   });
