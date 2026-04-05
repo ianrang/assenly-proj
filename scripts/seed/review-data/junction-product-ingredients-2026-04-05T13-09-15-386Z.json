@@ -1,0 +1,3482 @@
+[
+  {
+    "product_id": "63b172e3-9a2c-55e2-923c-1be91cd2a1a9",
+    "ingredient_id": "03a8979c-50be-5050-8b17-71608e08831f",
+    "type": "key"
+  },
+  {
+    "product_id": "63b172e3-9a2c-55e2-923c-1be91cd2a1a9",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "63b172e3-9a2c-55e2-923c-1be91cd2a1a9",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "71a001ee-d4cf-5e7a-acea-004180630965",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "71a001ee-d4cf-5e7a-acea-004180630965",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "71a001ee-d4cf-5e7a-acea-004180630965",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "71a001ee-d4cf-5e7a-acea-004180630965",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "b90b6883-3b82-56cc-9051-df284207f4b0",
+    "ingredient_id": "213a9da9-8b0b-5040-b382-b084f9a9939b",
+    "type": "key"
+  },
+  {
+    "product_id": "b90b6883-3b82-56cc-9051-df284207f4b0",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "b90b6883-3b82-56cc-9051-df284207f4b0",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "b90b6883-3b82-56cc-9051-df284207f4b0",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "fe8d801f-9660-5c12-acdd-94de0e54bae8",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "fe8d801f-9660-5c12-acdd-94de0e54bae8",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "fe8d801f-9660-5c12-acdd-94de0e54bae8",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "fe8d801f-9660-5c12-acdd-94de0e54bae8",
+    "ingredient_id": "a47e65b7-647b-5f29-ae8d-a0682a762858",
+    "type": "key"
+  },
+  {
+    "product_id": "fe8d801f-9660-5c12-acdd-94de0e54bae8",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "7b70e8ad-ddce-5223-a533-4ac9571d5708",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "7b70e8ad-ddce-5223-a533-4ac9571d5708",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "7b70e8ad-ddce-5223-a533-4ac9571d5708",
+    "ingredient_id": "dcaab478-9e74-5c69-8c64-74b89f866d8b",
+    "type": "key"
+  },
+  {
+    "product_id": "7b70e8ad-ddce-5223-a533-4ac9571d5708",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "7b70e8ad-ddce-5223-a533-4ac9571d5708",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "3ea01e93-f3e9-5c30-a520-ba8f9e326c3d",
+    "ingredient_id": "a47e65b7-647b-5f29-ae8d-a0682a762858",
+    "type": "key"
+  },
+  {
+    "product_id": "3ea01e93-f3e9-5c30-a520-ba8f9e326c3d",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "3ea01e93-f3e9-5c30-a520-ba8f9e326c3d",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "3ea01e93-f3e9-5c30-a520-ba8f9e326c3d",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "3ea01e93-f3e9-5c30-a520-ba8f9e326c3d",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "b5849788-fc44-5a53-b246-377af9be1dda",
+    "ingredient_id": "20cb6680-a64e-5a2a-b17a-7436bb4f8f7c",
+    "type": "key"
+  },
+  {
+    "product_id": "b5849788-fc44-5a53-b246-377af9be1dda",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "b5849788-fc44-5a53-b246-377af9be1dda",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "b5849788-fc44-5a53-b246-377af9be1dda",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "avoid"
+  },
+  {
+    "product_id": "9b56d848-5f22-5edc-966c-4afb2a3c19b4",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "9b56d848-5f22-5edc-966c-4afb2a3c19b4",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "9b56d848-5f22-5edc-966c-4afb2a3c19b4",
+    "ingredient_id": "0c9c7311-355e-5f80-a519-adad494735dd",
+    "type": "key"
+  },
+  {
+    "product_id": "9b56d848-5f22-5edc-966c-4afb2a3c19b4",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "41bec45b-5a1f-5258-afd8-3c0c308ccee4",
+    "ingredient_id": "0c9c7311-355e-5f80-a519-adad494735dd",
+    "type": "key"
+  },
+  {
+    "product_id": "41bec45b-5a1f-5258-afd8-3c0c308ccee4",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "41bec45b-5a1f-5258-afd8-3c0c308ccee4",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "41bec45b-5a1f-5258-afd8-3c0c308ccee4",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "41bec45b-5a1f-5258-afd8-3c0c308ccee4",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "40595ad4-b6d2-5f3d-96f0-730b906dd5ce",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "40595ad4-b6d2-5f3d-96f0-730b906dd5ce",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "40595ad4-b6d2-5f3d-96f0-730b906dd5ce",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "40595ad4-b6d2-5f3d-96f0-730b906dd5ce",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "caedacbe-b4b3-592f-b3c8-3927ef2f58d5",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "caedacbe-b4b3-592f-b3c8-3927ef2f58d5",
+    "ingredient_id": "77076aae-1489-518a-b96c-f650a697a9cc",
+    "type": "key"
+  },
+  {
+    "product_id": "caedacbe-b4b3-592f-b3c8-3927ef2f58d5",
+    "ingredient_id": "dcaab478-9e74-5c69-8c64-74b89f866d8b",
+    "type": "key"
+  },
+  {
+    "product_id": "caedacbe-b4b3-592f-b3c8-3927ef2f58d5",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "2e1b9a7d-84f0-565c-9b8a-bf0d64c7c709",
+    "ingredient_id": "0e255234-b831-5f40-8b96-166e0e38374e",
+    "type": "key"
+  },
+  {
+    "product_id": "2e1b9a7d-84f0-565c-9b8a-bf0d64c7c709",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "2e1b9a7d-84f0-565c-9b8a-bf0d64c7c709",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "2e1b9a7d-84f0-565c-9b8a-bf0d64c7c709",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "2e1b9a7d-84f0-565c-9b8a-bf0d64c7c709",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "53f1e176-cc13-5e1d-85cb-5dcf2d54f364",
+    "ingredient_id": "a47e65b7-647b-5f29-ae8d-a0682a762858",
+    "type": "key"
+  },
+  {
+    "product_id": "53f1e176-cc13-5e1d-85cb-5dcf2d54f364",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "53f1e176-cc13-5e1d-85cb-5dcf2d54f364",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "53f1e176-cc13-5e1d-85cb-5dcf2d54f364",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "ccec55c2-71de-552b-9308-b254617ed3ae",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "ccec55c2-71de-552b-9308-b254617ed3ae",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "ccec55c2-71de-552b-9308-b254617ed3ae",
+    "ingredient_id": "20cb6680-a64e-5a2a-b17a-7436bb4f8f7c",
+    "type": "key"
+  },
+  {
+    "product_id": "ccec55c2-71de-552b-9308-b254617ed3ae",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "ccec55c2-71de-552b-9308-b254617ed3ae",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "3689923e-f5a9-591b-aaca-78776ce3be87",
+    "ingredient_id": "1692f21c-ff7c-5511-9975-c65c71ff8f2a",
+    "type": "key"
+  },
+  {
+    "product_id": "3689923e-f5a9-591b-aaca-78776ce3be87",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "3689923e-f5a9-591b-aaca-78776ce3be87",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "3689923e-f5a9-591b-aaca-78776ce3be87",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "181d7c88-3c18-58c3-828a-abf20416ab60",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "181d7c88-3c18-58c3-828a-abf20416ab60",
+    "ingredient_id": "edc1c6e6-b281-59b5-88df-9538ef2bead7",
+    "type": "key"
+  },
+  {
+    "product_id": "181d7c88-3c18-58c3-828a-abf20416ab60",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "avoid"
+  },
+  {
+    "product_id": "5645edc0-aff3-5b9d-9408-5ec04756091d",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "5645edc0-aff3-5b9d-9408-5ec04756091d",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "5645edc0-aff3-5b9d-9408-5ec04756091d",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "70a5e093-ebc8-5e8e-9ecc-d4549d511a8b",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "70a5e093-ebc8-5e8e-9ecc-d4549d511a8b",
+    "ingredient_id": "a47e65b7-647b-5f29-ae8d-a0682a762858",
+    "type": "key"
+  },
+  {
+    "product_id": "70a5e093-ebc8-5e8e-9ecc-d4549d511a8b",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "70a5e093-ebc8-5e8e-9ecc-d4549d511a8b",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "70a5e093-ebc8-5e8e-9ecc-d4549d511a8b",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "70a5e093-ebc8-5e8e-9ecc-d4549d511a8b",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "70a5e093-ebc8-5e8e-9ecc-d4549d511a8b",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "avoid"
+  },
+  {
+    "product_id": "e6e7141a-7972-50d6-a543-3fc38f20c425",
+    "ingredient_id": "dcaab478-9e74-5c69-8c64-74b89f866d8b",
+    "type": "key"
+  },
+  {
+    "product_id": "e6e7141a-7972-50d6-a543-3fc38f20c425",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "e6e7141a-7972-50d6-a543-3fc38f20c425",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "a2bd2f6e-3d66-519d-bf06-462dcdd64a72",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "a2bd2f6e-3d66-519d-bf06-462dcdd64a72",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "a2bd2f6e-3d66-519d-bf06-462dcdd64a72",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "f545fdf6-0fff-570b-b4ab-4f0cb9a697fa",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "f545fdf6-0fff-570b-b4ab-4f0cb9a697fa",
+    "ingredient_id": "dcaab478-9e74-5c69-8c64-74b89f866d8b",
+    "type": "key"
+  },
+  {
+    "product_id": "f545fdf6-0fff-570b-b4ab-4f0cb9a697fa",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "f545fdf6-0fff-570b-b4ab-4f0cb9a697fa",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "f545fdf6-0fff-570b-b4ab-4f0cb9a697fa",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "e16eb748-c12c-5c98-9d1d-aad163ef1147",
+    "ingredient_id": "f6e78d05-5d7d-5bcb-8685-83e15dab0c8d",
+    "type": "key"
+  },
+  {
+    "product_id": "e16eb748-c12c-5c98-9d1d-aad163ef1147",
+    "ingredient_id": "a47e65b7-647b-5f29-ae8d-a0682a762858",
+    "type": "key"
+  },
+  {
+    "product_id": "e16eb748-c12c-5c98-9d1d-aad163ef1147",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "e16eb748-c12c-5c98-9d1d-aad163ef1147",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "e16eb748-c12c-5c98-9d1d-aad163ef1147",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "avoid"
+  },
+  {
+    "product_id": "fb9b17ff-048a-549a-a8ad-a84f5d9fc561",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "fb9b17ff-048a-549a-a8ad-a84f5d9fc561",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "fb9b17ff-048a-549a-a8ad-a84f5d9fc561",
+    "ingredient_id": "1692f21c-ff7c-5511-9975-c65c71ff8f2a",
+    "type": "key"
+  },
+  {
+    "product_id": "fb9b17ff-048a-549a-a8ad-a84f5d9fc561",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "avoid"
+  },
+  {
+    "product_id": "fb9b17ff-048a-549a-a8ad-a84f5d9fc561",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "9cfb8e3f-24cc-5349-b66b-125c9c55dda6",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "9cfb8e3f-24cc-5349-b66b-125c9c55dda6",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "9cfb8e3f-24cc-5349-b66b-125c9c55dda6",
+    "ingredient_id": "f6e78d05-5d7d-5bcb-8685-83e15dab0c8d",
+    "type": "key"
+  },
+  {
+    "product_id": "9cfb8e3f-24cc-5349-b66b-125c9c55dda6",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "a01a0f69-4455-54e9-9bf7-e0fcc47eed62",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "a01a0f69-4455-54e9-9bf7-e0fcc47eed62",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "69fa8a18-2949-56d9-b5c0-f4d2f7eda29b",
+    "ingredient_id": "213a9da9-8b0b-5040-b382-b084f9a9939b",
+    "type": "key"
+  },
+  {
+    "product_id": "8a7fcbd1-cb71-593d-b17e-a339930a944a",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "8a7fcbd1-cb71-593d-b17e-a339930a944a",
+    "ingredient_id": "060078cc-546a-5997-ac7b-b9b768b13ae3",
+    "type": "key"
+  },
+  {
+    "product_id": "8a7fcbd1-cb71-593d-b17e-a339930a944a",
+    "ingredient_id": "f1cbd480-2caa-57a3-9103-b27cb6541930",
+    "type": "key"
+  },
+  {
+    "product_id": "8a7fcbd1-cb71-593d-b17e-a339930a944a",
+    "ingredient_id": "6d5e6f7e-bb59-5d0c-b0e9-e17fe4dfd985",
+    "type": "key"
+  },
+  {
+    "product_id": "cb82b581-4028-5149-b09a-cdef3b0d6362",
+    "ingredient_id": "8f978687-5929-5a7b-a770-f05ff60cb1d1",
+    "type": "key"
+  },
+  {
+    "product_id": "8e538ee5-8d47-52c3-88af-a0ce2ede6a10",
+    "ingredient_id": "0e255234-b831-5f40-8b96-166e0e38374e",
+    "type": "key"
+  },
+  {
+    "product_id": "8e538ee5-8d47-52c3-88af-a0ce2ede6a10",
+    "ingredient_id": "fc060d92-163b-5fe1-9eef-562266e1d185",
+    "type": "key"
+  },
+  {
+    "product_id": "8e538ee5-8d47-52c3-88af-a0ce2ede6a10",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "79bc0673-caa2-52b7-b973-aaf5e58ab52e",
+    "ingredient_id": "292918bc-65d4-5270-b2e6-78250c76dd55",
+    "type": "key"
+  },
+  {
+    "product_id": "79bc0673-caa2-52b7-b973-aaf5e58ab52e",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "79bc0673-caa2-52b7-b973-aaf5e58ab52e",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "79bc0673-caa2-52b7-b973-aaf5e58ab52e",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "adc60b39-06bf-5d83-a15c-b5331fab1be9",
+    "ingredient_id": "03a8979c-50be-5050-8b17-71608e08831f",
+    "type": "key"
+  },
+  {
+    "product_id": "adc60b39-06bf-5d83-a15c-b5331fab1be9",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "adc60b39-06bf-5d83-a15c-b5331fab1be9",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "adc60b39-06bf-5d83-a15c-b5331fab1be9",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "abfb1cc8-e306-5ed5-9dcb-c7f13bfc20c0",
+    "ingredient_id": "20cb6680-a64e-5a2a-b17a-7436bb4f8f7c",
+    "type": "key"
+  },
+  {
+    "product_id": "abfb1cc8-e306-5ed5-9dcb-c7f13bfc20c0",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "abfb1cc8-e306-5ed5-9dcb-c7f13bfc20c0",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "3cc7166e-3c0a-52b3-975a-13174cb5d334",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "b5ec22e7-df89-5cfd-83f7-4a4d0ac65060",
+    "ingredient_id": "27a190f4-6546-5a50-9ca9-525bd942ffda",
+    "type": "key"
+  },
+  {
+    "product_id": "b5ec22e7-df89-5cfd-83f7-4a4d0ac65060",
+    "ingredient_id": "edc1c6e6-b281-59b5-88df-9538ef2bead7",
+    "type": "key"
+  },
+  {
+    "product_id": "b5ec22e7-df89-5cfd-83f7-4a4d0ac65060",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "b5ec22e7-df89-5cfd-83f7-4a4d0ac65060",
+    "ingredient_id": "1abfeedb-9ff0-5a76-865f-f72bc057edad",
+    "type": "key"
+  },
+  {
+    "product_id": "7b10889d-8dfb-5e45-a6c3-64f968e0c494",
+    "ingredient_id": "27a190f4-6546-5a50-9ca9-525bd942ffda",
+    "type": "key"
+  },
+  {
+    "product_id": "7b10889d-8dfb-5e45-a6c3-64f968e0c494",
+    "ingredient_id": "edc1c6e6-b281-59b5-88df-9538ef2bead7",
+    "type": "key"
+  },
+  {
+    "product_id": "7b10889d-8dfb-5e45-a6c3-64f968e0c494",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "aece6f7b-da48-5e8c-89c4-6a9af611b8b1",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "aece6f7b-da48-5e8c-89c4-6a9af611b8b1",
+    "ingredient_id": "dcaab478-9e74-5c69-8c64-74b89f866d8b",
+    "type": "key"
+  },
+  {
+    "product_id": "aece6f7b-da48-5e8c-89c4-6a9af611b8b1",
+    "ingredient_id": "77076aae-1489-518a-b96c-f650a697a9cc",
+    "type": "key"
+  },
+  {
+    "product_id": "8341e1c4-9e25-5367-8dcf-8d7fb6558ede",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "8341e1c4-9e25-5367-8dcf-8d7fb6558ede",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "8341e1c4-9e25-5367-8dcf-8d7fb6558ede",
+    "ingredient_id": "dcaab478-9e74-5c69-8c64-74b89f866d8b",
+    "type": "key"
+  },
+  {
+    "product_id": "8341e1c4-9e25-5367-8dcf-8d7fb6558ede",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "15f7b140-0f00-56e1-b284-21c9849e50a0",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "15f7b140-0f00-56e1-b284-21c9849e50a0",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "15f7b140-0f00-56e1-b284-21c9849e50a0",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "15f7b140-0f00-56e1-b284-21c9849e50a0",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "ff348ad3-5736-5516-bc67-c490963fd66a",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "ff348ad3-5736-5516-bc67-c490963fd66a",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "ff348ad3-5736-5516-bc67-c490963fd66a",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "f88ac94a-1e94-5aa8-bc0f-c655eb8d57a4",
+    "ingredient_id": "292918bc-65d4-5270-b2e6-78250c76dd55",
+    "type": "key"
+  },
+  {
+    "product_id": "f88ac94a-1e94-5aa8-bc0f-c655eb8d57a4",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "f88ac94a-1e94-5aa8-bc0f-c655eb8d57a4",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "4953dcdd-16b0-5682-a083-7ada571b7e2f",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "4953dcdd-16b0-5682-a083-7ada571b7e2f",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "4953dcdd-16b0-5682-a083-7ada571b7e2f",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "4953dcdd-16b0-5682-a083-7ada571b7e2f",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "avoid"
+  },
+  {
+    "product_id": "fe63d359-434b-51e1-93db-b401631e0043",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "fe63d359-434b-51e1-93db-b401631e0043",
+    "ingredient_id": "1c439e9c-9bca-5e07-874d-41aa9df9e1a6",
+    "type": "key"
+  },
+  {
+    "product_id": "fe63d359-434b-51e1-93db-b401631e0043",
+    "ingredient_id": "edc1c6e6-b281-59b5-88df-9538ef2bead7",
+    "type": "key"
+  },
+  {
+    "product_id": "fe63d359-434b-51e1-93db-b401631e0043",
+    "ingredient_id": "8f978687-5929-5a7b-a770-f05ff60cb1d1",
+    "type": "key"
+  },
+  {
+    "product_id": "fe63d359-434b-51e1-93db-b401631e0043",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "8bcb62d5-ffed-519b-9f31-c4b2700c196f",
+    "ingredient_id": "f6e78d05-5d7d-5bcb-8685-83e15dab0c8d",
+    "type": "key"
+  },
+  {
+    "product_id": "8bcb62d5-ffed-519b-9f31-c4b2700c196f",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "8bcb62d5-ffed-519b-9f31-c4b2700c196f",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "8bcb62d5-ffed-519b-9f31-c4b2700c196f",
+    "ingredient_id": "a47e65b7-647b-5f29-ae8d-a0682a762858",
+    "type": "key"
+  },
+  {
+    "product_id": "8bcb62d5-ffed-519b-9f31-c4b2700c196f",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "b77b7074-10ef-532b-99e1-f5d07ca1d9cc",
+    "ingredient_id": "cb24ad7a-9842-5e5e-8597-92ef137f9c55",
+    "type": "key"
+  },
+  {
+    "product_id": "b77b7074-10ef-532b-99e1-f5d07ca1d9cc",
+    "ingredient_id": "0f9feae3-c669-5886-ad6c-eae58b6caf38",
+    "type": "key"
+  },
+  {
+    "product_id": "2c5025ff-9b67-5396-a79b-0b3836432ecd",
+    "ingredient_id": "20cb6680-a64e-5a2a-b17a-7436bb4f8f7c",
+    "type": "key"
+  },
+  {
+    "product_id": "2c5025ff-9b67-5396-a79b-0b3836432ecd",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "2c5025ff-9b67-5396-a79b-0b3836432ecd",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "2c5025ff-9b67-5396-a79b-0b3836432ecd",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "8e1417bd-add5-5c65-83d6-33fead680680",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "dee92c65-4779-54bf-96ac-91f994275546",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "dee92c65-4779-54bf-96ac-91f994275546",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "dee92c65-4779-54bf-96ac-91f994275546",
+    "ingredient_id": "a47e65b7-647b-5f29-ae8d-a0682a762858",
+    "type": "key"
+  },
+  {
+    "product_id": "dee92c65-4779-54bf-96ac-91f994275546",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "99df335a-8677-5a2d-9005-38de7428170f",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "99df335a-8677-5a2d-9005-38de7428170f",
+    "ingredient_id": "dcaab478-9e74-5c69-8c64-74b89f866d8b",
+    "type": "key"
+  },
+  {
+    "product_id": "99df335a-8677-5a2d-9005-38de7428170f",
+    "ingredient_id": "a47e65b7-647b-5f29-ae8d-a0682a762858",
+    "type": "key"
+  },
+  {
+    "product_id": "99df335a-8677-5a2d-9005-38de7428170f",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "f73763b4-8cc7-5819-a3cf-06ee25dfb3b9",
+    "ingredient_id": "27a190f4-6546-5a50-9ca9-525bd942ffda",
+    "type": "key"
+  },
+  {
+    "product_id": "f73763b4-8cc7-5819-a3cf-06ee25dfb3b9",
+    "ingredient_id": "edc1c6e6-b281-59b5-88df-9538ef2bead7",
+    "type": "key"
+  },
+  {
+    "product_id": "f73763b4-8cc7-5819-a3cf-06ee25dfb3b9",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "f73763b4-8cc7-5819-a3cf-06ee25dfb3b9",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "6d616804-864d-5124-ab9c-32414a8284ac",
+    "ingredient_id": "20cb6680-a64e-5a2a-b17a-7436bb4f8f7c",
+    "type": "key"
+  },
+  {
+    "product_id": "6d616804-864d-5124-ab9c-32414a8284ac",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "6d616804-864d-5124-ab9c-32414a8284ac",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "53d20a4e-5a04-553a-b1aa-d43a8aa7be20",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "key"
+  },
+  {
+    "product_id": "53d20a4e-5a04-553a-b1aa-d43a8aa7be20",
+    "ingredient_id": "0c9c7311-355e-5f80-a519-adad494735dd",
+    "type": "key"
+  },
+  {
+    "product_id": "53d20a4e-5a04-553a-b1aa-d43a8aa7be20",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "5abea2ea-8ad7-5415-b1d5-9704fb828de3",
+    "ingredient_id": "03a8979c-50be-5050-8b17-71608e08831f",
+    "type": "key"
+  },
+  {
+    "product_id": "5abea2ea-8ad7-5415-b1d5-9704fb828de3",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "5abea2ea-8ad7-5415-b1d5-9704fb828de3",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "bfecd656-93f3-501b-b942-9d275aba63a3",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "bfecd656-93f3-501b-b942-9d275aba63a3",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "bfecd656-93f3-501b-b942-9d275aba63a3",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "98d2334b-b2b6-53a5-9647-b85f532d5d78",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "98d2334b-b2b6-53a5-9647-b85f532d5d78",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "98d2334b-b2b6-53a5-9647-b85f532d5d78",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "72eb85ce-d632-5a31-9609-e30272ae863e",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "72eb85ce-d632-5a31-9609-e30272ae863e",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "72eb85ce-d632-5a31-9609-e30272ae863e",
+    "ingredient_id": "dcaab478-9e74-5c69-8c64-74b89f866d8b",
+    "type": "key"
+  },
+  {
+    "product_id": "72eb85ce-d632-5a31-9609-e30272ae863e",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "0b773380-36a5-59aa-a489-5a6a929f0a85",
+    "ingredient_id": "0e255234-b831-5f40-8b96-166e0e38374e",
+    "type": "key"
+  },
+  {
+    "product_id": "0b773380-36a5-59aa-a489-5a6a929f0a85",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "0b773380-36a5-59aa-a489-5a6a929f0a85",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "34daf200-ba89-592d-8508-f18f9c79eb2b",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "34daf200-ba89-592d-8508-f18f9c79eb2b",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "34daf200-ba89-592d-8508-f18f9c79eb2b",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "34daf200-ba89-592d-8508-f18f9c79eb2b",
+    "ingredient_id": "a47e65b7-647b-5f29-ae8d-a0682a762858",
+    "type": "key"
+  },
+  {
+    "product_id": "34daf200-ba89-592d-8508-f18f9c79eb2b",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "22f3568c-de59-5f80-8b57-006c90f447ba",
+    "ingredient_id": "e68172cd-bea2-5849-a7c5-9fb90084c878",
+    "type": "key"
+  },
+  {
+    "product_id": "22f3568c-de59-5f80-8b57-006c90f447ba",
+    "ingredient_id": "6ce29637-1cc6-58de-a3b2-09c618612fb4",
+    "type": "key"
+  },
+  {
+    "product_id": "22f3568c-de59-5f80-8b57-006c90f447ba",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "22f3568c-de59-5f80-8b57-006c90f447ba",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "6feb9fbe-8acf-5eb5-aab3-1a47b4f44994",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "6feb9fbe-8acf-5eb5-aab3-1a47b4f44994",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "6feb9fbe-8acf-5eb5-aab3-1a47b4f44994",
+    "ingredient_id": "0c9c7311-355e-5f80-a519-adad494735dd",
+    "type": "key"
+  },
+  {
+    "product_id": "59cfa99d-d065-57d3-a240-71eaeb7bdc4c",
+    "ingredient_id": "e68172cd-bea2-5849-a7c5-9fb90084c878",
+    "type": "key"
+  },
+  {
+    "product_id": "59cfa99d-d065-57d3-a240-71eaeb7bdc4c",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "key"
+  },
+  {
+    "product_id": "59cfa99d-d065-57d3-a240-71eaeb7bdc4c",
+    "ingredient_id": "a7c89349-29d4-5688-be92-bdd78bc6eb6e",
+    "type": "key"
+  },
+  {
+    "product_id": "59cfa99d-d065-57d3-a240-71eaeb7bdc4c",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "37ca9878-b8cc-5767-b4d2-58092ce04ba4",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "37ca9878-b8cc-5767-b4d2-58092ce04ba4",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "key"
+  },
+  {
+    "product_id": "37ca9878-b8cc-5767-b4d2-58092ce04ba4",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "37ca9878-b8cc-5767-b4d2-58092ce04ba4",
+    "ingredient_id": "fc060d92-163b-5fe1-9eef-562266e1d185",
+    "type": "key"
+  },
+  {
+    "product_id": "37ca9878-b8cc-5767-b4d2-58092ce04ba4",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "e6375301-5bcf-50fe-8e9c-5ba8cbc82a6a",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "e6375301-5bcf-50fe-8e9c-5ba8cbc82a6a",
+    "ingredient_id": "f1cbd480-2caa-57a3-9103-b27cb6541930",
+    "type": "key"
+  },
+  {
+    "product_id": "e6375301-5bcf-50fe-8e9c-5ba8cbc82a6a",
+    "ingredient_id": "060078cc-546a-5997-ac7b-b9b768b13ae3",
+    "type": "key"
+  },
+  {
+    "product_id": "c8ad2639-18b6-57b8-bfdb-5f5c0a429a88",
+    "ingredient_id": "03a8979c-50be-5050-8b17-71608e08831f",
+    "type": "key"
+  },
+  {
+    "product_id": "c8ad2639-18b6-57b8-bfdb-5f5c0a429a88",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "c8ad2639-18b6-57b8-bfdb-5f5c0a429a88",
+    "ingredient_id": "0c9c7311-355e-5f80-a519-adad494735dd",
+    "type": "key"
+  },
+  {
+    "product_id": "c8ad2639-18b6-57b8-bfdb-5f5c0a429a88",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "c59a3b5f-c218-5e8e-9f2b-4d849710bafc",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "c59a3b5f-c218-5e8e-9f2b-4d849710bafc",
+    "ingredient_id": "dcaab478-9e74-5c69-8c64-74b89f866d8b",
+    "type": "key"
+  },
+  {
+    "product_id": "c59a3b5f-c218-5e8e-9f2b-4d849710bafc",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "c59a3b5f-c218-5e8e-9f2b-4d849710bafc",
+    "ingredient_id": "a47e65b7-647b-5f29-ae8d-a0682a762858",
+    "type": "key"
+  },
+  {
+    "product_id": "cbd60932-fda5-5d35-b790-f89e5c43f07f",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "cbd60932-fda5-5d35-b790-f89e5c43f07f",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "cbd60932-fda5-5d35-b790-f89e5c43f07f",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "42523649-50db-53a3-aa27-50add5825a5d",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "42523649-50db-53a3-aa27-50add5825a5d",
+    "ingredient_id": "dcaab478-9e74-5c69-8c64-74b89f866d8b",
+    "type": "key"
+  },
+  {
+    "product_id": "42523649-50db-53a3-aa27-50add5825a5d",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "42523649-50db-53a3-aa27-50add5825a5d",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "42523649-50db-53a3-aa27-50add5825a5d",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "1e192afa-a50e-552d-b14d-8441afb72763",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "1e192afa-a50e-552d-b14d-8441afb72763",
+    "ingredient_id": "dcaab478-9e74-5c69-8c64-74b89f866d8b",
+    "type": "key"
+  },
+  {
+    "product_id": "1e192afa-a50e-552d-b14d-8441afb72763",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "1e192afa-a50e-552d-b14d-8441afb72763",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "avoid"
+  },
+  {
+    "product_id": "9dde6fe6-65ae-5598-85c4-2dca43439e0c",
+    "ingredient_id": "20cb6680-a64e-5a2a-b17a-7436bb4f8f7c",
+    "type": "key"
+  },
+  {
+    "product_id": "9dde6fe6-65ae-5598-85c4-2dca43439e0c",
+    "ingredient_id": "0f9feae3-c669-5886-ad6c-eae58b6caf38",
+    "type": "key"
+  },
+  {
+    "product_id": "9dde6fe6-65ae-5598-85c4-2dca43439e0c",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "9dde6fe6-65ae-5598-85c4-2dca43439e0c",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "9dde6fe6-65ae-5598-85c4-2dca43439e0c",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "54a9371e-5d87-5566-8f15-537568e741bb",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "54a9371e-5d87-5566-8f15-537568e741bb",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "30758c51-d92b-58d3-9073-115e36d4540a",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "30758c51-d92b-58d3-9073-115e36d4540a",
+    "ingredient_id": "dcaab478-9e74-5c69-8c64-74b89f866d8b",
+    "type": "key"
+  },
+  {
+    "product_id": "30758c51-d92b-58d3-9073-115e36d4540a",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "30758c51-d92b-58d3-9073-115e36d4540a",
+    "ingredient_id": "0c682c87-5912-5b08-95c5-668b8634a362",
+    "type": "key"
+  },
+  {
+    "product_id": "30758c51-d92b-58d3-9073-115e36d4540a",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "8ed4c32c-6aea-5084-b562-f6e806099a85",
+    "ingredient_id": "0c9c7311-355e-5f80-a519-adad494735dd",
+    "type": "key"
+  },
+  {
+    "product_id": "8ed4c32c-6aea-5084-b562-f6e806099a85",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "8ed4c32c-6aea-5084-b562-f6e806099a85",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "311c51f9-a3aa-5e96-8dc7-126d772d63dc",
+    "ingredient_id": "09a0f443-28ad-5f45-8881-389c7585ca07",
+    "type": "key"
+  },
+  {
+    "product_id": "311c51f9-a3aa-5e96-8dc7-126d772d63dc",
+    "ingredient_id": "03a8979c-50be-5050-8b17-71608e08831f",
+    "type": "key"
+  },
+  {
+    "product_id": "311c51f9-a3aa-5e96-8dc7-126d772d63dc",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "efb70a93-4f1a-5f3c-b51a-5e8563077494",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "efb70a93-4f1a-5f3c-b51a-5e8563077494",
+    "ingredient_id": "03a8979c-50be-5050-8b17-71608e08831f",
+    "type": "key"
+  },
+  {
+    "product_id": "efb70a93-4f1a-5f3c-b51a-5e8563077494",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "efb70a93-4f1a-5f3c-b51a-5e8563077494",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "51aabb22-2981-5d02-b5ba-f0ae2859a4e4",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "51aabb22-2981-5d02-b5ba-f0ae2859a4e4",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "51aabb22-2981-5d02-b5ba-f0ae2859a4e4",
+    "ingredient_id": "a47e65b7-647b-5f29-ae8d-a0682a762858",
+    "type": "key"
+  },
+  {
+    "product_id": "51aabb22-2981-5d02-b5ba-f0ae2859a4e4",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "51aabb22-2981-5d02-b5ba-f0ae2859a4e4",
+    "ingredient_id": "09a0f443-28ad-5f45-8881-389c7585ca07",
+    "type": "avoid"
+  },
+  {
+    "product_id": "235fb9ce-550d-57be-9193-98a90e987848",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "235fb9ce-550d-57be-9193-98a90e987848",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "235fb9ce-550d-57be-9193-98a90e987848",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "235fb9ce-550d-57be-9193-98a90e987848",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "739e6b79-236f-55e3-9186-8a95963a9d36",
+    "ingredient_id": "09a0f443-28ad-5f45-8881-389c7585ca07",
+    "type": "key"
+  },
+  {
+    "product_id": "739e6b79-236f-55e3-9186-8a95963a9d36",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "fdc76059-8028-5a81-b988-0824f0d81a55",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "fdc76059-8028-5a81-b988-0824f0d81a55",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "fdc76059-8028-5a81-b988-0824f0d81a55",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "fdc76059-8028-5a81-b988-0824f0d81a55",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "b656595d-d2c6-5dad-a776-485d9600bcde",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "295eb231-0c11-5e46-ac6d-967bb6b11e68",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "295eb231-0c11-5e46-ac6d-967bb6b11e68",
+    "ingredient_id": "edc1c6e6-b281-59b5-88df-9538ef2bead7",
+    "type": "key"
+  },
+  {
+    "product_id": "295eb231-0c11-5e46-ac6d-967bb6b11e68",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "295eb231-0c11-5e46-ac6d-967bb6b11e68",
+    "ingredient_id": "1c439e9c-9bca-5e07-874d-41aa9df9e1a6",
+    "type": "key"
+  },
+  {
+    "product_id": "295eb231-0c11-5e46-ac6d-967bb6b11e68",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "295eb231-0c11-5e46-ac6d-967bb6b11e68",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "b92770e8-1946-58a7-a00e-44851e147fee",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "b92770e8-1946-58a7-a00e-44851e147fee",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "b92770e8-1946-58a7-a00e-44851e147fee",
+    "ingredient_id": "dcaab478-9e74-5c69-8c64-74b89f866d8b",
+    "type": "key"
+  },
+  {
+    "product_id": "b92770e8-1946-58a7-a00e-44851e147fee",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "b92770e8-1946-58a7-a00e-44851e147fee",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "76e5ae04-7ea8-5a8c-a506-40b8d7882b51",
+    "ingredient_id": "09a0f443-28ad-5f45-8881-389c7585ca07",
+    "type": "key"
+  },
+  {
+    "product_id": "76e5ae04-7ea8-5a8c-a506-40b8d7882b51",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "76e5ae04-7ea8-5a8c-a506-40b8d7882b51",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "76e5ae04-7ea8-5a8c-a506-40b8d7882b51",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "99ae8f58-af5c-5fbc-914b-056af44140be",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "99ae8f58-af5c-5fbc-914b-056af44140be",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "99ae8f58-af5c-5fbc-914b-056af44140be",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "99ae8f58-af5c-5fbc-914b-056af44140be",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "99ae8f58-af5c-5fbc-914b-056af44140be",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "avoid"
+  },
+  {
+    "product_id": "999f66ae-a73b-5383-936f-070a0a711b05",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "999f66ae-a73b-5383-936f-070a0a711b05",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "999f66ae-a73b-5383-936f-070a0a711b05",
+    "ingredient_id": "0c9c7311-355e-5f80-a519-adad494735dd",
+    "type": "key"
+  },
+  {
+    "product_id": "02db4377-fe51-50e3-9b79-f20bd4dcfbda",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "02db4377-fe51-50e3-9b79-f20bd4dcfbda",
+    "ingredient_id": "dcaab478-9e74-5c69-8c64-74b89f866d8b",
+    "type": "key"
+  },
+  {
+    "product_id": "02db4377-fe51-50e3-9b79-f20bd4dcfbda",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "02db4377-fe51-50e3-9b79-f20bd4dcfbda",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "cfeae786-0e47-5082-a4da-fc8f6448ce77",
+    "ingredient_id": "9cdd13ac-33f7-579a-8ebb-f8493727d48a",
+    "type": "key"
+  },
+  {
+    "product_id": "cfeae786-0e47-5082-a4da-fc8f6448ce77",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "cfeae786-0e47-5082-a4da-fc8f6448ce77",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "key"
+  },
+  {
+    "product_id": "cfeae786-0e47-5082-a4da-fc8f6448ce77",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "02fd697e-a7a8-5398-9c75-eacfd08b36a4",
+    "ingredient_id": "20cb6680-a64e-5a2a-b17a-7436bb4f8f7c",
+    "type": "key"
+  },
+  {
+    "product_id": "02fd697e-a7a8-5398-9c75-eacfd08b36a4",
+    "ingredient_id": "0f9feae3-c669-5886-ad6c-eae58b6caf38",
+    "type": "key"
+  },
+  {
+    "product_id": "02fd697e-a7a8-5398-9c75-eacfd08b36a4",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "02fd697e-a7a8-5398-9c75-eacfd08b36a4",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "06d1c5ae-91fa-5124-ac77-46103d925b68",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "06d1c5ae-91fa-5124-ac77-46103d925b68",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "key"
+  },
+  {
+    "product_id": "06d1c5ae-91fa-5124-ac77-46103d925b68",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "da529f35-6db6-5cf0-9933-03ac0407f9ee",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "da529f35-6db6-5cf0-9933-03ac0407f9ee",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "da529f35-6db6-5cf0-9933-03ac0407f9ee",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "da529f35-6db6-5cf0-9933-03ac0407f9ee",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "8a629cd9-1636-51b6-9467-6cdb7cf4066d",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "8a629cd9-1636-51b6-9467-6cdb7cf4066d",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "8a629cd9-1636-51b6-9467-6cdb7cf4066d",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "d5a419bb-4ebc-5698-8a04-315551b295b7",
+    "ingredient_id": "0e255234-b831-5f40-8b96-166e0e38374e",
+    "type": "key"
+  },
+  {
+    "product_id": "d5a419bb-4ebc-5698-8a04-315551b295b7",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "d5a419bb-4ebc-5698-8a04-315551b295b7",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "d5a419bb-4ebc-5698-8a04-315551b295b7",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "3ee00ab7-7182-5d22-b17a-ecc748914697",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "key"
+  },
+  {
+    "product_id": "3ee00ab7-7182-5d22-b17a-ecc748914697",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "3ee00ab7-7182-5d22-b17a-ecc748914697",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "40c89600-4465-57db-bbd8-1e036ee6c0f3",
+    "ingredient_id": "0f9feae3-c669-5886-ad6c-eae58b6caf38",
+    "type": "key"
+  },
+  {
+    "product_id": "e76baae6-8447-5468-9df8-306a701c5902",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "e76baae6-8447-5468-9df8-306a701c5902",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "e76baae6-8447-5468-9df8-306a701c5902",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "7be89b47-2343-570c-b9f7-19ecb04c73f9",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "7be89b47-2343-570c-b9f7-19ecb04c73f9",
+    "ingredient_id": "dcaab478-9e74-5c69-8c64-74b89f866d8b",
+    "type": "key"
+  },
+  {
+    "product_id": "7be89b47-2343-570c-b9f7-19ecb04c73f9",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "7be89b47-2343-570c-b9f7-19ecb04c73f9",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "87e65f9e-46fc-5a89-b71d-82d453f7fe44",
+    "ingredient_id": "0f9feae3-c669-5886-ad6c-eae58b6caf38",
+    "type": "key"
+  },
+  {
+    "product_id": "87e65f9e-46fc-5a89-b71d-82d453f7fe44",
+    "ingredient_id": "cb24ad7a-9842-5e5e-8597-92ef137f9c55",
+    "type": "key"
+  },
+  {
+    "product_id": "b86cef7b-0951-5141-8e4f-c005633d2676",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "b86cef7b-0951-5141-8e4f-c005633d2676",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "b86cef7b-0951-5141-8e4f-c005633d2676",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "b86cef7b-0951-5141-8e4f-c005633d2676",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "aa46952b-e897-5e35-a996-9c6cbc639d93",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "aa46952b-e897-5e35-a996-9c6cbc639d93",
+    "ingredient_id": "a47e65b7-647b-5f29-ae8d-a0682a762858",
+    "type": "key"
+  },
+  {
+    "product_id": "aa46952b-e897-5e35-a996-9c6cbc639d93",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "44736b0b-0fd9-5ae4-8adc-67603ea0e299",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "44736b0b-0fd9-5ae4-8adc-67603ea0e299",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "44736b0b-0fd9-5ae4-8adc-67603ea0e299",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "44736b0b-0fd9-5ae4-8adc-67603ea0e299",
+    "ingredient_id": "1692f21c-ff7c-5511-9975-c65c71ff8f2a",
+    "type": "key"
+  },
+  {
+    "product_id": "44736b0b-0fd9-5ae4-8adc-67603ea0e299",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "ae1d804d-2fae-5c20-a40f-1167c5bf35e7",
+    "ingredient_id": "03a8979c-50be-5050-8b17-71608e08831f",
+    "type": "key"
+  },
+  {
+    "product_id": "ae1d804d-2fae-5c20-a40f-1167c5bf35e7",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "ae1d804d-2fae-5c20-a40f-1167c5bf35e7",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "81f1f40a-96a1-5c2b-a851-a54eda0958d5",
+    "ingredient_id": "20cb6680-a64e-5a2a-b17a-7436bb4f8f7c",
+    "type": "key"
+  },
+  {
+    "product_id": "81f1f40a-96a1-5c2b-a851-a54eda0958d5",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "81f1f40a-96a1-5c2b-a851-a54eda0958d5",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "81f1f40a-96a1-5c2b-a851-a54eda0958d5",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "a36c51e4-5435-5581-b6ad-239fb6957016",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "a36c51e4-5435-5581-b6ad-239fb6957016",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "a36c51e4-5435-5581-b6ad-239fb6957016",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "a36c51e4-5435-5581-b6ad-239fb6957016",
+    "ingredient_id": "3c044581-9edc-5bb0-a7fe-7eb12bd5bdff",
+    "type": "key"
+  },
+  {
+    "product_id": "a36c51e4-5435-5581-b6ad-239fb6957016",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "937357d5-d279-5338-8d92-ec61442dd520",
+    "ingredient_id": "213a9da9-8b0b-5040-b382-b084f9a9939b",
+    "type": "key"
+  },
+  {
+    "product_id": "937357d5-d279-5338-8d92-ec61442dd520",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "937357d5-d279-5338-8d92-ec61442dd520",
+    "ingredient_id": "5dda9b38-2fd2-5301-80c4-878fd7e6c579",
+    "type": "key"
+  },
+  {
+    "product_id": "937357d5-d279-5338-8d92-ec61442dd520",
+    "ingredient_id": "b5ba026c-0b30-559d-80f1-a0be904e0868",
+    "type": "key"
+  },
+  {
+    "product_id": "15b51acf-b585-578d-976d-8b60456d05e6",
+    "ingredient_id": "20cb6680-a64e-5a2a-b17a-7436bb4f8f7c",
+    "type": "key"
+  },
+  {
+    "product_id": "15b51acf-b585-578d-976d-8b60456d05e6",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "15b51acf-b585-578d-976d-8b60456d05e6",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "15b51acf-b585-578d-976d-8b60456d05e6",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "ccd18d87-4745-5743-a036-da0d100eecb1",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "ccd18d87-4745-5743-a036-da0d100eecb1",
+    "ingredient_id": "dcaab478-9e74-5c69-8c64-74b89f866d8b",
+    "type": "key"
+  },
+  {
+    "product_id": "ccd18d87-4745-5743-a036-da0d100eecb1",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "70d9deab-b02e-5fb2-a821-dd47eecfd736",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "70d9deab-b02e-5fb2-a821-dd47eecfd736",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "70d9deab-b02e-5fb2-a821-dd47eecfd736",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "5065984e-7de6-5a6b-bd21-64b4c809144d",
+    "ingredient_id": "3c044581-9edc-5bb0-a7fe-7eb12bd5bdff",
+    "type": "key"
+  },
+  {
+    "product_id": "5065984e-7de6-5a6b-bd21-64b4c809144d",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "58a3815b-ca23-5e48-a693-399cd65abf8a",
+    "ingredient_id": "3c044581-9edc-5bb0-a7fe-7eb12bd5bdff",
+    "type": "key"
+  },
+  {
+    "product_id": "58a3815b-ca23-5e48-a693-399cd65abf8a",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "58a3815b-ca23-5e48-a693-399cd65abf8a",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "b7719c83-852d-5e94-96c7-b10a62fed47d",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "b7719c83-852d-5e94-96c7-b10a62fed47d",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "b7719c83-852d-5e94-96c7-b10a62fed47d",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "b7719c83-852d-5e94-96c7-b10a62fed47d",
+    "ingredient_id": "0f9feae3-c669-5886-ad6c-eae58b6caf38",
+    "type": "key"
+  },
+  {
+    "product_id": "b7719c83-852d-5e94-96c7-b10a62fed47d",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "e6985df3-00e3-57ed-8d21-7ad4977ece9f",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "e6985df3-00e3-57ed-8d21-7ad4977ece9f",
+    "ingredient_id": "a57632a1-7de7-5090-a522-cb100df020e7",
+    "type": "key"
+  },
+  {
+    "product_id": "e6985df3-00e3-57ed-8d21-7ad4977ece9f",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "e6985df3-00e3-57ed-8d21-7ad4977ece9f",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "623e5c6d-b9c5-52ce-bc9a-a172404eded1",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "623e5c6d-b9c5-52ce-bc9a-a172404eded1",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "623e5c6d-b9c5-52ce-bc9a-a172404eded1",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "623e5c6d-b9c5-52ce-bc9a-a172404eded1",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "avoid"
+  },
+  {
+    "product_id": "6e00622f-0c02-5fa6-96c5-84637c1fa8c9",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "6e00622f-0c02-5fa6-96c5-84637c1fa8c9",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "6e00622f-0c02-5fa6-96c5-84637c1fa8c9",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "d3cc6bc7-9d5f-56f3-aa4c-44c24d0b52b8",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "d3cc6bc7-9d5f-56f3-aa4c-44c24d0b52b8",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "d3cc6bc7-9d5f-56f3-aa4c-44c24d0b52b8",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "40be3daf-135c-537d-9148-fd039d462b72",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "40be3daf-135c-537d-9148-fd039d462b72",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "40be3daf-135c-537d-9148-fd039d462b72",
+    "ingredient_id": "6ce29637-1cc6-58de-a3b2-09c618612fb4",
+    "type": "key"
+  },
+  {
+    "product_id": "40be3daf-135c-537d-9148-fd039d462b72",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "40be3daf-135c-537d-9148-fd039d462b72",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "e6e9609a-ee8d-57c1-8e60-1786d3742b70",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "e6e9609a-ee8d-57c1-8e60-1786d3742b70",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "e6e9609a-ee8d-57c1-8e60-1786d3742b70",
+    "ingredient_id": "a57632a1-7de7-5090-a522-cb100df020e7",
+    "type": "key"
+  },
+  {
+    "product_id": "e6e9609a-ee8d-57c1-8e60-1786d3742b70",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "ecfc77cf-a39d-52a3-9f8e-88e8f499b66f",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "ecfc77cf-a39d-52a3-9f8e-88e8f499b66f",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "ecfc77cf-a39d-52a3-9f8e-88e8f499b66f",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "ecfc77cf-a39d-52a3-9f8e-88e8f499b66f",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "5012eb3b-baac-5bae-9d35-007ec2f77f5d",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "5012eb3b-baac-5bae-9d35-007ec2f77f5d",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "5012eb3b-baac-5bae-9d35-007ec2f77f5d",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "5012eb3b-baac-5bae-9d35-007ec2f77f5d",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "5012eb3b-baac-5bae-9d35-007ec2f77f5d",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "avoid"
+  },
+  {
+    "product_id": "fa1b1f88-a60d-5a95-a514-a0a6921bc3a1",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "fa1b1f88-a60d-5a95-a514-a0a6921bc3a1",
+    "ingredient_id": "a57632a1-7de7-5090-a522-cb100df020e7",
+    "type": "key"
+  },
+  {
+    "product_id": "fa1b1f88-a60d-5a95-a514-a0a6921bc3a1",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "fa1b1f88-a60d-5a95-a514-a0a6921bc3a1",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "avoid"
+  },
+  {
+    "product_id": "fa1b1f88-a60d-5a95-a514-a0a6921bc3a1",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "a1c532d4-602c-500f-b0d3-d755cac430df",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "a1c532d4-602c-500f-b0d3-d755cac430df",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "a1c532d4-602c-500f-b0d3-d755cac430df",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "a1c532d4-602c-500f-b0d3-d755cac430df",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "9121c461-20d8-583a-91a9-22c34b2a6c16",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "9121c461-20d8-583a-91a9-22c34b2a6c16",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "9121c461-20d8-583a-91a9-22c34b2a6c16",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "9121c461-20d8-583a-91a9-22c34b2a6c16",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "9121c461-20d8-583a-91a9-22c34b2a6c16",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "avoid"
+  },
+  {
+    "product_id": "9121c461-20d8-583a-91a9-22c34b2a6c16",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "c664096e-eeb3-5482-b52b-f6389b22768c",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "c664096e-eeb3-5482-b52b-f6389b22768c",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "c664096e-eeb3-5482-b52b-f6389b22768c",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "c664096e-eeb3-5482-b52b-f6389b22768c",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "c875c171-9c9c-5bb7-991b-112a00985898",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "c875c171-9c9c-5bb7-991b-112a00985898",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "c875c171-9c9c-5bb7-991b-112a00985898",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "c875c171-9c9c-5bb7-991b-112a00985898",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "c875c171-9c9c-5bb7-991b-112a00985898",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "cabe2949-cf03-5986-bfbf-185d218bd1bf",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "cabe2949-cf03-5986-bfbf-185d218bd1bf",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "cabe2949-cf03-5986-bfbf-185d218bd1bf",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "cabe2949-cf03-5986-bfbf-185d218bd1bf",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "e96c0621-60d7-53fc-ab36-9a5b8b8a23c8",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "e96c0621-60d7-53fc-ab36-9a5b8b8a23c8",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "e96c0621-60d7-53fc-ab36-9a5b8b8a23c8",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "36cb56b2-af43-5c93-bcd7-1078fd3e5fad",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "36cb56b2-af43-5c93-bcd7-1078fd3e5fad",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "36cb56b2-af43-5c93-bcd7-1078fd3e5fad",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "ad08a1f8-0a90-5249-9f7d-478024203745",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "ad08a1f8-0a90-5249-9f7d-478024203745",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "3ec026b6-bb7d-504e-90a4-cec00d61a613",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "3ec026b6-bb7d-504e-90a4-cec00d61a613",
+    "ingredient_id": "1c439e9c-9bca-5e07-874d-41aa9df9e1a6",
+    "type": "key"
+  },
+  {
+    "product_id": "3ec026b6-bb7d-504e-90a4-cec00d61a613",
+    "ingredient_id": "edc1c6e6-b281-59b5-88df-9538ef2bead7",
+    "type": "key"
+  },
+  {
+    "product_id": "3ec026b6-bb7d-504e-90a4-cec00d61a613",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "ac6a7d8d-2615-5de6-9393-ad393b2dc984",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "ac6a7d8d-2615-5de6-9393-ad393b2dc984",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "ac6a7d8d-2615-5de6-9393-ad393b2dc984",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "ac6a7d8d-2615-5de6-9393-ad393b2dc984",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "ac6a7d8d-2615-5de6-9393-ad393b2dc984",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "avoid"
+  },
+  {
+    "product_id": "ac6a7d8d-2615-5de6-9393-ad393b2dc984",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "22a7296d-4482-5ad8-838d-aa0f494c5023",
+    "ingredient_id": "20cb6680-a64e-5a2a-b17a-7436bb4f8f7c",
+    "type": "key"
+  },
+  {
+    "product_id": "22a7296d-4482-5ad8-838d-aa0f494c5023",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "22a7296d-4482-5ad8-838d-aa0f494c5023",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "22a7296d-4482-5ad8-838d-aa0f494c5023",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "22a7296d-4482-5ad8-838d-aa0f494c5023",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "avoid"
+  },
+  {
+    "product_id": "6e711b21-8a8b-5364-88c0-efbcd9e23edf",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "6e711b21-8a8b-5364-88c0-efbcd9e23edf",
+    "ingredient_id": "03a8979c-50be-5050-8b17-71608e08831f",
+    "type": "key"
+  },
+  {
+    "product_id": "6e711b21-8a8b-5364-88c0-efbcd9e23edf",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "key"
+  },
+  {
+    "product_id": "6e711b21-8a8b-5364-88c0-efbcd9e23edf",
+    "ingredient_id": "9cdd13ac-33f7-579a-8ebb-f8493727d48a",
+    "type": "key"
+  },
+  {
+    "product_id": "6e711b21-8a8b-5364-88c0-efbcd9e23edf",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "d913f96f-1640-54f3-87d4-ec6aaad8cfab",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "d913f96f-1640-54f3-87d4-ec6aaad8cfab",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "d913f96f-1640-54f3-87d4-ec6aaad8cfab",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "4ac2db2b-e01d-5435-a15d-70042ca5aba4",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "4ac2db2b-e01d-5435-a15d-70042ca5aba4",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "4ac2db2b-e01d-5435-a15d-70042ca5aba4",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "0f870ff9-a4e8-5f2f-9f3a-84baff67f86f",
+    "ingredient_id": "20cb6680-a64e-5a2a-b17a-7436bb4f8f7c",
+    "type": "key"
+  },
+  {
+    "product_id": "0f870ff9-a4e8-5f2f-9f3a-84baff67f86f",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "0f870ff9-a4e8-5f2f-9f3a-84baff67f86f",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "0f870ff9-a4e8-5f2f-9f3a-84baff67f86f",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "49d2181c-3277-50e1-90b4-f91a6548e7a8",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "49d2181c-3277-50e1-90b4-f91a6548e7a8",
+    "ingredient_id": "1c439e9c-9bca-5e07-874d-41aa9df9e1a6",
+    "type": "key"
+  },
+  {
+    "product_id": "49d2181c-3277-50e1-90b4-f91a6548e7a8",
+    "ingredient_id": "edc1c6e6-b281-59b5-88df-9538ef2bead7",
+    "type": "key"
+  },
+  {
+    "product_id": "49d2181c-3277-50e1-90b4-f91a6548e7a8",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "898ff11e-492d-5f1c-9485-ed41045ce0d5",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "898ff11e-492d-5f1c-9485-ed41045ce0d5",
+    "ingredient_id": "1c439e9c-9bca-5e07-874d-41aa9df9e1a6",
+    "type": "key"
+  },
+  {
+    "product_id": "898ff11e-492d-5f1c-9485-ed41045ce0d5",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "1cdb9808-41f7-5966-a2a5-f7d279a861b2",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "1cdb9808-41f7-5966-a2a5-f7d279a861b2",
+    "ingredient_id": "edc1c6e6-b281-59b5-88df-9538ef2bead7",
+    "type": "key"
+  },
+  {
+    "product_id": "1cdb9808-41f7-5966-a2a5-f7d279a861b2",
+    "ingredient_id": "1abfeedb-9ff0-5a76-865f-f72bc057edad",
+    "type": "key"
+  },
+  {
+    "product_id": "1cdb9808-41f7-5966-a2a5-f7d279a861b2",
+    "ingredient_id": "1c439e9c-9bca-5e07-874d-41aa9df9e1a6",
+    "type": "key"
+  },
+  {
+    "product_id": "1cdb9808-41f7-5966-a2a5-f7d279a861b2",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "710c681c-3a6b-50e2-b0a1-cf8d161b496a",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "021a9515-386e-599b-a523-f550c275b237",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "dfeed5d0-a0ff-5d4e-80b4-799f68b1948c",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "dfeed5d0-a0ff-5d4e-80b4-799f68b1948c",
+    "ingredient_id": "1c439e9c-9bca-5e07-874d-41aa9df9e1a6",
+    "type": "key"
+  },
+  {
+    "product_id": "dfeed5d0-a0ff-5d4e-80b4-799f68b1948c",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "4df2c9be-b2d8-56b0-b5c5-68a3bd9a0ea2",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "9d329440-edb1-5e29-8552-8c97f29174be",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "9d329440-edb1-5e29-8552-8c97f29174be",
+    "ingredient_id": "9cdd13ac-33f7-579a-8ebb-f8493727d48a",
+    "type": "avoid"
+  },
+  {
+    "product_id": "4fb7933a-e492-5580-8fca-d765fb143f62",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "4fb7933a-e492-5580-8fca-d765fb143f62",
+    "ingredient_id": "1c439e9c-9bca-5e07-874d-41aa9df9e1a6",
+    "type": "key"
+  },
+  {
+    "product_id": "4fb7933a-e492-5580-8fca-d765fb143f62",
+    "ingredient_id": "edc1c6e6-b281-59b5-88df-9538ef2bead7",
+    "type": "key"
+  },
+  {
+    "product_id": "4fb7933a-e492-5580-8fca-d765fb143f62",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "2c433f68-9375-5434-9675-894ffd1ea98a",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "2c433f68-9375-5434-9675-894ffd1ea98a",
+    "ingredient_id": "edc1c6e6-b281-59b5-88df-9538ef2bead7",
+    "type": "key"
+  },
+  {
+    "product_id": "2c433f68-9375-5434-9675-894ffd1ea98a",
+    "ingredient_id": "1c439e9c-9bca-5e07-874d-41aa9df9e1a6",
+    "type": "key"
+  },
+  {
+    "product_id": "2c433f68-9375-5434-9675-894ffd1ea98a",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "10f953d4-4555-5f14-808e-25042c9f40a3",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "10f953d4-4555-5f14-808e-25042c9f40a3",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "10f953d4-4555-5f14-808e-25042c9f40a3",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "3b3a1069-59a5-5c9c-bfae-9fb44f501b73",
+    "ingredient_id": "9cdd13ac-33f7-579a-8ebb-f8493727d48a",
+    "type": "key"
+  },
+  {
+    "product_id": "3b3a1069-59a5-5c9c-bfae-9fb44f501b73",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "755deede-73fd-5f97-8bc9-653680f3e54a",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "755deede-73fd-5f97-8bc9-653680f3e54a",
+    "ingredient_id": "1c439e9c-9bca-5e07-874d-41aa9df9e1a6",
+    "type": "key"
+  },
+  {
+    "product_id": "755deede-73fd-5f97-8bc9-653680f3e54a",
+    "ingredient_id": "edc1c6e6-b281-59b5-88df-9538ef2bead7",
+    "type": "key"
+  },
+  {
+    "product_id": "755deede-73fd-5f97-8bc9-653680f3e54a",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "cf490812-d2a6-5178-8429-98c4540acba2",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "cf490812-d2a6-5178-8429-98c4540acba2",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "key"
+  },
+  {
+    "product_id": "cf490812-d2a6-5178-8429-98c4540acba2",
+    "ingredient_id": "9cdd13ac-33f7-579a-8ebb-f8493727d48a",
+    "type": "key"
+  },
+  {
+    "product_id": "cf490812-d2a6-5178-8429-98c4540acba2",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "a7812e0c-ee3b-5d9c-8ed7-d457582f7868",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "a7812e0c-ee3b-5d9c-8ed7-d457582f7868",
+    "ingredient_id": "edc1c6e6-b281-59b5-88df-9538ef2bead7",
+    "type": "key"
+  },
+  {
+    "product_id": "a7812e0c-ee3b-5d9c-8ed7-d457582f7868",
+    "ingredient_id": "1abfeedb-9ff0-5a76-865f-f72bc057edad",
+    "type": "key"
+  },
+  {
+    "product_id": "a7812e0c-ee3b-5d9c-8ed7-d457582f7868",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "2e382666-5547-5a9d-9f1a-ece40138e928",
+    "ingredient_id": "0f9feae3-c669-5886-ad6c-eae58b6caf38",
+    "type": "key"
+  },
+  {
+    "product_id": "2e382666-5547-5a9d-9f1a-ece40138e928",
+    "ingredient_id": "b6f5915b-3903-54d3-842a-3207c57da0a4",
+    "type": "key"
+  },
+  {
+    "product_id": "2e382666-5547-5a9d-9f1a-ece40138e928",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "2e382666-5547-5a9d-9f1a-ece40138e928",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "2e382666-5547-5a9d-9f1a-ece40138e928",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "6606c186-0660-58f6-8b70-96dd23e1e0ca",
+    "ingredient_id": "20cb6680-a64e-5a2a-b17a-7436bb4f8f7c",
+    "type": "key"
+  },
+  {
+    "product_id": "6606c186-0660-58f6-8b70-96dd23e1e0ca",
+    "ingredient_id": "7a3d2b92-a0de-5663-8f56-219b943c1850",
+    "type": "key"
+  },
+  {
+    "product_id": "6606c186-0660-58f6-8b70-96dd23e1e0ca",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "6606c186-0660-58f6-8b70-96dd23e1e0ca",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "d47ecc40-35f7-5c55-94c3-a91077a1b9f8",
+    "ingredient_id": "03a8979c-50be-5050-8b17-71608e08831f",
+    "type": "key"
+  },
+  {
+    "product_id": "d47ecc40-35f7-5c55-94c3-a91077a1b9f8",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "d47ecc40-35f7-5c55-94c3-a91077a1b9f8",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "d47ecc40-35f7-5c55-94c3-a91077a1b9f8",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "f74ce908-e862-5298-ac6c-01e227b71617",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "f74ce908-e862-5298-ac6c-01e227b71617",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "f74ce908-e862-5298-ac6c-01e227b71617",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "f74ce908-e862-5298-ac6c-01e227b71617",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "ef617b83-c968-5576-8b16-918e82f0eb89",
+    "ingredient_id": "20cb6680-a64e-5a2a-b17a-7436bb4f8f7c",
+    "type": "key"
+  },
+  {
+    "product_id": "ef617b83-c968-5576-8b16-918e82f0eb89",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "ef617b83-c968-5576-8b16-918e82f0eb89",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "ef617b83-c968-5576-8b16-918e82f0eb89",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "ef617b83-c968-5576-8b16-918e82f0eb89",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "avoid"
+  },
+  {
+    "product_id": "824090e6-5895-52f2-a0c0-5ef355de5f1a",
+    "ingredient_id": "03a8979c-50be-5050-8b17-71608e08831f",
+    "type": "key"
+  },
+  {
+    "product_id": "824090e6-5895-52f2-a0c0-5ef355de5f1a",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "key"
+  },
+  {
+    "product_id": "824090e6-5895-52f2-a0c0-5ef355de5f1a",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "94aa4a41-04bb-5a0e-bf30-2620fab62d41",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "94aa4a41-04bb-5a0e-bf30-2620fab62d41",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "94aa4a41-04bb-5a0e-bf30-2620fab62d41",
+    "ingredient_id": "1692f21c-ff7c-5511-9975-c65c71ff8f2a",
+    "type": "key"
+  },
+  {
+    "product_id": "94aa4a41-04bb-5a0e-bf30-2620fab62d41",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "1551d2f4-d367-5b9b-84c7-eb1c67056a22",
+    "ingredient_id": "1692f21c-ff7c-5511-9975-c65c71ff8f2a",
+    "type": "key"
+  },
+  {
+    "product_id": "1551d2f4-d367-5b9b-84c7-eb1c67056a22",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "1551d2f4-d367-5b9b-84c7-eb1c67056a22",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "5157bf85-4e53-59b7-98b0-e2b902116979",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "5157bf85-4e53-59b7-98b0-e2b902116979",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "5157bf85-4e53-59b7-98b0-e2b902116979",
+    "ingredient_id": "a47e65b7-647b-5f29-ae8d-a0682a762858",
+    "type": "key"
+  },
+  {
+    "product_id": "5157bf85-4e53-59b7-98b0-e2b902116979",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "5157bf85-4e53-59b7-98b0-e2b902116979",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "5157bf85-4e53-59b7-98b0-e2b902116979",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "b9bf5eeb-178d-5828-b1d2-41924b816e16",
+    "ingredient_id": "0f9feae3-c669-5886-ad6c-eae58b6caf38",
+    "type": "key"
+  },
+  {
+    "product_id": "b9bf5eeb-178d-5828-b1d2-41924b816e16",
+    "ingredient_id": "b6f5915b-3903-54d3-842a-3207c57da0a4",
+    "type": "key"
+  },
+  {
+    "product_id": "beae2d6b-1b1c-50ba-936a-8ba503cff749",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "beae2d6b-1b1c-50ba-936a-8ba503cff749",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "beae2d6b-1b1c-50ba-936a-8ba503cff749",
+    "ingredient_id": "a47e65b7-647b-5f29-ae8d-a0682a762858",
+    "type": "key"
+  },
+  {
+    "product_id": "beae2d6b-1b1c-50ba-936a-8ba503cff749",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "beae2d6b-1b1c-50ba-936a-8ba503cff749",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "91a0f0f3-25c7-58e3-8778-b72dfae2f719",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "91a0f0f3-25c7-58e3-8778-b72dfae2f719",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "88b286f9-9b0b-585f-a825-20cb94c0e34e",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "88b286f9-9b0b-585f-a825-20cb94c0e34e",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "88b286f9-9b0b-585f-a825-20cb94c0e34e",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "88b286f9-9b0b-585f-a825-20cb94c0e34e",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "88b286f9-9b0b-585f-a825-20cb94c0e34e",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "c384bd77-a327-56a0-bc91-cec440fde836",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "c384bd77-a327-56a0-bc91-cec440fde836",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "c384bd77-a327-56a0-bc91-cec440fde836",
+    "ingredient_id": "1692f21c-ff7c-5511-9975-c65c71ff8f2a",
+    "type": "key"
+  },
+  {
+    "product_id": "225108a7-f817-52b9-a9a0-46e604969eb9",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "225108a7-f817-52b9-a9a0-46e604969eb9",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "b77d74a6-fdc0-579b-b2d1-b363bd913477",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "b77d74a6-fdc0-579b-b2d1-b363bd913477",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "b77d74a6-fdc0-579b-b2d1-b363bd913477",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "b77d74a6-fdc0-579b-b2d1-b363bd913477",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "avoid"
+  },
+  {
+    "product_id": "48cd4a55-a2d8-5c36-a531-6be292d9963e",
+    "ingredient_id": "20cb6680-a64e-5a2a-b17a-7436bb4f8f7c",
+    "type": "key"
+  },
+  {
+    "product_id": "48cd4a55-a2d8-5c36-a531-6be292d9963e",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "4f36a22b-3c71-5466-a508-cb878e71d091",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "4f36a22b-3c71-5466-a508-cb878e71d091",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "4f36a22b-3c71-5466-a508-cb878e71d091",
+    "ingredient_id": "7a3d2b92-a0de-5663-8f56-219b943c1850",
+    "type": "key"
+  },
+  {
+    "product_id": "ff2ccdc2-4f69-5ee2-a649-4f4884f8bc57",
+    "ingredient_id": "20cb6680-a64e-5a2a-b17a-7436bb4f8f7c",
+    "type": "key"
+  },
+  {
+    "product_id": "ff2ccdc2-4f69-5ee2-a649-4f4884f8bc57",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "ff2ccdc2-4f69-5ee2-a649-4f4884f8bc57",
+    "ingredient_id": "99114d5e-3944-5ddc-966e-fce0e6ab66e8",
+    "type": "avoid"
+  },
+  {
+    "product_id": "2d053cda-8e98-572d-8afa-e3f6bdddc5ca",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "2d053cda-8e98-572d-8afa-e3f6bdddc5ca",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "2d053cda-8e98-572d-8afa-e3f6bdddc5ca",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "2d053cda-8e98-572d-8afa-e3f6bdddc5ca",
+    "ingredient_id": "99114d5e-3944-5ddc-966e-fce0e6ab66e8",
+    "type": "avoid"
+  },
+  {
+    "product_id": "2d053cda-8e98-572d-8afa-e3f6bdddc5ca",
+    "ingredient_id": "e06109c8-edc6-57b5-a423-d05c56d3a748",
+    "type": "avoid"
+  },
+  {
+    "product_id": "6efa8b8b-486d-56fc-a2c1-fa328c704976",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "6efa8b8b-486d-56fc-a2c1-fa328c704976",
+    "ingredient_id": "0f9feae3-c669-5886-ad6c-eae58b6caf38",
+    "type": "key"
+  },
+  {
+    "product_id": "6efa8b8b-486d-56fc-a2c1-fa328c704976",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "6efa8b8b-486d-56fc-a2c1-fa328c704976",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "2aef6b28-9b7d-51ce-95b3-e242f97a1861",
+    "ingredient_id": "03a8979c-50be-5050-8b17-71608e08831f",
+    "type": "key"
+  },
+  {
+    "product_id": "2aef6b28-9b7d-51ce-95b3-e242f97a1861",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "2aef6b28-9b7d-51ce-95b3-e242f97a1861",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "923df183-cb89-5248-b49c-90aaed480cd8",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "0cb810cf-fd2f-5bba-96ac-1ec13764138e",
+    "ingredient_id": "8a3f3a05-4e25-58c2-ab8f-1e9fe6318605",
+    "type": "key"
+  },
+  {
+    "product_id": "0cb810cf-fd2f-5bba-96ac-1ec13764138e",
+    "ingredient_id": "03a8979c-50be-5050-8b17-71608e08831f",
+    "type": "key"
+  },
+  {
+    "product_id": "0cb810cf-fd2f-5bba-96ac-1ec13764138e",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "0cb810cf-fd2f-5bba-96ac-1ec13764138e",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "0cb810cf-fd2f-5bba-96ac-1ec13764138e",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "5f8ebc7b-e6ef-50b9-9360-d6a9b479a520",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "5f8ebc7b-e6ef-50b9-9360-d6a9b479a520",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "5f8ebc7b-e6ef-50b9-9360-d6a9b479a520",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "fa70d06f-635d-5301-8751-a1e0d5b0affb",
+    "ingredient_id": "0f9feae3-c669-5886-ad6c-eae58b6caf38",
+    "type": "key"
+  },
+  {
+    "product_id": "fa70d06f-635d-5301-8751-a1e0d5b0affb",
+    "ingredient_id": "b6f5915b-3903-54d3-842a-3207c57da0a4",
+    "type": "key"
+  },
+  {
+    "product_id": "fa70d06f-635d-5301-8751-a1e0d5b0affb",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "f3460a4e-5f0c-5a19-a6c8-8b4ed32e54a5",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "f3460a4e-5f0c-5a19-a6c8-8b4ed32e54a5",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "f3460a4e-5f0c-5a19-a6c8-8b4ed32e54a5",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "03bafefb-8e3b-5d42-a9e1-60040450f788",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "03bafefb-8e3b-5d42-a9e1-60040450f788",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "03bafefb-8e3b-5d42-a9e1-60040450f788",
+    "ingredient_id": "a47e65b7-647b-5f29-ae8d-a0682a762858",
+    "type": "key"
+  },
+  {
+    "product_id": "03bafefb-8e3b-5d42-a9e1-60040450f788",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "cd0a6acd-a72e-5fc5-b237-2d1c2e9d547c",
+    "ingredient_id": "5ac73685-6fc5-506c-acd8-f73f3497c23a",
+    "type": "key"
+  },
+  {
+    "product_id": "cd0a6acd-a72e-5fc5-b237-2d1c2e9d547c",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "cd0a6acd-a72e-5fc5-b237-2d1c2e9d547c",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "cd0a6acd-a72e-5fc5-b237-2d1c2e9d547c",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "84b9da10-3752-5bb9-8c6c-d805c0cd2edb",
+    "ingredient_id": "20cb6680-a64e-5a2a-b17a-7436bb4f8f7c",
+    "type": "key"
+  },
+  {
+    "product_id": "84b9da10-3752-5bb9-8c6c-d805c0cd2edb",
+    "ingredient_id": "06a04231-c65a-589c-9a35-55f97081e846",
+    "type": "key"
+  },
+  {
+    "product_id": "84b9da10-3752-5bb9-8c6c-d805c0cd2edb",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "84b9da10-3752-5bb9-8c6c-d805c0cd2edb",
+    "ingredient_id": "a47e65b7-647b-5f29-ae8d-a0682a762858",
+    "type": "key"
+  },
+  {
+    "product_id": "84b9da10-3752-5bb9-8c6c-d805c0cd2edb",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "27dcf433-87bc-5076-a8e7-bdf9a0583335",
+    "ingredient_id": "a47e65b7-647b-5f29-ae8d-a0682a762858",
+    "type": "key"
+  },
+  {
+    "product_id": "27dcf433-87bc-5076-a8e7-bdf9a0583335",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "27dcf433-87bc-5076-a8e7-bdf9a0583335",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "27dcf433-87bc-5076-a8e7-bdf9a0583335",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "fc8c644c-e99e-51a2-85bd-1b5192443d8f",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "fc8c644c-e99e-51a2-85bd-1b5192443d8f",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "fc8c644c-e99e-51a2-85bd-1b5192443d8f",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "fc8c644c-e99e-51a2-85bd-1b5192443d8f",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "25164cac-29be-5ecd-b774-7cff05748703",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "25164cac-29be-5ecd-b774-7cff05748703",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "25164cac-29be-5ecd-b774-7cff05748703",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "25164cac-29be-5ecd-b774-7cff05748703",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "25164cac-29be-5ecd-b774-7cff05748703",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "c510f1c5-9643-5740-afed-80d50f928ad1",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "c510f1c5-9643-5740-afed-80d50f928ad1",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "c510f1c5-9643-5740-afed-80d50f928ad1",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "c510f1c5-9643-5740-afed-80d50f928ad1",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "057bf5ce-4b08-5472-b2a0-46c9b53b82fe",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "057bf5ce-4b08-5472-b2a0-46c9b53b82fe",
+    "ingredient_id": "6ce29637-1cc6-58de-a3b2-09c618612fb4",
+    "type": "key"
+  },
+  {
+    "product_id": "057bf5ce-4b08-5472-b2a0-46c9b53b82fe",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "057bf5ce-4b08-5472-b2a0-46c9b53b82fe",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "7f830333-98b0-5fab-9c65-f9fbdf6b33c3",
+    "ingredient_id": "0c9c7311-355e-5f80-a519-adad494735dd",
+    "type": "key"
+  },
+  {
+    "product_id": "7f830333-98b0-5fab-9c65-f9fbdf6b33c3",
+    "ingredient_id": "6171b8d7-08e8-57fd-8e42-9edbf029bda4",
+    "type": "key"
+  },
+  {
+    "product_id": "7f830333-98b0-5fab-9c65-f9fbdf6b33c3",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "7f830333-98b0-5fab-9c65-f9fbdf6b33c3",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "1b670cf4-f365-55d6-aaf1-aedcb59bbca3",
+    "ingredient_id": "09a0f443-28ad-5f45-8881-389c7585ca07",
+    "type": "key"
+  },
+  {
+    "product_id": "1b670cf4-f365-55d6-aaf1-aedcb59bbca3",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "1b670cf4-f365-55d6-aaf1-aedcb59bbca3",
+    "ingredient_id": "4a3c7888-7091-523d-9540-3ec3682553ee",
+    "type": "key"
+  },
+  {
+    "product_id": "1b670cf4-f365-55d6-aaf1-aedcb59bbca3",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "f08e172e-1915-531c-9f1a-bfca6c32b6cb",
+    "ingredient_id": "dcaab478-9e74-5c69-8c64-74b89f866d8b",
+    "type": "key"
+  },
+  {
+    "product_id": "f08e172e-1915-531c-9f1a-bfca6c32b6cb",
+    "ingredient_id": "f56d741c-2dfb-5eb0-b195-a7e11ea1ca77",
+    "type": "key"
+  },
+  {
+    "product_id": "f08e172e-1915-531c-9f1a-bfca6c32b6cb",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "433fddd9-fb17-54ce-8f41-6263417a41bf",
+    "ingredient_id": "f6e78d05-5d7d-5bcb-8685-83e15dab0c8d",
+    "type": "key"
+  },
+  {
+    "product_id": "433fddd9-fb17-54ce-8f41-6263417a41bf",
+    "ingredient_id": "a47e65b7-647b-5f29-ae8d-a0682a762858",
+    "type": "key"
+  },
+  {
+    "product_id": "433fddd9-fb17-54ce-8f41-6263417a41bf",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "433fddd9-fb17-54ce-8f41-6263417a41bf",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "0402e52e-00b1-59d8-9dc7-2afbbf064465",
+    "ingredient_id": "cbaeb98e-c36e-51c9-b5c3-a9fec9793860",
+    "type": "key"
+  },
+  {
+    "product_id": "0402e52e-00b1-59d8-9dc7-2afbbf064465",
+    "ingredient_id": "28430301-3c39-561f-b166-88291c640461",
+    "type": "key"
+  },
+  {
+    "product_id": "0402e52e-00b1-59d8-9dc7-2afbbf064465",
+    "ingredient_id": "b6f5915b-3903-54d3-842a-3207c57da0a4",
+    "type": "key"
+  },
+  {
+    "product_id": "0402e52e-00b1-59d8-9dc7-2afbbf064465",
+    "ingredient_id": "a47e65b7-647b-5f29-ae8d-a0682a762858",
+    "type": "key"
+  },
+  {
+    "product_id": "0402e52e-00b1-59d8-9dc7-2afbbf064465",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "0402e52e-00b1-59d8-9dc7-2afbbf064465",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "e2f57eaa-1c40-5840-9615-d5a811426386",
+    "ingredient_id": "46f90f93-526b-5454-b49b-fcc3594f4efd",
+    "type": "avoid"
+  },
+  {
+    "product_id": "e2f57eaa-1c40-5840-9615-d5a811426386",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  },
+  {
+    "product_id": "55265963-37ca-5f7c-ad1b-35ee1f574803",
+    "ingredient_id": "1692f21c-ff7c-5511-9975-c65c71ff8f2a",
+    "type": "key"
+  },
+  {
+    "product_id": "55265963-37ca-5f7c-ad1b-35ee1f574803",
+    "ingredient_id": "1a4bfb83-a85d-5fc1-a330-baea2d1fb224",
+    "type": "key"
+  },
+  {
+    "product_id": "55265963-37ca-5f7c-ad1b-35ee1f574803",
+    "ingredient_id": "177c9f68-a3b4-54c8-b6a9-f541c3ce5690",
+    "type": "avoid"
+  }
+]
