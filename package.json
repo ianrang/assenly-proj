@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "npm run generate:kb && next dev",
     "build": "npm run generate:kb && next build",
     "start": "next start",
     "lint": "eslint",

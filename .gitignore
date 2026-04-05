@@ -41,6 +41,9 @@ yarn-error.log*
 .env.production.local
 !.env.example
 
+# generated (빌드 시 자동 생성)
+src/shared/constants/kb.generated.ts
+
 # vercel
 .vercel
 
