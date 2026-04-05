@@ -1,0 +1,2445 @@
+[
+  {
+    "source": "manual",
+    "sourceId": "3ce",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "쓰리씨이",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "makeup",
+        "lip products",
+        "color cosmetics"
+      ],
+      "id": "c7dd35e8-5cf7-58e5-ac94-186e9caae7b0",
+      "name": {
+        "en": "3CE",
+        "ko": "쓰리씨이",
+        "ja": "3CE",
+        "zh": "3CE",
+        "es": "3CE",
+        "fr": "3CE"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:03.506Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "abib",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "아비브",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "heartleaf",
+        "calming skincare",
+        "pH balanced"
+      ],
+      "id": "6b6af0b3-f49a-5f3a-a6f3-3a829c78eadb",
+      "name": {
+        "en": "Abib",
+        "ko": "아비브",
+        "ja": "アビブ",
+        "zh": "Abib",
+        "es": "Abib",
+        "fr": "Abib"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:04.619Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "ahc",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "에이에이치씨",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "eye cream",
+        "anti-aging",
+        "aesthetic skincare"
+      ],
+      "id": "122306f4-1b88-507a-8fd2-218aafb8ea6e",
+      "name": {
+        "en": "AHC",
+        "ko": "에이에이치씨",
+        "ja": "AHC",
+        "zh": "AHC",
+        "es": "AHC",
+        "fr": "AHC"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:05.692Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "aestura",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "에스트라",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "sensitive skin",
+        "dermatologist-tested",
+        "atobarrier"
+      ],
+      "id": "071a2325-2bab-5b34-8188-6095d30638dd",
+      "name": {
+        "en": "Aestura",
+        "ko": "에스트라",
+        "ja": "エストラ",
+        "zh": "爱思塔",
+        "es": "Aestura",
+        "fr": "Aestura"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:07.124Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "amorepacific",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "아모레퍼시픽",
+      "origin": "KR",
+      "tier": "luxury",
+      "is_essenly": false,
+      "specialties": [
+        "green tea",
+        "anti-aging",
+        "premium skincare"
+      ],
+      "id": "978acb93-0e9b-5b4c-a06f-85af32f9c879",
+      "name": {
+        "en": "Amorepacific",
+        "ko": "아모레퍼시픽",
+        "ja": "アモーレパシフィック",
+        "zh": "爱茉莉太平洋",
+        "es": "Amorepacific",
+        "fr": "Amorepacific"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:08.305Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "amos-professional",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "아모스프로페셔널",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "hair care",
+        "scalp treatment",
+        "salon quality"
+      ],
+      "id": "f7425d0a-1e09-5783-b38d-7bc580262322",
+      "name": {
+        "en": "Amos Professional",
+        "ko": "아모스프로페셔널",
+        "ja": "アモスプロフェッショナル",
+        "zh": "爱茉诗专业美发",
+        "es": "Amos Professional",
+        "fr": "Amos Professional"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:09.446Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "anua",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "아누아",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "heartleaf",
+        "toner",
+        "gentle cleansing"
+      ],
+      "id": "ca92dab3-1f6a-5fdc-bede-b02abc8f340a",
+      "name": {
+        "en": "Anua",
+        "ko": "아누아",
+        "ja": "アヌア",
+        "zh": "Anua",
+        "es": "Anua",
+        "fr": "Anua"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:10.430Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "atopalm",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "아토팜",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "sensitive skin",
+        "ceramide",
+        "derma skincare"
+      ],
+      "id": "5b714670-7359-51db-8253-5b446a2eee0c",
+      "name": {
+        "en": "Atopalm",
+        "ko": "아토팜",
+        "ja": "アトパーム",
+        "zh": "爱多康",
+        "es": "Atopalm",
+        "fr": "Atopalm"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:11.495Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "banila-co",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "바닐라코",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "cleansing balm",
+        "makeup remover",
+        "clean beauty"
+      ],
+      "id": "c1299996-d2e9-5240-aca2-000910beef78",
+      "name": {
+        "en": "Banila Co",
+        "ko": "바닐라코",
+        "ja": "バニラコ",
+        "zh": "芭妮兰",
+        "es": "Banila Co",
+        "fr": "Banila Co"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:12.709Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "beauty-of-joseon",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "조선미녀",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "traditional ingredients",
+        "ginseng",
+        "rice water"
+      ],
+      "id": "4707822b-da67-5982-9b3d-d454690be959",
+      "name": {
+        "en": "Beauty of Joseon",
+        "ko": "조선미녀",
+        "ja": "朝鮮美女",
+        "zh": "朝鲜美女",
+        "es": "Beauty of Joseon",
+        "fr": "Beauty of Joseon"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:13.869Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "belif",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "빌리프",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "herbal skincare",
+        "moisturizer",
+        "napier formula"
+      ],
+      "id": "6eb6af48-f86b-57fd-be3d-8b8214a19602",
+      "name": {
+        "en": "Belif",
+        "ko": "빌리프",
+        "ja": "Belif",
+        "zh": "belif",
+        "es": "Belif",
+        "fr": "Belif"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:14.962Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "bio-heal-boh",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "바이오힐보",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "probioderm",
+        "microbiome",
+        "barrier care"
+      ],
+      "id": "548ed282-0e33-54c3-b1f5-af519e3f1a17",
+      "name": {
+        "en": "Bio Heal Boh",
+        "ko": "바이오힐보",
+        "ja": "バイオヒールボ",
+        "zh": "Bio Heal Boh",
+        "es": "Bio Heal Boh",
+        "fr": "Bio Heal Boh"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:15.971Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "bioderma",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "바이오더마",
+      "origin": "FR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "micellar water",
+        "sensitive skin",
+        "dermatological"
+      ],
+      "id": "d0862fbb-0c98-5d66-81c2-8d7ceb03e41c",
+      "name": {
+        "en": "Bioderma",
+        "ko": "바이오더마",
+        "ja": "ビオデルマ",
+        "zh": "贝德玛",
+        "es": "Bioderma",
+        "fr": "Bioderma"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:16.964Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "bonajour",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "보나쥬르",
+      "origin": "KR",
+      "tier": "indie",
+      "is_essenly": false,
+      "specialties": [
+        "natural ingredients",
+        "green tea",
+        "vegan"
+      ],
+      "id": "98693c12-4352-5ca2-b4a9-ce1b060444b8",
+      "name": {
+        "en": "Bonajour",
+        "ko": "보나쥬르",
+        "ja": "ボナジュール",
+        "zh": "博纳姿",
+        "es": "Bonajour",
+        "fr": "Bonajour"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:17.953Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "by-wishtrend",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "바이위시트렌드",
+      "origin": "KR",
+      "tier": "indie",
+      "is_essenly": false,
+      "specialties": [
+        "vitamin C",
+        "propolis",
+        "active ingredients"
+      ],
+      "id": "eb1008c9-214f-5834-885f-7ed3d6de5f53",
+      "name": {
+        "en": "By Wishtrend",
+        "ko": "바이위시트렌드",
+        "ja": "バイウィッシュトレンド",
+        "zh": "By Wishtrend",
+        "es": "By Wishtrend",
+        "fr": "By Wishtrend"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:19.122Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "cell-fusion-c",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "셀퓨전씨",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "sunscreen",
+        "derma cosmetics",
+        "post-procedure care"
+      ],
+      "id": "66c70d51-7778-5152-829b-37cef81cca12",
+      "name": {
+        "en": "Cell Fusion C",
+        "ko": "셀퓨전씨",
+        "ja": "Cell Fusion C",
+        "zh": "Cell Fusion C",
+        "es": "Cell Fusion C",
+        "fr": "Cell Fusion C"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:20.059Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "cetaphil",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "세타필",
+      "origin": "US",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "sensitive skin",
+        "gentle cleanser",
+        "dermatologist-recommended"
+      ],
+      "id": "f99455d6-1f51-544c-99c7-19a9f9159609",
+      "name": {
+        "en": "Cetaphil",
+        "ko": "세타필",
+        "ja": "セタフィル",
+        "zh": "丝塔芙",
+        "es": "Cetaphil",
+        "fr": "Cetaphil"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:21.318Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "clio",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "클리오",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "makeup",
+        "cushion foundation",
+        "eye makeup"
+      ],
+      "id": "61a850be-2b69-5c40-8b55-40e54fbe8a78",
+      "name": {
+        "en": "Clio",
+        "ko": "클리오",
+        "ja": "クリオ",
+        "zh": "珂莱欧",
+        "es": "Clio",
+        "fr": "Clio"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:22.333Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "cosrx",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "코스알엑스",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "acne care",
+        "snail mucin",
+        "minimal ingredients"
+      ],
+      "id": "5240a3c6-315a-565d-bf7e-cdb9154a9937",
+      "name": {
+        "en": "COSRX",
+        "ko": "코스알엑스",
+        "ja": "COSRX",
+        "zh": "COSRX",
+        "es": "COSRX",
+        "fr": "COSRX"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:23.562Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "dalba",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "달바",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "white truffle",
+        "vegan",
+        "luxury natural"
+      ],
+      "id": "2d6c3d34-26b9-5faf-a7cf-ae55b9c9dda9",
+      "name": {
+        "en": "d'Alba",
+        "ko": "달바",
+        "ja": "ダルバ",
+        "zh": "黛尔珀",
+        "es": "d'Alba",
+        "fr": "d'Alba"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:24.705Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "dear-klairs",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "디어클레어스",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "sensitive skin",
+        "vitamin C",
+        "gentle formulas"
+      ],
+      "id": "d5c13972-d540-5bf2-bc68-ade9ea74b2dc",
+      "name": {
+        "en": "Dear, Klairs",
+        "ko": "디어클레어스",
+        "ja": "ディアクレアス",
+        "zh": "Dear, Klairs",
+        "es": "Dear, Klairs",
+        "fr": "Dear, Klairs"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:25.738Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "dr-g",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "닥터지",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "red blemish",
+        "cleansing",
+        "derma skincare"
+      ],
+      "id": "f77366bb-b1c4-5fef-aa08-86ca75f5efd2",
+      "name": {
+        "en": "Dr.G",
+        "ko": "닥터지",
+        "ja": "ドクタージー",
+        "zh": "Dr.G",
+        "es": "Dr.G",
+        "fr": "Dr.G"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:26.839Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "dr-jart",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "닥터자르트",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "ceramidin",
+        "cicapair",
+        "derma skincare"
+      ],
+      "id": "a83c888f-3f77-59e1-a973-84e21ff1d4af",
+      "name": {
+        "en": "Dr.Jart+",
+        "ko": "닥터자르트",
+        "ja": "Dr.Jart+",
+        "zh": "蒂佳婷",
+        "es": "Dr.Jart+",
+        "fr": "Dr.Jart+"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:27.863Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "espoir",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "에스쁘아",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "makeup",
+        "foundation",
+        "professional beauty"
+      ],
+      "id": "45b5232b-8e65-5c44-8d1b-2398d8444460",
+      "name": {
+        "en": "espoir",
+        "ko": "에스쁘아",
+        "ja": "エスポア",
+        "zh": "espoir",
+        "es": "espoir",
+        "fr": "espoir"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:29.050Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "etude",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "에뛰드",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "makeup",
+        "lip tint",
+        "playful beauty"
+      ],
+      "id": "33f7e173-b86c-50da-9d2f-e6b11c8590e8",
+      "name": {
+        "en": "Etude",
+        "ko": "에뛰드",
+        "ja": "エチュード",
+        "zh": "伊蒂之屋",
+        "es": "Etude",
+        "fr": "Etude"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:30.202Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "fillimilli",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "필리밀리",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "beauty tools",
+        "brushes",
+        "accessories"
+      ],
+      "id": "474ca76c-1674-535d-a07f-8e4c945800f7",
+      "name": {
+        "en": "Fillimilli",
+        "ko": "필리밀리",
+        "ja": "フィリミリ",
+        "zh": "Fillimilli",
+        "es": "Fillimilli",
+        "fr": "Fillimilli"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:31.265Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "goodal",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "구달",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "green tangerine",
+        "vitamin C",
+        "brightening"
+      ],
+      "id": "6bcb921e-fba8-55a7-9706-c0196160247c",
+      "name": {
+        "en": "Goodal",
+        "ko": "구달",
+        "ja": "グーダル",
+        "zh": "古德",
+        "es": "Goodal",
+        "fr": "Goodal"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:32.311Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "hanyul",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "한율",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "artemisia",
+        "traditional Korean ingredients",
+        "hanbang"
+      ],
+      "id": "36a31f48-958a-58ea-91c0-98cfb55939d9",
+      "name": {
+        "en": "Hanyul",
+        "ko": "한율",
+        "ja": "ハンユル",
+        "zh": "韩律",
+        "es": "Hanyul",
+        "fr": "Hanyul"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:33.383Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "happy-bath",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "해피바스",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "body wash",
+        "bath products",
+        "family care"
+      ],
+      "id": "b3b18e2c-a2c3-5f1b-a516-7356612bcc95",
+      "name": {
+        "en": "Happy Bath",
+        "ko": "해피바스",
+        "ja": "ハッピーバス",
+        "zh": "快乐沐浴",
+        "es": "Happy Bath",
+        "fr": "Happy Bath"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:34.519Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "heimish",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "헤이미쉬",
+      "origin": "KR",
+      "tier": "indie",
+      "is_essenly": false,
+      "specialties": [
+        "cleansing balm",
+        "Bulgarian rose",
+        "natural"
+      ],
+      "id": "214e2cc4-a680-5e40-a4e2-4ad19c87bfbf",
+      "name": {
+        "en": "heimish",
+        "ko": "헤이미쉬",
+        "ja": "heimish",
+        "zh": "heimish",
+        "es": "heimish",
+        "fr": "heimish"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:35.604Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "hera",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "헤라",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "cushion foundation",
+        "luxury makeup",
+        "anti-aging"
+      ],
+      "id": "4625585b-b9bf-5f2d-9b06-98c1369e97be",
+      "name": {
+        "en": "Hera",
+        "ko": "헤라",
+        "ja": "ヘラ",
+        "zh": "赫拉",
+        "es": "Hera",
+        "fr": "Hera"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:36.693Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "huxley",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "헉슬리",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "prickly pear seed oil",
+        "Saharan ingredients",
+        "minimal luxury"
+      ],
+      "id": "f7f753fc-dcbe-54a5-b49c-ac4db79b7f72",
+      "name": {
+        "en": "Huxley",
+        "ko": "헉슬리",
+        "ja": "Huxley",
+        "zh": "Huxley",
+        "es": "Huxley",
+        "fr": "Huxley"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:37.796Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "illiyoon",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "일리윤",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "ceramide",
+        "sensitive skin",
+        "family skincare"
+      ],
+      "id": "73de06cf-ee98-5db2-b856-e856ddab93cb",
+      "name": {
+        "en": "illiYOON",
+        "ko": "일리윤",
+        "ja": "illiYOON",
+        "zh": "一理润",
+        "es": "illiYOON",
+        "fr": "illiYOON"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:38.858Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "innisfree",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "이니스프리",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "green tea",
+        "volcanic clay",
+        "natural ingredients"
+      ],
+      "id": "f4f9081a-cac1-5388-b5ec-c86213241927",
+      "name": {
+        "en": "Innisfree",
+        "ko": "이니스프리",
+        "ja": "イニスフリー",
+        "zh": "悦诗风吟",
+        "es": "Innisfree",
+        "fr": "Innisfree"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:39.990Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "isa-knox",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "이자녹스",
+      "origin": "KR",
+      "tier": "luxury",
+      "is_essenly": false,
+      "specialties": [
+        "anti-aging",
+        "premium skincare",
+        "LG household"
+      ],
+      "id": "0b44538b-2f3a-50b5-81d8-06365f78e6f3",
+      "name": {
+        "en": "ISA KNOX",
+        "ko": "이자녹스",
+        "ja": "イザノックス",
+        "zh": "伊诺姿",
+        "es": "ISA KNOX",
+        "fr": "ISA KNOX"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:41.076Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "isoi",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "아이소이",
+      "origin": "KR",
+      "tier": "indie",
+      "is_essenly": false,
+      "specialties": [
+        "Bulgarian rose",
+        "natural",
+        "EWG verified"
+      ],
+      "id": "f106ebb7-829b-5f3c-aeab-009f3848532a",
+      "name": {
+        "en": "isoi",
+        "ko": "아이소이",
+        "ja": "isoi",
+        "zh": "isoi",
+        "es": "isoi",
+        "fr": "isoi"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:42.151Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "jm-solution",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "제이엠솔루션",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "sheet masks",
+        "honey",
+        "marine pearl"
+      ],
+      "id": "e002e59c-846f-5824-aa3f-50d2ee7e3ad8",
+      "name": {
+        "en": "JM Solution",
+        "ko": "제이엠솔루션",
+        "ja": "JMソリューション",
+        "zh": "JM solution",
+        "es": "JM Solution",
+        "fr": "JM Solution"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:43.213Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "jung-saem-mool",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "정샘물",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "makeup artist brand",
+        "skin luminizer",
+        "base makeup"
+      ],
+      "id": "5074e97b-f0ed-5e6b-97e7-4815119c0700",
+      "name": {
+        "en": "Jungsaemmool",
+        "ko": "정샘물",
+        "ja": "ジョンセンムル",
+        "zh": "郑瑄茉",
+        "es": "Jungsaemmool",
+        "fr": "Jungsaemmool"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:44.453Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "kundal",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "쿤달",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "hair care",
+        "honey",
+        "natural fragrance"
+      ],
+      "id": "877014cb-5b13-5bfc-8d77-33ba7f891ad6",
+      "name": {
+        "en": "KUNDAL",
+        "ko": "쿤달",
+        "ja": "KUNDAL",
+        "zh": "KUNDAL",
+        "es": "KUNDAL",
+        "fr": "KUNDAL"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:45.451Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "lador",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "라도어",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "hair treatment",
+        "protein care",
+        "damage repair"
+      ],
+      "id": "62c6b70b-3dc3-5288-ada0-4f9eac0aa326",
+      "name": {
+        "en": "Lador",
+        "ko": "라도어",
+        "ja": "Lador",
+        "zh": "Lador",
+        "es": "Lador",
+        "fr": "Lador"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:46.438Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "laneige",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "라네즈",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "hydration",
+        "sleeping masks",
+        "lip care"
+      ],
+      "id": "cdecac6e-6a52-5ae2-b10b-9a7b57ecc455",
+      "name": {
+        "en": "LANEIGE",
+        "ko": "라네즈",
+        "ja": "ラネージュ",
+        "zh": "兰芝",
+        "es": "LANEIGE",
+        "fr": "LANEIGE"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:47.626Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "lilybyred",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "릴리바이레드",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "lip tint",
+        "trendy makeup",
+        "Gen-Z beauty"
+      ],
+      "id": "fc96832d-da97-5136-b4d0-fbab7a82fa82",
+      "name": {
+        "en": "Lilybyred",
+        "ko": "릴리바이레드",
+        "ja": "リリーバイレッド",
+        "zh": "莉莉拜红",
+        "es": "Lilybyred",
+        "fr": "Lilybyred"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:48.620Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "mamonde",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "마몽드",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "flower-based",
+        "rose water",
+        "natural beauty"
+      ],
+      "id": "3f23ed27-be29-5f10-a74a-c9946a2b9841",
+      "name": {
+        "en": "Mamonde",
+        "ko": "마몽드",
+        "ja": "マモンド",
+        "zh": "梦妆",
+        "es": "Mamonde",
+        "fr": "Mamonde"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:49.585Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "manyo",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "마녀공장",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "bifida",
+        "galactomyces",
+        "fermented skincare"
+      ],
+      "id": "4a8da0fb-4a34-5499-9eae-d18cea9d9510",
+      "name": {
+        "en": "Manyo Factory",
+        "ko": "마녀공장",
+        "ja": "魔女工場",
+        "zh": "魔女工厂",
+        "es": "Manyo Factory",
+        "fr": "Manyo Factory"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:50.659Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "mediheal",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "메디힐",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "sheet masks",
+        "ampoule",
+        "NMF"
+      ],
+      "id": "03752259-e005-5bb5-b5da-48b7e21d7736",
+      "name": {
+        "en": "Mediheal",
+        "ko": "메디힐",
+        "ja": "メディヒール",
+        "zh": "美迪惠尔",
+        "es": "Mediheal",
+        "fr": "Mediheal"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:51.826Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "mise-en-scene",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "미장센",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "hair styling",
+        "hair serum",
+        "damage care"
+      ],
+      "id": "d3cb6159-0dca-5326-9048-1de612022f3b",
+      "name": {
+        "en": "Mise en Scène",
+        "ko": "미장센",
+        "ja": "ミジャンセン",
+        "zh": "魅尚萱",
+        "es": "Mise en Scène",
+        "fr": "Mise en Scène"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:53.060Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "missha",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "미샤",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "BB cream",
+        "first treatment essence",
+        "affordable skincare"
+      ],
+      "id": "e4a9ac08-7641-507c-844e-777ba8ebe91c",
+      "name": {
+        "en": "Missha",
+        "ko": "미샤",
+        "ja": "ミシャ",
+        "zh": "谜尚",
+        "es": "Missha",
+        "fr": "Missha"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:54.057Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "moremo",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "모레모",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "hair care",
+        "water treatment",
+        "scalp care"
+      ],
+      "id": "b43e33ea-6d40-55d2-b2d8-583a2e48c0bf",
+      "name": {
+        "en": "Moremo",
+        "ko": "모레모",
+        "ja": "モレモ",
+        "zh": "Moremo",
+        "es": "Moremo",
+        "fr": "Moremo"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:55.307Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "neogen",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "네오젠",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "dermalogy",
+        "peeling pads",
+        "real ferment"
+      ],
+      "id": "0f716561-2b32-53b3-8e7b-aa03a2acd234",
+      "name": {
+        "en": "NEOGEN",
+        "ko": "네오젠",
+        "ja": "ネオゼン",
+        "zh": "霓净思",
+        "es": "NEOGEN",
+        "fr": "NEOGEN"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:56.433Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "numbuzin",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "넘버즈인",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "numbered skincare",
+        "toner",
+        "brightening"
+      ],
+      "id": "cfd7a82e-2cd4-50b9-9abb-49b8b8d7efb6",
+      "name": {
+        "en": "numbuzin",
+        "ko": "넘버즈인",
+        "ja": "ナンバーズイン",
+        "zh": "numbuzin",
+        "es": "numbuzin",
+        "fr": "numbuzin"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:57.662Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "ohui",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "오휘",
+      "origin": "KR",
+      "tier": "luxury",
+      "is_essenly": false,
+      "specialties": [
+        "anti-aging",
+        "luxury skincare",
+        "cell revolution"
+      ],
+      "id": "10e218b1-d9a6-5557-a563-f5fd89b945da",
+      "name": {
+        "en": "O HUI",
+        "ko": "오휘",
+        "ja": "O HUI",
+        "zh": "欧蕙",
+        "es": "O HUI",
+        "fr": "O HUI"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:58.713Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "one-thing",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "원씽",
+      "origin": "KR",
+      "tier": "indie",
+      "is_essenly": false,
+      "specialties": [
+        "single ingredient",
+        "toner",
+        "minimal formulas"
+      ],
+      "id": "e5d60da5-ea2c-506b-9fb8-09f476c6c41d",
+      "name": {
+        "en": "ONE THING",
+        "ko": "원씽",
+        "ja": "ONE THING",
+        "zh": "ONE THING",
+        "es": "ONE THING",
+        "fr": "ONE THING"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:52:59.817Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "papa-recipe",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "파파레서피",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "honey",
+        "bombee masks",
+        "natural ingredients"
+      ],
+      "id": "391e6291-34e3-5398-9847-1bc3bf18c7ee",
+      "name": {
+        "en": "Papa Recipe",
+        "ko": "파파레서피",
+        "ja": "パパレシピ",
+        "zh": "爸爸的食谱 (Papa Recipe)",
+        "es": "Papa Recipe",
+        "fr": "Papa Recipe"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:00.836Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "peripera",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "페리페라",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "lip tint",
+        "ink products",
+        "affordable makeup"
+      ],
+      "id": "0e513a51-9424-50cc-928c-eeca8ad50291",
+      "name": {
+        "en": "Peripera",
+        "ko": "페리페라",
+        "ja": "ペリペラ",
+        "zh": "佩里佩拉",
+        "es": "Peripera",
+        "fr": "Peripera"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:01.860Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "primera",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "프리메라",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "seed energy",
+        "organience",
+        "natural premium"
+      ],
+      "id": "8803aaff-56f7-5c83-a5f6-3c8304eccf20",
+      "name": {
+        "en": "Primera",
+        "ko": "프리메라",
+        "ja": "プリメラ",
+        "zh": "芙莉美娜",
+        "es": "Primera",
+        "fr": "Primera"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:02.895Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "real-barrier",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "리얼배리어",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "barrier cream",
+        "sensitive skin",
+        "ceramide"
+      ],
+      "id": "e006398a-8f45-5b09-b1b0-c3739c7f32c9",
+      "name": {
+        "en": "Real Barrier",
+        "ko": "리얼배리어",
+        "ja": "リアルバリア",
+        "zh": "理肤泉",
+        "es": "Real Barrier",
+        "fr": "Real Barrier"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:04.046Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "romand",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "롬앤",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "lip products",
+        "juicy lasting tint",
+        "K-beauty makeup"
+      ],
+      "id": "20daf081-a0ce-57c7-95e5-1904f2ea65a6",
+      "name": {
+        "en": "Rom&nd",
+        "ko": "롬앤",
+        "ja": "ロムアンド",
+        "zh": "Romand",
+        "es": "Rom&nd",
+        "fr": "Rom&nd"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:05.138Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "round-lab",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "라운드랩",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "dokdo",
+        "birch juice",
+        "Korean nature ingredients"
+      ],
+      "id": "5d513efb-cb2e-5921-ab90-5aaae28f22fd",
+      "name": {
+        "en": "Round Lab",
+        "ko": "라운드랩",
+        "ja": "ラウンドラボ",
+        "zh": "Round Lab",
+        "es": "Round Lab",
+        "fr": "Round Lab"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:06.148Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "ryo",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "려",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "hair loss prevention",
+        "hanbang",
+        "scalp care"
+      ],
+      "id": "a6bd971f-28ba-50c1-a7e5-37257109eb73",
+      "name": {
+        "en": "Ryo",
+        "ko": "려",
+        "ja": "呂",
+        "zh": "吕",
+        "es": "Ryo",
+        "fr": "Ryo"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:07.187Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "skin1004",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "스킨1004",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "centella asiatica",
+        "Madagascar",
+        "soothing"
+      ],
+      "id": "0e2d708d-5771-55c1-b566-1a9856194fb0",
+      "name": {
+        "en": "Skin1004",
+        "ko": "스킨1004",
+        "ja": "Skin1004",
+        "zh": "Skin1004",
+        "es": "Skin1004",
+        "fr": "Skin1004"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:08.419Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "skinfood",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "스킨푸드",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "food-based skincare",
+        "black sugar",
+        "egg white"
+      ],
+      "id": "9be50772-f6f5-5794-ac15-b736abb36448",
+      "name": {
+        "en": "Skinfood",
+        "ko": "스킨푸드",
+        "ja": "スキンフード",
+        "zh": "思亲肤",
+        "es": "Skinfood",
+        "fr": "Skinfood"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:09.401Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "some-by-mi",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "썸바이미",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "AHA BHA PHA",
+        "miracle toner",
+        "acne care"
+      ],
+      "id": "539bce87-ff77-58b6-af09-a58036ed0f1c",
+      "name": {
+        "en": "SOME BY MI",
+        "ko": "썸바이미",
+        "ja": "SOME BY MI",
+        "zh": "SOME BY MI",
+        "es": "SOME BY MI",
+        "fr": "SOME BY MI"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:10.359Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "son-and-park",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "손앤박",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "beauty water",
+        "makeup artist brand",
+        "multi-use"
+      ],
+      "id": "bb2680ce-040b-52e5-bead-24ea4ef656f4",
+      "name": {
+        "en": "Son & Park",
+        "ko": "손앤박",
+        "ja": "ソン＆パク",
+        "zh": "孙&朴",
+        "es": "Son & Park",
+        "fr": "Son & Park"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:11.431Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "sulwhasoo",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "설화수",
+      "origin": "KR",
+      "tier": "luxury",
+      "is_essenly": false,
+      "specialties": [
+        "ginseng",
+        "anti-aging",
+        "hanbang"
+      ],
+      "id": "2c91919e-5bfd-57e9-8cf8-2ebbbdfac205",
+      "name": {
+        "en": "Sulwhasoo",
+        "ko": "설화수",
+        "ja": "雪花秀（ソルファス）",
+        "zh": "雪花秀",
+        "es": "Sulwhasoo",
+        "fr": "Sulwhasoo"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:12.503Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "tamburins",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "탬버린즈",
+      "origin": "KR",
+      "tier": "premium",
+      "is_essenly": false,
+      "specialties": [
+        "hand cream",
+        "fragrance",
+        "artistic beauty"
+      ],
+      "id": "4296e2a1-7c29-53ac-8f60-29c4d4d8ad5d",
+      "name": {
+        "en": "Tamburins",
+        "ko": "탬버린즈",
+        "ja": "Tamburins",
+        "zh": "Tamburins",
+        "es": "Tamburins",
+        "fr": "Tamburins"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:13.591Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "the-face-shop",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "더페이스샵",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "rice water",
+        "natural ingredients",
+        "affordable skincare"
+      ],
+      "id": "976b48de-4429-5da4-9958-befb74ddaa42",
+      "name": {
+        "en": "The Face Shop",
+        "ko": "더페이스샵",
+        "ja": "ザ・フェイスショップ",
+        "zh": "菲诗小铺",
+        "es": "The Face Shop",
+        "fr": "The Face Shop"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:14.752Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "the-history-of-whoo",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "더후",
+      "origin": "KR",
+      "tier": "luxury",
+      "is_essenly": false,
+      "specialties": [
+        "royal court",
+        "hanbang luxury",
+        "anti-aging"
+      ],
+      "id": "684ba681-4074-5066-8308-6a1a03a6c64a",
+      "name": {
+        "en": "The History of Whoo",
+        "ko": "더후",
+        "ja": "ザ・ヒストリー・オブ・フー",
+        "zh": "后",
+        "es": "The History of Whoo",
+        "fr": "The History of Whoo"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:15.992Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "the-saem",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "더샘",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "concealer",
+        "tip concealer",
+        "affordable makeup"
+      ],
+      "id": "cbc54adc-24aa-57b2-b507-ed7763b01195",
+      "name": {
+        "en": "the SAEM",
+        "ko": "더샘",
+        "ja": "ザ・セム",
+        "zh": "the SAEM",
+        "es": "the SAEM",
+        "fr": "the SAEM"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:17.080Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "tonymoly",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "토니모리",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "fun packaging",
+        "fruit-based",
+        "affordable skincare"
+      ],
+      "id": "b5355d4e-c43d-515e-a470-012e625a1190",
+      "name": {
+        "en": "Tony Moly",
+        "ko": "토니모리",
+        "ja": "トニーモリー",
+        "zh": "托尼魅力",
+        "es": "Tony Moly",
+        "fr": "Tony Moly"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:18.244Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "too-cool-for-school",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "투쿨포스쿨",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "egg mellow",
+        "artclass",
+        "playful beauty"
+      ],
+      "id": "ab40270c-9fef-54f7-9b68-2ccb552e3ea3",
+      "name": {
+        "en": "too cool for school",
+        "ko": "투쿨포스쿨",
+        "ja": "too cool for school",
+        "zh": "too cool for school",
+        "es": "too cool for school",
+        "fr": "too cool for school"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:19.400Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "torriden",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "토리든",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "hyaluronic acid",
+        "dive-in serum",
+        "hydration"
+      ],
+      "id": "293e8f32-f2af-511a-b046-b97198a6bc9a",
+      "name": {
+        "en": "Torriden",
+        "ko": "토리든",
+        "ja": "トリデン",
+        "zh": "Torriden",
+        "es": "Torriden",
+        "fr": "Torriden"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:20.509Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "vt",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "브이티",
+      "origin": "KR",
+      "tier": "moderate",
+      "is_essenly": false,
+      "specialties": [
+        "reedle shot",
+        "cica",
+        "innovative textures"
+      ],
+      "id": "3ab4c960-517e-5555-be77-d411d21db1b6",
+      "name": {
+        "en": "VT",
+        "ko": "브이티",
+        "ja": "VT",
+        "zh": "VT",
+        "es": "VT",
+        "fr": "VT"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:21.369Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "wakemake",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "웨이크메이크",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "olive young exclusive",
+        "trendy makeup",
+        "lip products"
+      ],
+      "id": "b75c8f63-459f-512b-93a1-b5e3c50d8bb5",
+      "name": {
+        "en": "WAKEMAKE",
+        "ko": "웨이크메이크",
+        "ja": "WAKEMAKE",
+        "zh": "WAKEMAKE",
+        "es": "WAKEMAKE",
+        "fr": "WAKEMAKE"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:22.358Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "daiso",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "다이소",
+      "name_en": "Daiso",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "beauty tools",
+        "basic skincare",
+        "budget cosmetics"
+      ],
+      "id": "c974eab7-683c-5e13-8bd3-0efda633fec7",
+      "name": {
+        "en": "Daiso",
+        "ko": "다이소",
+        "ja": "ダイソー",
+        "zh": "大创",
+        "es": "Daiso",
+        "fr": "Daiso"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:23.466Z"
+  }
+]
