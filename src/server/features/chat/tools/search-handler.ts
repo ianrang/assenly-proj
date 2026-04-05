@@ -1,7 +1,7 @@
 import 'server-only';
+import { z } from 'zod';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import type { UserProfileVars, JourneyContextVars, LearnedPreference } from '@/shared/types/profile';
-import type { SkinConcern } from '@/shared/types/domain';
 import { embedQuery } from '@/server/core/knowledge';
 import { findProductsByFilters, matchProductsByVector } from '@/server/features/repositories/product-repository';
 import { findTreatmentsByFilters, matchTreatmentsByVector } from '@/server/features/repositories/treatment-repository';
@@ -17,27 +17,33 @@ import { calculatePreferredIngredients, calculateAvoidedIngredients } from '@/se
 // search-engine.md §1.1 경로1, §5.2 벡터/SQL 분기.
 // ============================================================
 
+/** tool-spec.md §1 입력 스키마 — service.ts에서 tool() inputSchema로 사용 */
+export const searchBeautyDataSchema = z.object({
+  query: z.string().describe('Search query in natural language'),
+  domain: z.enum(['shopping', 'treatment']).describe('shopping = products+stores, treatment = procedures+clinics'),
+  filters: z.object({
+    skin_types: z.array(z.enum(['dry', 'oily', 'combination', 'sensitive', 'normal'])).optional(),
+    concerns: z.array(z.enum([
+      'acne', 'wrinkles', 'dark_spots', 'redness', 'dryness',
+      'pores', 'dullness', 'dark_circles', 'uneven_tone', 'sun_damage', 'eczema',
+    ])).optional(),
+    category: z.string().optional(),
+    budget_max_krw: z.number().optional(),
+    max_downtime: z.number().optional(),
+    english_support: z.enum(['none', 'basic', 'good', 'fluent']).optional(),
+  }).optional(),
+  limit: z.number().optional(),
+});
+
+/** 스키마에서 추론된 입력 타입 */
+type SearchArgs = z.infer<typeof searchBeautyDataSchema>;
+
 /** tool execute에 전달되는 context (P-4: chatService가 구성) */
 export interface SearchToolContext {
   client: SupabaseClient;
   profile: UserProfileVars | null;
   journey: JourneyContextVars | null;
   preferences: LearnedPreference[];
-}
-
-/** tool-spec.md §1 입력에서 추출한 필터 */
-interface SearchArgs {
-  query: string;
-  domain: 'shopping' | 'treatment';
-  filters?: {
-    skin_types?: string[];
-    concerns?: SkinConcern[];
-    category?: string;
-    budget_max_krw?: number;
-    max_downtime?: number;
-    english_support?: string;
-  };
-  limit?: number;
 }
 
 const MAX_LIMIT = 5;

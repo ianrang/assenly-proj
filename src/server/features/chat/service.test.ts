@@ -20,11 +20,13 @@ vi.mock('./prompts', () => ({
 const mockExecuteSearchBeautyData = vi.fn();
 vi.mock('./tools/search-handler', () => ({
   executeSearchBeautyData: (...args: unknown[]) => mockExecuteSearchBeautyData(...args),
+  searchBeautyDataSchema: {},
 }));
 
 const mockExecuteGetExternalLinks = vi.fn();
 vi.mock('./tools/links-handler', () => ({
   executeGetExternalLinks: (...args: unknown[]) => mockExecuteGetExternalLinks(...args),
+  getExternalLinksSchema: {},
 }));
 
 const mockExecuteExtractUserProfile = vi.fn();

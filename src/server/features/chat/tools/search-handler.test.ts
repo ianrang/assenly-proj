@@ -199,7 +199,7 @@ describe('executeSearchBeautyData', () => {
     vi.mocked(derived.calculatePreferredIngredients).mockReturnValue([]);
     vi.mocked(derived.calculateAvoidedIngredients).mockReturnValue([]);
 
-    const client = createMockSupabaseClient([{ product_id: 'p1', store: { id: 's1', english_support: 'full' } }]);
+    const client = createMockSupabaseClient([{ product_id: 'p1', store: { id: 's1', english_support: 'fluent' } }]);
     const { executeSearchBeautyData } = await getHandler();
 
     const result = await executeSearchBeautyData(
@@ -318,7 +318,7 @@ describe('executeSearchBeautyData', () => {
     vi.mocked(beautyTreatment.scoreTreatments).mockReturnValue(scoredItems);
     vi.mocked(judgment.rank).mockReturnValue(rankedItems);
 
-    const clinicData = [{ treatment_id: 't1', clinic: { id: 'c1', name: { en: 'Clinic A' }, english_support: 'full' } }];
+    const clinicData = [{ treatment_id: 't1', clinic: { id: 'c1', name: { en: 'Clinic A' }, english_support: 'fluent' } }];
     const client = createMockSupabaseClient(clinicData);
     const { executeSearchBeautyData } = await getHandler();
 
@@ -473,16 +473,16 @@ describe('executeSearchBeautyData', () => {
     vi.mocked(derived.calculatePreferredIngredients).mockReturnValue([]);
     vi.mocked(derived.calculateAvoidedIngredients).mockReturnValue([]);
 
-    // Two stores: one with 'full' english_support, one with 'none'
+    // Two stores: one with 'fluent' english_support, one with 'none'
     const junctionData = [
-      { product_id: 'p1', store: { id: 's1', english_support: 'full' } },
+      { product_id: 'p1', store: { id: 's1', english_support: 'fluent' } },
       { product_id: 'p1', store: { id: 's2', english_support: 'none' } },
     ];
     const client = createMockSupabaseClient(junctionData);
     const { executeSearchBeautyData } = await getHandler();
 
     const result = await executeSearchBeautyData(
-      { query: '', domain: 'shopping', filters: { english_support: 'full' } },
+      { query: '', domain: 'shopping', filters: { english_support: 'fluent' } },
       { client: client as never, profile: null, journey: null, preferences: [] },
     );
 

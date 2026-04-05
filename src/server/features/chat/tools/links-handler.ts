@@ -1,4 +1,5 @@
 import 'server-only';
+import { z } from 'zod';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import type { ExternalLink, LinkType } from '@/shared/types/domain';
 
@@ -9,15 +10,18 @@ import type { ExternalLink, LinkType } from '@/shared/types/domain';
 // tool-spec.md §4.2: 링크 조회 실패 → 빈 배열 반환.
 // ============================================================
 
+/** tool-spec.md §2 입력 스키마 — service.ts에서 tool() inputSchema로 사용 */
+export const getExternalLinksSchema = z.object({
+  entity_id: z.string().describe('ID of the entity'),
+  entity_type: z.enum(['product', 'store', 'clinic', 'treatment']).describe('Type of entity'),
+});
+
+/** 스키마에서 추론된 입력 타입 */
+type LinksArgs = z.infer<typeof getExternalLinksSchema>;
+
 /** tool execute에 전달되는 context */
 export interface LinksToolContext {
   client: SupabaseClient;
-}
-
-/** tool-spec.md §2 입력 */
-interface LinksArgs {
-  entity_id: string;
-  entity_type: 'product' | 'store' | 'clinic' | 'treatment';
 }
 
 /**

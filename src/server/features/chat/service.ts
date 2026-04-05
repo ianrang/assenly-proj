@@ -3,11 +3,10 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 import type { UserProfile, Journey, LearnedPreference, DerivedVariables } from '@/shared/types/profile';
 import type { ModelMessage } from 'ai';
 import { tool, stepCountIs } from 'ai';
-import { z } from 'zod';
 import { callWithFallback } from './llm-client';
 import { buildSystemPrompt } from './prompts';
-import { executeSearchBeautyData, type SearchToolContext } from './tools/search-handler';
-import { executeGetExternalLinks, type LinksToolContext } from './tools/links-handler';
+import { executeSearchBeautyData, searchBeautyDataSchema, type SearchToolContext } from './tools/search-handler';
+import { executeGetExternalLinks, getExternalLinksSchema, type LinksToolContext } from './tools/links-handler';
 import {
   executeExtractUserProfile,
   extractUserProfileSchema,
@@ -151,28 +150,7 @@ async function getOrCreateConversation(
   return (data as { id: string }).id;
 }
 
-// --- search_beauty_data tool input schema (tool-spec.md §1) ---
-const searchBeautyDataSchema = z.object({
-  query: z.string().describe('Search query in natural language'),
-  domain: z.enum(['shopping', 'treatment']).describe('shopping = products+stores, treatment = procedures+clinics'),
-  filters: z.object({
-    skin_types: z.array(z.enum(['dry', 'oily', 'combination', 'sensitive', 'normal'])).optional(),
-    concerns: z.array(z.string()).optional(),
-    category: z.string().optional(),
-    budget_max_krw: z.number().optional(),
-    max_downtime: z.number().optional(),
-    english_support: z.enum(['none', 'basic', 'good', 'fluent']).optional(),
-  }).optional(),
-  limit: z.number().optional().default(3),
-});
-
-// --- get_external_links tool input schema (tool-spec.md §2) ---
-const getExternalLinksSchema = z.object({
-  entity_id: z.string().describe('ID of the entity'),
-  entity_type: z.enum(['product', 'store', 'clinic', 'treatment']).describe('Type of entity'),
-});
-
-/** 3개 tool 등록. AI SDK tool() 헬퍼 패턴. */
+/** tool 등록. AI SDK tool() 헬퍼 패턴. P-4: 조합 루트. */
 function buildTools(
   searchContext: SearchToolContext,
   linksContext: LinksToolContext,
@@ -182,26 +160,18 @@ function buildTools(
     search_beauty_data: tool({
       description: 'Search K-beauty products or treatments matching user criteria. Returns recommendation cards.',
       inputSchema: searchBeautyDataSchema,
-      execute: async (args) =>
-        executeSearchBeautyData(
-          args as unknown as Parameters<typeof executeSearchBeautyData>[0],
-          searchContext,
-        ),
+      execute: async (args) => executeSearchBeautyData(args, searchContext),
     }),
     get_external_links: tool({
       description: 'Get purchase, booking, or map links for a product, store, clinic, or treatment.',
       inputSchema: getExternalLinksSchema,
-      execute: async (args) =>
-        executeGetExternalLinks(
-          args as unknown as Parameters<typeof executeGetExternalLinks>[0],
-          linksContext,
-        ),
+      execute: async (args) => executeGetExternalLinks(args, linksContext),
     }),
     extract_user_profile: tool({
       description: 'Extract beauty profile info mentioned by user. Call when user mentions skin type, concerns, budget, travel plans.',
       inputSchema: extractUserProfileSchema,
       execute: async (args) => {
-        const result = await executeExtractUserProfile(args as unknown as Parameters<typeof executeExtractUserProfile>[0]);
+        const result = await executeExtractUserProfile(args);
         if (!('status' in result)) {
           extractionResults.push(result);
         }
