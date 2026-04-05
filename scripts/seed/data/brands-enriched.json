@@ -30,7 +30,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:17:49.630Z"
+    "enrichedAt": "2026-04-05T02:52:03.506Z"
   },
   {
     "source": "manual",
@@ -63,7 +63,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:17:50.920Z"
+    "enrichedAt": "2026-04-05T02:52:04.619Z"
   },
   {
     "source": "manual",
@@ -96,7 +96,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:17:52.349Z"
+    "enrichedAt": "2026-04-05T02:52:05.692Z"
   },
   {
     "source": "manual",
@@ -117,7 +117,7 @@
         "en": "Aestura",
         "ko": "에스트라",
         "ja": "エストラ",
-        "zh": "爱思特拉",
+        "zh": "爱思塔",
         "es": "Aestura",
         "fr": "Aestura"
       }
@@ -129,7 +129,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:17:53.747Z"
+    "enrichedAt": "2026-04-05T02:52:07.124Z"
   },
   {
     "source": "manual",
@@ -162,7 +162,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:17:55.060Z"
+    "enrichedAt": "2026-04-05T02:52:08.305Z"
   },
   {
     "source": "manual",
@@ -195,7 +195,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:17:56.386Z"
+    "enrichedAt": "2026-04-05T02:52:09.446Z"
   },
   {
     "source": "manual",
@@ -228,7 +228,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:17:57.456Z"
+    "enrichedAt": "2026-04-05T02:52:10.430Z"
   },
   {
     "source": "manual",
@@ -249,7 +249,7 @@
         "en": "Atopalm",
         "ko": "아토팜",
         "ja": "アトパーム",
-        "zh": "爱托帕",
+        "zh": "爱多康",
         "es": "Atopalm",
         "fr": "Atopalm"
       }
@@ -261,7 +261,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:17:58.697Z"
+    "enrichedAt": "2026-04-05T02:52:11.495Z"
   },
   {
     "source": "manual",
@@ -294,7 +294,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:17:59.841Z"
+    "enrichedAt": "2026-04-05T02:52:12.709Z"
   },
   {
     "source": "manual",
@@ -327,7 +327,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:00.970Z"
+    "enrichedAt": "2026-04-05T02:52:13.869Z"
   },
   {
     "source": "manual",
@@ -345,12 +345,12 @@
       ],
       "id": "6eb6af48-f86b-57fd-be3d-8b8214a19602",
       "name": {
-        "en": "belif",
+        "en": "Belif",
         "ko": "빌리프",
-        "ja": "belif",
+        "ja": "Belif",
         "zh": "belif",
-        "es": "belif",
-        "fr": "belif"
+        "es": "Belif",
+        "fr": "Belif"
       }
     },
     "enrichments": {
@@ -360,7 +360,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:02.103Z"
+    "enrichedAt": "2026-04-05T02:52:14.962Z"
   },
   {
     "source": "manual",
@@ -378,12 +378,12 @@
       ],
       "id": "548ed282-0e33-54c3-b1f5-af519e3f1a17",
       "name": {
-        "en": "Bio Heal BOH",
+        "en": "Bio Heal Boh",
         "ko": "바이오힐보",
         "ja": "バイオヒールボ",
-        "zh": "BIOHEAL BOH",
-        "es": "Bioheal Boh",
-        "fr": "Bioheal Boh"
+        "zh": "Bio Heal Boh",
+        "es": "Bio Heal Boh",
+        "fr": "Bio Heal Boh"
       }
     },
     "enrichments": {
@@ -393,7 +393,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:03.322Z"
+    "enrichedAt": "2026-04-05T02:52:15.971Z"
   },
   {
     "source": "manual",
@@ -426,7 +426,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:04.458Z"
+    "enrichedAt": "2026-04-05T02:52:16.964Z"
   },
   {
     "source": "manual",
@@ -459,7 +459,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:05.733Z"
+    "enrichedAt": "2026-04-05T02:52:17.953Z"
   },
   {
     "source": "manual",
@@ -492,7 +492,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:07.158Z"
+    "enrichedAt": "2026-04-05T02:52:19.122Z"
   },
   {
     "source": "manual",
@@ -512,7 +512,7 @@
       "name": {
         "en": "Cell Fusion C",
         "ko": "셀퓨전씨",
-        "ja": "セルフュージョンC",
+        "ja": "Cell Fusion C",
         "zh": "Cell Fusion C",
         "es": "Cell Fusion C",
         "fr": "Cell Fusion C"
@@ -525,7 +525,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:08.429Z"
+    "enrichedAt": "2026-04-05T02:52:20.059Z"
   },
   {
     "source": "manual",
@@ -558,7 +558,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:09.599Z"
+    "enrichedAt": "2026-04-05T02:52:21.318Z"
   },
   {
     "source": "manual",
@@ -576,7 +576,7 @@
       ],
       "id": "61a850be-2b69-5c40-8b55-40e54fbe8a78",
       "name": {
-        "en": "CLIO",
+        "en": "Clio",
         "ko": "클리오",
         "ja": "クリオ",
         "zh": "珂莱欧",
@@ -591,7 +591,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:10.888Z"
+    "enrichedAt": "2026-04-05T02:52:22.333Z"
   },
   {
     "source": "manual",
@@ -624,7 +624,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:11.958Z"
+    "enrichedAt": "2026-04-05T02:52:23.562Z"
   },
   {
     "source": "manual",
@@ -657,7 +657,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:13.347Z"
+    "enrichedAt": "2026-04-05T02:52:24.705Z"
   },
   {
     "source": "manual",
@@ -675,9 +675,9 @@
       ],
       "id": "d5c13972-d540-5bf2-bc68-ade9ea74b2dc",
       "name": {
-        "en": "dear, Klairs",
+        "en": "Dear, Klairs",
         "ko": "디어클레어스",
-        "ja": "Dear, Klairs",
+        "ja": "ディアクレアス",
         "zh": "Dear, Klairs",
         "es": "Dear, Klairs",
         "fr": "Dear, Klairs"
@@ -690,7 +690,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:14.603Z"
+    "enrichedAt": "2026-04-05T02:52:25.738Z"
   },
   {
     "source": "manual",
@@ -723,7 +723,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:15.847Z"
+    "enrichedAt": "2026-04-05T02:52:26.839Z"
   },
   {
     "source": "manual",
@@ -756,7 +756,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:16.981Z"
+    "enrichedAt": "2026-04-05T02:52:27.863Z"
   },
   {
     "source": "manual",
@@ -777,9 +777,9 @@
         "en": "espoir",
         "ko": "에스쁘아",
         "ja": "エスポア",
-        "zh": "Espoir",
-        "es": "Espoir",
-        "fr": "Espoir"
+        "zh": "espoir",
+        "es": "espoir",
+        "fr": "espoir"
       }
     },
     "enrichments": {
@@ -789,7 +789,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:18.104Z"
+    "enrichedAt": "2026-04-05T02:52:29.050Z"
   },
   {
     "source": "manual",
@@ -807,7 +807,7 @@
       ],
       "id": "33f7e173-b86c-50da-9d2f-e6b11c8590e8",
       "name": {
-        "en": "ETUDE",
+        "en": "Etude",
         "ko": "에뛰드",
         "ja": "エチュード",
         "zh": "伊蒂之屋",
@@ -822,7 +822,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:19.230Z"
+    "enrichedAt": "2026-04-05T02:52:30.202Z"
   },
   {
     "source": "manual",
@@ -843,7 +843,7 @@
         "en": "Fillimilli",
         "ko": "필리밀리",
         "ja": "フィリミリ",
-        "zh": "菲丽菲丽",
+        "zh": "Fillimilli",
         "es": "Fillimilli",
         "fr": "Fillimilli"
       }
@@ -855,7 +855,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:20.460Z"
+    "enrichedAt": "2026-04-05T02:52:31.265Z"
   },
   {
     "source": "manual",
@@ -888,7 +888,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:21.639Z"
+    "enrichedAt": "2026-04-05T02:52:32.311Z"
   },
   {
     "source": "manual",
@@ -921,7 +921,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:23.074Z"
+    "enrichedAt": "2026-04-05T02:52:33.383Z"
   },
   {
     "source": "manual",
@@ -954,7 +954,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:24.302Z"
+    "enrichedAt": "2026-04-05T02:52:34.519Z"
   },
   {
     "source": "manual",
@@ -972,7 +972,7 @@
       ],
       "id": "214e2cc4-a680-5e40-a4e2-4ad19c87bfbf",
       "name": {
-        "en": "Heimish",
+        "en": "heimish",
         "ko": "헤이미쉬",
         "ja": "heimish",
         "zh": "heimish",
@@ -987,7 +987,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:25.429Z"
+    "enrichedAt": "2026-04-05T02:52:35.604Z"
   },
   {
     "source": "manual",
@@ -1005,7 +1005,7 @@
       ],
       "id": "4625585b-b9bf-5f2d-9b06-98c1369e97be",
       "name": {
-        "en": "HERA",
+        "en": "Hera",
         "ko": "헤라",
         "ja": "ヘラ",
         "zh": "赫拉",
@@ -1020,7 +1020,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:26.591Z"
+    "enrichedAt": "2026-04-05T02:52:36.693Z"
   },
   {
     "source": "manual",
@@ -1040,7 +1040,7 @@
       "name": {
         "en": "Huxley",
         "ko": "헉슬리",
-        "ja": "ハクスリー",
+        "ja": "Huxley",
         "zh": "Huxley",
         "es": "Huxley",
         "fr": "Huxley"
@@ -1053,7 +1053,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:27.722Z"
+    "enrichedAt": "2026-04-05T02:52:37.796Z"
   },
   {
     "source": "manual",
@@ -1071,12 +1071,12 @@
       ],
       "id": "73de06cf-ee98-5db2-b856-e856ddab93cb",
       "name": {
-        "en": "Illiyoon",
+        "en": "illiYOON",
         "ko": "일리윤",
-        "ja": "illiYOON (イリユン)",
-        "zh": "一理润 (illiyoon)",
-        "es": "illiyoon",
-        "fr": "illiyoon"
+        "ja": "illiYOON",
+        "zh": "一理润",
+        "es": "illiYOON",
+        "fr": "illiYOON"
       }
     },
     "enrichments": {
@@ -1086,7 +1086,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:29.032Z"
+    "enrichedAt": "2026-04-05T02:52:38.858Z"
   },
   {
     "source": "manual",
@@ -1119,7 +1119,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:30.242Z"
+    "enrichedAt": "2026-04-05T02:52:39.990Z"
   },
   {
     "source": "manual",
@@ -1139,8 +1139,8 @@
       "name": {
         "en": "ISA KNOX",
         "ko": "이자녹스",
-        "ja": "ISA KNOX",
-        "zh": "ISA KNOX",
+        "ja": "イザノックス",
+        "zh": "伊诺姿",
         "es": "ISA KNOX",
         "fr": "ISA KNOX"
       }
@@ -1152,7 +1152,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:31.572Z"
+    "enrichedAt": "2026-04-05T02:52:41.076Z"
   },
   {
     "source": "manual",
@@ -1173,7 +1173,7 @@
         "en": "isoi",
         "ko": "아이소이",
         "ja": "isoi",
-        "zh": "伊所爱",
+        "zh": "isoi",
         "es": "isoi",
         "fr": "isoi"
       }
@@ -1185,7 +1185,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:32.780Z"
+    "enrichedAt": "2026-04-05T02:52:42.151Z"
   },
   {
     "source": "manual",
@@ -1206,7 +1206,7 @@
         "en": "JM Solution",
         "ko": "제이엠솔루션",
         "ja": "JMソリューション",
-        "zh": "JM Solution",
+        "zh": "JM solution",
         "es": "JM Solution",
         "fr": "JM Solution"
       }
@@ -1218,7 +1218,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:33.928Z"
+    "enrichedAt": "2026-04-05T02:52:43.213Z"
   },
   {
     "source": "manual",
@@ -1236,12 +1236,12 @@
       ],
       "id": "5074e97b-f0ed-5e6b-97e7-4815119c0700",
       "name": {
-        "en": "Jung Saem Mool",
+        "en": "Jungsaemmool",
         "ko": "정샘물",
         "ja": "ジョンセンムル",
         "zh": "郑瑄茉",
-        "es": "Jung Saem Mool",
-        "fr": "Jung Saem Mool"
+        "es": "Jungsaemmool",
+        "fr": "Jungsaemmool"
       }
     },
     "enrichments": {
@@ -1251,7 +1251,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:35.260Z"
+    "enrichedAt": "2026-04-05T02:52:44.453Z"
   },
   {
     "source": "manual",
@@ -1269,12 +1269,12 @@
       ],
       "id": "877014cb-5b13-5bfc-8d77-33ba7f891ad6",
       "name": {
-        "en": "Kundal",
+        "en": "KUNDAL",
         "ko": "쿤달",
-        "ja": "クンダル",
-        "zh": "昆黛尔",
-        "es": "Kundal",
-        "fr": "Kundal"
+        "ja": "KUNDAL",
+        "zh": "KUNDAL",
+        "es": "KUNDAL",
+        "fr": "KUNDAL"
       }
     },
     "enrichments": {
@@ -1284,7 +1284,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:36.386Z"
+    "enrichedAt": "2026-04-05T02:52:45.451Z"
   },
   {
     "source": "manual",
@@ -1302,12 +1302,12 @@
       ],
       "id": "62c6b70b-3dc3-5288-ada0-4f9eac0aa326",
       "name": {
-        "en": "La'dor",
+        "en": "Lador",
         "ko": "라도어",
-        "ja": "ラドアー",
-        "zh": "拉多尔",
-        "es": "Ladoer",
-        "fr": "Ladoer"
+        "ja": "Lador",
+        "zh": "Lador",
+        "es": "Lador",
+        "fr": "Lador"
       }
     },
     "enrichments": {
@@ -1317,7 +1317,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:37.472Z"
+    "enrichedAt": "2026-04-05T02:52:46.438Z"
   },
   {
     "source": "manual",
@@ -1335,7 +1335,7 @@
       ],
       "id": "cdecac6e-6a52-5ae2-b10b-9a7b57ecc455",
       "name": {
-        "en": "Laneige",
+        "en": "LANEIGE",
         "ko": "라네즈",
         "ja": "ラネージュ",
         "zh": "兰芝",
@@ -1350,7 +1350,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:38.619Z"
+    "enrichedAt": "2026-04-05T02:52:47.626Z"
   },
   {
     "source": "manual",
@@ -1370,8 +1370,8 @@
       "name": {
         "en": "Lilybyred",
         "ko": "릴리바이레드",
-        "ja": "Lilybyred",
-        "zh": "莉莉拜丽",
+        "ja": "リリーバイレッド",
+        "zh": "莉莉拜红",
         "es": "Lilybyred",
         "fr": "Lilybyred"
       }
@@ -1383,7 +1383,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:39.732Z"
+    "enrichedAt": "2026-04-05T02:52:48.620Z"
   },
   {
     "source": "manual",
@@ -1416,7 +1416,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:40.877Z"
+    "enrichedAt": "2026-04-05T02:52:49.585Z"
   },
   {
     "source": "manual",
@@ -1434,7 +1434,7 @@
       ],
       "id": "4a8da0fb-4a34-5499-9eae-d18cea9d9510",
       "name": {
-        "en": "ma:nyo",
+        "en": "Manyo Factory",
         "ko": "마녀공장",
         "ja": "魔女工場",
         "zh": "魔女工厂",
@@ -1449,7 +1449,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:42.120Z"
+    "enrichedAt": "2026-04-05T02:52:50.659Z"
   },
   {
     "source": "manual",
@@ -1469,8 +1469,8 @@
       "name": {
         "en": "Mediheal",
         "ko": "메디힐",
-        "ja": "Mediheal (メディヒール)",
-        "zh": "Mediheal (美迪惠尔)",
+        "ja": "メディヒール",
+        "zh": "美迪惠尔",
         "es": "Mediheal",
         "fr": "Mediheal"
       }
@@ -1482,7 +1482,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:43.350Z"
+    "enrichedAt": "2026-04-05T02:52:51.826Z"
   },
   {
     "source": "manual",
@@ -1515,7 +1515,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:44.680Z"
+    "enrichedAt": "2026-04-05T02:52:53.060Z"
   },
   {
     "source": "manual",
@@ -1533,7 +1533,7 @@
       ],
       "id": "e4a9ac08-7641-507c-844e-777ba8ebe91c",
       "name": {
-        "en": "MISSHA",
+        "en": "Missha",
         "ko": "미샤",
         "ja": "ミシャ",
         "zh": "谜尚",
@@ -1548,7 +1548,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:45.909Z"
+    "enrichedAt": "2026-04-05T02:52:54.057Z"
   },
   {
     "source": "manual",
@@ -1581,7 +1581,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:47.018Z"
+    "enrichedAt": "2026-04-05T02:52:55.307Z"
   },
   {
     "source": "manual",
@@ -1602,7 +1602,7 @@
         "en": "NEOGEN",
         "ko": "네오젠",
         "ja": "ネオゼン",
-        "zh": "NEOGEN",
+        "zh": "霓净思",
         "es": "NEOGEN",
         "fr": "NEOGEN"
       }
@@ -1614,7 +1614,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:48.059Z"
+    "enrichedAt": "2026-04-05T02:52:56.433Z"
   },
   {
     "source": "manual",
@@ -1647,7 +1647,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:49.189Z"
+    "enrichedAt": "2026-04-05T02:52:57.662Z"
   },
   {
     "source": "manual",
@@ -1680,7 +1680,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:50.344Z"
+    "enrichedAt": "2026-04-05T02:52:58.713Z"
   },
   {
     "source": "manual",
@@ -1713,7 +1713,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:51.541Z"
+    "enrichedAt": "2026-04-05T02:52:59.817Z"
   },
   {
     "source": "manual",
@@ -1734,7 +1734,7 @@
         "en": "Papa Recipe",
         "ko": "파파레서피",
         "ja": "パパレシピ",
-        "zh": "爸爸的食谱",
+        "zh": "爸爸的食谱 (Papa Recipe)",
         "es": "Papa Recipe",
         "fr": "Papa Recipe"
       }
@@ -1746,7 +1746,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:52.700Z"
+    "enrichedAt": "2026-04-05T02:53:00.836Z"
   },
   {
     "source": "manual",
@@ -1779,7 +1779,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:53.848Z"
+    "enrichedAt": "2026-04-05T02:53:01.860Z"
   },
   {
     "source": "manual",
@@ -1812,7 +1812,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:55.160Z"
+    "enrichedAt": "2026-04-05T02:53:02.895Z"
   },
   {
     "source": "manual",
@@ -1833,7 +1833,7 @@
         "en": "Real Barrier",
         "ko": "리얼배리어",
         "ja": "リアルバリア",
-        "zh": "Real Barrier",
+        "zh": "理肤泉",
         "es": "Real Barrier",
         "fr": "Real Barrier"
       }
@@ -1845,7 +1845,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:56.457Z"
+    "enrichedAt": "2026-04-05T02:53:04.046Z"
   },
   {
     "source": "manual",
@@ -1863,10 +1863,10 @@
       ],
       "id": "20daf081-a0ce-57c7-95e5-1904f2ea65a6",
       "name": {
-        "en": "rom&nd",
+        "en": "Rom&nd",
         "ko": "롬앤",
         "ja": "ロムアンド",
-        "zh": "Rom&nd",
+        "zh": "Romand",
         "es": "Rom&nd",
         "fr": "Rom&nd"
       }
@@ -1878,7 +1878,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:57.593Z"
+    "enrichedAt": "2026-04-05T02:53:05.138Z"
   },
   {
     "source": "manual",
@@ -1911,7 +1911,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:18:58.812Z"
+    "enrichedAt": "2026-04-05T02:53:06.148Z"
   },
   {
     "source": "manual",
@@ -1944,7 +1944,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:19:00.451Z"
+    "enrichedAt": "2026-04-05T02:53:07.187Z"
   },
   {
     "source": "manual",
@@ -1962,12 +1962,12 @@
       ],
       "id": "0e2d708d-5771-55c1-b566-1a9856194fb0",
       "name": {
-        "en": "SKIN1004",
+        "en": "Skin1004",
         "ko": "스킨1004",
-        "ja": "SKIN1004",
-        "zh": "SKIN1004",
-        "es": "SKIN1004",
-        "fr": "SKIN1004"
+        "ja": "Skin1004",
+        "zh": "Skin1004",
+        "es": "Skin1004",
+        "fr": "Skin1004"
       }
     },
     "enrichments": {
@@ -1977,7 +1977,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:19:01.678Z"
+    "enrichedAt": "2026-04-05T02:53:08.419Z"
   },
   {
     "source": "manual",
@@ -2010,7 +2010,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:19:03.011Z"
+    "enrichedAt": "2026-04-05T02:53:09.401Z"
   },
   {
     "source": "manual",
@@ -2028,12 +2028,12 @@
       ],
       "id": "539bce87-ff77-58b6-af09-a58036ed0f1c",
       "name": {
-        "en": "Some By Mi",
+        "en": "SOME BY MI",
         "ko": "썸바이미",
-        "ja": "サムバイミー",
+        "ja": "SOME BY MI",
         "zh": "SOME BY MI",
-        "es": "Some By Mi",
-        "fr": "Some By Mi"
+        "es": "SOME BY MI",
+        "fr": "SOME BY MI"
       }
     },
     "enrichments": {
@@ -2043,7 +2043,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:19:04.209Z"
+    "enrichedAt": "2026-04-05T02:53:10.359Z"
   },
   {
     "source": "manual",
@@ -2064,7 +2064,7 @@
         "en": "Son & Park",
         "ko": "손앤박",
         "ja": "ソン＆パク",
-        "zh": "孙朴",
+        "zh": "孙&朴",
         "es": "Son & Park",
         "fr": "Son & Park"
       }
@@ -2076,7 +2076,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:19:05.334Z"
+    "enrichedAt": "2026-04-05T02:53:11.431Z"
   },
   {
     "source": "manual",
@@ -2096,7 +2096,7 @@
       "name": {
         "en": "Sulwhasoo",
         "ko": "설화수",
-        "ja": "雪花秀 (ソルファス)",
+        "ja": "雪花秀（ソルファス）",
         "zh": "雪花秀",
         "es": "Sulwhasoo",
         "fr": "Sulwhasoo"
@@ -2109,7 +2109,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:19:06.460Z"
+    "enrichedAt": "2026-04-05T02:53:12.503Z"
   },
   {
     "source": "manual",
@@ -2142,7 +2142,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:19:07.784Z"
+    "enrichedAt": "2026-04-05T02:53:13.591Z"
   },
   {
     "source": "manual",
@@ -2175,7 +2175,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:19:09.016Z"
+    "enrichedAt": "2026-04-05T02:53:14.752Z"
   },
   {
     "source": "manual",
@@ -2208,7 +2208,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:19:10.281Z"
+    "enrichedAt": "2026-04-05T02:53:15.992Z"
   },
   {
     "source": "manual",
@@ -2226,10 +2226,10 @@
       ],
       "id": "cbc54adc-24aa-57b2-b507-ed7763b01195",
       "name": {
-        "en": "THE SAEM",
+        "en": "the SAEM",
         "ko": "더샘",
-        "ja": "ザセム",
-        "zh": "得鲜",
+        "ja": "ザ・セム",
+        "zh": "the SAEM",
         "es": "the SAEM",
         "fr": "the SAEM"
       }
@@ -2241,7 +2241,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:19:11.509Z"
+    "enrichedAt": "2026-04-05T02:53:17.080Z"
   },
   {
     "source": "manual",
@@ -2259,7 +2259,7 @@
       ],
       "id": "b5355d4e-c43d-515e-a470-012e625a1190",
       "name": {
-        "en": "TONYMOLY",
+        "en": "Tony Moly",
         "ko": "토니모리",
         "ja": "トニーモリー",
         "zh": "托尼魅力",
@@ -2274,7 +2274,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:19:12.716Z"
+    "enrichedAt": "2026-04-05T02:53:18.244Z"
   },
   {
     "source": "manual",
@@ -2307,7 +2307,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:19:13.868Z"
+    "enrichedAt": "2026-04-05T02:53:19.400Z"
   },
   {
     "source": "manual",
@@ -2340,7 +2340,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:19:15.113Z"
+    "enrichedAt": "2026-04-05T02:53:20.509Z"
   },
   {
     "source": "manual",
@@ -2373,7 +2373,7 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:19:16.221Z"
+    "enrichedAt": "2026-04-05T02:53:21.369Z"
   },
   {
     "source": "manual",
@@ -2393,7 +2393,7 @@
       "name": {
         "en": "WAKEMAKE",
         "ko": "웨이크메이크",
-        "ja": "ウェイクメイク",
+        "ja": "WAKEMAKE",
         "zh": "WAKEMAKE",
         "es": "WAKEMAKE",
         "fr": "WAKEMAKE"
@@ -2406,6 +2406,40 @@
       "classifiedFields": [],
       "confidence": {}
     },
-    "enrichedAt": "2026-04-01T12:19:17.581Z"
+    "enrichedAt": "2026-04-05T02:53:22.358Z"
+  },
+  {
+    "source": "manual",
+    "sourceId": "daiso",
+    "entityType": "brand",
+    "data": {
+      "name_ko": "다이소",
+      "name_en": "Daiso",
+      "origin": "KR",
+      "tier": "budget",
+      "is_essenly": false,
+      "specialties": [
+        "beauty tools",
+        "basic skincare",
+        "budget cosmetics"
+      ],
+      "id": "c974eab7-683c-5e13-8bd3-0efda633fec7",
+      "name": {
+        "en": "Daiso",
+        "ko": "다이소",
+        "ja": "ダイソー",
+        "zh": "大创",
+        "es": "Daiso",
+        "fr": "Daiso"
+      }
+    },
+    "enrichments": {
+      "translatedFields": [
+        "name"
+      ],
+      "classifiedFields": [],
+      "confidence": {}
+    },
+    "enrichedAt": "2026-04-05T02:53:23.466Z"
   }
 ]

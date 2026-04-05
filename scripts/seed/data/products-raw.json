@@ -13,7 +13,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|combination|normal",
       "expected_concerns": "dryness|dullness",
-      "available_at": "olive_young|innisfree_store"
+      "available_at": "olive_young|innisfree_store",
+      "brand_id": "f4f9081a-cac1-5388-b5ec-c86213241927"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -31,7 +32,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|combination|normal|sensitive",
       "expected_concerns": "dryness|dullness",
-      "available_at": "olive_young|chicor|laneige_store"
+      "available_at": "olive_young|chicor|laneige_store",
+      "brand_id": "cdecac6e-6a52-5ae2-b10b-9a7b57ecc455"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -49,7 +51,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|combination|normal|sensitive",
       "expected_concerns": "dryness|wrinkles|dullness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "5240a3c6-315a-565d-bf7e-cdb9154a9937"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -67,7 +70,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|sensitive|normal",
       "expected_concerns": "dryness|redness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "293e8f32-f2af-511a-b046-b97198a6bc9a"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -85,7 +89,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "sensitive|combination|oily",
       "expected_concerns": "redness|acne|dryness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "f77366bb-b1c4-5fef-aa08-86ca75f5efd2"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -103,7 +108,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|sensitive|normal",
       "expected_concerns": "dryness|eczema|redness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "73de06cf-ee98-5db2-b856-e856ddab93cb"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -121,7 +127,8 @@
       "budget_level": "luxury",
       "expected_skin_types": "dry|normal|combination",
       "expected_concerns": "wrinkles|dullness|dark_spots",
-      "available_at": "department_store|chicor"
+      "available_at": "department_store|chicor",
+      "brand_id": "2c91919e-5bfd-57e9-8cf8-2ebbbdfac205"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -139,7 +146,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "oily|combination|normal",
       "expected_concerns": "dryness|pores",
-      "available_at": "olive_young|chicor|brand_store"
+      "available_at": "olive_young|chicor|brand_store",
+      "brand_id": "6eb6af48-f86b-57fd-be3d-8b8214a19602"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -157,7 +165,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|sensitive|normal",
       "expected_concerns": "dryness|redness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "5d513efb-cb2e-5921-ab90-5aaae28f22fd"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -175,7 +184,8 @@
       "budget_level": "premium",
       "expected_skin_types": "dry|normal|combination",
       "expected_concerns": "wrinkles|dullness|dryness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "f106ebb7-829b-5f3c-aeab-009f3848532a"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -193,7 +203,8 @@
       "budget_level": "budget",
       "expected_skin_types": "sensitive|oily|combination",
       "expected_concerns": "redness|acne",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "0e2d708d-5771-55c1-b566-1a9856194fb0"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -211,7 +222,8 @@
       "budget_level": "budget",
       "expected_skin_types": "sensitive|oily|combination",
       "expected_concerns": "redness|acne|pores",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "6bcb921e-fba8-55a7-9706-c0196160247c"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -229,7 +241,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "sensitive|dry|normal",
       "expected_concerns": "eczema|redness|dryness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "071a2325-2bab-5b34-8188-6095d30638dd"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -247,7 +260,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|normal|combination",
       "expected_concerns": "dryness|dullness|wrinkles",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "4707822b-da67-5982-9b3d-d454690be959"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -265,7 +279,8 @@
       "budget_level": "budget",
       "expected_skin_types": "sensitive|oily|combination",
       "expected_concerns": "redness|dryness|eczema",
-      "available_at": "olive_young|etude_store"
+      "available_at": "olive_young|etude_store",
+      "brand_id": "33f7e173-b86c-50da-9d2f-e6b11c8590e8"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -283,7 +298,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|normal|combination",
       "expected_concerns": "dullness|dark_spots|dryness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "36a31f48-958a-58ea-91c0-98cfb55939d9"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -301,7 +317,8 @@
       "budget_level": "premium",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "wrinkles|dryness|dullness",
-      "available_at": "chicor|department_store"
+      "available_at": "chicor|department_store",
+      "brand_id": "5074e97b-f0ed-5e6b-97e7-4815119c0700"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -319,7 +336,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|sensitive",
       "expected_concerns": "eczema|dryness|redness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "d0862fbb-0c98-5d66-81c2-8d7ceb03e41c"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -337,7 +355,8 @@
       "budget_level": "budget",
       "expected_skin_types": "sensitive|combination|normal",
       "expected_concerns": "redness|acne",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "03752259-e005-5bb5-b5da-48b7e21d7736"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -355,7 +374,8 @@
       "budget_level": "premium",
       "expected_skin_types": "oily|combination|normal",
       "expected_concerns": "pores|dullness",
-      "available_at": "chicor|brand_store"
+      "available_at": "chicor|brand_store",
+      "brand_id": "8803aaff-56f7-5c83-a5f6-3c8304eccf20"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -373,7 +393,8 @@
       "budget_level": "budget",
       "expected_skin_types": "sensitive|oily|combination",
       "expected_concerns": "redness|acne",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "0f716561-2b32-53b3-8e7b-aa03a2acd234"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -391,7 +412,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "sensitive|dry|normal",
       "expected_concerns": "redness|dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "eb1008c9-214f-5834-885f-7ed3d6de5f53"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -409,7 +431,8 @@
       "budget_level": "luxury",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "wrinkles|dullness|dark_spots",
-      "available_at": "department_store|chicor"
+      "available_at": "department_store|chicor",
+      "brand_id": "10e218b1-d9a6-5557-a563-f5fd89b945da"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -427,7 +450,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|normal|combination",
       "expected_concerns": "wrinkles|dullness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "e4a9ac08-7641-507c-844e-777ba8ebe91c"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -445,7 +469,8 @@
       "budget_level": "premium",
       "expected_skin_types": "dry|normal|combination",
       "expected_concerns": "wrinkles|dryness|dullness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "2d6c3d34-26b9-5faf-a7cf-ae55b9c9dda9"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -463,7 +488,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|combination|normal|sensitive|oily",
       "expected_concerns": "dryness|dullness|wrinkles",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "5240a3c6-315a-565d-bf7e-cdb9154a9937"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -481,7 +507,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|sensitive|normal|combination|oily",
       "expected_concerns": "dryness|dullness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "293e8f32-f2af-511a-b046-b97198a6bc9a"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -499,7 +526,8 @@
       "budget_level": "budget",
       "expected_skin_types": "normal|combination|dry|oily",
       "expected_concerns": "dark_spots|dullness|uneven_tone",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "4707822b-da67-5982-9b3d-d454690be959"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -517,7 +545,8 @@
       "budget_level": "budget",
       "expected_skin_types": "oily|combination|sensitive",
       "expected_concerns": "redness|acne|pores",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "ca92dab3-1f6a-5fdc-bede-b02abc8f340a"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -535,7 +564,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|normal|combination|oily",
       "expected_concerns": "dullness|wrinkles|uneven_tone",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "e4a9ac08-7641-507c-844e-777ba8ebe91c"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -553,7 +583,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|combination|normal",
       "expected_concerns": "dryness|dullness",
-      "available_at": "olive_young|innisfree_store"
+      "available_at": "olive_young|innisfree_store",
+      "brand_id": "f4f9081a-cac1-5388-b5ec-c86213241927"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -571,7 +602,8 @@
       "budget_level": "luxury",
       "expected_skin_types": "dry|normal|combination|sensitive",
       "expected_concerns": "wrinkles|dullness|uneven_tone",
-      "available_at": "department_store|chicor"
+      "available_at": "department_store|chicor",
+      "brand_id": "2c91919e-5bfd-57e9-8cf8-2ebbbdfac205"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -589,7 +621,8 @@
       "budget_level": "budget",
       "expected_skin_types": "oily|combination|normal",
       "expected_concerns": "pores|dullness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "5d513efb-cb2e-5921-ab90-5aaae28f22fd"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -607,7 +640,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "normal|oily|combination",
       "expected_concerns": "dark_spots|dullness|uneven_tone|sun_damage",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "5240a3c6-315a-565d-bf7e-cdb9154a9937"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -625,7 +659,8 @@
       "budget_level": "budget",
       "expected_skin_types": "normal|combination|oily",
       "expected_concerns": "dark_spots|dullness|uneven_tone",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "6bcb921e-fba8-55a7-9706-c0196160247c"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -643,7 +678,8 @@
       "budget_level": "budget",
       "expected_skin_types": "sensitive|oily|combination",
       "expected_concerns": "redness|acne",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "0e2d708d-5771-55c1-b566-1a9856194fb0"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -661,7 +697,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "sensitive|combination",
       "expected_concerns": "redness|acne|dryness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "f77366bb-b1c4-5fef-aa08-86ca75f5efd2"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -679,7 +716,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|normal|sensitive",
       "expected_concerns": "dryness|redness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "122306f4-1b88-507a-8fd2-218aafb8ea6e"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -697,7 +735,8 @@
       "budget_level": "premium",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "dryness|dullness|wrinkles",
-      "available_at": "chicor|brand_store"
+      "available_at": "chicor|brand_store",
+      "brand_id": "f7f753fc-dcbe-54a5-b49c-ac4db79b7f72"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -715,7 +754,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "oily|combination|normal",
       "expected_concerns": "pores|dullness|uneven_tone",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "4a8da0fb-4a34-5499-9eae-d18cea9d9510"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -733,7 +773,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|normal|combination",
       "expected_concerns": "dryness|dullness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "2d6c3d34-26b9-5faf-a7cf-ae55b9c9dda9"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -751,7 +792,8 @@
       "budget_level": "budget",
       "expected_skin_types": "normal|combination|oily",
       "expected_concerns": "dark_spots|dullness|uneven_tone",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "cfd7a82e-2cd4-50b9-9abb-49b8b8d7efb6"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -769,7 +811,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|normal|combination",
       "expected_concerns": "wrinkles|dullness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "548ed282-0e33-54c3-b1f5-af519e3f1a17"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -787,7 +830,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|sensitive|normal",
       "expected_concerns": "dryness|dullness|redness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "e5d60da5-ea2c-506b-9fb8-09f476c6c41d"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -805,7 +849,8 @@
       "budget_level": "luxury",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "wrinkles|dullness|dark_spots",
-      "available_at": "department_store"
+      "available_at": "department_store",
+      "brand_id": "684ba681-4074-5066-8308-6a1a03a6c64a"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -823,7 +868,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "normal|combination|oily",
       "expected_concerns": "wrinkles|pores|dullness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "3ab4c960-517e-5555-be77-d411d21db1b6"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -841,7 +887,8 @@
       "budget_level": "budget",
       "expected_skin_types": "sensitive|dry|combination",
       "expected_concerns": "redness|dryness|eczema",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "cfd7a82e-2cd4-50b9-9abb-49b8b8d7efb6"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -859,7 +906,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "sensitive|oily|combination",
       "expected_concerns": "acne|redness|pores",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "071a2325-2bab-5b34-8188-6095d30638dd"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -877,7 +925,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "normal|combination|sensitive",
       "expected_concerns": "dark_spots|dullness|uneven_tone",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "d5c13972-d540-5bf2-bc68-ade9ea74b2dc"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -895,7 +944,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|normal|combination",
       "expected_concerns": "wrinkles|dullness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "4707822b-da67-5982-9b3d-d454690be959"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -913,7 +963,8 @@
       "budget_level": "budget",
       "expected_skin_types": "oily|combination|normal|sensitive",
       "expected_concerns": "acne|pores",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "5240a3c6-315a-565d-bf7e-cdb9154a9937"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -931,7 +982,8 @@
       "budget_level": "budget",
       "expected_skin_types": "oily|combination|normal",
       "expected_concerns": "pores|dullness",
-      "available_at": "olive_young|innisfree_store"
+      "available_at": "olive_young|innisfree_store",
+      "brand_id": "f4f9081a-cac1-5388-b5ec-c86213241927"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -949,7 +1001,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|normal|combination|oily",
       "expected_concerns": "pores|dullness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "5d513efb-cb2e-5921-ab90-5aaae28f22fd"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -967,7 +1020,8 @@
       "budget_level": "budget",
       "expected_skin_types": "oily|combination|normal",
       "expected_concerns": "pores|acne",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "4a8da0fb-4a34-5499-9eae-d18cea9d9510"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -985,7 +1039,8 @@
       "budget_level": "budget",
       "expected_skin_types": "sensitive|dry|normal",
       "expected_concerns": "redness|eczema|dryness",
-      "available_at": "olive_young|etude_store"
+      "available_at": "olive_young|etude_store",
+      "brand_id": "33f7e173-b86c-50da-9d2f-e6b11c8590e8"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1003,7 +1058,8 @@
       "budget_level": "budget",
       "expected_skin_types": "oily|combination",
       "expected_concerns": "pores|acne",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "ca92dab3-1f6a-5fdc-bede-b02abc8f340a"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1021,7 +1077,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|sensitive|normal",
       "expected_concerns": "dryness|redness",
-      "available_at": "olive_young|chicor|laneige_store"
+      "available_at": "olive_young|chicor|laneige_store",
+      "brand_id": "cdecac6e-6a52-5ae2-b10b-9a7b57ecc455"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1039,7 +1096,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "oily|combination|normal",
       "expected_concerns": "pores|dullness",
-      "available_at": "chicor|brand_store"
+      "available_at": "chicor|brand_store",
+      "brand_id": "bb2680ce-040b-52e5-bead-24ea4ef656f4"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1057,7 +1115,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|sensitive|normal",
       "expected_concerns": "dryness|redness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "d5c13972-d540-5bf2-bc68-ade9ea74b2dc"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1075,7 +1134,8 @@
       "budget_level": "budget",
       "expected_skin_types": "oily|combination",
       "expected_concerns": "acne|pores|dullness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "539bce87-ff77-58b6-af09-a58036ed0f1c"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1093,7 +1153,8 @@
       "budget_level": "budget",
       "expected_skin_types": "sensitive|oily|combination",
       "expected_concerns": "redness|pores|acne",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "cfd7a82e-2cd4-50b9-9abb-49b8b8d7efb6"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1111,7 +1172,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|sensitive|normal",
       "expected_concerns": "dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "293e8f32-f2af-511a-b046-b97198a6bc9a"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1129,7 +1191,8 @@
       "budget_level": "budget",
       "expected_skin_types": "oily|combination|normal",
       "expected_concerns": "pores|dullness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "98693c12-4352-5ca2-b4a9-ce1b060444b8"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1147,7 +1210,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "sensitive|dry",
       "expected_concerns": "dryness|redness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "e006398a-8f45-5b09-b1b0-c3739c7f32c9"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1165,7 +1229,8 @@
       "budget_level": "premium",
       "expected_skin_types": "dry|normal|combination",
       "expected_concerns": "dullness|wrinkles|uneven_tone",
-      "available_at": "department_store|chicor"
+      "available_at": "department_store|chicor",
+      "brand_id": "4625585b-b9bf-5f2d-9b06-98c1369e97be"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1183,7 +1248,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "sensitive|combination|normal",
       "expected_concerns": "redness|acne",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "a83c888f-3f77-59e1-a973-84e21ff1d4af"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1201,7 +1267,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "sensitive|combination",
       "expected_concerns": "redness|acne",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "a83c888f-3f77-59e1-a973-84e21ff1d4af"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1219,7 +1286,8 @@
       "budget_level": "premium",
       "expected_skin_types": "dry|normal|combination",
       "expected_concerns": "dullness|dryness",
-      "available_at": "department_store|chicor"
+      "available_at": "department_store|chicor",
+      "brand_id": "2c91919e-5bfd-57e9-8cf8-2ebbbdfac205"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1237,7 +1305,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "sensitive|dry|normal",
       "expected_concerns": "redness|dryness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "d0862fbb-0c98-5d66-81c2-8d7ceb03e41c"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1255,7 +1324,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "sensitive|dry|normal",
       "expected_concerns": "dryness|redness",
-      "available_at": "chicor|brand_store"
+      "available_at": "chicor|brand_store",
+      "brand_id": "8803aaff-56f7-5c83-a5f6-3c8304eccf20"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1273,7 +1343,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|normal|sensitive|combination",
       "expected_concerns": "sun_damage|dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "4707822b-da67-5982-9b3d-d454690be959"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1291,7 +1362,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|sensitive|normal",
       "expected_concerns": "sun_damage|dryness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "5d513efb-cb2e-5921-ab90-5aaae28f22fd"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1309,7 +1381,8 @@
       "budget_level": "budget",
       "expected_skin_types": "normal|combination|oily",
       "expected_concerns": "sun_damage",
-      "available_at": "olive_young|innisfree_store"
+      "available_at": "olive_young|innisfree_store",
+      "brand_id": "f4f9081a-cac1-5388-b5ec-c86213241927"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1327,7 +1400,8 @@
       "budget_level": "budget",
       "expected_skin_types": "oily|combination|normal",
       "expected_concerns": "sun_damage|pores",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "cfd7a82e-2cd4-50b9-9abb-49b8b8d7efb6"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1345,7 +1419,8 @@
       "budget_level": "budget",
       "expected_skin_types": "sensitive|normal|combination",
       "expected_concerns": "sun_damage|redness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "f77366bb-b1c4-5fef-aa08-86ca75f5efd2"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1363,7 +1438,8 @@
       "budget_level": "budget",
       "expected_skin_types": "sensitive|dry|normal",
       "expected_concerns": "sun_damage|redness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "5240a3c6-315a-565d-bf7e-cdb9154a9937"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1381,7 +1457,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "sensitive|dry",
       "expected_concerns": "sun_damage|eczema|redness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "071a2325-2bab-5b34-8188-6095d30638dd"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1399,7 +1476,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "sun_damage|dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "f106ebb7-829b-5f3c-aeab-009f3848532a"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1417,7 +1495,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "oily|combination|normal",
       "expected_concerns": "sun_damage|pores",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "a83c888f-3f77-59e1-a973-84e21ff1d4af"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1435,7 +1514,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|normal|combination",
       "expected_concerns": "sun_damage|dryness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "2d6c3d34-26b9-5faf-a7cf-ae55b9c9dda9"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1453,7 +1533,8 @@
       "budget_level": "budget",
       "expected_skin_types": "sensitive|oily|combination",
       "expected_concerns": "sun_damage|redness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "0e2d708d-5771-55c1-b566-1a9856194fb0"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1471,7 +1552,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "sensitive|normal",
       "expected_concerns": "sun_damage|redness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "66c70d51-7778-5152-829b-37cef81cca12"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1489,7 +1571,8 @@
       "budget_level": "budget",
       "expected_skin_types": "sensitive|normal|combination",
       "expected_concerns": "sun_damage|redness",
-      "available_at": "olive_young|etude_store"
+      "available_at": "olive_young|etude_store",
+      "brand_id": "33f7e173-b86c-50da-9d2f-e6b11c8590e8"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1507,7 +1590,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "oily|combination|normal",
       "expected_concerns": "sun_damage",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "61a850be-2b69-5c40-8b55-40e54fbe8a78"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1525,7 +1609,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "sensitive|dry",
       "expected_concerns": "sun_damage|redness|eczema",
-      "available_at": "chicor|brand_store"
+      "available_at": "chicor|brand_store",
+      "brand_id": "8803aaff-56f7-5c83-a5f6-3c8304eccf20"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1543,7 +1628,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|normal|combination|sensitive",
       "expected_concerns": "dryness|dullness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "03752259-e005-5bb5-b5da-48b7e21d7736"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1561,7 +1647,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "sensitive|combination",
       "expected_concerns": "redness|acne",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "a83c888f-3f77-59e1-a973-84e21ff1d4af"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1579,7 +1666,8 @@
       "budget_level": "budget",
       "expected_skin_types": "oily|combination",
       "expected_concerns": "pores|acne",
-      "available_at": "olive_young|innisfree_store"
+      "available_at": "olive_young|innisfree_store",
+      "brand_id": "f4f9081a-cac1-5388-b5ec-c86213241927"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1597,7 +1685,8 @@
       "budget_level": "premium",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "wrinkles|dullness",
-      "available_at": "department_store|chicor"
+      "available_at": "department_store|chicor",
+      "brand_id": "2c91919e-5bfd-57e9-8cf8-2ebbbdfac205"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1615,7 +1704,8 @@
       "budget_level": "budget",
       "expected_skin_types": "oily|combination|sensitive",
       "expected_concerns": "acne|pores|redness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "03752259-e005-5bb5-b5da-48b7e21d7736"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1633,7 +1723,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|normal|combination|oily|sensitive",
       "expected_concerns": "dryness",
-      "available_at": "olive_young|chicor|laneige_store"
+      "available_at": "olive_young|chicor|laneige_store",
+      "brand_id": "cdecac6e-6a52-5ae2-b10b-9a7b57ecc455"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1651,7 +1742,8 @@
       "budget_level": "budget",
       "expected_skin_types": "oily|combination|normal",
       "expected_concerns": "pores|dullness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "9be50772-f6f5-5794-ac15-b736abb36448"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1669,7 +1761,8 @@
       "budget_level": "budget",
       "expected_skin_types": "sensitive|oily|combination",
       "expected_concerns": "redness|acne",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "6b6af0b3-f49a-5f3a-a6f3-3a829c78eadb"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1687,7 +1780,8 @@
       "budget_level": "budget",
       "expected_skin_types": "oily|combination|normal|sensitive",
       "expected_concerns": "acne",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "5240a3c6-315a-565d-bf7e-cdb9154a9937"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1705,7 +1799,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|normal|sensitive",
       "expected_concerns": "dryness|dullness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "391e6291-34e3-5398-9847-1bc3bf18c7ee"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1723,7 +1818,8 @@
       "budget_level": "budget",
       "expected_skin_types": "oily|combination|normal",
       "expected_concerns": "pores|dullness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "5d513efb-cb2e-5921-ab90-5aaae28f22fd"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1741,7 +1837,8 @@
       "budget_level": "budget",
       "expected_skin_types": "sensitive|combination|normal",
       "expected_concerns": "redness|acne",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "3ab4c960-517e-5555-be77-d411d21db1b6"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1759,7 +1856,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|normal|combination",
       "expected_concerns": "dryness|dullness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "e002e59c-846f-5824-aa3f-50d2ee7e3ad8"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1777,7 +1875,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|normal|combination",
       "expected_concerns": "dryness|dullness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "214e2cc4-a680-5e40-a4e2-4ad19c87bfbf"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1795,7 +1894,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "dryness|dullness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "b5355d4e-c43d-515e-a470-012e625a1190"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1813,7 +1913,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|normal|combination",
       "expected_concerns": "wrinkles|dark_circles",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "122306f4-1b88-507a-8fd2-218aafb8ea6e"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1831,7 +1932,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|normal|combination",
       "expected_concerns": "wrinkles|dark_circles|dryness",
-      "available_at": "olive_young|innisfree_store"
+      "available_at": "olive_young|innisfree_store",
+      "brand_id": "f4f9081a-cac1-5388-b5ec-c86213241927"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1849,7 +1951,8 @@
       "budget_level": "luxury",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "wrinkles|dark_circles|dullness",
-      "available_at": "department_store"
+      "available_at": "department_store",
+      "brand_id": "2c91919e-5bfd-57e9-8cf8-2ebbbdfac205"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1867,7 +1970,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|normal|combination",
       "expected_concerns": "wrinkles|dark_circles",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "e4a9ac08-7641-507c-844e-777ba8ebe91c"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1885,7 +1989,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|normal|combination|sensitive",
       "expected_concerns": "wrinkles|dark_circles",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "5240a3c6-315a-565d-bf7e-cdb9154a9937"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1903,7 +2008,8 @@
       "budget_level": "luxury",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "wrinkles|dark_circles|dark_spots",
-      "available_at": "department_store"
+      "available_at": "department_store",
+      "brand_id": "684ba681-4074-5066-8308-6a1a03a6c64a"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1921,7 +2027,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "sensitive|combination|normal",
       "expected_concerns": "dark_circles|redness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "a83c888f-3f77-59e1-a973-84e21ff1d4af"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1939,7 +2046,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|normal|combination",
       "expected_concerns": "wrinkles|dark_circles",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "cbc54adc-24aa-57b2-b507-ed7763b01195"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1957,7 +2065,8 @@
       "budget_level": "premium",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "wrinkles|dark_circles|dullness",
-      "available_at": "department_store|chicor"
+      "available_at": "department_store|chicor",
+      "brand_id": "0b44538b-2f3a-50b5-81d8-06365f78e6f3"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1975,7 +2084,8 @@
       "budget_level": "budget",
       "expected_skin_types": "normal|combination|dry",
       "expected_concerns": "wrinkles|dark_circles",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "cfd7a82e-2cd4-50b9-9abb-49b8b8d7efb6"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -1993,7 +2103,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "20daf081-a0ce-57c7-95e5-1904f2ea65a6"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2011,7 +2122,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "20daf081-a0ce-57c7-95e5-1904f2ea65a6"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2029,7 +2141,8 @@
       "budget_level": "budget",
       "expected_skin_types": "oily|combination|normal",
       "expected_concerns": "",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "0e513a51-9424-50cc-928c-eeca8ad50291"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2047,7 +2160,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "0e513a51-9424-50cc-928c-eeca8ad50291"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2065,7 +2179,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|combination|normal",
       "expected_concerns": "dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "61a850be-2b69-5c40-8b55-40e54fbe8a78"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2083,7 +2198,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "olive_young|brand_store"
+      "available_at": "olive_young|brand_store",
+      "brand_id": "33f7e173-b86c-50da-9d2f-e6b11c8590e8"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2101,7 +2217,8 @@
       "budget_level": "luxury",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "department_store|chicor"
+      "available_at": "department_store|chicor",
+      "brand_id": "4625585b-b9bf-5f2d-9b06-98c1369e97be"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2119,7 +2236,8 @@
       "budget_level": "premium",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "chicor|olive_young"
+      "available_at": "chicor|olive_young",
+      "brand_id": "45b5232b-8e65-5c44-8d1b-2398d8444460"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2137,7 +2255,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "olive_young|department_store"
+      "available_at": "olive_young|department_store",
+      "brand_id": "cdecac6e-6a52-5ae2-b10b-9a7b57ecc455"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2155,7 +2274,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|combination|normal",
       "expected_concerns": "dryness",
-      "available_at": "olive_young|department_store"
+      "available_at": "olive_young|department_store",
+      "brand_id": "3f23ed27-be29-5f10-a74a-c9946a2b9841"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2173,7 +2293,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "ab40270c-9fef-54f7-9b68-2ccb552e3ea3"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2191,7 +2312,8 @@
       "budget_level": "luxury",
       "expected_skin_types": "dry|sensitive|normal",
       "expected_concerns": "dryness|wrinkles",
-      "available_at": "department_store"
+      "available_at": "department_store",
+      "brand_id": "2c91919e-5bfd-57e9-8cf8-2ebbbdfac205"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2209,7 +2331,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "b75c8f63-459f-512b-93a1-b5e3c50d8bb5"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2227,7 +2350,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "fc96832d-da97-5136-b4d0-fbab7a82fa82"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2245,7 +2369,8 @@
       "budget_level": "premium",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "chicor|brand_store"
+      "available_at": "chicor|brand_store",
+      "brand_id": "c7dd35e8-5cf7-58e5-ac94-186e9caae7b0"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2263,7 +2388,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "oily|combination",
       "expected_concerns": "pores|uneven_tone",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "61a850be-2b69-5c40-8b55-40e54fbe8a78"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2281,7 +2407,8 @@
       "budget_level": "budget",
       "expected_skin_types": "oily|combination|normal",
       "expected_concerns": "uneven_tone|pores",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "e4a9ac08-7641-507c-844e-777ba8ebe91c"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2299,7 +2426,8 @@
       "budget_level": "premium",
       "expected_skin_types": "oily|combination",
       "expected_concerns": "pores|uneven_tone",
-      "available_at": "olive_young|department_store"
+      "available_at": "olive_young|department_store",
+      "brand_id": "cdecac6e-6a52-5ae2-b10b-9a7b57ecc455"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2317,7 +2445,8 @@
       "budget_level": "premium",
       "expected_skin_types": "dry|oily|combination|normal",
       "expected_concerns": "uneven_tone|dullness",
-      "available_at": "department_store|chicor"
+      "available_at": "department_store|chicor",
+      "brand_id": "4625585b-b9bf-5f2d-9b06-98c1369e97be"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2335,7 +2464,8 @@
       "budget_level": "premium",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "dryness|dullness",
-      "available_at": "olive_young|brand_store"
+      "available_at": "olive_young|brand_store",
+      "brand_id": "33f7e173-b86c-50da-9d2f-e6b11c8590e8"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2353,7 +2483,8 @@
       "budget_level": "luxury",
       "expected_skin_types": "dry|combination|normal",
       "expected_concerns": "wrinkles|dullness|uneven_tone",
-      "available_at": "department_store"
+      "available_at": "department_store",
+      "brand_id": "2c91919e-5bfd-57e9-8cf8-2ebbbdfac205"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2371,7 +2502,8 @@
       "budget_level": "premium",
       "expected_skin_types": "oily|combination",
       "expected_concerns": "pores|acne",
-      "available_at": "olive_young|brand_store"
+      "available_at": "olive_young|brand_store",
+      "brand_id": "f4f9081a-cac1-5388-b5ec-c86213241927"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2389,7 +2521,8 @@
       "budget_level": "premium",
       "expected_skin_types": "dry|oily|combination|normal",
       "expected_concerns": "uneven_tone|pores",
-      "available_at": "chicor|olive_young"
+      "available_at": "chicor|olive_young",
+      "brand_id": "45b5232b-8e65-5c44-8d1b-2398d8444460"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2407,7 +2540,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|combination|normal|sensitive",
       "expected_concerns": "uneven_tone|dark_spots|dullness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "e4a9ac08-7641-507c-844e-777ba8ebe91c"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2425,7 +2559,8 @@
       "budget_level": "luxury",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "wrinkles|dullness|dryness",
-      "available_at": "department_store"
+      "available_at": "department_store",
+      "brand_id": "978acb93-0e9b-5b4c-a06f-85af32f9c879"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2443,7 +2578,8 @@
       "budget_level": "premium",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "61a850be-2b69-5c40-8b55-40e54fbe8a78"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2461,7 +2597,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "0e513a51-9424-50cc-928c-eeca8ad50291"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2479,7 +2616,8 @@
       "budget_level": "premium",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "olive_young|brand_store"
+      "available_at": "olive_young|brand_store",
+      "brand_id": "33f7e173-b86c-50da-9d2f-e6b11c8590e8"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2497,7 +2635,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "61a850be-2b69-5c40-8b55-40e54fbe8a78"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2515,7 +2654,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "20daf081-a0ce-57c7-95e5-1904f2ea65a6"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2533,7 +2673,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "b75c8f63-459f-512b-93a1-b5e3c50d8bb5"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2551,7 +2692,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "61a850be-2b69-5c40-8b55-40e54fbe8a78"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2569,7 +2711,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "0e513a51-9424-50cc-928c-eeca8ad50291"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2587,7 +2730,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "chicor|brand_store"
+      "available_at": "chicor|brand_store",
+      "brand_id": "c7dd35e8-5cf7-58e5-ac94-186e9caae7b0"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2605,7 +2749,8 @@
       "budget_level": "luxury",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "department_store|chicor"
+      "available_at": "department_store|chicor",
+      "brand_id": "4625585b-b9bf-5f2d-9b06-98c1369e97be"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2623,7 +2768,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|combination|normal",
       "expected_concerns": "dryness|dullness",
-      "available_at": "olive_young|department_store"
+      "available_at": "olive_young|department_store",
+      "brand_id": "cdecac6e-6a52-5ae2-b10b-9a7b57ecc455"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2641,7 +2787,8 @@
       "budget_level": "budget",
       "expected_skin_types": "oily|combination",
       "expected_concerns": "pores",
-      "available_at": "olive_young|brand_store"
+      "available_at": "olive_young|brand_store",
+      "brand_id": "f4f9081a-cac1-5388-b5ec-c86213241927"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2659,7 +2806,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "0e513a51-9424-50cc-928c-eeca8ad50291"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2677,7 +2825,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "oily|combination",
       "expected_concerns": "pores|uneven_tone",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "61a850be-2b69-5c40-8b55-40e54fbe8a78"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2695,7 +2844,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "olive_young|brand_store"
+      "available_at": "olive_young|brand_store",
+      "brand_id": "33f7e173-b86c-50da-9d2f-e6b11c8590e8"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2713,7 +2863,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "877014cb-5b13-5bfc-8d77-33ba7f891ad6"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2731,7 +2882,8 @@
       "budget_level": "budget",
       "expected_skin_types": "oily|combination|normal",
       "expected_concerns": "",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "62c6b70b-3dc3-5288-ada0-4f9eac0aa326"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2749,7 +2901,8 @@
       "budget_level": "premium",
       "expected_skin_types": "oily|combination",
       "expected_concerns": "",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "f7425d0a-1e09-5783-b38d-7bc580262322"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2767,7 +2920,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|combination|normal",
       "expected_concerns": "dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "d3cb6159-0dca-5326-9048-1de612022f3b"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2785,7 +2939,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "oily|combination|normal|sensitive",
       "expected_concerns": "",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "a6bd971f-28ba-50c1-a7e5-37257109eb73"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2803,7 +2958,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "oily|combination|normal",
       "expected_concerns": "pores",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "f7425d0a-1e09-5783-b38d-7bc580262322"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2821,7 +2977,8 @@
       "budget_level": "premium",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "b43e33ea-6d40-55d2-b2d8-583a2e48c0bf"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2839,7 +2996,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|combination|normal",
       "expected_concerns": "dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "62c6b70b-3dc3-5288-ada0-4f9eac0aa326"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2857,7 +3015,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|combination|normal",
       "expected_concerns": "dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "d3cb6159-0dca-5326-9048-1de612022f3b"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2875,7 +3034,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "877014cb-5b13-5bfc-8d77-33ba7f891ad6"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2893,7 +3053,8 @@
       "budget_level": "premium",
       "expected_skin_types": "dry|combination|normal",
       "expected_concerns": "dryness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "f7425d0a-1e09-5783-b38d-7bc580262322"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2911,7 +3072,8 @@
       "budget_level": "premium",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "b43e33ea-6d40-55d2-b2d8-583a2e48c0bf"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2929,7 +3091,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|combination|normal",
       "expected_concerns": "dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "d3cb6159-0dca-5326-9048-1de612022f3b"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2947,7 +3110,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|combination|normal",
       "expected_concerns": "dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "62c6b70b-3dc3-5288-ada0-4f9eac0aa326"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2965,7 +3129,8 @@
       "budget_level": "premium",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "dryness",
-      "available_at": "department_store"
+      "available_at": "department_store",
+      "brand_id": "4625585b-b9bf-5f2d-9b06-98c1369e97be"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -2983,7 +3148,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|combination|normal",
       "expected_concerns": "dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "877014cb-5b13-5bfc-8d77-33ba7f891ad6"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3001,7 +3167,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "d3cb6159-0dca-5326-9048-1de612022f3b"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3019,7 +3186,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|combination|normal",
       "expected_concerns": "",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "f7425d0a-1e09-5783-b38d-7bc580262322"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3037,7 +3205,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "oily|combination|normal",
       "expected_concerns": "",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "a6bd971f-28ba-50c1-a7e5-37257109eb73"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3055,7 +3224,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|combination|normal",
       "expected_concerns": "dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "b43e33ea-6d40-55d2-b2d8-583a2e48c0bf"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3073,7 +3243,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "877014cb-5b13-5bfc-8d77-33ba7f891ad6"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3091,7 +3262,8 @@
       "budget_level": "budget",
       "expected_skin_types": "oily|combination|normal",
       "expected_concerns": "acne|pores",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "b3b18e2c-a2c3-5f1b-a516-7356612bcc95"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3109,7 +3281,8 @@
       "budget_level": "premium",
       "expected_skin_types": "dry|combination|normal",
       "expected_concerns": "dryness|dullness",
-      "available_at": "olive_young|department_store"
+      "available_at": "olive_young|department_store",
+      "brand_id": "36a31f48-958a-58ea-91c0-98cfb55939d9"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3127,7 +3300,8 @@
       "budget_level": "budget",
       "expected_skin_types": "oily|combination|sensitive",
       "expected_concerns": "acne|redness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "03752259-e005-5bb5-b5da-48b7e21d7736"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3145,7 +3319,8 @@
       "budget_level": "luxury",
       "expected_skin_types": "dry|sensitive|normal",
       "expected_concerns": "dryness",
-      "available_at": "department_store"
+      "available_at": "department_store",
+      "brand_id": "978acb93-0e9b-5b4c-a06f-85af32f9c879"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3163,7 +3338,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|combination|normal",
       "expected_concerns": "dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "877014cb-5b13-5bfc-8d77-33ba7f891ad6"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3181,7 +3357,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|combination|sensitive|normal",
       "expected_concerns": "dryness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "c1299996-d2e9-5240-aca2-000910beef78"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3199,7 +3376,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|sensitive|normal",
       "expected_concerns": "dryness|eczema",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "f99455d6-1f51-544c-99c7-19a9f9159609"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3217,7 +3395,8 @@
       "budget_level": "premium",
       "expected_skin_types": "dry|combination|normal",
       "expected_concerns": "dryness|dullness",
-      "available_at": "olive_young|department_store"
+      "available_at": "olive_young|department_store",
+      "brand_id": "36a31f48-958a-58ea-91c0-98cfb55939d9"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3235,7 +3414,8 @@
       "budget_level": "luxury",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "dryness|wrinkles|dullness",
-      "available_at": "department_store"
+      "available_at": "department_store",
+      "brand_id": "2c91919e-5bfd-57e9-8cf8-2ebbbdfac205"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3253,7 +3433,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|sensitive|normal",
       "expected_concerns": "dryness|eczema",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "5b714670-7359-51db-8253-5b446a2eee0c"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3271,7 +3452,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "976b48de-4429-5da4-9958-befb74ddaa42"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3289,7 +3471,8 @@
       "budget_level": "premium",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "dryness",
-      "available_at": "olive_young|department_store"
+      "available_at": "olive_young|department_store",
+      "brand_id": "cdecac6e-6a52-5ae2-b10b-9a7b57ecc455"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3307,7 +3490,8 @@
       "budget_level": "luxury",
       "expected_skin_types": "dry|oily|combination|sensitive|normal",
       "expected_concerns": "dryness",
-      "available_at": "brand_store|chicor"
+      "available_at": "brand_store|chicor",
+      "brand_id": "4296e2a1-7c29-53ac-8f60-29c4d4d8ad5d"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3325,7 +3509,8 @@
       "budget_level": "budget",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "dryness",
-      "available_at": "olive_young|brand_store"
+      "available_at": "olive_young|brand_store",
+      "brand_id": "b5355d4e-c43d-515e-a470-012e625a1190"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3343,7 +3528,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|combination|sensitive|normal",
       "expected_concerns": "sun_damage|dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "5d513efb-cb2e-5921-ab90-5aaae28f22fd"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3361,7 +3547,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "sensitive|dry|normal",
       "expected_concerns": "sun_damage|redness",
-      "available_at": "olive_young|chicor"
+      "available_at": "olive_young|chicor",
+      "brand_id": "f106ebb7-829b-5f3c-aeab-009f3848532a"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3379,7 +3566,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "sensitive|dry",
       "expected_concerns": "redness|acne|dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "03752259-e005-5bb5-b5da-48b7e21d7736"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3397,7 +3585,8 @@
       "budget_level": "moderate",
       "expected_skin_types": "dry|sensitive",
       "expected_concerns": "eczema|dryness|redness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "73de06cf-ee98-5db2-b856-e856ddab93cb"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3415,7 +3604,8 @@
       "budget_level": "budget",
       "expected_skin_types": "all",
       "expected_concerns": "",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "33f7e173-b86c-50da-9d2f-e6b11c8590e8"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3433,7 +3623,8 @@
       "budget_level": "budget",
       "expected_skin_types": "all",
       "expected_concerns": "",
-      "available_at": "olive_young|brand_store"
+      "available_at": "olive_young|brand_store",
+      "brand_id": "33f7e173-b86c-50da-9d2f-e6b11c8590e8"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3451,7 +3642,8 @@
       "budget_level": "budget",
       "expected_skin_types": "all",
       "expected_concerns": "",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "474ca76c-1674-535d-a07f-8e4c945800f7"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3469,7 +3661,8 @@
       "budget_level": "premium",
       "expected_skin_types": "all",
       "expected_concerns": "",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "474ca76c-1674-535d-a07f-8e4c945800f7"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3487,7 +3680,8 @@
       "budget_level": "budget",
       "expected_skin_types": "all",
       "expected_concerns": "",
-      "available_at": "daiso"
+      "available_at": "daiso",
+      "brand_id": "c974eab7-683c-5e13-8bd3-0efda633fec7"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3505,7 +3699,8 @@
       "budget_level": "budget",
       "expected_skin_types": "all",
       "expected_concerns": "",
-      "available_at": "olive_young|brand_store"
+      "available_at": "olive_young|brand_store",
+      "brand_id": "33f7e173-b86c-50da-9d2f-e6b11c8590e8"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3523,7 +3718,8 @@
       "budget_level": "premium",
       "expected_skin_types": "all",
       "expected_concerns": "",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "474ca76c-1674-535d-a07f-8e4c945800f7"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3541,7 +3737,8 @@
       "budget_level": "budget",
       "expected_skin_types": "all",
       "expected_concerns": "",
-      "available_at": "olive_young|brand_store"
+      "available_at": "olive_young|brand_store",
+      "brand_id": "33f7e173-b86c-50da-9d2f-e6b11c8590e8"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3559,7 +3756,8 @@
       "budget_level": "budget",
       "expected_skin_types": "oily|combination|normal",
       "expected_concerns": "dullness|dryness",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "b5355d4e-c43d-515e-a470-012e625a1190"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3577,7 +3775,8 @@
       "budget_level": "budget",
       "expected_skin_types": "all",
       "expected_concerns": "pores",
-      "available_at": "olive_young|innisfree_store"
+      "available_at": "olive_young|innisfree_store",
+      "brand_id": "f4f9081a-cac1-5388-b5ec-c86213241927"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   },
@@ -3595,7 +3794,8 @@
       "budget_level": "budget",
       "expected_skin_types": "all",
       "expected_concerns": "pores|acne",
-      "available_at": "olive_young"
+      "available_at": "olive_young",
+      "brand_id": "e4a9ac08-7641-507c-844e-777ba8ebe91c"
     },
     "fetchedAt": "2026-04-05T02:45:38.259Z"
   }
