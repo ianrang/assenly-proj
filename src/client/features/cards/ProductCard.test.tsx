@@ -103,3 +103,36 @@ describe("ProductCard english_label", () => {
     expect(screen.queryByText("English Label")).not.toBeInTheDocument();
   });
 });
+
+describe("ProductCard store map_url", () => {
+  it("store with map_url → 매장명 클릭 링크 렌더링", () => {
+    const product = makeProduct({ english_label: false });
+    const store = { name: { en: "Olive Young Myeongdong" }, map_url: "http://place.map.kakao.com/123" };
+
+    render(<ProductCard product={product} store={store} locale="en" />);
+
+    const link = screen.getByText("Olive Young Myeongdong");
+    expect(link.tagName).toBe("A");
+    expect(link).toHaveAttribute("href", "http://place.map.kakao.com/123");
+    expect(link).toHaveAttribute("target", "_blank");
+    expect(link).toHaveAttribute("rel", "noopener noreferrer");
+  });
+
+  it("store without map_url → 매장명 plain text 렌더링", () => {
+    const product = makeProduct({ english_label: false });
+    const store = { name: { en: "Olive Young Gangnam" } };
+
+    render(<ProductCard product={product} store={store} locale="en" />);
+
+    const text = screen.getByText("Olive Young Gangnam");
+    expect(text.tagName).not.toBe("A");
+  });
+
+  it("store 미제공 → store 영역 미렌더링", () => {
+    const product = makeProduct({ english_label: false });
+
+    render(<ProductCard product={product} locale="en" />);
+
+    expect(screen.queryByText("Olive Young")).not.toBeInTheDocument();
+  });
+});
