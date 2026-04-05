@@ -1,0 +1,2937 @@
+[
+  {
+    "source": "kakao",
+    "sourceId": "1560594650",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 명동역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 중구 퇴계로 134-1"
+      },
+      "location": {
+        "lat": 37.5607472660685,
+        "lng": 126.986735142877
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1560594650",
+      "raw": {
+        "address_name": "서울 중구 남산동3가 13-25",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1560594650",
+        "phone": "1522-4400",
+        "place_name": "다이소 명동역점",
+        "place_url": "http://place.map.kakao.com/1560594650",
+        "road_address_name": "서울 중구 퇴계로 134-1",
+        "x": "126.986735142877",
+        "y": "37.5607472660685"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "22986814",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 명동본점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 중구 명동길 43"
+      },
+      "location": {
+        "lat": 37.56387436587022,
+        "lng": 126.98459876663983
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/22986814",
+      "raw": {
+        "address_name": "서울 중구 명동1가 53-1",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "22986814",
+        "phone": "1522-4400",
+        "place_name": "다이소 명동본점",
+        "place_url": "http://place.map.kakao.com/22986814",
+        "road_address_name": "서울 중구 명동길 43",
+        "x": "126.98459876663983",
+        "y": "37.56387436587022"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "12638053",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 춘천명동점",
+        "en": ""
+      },
+      "address": {
+        "ko": "강원특별자치도 춘천시 명동길 3-1"
+      },
+      "location": {
+        "lat": 37.8797911506258,
+        "lng": 127.727973928432
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/12638053",
+      "raw": {
+        "address_name": "강원특별자치도 춘천시 조양동 50-10",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "12638053",
+        "phone": "1522-4400",
+        "place_name": "다이소 춘천명동점",
+        "place_url": "http://place.map.kakao.com/12638053",
+        "road_address_name": "강원특별자치도 춘천시 명동길 3-1",
+        "x": "127.727973928432",
+        "y": "37.8797911506258"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1054292118",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 홍대입구점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 마포구 홍익로 25"
+      },
+      "location": {
+        "lat": 37.554404431846,
+        "lng": 126.921965799285
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1054292118",
+      "raw": {
+        "address_name": "서울 마포구 서교동 356-1",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1054292118",
+        "phone": "1522-4400",
+        "place_name": "다이소 홍대입구점",
+        "place_url": "http://place.map.kakao.com/1054292118",
+        "road_address_name": "서울 마포구 홍익로 25",
+        "x": "126.921965799285",
+        "y": "37.554404431846"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1405945936",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 홍대2호점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 마포구 양화로 182"
+      },
+      "location": {
+        "lat": 37.55776208461751,
+        "lng": 126.92558848370766
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1405945936",
+      "raw": {
+        "address_name": "서울 마포구 동교동 167-29",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1405945936",
+        "phone": "1522-4400",
+        "place_name": "다이소 홍대2호점",
+        "place_url": "http://place.map.kakao.com/1405945936",
+        "road_address_name": "서울 마포구 양화로 182",
+        "x": "126.92558848370766",
+        "y": "37.55776208461751"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "639753223",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 합정동점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 마포구 독막로 33-1"
+      },
+      "location": {
+        "lat": 37.548381713343154,
+        "lng": 126.91733580463045
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/639753223",
+      "raw": {
+        "address_name": "서울 마포구 합정동 412-20",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "639753223",
+        "phone": "1522-4400",
+        "place_name": "다이소 합정동점",
+        "place_url": "http://place.map.kakao.com/639753223",
+        "road_address_name": "서울 마포구 독막로 33-1",
+        "x": "126.91733580463045",
+        "y": "37.548381713343154"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "27509219",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 신촌본점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 마포구 신촌로 90"
+      },
+      "location": {
+        "lat": 37.5553244353141,
+        "lng": 126.935545618006
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/27509219",
+      "raw": {
+        "address_name": "서울 마포구 노고산동 57-5",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "27509219",
+        "phone": "1522-4400",
+        "place_name": "다이소 신촌본점",
+        "place_url": "http://place.map.kakao.com/27509219",
+        "road_address_name": "서울 마포구 신촌로 90",
+        "x": "126.935545618006",
+        "y": "37.5553244353141"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1360006626",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 신촌명물거리점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 서대문구 명물길 27"
+      },
+      "location": {
+        "lat": 37.55825314339792,
+        "lng": 126.93810204058039
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1360006626",
+      "raw": {
+        "address_name": "서울 서대문구 창천동 31-82",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1360006626",
+        "phone": "1522-4400",
+        "place_name": "다이소 신촌명물거리점",
+        "place_url": "http://place.map.kakao.com/1360006626",
+        "road_address_name": "서울 서대문구 명물길 27",
+        "x": "126.93810204058039",
+        "y": "37.55825314339792"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "397134011",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 롯데슈퍼마포대흥점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 마포구 큰우물로 3"
+      },
+      "location": {
+        "lat": 37.5453942988324,
+        "lng": 126.94023891559
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/397134011",
+      "raw": {
+        "address_name": "서울 마포구 대흥동 337-10",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "397134011",
+        "phone": "1522-4400",
+        "place_name": "다이소 롯데슈퍼마포대흥점",
+        "place_url": "http://place.map.kakao.com/397134011",
+        "road_address_name": "서울 마포구 큰우물로 3",
+        "x": "126.94023891559",
+        "y": "37.5453942988324"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1153275914",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 연희동점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 서대문구 연희로 83"
+      },
+      "location": {
+        "lat": 37.565753779677166,
+        "lng": 126.92976626152571
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1153275914",
+      "raw": {
+        "address_name": "서울 서대문구 연희동 188-8",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1153275914",
+        "phone": "1522-4400",
+        "place_name": "다이소 연희동점",
+        "place_url": "http://place.map.kakao.com/1153275914",
+        "road_address_name": "서울 서대문구 연희로 83",
+        "x": "126.92976626152571",
+        "y": "37.565753779677166"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "515499388",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 합정동점 주차장",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 마포구 독막로 33-1"
+      },
+      "location": {
+        "lat": 37.54832497741137,
+        "lng": 126.91737434255563
+      },
+      "placeUrl": "http://place.map.kakao.com/515499388",
+      "raw": {
+        "address_name": "서울 마포구 합정동 412-20",
+        "category_group_code": "PK6",
+        "category_group_name": "주차장",
+        "category_name": "교통,수송 > 교통시설 > 주차장",
+        "distance": "",
+        "id": "515499388",
+        "phone": "",
+        "place_name": "다이소 합정동점 주차장",
+        "place_url": "http://place.map.kakao.com/515499388",
+        "road_address_name": "서울 마포구 독막로 33-1",
+        "x": "126.91737434255563",
+        "y": "37.54832497741137"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1353264614",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "KM파크 다이소합정동점 주차장",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 마포구 독막로 33-1"
+      },
+      "location": {
+        "lat": 37.5483177678453,
+        "lng": 126.917372087263
+      },
+      "placeUrl": "http://place.map.kakao.com/1353264614",
+      "raw": {
+        "address_name": "서울 마포구 합정동 412-20",
+        "category_group_code": "PK6",
+        "category_group_name": "주차장",
+        "category_name": "교통,수송 > 교통시설 > 주차장",
+        "distance": "",
+        "id": "1353264614",
+        "phone": "",
+        "place_name": "KM파크 다이소합정동점 주차장",
+        "place_url": "http://place.map.kakao.com/1353264614",
+        "road_address_name": "서울 마포구 독막로 33-1",
+        "x": "126.917372087263",
+        "y": "37.5483177678453"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "12638299",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 강남역2호점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 강남구 테헤란로 109"
+      },
+      "location": {
+        "lat": 37.49879250087535,
+        "lng": 127.02893351340299
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/12638299",
+      "raw": {
+        "address_name": "서울 강남구 역삼동 822-4",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "12638299",
+        "phone": "1522-4400",
+        "place_name": "다이소 강남역2호점",
+        "place_url": "http://place.map.kakao.com/12638299",
+        "road_address_name": "서울 강남구 테헤란로 109",
+        "x": "127.02893351340299",
+        "y": "37.49879250087535"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "12685183",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 영동프라자점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 강남구 강남대로128길 20"
+      },
+      "location": {
+        "lat": 37.50989853471386,
+        "lng": 127.02381981877886
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/12685183",
+      "raw": {
+        "address_name": "서울 강남구 논현동 140-1",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "12685183",
+        "phone": "1522-4400",
+        "place_name": "다이소 영동프라자점",
+        "place_url": "http://place.map.kakao.com/12685183",
+        "road_address_name": "서울 강남구 강남대로128길 20",
+        "x": "127.02381981877886",
+        "y": "37.50989853471386"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "236178791",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 선릉점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 강남구 테헤란로 414"
+      },
+      "location": {
+        "lat": 37.504884588507814,
+        "lng": 127.05158918968381
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/236178791",
+      "raw": {
+        "address_name": "서울 강남구 대치동 890-6",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "236178791",
+        "phone": "1522-4400",
+        "place_name": "다이소 선릉점",
+        "place_url": "http://place.map.kakao.com/236178791",
+        "road_address_name": "서울 강남구 테헤란로 414",
+        "x": "127.05158918968381",
+        "y": "37.504884588507814"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "76840863",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 강남역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 강남구 강남대로 422"
+      },
+      "location": {
+        "lat": 37.5003940501115,
+        "lng": 127.026984456104
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/76840863",
+      "raw": {
+        "address_name": "서울 강남구 역삼동 816",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "76840863",
+        "phone": "1522-4400",
+        "place_name": "다이소 강남역점",
+        "place_url": "http://place.map.kakao.com/76840863",
+        "road_address_name": "서울 강남구 강남대로 422",
+        "x": "127.026984456104",
+        "y": "37.5003940501115"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1794785085",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 신사역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 강남구 강남대로 606"
+      },
+      "location": {
+        "lat": 37.5158692700141,
+        "lng": 127.020156836984
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1794785085",
+      "raw": {
+        "address_name": "서울 강남구 논현동 1",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1794785085",
+        "phone": "1522-4400",
+        "place_name": "다이소 신사역점",
+        "place_url": "http://place.map.kakao.com/1794785085",
+        "road_address_name": "서울 강남구 강남대로 606",
+        "x": "127.020156836984",
+        "y": "37.5158692700141"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1129725658",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 압구정역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 강남구 논현로 878"
+      },
+      "location": {
+        "lat": 37.52689033284202,
+        "lng": 127.02885951443875
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1129725658",
+      "raw": {
+        "address_name": "서울 강남구 신사동 611",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1129725658",
+        "phone": "1522-4400",
+        "place_name": "다이소 압구정역점",
+        "place_url": "http://place.map.kakao.com/1129725658",
+        "road_address_name": "서울 강남구 논현로 878",
+        "x": "127.02885951443875",
+        "y": "37.52689033284202"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1924471023",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 대치역사거리점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 강남구 삼성로 155"
+      },
+      "location": {
+        "lat": 37.4938813994708,
+        "lng": 127.062951852624
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1924471023",
+      "raw": {
+        "address_name": "서울 강남구 대치동 507-2",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1924471023",
+        "phone": "1522-4400",
+        "place_name": "다이소 대치역사거리점",
+        "place_url": "http://place.map.kakao.com/1924471023",
+        "road_address_name": "서울 강남구 삼성로 155",
+        "x": "127.062951852624",
+        "y": "37.4938813994708"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "2054060171",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 매봉역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 강남구 남부순환로 2748"
+      },
+      "location": {
+        "lat": 37.48675368424477,
+        "lng": 127.04715004291832
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/2054060171",
+      "raw": {
+        "address_name": "서울 강남구 도곡동 463",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "2054060171",
+        "phone": "1522-4400",
+        "place_name": "다이소 매봉역점",
+        "place_url": "http://place.map.kakao.com/2054060171",
+        "road_address_name": "서울 강남구 남부순환로 2748",
+        "x": "127.04715004291832",
+        "y": "37.48675368424477"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "570158552",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 한티역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 강남구 선릉로 227"
+      },
+      "location": {
+        "lat": 37.495845157190466,
+        "lng": 127.05280992527157
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/570158552",
+      "raw": {
+        "address_name": "서울 강남구 도곡동 538-1",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "570158552",
+        "phone": "1522-4400",
+        "place_name": "다이소 한티역점",
+        "place_url": "http://place.map.kakao.com/570158552",
+        "road_address_name": "서울 강남구 선릉로 227",
+        "x": "127.05280992527157",
+        "y": "37.495845157190466"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "122262343",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 코엑스몰점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 강남구 삼성동 159-9"
+      },
+      "location": {
+        "lat": 37.51112926916258,
+        "lng": 127.06139302551308
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/122262343",
+      "raw": {
+        "address_name": "서울 강남구 삼성동 159-9",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "122262343",
+        "phone": "1522-4400",
+        "place_name": "다이소 코엑스몰점",
+        "place_url": "http://place.map.kakao.com/122262343",
+        "road_address_name": "",
+        "x": "127.06139302551308",
+        "y": "37.51112926916258"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1714595760",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 도곡점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 강남구 도곡로 188"
+      },
+      "location": {
+        "lat": 37.49186052767534,
+        "lng": 127.04000676501028
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1714595760",
+      "raw": {
+        "address_name": "서울 강남구 도곡동 544-2",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1714595760",
+        "phone": "1522-4400",
+        "place_name": "다이소 도곡점",
+        "place_url": "http://place.map.kakao.com/1714595760",
+        "road_address_name": "서울 강남구 도곡로 188",
+        "x": "127.04000676501028",
+        "y": "37.49186052767534"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1129008111",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 일원역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 강남구 일원로 115"
+      },
+      "location": {
+        "lat": 37.4841288403895,
+        "lng": 127.084669237513
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1129008111",
+      "raw": {
+        "address_name": "서울 강남구 일원동 717",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1129008111",
+        "phone": "1522-4400",
+        "place_name": "다이소 일원역점",
+        "place_url": "http://place.map.kakao.com/1129008111",
+        "road_address_name": "서울 강남구 일원로 115",
+        "x": "127.084669237513",
+        "y": "37.4841288403895"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "222284138",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 개포동점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 강남구 선릉로 30"
+      },
+      "location": {
+        "lat": 37.48251072341752,
+        "lng": 127.06115591240628
+      },
+      "phone": "02-576-6016",
+      "placeUrl": "http://place.map.kakao.com/222284138",
+      "raw": {
+        "address_name": "서울 강남구 개포동 167-4",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "222284138",
+        "phone": "02-576-6016",
+        "place_name": "다이소 개포동점",
+        "place_url": "http://place.map.kakao.com/222284138",
+        "road_address_name": "서울 강남구 선릉로 30",
+        "x": "127.06115591240628",
+        "y": "37.48251072341752"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "710340303",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 강남세곡점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 강남구 헌릉로569길 21-36"
+      },
+      "location": {
+        "lat": 37.4663776465103,
+        "lng": 127.10016154505
+      },
+      "phone": "02-445-4102",
+      "placeUrl": "http://place.map.kakao.com/710340303",
+      "raw": {
+        "address_name": "서울 강남구 세곡동 613",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "710340303",
+        "phone": "02-445-4102",
+        "place_name": "다이소 강남세곡점",
+        "place_url": "http://place.map.kakao.com/710340303",
+        "road_address_name": "서울 강남구 헌릉로569길 21-36",
+        "x": "127.10016154505",
+        "y": "37.4663776465103"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "276601934",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 고객사랑마트포이점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 강남구 논현로10길 29"
+      },
+      "location": {
+        "lat": 37.4753257535791,
+        "lng": 127.050385206138
+      },
+      "placeUrl": "http://place.map.kakao.com/276601934",
+      "raw": {
+        "address_name": "서울 강남구 개포동 1197-2",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "276601934",
+        "phone": "",
+        "place_name": "다이소 고객사랑마트포이점",
+        "place_url": "http://place.map.kakao.com/276601934",
+        "road_address_name": "서울 강남구 논현로10길 29",
+        "x": "127.050385206138",
+        "y": "37.4753257535791"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1990487887",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 강남구청역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 강남구 학동로 지하 346"
+      },
+      "location": {
+        "lat": 37.5172188817124,
+        "lng": 127.041291718059
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1990487887",
+      "raw": {
+        "address_name": "서울 강남구 삼성동 111-114",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1990487887",
+        "phone": "1522-4400",
+        "place_name": "다이소 강남구청역점",
+        "place_url": "http://place.map.kakao.com/1990487887",
+        "road_address_name": "서울 강남구 학동로 지하 346",
+        "x": "127.041291718059",
+        "y": "37.5172188817124"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "11793139",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 양재2호점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 서초구 남부순환로 2614"
+      },
+      "location": {
+        "lat": 37.484450832655114,
+        "lng": 127.03663118036874
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/11793139",
+      "raw": {
+        "address_name": "서울 서초구 양재동 11-17",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "11793139",
+        "phone": "1522-4400",
+        "place_name": "다이소 양재2호점",
+        "place_url": "http://place.map.kakao.com/11793139",
+        "road_address_name": "서울 서초구 남부순환로 2614",
+        "x": "127.03663118036874",
+        "y": "37.484450832655114"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "260651341",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 잠실종합운동장역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 송파구 올림픽로 74"
+      },
+      "location": {
+        "lat": 37.51142616713201,
+        "lng": 127.07882190110313
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/260651341",
+      "raw": {
+        "address_name": "서울 송파구 잠실동 175-4",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "260651341",
+        "phone": "1522-4400",
+        "place_name": "다이소 잠실종합운동장역점",
+        "place_url": "http://place.map.kakao.com/260651341",
+        "road_address_name": "서울 송파구 올림픽로 74",
+        "x": "127.07882190110313",
+        "y": "37.51142616713201"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "11793176",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 잠실점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 송파구 석촌호수로 88"
+      },
+      "location": {
+        "lat": 37.50862738104728,
+        "lng": 127.0869080564104
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/11793176",
+      "raw": {
+        "address_name": "서울 송파구 잠실동 209-5",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "11793176",
+        "phone": "1522-4400",
+        "place_name": "다이소 잠실점",
+        "place_url": "http://place.map.kakao.com/11793176",
+        "road_address_name": "서울 송파구 석촌호수로 88",
+        "x": "127.0869080564104",
+        "y": "37.50862738104728"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1317879205",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 배명사거리점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 송파구 삼학사로 53"
+      },
+      "location": {
+        "lat": 37.5020172740488,
+        "lng": 127.096617312639
+      },
+      "phone": "02-412-8982",
+      "placeUrl": "http://place.map.kakao.com/1317879205",
+      "raw": {
+        "address_name": "서울 송파구 삼전동 180-8",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1317879205",
+        "phone": "02-412-8982",
+        "place_name": "다이소 배명사거리점",
+        "place_url": "http://place.map.kakao.com/1317879205",
+        "road_address_name": "서울 송파구 삼학사로 53",
+        "x": "127.096617312639",
+        "y": "37.5020172740488"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "11793198",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 하나로클럽양재점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 서초구 청계산로 10"
+      },
+      "location": {
+        "lat": 37.4630139515522,
+        "lng": 127.04463482220477
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/11793198",
+      "raw": {
+        "address_name": "서울 서초구 양재동 230",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "11793198",
+        "phone": "1522-4400",
+        "place_name": "다이소 하나로클럽양재점",
+        "place_url": "http://place.map.kakao.com/11793198",
+        "road_address_name": "서울 서초구 청계산로 10",
+        "x": "127.04463482220477",
+        "y": "37.4630139515522"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1358035204",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 교대역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 서초구 서초대로 320"
+      },
+      "location": {
+        "lat": 37.494240319139365,
+        "lng": 127.01638542759977
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1358035204",
+      "raw": {
+        "address_name": "서울 서초구 서초동 1674-4",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1358035204",
+        "phone": "1522-4400",
+        "place_name": "다이소 교대역점",
+        "place_url": "http://place.map.kakao.com/1358035204",
+        "road_address_name": "서울 서초구 서초대로 320",
+        "x": "127.01638542759977",
+        "y": "37.494240319139365"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "18664052",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 남부터미널점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 서초구 서초중앙로 36"
+      },
+      "location": {
+        "lat": 37.48528429362932,
+        "lng": 127.0164513118956
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/18664052",
+      "raw": {
+        "address_name": "서울 서초구 서초동 1603-7",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "18664052",
+        "phone": "1522-4400",
+        "place_name": "다이소 남부터미널점",
+        "place_url": "http://place.map.kakao.com/18664052",
+        "road_address_name": "서울 서초구 서초중앙로 36",
+        "x": "127.0164513118956",
+        "y": "37.48528429362932"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1844214118",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 강남고속버스터미널점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 서초구 신반포로 194"
+      },
+      "location": {
+        "lat": 37.50618406644381,
+        "lng": 127.00728696529679
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1844214118",
+      "raw": {
+        "address_name": "서울 서초구 반포동 19-4",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1844214118",
+        "phone": "1522-4400",
+        "place_name": "다이소 강남고속버스터미널점",
+        "place_url": "http://place.map.kakao.com/1844214118",
+        "road_address_name": "서울 서초구 신반포로 194",
+        "x": "127.00728696529679",
+        "y": "37.50618406644381"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "17103563",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 석촌점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 송파구 가락로 103"
+      },
+      "location": {
+        "lat": 37.50125646507065,
+        "lng": 127.1074651969686
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/17103563",
+      "raw": {
+        "address_name": "서울 송파구 석촌동 277-2",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "17103563",
+        "phone": "1522-4400",
+        "place_name": "다이소 석촌점",
+        "place_url": "http://place.map.kakao.com/17103563",
+        "road_address_name": "서울 송파구 가락로 103",
+        "x": "127.1074651969686",
+        "y": "37.50125646507065"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1541269811",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 송파구청점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 송파구 오금로 87"
+      },
+      "location": {
+        "lat": 37.51439129690924,
+        "lng": 127.10747837241368
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1541269811",
+      "raw": {
+        "address_name": "서울 송파구 방이동 22-5",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1541269811",
+        "phone": "1522-4400",
+        "place_name": "다이소 송파구청점",
+        "place_url": "http://place.map.kakao.com/1541269811",
+        "road_address_name": "서울 송파구 오금로 87",
+        "x": "127.10747837241368",
+        "y": "37.51439129690924"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1486558044",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 롯데마트월드타워점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 송파구 올림픽로 300"
+      },
+      "location": {
+        "lat": 37.51369554519908,
+        "lng": 127.104665454297
+      },
+      "phone": "02-3213-2852",
+      "placeUrl": "http://place.map.kakao.com/1486558044",
+      "raw": {
+        "address_name": "서울 송파구 신천동 29",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1486558044",
+        "phone": "02-3213-2852",
+        "place_name": "다이소 롯데마트월드타워점",
+        "place_url": "http://place.map.kakao.com/1486558044",
+        "road_address_name": "서울 송파구 올림픽로 300",
+        "x": "127.104665454297",
+        "y": "37.51369554519908"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "21852996",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 성수2가점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 성동구 성덕정길 106"
+      },
+      "location": {
+        "lat": 37.5371902278691,
+        "lng": 127.055169870988
+      },
+      "phone": "02-465-1331",
+      "placeUrl": "http://place.map.kakao.com/21852996",
+      "raw": {
+        "address_name": "서울 성동구 성수동2가 561-1",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "21852996",
+        "phone": "02-465-1331",
+        "place_name": "다이소 성수2가점",
+        "place_url": "http://place.map.kakao.com/21852996",
+        "road_address_name": "서울 성동구 성덕정길 106",
+        "x": "127.055169870988",
+        "y": "37.5371902278691"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "17725411",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 구의역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 광진구 아차산로 378"
+      },
+      "location": {
+        "lat": 37.5365421045504,
+        "lng": 127.084609660009
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/17725411",
+      "raw": {
+        "address_name": "서울 광진구 자양동 216-19",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "17725411",
+        "phone": "1522-4400",
+        "place_name": "다이소 구의역점",
+        "place_url": "http://place.map.kakao.com/17725411",
+        "road_address_name": "서울 광진구 아차산로 378",
+        "x": "127.084609660009",
+        "y": "37.5365421045504"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "21852984",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 방이시장점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 송파구 백제고분로48길 5"
+      },
+      "location": {
+        "lat": 37.511701978757,
+        "lng": 127.11401550653349
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/21852984",
+      "raw": {
+        "address_name": "서울 송파구 방이동 148-3",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "21852984",
+        "phone": "1522-4400",
+        "place_name": "다이소 방이시장점",
+        "place_url": "http://place.map.kakao.com/21852984",
+        "road_address_name": "서울 송파구 백제고분로48길 5",
+        "x": "127.11401550653349",
+        "y": "37.511701978757"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1641287774",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 e에브리데이내곡점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 서초구 청계산로9길 70"
+      },
+      "location": {
+        "lat": 37.4534376158203,
+        "lng": 127.059764698019
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1641287774",
+      "raw": {
+        "address_name": "서울 서초구 내곡동 391",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1641287774",
+        "phone": "1522-4400",
+        "place_name": "다이소 e에브리데이내곡점",
+        "place_url": "http://place.map.kakao.com/1641287774",
+        "road_address_name": "서울 서초구 청계산로9길 70",
+        "x": "127.059764698019",
+        "y": "37.4534376158203"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "21852962",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 건대입구점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 광진구 아차산로 225"
+      },
+      "location": {
+        "lat": 37.5409061736365,
+        "lng": 127.068510891094
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/21852962",
+      "raw": {
+        "address_name": "서울 광진구 화양동 7-44",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "21852962",
+        "phone": "1522-4400",
+        "place_name": "다이소 건대입구점",
+        "place_url": "http://place.map.kakao.com/21852962",
+        "road_address_name": "서울 광진구 아차산로 225",
+        "x": "127.068510891094",
+        "y": "37.5409061736365"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "45634837",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 강남고속버스터미널2호점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 서초구 신반포로 194"
+      },
+      "location": {
+        "lat": 37.506435473916,
+        "lng": 127.00683459242
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/45634837",
+      "raw": {
+        "address_name": "서울 서초구 반포동 19-4",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "45634837",
+        "phone": "1522-4400",
+        "place_name": "다이소 강남고속버스터미널2호점",
+        "place_url": "http://place.map.kakao.com/45634837",
+        "road_address_name": "서울 서초구 신반포로 194",
+        "x": "127.00683459242",
+        "y": "37.506435473916"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1503816135",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 롯데마트서초점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 서초구 서초대로38길 12"
+      },
+      "location": {
+        "lat": 37.4901344937697,
+        "lng": 127.006343493272
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1503816135",
+      "raw": {
+        "address_name": "서울 서초구 서초동 1498-5",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1503816135",
+        "phone": "1522-4400",
+        "place_name": "다이소 롯데마트서초점",
+        "place_url": "http://place.map.kakao.com/1503816135",
+        "road_address_name": "서울 서초구 서초대로38길 12",
+        "x": "127.006343493272",
+        "y": "37.4901344937697"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "27442702",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 가락시장역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 송파구 중대로 109"
+      },
+      "location": {
+        "lat": 37.49371154901518,
+        "lng": 127.12043032482507
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/27442702",
+      "raw": {
+        "address_name": "서울 송파구 가락동 79-3",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "27442702",
+        "phone": "1522-4400",
+        "place_name": "다이소 가락시장역점",
+        "place_url": "http://place.map.kakao.com/27442702",
+        "road_address_name": "서울 송파구 중대로 109",
+        "x": "127.12043032482507",
+        "y": "37.49371154901518"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1426830584",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 롯데마트송파점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 송파구 중대로 80"
+      },
+      "location": {
+        "lat": 37.4917616761906,
+        "lng": 127.117843381575
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1426830584",
+      "raw": {
+        "address_name": "서울 송파구 문정동 150-2",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1426830584",
+        "phone": "1522-4400",
+        "place_name": "다이소 롯데마트송파점",
+        "place_url": "http://place.map.kakao.com/1426830584",
+        "road_address_name": "서울 송파구 중대로 80",
+        "x": "127.117843381575",
+        "y": "37.4917616761906"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1566164093",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 한샘마트성수점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 성동구 성수이로 118"
+      },
+      "location": {
+        "lat": 37.5448557093636,
+        "lng": 127.057528060351
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1566164093",
+      "raw": {
+        "address_name": "서울 성동구 성수동2가 277-17",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1566164093",
+        "phone": "1522-4400",
+        "place_name": "다이소 한샘마트성수점",
+        "place_url": "http://place.map.kakao.com/1566164093",
+        "road_address_name": "서울 성동구 성수이로 118",
+        "x": "127.057528060351",
+        "y": "37.5448557093636"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1539041315",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 스타시티건대점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 광진구 능동로 92"
+      },
+      "location": {
+        "lat": 37.5390375712368,
+        "lng": 127.071431807941
+      },
+      "placeUrl": "http://place.map.kakao.com/1539041315",
+      "raw": {
+        "address_name": "서울 광진구 자양동 227-342",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1539041315",
+        "phone": "",
+        "place_name": "다이소 스타시티건대점",
+        "place_url": "http://place.map.kakao.com/1539041315",
+        "road_address_name": "서울 광진구 능동로 92",
+        "x": "127.071431807941",
+        "y": "37.5390375712368"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "625303960",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 송파파크하비오점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 송파구 송파대로 111"
+      },
+      "location": {
+        "lat": 37.48123965095767,
+        "lng": 127.12233234690233
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/625303960",
+      "raw": {
+        "address_name": "서울 송파구 문정동 618",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "625303960",
+        "phone": "1522-4400",
+        "place_name": "다이소 송파파크하비오점",
+        "place_url": "http://place.map.kakao.com/625303960",
+        "road_address_name": "서울 송파구 송파대로 111",
+        "x": "127.12233234690233",
+        "y": "37.48123965095767"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "103695048",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 문정역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 송파구 문정로 1"
+      },
+      "location": {
+        "lat": 37.4863592960407,
+        "lng": 127.123086949814
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/103695048",
+      "raw": {
+        "address_name": "서울 송파구 문정동 55-6",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "103695048",
+        "phone": "1522-4400",
+        "place_name": "다이소 문정역점",
+        "place_url": "http://place.map.kakao.com/103695048",
+        "road_address_name": "서울 송파구 문정로 1",
+        "x": "127.123086949814",
+        "y": "37.4863592960407"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "14822092",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 방배역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 서초구 효령로 117"
+      },
+      "location": {
+        "lat": 37.4814813436046,
+        "lng": 126.997051350722
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/14822092",
+      "raw": {
+        "address_name": "서울 서초구 방배동 909-8",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "14822092",
+        "phone": "1522-4400",
+        "place_name": "다이소 방배역점",
+        "place_url": "http://place.map.kakao.com/14822092",
+        "road_address_name": "서울 서초구 효령로 117",
+        "x": "126.997051350722",
+        "y": "37.4814813436046"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "458841568",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 GS슈퍼광진화양점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 광진구 능동로13길 39"
+      },
+      "location": {
+        "lat": 37.5437453295366,
+        "lng": 127.06986683064
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/458841568",
+      "raw": {
+        "address_name": "서울 광진구 화양동 10-1",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "458841568",
+        "phone": "1522-4400",
+        "place_name": "다이소 GS슈퍼광진화양점",
+        "place_url": "http://place.map.kakao.com/458841568",
+        "road_address_name": "서울 광진구 능동로13길 39",
+        "x": "127.06986683064",
+        "y": "37.5437453295366"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1876169389",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 엔터식스강변점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 광진구 광나루로56길 85"
+      },
+      "location": {
+        "lat": 37.5358182929627,
+        "lng": 127.095639216869
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1876169389",
+      "raw": {
+        "address_name": "서울 광진구 구의동 546-4",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1876169389",
+        "phone": "1522-4400",
+        "place_name": "다이소 엔터식스강변점",
+        "place_url": "http://place.map.kakao.com/1876169389",
+        "road_address_name": "서울 광진구 광나루로56길 85",
+        "x": "127.095639216869",
+        "y": "37.5358182929627"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "11793026",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 내방역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 서초구 서초대로24길 3"
+      },
+      "location": {
+        "lat": 37.4872836794039,
+        "lng": 126.993197681767
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/11793026",
+      "raw": {
+        "address_name": "서울 서초구 방배동 936-1",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "11793026",
+        "phone": "1522-4400",
+        "place_name": "다이소 내방역점",
+        "place_url": "http://place.map.kakao.com/11793026",
+        "road_address_name": "서울 서초구 서초대로24길 3",
+        "x": "126.993197681767",
+        "y": "37.4872836794039"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1837435518",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 현대시티몰가든파이브점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 송파구 충민로 66"
+      },
+      "location": {
+        "lat": 37.47753258494881,
+        "lng": 127.12436130622311
+      },
+      "phone": "02-2673-2203",
+      "placeUrl": "http://place.map.kakao.com/1837435518",
+      "raw": {
+        "address_name": "서울 송파구 문정동 634",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1837435518",
+        "phone": "02-2673-2203",
+        "place_name": "다이소 현대시티몰가든파이브점",
+        "place_url": "http://place.map.kakao.com/1837435518",
+        "road_address_name": "서울 송파구 충민로 66",
+        "x": "127.12436130622311",
+        "y": "37.47753258494881"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "290117865",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 이태원점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 용산구 이태원로15길 1"
+      },
+      "location": {
+        "lat": 37.53447357859683,
+        "lng": 126.99021550952241
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/290117865",
+      "raw": {
+        "address_name": "서울 용산구 이태원동 181-8",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "290117865",
+        "phone": "1522-4400",
+        "place_name": "다이소 이태원점",
+        "place_url": "http://place.map.kakao.com/290117865",
+        "road_address_name": "서울 용산구 이태원로15길 1",
+        "x": "126.99021550952241",
+        "y": "37.53447357859683"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "578320532",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 뚝섬역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 성동구 아차산로 6"
+      },
+      "location": {
+        "lat": 37.5476938415278,
+        "lng": 127.045124332604
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/578320532",
+      "raw": {
+        "address_name": "서울 성동구 성수동1가 656-1731",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "578320532",
+        "phone": "1522-4400",
+        "place_name": "다이소 뚝섬역점",
+        "place_url": "http://place.map.kakao.com/578320532",
+        "road_address_name": "서울 성동구 아차산로 6",
+        "x": "127.045124332604",
+        "y": "37.5476938415278"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "11793023",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 금호금남시장점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 성동구 독서당로 292"
+      },
+      "location": {
+        "lat": 37.54788340063313,
+        "lng": 127.02154602984955
+      },
+      "phone": "02-2298-6015",
+      "placeUrl": "http://place.map.kakao.com/11793023",
+      "raw": {
+        "address_name": "서울 성동구 금호동4가 573",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "11793023",
+        "phone": "02-2298-6015",
+        "place_name": "다이소 금호금남시장점",
+        "place_url": "http://place.map.kakao.com/11793023",
+        "road_address_name": "서울 성동구 독서당로 292",
+        "x": "127.02154602984955",
+        "y": "37.54788340063313"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "518684039",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 비트플렉스 왕십리역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 성동구 왕십리광장로 17"
+      },
+      "location": {
+        "lat": 37.5614409428574,
+        "lng": 127.038391477602
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/518684039",
+      "raw": {
+        "address_name": "서울 성동구 행당동 168-151",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "518684039",
+        "phone": "1522-4400",
+        "place_name": "다이소 비트플렉스 왕십리역점",
+        "place_url": "http://place.map.kakao.com/518684039",
+        "road_address_name": "서울 성동구 왕십리광장로 17",
+        "x": "127.038391477602",
+        "y": "37.5614409428574"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "18721350",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 롯데마트행당역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 성동구 행당로 84"
+      },
+      "location": {
+        "lat": 37.5565710852823,
+        "lng": 127.028778153539
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/18721350",
+      "raw": {
+        "address_name": "서울 성동구 행당동 346",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "18721350",
+        "phone": "1522-4400",
+        "place_name": "다이소 롯데마트행당역점",
+        "place_url": "http://place.map.kakao.com/18721350",
+        "road_address_name": "서울 성동구 행당로 84",
+        "x": "127.028778153539",
+        "y": "37.5565710852823"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "8770475",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 옥수역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 성동구 동호로 21"
+      },
+      "location": {
+        "lat": 37.54168071099201,
+        "lng": 127.0173553375649
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/8770475",
+      "raw": {
+        "address_name": "서울 성동구 옥수동 168-1",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "8770475",
+        "phone": "1522-4400",
+        "place_name": "다이소 옥수역점",
+        "place_url": "http://place.map.kakao.com/8770475",
+        "road_address_name": "서울 성동구 동호로 21",
+        "x": "127.0173553375649",
+        "y": "37.54168071099201"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "335201105",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 화양동점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 광진구 광나루로 370"
+      },
+      "location": {
+        "lat": 37.5476613587559,
+        "lng": 127.07089572924512
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/335201105",
+      "raw": {
+        "address_name": "서울 광진구 화양동 116-2",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "335201105",
+        "phone": "1522-4400",
+        "place_name": "다이소 화양동점",
+        "place_url": "http://place.map.kakao.com/335201105",
+        "road_address_name": "서울 광진구 광나루로 370",
+        "x": "127.07089572924512",
+        "y": "37.5476613587559"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "21852973",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 답십리점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 성동구 천호대로 308"
+      },
+      "location": {
+        "lat": 37.5651972386277,
+        "lng": 127.054343871924
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/21852973",
+      "raw": {
+        "address_name": "서울 성동구 용답동 62-2",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "21852973",
+        "phone": "1522-4400",
+        "place_name": "다이소 답십리점",
+        "place_url": "http://place.map.kakao.com/21852973",
+        "road_address_name": "서울 성동구 천호대로 308",
+        "x": "127.054343871924",
+        "y": "37.5651972386277"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "179502328",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 상왕십리역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 성동구 왕십리로 373"
+      },
+      "location": {
+        "lat": 37.5642979721057,
+        "lng": 127.028663411408
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/179502328",
+      "raw": {
+        "address_name": "서울 성동구 하왕십리동 903-12",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "179502328",
+        "phone": "1522-4400",
+        "place_name": "다이소 상왕십리역점",
+        "place_url": "http://place.map.kakao.com/179502328",
+        "road_address_name": "서울 성동구 왕십리로 373",
+        "x": "127.028663411408",
+        "y": "37.5642979721057"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "26855833",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 동대문점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 종로구 율곡로 309"
+      },
+      "location": {
+        "lat": 37.57017291103336,
+        "lng": 127.00996461186533
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/26855833",
+      "raw": {
+        "address_name": "서울 종로구 창신동 440-10",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "26855833",
+        "phone": "1522-4400",
+        "place_name": "다이소 동대문점",
+        "place_url": "http://place.map.kakao.com/26855833",
+        "road_address_name": "서울 종로구 율곡로 309",
+        "x": "127.00996461186533",
+        "y": "37.57017291103336"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1260612341",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 던던동대문점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 중구 을지로 264"
+      },
+      "location": {
+        "lat": 37.5657600421876,
+        "lng": 127.007079969366
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1260612341",
+      "raw": {
+        "address_name": "서울 중구 을지로6가 21-31",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1260612341",
+        "phone": "1522-4400",
+        "place_name": "다이소 던던동대문점",
+        "place_url": "http://place.map.kakao.com/1260612341",
+        "road_address_name": "서울 중구 을지로 264",
+        "x": "127.007079969366",
+        "y": "37.5657600421876"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1503874965",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 현대시티아울렛동대문점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 중구 장충단로13길 20"
+      },
+      "location": {
+        "lat": 37.568983771155644,
+        "lng": 127.00762700072298
+      },
+      "placeUrl": "http://place.map.kakao.com/1503874965",
+      "raw": {
+        "address_name": "서울 중구 을지로6가 17-2",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1503874965",
+        "phone": "",
+        "place_name": "다이소 현대시티아울렛동대문점",
+        "place_url": "http://place.map.kakao.com/1503874965",
+        "road_address_name": "서울 중구 장충단로13길 20",
+        "x": "127.00762700072298",
+        "y": "37.568983771155644"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "11793187",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 청량리역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 동대문구 왕산로 195"
+      },
+      "location": {
+        "lat": 37.5802380078742,
+        "lng": 127.04464810283949
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/11793187",
+      "raw": {
+        "address_name": "서울 동대문구 청량리동 749",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "11793187",
+        "phone": "1522-4400",
+        "place_name": "다이소 청량리역점",
+        "place_url": "http://place.map.kakao.com/11793187",
+        "road_address_name": "서울 동대문구 왕산로 195",
+        "x": "127.04464810283949",
+        "y": "37.5802380078742"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "17725359",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 장안사거리점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 동대문구 장한로25길 2"
+      },
+      "location": {
+        "lat": 37.571898000237965,
+        "lng": 127.07118244912462
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/17725359",
+      "raw": {
+        "address_name": "서울 동대문구 장안동 369-3",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "17725359",
+        "phone": "1522-4400",
+        "place_name": "다이소 장안사거리점",
+        "place_url": "http://place.map.kakao.com/17725359",
+        "road_address_name": "서울 동대문구 장한로25길 2",
+        "x": "127.07118244912462",
+        "y": "37.571898000237965"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "11793208",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 회기역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 동대문구 회기로 187"
+      },
+      "location": {
+        "lat": 37.5901068016717,
+        "lng": 127.056730662121
+      },
+      "phone": "070-8259-3320",
+      "placeUrl": "http://place.map.kakao.com/11793208",
+      "raw": {
+        "address_name": "서울 동대문구 휘경동 320-3",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "11793208",
+        "phone": "070-8259-3320",
+        "place_name": "다이소 회기역점",
+        "place_url": "http://place.map.kakao.com/11793208",
+        "road_address_name": "서울 동대문구 회기로 187",
+        "x": "127.056730662121",
+        "y": "37.5901068016717"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "486217843",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 장한평역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 동대문구 장한로 10"
+      },
+      "location": {
+        "lat": 37.56240209550383,
+        "lng": 127.06549384752849
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/486217843",
+      "raw": {
+        "address_name": "서울 동대문구 장안동 433-7",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "486217843",
+        "phone": "1522-4400",
+        "place_name": "다이소 장한평역점",
+        "place_url": "http://place.map.kakao.com/486217843",
+        "road_address_name": "서울 동대문구 장한로 10",
+        "x": "127.06549384752849",
+        "y": "37.56240209550383"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1856594670",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 경동시장점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 동대문구 고산자로 441"
+      },
+      "location": {
+        "lat": 37.57902304099789,
+        "lng": 127.03815936808753
+      },
+      "phone": "0507-1488-1012",
+      "placeUrl": "http://place.map.kakao.com/1856594670",
+      "raw": {
+        "address_name": "서울 동대문구 제기동 1054-1",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1856594670",
+        "phone": "0507-1488-1012",
+        "place_name": "다이소 경동시장점",
+        "place_url": "http://place.map.kakao.com/1856594670",
+        "road_address_name": "서울 동대문구 고산자로 441",
+        "x": "127.03815936808753",
+        "y": "37.57902304099789"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "21853010",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 외대역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 동대문구 휘경로 15"
+      },
+      "location": {
+        "lat": 37.595860613800646,
+        "lng": 127.06195061207701
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/21853010",
+      "raw": {
+        "address_name": "서울 동대문구 이문동 305-151",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "21853010",
+        "phone": "1522-4400",
+        "place_name": "다이소 외대역점",
+        "place_url": "http://place.map.kakao.com/21853010",
+        "road_address_name": "서울 동대문구 휘경로 15",
+        "x": "127.06195061207701",
+        "y": "37.595860613800646"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "19322729",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 롯데마트청량리점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 동대문구 왕산로 214"
+      },
+      "location": {
+        "lat": 37.5803220230868,
+        "lng": 127.048644500966
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/19322729",
+      "raw": {
+        "address_name": "서울 동대문구 전농동 588-1",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "19322729",
+        "phone": "1522-4400",
+        "place_name": "다이소 롯데마트청량리점",
+        "place_url": "http://place.map.kakao.com/19322729",
+        "road_address_name": "서울 동대문구 왕산로 214",
+        "x": "127.048644500966",
+        "y": "37.5803220230868"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "24927008",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 전농점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 동대문구 사가정로 121"
+      },
+      "location": {
+        "lat": 37.57781638185462,
+        "lng": 127.05851906644028
+      },
+      "phone": "070-7739-3320",
+      "placeUrl": "http://place.map.kakao.com/24927008",
+      "raw": {
+        "address_name": "서울 동대문구 전농동 38-24",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "24927008",
+        "phone": "070-7739-3320",
+        "place_name": "다이소 전농점",
+        "place_url": "http://place.map.kakao.com/24927008",
+        "road_address_name": "서울 동대문구 사가정로 121",
+        "x": "127.05851906644028",
+        "y": "37.57781638185462"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1294871788",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 e에브리데이이문점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 동대문구 이문로 136"
+      },
+      "location": {
+        "lat": 37.5984915417833,
+        "lng": 127.061885982636
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1294871788",
+      "raw": {
+        "address_name": "서울 동대문구 이문동 292-10",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1294871788",
+        "phone": "1522-4400",
+        "place_name": "다이소 e에브리데이이문점",
+        "place_url": "http://place.map.kakao.com/1294871788",
+        "road_address_name": "서울 동대문구 이문로 136",
+        "x": "127.061885982636",
+        "y": "37.5984915417833"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1028758423",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 하이웨이마트구의점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 광진구 광나루로 516"
+      },
+      "location": {
+        "lat": 37.5446415112952,
+        "lng": 127.086652243929
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1028758423",
+      "raw": {
+        "address_name": "서울 광진구 구의동 234-4",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1028758423",
+        "phone": "1522-4400",
+        "place_name": "다이소 하이웨이마트구의점",
+        "place_url": "http://place.map.kakao.com/1028758423",
+        "road_address_name": "서울 광진구 광나루로 516",
+        "x": "127.086652243929",
+        "y": "37.5446415112952"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "12638326",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 아차산역2호점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 광진구 천호대로 661"
+      },
+      "location": {
+        "lat": 37.55196860173295,
+        "lng": 127.09003652954861
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/12638326",
+      "raw": {
+        "address_name": "서울 광진구 구의동 53-1",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "12638326",
+        "phone": "1522-4400",
+        "place_name": "다이소 아차산역2호점",
+        "place_url": "http://place.map.kakao.com/12638326",
+        "road_address_name": "서울 광진구 천호대로 661",
+        "x": "127.09003652954861",
+        "y": "37.55196860173295"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "11793018",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 군자역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 광진구 천호대로 556"
+      },
+      "location": {
+        "lat": 37.556762135486636,
+        "lng": 127.07969241417028
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/11793018",
+      "raw": {
+        "address_name": "서울 광진구 능동 276-2",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "11793018",
+        "phone": "1522-4400",
+        "place_name": "다이소 군자역점",
+        "place_url": "http://place.map.kakao.com/11793018",
+        "road_address_name": "서울 광진구 천호대로 556",
+        "x": "127.07969241417028",
+        "y": "37.556762135486636"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "428360138",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 중곡역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 광진구 면목로 147"
+      },
+      "location": {
+        "lat": 37.5665295292674,
+        "lng": 127.081465188263
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/428360138",
+      "raw": {
+        "address_name": "서울 광진구 중곡동 192-1",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "428360138",
+        "phone": "1522-4400",
+        "place_name": "다이소 중곡역점",
+        "place_url": "http://place.map.kakao.com/428360138",
+        "road_address_name": "서울 광진구 면목로 147",
+        "x": "127.081465188263",
+        "y": "37.5665295292674"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "1427008557",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 탑마트밀양신촌점",
+        "en": ""
+      },
+      "address": {
+        "ko": "경남 밀양시 창밀로 3561"
+      },
+      "location": {
+        "lat": 35.5048163160929,
+        "lng": 128.738273236012
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/1427008557",
+      "raw": {
+        "address_name": "경남 밀양시 내이동 272",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "1427008557",
+        "phone": "1522-4400",
+        "place_name": "다이소 탑마트밀양신촌점",
+        "place_url": "http://place.map.kakao.com/1427008557",
+        "road_address_name": "경남 밀양시 창밀로 3561",
+        "x": "128.738273236012",
+        "y": "35.5048163160929"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  },
+  {
+    "source": "kakao",
+    "sourceId": "11793283",
+    "entityType": "store",
+    "data": {
+      "name": {
+        "ko": "다이소 이대역점",
+        "en": ""
+      },
+      "address": {
+        "ko": "서울 서대문구 신촌로 183"
+      },
+      "location": {
+        "lat": 37.5570813677285,
+        "lng": 126.946327496341
+      },
+      "phone": "1522-4400",
+      "placeUrl": "http://place.map.kakao.com/11793283",
+      "raw": {
+        "address_name": "서울 서대문구 대현동 45-9",
+        "category_group_code": "",
+        "category_group_name": "",
+        "category_name": "가정,생활 > 생활용품점 > 다이소",
+        "distance": "",
+        "id": "11793283",
+        "phone": "1522-4400",
+        "place_name": "다이소 이대역점",
+        "place_url": "http://place.map.kakao.com/11793283",
+        "road_address_name": "서울 서대문구 신촌로 183",
+        "x": "126.946327496341",
+        "y": "37.5570813677285"
+      }
+    },
+    "fetchedAt": "2026-04-05T09:26:56.629Z"
+  }
+]
