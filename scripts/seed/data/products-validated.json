@@ -38,15 +38,15 @@
         "fr": "Innisfree Green Tea Seed Hyaluronic Cream"
       },
       "skin_types": [
-        "dry",
         "combination",
+        "dry",
         "normal",
         "sensitive"
       ],
       "concerns": [
         "dryness",
-        "redness",
-        "dullness"
+        "dullness",
+        "redness"
       ],
       "description": {
         "ko": "This cream combines Jeju green tea's deep hydration with hyaluronic acid's moisture boost. Its rich texture intensely hydrates the skin. Use as the final step in your morning and evening skincare routine.",
@@ -254,11 +254,11 @@
         "fr": "Torriden Dive-In Crème Hydratante à l'Acide Hyaluronique de Bas Poids Moléculaire"
       },
       "skin_types": [
-        "dry",
-        "sensitive",
         "combination",
+        "dry",
+        "normal",
         "oily",
-        "normal"
+        "sensitive"
       ],
       "concerns": [
         "dryness",
@@ -325,16 +325,16 @@
         "fr": "Dr.G Red Blemish Clear Crème Apaisante"
       },
       "skin_types": [
-        "sensitive",
-        "oily",
         "combination",
         "dry",
-        "normal"
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [
         "acne",
-        "redness",
-        "dryness"
+        "dryness",
+        "redness"
       ],
       "description": {
         "ko": "Soothe sensitive skin with Dr.G Red Blemish Clear Soothing Cream! Enriched with 5-CICA Complex and Beta-Glucan, it strengthens the skin barrier and provides deep hydration. Gently calm irritated skin.",
@@ -539,14 +539,14 @@
         "fr": "belif The True Cream Aqua Bomb"
       },
       "skin_types": [
-        "oily",
         "combination",
-        "normal"
+        "normal",
+        "oily"
       ],
       "concerns": [
         "dryness",
-        "pores",
-        "dullness"
+        "dullness",
+        "pores"
       ],
       "description": {
         "ko": "This gel-cream moisturizer provides intense hydration for a healthy, dewy complexion. Its lightweight formula absorbs quickly, leaving skin feeling refreshed and soothed. Ideal for all skin types, especially those with oily or combination skin.",
@@ -608,10 +608,10 @@
         "fr": "ROUND LAB Crème Hydratante à la Sève de Bouleau"
       },
       "skin_types": [
+        "combination",
         "dry",
-        "sensitive",
         "normal",
-        "combination"
+        "sensitive"
       ],
       "concerns": [
         "dryness",
@@ -749,16 +749,16 @@
         "fr": "SKIN1004 Madagascar Centella Crème"
       },
       "skin_types": [
-        "sensitive",
-        "normal",
         "combination",
+        "dry",
+        "normal",
         "oily",
-        "dry"
+        "sensitive"
       ],
       "concerns": [
-        "redness",
+        "acne",
         "dryness",
-        "acne"
+        "redness"
       ],
       "description": {
         "ko": "SKIN1004 Madagascar Centella Cream soothes skin with Centella Asiatica extract and provides lasting hydration. Its lightweight, non-greasy formula absorbs quickly, making it suitable for all skin types, including sensitive skin.",
@@ -1175,9 +1175,9 @@
         "fr": "Jungsaemmool Time Energy Crème"
       },
       "skin_types": [
+        "combination",
         "dry",
         "normal",
-        "combination",
         "sensitive"
       ],
       "concerns": [
@@ -1453,16 +1453,16 @@
         "fr": "NEOGEN Real Cica Pad"
       },
       "skin_types": [
-        "sensitive",
-        "oily",
         "combination",
-        "normal"
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [
         "acne",
-        "redness",
+        "dullness",
         "pores",
-        "dullness"
+        "redness"
       ],
       "description": {
         "ko": "NEOGEN Real Cica Pad soothes irritated skin and delivers deep hydration for a healthy complexion. Use the embossed side for gentle exfoliation and the smooth side for calming hydration. Perfect as the first step in your daily skincare routine.",
@@ -1523,14 +1523,14 @@
         "fr": "By Wishtrend Pro-Biome Crème Équilibrante"
       },
       "skin_types": [
-        "dry",
-        "sensitive",
         "combination",
-        "normal"
+        "dry",
+        "normal",
+        "sensitive"
       ],
       "concerns": [
-        "redness",
         "dryness",
+        "redness",
         "uneven_tone"
       ],
       "description": {
@@ -1663,15 +1663,15 @@
         "fr": "MISSHA Time Revolution Night Repair Cream"
       },
       "skin_types": [
+        "combination",
         "dry",
-        "normal",
-        "combination"
+        "normal"
       ],
       "concerns": [
-        "wrinkles",
         "dryness",
         "dullness",
-        "uneven_tone"
+        "uneven_tone",
+        "wrinkles"
       ],
       "description": {
         "ko": "MISSHA Time Revolution Night Repair Cream works overnight to fortify the skin barrier and improve damaged skin. Experience deeply moisturized and radiant skin by morning. Use as the final step in your evening skincare routine for optimal results.",
@@ -1734,9 +1734,9 @@
         "fr": "dalba Crème Fermeté à la Truffe Blanche"
       },
       "skin_types": [
+        "combination",
         "dry",
-        "normal",
-        "combination"
+        "normal"
       ],
       "concerns": [
         "dryness",
@@ -2025,16 +2025,16 @@
         "fr": "Anua Heartleaf 77% Toner Apaisant"
       },
       "skin_types": [
-        "sensitive",
-        "oily",
         "combination",
-        "normal"
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [
-        "redness",
         "acne",
+        "dryness",
         "pores",
-        "dryness"
+        "redness"
       ],
       "description": {
         "ko": "Anua Heartleaf 77% Soothing Toner is formulated with 77% heartleaf extract to calm sensitive and irritated skin. This lightweight, watery toner provides refreshing hydration and helps improve skin texture without leaving a sticky residue. Perfect for daily use.",
@@ -2170,8 +2170,8 @@
         "fr": "Innisfree Green Tea Seed Serum"
       },
       "skin_types": [
-        "dry",
         "combination",
+        "dry",
         "normal"
       ],
       "concerns": [
@@ -2456,9 +2456,9 @@
         "fr": "Goodal Green Tangerine Vita C Sérum Anti-Taches"
       },
       "skin_types": [
+        "combination",
         "normal",
-        "oily",
-        "combination"
+        "oily"
       ],
       "concerns": [
         "dark_spots",
@@ -2524,16 +2524,16 @@
         "fr": "SKIN1004 Madagascar Centella Ampoule"
       },
       "skin_types": [
-        "sensitive",
-        "normal",
         "combination",
+        "dry",
+        "normal",
         "oily",
-        "dry"
+        "sensitive"
       ],
       "concerns": [
-        "redness",
+        "acne",
         "dryness",
-        "acne"
+        "redness"
       ],
       "description": {
         "ko": "Formulated with 100% Madagascar Centella Asiatica extract for exceptional soothing. Quickly calms sensitive, irritated skin and strengthens the skin barrier. Use as the first step after cleansing, or incorporate into your skincare routine.",
@@ -2595,15 +2595,15 @@
         "fr": "Dr.G Red Blemish Clear Soothing Active Essence"
       },
       "skin_types": [
-        "sensitive",
+        "combination",
         "oily",
-        "combination"
+        "sensitive"
       ],
       "concerns": [
         "acne",
-        "redness",
         "dryness",
         "pores",
+        "redness",
         "uneven_tone"
       ],
       "description": {
@@ -2665,10 +2665,10 @@
         "fr": "AHC Premium Hydra B5 Essence Apaisante"
       },
       "skin_types": [
+        "combination",
         "dry",
-        "sensitive",
         "normal",
-        "combination"
+        "sensitive"
       ],
       "concerns": [
         "dryness",
@@ -2803,16 +2803,16 @@
         "fr": "Manyo Factory Galactomyces Niacin Essence"
       },
       "skin_types": [
+        "combination",
         "normal",
         "oily",
-        "combination",
         "sensitive"
       ],
       "concerns": [
-        "pores",
+        "dark_spots",
         "dullness",
-        "uneven_tone",
-        "dark_spots"
+        "pores",
+        "uneven_tone"
       ],
       "description": {
         "ko": "Unlock radiant skin with Manyo Factory Galactomy Niacin Essence! This serum helps improve skin tone and provides deep hydration. Use it as the first step after cleansing to prep your skin for the rest of your routine.",
@@ -2874,10 +2874,10 @@
         "fr": "dalba White Truffle First Spray Serum"
       },
       "skin_types": [
-        "dry",
         "combination",
-        "sensitive",
-        "normal"
+        "dry",
+        "normal",
+        "sensitive"
       ],
       "concerns": [
         "dryness",
@@ -2945,8 +2945,8 @@
         "fr": "Numbuzin N°3 Sérum Anti-Taches Vitamine C"
       },
       "skin_types": [
-        "normal",
         "combination",
+        "normal",
         "oily"
       ],
       "concerns": [
@@ -3013,15 +3013,15 @@
         "fr": "Bioheal Boh Probiotics Lifting Cream"
       },
       "skin_types": [
+        "combination",
         "dry",
         "normal",
-        "sensitive",
-        "combination"
+        "sensitive"
       ],
       "concerns": [
-        "wrinkles",
         "dryness",
-        "dullness"
+        "dullness",
+        "wrinkles"
       ],
       "description": {
         "ko": "Bioheal Boh Probiotics Lifting Cream enhances skin elasticity with its unique probiotics formula. It deeply nourishes and firms the skin, promoting a youthful and lifted appearance. Apply gently as the last step of your skincare routine, morning and night.",
@@ -3083,15 +3083,15 @@
         "fr": "ONE THING Essence Propolis + Miel"
       },
       "skin_types": [
+        "combination",
         "dry",
-        "sensitive",
         "normal",
-        "combination"
+        "sensitive"
       ],
       "concerns": [
         "dryness",
-        "redness",
-        "dullness"
+        "dullness",
+        "redness"
       ],
       "description": {
         "ko": "ONE THING Propolis + Honey Essence deeply nourishes and hydrates skin for a healthy, radiant complexion. This fast-absorbing essence is suitable for all skin types and helps strengthen the skin barrier.",
@@ -3438,16 +3438,16 @@
         "fr": "Klairs Freshly Juiced Vitamin Drop"
       },
       "skin_types": [
-        "normal",
         "combination",
+        "normal",
         "oily",
         "sensitive"
       ],
       "concerns": [
-        "dullness",
-        "uneven_tone",
         "dark_spots",
-        "redness"
+        "dullness",
+        "redness",
+        "uneven_tone"
       ],
       "description": {
         "ko": "Klairs Freshly Juiced Vitamin Drop brightens dull skin and improves skin texture with pure Vitamin C. Use 2-3 drops after toner, morning and night, for best results.",
@@ -3508,9 +3508,9 @@
         "fr": "Beauty of Joseon Essence Tonique au Ginseng"
       },
       "skin_types": [
+        "combination",
         "dry",
         "normal",
-        "combination",
         "sensitive"
       ],
       "concerns": [
@@ -3580,16 +3580,16 @@
         "fr": "COSRX Low pH Good Morning Gel Cleanser"
       },
       "skin_types": [
-        "sensitive",
+        "combination",
         "normal",
         "oily",
-        "combination"
+        "sensitive"
       ],
       "concerns": [
         "acne",
+        "dryness",
         "pores",
-        "redness",
-        "dryness"
+        "redness"
       ],
       "description": {
         "ko": "This gentle, low pH gel cleanser balances your skin's pH level, making it perfect for your morning routine. Its mild formula effectively removes impurities and excess sebum accumulated overnight, leaving your skin feeling refreshed.",
@@ -3651,14 +3651,14 @@
         "fr": "Innisfree Green Tea Foam Cleanser"
       },
       "skin_types": [
-        "oily",
         "combination",
-        "normal"
+        "normal",
+        "oily"
       ],
       "concerns": [
-        "pores",
         "dryness",
-        "dullness"
+        "dullness",
+        "pores"
       ],
       "description": {
         "ko": "This foam cleanser, enriched with Jeju green tea, leaves skin feeling hydrated and soft. Its rich lather effectively removes impurities while maintaining moisture, preventing tightness after cleansing.",
@@ -3792,18 +3792,18 @@
         "fr": "Manyo Factory Huile Démaquillante Pure"
       },
       "skin_types": [
-        "dry",
-        "oily",
         "combination",
-        "sensitive",
-        "normal"
+        "dry",
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [
         "acne",
-        "pores",
-        "redness",
         "dryness",
-        "dullness"
+        "dullness",
+        "pores",
+        "redness"
       ],
       "description": {
         "ko": "Deep cleanse without irritation! This Pure Cleansing Oil gently melts away makeup and impurities with plant-based oils. Leaves skin feeling hydrated and refreshed, making it suitable for all skin types.",
@@ -3935,15 +3935,15 @@
         "fr": "Anua Huile Démaquillante Heartleaf"
       },
       "skin_types": [
-        "oily",
         "combination",
-        "sensitive",
-        "normal"
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [
         "acne",
-        "redness",
-        "pores"
+        "pores",
+        "redness"
       ],
       "description": {
         "ko": "Anua Heartleaf Cleansing Oil gently melts away makeup and impurities, leaving skin feeling clean and refreshed. Infused with heartleaf extract to soothe and calm the skin. Suitable for use on wet skin.",
@@ -4007,8 +4007,8 @@
       },
       "skin_types": [
         "dry",
-        "sensitive",
-        "normal"
+        "normal",
+        "sensitive"
       ],
       "concerns": [
         "dryness",
@@ -4074,18 +4074,18 @@
         "fr": "Son & Park Beauty Water"
       },
       "skin_types": [
+        "combination",
+        "dry",
         "normal",
         "oily",
-        "combination",
-        "sensitive",
-        "dry"
+        "sensitive"
       ],
       "concerns": [
         "dryness",
-        "pores",
         "dullness",
-        "uneven_tone",
-        "redness"
+        "pores",
+        "redness",
+        "uneven_tone"
       ],
       "description": {
         "ko": "Son & Park Beauty Water gently removes residue after cleansing, prepping skin for better absorption of subsequent skincare. It exfoliates and hydrates simultaneously, leaving skin smooth and moisturized.",
@@ -4146,10 +4146,10 @@
         "fr": "Klairs Supple Preparation Facial Toner"
       },
       "skin_types": [
+        "combination",
         "dry",
-        "sensitive",
         "normal",
-        "combination"
+        "sensitive"
       ],
       "concerns": [
         "dryness",
@@ -4215,16 +4215,16 @@
         "fr": "Some By Mi AHA BHA PHA 30 Days Miracle Toner"
       },
       "skin_types": [
-        "oily",
         "combination",
+        "oily",
         "sensitive"
       ],
       "concerns": [
         "acne",
+        "dullness",
         "pores",
         "redness",
-        "uneven_tone",
-        "dullness"
+        "uneven_tone"
       ],
       "description": {
         "ko": "This toner, formulated with AHA, BHA, and PHA, effectively removes dead skin cells and impurities from pores. Experience improved skin texture and soothing effects in just 30 days. Use a cotton pad to gently wipe skin after cleansing, or apply directly with hands.",
@@ -4286,14 +4286,14 @@
         "fr": "numbuzin No.1 Pads Toniques Apaisants Clairs à l'Houttuynia Cordata"
       },
       "skin_types": [
-        "oily",
         "combination",
+        "oily",
         "sensitive"
       ],
       "concerns": [
         "acne",
-        "redness",
-        "pores"
+        "pores",
+        "redness"
       ],
       "description": {
         "ko": "This toner pad, infused with heartleaf extract, effectively calms irritated skin. Use it as a toner to gently exfoliate, or as a soothing mask on troubled areas. Achieve a clear and calm complexion.",
@@ -4353,11 +4353,11 @@
         "fr": "Torriden Dive-In Toner à l'Acide Hyaluronique de Bas Poids Moléculaire"
       },
       "skin_types": [
-        "dry",
-        "oily",
         "combination",
-        "sensitive",
-        "normal"
+        "dry",
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [
         "dryness",
@@ -4422,16 +4422,16 @@
         "fr": "Bonajour Lotion Tonique Bombe d'Eau au Thé Vert"
       },
       "skin_types": [
-        "oily",
         "combination",
-        "sensitive",
-        "normal"
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [
-        "redness",
         "dryness",
-        "pores",
         "dullness",
+        "pores",
+        "redness",
         "uneven_tone"
       ],
       "description": {
@@ -4492,14 +4492,14 @@
         "fr": "Real Barrier Cica Relief Toner"
       },
       "skin_types": [
-        "sensitive",
-        "dry",
         "combination",
-        "normal"
+        "dry",
+        "normal",
+        "sensitive"
       ],
       "concerns": [
-        "redness",
-        "dryness"
+        "dryness",
+        "redness"
       ],
       "description": {
         "ko": "This Cica Relief Toner soothes sensitive and irritated skin with its gentle, skin-calming cica ingredients. It preps your complexion post-cleansing by smoothing skin texture and delivering essential hydration for a healthy skin base.",
@@ -4633,15 +4633,15 @@
         "fr": "Dr.Jart+ Cicapair Nettoyant Moussant"
       },
       "skin_types": [
-        "sensitive",
-        "oily",
         "combination",
-        "normal"
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [
-        "redness",
         "acne",
-        "dryness"
+        "dryness",
+        "redness"
       ],
       "description": {
         "ko": "Infused with calming cica, this foam cleanser gently removes impurities while leaving skin feeling hydrated. Perfect for sensitive and irritated skin.",
@@ -4844,15 +4844,15 @@
         "fr": "Bioderma Sensibio H2O"
       },
       "skin_types": [
-        "sensitive",
-        "normal",
-        "dry",
         "combination",
-        "oily"
+        "dry",
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [
-        "redness",
-        "dryness"
+        "dryness",
+        "redness"
       ],
       "description": {
         "ko": "Bioderma Sensibio H2O is a micellar water cleanser formulated for sensitive skin. It gently removes makeup and impurities while helping to strengthen the skin's barrier. Leaves skin feeling clean, soft, and hydrated.",
@@ -4914,14 +4914,14 @@
         "fr": "Primera Mild Comforting Cleanser"
       },
       "skin_types": [
-        "sensitive",
+        "combination",
         "dry",
         "normal",
-        "combination"
+        "sensitive"
       ],
       "concerns": [
-        "redness",
-        "dryness"
+        "dryness",
+        "redness"
       ],
       "description": {
         "ko": "A gentle, slightly acidic cleanser that helps soothe skin. Its soft foam effectively removes impurities while maintaining moisture after washing. Suitable for even sensitive skin.",
@@ -4983,17 +4983,17 @@
         "fr": "Beauty of Joseon Crème Solaire Apaisante : Riz + Probiotiques"
       },
       "skin_types": [
-        "dry",
-        "oily",
         "combination",
-        "sensitive",
-        "normal"
+        "dry",
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [
         "dryness",
+        "dullness",
         "redness",
-        "sun_damage",
-        "dullness"
+        "sun_damage"
       ],
       "description": {
         "ko": "A moisturizing sunscreen enriched with rice extract and probiotics to soothe skin. It applies smoothly without leaving a white cast, making it perfect for daily sun protection.",
@@ -5055,15 +5055,15 @@
         "fr": "ROUND LAB Crème Solaire Hydratante à la Sève de Bouleau"
       },
       "skin_types": [
+        "combination",
         "dry",
-        "sensitive",
         "normal",
-        "combination"
+        "sensitive"
       ],
       "concerns": [
         "dryness",
-        "sun_damage",
-        "redness"
+        "redness",
+        "sun_damage"
       ],
       "description": {
         "ko": "This moisturizing sunscreen, enriched with birch sap, calms and hydrates skin while providing broad-spectrum UV protection. Its lightweight, non-greasy formula absorbs quickly for comfortable daily wear.",
@@ -5124,15 +5124,15 @@
         "fr": "Innisfree Daily UV Defense Crème Solaire"
       },
       "skin_types": [
-        "dry",
-        "oily",
         "combination",
-        "sensitive",
-        "normal"
+        "dry",
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [
-        "sun_damage",
-        "dryness"
+        "dryness",
+        "sun_damage"
       ],
       "description": {
         "ko": "This daily sunscreen features a hydrating essence formula that protects skin without feeling sticky. Its lightweight, gentle texture makes it perfect for daily use, shielding skin from UV rays.",
@@ -5263,16 +5263,16 @@
         "fr": "Dr.G Green Mild Up Sun Plus SPF50+ PA++++"
       },
       "skin_types": [
-        "sensitive",
+        "combination",
         "dry",
         "normal",
-        "combination",
-        "oily"
+        "oily",
+        "sensitive"
       ],
       "concerns": [
-        "sun_damage",
+        "dryness",
         "redness",
-        "dryness"
+        "sun_damage"
       ],
       "description": {
         "ko": "Dr.G Green Mild Up Sun Plus is a gentle mineral sunscreen perfect for sensitive skin. It provides soothing benefits and a hydrating finish, making it ideal for daily wear.",
@@ -5333,14 +5333,14 @@
         "fr": "COSRX Aloe Soothing Sun Cream SPF50+ PA+++"
       },
       "skin_types": [
-        "sensitive",
+        "combination",
         "dry",
         "normal",
-        "combination"
+        "sensitive"
       ],
       "concerns": [
-        "redness",
         "dryness",
+        "redness",
         "sun_damage"
       ],
       "description": {
@@ -5471,14 +5471,14 @@
         "fr": "isoi Lait Solaire Hydratant pour la Peau SPF50+"
       },
       "skin_types": [
-        "sensitive",
-        "normal",
+        "combination",
         "dry",
-        "combination"
+        "normal",
+        "sensitive"
       ],
       "concerns": [
-        "sun_damage",
-        "dryness"
+        "dryness",
+        "sun_damage"
       ],
       "description": {
         "ko": "isoi Sun Milk provides powerful SPF50+ protection with a boost of moisture. Its gentle formula makes it perfect for daily sun care, leaving your skin feeling refreshed and protected.",
@@ -5610,15 +5610,15 @@
         "fr": "d'Alba Waterfull Essence Sun Cream"
       },
       "skin_types": [
-        "dry",
         "combination",
-        "sensitive",
-        "normal"
+        "dry",
+        "normal",
+        "sensitive"
       ],
       "concerns": [
         "dryness",
-        "sun_damage",
-        "dullness"
+        "dullness",
+        "sun_damage"
       ],
       "description": {
         "ko": "d'Alba Waterfull Essence Sun Cream provides broad-spectrum sun protection with a hydrating, lightweight formula. Infused with skin-soothing ingredients, it's perfect for sensitive skin and doubles as a makeup base for a dewy glow.",
@@ -5679,10 +5679,10 @@
         "fr": "SKIN1004 Madagascar Centella Air Fit Crème Solaire"
       },
       "skin_types": [
-        "sensitive",
-        "normal",
         "combination",
-        "oily"
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [
         "redness",
@@ -5747,16 +5747,16 @@
         "fr": "Cell Fusion C Crème Solaire Tono Up SPF50+"
       },
       "skin_types": [
-        "sensitive",
+        "combination",
         "dry",
         "normal",
-        "combination"
+        "sensitive"
       ],
       "concerns": [
-        "sun_damage",
+        "dullness",
         "redness",
-        "uneven_tone",
-        "dullness"
+        "sun_damage",
+        "uneven_tone"
       ],
       "description": {
         "ko": "This sunscreen not only protects against UV rays but also provides a natural tone-up effect! It brightens dull skin for a radiant complexion and feels moisturizing enough for daily use. Safe for sensitive skin.",
@@ -5818,15 +5818,15 @@
         "fr": "Etude House Soon Jung Crème Solaire SPF50+"
       },
       "skin_types": [
-        "sensitive",
+        "combination",
         "dry",
         "normal",
-        "combination",
-        "oily"
+        "oily",
+        "sensitive"
       ],
       "concerns": [
-        "redness",
         "dryness",
+        "redness",
         "sun_damage"
       ],
       "description": {
@@ -5887,16 +5887,16 @@
         "fr": "Clio Kill Cover Crème Solaire SPF50+"
       },
       "skin_types": [
-        "dry",
-        "oily",
         "combination",
-        "sensitive",
-        "normal"
+        "dry",
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [
-        "sun_damage",
+        "dryness",
         "redness",
-        "dryness"
+        "sun_damage"
       ],
       "description": {
         "ko": "Clio Kill Cover Sun Cream offers powerful SPF50+ protection while hydrating the skin. It doubles as a makeup base, leaving a fresh, non-sticky finish.",
@@ -6028,15 +6028,15 @@
         "fr": "Mediheal N.M.F Aquaring Ampoule Mask"
       },
       "skin_types": [
-        "dry",
         "combination",
-        "sensitive",
-        "normal"
+        "dry",
+        "normal",
+        "sensitive"
       ],
       "concerns": [
         "dryness",
-        "pores",
-        "dullness"
+        "dullness",
+        "pores"
       ],
       "description": {
         "ko": "Quench your skin's thirst with the Mediheal N.M.F Aquaring Ampoule Mask. Enriched with N.M.F (Natural Moisturizing Factor) and hyaluronic acid, this mask deeply hydrates dry skin, leaving it supple and radiant.",
@@ -6097,16 +6097,16 @@
         "fr": "Dr.Jart+ Cicapair Cica Calming Mask"
       },
       "skin_types": [
-        "sensitive",
-        "dry",
         "combination",
+        "dry",
+        "normal",
         "oily",
-        "normal"
+        "sensitive"
       ],
       "concerns": [
-        "redness",
+        "acne",
         "dryness",
-        "acne"
+        "redness"
       ],
       "description": {
         "ko": "Soothe and hydrate irritated skin with Dr.Jart+'s Cicapair Cica Calming Mask. Infused with cica, this mask quickly calms redness and provides deep hydration. Simply apply for 10-20 minutes for instant relief.",
@@ -6167,13 +6167,13 @@
         "fr": "Innisfree Super Volcanic Pore Clay Mask 2X"
       },
       "skin_types": [
-        "oily",
-        "combination"
+        "combination",
+        "oily"
       ],
       "concerns": [
         "acne",
-        "pores",
-        "dullness"
+        "dullness",
+        "pores"
       ],
       "description": {
         "ko": "This mask, formulated with Super Volcanic Clusters™, powerfully absorbs sebum and impurities from pores. It also delivers a cooling sensation to minimize pores. Use 1-2 times a week on clean, dry skin.",
@@ -6304,14 +6304,14 @@
         "fr": "Mediheal Tea Tree Care Solution Essential Mask EX"
       },
       "skin_types": [
-        "oily",
         "combination",
+        "oily",
         "sensitive"
       ],
       "concerns": [
         "acne",
-        "redness",
-        "pores"
+        "pores",
+        "redness"
       ],
       "description": {
         "ko": "Soothe irritated skin with the Mediheal Tea Tree Care Solution Essential Mask EX! Infused with tea tree leaf oil and Centella Asiatica extract, this mask calms and revitalizes. Use daily for clearer, healthier-looking skin.",
@@ -6443,15 +6443,15 @@
         "fr": "Skinfood Black Sugar Perfect Essential Scrub 2X"
       },
       "skin_types": [
-        "dry",
-        "oily",
         "combination",
-        "normal"
+        "dry",
+        "normal",
+        "oily"
       ],
       "concerns": [
         "dryness",
-        "pores",
         "dullness",
+        "pores",
         "uneven_tone"
       ],
       "description": {
@@ -6513,14 +6513,14 @@
         "fr": "Abib Masque en Tissu Apaisant à la Houttuynia Cordata Anti-Stress"
       },
       "skin_types": [
-        "sensitive",
+        "combination",
         "oily",
-        "combination"
+        "sensitive"
       ],
       "concerns": [
-        "redness",
         "acne",
-        "dryness"
+        "dryness",
+        "redness"
       ],
       "description": {
         "ko": "Soothe stressed skin with Abib's Heartleaf mask! Infused with heartleaf extract, it calms irritation and provides deep hydration for a healthy complexion. Use after cleansing for 10-20 minutes.",
@@ -6650,11 +6650,11 @@
         "fr": "Papa Recipe Bombee Honey Mask"
       },
       "skin_types": [
-        "dry",
-        "sensitive",
-        "normal",
         "combination",
-        "oily"
+        "dry",
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [
         "dryness",
@@ -6861,9 +6861,9 @@
         "fr": "JM Solution Masque Honey Luminous Royal Propolis"
       },
       "skin_types": [
+        "combination",
         "dry",
-        "normal",
-        "combination"
+        "normal"
       ],
       "concerns": [
         "dryness",
@@ -6928,16 +6928,16 @@
         "fr": "heimish Dailyism Masque en Tissu Hydratant"
       },
       "skin_types": [
-        "dry",
-        "oily",
         "combination",
-        "sensitive",
-        "normal"
+        "dry",
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [
         "dryness",
-        "redness",
-        "dullness"
+        "dullness",
+        "redness"
       ],
       "description": {
         "ko": "This daily sheet mask delivers intense hydration with its water-based essence. The thin, soft sheet adheres perfectly to the skin, effectively delivering moisture and nutrients. Enjoy simple and effective skincare every morning and evening.",
@@ -7063,17 +7063,17 @@
         "fr": "AHC Ten Revolution Real Eye Cream Pour le Visage"
       },
       "skin_types": [
+        "combination",
         "dry",
         "normal",
-        "sensitive",
-        "combination",
-        "oily"
+        "oily",
+        "sensitive"
       ],
       "concerns": [
-        "wrinkles",
-        "dryness",
         "dark_circles",
-        "dullness"
+        "dryness",
+        "dullness",
+        "wrinkles"
       ],
       "description": {
         "ko": "AHC Ten Revolution Real Eye Cream For Face is a multi-purpose eye cream for the entire face. Infused with 10 peptides and collagen, it enhances skin elasticity and hydration, promoting a youthful and healthy complexion. Gently apply as the last step of your skincare routine, morning and night.",
@@ -7136,13 +7136,13 @@
         "fr": "Innisfree Green Tea Seed Crème Yeux"
       },
       "skin_types": [
-        "dry",
         "combination",
+        "dry",
         "normal"
       ],
       "concerns": [
-        "dryness",
         "dark_circles",
+        "dryness",
         "wrinkles"
       ],
       "description": {
@@ -7204,15 +7204,15 @@
         "fr": "Sulwhasoo Concentrated Ginseng Renewing Eye Cream"
       },
       "skin_types": [
+        "combination",
         "dry",
-        "normal",
-        "combination"
+        "normal"
       ],
       "concerns": [
-        "wrinkles",
         "dark_circles",
         "dryness",
-        "dullness"
+        "dullness",
+        "wrinkles"
       ],
       "description": {
         "ko": "Sulwhasoo Concentrated Ginseng Renewing Eye Cream revitalizes the delicate skin around the eyes with the power of ginseng. It helps reduce the appearance of wrinkles while providing deep nourishment for a smoother, healthier look. Use morning and evening as the last step of your skincare routine.",
@@ -7273,15 +7273,15 @@
         "fr": "MISSHA Time Revolution Night Repair Crème Yeux"
       },
       "skin_types": [
+        "combination",
         "dry",
         "normal",
-        "combination",
         "sensitive"
       ],
       "concerns": [
-        "wrinkles",
         "dark_circles",
-        "dryness"
+        "dryness",
+        "wrinkles"
       ],
       "description": {
         "ko": "MISSHA Time Revolution Night Repair Eye Cream deeply nourishes and hydrates the delicate skin around the eyes overnight, promoting a more youthful and revitalized appearance. Apply a small amount before bed for best results.",
@@ -7343,15 +7343,15 @@
         "fr": "COSRX Advanced Snail Peptide Eye Cream"
       },
       "skin_types": [
+        "combination",
         "dry",
         "normal",
-        "combination",
         "sensitive"
       ],
       "concerns": [
-        "wrinkles",
         "dark_circles",
-        "dryness"
+        "dryness",
+        "wrinkles"
       ],
       "description": {
         "ko": "This eye cream, formulated with snail secretion filtrate and peptides, nourishes and firms the delicate skin around the eyes. It absorbs gently to improve wrinkles and strengthen the skin barrier. Use every morning and evening as the last step of your skincare routine.",
@@ -7483,15 +7483,15 @@
         "fr": "Dr.Jart+ Cicapair Crème Contour des Yeux"
       },
       "skin_types": [
-        "sensitive",
+        "combination",
         "dry",
         "normal",
-        "combination"
+        "sensitive"
       ],
       "concerns": [
-        "redness",
-        "dryness",
         "dark_circles",
+        "dryness",
+        "redness",
         "wrinkles"
       ],
       "description": {
@@ -7692,16 +7692,16 @@
         "fr": "numbuzin N°4 Crème Yeux au Rétinol"
       },
       "skin_types": [
-        "dry",
-        "sensitive",
-        "normal",
         "combination",
-        "oily"
+        "dry",
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [
-        "wrinkles",
         "dark_circles",
-        "dryness"
+        "dryness",
+        "wrinkles"
       ],
       "description": {
         "ko": "numbuzin No.4 Retinol Eye Cream helps improve wrinkles and elasticity around the eyes. Infused with retinol and beneficial ingredients, it revitalizes delicate skin. Gently apply to the eye area as part of your evening skincare routine.",
@@ -7896,10 +7896,10 @@
         "fr": "Peripera Ink Mood Matte Tint"
       },
       "skin_types": [
-        "normal",
-        "dry",
-        "oily",
         "combination",
+        "dry",
+        "normal",
+        "oily",
         "sensitive"
       ],
       "concerns": [
@@ -8302,11 +8302,11 @@
         "fr": "Laneige Two Tone Lip Tint"
       },
       "skin_types": [
-        "dry",
-        "oily",
         "combination",
-        "sensitive",
-        "normal"
+        "dry",
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [
         "dryness"
@@ -8638,11 +8638,11 @@
         "fr": "Lilybyred Mood Liar Velvet Tint"
       },
       "skin_types": [
-        "dry",
-        "oily",
         "combination",
-        "sensitive",
-        "normal"
+        "dry",
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [
         "dryness"
@@ -8773,8 +8773,8 @@
         "fr": "Clio Kill Cover Founwear Cushion All New"
       },
       "skin_types": [
-        "oily",
-        "combination"
+        "combination",
+        "oily"
       ],
       "concerns": [
         "pores",
@@ -8907,8 +8907,8 @@
         "fr": "LANEIGE Neo Cushion Matte"
       },
       "skin_types": [
-        "oily",
-        "combination"
+        "combination",
+        "oily"
       ],
       "concerns": [
         "pores",
@@ -9043,9 +9043,9 @@
         "fr": "Etude Double Lasting Cushion Glow"
       },
       "skin_types": [
+        "combination",
         "dry",
-        "normal",
-        "combination"
+        "normal"
       ],
       "concerns": [
         "dryness",
@@ -9390,15 +9390,15 @@
         "fr": "Amorepacific Time Response Skin Reserve Cushion"
       },
       "skin_types": [
-        "normal",
+        "combination",
         "dry",
-        "combination"
+        "normal"
       ],
       "concerns": [
-        "wrinkles",
         "dryness",
         "dullness",
-        "uneven_tone"
+        "uneven_tone",
+        "wrinkles"
       ],
       "description": {
         "ko": "This premium cushion delivers a radiant and firm complexion from within. Its delicate coverage creates flawless, smooth skin, while the Time Response line's key ingredients promote healthy skin. Achieve a luxurious, glowing finish.",
@@ -9458,10 +9458,10 @@
         "fr": "Clio Pro Eye Palette"
       },
       "skin_types": [
-        "normal",
-        "dry",
-        "oily",
         "combination",
+        "dry",
+        "normal",
+        "oily",
         "sensitive"
       ],
       "concerns": [
@@ -9593,10 +9593,10 @@
         "fr": "Etude House Play Color Eyes Palette d'Ombres à Paupières"
       },
       "skin_types": [
-        "normal",
-        "dry",
-        "oily",
         "combination",
+        "dry",
+        "normal",
+        "oily",
         "sensitive"
       ],
       "concerns": [
@@ -9857,11 +9857,11 @@
         "fr": "CLIO Sharp, So Simple Crayon Eyeliner Waterproof"
       },
       "skin_types": [
-        "dry",
-        "oily",
         "combination",
-        "sensitive",
-        "normal"
+        "dry",
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [],
       "description": {
@@ -9922,10 +9922,10 @@
         "fr": "Peripera Ink Thin Thin Eye Pencil"
       },
       "skin_types": [
-        "normal",
-        "dry",
-        "oily",
         "combination",
+        "dry",
+        "normal",
+        "oily",
         "sensitive"
       ],
       "concerns": [],
@@ -9988,11 +9988,11 @@
         "fr": "3CE Eye Switch"
       },
       "skin_types": [
-        "dry",
-        "oily",
         "combination",
-        "sensitive",
-        "normal"
+        "dry",
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [
         "dullness"
@@ -10056,10 +10056,10 @@
         "fr": "Hera Palette Yeux Eye Designer"
       },
       "skin_types": [
-        "normal",
-        "dry",
-        "oily",
         "combination",
+        "dry",
+        "normal",
+        "oily",
         "sensitive"
       ],
       "concerns": [
@@ -10126,9 +10126,9 @@
         "fr": "Laneige Sérum Perfecteur de Teint Glowy"
       },
       "skin_types": [
+        "combination",
         "dry",
-        "normal",
-        "combination"
+        "normal"
       ],
       "concerns": [
         "dryness",
@@ -10192,8 +10192,8 @@
         "fr": "Innisfree No Sebum Mineral Powder"
       },
       "skin_types": [
-        "oily",
-        "combination"
+        "combination",
+        "oily"
       ],
       "concerns": [
         "pores",
@@ -10257,10 +10257,10 @@
         "fr": "Peripera Pure Blushed Sunshine Cheek"
       },
       "skin_types": [
-        "normal",
-        "dry",
-        "oily",
         "combination",
+        "dry",
+        "normal",
+        "oily",
         "sensitive"
       ],
       "concerns": [
@@ -10325,8 +10325,8 @@
         "fr": "Clio Kill Cover Founwear Primer"
       },
       "skin_types": [
-        "oily",
-        "combination"
+        "combination",
+        "oily"
       ],
       "concerns": [
         "pores",
@@ -10391,10 +10391,10 @@
         "fr": "Etude House Blush Pétale de Fleur"
       },
       "skin_types": [
-        "normal",
-        "dry",
-        "oily",
         "combination",
+        "dry",
+        "normal",
+        "oily",
         "sensitive"
       ],
       "concerns": [
@@ -11664,11 +11664,11 @@
         "fr": "KUNDAL Pure Body Wash"
       },
       "skin_types": [
-        "sensitive",
-        "normal",
-        "dry",
         "combination",
-        "oily"
+        "dry",
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [
         "dryness"
@@ -11871,8 +11871,8 @@
         "fr": "Mediheal Gel Douche Arbre à Thé"
       },
       "skin_types": [
-        "oily",
         "combination",
+        "oily",
         "sensitive"
       ],
       "concerns": [
@@ -12070,11 +12070,11 @@
         "fr": "Banila Co Clean It Zero Baume Démaquillant"
       },
       "skin_types": [
-        "dry",
-        "oily",
         "combination",
-        "sensitive",
-        "normal"
+        "dry",
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [
         "dryness",
@@ -12140,8 +12140,8 @@
       },
       "skin_types": [
         "dry",
-        "sensitive",
-        "normal"
+        "normal",
+        "sensitive"
       ],
       "concerns": [
         "dryness",
@@ -12407,8 +12407,8 @@
         "fr": "The Face Shop Therapy Garden Crème Mains"
       },
       "skin_types": [
-        "normal",
-        "dry"
+        "dry",
+        "normal"
       ],
       "concerns": [
         "dryness"
@@ -12671,10 +12671,10 @@
         "fr": "Round Lab Crème Solaire Corps Hydratante à la Sève de Bouleau"
       },
       "skin_types": [
+        "combination",
         "dry",
-        "sensitive",
         "normal",
-        "combination"
+        "sensitive"
       ],
       "concerns": [
         "dryness",
@@ -12740,16 +12740,16 @@
         "fr": "isoi Lait Solaire Corps SPF50+"
       },
       "skin_types": [
-        "sensitive",
-        "normal",
-        "dry",
         "combination",
-        "oily"
+        "dry",
+        "normal",
+        "oily",
+        "sensitive"
       ],
       "concerns": [
-        "sun_damage",
+        "dryness",
         "redness",
-        "dryness"
+        "sun_damage"
       ],
       "description": {
         "ko": "isoi Sun Milk Body SPF50+ offers lightweight and non-sticky sun protection for your body. Formulated with skin-soothing ingredients, it's gentle enough for sensitive skin. Its water and sweat-resistant formula makes it perfect for outdoor activities. Apply liberally to exposed areas before sun exposure.",
@@ -12878,14 +12878,14 @@
         "fr": "illiYOON Probiotics Skin Barrier Cream Wash"
       },
       "skin_types": [
-        "sensitive",
         "dry",
-        "normal"
+        "normal",
+        "sensitive"
       ],
       "concerns": [
         "dryness",
-        "redness",
-        "eczema"
+        "eczema",
+        "redness"
       ],
       "description": {
         "ko": "This cream wash, enriched with probiotics, helps strengthen the skin barrier. Its gentle foam cleanses and moisturizes, leaving skin feeling comfortable and hydrated after showering. Recommended for sensitive and dry skin.",
