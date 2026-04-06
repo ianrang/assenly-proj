@@ -123,29 +123,10 @@ async function extractTagsFromPage(
   return tags;
 }
 
-// ── 메인 ────────────────────────────────────────────────
+// ── Playwright 스크래핑 루프 ─────────────────────────────
 
-async function main(): Promise<void> {
-  const args = parseArgs();
-  const dryRun = args["dry-run"] === "true";
-  const limitArg = args["limit"];
-  const limit = limitArg ? parseInt(limitArg, 10) : undefined;
-
-  const clinics = loadClinics(limit);
-  console.log(`[clinic-tags] clinics loaded: ${clinics.length}`);
-
-  if (dryRun) {
-    console.log("[clinic-tags] DRY RUN — Playwright 실행 안 함");
-    for (const clinic of clinics.slice(0, 3)) {
-      console.log(`  ${clinic.nameKo} → ${clinic.placeUrl}`);
-    }
-    return;
-  }
-
-  if (!existsSync(DATA_DIR)) {
-    mkdirSync(DATA_DIR, { recursive: true });
-  }
-
+/** 클리닉 목록 순회하며 태그 추출 (에러 격리) */
+async function scrapeAllTags(clinics: ClinicEntry[]): Promise<ClinicTagData[]> {
   const browser = await chromium.launch({ headless: true });
   const results: ClinicTagData[] = [];
   let succeeded = 0;
@@ -179,10 +160,7 @@ async function main(): Promise<void> {
         );
       }
 
-      // polite delay (마지막 페이지 제외)
-      if (i < clinics.length - 1) {
-        await delay(PAGE_DELAY_MS);
-      }
+      if (i < clinics.length - 1) await delay(PAGE_DELAY_MS);
     }
 
     await page.close();
@@ -191,14 +169,37 @@ async function main(): Promise<void> {
   }
 
   console.log(`[clinic-tags] 완료: ${succeeded} ok, ${failed} fail`);
+  return results;
+}
+
+// ── 메인 ────────────────────────────────────────────────
+
+async function main(): Promise<void> {
+  const args = parseArgs();
+  const dryRun = args["dry-run"] === "true";
+  const limitArg = args["limit"];
+  const limit = limitArg ? parseInt(limitArg, 10) : undefined;
+
+  const clinics = loadClinics(limit);
+  console.log(`[clinic-tags] clinics loaded: ${clinics.length}`);
+
+  if (dryRun) {
+    console.log("[clinic-tags] DRY RUN — Playwright 실행 안 함");
+    for (const clinic of clinics.slice(0, 3)) {
+      console.log(`  ${clinic.nameKo} → ${clinic.placeUrl}`);
+    }
+    return;
+  }
+
+  if (!existsSync(DATA_DIR)) mkdirSync(DATA_DIR, { recursive: true });
+
+  const results = await scrapeAllTags(clinics);
 
   writeFileSync(OUTPUT_PATH, JSON.stringify(results, null, 2));
   console.log(`[clinic-tags] saved: ${OUTPUT_PATH} (${results.length} clinics)`);
 
-  // 태그 통계
   const withTags = results.filter((r) => r.tags.length > 0).length;
-  const withoutTags = results.length - withTags;
-  console.log(`[clinic-tags] 태그 있음: ${withTags}, 없음: ${withoutTags}`);
+  console.log(`[clinic-tags] 태그 있음: ${withTags}, 없음: ${results.length - withTags}`);
 }
 
 main().catch((err) => {
