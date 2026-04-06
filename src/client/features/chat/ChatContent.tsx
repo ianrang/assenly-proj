@@ -7,6 +7,7 @@ import { useChat } from "@ai-sdk/react";
 import type { UIMessage } from "ai";
 import { DefaultChatTransport } from "ai";
 import { useTranslations } from "next-intl";
+import { getAccessToken } from "@/client/core/auth-fetch";
 import { mapUIMessageToParts, type UIPartLike } from "./card-mapper";
 import MessageList from "./MessageList";
 import MessageBubble from "./MessageBubble";
@@ -34,11 +35,15 @@ export default function ChatContent({ locale, initialMessages, initialConversati
     initialConversationId
   );
 
+  // P2-79: credentials → headers(Bearer 동적 주입)
   const transport = useMemo(
     () =>
       new DefaultChatTransport({
         api: "/api/chat",
-        credentials: "include",
+        headers: async (): Promise<Record<string, string>> => {
+          const token = await getAccessToken();
+          return token ? { Authorization: `Bearer ${token}` } : {};
+        },
         prepareSendMessagesRequest: ({ messages }) => ({
           body: {
             message: messages[messages.length - 1],

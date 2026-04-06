@@ -1,14 +1,17 @@
 import 'server-only';
 import { createRoute, z } from '@hono/zod-openapi';
 import type { AppType } from '../app';
+import { requireAuth } from '../middleware/auth';
 import { rateLimit } from '../middleware/rate-limit';
 import { errorResponseSchema } from '../schemas/common';
-import { createAnonymousSession } from '@/server/features/auth/service';
+import { registerAnonymousUser } from '@/server/features/auth/service';
 
 // ============================================================
 // POST /api/auth/anonymous — api-spec.md §2.1
-// auth-matrix.md §2.4: 공개 엔드포인트 (인증 없음).
+// P2-79: requireAuth 미들웨어 추가 (클라이언트 SDK 세션 생성 후 인증된 상태에서 동의 기록).
+// auth-matrix.md §2.4: requireAuth.
 // api-spec.md §4.1: Rate limit 3회/분, IP 기준 (rateLimit 미들웨어가 IP 폴백 처리).
+// L-21: Composition Root 역할 — 인증에서 userId 추출 → service 호출.
 // ============================================================
 
 const anonymousAuthBodySchema = z.object({
@@ -20,14 +23,14 @@ const anonymousAuthBodySchema = z.object({
 });
 
 const anonymousAuthResponseSchema = z.object({
-  data: z.any(),
+  data: z.object({ user_id: z.string() }),
   meta: z.object({ timestamp: z.string() }),
 });
 
 const postAnonymousRoute = createRoute({
   method: 'post',
   path: '/api/auth/anonymous',
-  summary: 'Create anonymous session',
+  summary: 'Register anonymous user and record consent',
   request: {
     body: {
       content: { 'application/json': { schema: anonymousAuthBodySchema } },
@@ -37,11 +40,15 @@ const postAnonymousRoute = createRoute({
   responses: {
     201: {
       content: { 'application/json': { schema: anonymousAuthResponseSchema } },
-      description: 'Anonymous session created',
+      description: 'Anonymous user registered',
     },
     400: {
       content: { 'application/json': { schema: errorResponseSchema } },
       description: 'Validation failed',
+    },
+    401: {
+      content: { 'application/json': { schema: errorResponseSchema } },
+      description: 'Authentication required',
     },
     429: {
       content: { 'application/json': { schema: errorResponseSchema } },
@@ -49,27 +56,30 @@ const postAnonymousRoute = createRoute({
     },
     500: {
       content: { 'application/json': { schema: errorResponseSchema } },
-      description: 'Session creation failed',
+      description: 'Registration failed',
     },
   },
 });
 
 export function registerAuthRoutes(app: AppType) {
-  // IP 기준 rate limit — anon_create 3/분 (사용자 미인증이므로 미들웨어가 IP 폴백 사용)
+  // IP 기준 rate limit — anon_create 3/분 (rateLimit 미들웨어가 IP 폴백 사용)
   app.use('/api/auth/anonymous', rateLimit('anon_create', 3, 60_000));
+  // P2-79: requireAuth — 클라이언트 SDK 세션 생성 후 인증된 상태에서만 동의 기록
+  app.use('/api/auth/anonymous', requireAuth());
 
   app.openapi(postAnonymousRoute, async (c) => {
     const body = c.req.valid('json');
+    const userId = c.get('user')!.id;
 
     try {
-      // zod 검증 통과 = data_retention은 반드시 true
-      const result = await createAnonymousSession({ data_retention: true });
+      // L-21: Composition Root — 인증에서 userId 추출 → service에 파라미터 전달
+      const result = await registerAnonymousUser(userId, { data_retention: body.consent.data_retention });
       return c.json(
         { data: result, meta: { timestamp: new Date().toISOString() } },
         201,
       );
     } catch (error) {
-      console.error('[auth/anonymous] session creation failed', String(error));
+      console.error('[auth/anonymous] registration failed', String(error));
       return c.json(
         {
           error: {

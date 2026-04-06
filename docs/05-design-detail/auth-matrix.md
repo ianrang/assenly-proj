@@ -142,7 +142,7 @@ interface AdminPermissions {
 
 | 엔드포인트 | 메서드 | 인증 | 권한 |
 |-----------|--------|------|------|
-| `/api/auth/anonymous` | POST | 없음 | 공개 |
+| `/api/auth/anonymous` | POST | 필수 | 공개 (P2-79: 클라이언트 SDK 세션 생성 후 인증된 상태에서 동의 기록) |
 | `/api/products` | GET | 선택 | 공개 읽기 |
 | `/api/products/:id` | GET | 선택 | 공개 읽기 |
 | `/api/treatments` | GET | 선택 | 공개 읽기 |
@@ -217,7 +217,7 @@ interface AdminPermissions {
   │                    └─ req에 user 정보 첨부
   │                    (인증 필수 경로만 적용. /api/products 등은 선택적)
   │
-  └─ /api/auth/anonymous ──→ 미들웨어 없음 (공개)
+  └─ /api/auth/anonymous ──→ requireAuth (P2-79: 클라이언트 SDK 세션 생성 후 인증된 상태에서 동의 기록)
 ```
 
 ### 3.2 인증 함수 시그니처

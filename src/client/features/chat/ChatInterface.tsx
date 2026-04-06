@@ -4,11 +4,14 @@ import "client-only";
 
 import { useState, useEffect, useCallback } from "react";
 import type { UIMessage } from "ai";
+import { getSupabaseBrowserClient } from "@/client/core/supabase-browser";
+import { authFetch } from "@/client/core/auth-fetch";
 import ConsentOverlay from "./ConsentOverlay";
 import ChatContent from "./ChatContent";
 
 // ============================================================
 // ChatInterface — P2-45: 동의 게이트 + P2-50c 히스토리 로드
+// P2-79: 클라이언트 SDK signInAnonymously + authFetch Bearer 전달.
 // L-0b: client-only guard. L-10: 서버 상태 = API 호출.
 // 구조: ChatInterface(동의 게이트) → ChatContent(채팅 UI)
 //   phase: checking → needs-consent | ready
@@ -38,9 +41,10 @@ export default function ChatInterface({ locale }: ChatInterfaceProps) {
   const [initialConversationId, setInitialConversationId] = useState<string | null>(null);
 
   // P2-45: 세션 확인 + 히스토리 로드 (L-10: 서버 상태 = API 호출)
+  // P2-79: authFetch로 Bearer 토큰 자동 주입
   const checkSessionAndLoad = useCallback(() => {
     setPhase("checking");
-    fetch("/api/chat/history", { credentials: "include" })
+    authFetch("/api/chat/history")
       .then((res) => {
         if (res.status === 401) {
           setPhase("needs-consent");
@@ -71,16 +75,24 @@ export default function ChatInterface({ locale }: ChatInterfaceProps) {
     checkSessionAndLoad();
   }, [checkSessionAndLoad]);
 
-  // P2-45: 동의 처리 → 세션 생성 → 재시도
+  // P2-79: 동의 처리 → 클라이언트 SDK 세션 생성 → 서버 동의 기록 → 재시도
   async function handleConsent(): Promise<boolean> {
     setIsConsenting(true);
     setConsentError(false);
     try {
-      const res = await fetch("/api/auth/anonymous", {
+      // 1. 클라이언트 SDK로 익명 세션 생성 (auth-matrix.md §1.3)
+      const supabase = getSupabaseBrowserClient();
+      const { error: signInError } = await supabase.auth.signInAnonymously();
+      if (signInError) {
+        setConsentError(true);
+        return false;
+      }
+
+      // 2. 서버에 동의 기록 (Bearer 토큰 자동 주입)
+      const res = await authFetch("/api/auth/anonymous", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ consent: { data_retention: true } }),
-        credentials: "include",
       });
       if (res.ok) {
         checkSessionAndLoad();

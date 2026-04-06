@@ -3,11 +3,9 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 vi.mock('server-only', () => ({}));
 
 // createServiceClient mock
-const mockInsert = vi.fn();
-const mockFrom = vi.fn(() => ({ insert: mockInsert }));
-const mockSignInAnonymously = vi.fn();
+const mockUpsert = vi.fn();
+const mockFrom = vi.fn(() => ({ upsert: mockUpsert }));
 const mockClient = {
-  auth: { signInAnonymously: mockSignInAnonymously },
   from: mockFrom,
 };
 
@@ -15,137 +13,90 @@ vi.mock('@/server/core/db', () => ({
   createServiceClient: () => mockClient,
 }));
 
-describe('createAnonymousSession', () => {
+describe('registerAnonymousUser', () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
-  it('정상: signInAnonymously -> users INSERT -> consent_records INSERT -> 결과 반환', async () => {
-    mockSignInAnonymously.mockResolvedValue({
-      data: {
-        user: { id: 'user-uuid-123' },
-        session: { access_token: 'token-abc' },
-      },
-      error: null,
-    });
-    mockInsert.mockResolvedValue({ error: null });
+  it('정상: users UPSERT -> consent_records UPSERT -> 결과 반환', async () => {
+    mockUpsert.mockResolvedValue({ error: null });
 
-    const { createAnonymousSession } = await import(
+    const { registerAnonymousUser } = await import(
       '@/server/features/auth/service'
     );
-    const result = await createAnonymousSession({ data_retention: true });
+    const result = await registerAnonymousUser('user-uuid-123', { data_retention: true });
 
-    expect(result).toEqual({
-      user_id: 'user-uuid-123',
-      session_token: 'token-abc',
-    });
+    expect(result).toEqual({ user_id: 'user-uuid-123' });
 
-    // users INSERT 확인
+    // users UPSERT 확인
     expect(mockFrom).toHaveBeenCalledWith('users');
-    expect(mockInsert).toHaveBeenCalledWith({
-      id: 'user-uuid-123',
-      auth_method: 'anonymous',
-    });
+    expect(mockUpsert).toHaveBeenCalledWith(
+      { id: 'user-uuid-123', auth_method: 'anonymous' },
+      { onConflict: 'id' },
+    );
 
-    // consent_records INSERT 확인
+    // consent_records UPSERT 확인
     expect(mockFrom).toHaveBeenCalledWith('consent_records');
-    expect(mockInsert).toHaveBeenCalledWith({
-      user_id: 'user-uuid-123',
-      data_retention: true,
-    });
+    expect(mockUpsert).toHaveBeenCalledWith(
+      { user_id: 'user-uuid-123', data_retention: true },
+      { onConflict: 'user_id' },
+    );
   });
 
   it('data_retention=false -> 에러 (필수 동의)', async () => {
-    const { createAnonymousSession } = await import(
+    const { registerAnonymousUser } = await import(
       '@/server/features/auth/service'
     );
 
     await expect(
-      createAnonymousSession({ data_retention: false }),
+      registerAnonymousUser('user-uuid-123', { data_retention: false }),
     ).rejects.toThrow('data_retention consent is required');
 
-    // Supabase 호출 없어야 함
-    expect(mockSignInAnonymously).not.toHaveBeenCalled();
+    // DB 호출 없어야 함
+    expect(mockFrom).not.toHaveBeenCalled();
   });
 
-  it('signInAnonymously 실패 -> throw (Q-7)', async () => {
-    mockSignInAnonymously.mockResolvedValue({
-      data: { user: null, session: null },
-      error: { message: 'Auth service unavailable' },
+  it('users UPSERT 실패 -> throw (Q-7)', async () => {
+    mockUpsert.mockResolvedValueOnce({
+      error: { message: 'db error' },
     });
 
-    const { createAnonymousSession } = await import(
+    const { registerAnonymousUser } = await import(
       '@/server/features/auth/service'
     );
 
     await expect(
-      createAnonymousSession({ data_retention: true }),
-    ).rejects.toThrow('Anonymous sign-in failed');
-
-    // 내부 메시지 노출 금지 (E-4)
-    try {
-      await createAnonymousSession({ data_retention: true });
-    } catch (e) {
-      expect((e as Error).message).not.toContain('Auth service unavailable');
-    }
-  });
-
-  it('users INSERT 실패 -> throw (Q-7)', async () => {
-    mockSignInAnonymously.mockResolvedValue({
-      data: {
-        user: { id: 'user-uuid-123' },
-        session: { access_token: 'token-abc' },
-      },
-      error: null,
-    });
-    // 첫 번째 insert (users) 실패
-    mockInsert.mockResolvedValueOnce({
-      error: { message: 'duplicate key violation' },
-    });
-
-    const { createAnonymousSession } = await import(
-      '@/server/features/auth/service'
-    );
-
-    await expect(
-      createAnonymousSession({ data_retention: true }),
+      registerAnonymousUser('user-uuid-123', { data_retention: true }),
     ).rejects.toThrow('User record creation failed');
   });
 
-  it('consent_records INSERT 실패 -> throw (Q-7)', async () => {
-    mockSignInAnonymously.mockResolvedValue({
-      data: {
-        user: { id: 'user-uuid-123' },
-        session: { access_token: 'token-abc' },
-      },
-      error: null,
-    });
-    // 첫 번째 insert (users) 성공, 두 번째 (consent_records) 실패
-    mockInsert
+  it('consent_records UPSERT 실패 -> throw (Q-7)', async () => {
+    // 첫 번째 upsert (users) 성공, 두 번째 (consent_records) 실패
+    mockUpsert
       .mockResolvedValueOnce({ error: null })
       .mockResolvedValueOnce({ error: { message: 'constraint violation' } });
 
-    const { createAnonymousSession } = await import(
+    const { registerAnonymousUser } = await import(
       '@/server/features/auth/service'
     );
 
     await expect(
-      createAnonymousSession({ data_retention: true }),
+      registerAnonymousUser('user-uuid-123', { data_retention: true }),
     ).rejects.toThrow('Consent record creation failed');
   });
 
-  it('signInAnonymously 반환값에 user/session 누락 -> throw', async () => {
-    mockSignInAnonymously.mockResolvedValue({
-      data: { user: null, session: null },
-      error: null,
-    });
+  it('Q-12 멱등성: 동일 userId 재요청 시 UPSERT로 중복 방지', async () => {
+    mockUpsert.mockResolvedValue({ error: null });
 
-    const { createAnonymousSession } = await import(
+    const { registerAnonymousUser } = await import(
       '@/server/features/auth/service'
     );
 
-    await expect(
-      createAnonymousSession({ data_retention: true }),
-    ).rejects.toThrow('Anonymous sign-in failed');
+    // 같은 userId로 두 번 호출
+    await registerAnonymousUser('user-uuid-123', { data_retention: true });
+    await registerAnonymousUser('user-uuid-123', { data_retention: true });
+
+    // 두 번 모두 성공 (INSERT 중복 에러 없음 — UPSERT)
+    expect(mockUpsert).toHaveBeenCalledTimes(4); // 2 tables x 2 calls
   });
 });

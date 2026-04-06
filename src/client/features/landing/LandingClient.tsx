@@ -3,6 +3,7 @@
 import "client-only";
 
 import { useEffect, useState } from "react";
+import { authFetch } from "@/client/core/auth-fetch";
 import LandingHeader from "@/client/features/landing/LandingHeader";
 import HeroSection from "@/client/features/landing/HeroSection";
 import HowItWorksSection from "@/client/features/landing/HowItWorksSection";
@@ -28,7 +29,7 @@ export default function LandingClient({ locale }: LandingClientProps) {
   useEffect(() => {
     async function checkSession() {
       try {
-        const res = await fetch("/api/profile", { credentials: "include" });
+        const res = await authFetch("/api/profile");
         if (res.ok) {
           setState("returning");
         } else {

@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
+import { authFetch } from "@/client/core/auth-fetch";
 import type { OnboardingFormData } from "@/shared/types/profile";
 import { SectionTitle, BodyText, CardTitle } from "@/client/ui/primitives/typography";
 import { Button } from "@/client/ui/primitives/button";
@@ -103,7 +104,7 @@ export default function OnboardingWizard({ locale }: OnboardingWizardProps) {
     setIsSubmitting(true);
     setSubmitError(null);
     try {
-      const res = await fetch("/api/profile/onboarding", {
+      const res = await authFetch("/api/profile/onboarding", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -111,7 +112,6 @@ export default function OnboardingWizard({ locale }: OnboardingWizardProps) {
           age_range: values.age_range || undefined,
           stay_days: Number(values.stay_days),
         }),
-        credentials: "include",
       });
       if (res.ok) {
         localStorage.removeItem(STORAGE_KEY);

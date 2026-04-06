@@ -5,6 +5,7 @@ import "client-only";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { authFetch } from "@/client/core/auth-fetch";
 import {
   Sheet,
   SheetContent,
@@ -46,10 +47,9 @@ export default function KitCtaSheet({ open, onOpenChange }: KitCtaSheetProps) {
 
   async function onSubmit(data: KitClaimForm) {
     try {
-      const res = await fetch("/api/kit/claim", {
+      const res = await authFetch("/api/kit/claim", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        credentials: "include",
         body: JSON.stringify({
           email: data.email,
           marketing_consent: data.marketingConsent,

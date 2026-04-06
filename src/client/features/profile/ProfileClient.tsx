@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { authFetch } from "@/client/core/auth-fetch";
 import type { UserProfile, Journey } from "@/shared/types/profile";
 import { Button, buttonVariants } from "@/client/ui/primitives/button";
 import { Skeleton } from "@/client/ui/primitives/skeleton";
@@ -31,8 +32,7 @@ export default function ProfileClient({ locale }: ProfileClientProps) {
 
     async function fetchProfile() {
       try {
-        const res = await fetch("/api/profile", {
-          credentials: "include",
+        const res = await authFetch("/api/profile", {
           signal: controller.signal,
         });
         if (res.ok) {

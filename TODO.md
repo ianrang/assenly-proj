@@ -13,9 +13,9 @@
 | 사전 완료      | 12      | 12      | 0       | 0      | ✅      |
 | Phase 0    | 37      | 37      | 0       | 0      | ✅      |
 | Phase 1    | 62      | 60      | 2       | 0      | ✅      |
-| Phase 2    | 114     | 96      | 12      | 6      | 🔶 진행중 |
+| Phase 2    | 114     | 97      | 12      | 5      | 🔶 진행중 |
 | Phase 3    | 37      | 0       | 18      | 19     | ⬜ 미시작  |
-| **MVP 합계** | **262** | **205** | **32**  | **25** |        |
+| **MVP 합계** | **262** | **206** | **32**  | **24** |        |
 | 관리자 앱 (펜딩) | 20      | 0       | 0       | 20     | ⏸️ 펜딩  |
 
 
@@ -370,7 +370,7 @@
 | P2-68  | store map_url E2E 검증            | 전 경로 단위 테스트 검증 완료. ProductCard 테스트 3건 추가(map_url 링크/plain text/미제공). card-mapper extractMapUrl 3건 + search-handler loadRelatedStores 1건 기존 통과. 코드 수정 0건                                                                                                                                                                                                                                                                                | P2-64a      | ✅   |
 | P2-69  | KB 시스템 프롬프트 주입                  | **완료 (2026-04-05)**. Tool 기반 + 빌드 생성 방식. generate-kb.ts: docs/knowledge-base/*.md → shared/constants/kb.generated.ts (37종). knowledge-handler: KB_DOCUMENTS 조회 + zod 스키마 co-location. service.ts: 4번째 tool 등록. prompts.ts §6 사용 지침. 테스트 9개                                                                                                                                                                                             | P2-57       | ✅   |
 | P2-70  | ~~chat tool 단위 테스트 보강~~         | **→ v0.2 연기**. (1) extraction-handler 타입 통일 (2) treatment vector 검색 경로 테스트 (3) purchase_links 정상 경로 테스트. 기존 단위 테스트 350+건으로 MVP 커버 충분                                                                                                                                                                                                                                                                                                   | v0.2        | ➡️  |
-| P2-79  | 인증-채팅 연결 버그 수정 (세션 토큰 전달)      | 클라이언트에서 Supabase SDK signInAnonymously() 실행 + SDK 세션 자동 관리 + API 호출 시 Authorization Bearer 헤더 전달. 서버 /api/auth/anonymous는 동의 기록 + users INSERT만 담당 (세션 생성은 클라이언트). auth-matrix.md §1.3/§5.3 설계 정본 준수. 데이터 준비와 독립, 선행 없음 | P2-9        | ⬜   |
+| P2-79  | 인증-채팅 연결 버그 수정 (세션 토큰 전달)      | **완료 (2026-04-06)**. client/core/auth-fetch.ts(getAccessToken+authFetch) 신규. 클라이언트 SDK signInAnonymously + Bearer 헤더 전달. credentials:"include" 7곳 전수 교체. service.ts UPSERT 멱등성. auth-matrix.md §2.4/§3.1 정본 갱신. 테스트 719/719 pass | P2-9        | ✅   |
 | P2-78  | match_products RPC 카드 렌더링 컬럼 확장 | 벡터 검색 RPC(003_vector_search_functions.sql) RETURNS TABLE에 카드 렌더링 필수 필드 추가: purchase_links, english_label, images, tags, highlight_badge, volume, description, brand_id, review_count, review_summary, hair_types, key_ingredients, subcategory, tourist_popular. SQL 폴백(select('*'))과 반환 필드 동일화. match_treatments도 동일 패턴 검토                                                                                                            | P2-66       | ⬜   |
 | P2-41  | Profile 페이지                     | 🔶 **v0.2 연기**: 이메일 로그인 후 프로필 조회/편집. 기존 컴포넌트(ProfileClient/ProfileCard) 재사용. mvp-flow-redesign.md §3 참조                                                                                                                                                                                                                                                                                                                                | v0.2        | 🔶  |
 | P2-42  | 프로필 Context                     | 🔶 **v0.2 연기**: 이메일 로그인 후 React Context 상태 관리. mvp-flow-redesign.md §3 참조                                                                                                                                                                                                                                                                                                                                                              | v0.2        | 🔶  |

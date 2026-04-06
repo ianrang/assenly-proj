@@ -8,14 +8,15 @@ vi.mock('@/server/core/rate-limit', () => ({
 }));
 
 // ── Auth service mock ────────────────────────────────────────
-const mockCreateAnonymousSession = vi.fn();
+const mockRegisterAnonymousUser = vi.fn();
 vi.mock('@/server/features/auth/service', () => ({
-  createAnonymousSession: (...args: unknown[]) => mockCreateAnonymousSession(...args),
+  registerAnonymousUser: (...args: unknown[]) => mockRegisterAnonymousUser(...args),
 }));
 
-// ── Core auth mock (optionalAuthenticateUser for middleware) ─
+// ── Core auth mock (requireAuth middleware) ──────────────────
+const mockAuthenticateUser = vi.fn();
 vi.mock('@/server/core/auth', () => ({
-  authenticateUser: vi.fn().mockRejectedValue(new Error('unused in this route')),
+  authenticateUser: (...args: unknown[]) => mockAuthenticateUser(...args),
   optionalAuthenticateUser: vi.fn().mockResolvedValue(null),
 }));
 
@@ -36,6 +37,9 @@ describe('POST /api/auth/anonymous', () => {
     app = createApp();
     registerAuthRoutes(app);
 
+    // default: auth succeeds
+    mockAuthenticateUser.mockResolvedValue({ id: 'user-123', token: 'valid-token' });
+
     // default: rate limit allowed
     mockCheckRateLimit.mockReturnValue({
       allowed: true,
@@ -43,11 +47,24 @@ describe('POST /api/auth/anonymous', () => {
       resetAt: Date.now() + 60_000,
     });
 
-    // default: session creation succeeds
-    mockCreateAnonymousSession.mockResolvedValue({
-      user_id: 'user-uuid-123',
-      session_token: 'token-abc',
+    // default: registration succeeds
+    mockRegisterAnonymousUser.mockResolvedValue({
+      user_id: 'user-123',
     });
+  });
+
+  it('인증 실패 → 401 AUTH_REQUIRED', async () => {
+    mockAuthenticateUser.mockRejectedValue(new Error('No auth'));
+
+    const res = await app.request('/api/auth/anonymous', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ consent: { data_retention: true } }),
+    });
+    const json = await res.json();
+
+    expect(res.status).toBe(401);
+    expect(json.error.code).toBe('AUTH_REQUIRED');
   });
 
   it('rate limit 초과 → 429 RATE_LIMIT_EXCEEDED', async () => {
@@ -75,12 +92,11 @@ describe('POST /api/auth/anonymous', () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({}),
     });
-    const json = await res.json();
 
     expect(res.status).toBe(400);
   });
 
-  it('정상 요청 → 201 + data + meta.timestamp', async () => {
+  it('정상 요청 → 201 + data.user_id + meta.timestamp', async () => {
     const res = await app.request('/api/auth/anonymous', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -89,8 +105,10 @@ describe('POST /api/auth/anonymous', () => {
     const json = await res.json();
 
     expect(res.status).toBe(201);
-    expect(json.data).toEqual({ user_id: 'user-uuid-123', session_token: 'token-abc' });
+    expect(json.data).toEqual({ user_id: 'user-123' });
     expect(json.meta.timestamp).toBeDefined();
+    // registerAnonymousUser에 userId 전달 확인
+    expect(mockRegisterAnonymousUser).toHaveBeenCalledWith('user-123', { data_retention: true });
   });
 
   it('data_retention=false → 400 (검증 실패)', async () => {
@@ -104,7 +122,7 @@ describe('POST /api/auth/anonymous', () => {
   });
 
   it('서비스 에러 → 500 AUTH_SESSION_CREATION_FAILED (내부 메시지 미노출)', async () => {
-    mockCreateAnonymousSession.mockRejectedValue(new Error('DB connection failed'));
+    mockRegisterAnonymousUser.mockRejectedValue(new Error('DB connection failed'));
 
     const res = await app.request('/api/auth/anonymous', {
       method: 'POST',
