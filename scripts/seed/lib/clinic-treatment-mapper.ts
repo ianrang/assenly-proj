@@ -142,6 +142,20 @@ export function parseTagMappingResponse(
 
 // ── Junction 데이터 생성 ────────────────────────────────────
 
+/** 중복 방지 junction 행 추가 */
+function addUnique(
+  rows: ClinicTreatmentRow[],
+  seen: Set<string>,
+  clinicId: string,
+  treatmentId: string,
+): void {
+  const key = `${clinicId}:${treatmentId}`;
+  if (!seen.has(key)) {
+    seen.add(key);
+    rows.push({ clinic_id: clinicId, treatment_id: treatmentId });
+  }
+}
+
 /** TagMappingResult[] → ClinicTreatmentRow[] (중복 방지) */
 export function buildClinicTreatmentJunctions(
   mappings: TagMappingResult[],
@@ -151,11 +165,7 @@ export function buildClinicTreatmentJunctions(
 
   for (const mapping of mappings) {
     for (const treatmentId of mapping.treatmentIds) {
-      const key = `${mapping.clinicId}:${treatmentId}`;
-      if (!seen.has(key)) {
-        seen.add(key);
-        rows.push({ clinic_id: mapping.clinicId, treatment_id: treatmentId });
-      }
+      addUnique(rows, seen, mapping.clinicId, treatmentId);
     }
   }
 
@@ -184,22 +194,13 @@ export function buildFallbackJunctions(
     const categories = FALLBACK_CATEGORIES[clinic.clinicType] ?? [];
     for (const cat of categories) {
       for (const treatmentId of byCategory.get(cat) ?? []) {
-        const key = `${clinic.id}:${treatmentId}`;
-        if (!seen.has(key)) {
-          seen.add(key);
-          rows.push({ clinic_id: clinic.id, treatment_id: treatmentId });
-        }
+        addUnique(rows, seen, clinic.id, treatmentId);
       }
     }
 
-    // hair 키워드 매칭
     if (HAIR_KEYWORDS.some((kw) => clinic.nameKo.includes(kw))) {
       for (const treatmentId of hairTreatmentIds) {
-        const key = `${clinic.id}:${treatmentId}`;
-        if (!seen.has(key)) {
-          seen.add(key);
-          rows.push({ clinic_id: clinic.id, treatment_id: treatmentId });
-        }
+        addUnique(rows, seen, clinic.id, treatmentId);
       }
     }
   }
