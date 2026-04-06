@@ -1,23 +1,25 @@
 # TODO — 에센리 K-뷰티 AI 에이전트
 
 > 프로젝트 정의: `[MASTER-PLAN.md](docs/03-design/MASTER-PLAN.md)`
-> 범례: ✅ 완료 · 🔶 일부 완료 · ⬜ 미수행
+> 범례: ✅ 완료 · 🔶 보류/v0.2 연기 · ➡️ v0.2 연기 · ⬜ 미수행 · 🗑️ 제거 · ⏭️ 스킵 · ❌ 제외 · ⏸️ 펜딩
 
 ---
 
 ## 진행률
 
 
-| Phase      | 작업 수    | 완료      | 진행률     | 상태     |
-| ---------- | ------- | ------- | ------- | ------ |
-| 사전 완료      | 12      | 12      | 100%    | ✅      |
-| Phase 0    | 37      | 37      | 100%    | ✅      |
-| Phase 1    | 62      | 60      | 97%     | ✅      |
-| Phase 2    | 100     | 73      | 73%     | 🔶 진행중 |
-| Phase 3    | 33      | 0       | 0%      | ⬜ 미시작  |
-| **MVP 합계** | **244** | **182** | **75%** |        |
-| 관리자 앱 (펜딩) | 19      | 0       | 0%      | ⏸️ 펜딩  |
+| Phase      | 작업 수    | 완료      | v0.2 연기 | MVP 잔여 | 상태     |
+| ---------- | ------- | ------- | ------- | ------ | ------ |
+| 사전 완료      | 12      | 12      | 0       | 0      | ✅      |
+| Phase 0    | 37      | 37      | 0       | 0      | ✅      |
+| Phase 1    | 62      | 60      | 2       | 0      | ✅      |
+| Phase 2    | 114     | 96      | 12      | 6      | 🔶 진행중 |
+| Phase 3    | 37      | 0       | 18      | 19     | ⬜ 미시작  |
+| **MVP 합계** | **262** | **205** | **32**  | **25** |        |
+| 관리자 앱 (펜딩) | 20      | 0       | 0       | 20     | ⏸️ 펜딩  |
 
+
+> 집계 기준: "작업 수"는 ❌ 제외·🗑️ 제거·⏭️ 스킵을 뺀 유효 작업. "v0.2 연기"는 ➡️ + 🔶 합산.
 
 **✅ Gate 0 통과 (2026-03-21) → Phase 1 (MVP 설계) 착수 준비**
 **🔶 Gate 1 조건부 통과 (2026-03-22) → P1-35~37 완료 후 최종 통과. Phase 2 착수 가능**
@@ -186,14 +188,14 @@
 ## 설계 — API
 
 
-| ID    | 작업            | 상세                                                                    | 산출물              | 상태  |
-| ----- | ------------- | --------------------------------------------------------------------- | ---------------- | --- |
-| P1-19 | API 공통 규격     | 응답 형식({data,error,meta}), 에러 코드(도메인별), HTTP 상태, 페이지네이션, Rate limit 헤더 | `api-spec.md` §1 | ✅   |
-| P1-20 | 사용자 앱 API     | 14개 엔드포인트. 인증(선택/필수), 요청/응답 스키마, 필터 파라미터                              | `api-spec.md` §2 | ✅   |
-| P1-21 | Chat API 스트리밍 | SSE 6개 이벤트 타입, 에러 이벤트 3종, 서버 11단계 플로우. 에러 복구 상세→P1-40                 | `api-spec.md` §3 | ✅   |
-| P1-22 | Rate Limiting | Chat 분당15/일100 (P2-50b에서 5→15 조정), 공개API 분당60, 익명생성 분당3/IP. MVP 메모리Map, v0.2 Redis(V2-3)  | `api-spec.md` §4 | ✅   |
-| P1-23 | 관리자 CRUD API  | 제네릭 CRUD(7엔티티), 관계 관리, 하이라이트, 이미지 업로드. withAuditLog 미들웨어              | `api-spec.md` §5 | ✅   |
-| P1-24 | 관리자 인증 API    | Google SSO→자체JWT(24h), 토큰 갱신, 계정 관리(super_admin), 감사 로그 조회            | `api-spec.md` §6 | ✅   |
+| ID    | 작업            | 상세                                                                                       | 산출물              | 상태  |
+| ----- | ------------- | ---------------------------------------------------------------------------------------- | ---------------- | --- |
+| P1-19 | API 공통 규격     | 응답 형식({data,error,meta}), 에러 코드(도메인별), HTTP 상태, 페이지네이션, Rate limit 헤더                    | `api-spec.md` §1 | ✅   |
+| P1-20 | 사용자 앱 API     | 14개 엔드포인트. 인증(선택/필수), 요청/응답 스키마, 필터 파라미터                                                 | `api-spec.md` §2 | ✅   |
+| P1-21 | Chat API 스트리밍 | SSE 6개 이벤트 타입, 에러 이벤트 3종, 서버 11단계 플로우. 에러 복구 상세→P1-40                                    | `api-spec.md` §3 | ✅   |
+| P1-22 | Rate Limiting | Chat 분당15/일100 (P2-50b에서 5→15 조정), 공개API 분당60, 익명생성 분당3/IP. MVP 메모리Map, v0.2 Redis(V2-3) | `api-spec.md` §4 | ✅   |
+| P1-23 | 관리자 CRUD API  | 제네릭 CRUD(7엔티티), 관계 관리, 하이라이트, 이미지 업로드. withAuditLog 미들웨어                                 | `api-spec.md` §5 | ✅   |
+| P1-24 | 관리자 인증 API    | Google SSO→자체JWT(24h), 토큰 갱신, 계정 관리(super_admin), 감사 로그 조회                               | `api-spec.md` §6 | ✅   |
 
 
 ## 설계 — AI
@@ -337,40 +339,41 @@
 ## 사용자 앱 — UI (2~3주, 병렬 가능)
 
 
-| ID    | 작업                        | 상세                                                                                                             | 의존          | 상태  |
-| ----- | ------------------------- | -------------------------------------------------------------------------------------------------------------- | ----------- | --- |
-| P2-29 | 공통 레이아웃 + locale 레이아웃     | shadcn/ui 초기화(18컴포넌트) + cn.ts + viewport 메타태그 + safe-area + touch-action + Sonner Toaster. globals.css 모바일 호환성 | —           | ✅   |
-| P2-30 | 에러 바운더리 + 에러 화면           | [locale]/error.tsx (role="alert" + 포커스 이동 + reset) + [locale]/not-found.tsx (404) i18n. Root not-found.tsx + global-error.tsx (locale 밖 영어). 브랜드 통일 (primary 코드 + "Back to home"). BrandLogo → 홈 링크 `<a href="/">` | —           | ✅   |
-| P2-31 | Header + LanguageSelector | 공유 앱 Header(props 기반 좌측 컨텍스트) + shadcn Select LanguageSelector + LanguageContext(대화 언어)                        | P2-29       | ✅   |
-| P2-32 | Landing 페이지               | 풀 너비 마케팅 랜딩 7컴포넌트 + (app)/ 라우트 그룹 분리 + CTA 인라인 동의 + ReturnVisitBanner(프로필) + 그래디언트 애니메이션                       | P2-29       | ✅   |
-| P2-33 | 온보딩 페이지 + 4단계 컴포넌트        | ✅ 코드 완료. **MVP에서 비활성** — 라우트 파일 유지, Landing 진입 경로 없음. v0.2(이메일 로그인)에서 활성화. mvp-flow-redesign.md §3 참조      | P2-29       | ✅   |
-| P2-34 | 프로필 전환/확인 화면              | ✅ 코드 완료. **MVP에서 비활성** — 라우트 파일 유지, Landing 진입 경로 없음. v0.2(이메일 로그인)에서 활성화. mvp-flow-redesign.md §3 참조      | P2-29       | ✅   |
-| P2-39 | HighlightBadge 컴포넌트       | VP-1 비개입 시각 강조. is_highlighted+badge 조건부 렌더링. teal 토큰. 다국어 폴백                                                  | P2-29       | ✅   |
-| P2-36 | 5영역 탭 바                   | 🔶 **MVP 보류**: Chat에서 TabBar 제거. en.json `tabs` 키 유지 (TabBar.tsx 참조). 대화 흐름 내 AI 카드 삽입 방식이 VP-4에 부합. v0.2에서 필요성 재검토 (PRD §3.4 탭 구성 보류 참조) | P2-29       | 🔶  |
-| P2-37 | ProductCard 컴포넌트          | 4상태(normal/highlighted/skeleton/img-error) + HighlightBadge + localized() + Skeleton                              | P2-39       | ✅   |
-| P2-38 | TreatmentCard 컴포넌트        | 시술 카드(가격 범위/시간/다운타임 경고 coral) + HighlightBadge + localized() 공용 추출                                             | P2-39       | ✅   |
-| P2-35 | Chat 인터페이스                | AI SDK v6 useChat + MessageBubble/List + InputBar(visualViewport) + SuggestedQuestions(경로B) + StreamingIndicator + TabBar | P2-36~P2-38 | ✅   |
-| P2-46 | MVP 흐름 재설계 — 설계 확정         | Chat-First 단일 경로 설계 문서 작성 완료. Landing 단일 CTA + 채팅 내 온보딩 + 카드 결과 + Kit CTA. 프로필/이메일 로그인 v0.2 연기. 설계: `mvp-flow-redesign.md` | P2-35       | ✅   |
-| P2-47 | Landing 단일 CTA + Chat-First 적용 | HeroSection 단일 CTA + ReturnVisitBanner 닫기 버튼 + ChatInterface hasProfile 제거 + chat.ts 프로필 INSERT (P2-50b에서 afterWork→onFinish 통합) + scrollbar-thin + createMinimalProfile 테스트 2개. 커밋 `4830325` | P2-46       | ✅   |
-| P2-48 | PRD/설계 문서 v0.2 범위 동기화     | PRD §3.1~3.8 + §5.1/5.6 Chat-First 반영. user-screens §2.3/§3.1/§3.4/§3.5/§6.3 동기화. ANALYTICS K1 측정식 + path_a_entry v0.2 보류. data-privacy, sitemap, api-spec, tool-spec 동기화. 커밋 `aa13980` | P2-46       | ✅   |
-| P2-51 | Chat 카드 렌더링 파이프라인         | card-mapper.ts(tool-result→ChatMessagePart변환) + MessageGroup(시각적그룹핑) + MessageList(파트별분기렌더링) + ChatInterface(card-mapper연결). 테스트 13건. 커밋 `85c7553`~`2c505c3` | P2-47       | ✅   |
-| P2-40 | Kit CTA 컴포넌트 + 연동         | Sheet 프리미티브(`ui/primitives/sheet.tsx`) + KitCtaCard(하이라이트카드) + KitCtaSheet(이메일폼 bottom sheet, react-hook-form, POST /api/kit/claim) + card-mapper 연동(is_highlighted→kit-cta-card 파트). 커밋 `7645121`~`01473d8` | P2-51       | ✅   |
-| P2-49 | "Show recommendations" 버튼 | 🔶 **보류**: Chat-First 설계에서 "온보딩 완료" 명시적 시점 부재. 클라이언트 감지(extraction tool 유무)는 타이밍 부정확, 서버 신호는 오버엔지니어링. AI가 정보 수집과 추천을 동시 수행하므로 순차적 전환 버튼 불필요. **런칭 후 K1/K2 데이터로 재검토**. 결정 사유: `docs/05-design-detail/p2-49-deferred.md` | P2-51 | 🔶  |
-| P2-XX | SuggestedActions (서버 기반 제안 버튼) | 🔶 **보류**: AI 응답에 상황별 액션 버튼(suggested_actions) 포함. 초기 SuggestedQuestions의 대화 중 확장판. 서버가 컨텍스트에 맞는 제안을 구조화 데이터로 전달 → 클라이언트 렌더링. **P2-49 재검토 시 함께 평가**. 업계 표준 패턴 (ChatGPT/Gemini suggested replies) | K1/K2 데이터 | 🔶  |
-| P2-50a | 기술 검증: AI SDK 메시지 저장/복원 PoC | 비즈니스·코어 코드 무수정. AI SDK 타입 정의 + 공식 문서 기반 정적 분석: (1) onFinish UIMessage[] 구조 확인 — tool parts 포함 확정 (2) UIPartLike ↔ UIMessagePart 호환성 확인 — 완전 호환 (3) 저장 전략 결정: UIMessage[] 통째 저장 (conversations.ui_messages jsonb). (4) afterWork→onFinish 통합 + 요청 파싱 변경 영향 분석. **결과물**: `message-persistence-strategy.md` | P2-24 | ✅   |
-| P2-50b | 메시지 저장 + LLM 컨텍스트 연속성 | conversations.ui_messages jsonb 추가(009 migration + schema.dbml). chat.ts: UIMessage 파싱(Q-1 text-only 검증) + 서버 권위적 히스토리(convertToModelMessages) + onFinish(UIMessage[] 저장 + 추출 저장 통합) + messageMetadata(conversationId 전달) + consumeStream + rate limit 5→15/분. service.ts: history:ModelMessage[] 파라미터 + loadRecentMessages 제거. ChatInterface: prepareSendMessagesRequest + conversationId 상태. api-spec rate limit 동기화. 테스트 592/592 통과 | P2-50a | ✅   |
-| P2-50c | Chat 히스토리 클라이언트 로드 | ChatInterface: 마운트 시 fetch('/api/chat/history') → useChat({ messages }) 카드 포함 복원 + conversationId 초기화. ChatSkeleton 로딩 UI. ChatContent 분리(조건부 렌더링으로 useChat 초기화 시점 제어). P2-50b 테스트 보강 4건: onFinish 저장 + messageMetadata conversationId + 손상 ui_messages 폴백 + convertToModelMessages 실패 폴백. 테스트 596/596 통과 | P2-50b | ✅   |
-| P2-43 | 면책 조항 페이지                 | Terms 페이지 내 Disclaimer 섹션으로 통합. 시술 추천 면책, 의료 조언 아닌 정보 제공, 제3자 서비스 면책, 정확성 한계 명시. system-prompt-spec §5 Guardrails 기반 | P2-29       | ✅   |
-| P2-44 | 이용약관 + 개인정보처리방침 페이지       | Terms(/terms) + Privacy(/privacy) 별도 페이지. PRD §4-C + data-privacy.md 기반 실제 콘텐츠. 법률 상수(shared/constants/legal.ts) 단일 관리. PA-20에서 관리자 화면 전환 예정 | P2-29       | ✅   |
-| P2-45 | 동의 시점 채팅 내 이동 검토           | Landing 동의 → Chat 첫 메시지 전 동의로 이동. ChatInterface 내 ConsentOverlay + 세션 생성. data-privacy §1.2, PRD §4-C, mvp-flow-redesign §2.3 갱신 완료        | P2-47       | ✅   |
-| P2-66 | ProductCard purchase_links 렌더링 | ProductCard 푸터에 "Buy Online" 구매 링크 추가. purchase_links[0] 첫번째만 표시, 외부 링크(새 탭). store 링크와 동일 패턴. 테스트 4건(배열/다수/null/빈배열). 벡터 검색 RPC 컬럼 누락은 P2-78 별도 태스크 | P2-64a      | ✅   |
-| P2-67 | ProductCard english_label 배지   | ProductCard 푸터에 "English Label" pill 배지 추가. english_label===true 시 렌더링. tags 배지와 동일 패턴(neutral pill). 푸터 순서: 배지→지도→구매. 테스트 2건(true/false) | P2-64a      | ✅   |
-| P2-68 | store map_url E2E 검증           | 전 경로 단위 테스트 검증 완료. ProductCard 테스트 3건 추가(map_url 링크/plain text/미제공). card-mapper extractMapUrl 3건 + search-handler loadRelatedStores 1건 기존 통과. 코드 수정 0건 | P2-64a      | ✅   |
-| P2-69 | KB 시스템 프롬프트 주입             | **완료 (2026-04-05)**. Tool 기반 + 빌드 생성 방식. generate-kb.ts: docs/knowledge-base/*.md → shared/constants/kb.generated.ts (37종). knowledge-handler: KB_DOCUMENTS 조회 + zod 스키마 co-location. service.ts: 4번째 tool 등록. prompts.ts §6 사용 지침. 테스트 9개 | P2-57       | ✅   |
-| P2-70 | chat tool 단위 테스트 보강         | (1) extraction-handler args: unknown → 스키마 추론 타입 통일 (이중 파싱 제거) (2) treatment vector 검색 경로 직접 테스트 추가 (3) product purchase_links 정상 경로 테스트 추가. 통합 테스트(P2-71~) 선행 조건 | P2-69       | ⬜   |
-| P2-78 | match_products RPC 카드 렌더링 컬럼 확장 | 벡터 검색 RPC(003_vector_search_functions.sql) RETURNS TABLE에 카드 렌더링 필수 필드 추가: purchase_links, english_label, images, tags, highlight_badge, volume, description, brand_id, review_count, review_summary, hair_types, key_ingredients, subcategory, tourist_popular. SQL 폴백(select('*'))과 반환 필드 동일화. match_treatments도 동일 패턴 검토 | P2-66 | ⬜   |
-| P2-41 | Profile 페이지               | 🔶 **v0.2 연기**: 이메일 로그인 후 프로필 조회/편집. 기존 컴포넌트(ProfileClient/ProfileCard) 재사용. mvp-flow-redesign.md §3 참조  | v0.2        | 🔶  |
-| P2-42 | 프로필 Context               | 🔶 **v0.2 연기**: 이메일 로그인 후 React Context 상태 관리. mvp-flow-redesign.md §3 참조                                     | v0.2        | 🔶  |
+| ID     | 작업                              | 상세                                                                                                                                                                                                                                                                                                                                                                                                                                     | 의존          | 상태  |
+| ------ | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | --- |
+| P2-29  | 공통 레이아웃 + locale 레이아웃           | shadcn/ui 초기화(18컴포넌트) + cn.ts + viewport 메타태그 + safe-area + touch-action + Sonner Toaster. globals.css 모바일 호환성                                                                                                                                                                                                                                                                                                                         | —           | ✅   |
+| P2-30  | 에러 바운더리 + 에러 화면                 | [locale]/error.tsx (role="alert" + 포커스 이동 + reset) + [locale]/not-found.tsx (404) i18n. Root not-found.tsx + global-error.tsx (locale 밖 영어). 브랜드 통일 (primary 코드 + "Back to home"). BrandLogo → 홈 링크 `<a href="/">`                                                                                                                                                                                                                     | —           | ✅   |
+| P2-31  | Header + LanguageSelector       | 공유 앱 Header(props 기반 좌측 컨텍스트) + shadcn Select LanguageSelector + LanguageContext(대화 언어)                                                                                                                                                                                                                                                                                                                                                | P2-29       | ✅   |
+| P2-32  | Landing 페이지                     | 풀 너비 마케팅 랜딩 7컴포넌트 + (app)/ 라우트 그룹 분리 + CTA 인라인 동의 + ReturnVisitBanner(프로필) + 그래디언트 애니메이션                                                                                                                                                                                                                                                                                                                                               | P2-29       | ✅   |
+| P2-33  | 온보딩 페이지 + 4단계 컴포넌트              | ✅ 코드 완료. **MVP에서 비활성** — 라우트 파일 유지, Landing 진입 경로 없음. v0.2(이메일 로그인)에서 활성화. mvp-flow-redesign.md §3 참조                                                                                                                                                                                                                                                                                                                                  | P2-29       | ✅   |
+| P2-34  | 프로필 전환/확인 화면                    | ✅ 코드 완료. **MVP에서 비활성** — 라우트 파일 유지, Landing 진입 경로 없음. v0.2(이메일 로그인)에서 활성화. mvp-flow-redesign.md §3 참조                                                                                                                                                                                                                                                                                                                                  | P2-29       | ✅   |
+| P2-39  | HighlightBadge 컴포넌트             | VP-1 비개입 시각 강조. is_highlighted+badge 조건부 렌더링. teal 토큰. 다국어 폴백                                                                                                                                                                                                                                                                                                                                                                          | P2-29       | ✅   |
+| P2-36  | 5영역 탭 바                         | 🔶 **MVP 보류**: Chat에서 TabBar 제거. en.json `tabs` 키 유지 (TabBar.tsx 참조). 대화 흐름 내 AI 카드 삽입 방식이 VP-4에 부합. v0.2에서 필요성 재검토 (PRD §3.4 탭 구성 보류 참조)                                                                                                                                                                                                                                                                                              | P2-29       | 🔶  |
+| P2-37  | ProductCard 컴포넌트                | 4상태(normal/highlighted/skeleton/img-error) + HighlightBadge + localized() + Skeleton                                                                                                                                                                                                                                                                                                                                                   | P2-39       | ✅   |
+| P2-38  | TreatmentCard 컴포넌트              | 시술 카드(가격 범위/시간/다운타임 경고 coral) + HighlightBadge + localized() 공용 추출                                                                                                                                                                                                                                                                                                                                                                     | P2-39       | ✅   |
+| P2-35  | Chat 인터페이스                      | AI SDK v6 useChat + MessageBubble/List + InputBar(visualViewport) + SuggestedQuestions(경로B) + StreamingIndicator + TabBar                                                                                                                                                                                                                                                                                                              | P2-36~P2-38 | ✅   |
+| P2-46  | MVP 흐름 재설계 — 설계 확정              | Chat-First 단일 경로 설계 문서 작성 완료. Landing 단일 CTA + 채팅 내 온보딩 + 카드 결과 + Kit CTA. 프로필/이메일 로그인 v0.2 연기. 설계: `mvp-flow-redesign.md`                                                                                                                                                                                                                                                                                                             | P2-35       | ✅   |
+| P2-47  | Landing 단일 CTA + Chat-First 적용  | HeroSection 단일 CTA + ReturnVisitBanner 닫기 버튼 + ChatInterface hasProfile 제거 + chat.ts 프로필 INSERT (P2-50b에서 afterWork→onFinish 통합) + scrollbar-thin + createMinimalProfile 테스트 2개. 커밋 `4830325`                                                                                                                                                                                                                                          | P2-46       | ✅   |
+| P2-48  | PRD/설계 문서 v0.2 범위 동기화           | PRD §3.1~3.8 + §5.1/5.6 Chat-First 반영. user-screens §2.3/§3.1/§3.4/§3.5/§6.3 동기화. ANALYTICS K1 측정식 + path_a_entry v0.2 보류. data-privacy, sitemap, api-spec, tool-spec 동기화. 커밋 `aa13980`                                                                                                                                                                                                                                                | P2-46       | ✅   |
+| P2-51  | Chat 카드 렌더링 파이프라인               | card-mapper.ts(tool-result→ChatMessagePart변환) + MessageGroup(시각적그룹핑) + MessageList(파트별분기렌더링) + ChatInterface(card-mapper연결). 테스트 13건. 커밋 `85c7553`~`2c505c3`                                                                                                                                                                                                                                                                           | P2-47       | ✅   |
+| P2-40  | Kit CTA 컴포넌트 + 연동               | Sheet 프리미티브(`ui/primitives/sheet.tsx`) + KitCtaCard(하이라이트카드) + KitCtaSheet(이메일폼 bottom sheet, react-hook-form, POST /api/kit/claim) + card-mapper 연동(is_highlighted→kit-cta-card 파트). 커밋 `7645121`~`01473d8`                                                                                                                                                                                                                           | P2-51       | ✅   |
+| P2-49  | "Show recommendations" 버튼       | 🔶 **보류**: Chat-First 설계에서 "온보딩 완료" 명시적 시점 부재. 클라이언트 감지(extraction tool 유무)는 타이밍 부정확, 서버 신호는 오버엔지니어링. AI가 정보 수집과 추천을 동시 수행하므로 순차적 전환 버튼 불필요. **런칭 후 K1/K2 데이터로 재검토**. 결정 사유: `docs/05-design-detail/p2-49-deferred.md`                                                                                                                                                                                                                 | P2-51       | 🔶  |
+| P2-XX  | SuggestedActions (서버 기반 제안 버튼)  | 🔶 **보류**: AI 응답에 상황별 액션 버튼(suggested_actions) 포함. 초기 SuggestedQuestions의 대화 중 확장판. 서버가 컨텍스트에 맞는 제안을 구조화 데이터로 전달 → 클라이언트 렌더링. **P2-49 재검토 시 함께 평가**. 업계 표준 패턴 (ChatGPT/Gemini suggested replies)                                                                                                                                                                                                                                       | K1/K2 데이터   | 🔶  |
+| P2-50a | 기술 검증: AI SDK 메시지 저장/복원 PoC     | 비즈니스·코어 코드 무수정. AI SDK 타입 정의 + 공식 문서 기반 정적 분석: (1) onFinish UIMessage[] 구조 확인 — tool parts 포함 확정 (2) UIPartLike ↔ UIMessagePart 호환성 확인 — 완전 호환 (3) 저장 전략 결정: UIMessage[] 통째 저장 (conversations.ui_messages jsonb). (4) afterWork→onFinish 통합 + 요청 파싱 변경 영향 분석. **결과물**: `message-persistence-strategy.md`                                                                                                                               | P2-24       | ✅   |
+| P2-50b | 메시지 저장 + LLM 컨텍스트 연속성           | conversations.ui_messages jsonb 추가(009 migration + schema.dbml). chat.ts: UIMessage 파싱(Q-1 text-only 검증) + 서버 권위적 히스토리(convertToModelMessages) + onFinish(UIMessage[] 저장 + 추출 저장 통합) + messageMetadata(conversationId 전달) + consumeStream + rate limit 5→15/분. service.ts: history:ModelMessage[] 파라미터 + loadRecentMessages 제거. ChatInterface: prepareSendMessagesRequest + conversationId 상태. api-spec rate limit 동기화. 테스트 592/592 통과 | P2-50a      | ✅   |
+| P2-50c | Chat 히스토리 클라이언트 로드              | ChatInterface: 마운트 시 fetch('/api/chat/history') → useChat({ messages }) 카드 포함 복원 + conversationId 초기화. ChatSkeleton 로딩 UI. ChatContent 분리(조건부 렌더링으로 useChat 초기화 시점 제어). P2-50b 테스트 보강 4건: onFinish 저장 + messageMetadata conversationId + 손상 ui_messages 폴백 + convertToModelMessages 실패 폴백. 테스트 596/596 통과                                                                                                                              | P2-50b      | ✅   |
+| P2-43  | 면책 조항 페이지                       | Terms 페이지 내 Disclaimer 섹션으로 통합. 시술 추천 면책, 의료 조언 아닌 정보 제공, 제3자 서비스 면책, 정확성 한계 명시. system-prompt-spec §5 Guardrails 기반                                                                                                                                                                                                                                                                                                                   | P2-29       | ✅   |
+| P2-44  | 이용약관 + 개인정보처리방침 페이지             | Terms(/terms) + Privacy(/privacy) 별도 페이지. PRD §4-C + data-privacy.md 기반 실제 콘텐츠. 법률 상수(shared/constants/legal.ts) 단일 관리. PA-20에서 관리자 화면 전환 예정                                                                                                                                                                                                                                                                                           | P2-29       | ✅   |
+| P2-45  | 동의 시점 채팅 내 이동 검토                | Landing 동의 → Chat 첫 메시지 전 동의로 이동. ChatInterface 내 ConsentOverlay + 세션 생성. data-privacy §1.2, PRD §4-C, mvp-flow-redesign §2.3 갱신 완료                                                                                                                                                                                                                                                                                                    | P2-47       | ✅   |
+| P2-66  | ProductCard purchase_links 렌더링  | ProductCard 푸터에 "Buy Online" 구매 링크 추가. purchase_links[0] 첫번째만 표시, 외부 링크(새 탭). store 링크와 동일 패턴. 테스트 4건(배열/다수/null/빈배열). 벡터 검색 RPC 컬럼 누락은 P2-78 별도 태스크                                                                                                                                                                                                                                                                                   | P2-64a      | ✅   |
+| P2-67  | ProductCard english_label 배지    | ProductCard 푸터에 "English Label" pill 배지 추가. english_label===true 시 렌더링. tags 배지와 동일 패턴(neutral pill). 푸터 순서: 배지→지도→구매. 테스트 2건(true/false)                                                                                                                                                                                                                                                                                              | P2-64a      | ✅   |
+| P2-68  | store map_url E2E 검증            | 전 경로 단위 테스트 검증 완료. ProductCard 테스트 3건 추가(map_url 링크/plain text/미제공). card-mapper extractMapUrl 3건 + search-handler loadRelatedStores 1건 기존 통과. 코드 수정 0건                                                                                                                                                                                                                                                                                | P2-64a      | ✅   |
+| P2-69  | KB 시스템 프롬프트 주입                  | **완료 (2026-04-05)**. Tool 기반 + 빌드 생성 방식. generate-kb.ts: docs/knowledge-base/*.md → shared/constants/kb.generated.ts (37종). knowledge-handler: KB_DOCUMENTS 조회 + zod 스키마 co-location. service.ts: 4번째 tool 등록. prompts.ts §6 사용 지침. 테스트 9개                                                                                                                                                                                             | P2-57       | ✅   |
+| P2-70  | ~~chat tool 단위 테스트 보강~~         | **→ v0.2 연기**. (1) extraction-handler 타입 통일 (2) treatment vector 검색 경로 테스트 (3) purchase_links 정상 경로 테스트. 기존 단위 테스트 350+건으로 MVP 커버 충분                                                                                                                                                                                                                                                                                                   | v0.2        | ➡️  |
+| P2-79  | 인증-채팅 연결 버그 수정 (세션 토큰 전달)      | 클라이언트에서 Supabase SDK signInAnonymously() 실행 + SDK 세션 자동 관리 + API 호출 시 Authorization Bearer 헤더 전달. 서버 /api/auth/anonymous는 동의 기록 + users INSERT만 담당 (세션 생성은 클라이언트). auth-matrix.md §1.3/§5.3 설계 정본 준수. 데이터 준비와 독립, 선행 없음 | P2-9        | ⬜   |
+| P2-78  | match_products RPC 카드 렌더링 컬럼 확장 | 벡터 검색 RPC(003_vector_search_functions.sql) RETURNS TABLE에 카드 렌더링 필수 필드 추가: purchase_links, english_label, images, tags, highlight_badge, volume, description, brand_id, review_count, review_summary, hair_types, key_ingredients, subcategory, tourist_popular. SQL 폴백(select('*'))과 반환 필드 동일화. match_treatments도 동일 패턴 검토                                                                                                            | P2-66       | ⬜   |
+| P2-41  | Profile 페이지                     | 🔶 **v0.2 연기**: 이메일 로그인 후 프로필 조회/편집. 기존 컴포넌트(ProfileClient/ProfileCard) 재사용. mvp-flow-redesign.md §3 참조                                                                                                                                                                                                                                                                                                                                | v0.2        | 🔶  |
+| P2-42  | 프로필 Context                     | 🔶 **v0.2 연기**: 이메일 로그인 후 React Context 상태 관리. mvp-flow-redesign.md §3 참조                                                                                                                                                                                                                                                                                                                                                              | v0.2        | 🔶  |
 
 
 ## 데이터 준비 — 사전 검증 (Phase 2 착수 전 필수)
@@ -379,13 +382,13 @@
 > **Phase 2 코드 작성 전에 완료 필수.** 결과에 따라 파이프라인 전략이 변경될 수 있음.
 
 
-| ID    | 작업                            | 상세                                                                                                                                                                       | 의존    | 상태  |
-| ----- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----- | --- |
-| P2-V2 | 식약처 API 실제 호출 검증 (U-2)        | **완료 (2026-03-25)**. S3/S4/S5 실제 호출 성공. 발견: S3 CAS_NO 대부분 NULL → S6 JOIN 키를 INGR_ENG_NAME↔INCI name으로 변경. S4 REGULATE_TYPE 필터 미작동 → 전체 다운로드+클라이언트 필터. 제조업자 API → MVP 불필요 | 없음    | ✅   |
-| P2-V3 | 브랜드 공식 이미지 정책 확인 (U-6)        | **완료 (2026-03-26)**. 5개 브랜드 약관+업계 관행 조사. 4/5 상업적 사용 금지 명시, 1/5 불명확(COSRX). 업계 표준: 브랜드 직접 제출 모델. **판정: MVP placeholder 전략 확정 (D-14). 서면 승인 획득 후 순차 전환**                   | 없음    | ✅   |
-| P2-V4 | EU CosIng CSV + 커버리지 검증 (U-3) | **V4-A 완료 (2026-03-25)**. 공식 CSV 28,705건 확보. 대표 30개 성분 INCI 매칭률 **100%**. Function 30/30 보유. S3↔CosIng 교차매칭 5/5 성공. **판정: S6 유효, JOIN 키 변경만**                            | 없음    | ✅   |
-| P2-V5 | 시술 가격 범위 현실성 검증 (U-7)         | M2 시점. 5개 클리닉 실제 상담 가격과 DB price_min/max 대조. 50%+ 불일치 시 가격 표시 방식 재검토                                                                                                     | P2-62 | ⬜   |
-| P2-V7 | 올리브영 글로벌 이용약관 검토 (U-13)       | **완료 (2026-03-25)**. 제14조② 상업적 목적 데이터 금지. robots.txt /product Allow. 판정: 브랜드 사이트 1순위, 올리브영 글로벌 2순위(보조). cosrx/laneige/innisfree robots.txt 허용 확인                         | 없음    | ✅   |
+| ID    | 작업                            | 상세                                                                                                                                                                       | 의존   | 상태  |
+| ----- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---- | --- |
+| P2-V2 | 식약처 API 실제 호출 검증 (U-2)        | **완료 (2026-03-25)**. S3/S4/S5 실제 호출 성공. 발견: S3 CAS_NO 대부분 NULL → S6 JOIN 키를 INGR_ENG_NAME↔INCI name으로 변경. S4 REGULATE_TYPE 필터 미작동 → 전체 다운로드+클라이언트 필터. 제조업자 API → MVP 불필요 | 없음   | ✅   |
+| P2-V3 | 브랜드 공식 이미지 정책 확인 (U-6)        | **완료 (2026-03-26)**. 5개 브랜드 약관+업계 관행 조사. 4/5 상업적 사용 금지 명시, 1/5 불명확(COSRX). 업계 표준: 브랜드 직접 제출 모델. **판정: MVP placeholder 전략 확정 (D-14). 서면 승인 획득 후 순차 전환**                   | 없음   | ✅   |
+| P2-V4 | EU CosIng CSV + 커버리지 검증 (U-3) | **V4-A 완료 (2026-03-25)**. 공식 CSV 28,705건 확보. 대표 30개 성분 INCI 매칭률 **100%**. Function 30/30 보유. S3↔CosIng 교차매칭 5/5 성공. **판정: S6 유효, JOIN 키 변경만**                            | 없음   | ✅   |
+| P2-V5 | ~~시술 가격 범위 현실성 검증 (U-7)~~     | **→ v0.2 연기**. 5개 클리닉 실제 상담 가격 대조. MVP는 "참고 가격" 면책 표시로 대응                                                                                                                | v0.2 | ➡️  |
+| P2-V7 | 올리브영 글로벌 이용약관 검토 (U-13)       | **완료 (2026-03-25)**. 제14조② 상업적 목적 데이터 금지. robots.txt /product Allow. 판정: 브랜드 사이트 1순위, 올리브영 글로벌 2순위(보조). cosrx/laneige/innisfree robots.txt 허용 확인                         | 없음   | ✅   |
 
 
 ### ~~후순위 대기~~ → MVP 제외 (v0.2 백로그로 이동)
@@ -414,7 +417,7 @@
 | P2-56e2    | **웹 스크래퍼 프로바이더 (Channel A-3)**               | **완료 (2026-03-29)**. web-scraper.ts(엔진) + site-configs.ts(설정 분리, P-7). Playwright 헤드리스. source 분리: scraper-brand/scraper-oliveyoung. Crawl-delay 5초. 사이트 에러 격리. 테스트 10개                                                                                       | P2-56b, P2-56c, P2-V7          | ✅    |
 |            | **── Layer 2: AI 모듈 (Stage 2 도구, 각각 독립) ──** |                                                                                                                                                                                                                                                               |                                |      |
 | P2-56k     | AI 번역 모듈                                     | **완료 (2026-03-29)**. translator.ts + ai-client.ts(파이프라인 전용 모델 팩토리). ko→en 필수 + ja/zh/es/fr 선택. LocalizedText 출력. 번역 실패 시 ko 폴백. 테스트 19개                                                                                                                       | P2-56c, P2-5                   | ✅    |
-| P2-56l     | AI 분류 모듈                                     | **완료 (2026-03-30)**. classifier.ts. classifyFields(inputData, fieldSpecs) 범용 함수. FieldSpec.strict 옵션(false=자유 텍스트 분류). 허용값 필터링 + confidence 클램핑. 테스트 20개                                                                                                       | P2-56c, P2-5                   | ✅    |
+| P2-56l     | AI 분류 모듈                                     | **완료 (2026-03-30)**. classifier.ts. classifyFields(inputData, fieldSpecs) 범용 함수. FieldSpec.strict 옵션(false=자유 텍스트 분류). 허용값 필터링 + confidence 클램핑. 테스트 20개                                                                                                      | P2-56c, P2-5                   | ✅    |
 | P2-56m     | AI 설명 생성 모듈                                  | **완료 (2026-03-30)**. description-generator.ts. generateDescriptions(inputData, fieldSpecs) 범용 함수. GenerationFieldSpec 전용 인터페이스. ko+en 동시 생성. 테스트 14개                                                                                                          | P2-56c, P2-5                   | ✅    |
 | P2-56r     | AI 분류 정확도 PoC (U-1)                          | **완료 (2026-03-30)**. classify-accuracy.ts. M1 10건 Jaccard 비교. 테스트 16개. **실행 결과: overall 80% PASS (skin_types 100%, concerns 80%)**. 실패 2건은 dark_spots 미인식 — 프롬프트 개선 여지 있음. U-1 해소: AI 자동 분류 확정                                                                | P2-56l                         | ✅    |
 |            | **── Layer 3: 오케스트레이션 + DB 적재 ──**           |                                                                                                                                                                                                                                                               |                                |      |
@@ -432,49 +435,49 @@
 > 수집 순서: Phase A(brands, ingredients, stores, clinics, treatments 병렬) → Phase B(products) → Phase C(junction) → Phase D(임베딩)
 
 
-| ID     | 작업                                     | 상세                                                                                                                                                          | 마일스톤  | 상태  |
-| ------ | -------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- | --- |
-| P2-57  | 뷰티 지식 KB 작성 (K1)                       | **완료 (2026-03-26)**. 성분 가이드 20종 + 시술 가이드 15종 = 35종 AI 초안. 전체 품질 검증 통과 (면책, 필수 섹션, 200-2000자). K2(지역+상식)는 MVP 출시 전 별도                                        | K1→K2 | ✅   |
-| P2-58  | M1 스켈레톤 데이터 적재                         | **완료 (2026-03-26)**. 7엔티티 50건 YAML. FK 정합성 검증, 열거값 검증, D-14(images=[]) 모두 통과. domain.ts 전체 필드 준수                                                            | M1    | ✅   |
-| P2-59  | 큐레이션 리스트 확정                            | **완료 (2026-03-26)**. products 200 + stores 50 + clinics 30 + treatments 50 = 330건. 커버리지 검증: skin_type 5종 ✅, concerns 11종 ✅, 브랜드 80개(최대8/브랜드) ✅, 관광객접근 95% ✅ | M1    | ✅   |
-| P2-60  | Phase A: brands 50+ / ingredients 100+ | **완료 (2026-04-01)**. Step 1: classifier strict + function spec + inci_name 매핑 (테스트 6건). Step 2: brands 73건 JSON→enrich(6언어)→검수(영문명 15건 수정)→DB 적재. Step 3: ingredients S3(21,722)+S6+S4→105건 필터→enrich(번역+function+caution)→DB 적재. CosIng 구분자 수정(;→,) | M2    | ✅   |
-| P2-61  | Phase A: stores 200+ (S1 자동수집)         | **완료 (2026-04-02)**. Step 1: STORE_TYPES daiso 추가 + StoreTypeClassifier 인터페이스(정규식 MVP, 30+패턴) + FIELD_MAPPINGS.store(store_type/district/english_support) + review-exporter 8컬럼 + translateKeys name.ko 수정. Step 2: fetch.ts --place-queries 파일 지원 + 카카오 10쿼리 278건 → AI 6언어 번역+설명 → 검수 → DB 적재. description.ko 한국어 번역 보정. classifiers/ 서브디렉토리 정리 | M2    | ✅   |
-| P2-61b | stores 수동 보완 전수 입력                    | **완료 (2026-04-03)**. 체인별 공통값 일괄 적용(operating_hours, english_support, tourist_services, payment_methods) 272건 전수. 비매장 6건 삭제(사옥 3+서비스 3). A 방식(파이프라인 validated JSON → load.ts UPSERT) | M2    | ✅   |
-| P2-61c | LLM store_type 분류 검증 (선택→스킵)          | **스킵 (2026-04-03)**. other 105건 중 ~78건은 정확한 분류(독립 소매점). Phase A 완료 후 P2-65에서 stores+clinics+treatments 전체 LLM 분류 검증 일괄 수행 예정                                    | M2    | ⏭️   |
-| P2-62  | Phase A: clinics 30+ (S1 자동수집)         | **완료 (2026-04-04)**. Step 1: ClinicTypeClassifier 인터페이스(정규식 MVP, 4유형+null 폴백) + FIELD_MAPPINGS.clinic(clinic_type/district/english_support) + review-exporter 7컬럼. 테스트 16개 통과. Step 2: 카카오 10쿼리 225건 fetch → AI 6언어 번역+설명 → 검수(null 1건 수정) → DB 적재 225건. description.ko 영어 생성(stores와 동일 AI 이슈, P2-62b로 분리). location null 적재(stores 패턴, 좌표 clinics-locations.json 백업) | M2    | ✅   |
-| P2-63  | Phase A: treatments 53건 데이터 수집         | **완료 (2026-04-04)**. Step 1: KB 신규 2건(thread-lift, vitamin-drip). Step 2: 매니페스트 의학적 수정(다운타임 보수적 최대값 3건 + 피부타입/고민 불일치 6건) + 3건 추가(하이드라페이셜/쓰레드리프트/비타민수액) + duration_minutes/session_count 53건. Step 3: YAML→CSV 변환. Step 4: enrich-service FIELD_MAPPINGS.treatment(4개 추출기) + generateSpecs(precautions/aftercare) + review-exporter 6→15컬럼. TDD 테스트 19+21개. Step 5: import-csv→enrich(6언어 번역+분류+생성)→export-review. Step 6: 의학적 검수(downtime 3건+skin_types 4건+concerns 6건+precautions 20건 수정). Step 7: DB 적재 53건. 테스트 296/296 pass | M2    | ✅   |
-| P2-63b | M1 스켈레톤 데이터 정리                        | **완료 (2026-04-04)**. DB 전수 검증: M1 slug UUID 20건 조회 → 전부 NOT FOUND. M1 데이터는 DB에 미존재 (적재 전 Phase A 파이프라인이 선행). 현재 DB는 Phase A UUID 데이터만 보유(brands 73, ingredients 105, stores 272, clinics 225, treatments 53). 고아 레코드 0건, FK 위반 0건. m1-skeleton.yaml → data/archive/ 이동(PoC 참조 경로 갱신). Phase B 진입 차단 요인 없음 확인 | M3    | ✅   |
-| P2-63c | lib/ 유틸리티 서브디렉토리 정리                  | **완료 (2026-04-04)**. csv-parser, retry, id-generator, db-client → lib/utils/ 이동 (7파일: 4소스+3테스트). import 경로 16건 수정 + vi.mock 경로 7건 수정 (13+7=20파일). 잔존 참조 0건 검증. 테스트 296/296 pass. classifiers/(P2-61) 동일 co-location 패턴 | M3    | ✅   |
-| P2-65  | 분류 검증 + 정규식 개선 (Phase A 완료 후)         | **완료 (2026-04-04)**. 전수 데이터 검증: stores 278건(other 111→94, brand_store 60→81, dept 46→42), clinics 225건(99.1% 정확, null 1건 정당), treatments 53건(critical 4+moderate 5 식별). 분류기 개선: brand_store 패턴 21개 추가 + dept_store 백화점→구체적 체인 패턴 교체(화장품백화점 3건 오분류 해소). 테스트 19→39. 후속: P2-65a(stores 비소매 제거), P2-65b(treatments 보정) | M3    | ✅   |
-| P2-65a | stores 비소매 데이터 제거                      | other 105건 전수 리뷰. 명확 비소매 11건(사옥 6+유통 2+서비스 2+작업실 1) + 경계 8건(오피스빌딩 3+유통 2+법인 2+한의원 1) = 19건 삭제. validated JSON + DB DELETE. 272→253건. P2-61b(6건)와 합산 총 25건 비소매 정리 완료 | M3    | ✅   |
-| P2-65b | treatments 분류 수동 보정 (8건)               | Critical 4건(Botox Jawline/Chin Filler/Fat Dissolving/Body Lifting — contouring 시술 target_concerns→[] 옵션A 적용) + Moderate 4건(Dermapen +dry, Botox Crow's Feet +sensitive, Water Glow +oily, LED 8→4개 축소). Laser Toning은 이미 정상 → 스킵. validated JSON 수정 + DB UPSERT 53건 완료. db-client.ts import 경로 수정(../config→../../config) | M3    | ✅   |
-| P2-64a | Phase B: products 200+ (CSV+수동)    | **완료 (2026-04-05)**. Step 1: 매니페스트 정규화(브랜드 25건 수정, 니치 3건→대체 3건) + Daiso 브랜드 추가. Step 2: slug.ts(sourceId 자연키, 13테스트) + csv-loader source옵션 + FIELD_MAPPINGS.product(_expected 보존+tags) + review-exporter 8→12컬럼. Step 3: YAML→CSV 200건 변환 + sourceId 유니크 검증. Step 4: brand_id 룩업(case-insensitive+alias 4건, 200/200 매칭) + AI 보강(6언어+분류+생성). Step 5: auto-approve DB 적재 200건. **D-7 전수 검수 완료 — AI+expected 합집합+카테고리별 규칙 적용, 99건 보정**. Step 6: Daiso 매장 84건(카카오 API→enrich→DB적재, stores 253→337). english_support "basic" 보정. 테스트 347/347 pass                                                      | M3    | ✅   |
-| P2-64b | ~~Phase B: doctors 30+~~               | **제거 (2026-04-05)**. 분석 결과 doctors 데이터는 서비스에 불필요: PRD 사용자 스토리·TDD·tool-spec·search-engine에서 doctor 참조 0건. MVP 추천 흐름(시술→클리닉 카드)에 doctor 도달 경로 없음. 스키마 완결성 목적의 과설계로 판단 → doctors 테이블·코드·설계 제거 | M3    | 🗑️   |
-| P2-64b2 | 011_drop_doctors.sql Supabase 적용      | **완료 (2026-04-05)**. Dashboard SQL Editor에서 실행. doctors 테이블 DROP 완료                                                                                           | M3    | ✅   |
-| P2-64a2 | Essenly 자사 브랜드 + 제품 등록          | brands: Essenly 브랜드 등록(is_essenly: true). products: 케라틴 헤어팩 1건 등록(is_highlighted: true, haircare, 24000원, 190ml). purchase_links: 쿠팡+Amazon. Kit CTA 연결 검증. 추후 제품 추가 대응 구조 확인 | M3    | ⬜   |
-| P2-64c | Phase C: junction 데이터                  | product_stores(유형 기반+개별 혼합 ~~2,700건), product_ingredients(~~400건 수동 + key/avoid 분류), clinic_treatments(~150건)                                               | M3    | ⬜   |
-| P2-64d | Phase D: 임베딩 생성 + 벡터 DB 적재             | text-builder.ts + generator.ts (embedding-strategy §2) + 배치 스크립트. products, stores, clinics, treatments                                                     | M3    | ⬜   |
-| P2-64e | Phase E: S5 교차 검증 + 품질 게이트             | 식약처 보고품목 교차 검증(기능성화장품 태깅). M3 품질 게이트: A등급 100%, B등급 90%, 커버리지 검증(skin_type×40, concern×5)                                                                   | M3    | ⬜   |
+| ID      | 작업                                     | 상세                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           | 마일스톤  | 상태  |
+| ------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----- | --- |
+| P2-57   | 뷰티 지식 KB 작성 (K1)                       | **완료 (2026-03-26)**. 성분 가이드 20종 + 시술 가이드 15종 = 35종 AI 초안. 전체 품질 검증 통과 (면책, 필수 섹션, 200-2000자). K2(지역+상식)는 MVP 출시 전 별도                                                                                                                                                                                                                                                                                                                                                                                                                         | K1→K2 | ✅   |
+| P2-58   | M1 스켈레톤 데이터 적재                         | **완료 (2026-03-26)**. 7엔티티 50건 YAML. FK 정합성 검증, 열거값 검증, D-14(images=[]) 모두 통과. domain.ts 전체 필드 준수                                                                                                                                                                                                                                                                                                                                                                                                                                             | M1    | ✅   |
+| P2-59   | 큐레이션 리스트 확정                            | **완료 (2026-03-26)**. products 200 + stores 50 + clinics 30 + treatments 50 = 330건. 커버리지 검증: skin_type 5종 ✅, concerns 11종 ✅, 브랜드 80개(최대8/브랜드) ✅, 관광객접근 95% ✅                                                                                                                                                                                                                                                                                                                                                                                  | M1    | ✅   |
+| P2-60   | Phase A: brands 50+ / ingredients 100+ | **완료 (2026-04-01)**. Step 1: classifier strict + function spec + inci_name 매핑 (테스트 6건). Step 2: brands 73건 JSON→enrich(6언어)→검수(영문명 15건 수정)→DB 적재. Step 3: ingredients S3(21,722)+S6+S4→105건 필터→enrich(번역+function+caution)→DB 적재. CosIng 구분자 수정(;→,)                                                                                                                                                                                                                                                                                         | M2    | ✅   |
+| P2-61   | Phase A: stores 200+ (S1 자동수집)         | **완료 (2026-04-02)**. Step 1: STORE_TYPES daiso 추가 + StoreTypeClassifier 인터페이스(정규식 MVP, 30+패턴) + FIELD_MAPPINGS.store(store_type/district/english_support) + review-exporter 8컬럼 + translateKeys name.ko 수정. Step 2: fetch.ts --place-queries 파일 지원 + 카카오 10쿼리 278건 → AI 6언어 번역+설명 → 검수 → DB 적재. description.ko 한국어 번역 보정. classifiers/ 서브디렉토리 정리                                                                                                                                                                                             | M2    | ✅   |
+| P2-61b  | stores 수동 보완 전수 입력                     | **완료 (2026-04-03)**. 체인별 공통값 일괄 적용(operating_hours, english_support, tourist_services, payment_methods) 272건 전수. 비매장 6건 삭제(사옥 3+서비스 3). A 방식(파이프라인 validated JSON → load.ts UPSERT)                                                                                                                                                                                                                                                                                                                                                          | M2    | ✅   |
+| P2-61c  | LLM store_type 분류 검증 (선택→스킵)           | **스킵 (2026-04-03)**. other 105건 중 ~78건은 정확한 분류(독립 소매점). Phase A 완료 후 P2-65에서 stores+clinics+treatments 전체 LLM 분류 검증 일괄 수행 예정                                                                                                                                                                                                                                                                                                                                                                                                                 | M2    | ⏭️  |
+| P2-62   | Phase A: clinics 30+ (S1 자동수집)         | **완료 (2026-04-04)**. Step 1: ClinicTypeClassifier 인터페이스(정규식 MVP, 4유형+null 폴백) + FIELD_MAPPINGS.clinic(clinic_type/district/english_support) + review-exporter 7컬럼. 테스트 16개 통과. Step 2: 카카오 10쿼리 225건 fetch → AI 6언어 번역+설명 → 검수(null 1건 수정) → DB 적재 225건. description.ko 영어 생성(stores와 동일 AI 이슈, P2-62b로 분리). location null 적재(stores 패턴, 좌표 clinics-locations.json 백업)                                                                                                                                                                       | M2    | ✅   |
+| P2-63   | Phase A: treatments 53건 데이터 수집         | **완료 (2026-04-04)**. Step 1: KB 신규 2건(thread-lift, vitamin-drip). Step 2: 매니페스트 의학적 수정(다운타임 보수적 최대값 3건 + 피부타입/고민 불일치 6건) + 3건 추가(하이드라페이셜/쓰레드리프트/비타민수액) + duration_minutes/session_count 53건. Step 3: YAML→CSV 변환. Step 4: enrich-service FIELD_MAPPINGS.treatment(4개 추출기) + generateSpecs(precautions/aftercare) + review-exporter 6→15컬럼. TDD 테스트 19+21개. Step 5: import-csv→enrich(6언어 번역+분류+생성)→export-review. Step 6: 의학적 검수(downtime 3건+skin_types 4건+concerns 6건+precautions 20건 수정). Step 7: DB 적재 53건. 테스트 296/296 pass              | M2    | ✅   |
+| P2-63b  | M1 스켈레톤 데이터 정리                         | **완료 (2026-04-04)**. DB 전수 검증: M1 slug UUID 20건 조회 → 전부 NOT FOUND. M1 데이터는 DB에 미존재 (적재 전 Phase A 파이프라인이 선행). 현재 DB는 Phase A UUID 데이터만 보유(brands 73, ingredients 105, stores 272, clinics 225, treatments 53). 고아 레코드 0건, FK 위반 0건. m1-skeleton.yaml → data/archive/ 이동(PoC 참조 경로 갱신). Phase B 진입 차단 요인 없음 확인                                                                                                                                                                                                                                 | M3    | ✅   |
+| P2-63c  | lib/ 유틸리티 서브디렉토리 정리                    | **완료 (2026-04-04)**. csv-parser, retry, id-generator, db-client → lib/utils/ 이동 (7파일: 4소스+3테스트). import 경로 16건 수정 + vi.mock 경로 7건 수정 (13+7=20파일). 잔존 참조 0건 검증. 테스트 296/296 pass. classifiers/(P2-61) 동일 co-location 패턴                                                                                                                                                                                                                                                                                                                       | M3    | ✅   |
+| P2-65   | 분류 검증 + 정규식 개선 (Phase A 완료 후)          | **완료 (2026-04-04)**. 전수 데이터 검증: stores 278건(other 111→94, brand_store 60→81, dept 46→42), clinics 225건(99.1% 정확, null 1건 정당), treatments 53건(critical 4+moderate 5 식별). 분류기 개선: brand_store 패턴 21개 추가 + dept_store 백화점→구체적 체인 패턴 교체(화장품백화점 3건 오분류 해소). 테스트 19→39. 후속: P2-65a(stores 비소매 제거), P2-65b(treatments 보정)                                                                                                                                                                                                                           | M3    | ✅   |
+| P2-65a  | stores 비소매 데이터 제거                      | other 105건 전수 리뷰. 명확 비소매 11건(사옥 6+유통 2+서비스 2+작업실 1) + 경계 8건(오피스빌딩 3+유통 2+법인 2+한의원 1) = 19건 삭제. validated JSON + DB DELETE. 272→253건. P2-61b(6건)와 합산 총 25건 비소매 정리 완료                                                                                                                                                                                                                                                                                                                                                                          | M3    | ✅   |
+| P2-65b  | treatments 분류 수동 보정 (8건)               | Critical 4건(Botox Jawline/Chin Filler/Fat Dissolving/Body Lifting — contouring 시술 target_concerns→[] 옵션A 적용) + Moderate 4건(Dermapen +dry, Botox Crow's Feet +sensitive, Water Glow +oily, LED 8→4개 축소). Laser Toning은 이미 정상 → 스킵. validated JSON 수정 + DB UPSERT 53건 완료. db-client.ts import 경로 수정(../config→../../config)                                                                                                                                                                                                                    | M3    | ✅   |
+| P2-64a  | Phase B: products 200+ (CSV+수동)        | **완료 (2026-04-05)**. Step 1: 매니페스트 정규화(브랜드 25건 수정, 니치 3건→대체 3건) + Daiso 브랜드 추가. Step 2: slug.ts(sourceId 자연키, 13테스트) + csv-loader source옵션 + FIELD_MAPPINGS.product(_expected 보존+tags) + review-exporter 8→12컬럼. Step 3: YAML→CSV 200건 변환 + sourceId 유니크 검증. Step 4: brand_id 룩업(case-insensitive+alias 4건, 200/200 매칭) + AI 보강(6언어+분류+생성). Step 5: auto-approve DB 적재 200건. **D-7 전수 검수 완료 — AI+expected 합집합+카테고리별 규칙 적용, 99건 보정**. Step 6: Daiso 매장 84건(카카오 API→enrich→DB적재, stores 253→337). english_support "basic" 보정. 테스트 347/347 pass | M3    | ✅   |
+| P2-64b  | ~~Phase B: doctors 30+~~               | **제거 (2026-04-05)**. 분석 결과 doctors 데이터는 서비스에 불필요: PRD 사용자 스토리·TDD·tool-spec·search-engine에서 doctor 참조 0건. MVP 추천 흐름(시술→클리닉 카드)에 doctor 도달 경로 없음. 스키마 완결성 목적의 과설계로 판단 → doctors 테이블·코드·설계 제거                                                                                                                                                                                                                                                                                                                                                  | M3    | 🗑️ |
+| P2-64b2 | 011_drop_doctors.sql Supabase 적용       | **완료 (2026-04-05)**. Dashboard SQL Editor에서 실행. doctors 테이블 DROP 완료                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | M3    | ✅   |
+| P2-64a2 | Essenly 자사 브랜드 + 제품 등록                 | **완료 (2026-04-05)**. brands: Essenly 브랜드 등록(is_essenly: true). products: 케라틴 헤어팩 1건 등록(is_highlighted: true, haircare, 24000원, 190ml). purchase_links: 쿠팡+Amazon. Kit CTA 자동 연결 확인. 코드 수정 0건                                                                                                                                                                                                                                                                                                                                                 | M3    | ✅   |
+| P2-64c  | Phase C: junction 데이터                  | **완료 (2026-04-06)**. P2-64c-1: product_stores 9,900건 규칙 기반 자동 생성. P2-64c-2: product_ingredients 689건 LLM 매핑 + D-7 검수. P2-64c-3: clinic_treatments 5,611건 — 카카오맵 태그 추출(Playwright 225곳) + LLM 매핑(216/217성공) + 규칙 기반 fallback(9곳). 기존 전조합 9,411건→태그 기반 정밀 매핑으로 교체. 시술 커버리지 53/53, 클리닉 225/225. 테스트 22건 pass | M3    | ✅   |
+| P2-64d  | Phase D: 임베딩 생성 + 벡터 DB 적재             | text-builder.ts + generator.ts (embedding-strategy §2) + 배치 스크립트. products, stores, clinics, treatments                                                                                                                                                                                                                                                                                                                                                                                                                                      | M3    | ⬜   |
+| P2-64e  | ~~Phase E: S5 교차 검증 + 품질 게이트~~         | **→ v0.2 연기**. 식약처 보고품목 교차 검증(기능성화장품 태깅). M3 품질 게이트. MVP는 수동 spot-check로 대체                                                                                                                                                                                                                                                                                                                                                                                                                                                                  | v0.2  | ➡️  |
 
 
 ## 통합 테스트
 
 
-| ID    | 작업               | 상세                                    | 상태  |
-| ----- | ---------------- | ------------------------------------- | --- |
-| P2-71 | API route 통합 테스트 | profile, journey, auth — 실제 DB 연동     | ⬜   |
-| P2-72 | 검색 통합 테스트        | 검색 API + repository + DB 필터 정확성       | ⬜   |
-| P2-73 | Chat API 통합 테스트  | chat route + service + tools (LLM 모킹) | ⬜   |
-| P2-75 | 익명 인증 통합 테스트     | anonymous 세션 생성/유지/권한 검증. 관리자 인증은 관리자 앱 펜딩 섹션 PA-15로 이동 | ⬜   |
+| ID    | 작업                   | 상세                                                                      | 상태  |
+| ----- | -------------------- | ----------------------------------------------------------------------- | --- |
+| P2-71 | API route 통합 테스트     | profile, journey, auth — 실제 DB 연동. 익명 세션 + 프로필 저장 + 권한 검증 (P2-75 범위 포함) | ⬜   |
+| P2-72 | 검색 통합 테스트            | 검색 API + repository + DB 필터 정확성. 벡터 검색 RPC + SQL 폴백 실제 동작 검증             | ⬜   |
+| P2-73 | Chat API 통합 테스트      | chat route + service + tools (LLM 모킹). P2-79 완료 후 인증-채팅 E2E 체인 검증 포함     | ⬜   |
+| P2-75 | ~~익명 인증 통합 테스트~~     | **→ v0.2 연기**. anonymous 세션 생성/유지/권한 검증. MVP는 수동 E2E로 대체. 관리자 인증은 PA-15 | ➡️  |
 
 
 ## 프롬프트 평가 실행
 
 
-| ID    | 작업                 | 상세                                                                              | 상태  |
-| ----- | ------------------ | ------------------------------------------------------------------------------- | --- |
-| P2-76 | P1-30 평가 자동화 구현    | prompt-evaluation.md 20건 시나리오 → scripts/prompt-eval.ts 자동화. PoC(P0-12/16/17) 대체 | ⬜   |
-| P2-77 | 멀티턴 adversarial 검증 | P2-76 평가 실행 후, 멀티턴 탈옥 패턴(점진적 신뢰 구축→공격) 테스트 + 가드레일 강화. P1-26은 단일턴만 커버            | ⬜   |
+| ID    | 작업                     | 상세                                                                                          | 상태  |
+| ----- | ---------------------- | ------------------------------------------------------------------------------------------- | --- |
+| P2-76 | ~~P1-30 평가 자동화 구현~~    | **→ v0.2 연기**. prompt-evaluation.md 20건 시나리오 자동화. MVP는 수동 테스트로 대체 (PoC P0-12/16/17에서 검증 완료) | ➡️  |
+| P2-77 | ~~멀티턴 adversarial 검증~~ | **→ v0.2 연기**. 멀티턴 탈옥 패턴 테스트 + 가드레일 강화. MVP는 소프트 런칭 수동 검증으로 대체                              | ➡️  |
 
 
 ---
@@ -488,89 +491,106 @@
 ## E2E 테스트
 
 
-| ID   | 작업           | 시나리오                                        | 상태  |
-| ---- | ------------ | ------------------------------------------- | --- |
-| P3-1 | 경로A 플로우      | Landing → 온보딩 4단계 → 프로필 → Chat → 카드 → 외부 링크 | ⬜   |
-| P3-2 | 경로B 플로우      | Landing → "Just ask" → Chat → 점진적 개인화       | ⬜   |
-| P3-3 | Kit CTA 플로우  | Chat → Kit 카드 → 이메일 입력 → 제출                 | ⬜   |
-| P3-5 | 모바일 반응형      | 주요 플로우를 모바일 뷰포트에서 테스트                       | ⬜   |
-| P3-6 | 에러 시나리오      | 네트워크 끊김, LLM 타임아웃, 잘못된 입력                   | ⬜   |
-| P3-6a | SEO 구현          | P1-11 설계 기반 구현: sitemap.xml(1 URL), robots.txt(admin/api 차단), OG 이미지(정적 1장), JSON-LD(WebApplication), favicon. 현재 미구현 (파일 미존재) | ⬜   |
-| P3-6b | 접근성(a11y) 검증  | P1-12 설계 기반 WCAG 2.1 AA 검증: axe-core 자동 스캔 + 수동 체크리스트(키보드 내비게이션, aria-live, 포커스 트랩, 터치 44x44px, prefers-reduced-motion) | ⬜   |
+| ID    | 작업               | 시나리오                                                                                                                           | 상태  |
+| ----- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------ | --- |
+| P3-1  | ~~경로A 플로우~~      | **→ v0.2 연기**. 온보딩 4단계가 v0.2 연기됨 (P2-33/34). Landing → Chat 경로B만 MVP 대상                                                        | ➡️  |
+| P3-2  | 경로B 플로우          | Landing → "Just ask" → Chat → 점진적 개인화                                                                                          | ⬜   |
+| P3-3  | Kit CTA 플로우      | Chat → Kit 카드 → 이메일 입력 → 제출                                                                                                    | ⬜   |
+| P3-5  | 모바일 반응형          | 주요 플로우를 모바일 뷰포트에서 테스트                                                                                                          | ⬜   |
+| P3-6  | 에러 시나리오          | 네트워크 끊김, LLM 타임아웃, 잘못된 입력                                                                                                      | ⬜   |
+| P3-6a | SEO 구현           | P1-11 설계 기반 구현: sitemap.xml(1 URL), robots.txt(admin/api 차단), OG 이미지(정적 1장), JSON-LD(WebApplication), favicon. 현재 미구현 (파일 미존재) | ⬜   |
+| P3-6b | ~~접근성(a11y) 검증~~ | **→ v0.2 연기**. axe-core 자동 스캔 + 수동 체크리스트. MVP는 기본 키보드/스크린리더 수동 확인만                                                             | ➡️  |
 
 
 ## AI 품질 테스트
 
 
-| ID    | 작업              | 상세                        | 상태  |
-| ----- | --------------- | ------------------------- | --- |
-| P3-7  | 프롬프트 평가 시나리오 실행 | 20+건 시나리오 자동 실행           | ⬜   |
-| P3-8  | 카드 데이터 정확성      | tool_use → 카드 스키마 검증      | ⬜   |
-| P3-9  | 가드레일 테스트        | 의료 조언, 이탈, 적대적 입력 거부 확인   | ⬜   |
-| P3-10 | 다국어 품질 테스트      | 6개 언어 동일 시나리오 자연스러움       | ⬜   |
-| P3-11 | 개인화 정확성         | 동일 질문 + 다른 프로필 → 추천 차이 확인 | ⬜   |
+| ID    |                     | 상세                                                                            | 상태  |
+| ----- | ------------------- | ----------------------------------------------------------------------------- | --- |
+| P3-7  | ~~프롬프트 평가 시나리오 실행~~ | **→ v0.2 연기**. 20+건 시나리오 자동 실행. MVP는 소프트 런칭 수동 검증 (PoC P0-12~17에서 기본 검증 완료)   | ➡️  |
+| P3-8  | ~~카드 데이터 정확성~~      | **→ v0.2 연기**. tool_use → 카드 스키마 검증. MVP는 수동 E2E로 대체                          | ➡️  |
+| P3-9  | ~~가드레일 테스트~~        | **→ v0.2 연기**. 의료 조언, 이탈, 적대적 입력 거부. MVP는 소프트 런칭 수동 검증 (PoC P0-16에서 기본 검증 완료) | ➡️  |
+| P3-10 | ~~다국어 품질 테스트~~      | **→ v0.2 연기**. 6개 언어 동일 시나리오. MVP는 소프트 런칭 수동 검증 (PoC P0-14: 4.6/5.0)          | ➡️  |
+| P3-11 | ~~개인화 정확성~~         | **→ v0.2 연기**. 동일 질문 + 다른 프로필 → 추천 차이. MVP는 소프트 런칭 수동 검증                      | ➡️  |
 
 
 ## 성능 테스트
 
 
-| ID    | 작업          | 기준                                      | 상태  |
-| ----- | ----------- | --------------------------------------- | --- |
-| P3-12 | 페이지 로드 시간   | Landing ≤ 2s, Chat ≤ 3s                 | ⬜   |
-| P3-13 | API 응답 시간   | profile/journey ≤ 200ms, search ≤ 100ms | ⬜   |
-| P3-14 | LLM 첫 토큰 시간 | ≤ 1s (스트리밍 시작)                          | ⬜   |
-| P3-15 | 동시 사용자      | 10 동시 세션 정상 (MVP)                       | ⬜   |
+| ID    | 작업              | 기준                                                                                    | 상태  |
+| ----- | --------------- | ------------------------------------------------------------------------------------- | --- |
+| P3-12 | ~~페이지 로드 시간~~   | **→ v0.2 연기**. Landing ≤ 2s, Chat ≤ 3s. MVP는 Vercel Analytics 기본 모니터링                 | ➡️  |
+| P3-13 | ~~API 응답 시간~~   | **→ v0.2 연기**. profile/journey ≤ 200ms, search ≤ 100ms. MVP는 Vercel Analytics 기본 모니터링 | ➡️  |
+| P3-14 | ~~LLM 첫 토큰 시간~~ | **→ v0.2 연기**. ≤ 1s (스트리밍 시작). MVP는 소프트 런칭 체감 확인                                      | ➡️  |
+| P3-15 | ~~동시 사용자~~      | **→ v0.2 연기**. 10 동시 세션 정상. 소프트 런칭 규모에서 부하 문제 가능성 낮음                                  | ➡️  |
 
 
 ## 보안 검토
 
 
-| ID    | 작업                      | 상세                                     | 상태  |
-| ----- | ----------------------- | -------------------------------------- | --- |
-| P3-16 | OWASP Top 10 점검         | Injection, Auth, XSS, Access Control 등 | ⬜   |
-| P3-17 | API 키 노출 확인             | Git 이력, 환경변수 클라이언트 노출                  | ⬜   |
-| P3-19 | SQL injection / XSS 테스트 | 주요 입력 필드 대상                            | ⬜   |
-| P3-21 | Rate limit 동작 확인        | Chat API                               | ⬜   |
-| P3-22 | 의존성 취약점 스캔              | npm audit                              | ⬜   |
+| ID    | 작업                          | 상세                                                                                        | 상태  |
+| ----- | --------------------------- | ----------------------------------------------------------------------------------------- | --- |
+| P3-16 | ~~OWASP Top 10 점검~~         | **→ v0.2 연기**. Injection, Auth, XSS, Access Control 등. MVP는 P3-22(npm audit) + 기본 점검으로 대체 | ➡️  |
+| P3-17 | ~~API 키 노출 확인~~             | **→ v0.2 연기**. Git 이력, 환경변수 클라이언트 노출. MVP는 배포 전 수동 확인                                     | ➡️  |
+| P3-19 | ~~SQL injection / XSS 테스트~~ | **→ v0.2 연기**. 주요 입력 필드 대상. Supabase RLS + zod 검증으로 기본 방어 확보                              | ➡️  |
+| P3-21 | ~~Rate limit 동작 확인~~        | **→ v0.2 연기**. Chat API. MVP는 배포 후 수동 확인                                                  | ➡️  |
+| P3-22 | 의존성 취약점 스캔                  | npm audit                                                                                 | ⬜   |
 
 
 ## 인프라 / DevOps
 
 
-| ID    | 작업                     | 상세                                     | 상태  |
-| ----- | ---------------------- | -------------------------------------- | --- |
-| P3-23 | CI/CD — GitHub Actions | PR: lint → type-check → test → build   | ⬜   |
-| P3-24 | CI/CD — Vercel 자동 배포   | main → prod, PR → preview              | ⬜   |
-| P3-25 | 환경 분리                  | dev(로컬) / staging(preview) / prod      | ⬜   |
-| P3-26 | Supabase 프로젝트 분리       | dev(CLI) / staging / prod              | ⬜   |
-| P3-27 | 에러 트래킹 설정              | Sentry 또는 Vercel Analytics             | ⬜   |
-| P3-28 | 성능 모니터링                | Vercel Analytics (Web Vitals)          | ⬜   |
-| P3-29 | LLM 비용 모니터링            | Anthropic Console + 커스텀 로깅             | ⬜   |
-| P3-29a | LLM 비용 한도 + 알림       | 일일/월간 API 비용 한도 설정 + 초과 시 알림/차단. 소프트 런칭 예상치 못한 비용 폭주 방지. Anthropic usage API 또는 커스텀 토큰 카운터 | ⬜   |
-| P3-30 | 로깅 전략                  | 구조화 로깅 (JSON), 로그 레벨                   | ⬜   |
-| P3-31 | DB 백업 확인               | Supabase 일일 백업, Point-in-time Recovery | ⬜   |
-| P3-32 | 도메인 + SSL              | 커스텀 도메인, Vercel SSL                    | ⬜   |
+| ID     | 작업                     | 상세                                                                                         | 상태  |
+| ------ | ---------------------- | ------------------------------------------------------------------------------------------ | --- |
+| P3-23  | CI/CD — GitHub Actions | PR: lint → type-check → test → build                                                       | ⬜   |
+| P3-24  | CI/CD — Vercel 자동 배포   | main → prod, PR → preview                                                                  | ⬜   |
+| P3-25  | 환경 분리                  | dev(로컬) / staging(preview) / prod                                                          | ⬜   |
+| P3-26  | ~~Supabase 프로젝트 분리~~   | **→ v0.2 연기**. dev(CLI) / staging / prod. 소프트 런칭은 단일 프로젝트로 충분                              | ➡️  |
+| P3-27  | 에러 트래킹 설정              | MVP 간소화: Vercel 기본 로그로 시작. Sentry는 v0.2                                                    | ⬜   |
+| P3-28  | 성능 모니터링                | MVP 간소화: Vercel Analytics 기본 활성화                                                           | ⬜   |
+| P3-29  | ~~LLM 비용 모니터링~~        | **→ P3-29a에 통합**. Anthropic Console 기본 제공 + P3-29a 한도 설정으로 충분                              | ➡️  |
+| P3-29a | LLM 비용 한도 + 알림         | 일일/월간 API 비용 한도 설정 + 초과 시 알림/차단. 소프트 런칭 예상치 못한 비용 폭주 방지. Anthropic usage API 또는 커스텀 토큰 카운터 | ⬜   |
+| P3-30  | ~~로깅 전략~~              | **→ v0.2 연기**. 구조화 로깅 (JSON), 로그 레벨. MVP는 console.error 기본 로깅 충분                           | ➡️  |
+| P3-31  | DB 백업 확인               | MVP 간소화: Supabase 기본 일일 백업 설정 확인만                                                          | ⬜   |
+| P3-32  | 도메인 + SSL              | 커스텀 도메인, Vercel SSL                                                                        | ⬜   |
 
 
 ## 배포 + 런칭
 
 
-| ID    | 작업               | 상세                                    | 상태  |
-| ----- | ---------------- | ------------------------------------- | --- |
-| P3-33 | 버그 수정 + 최적화      | P3-1~22(관리자 제외)에서 발견된 이슈 해결            | ⬜   |
-| P3-33a | 법률 전문가 검토       | 이용약관(/terms), 개인정보처리방침(/privacy), 면책 조항(Disclaimer) 법률 전문가 검토. data-privacy.md 기반 개인정보 수집·처리·제3자 제공 적법성 확인. 외국인 대상 서비스 GDPR/국제 규정 검토. 검토 결과 반영 후 P3-34 진행 | ⬜   |
-| P3-34 | 프로덕션 배포          | 최종 배포                                 | ⬜   |
-| P3-35 | 소프트 런칭           | 제한 사용자 테스트 (대상/규모 별도 결정)              | ⬜   |
-| P3-36 | 사용자 피드백 수집 채널 구축 | 인앱 피드백 버튼/폼, 버그 리포트 채널. 소프트 런칭 피드백 수집 | ⬜   |
+| ID     | 작업               | 상세                                                                                                  | 상태  |
+| ------ | ---------------- | --------------------------------------------------------------------------------------------------- | --- |
+| P3-33  | 버그 수정 + 최적화      | P3-1~22(관리자 제외)에서 발견된 이슈 해결                                                                         | ⬜   |
+| P3-33a | 법률 전문가 검토        | 소프트 런칭 후 정식 런칭 전 진행. 이용약관(/terms), 개인정보처리방침(/privacy), 면책 조항 법률 전문가 검토. GDPR/국제 규정 검토. 소프트 런칭 차단 아님 | ⬜   |
+| P3-34  | 프로덕션 배포          | 최종 배포                                                                                               | ⬜   |
+| P3-35  | 소프트 런칭           | 제한 사용자 테스트 (대상/규모 별도 결정)                                                                            | ⬜   |
+| P3-36  | 사용자 피드백 수집 채널 구축 | MVP 간소화: 구글 폼 링크 1개. 인앱 피드백 UI는 v0.2                                                                | ⬜   |
 
 
-## Gate 2 통과 기준
+## Gate 2 통과 기준 (MVP 최소 출시 — 소프트 런칭)
 
-- E2E 핵심 플로우 100% 통과
-- AI 품질 평가 80%+ 통과
-- 성능 SLA 충족
-- 보안 체크리스트 100% 통과
-- 모니터링 + 백업 작동 확인
+**소프트 런칭 전 필수 (Gate 2 통과 조건)**
+
+- 인증-채팅 연결 정상 동작 (P2-79 — 데이터 준비와 독립, 선행 수행)
+- Chat API 통합 검증 (P2-73 — P2-79 완료 후)
+- E2E 핵심 플로우 수동 검증 통과 (P3-2 경로B, P3-3 Kit CTA, P3-5 모바일, P3-6 에러)
+- SEO 기본 구현 (P3-6a)
+- CI/CD + 환경 분리 동작 (P3-23~25)
+- 에러 트래킹 + 성능 모니터링 기본 설정 (P3-27, P3-28 — Vercel 기본)
+- LLM 비용 한도 설정 (P3-29a)
+- 의존성 취약점 0 critical (P3-22)
+- 도메인 + SSL 설정 (P3-32)
+- DB 백업 확인 (P3-31)
+- 피드백 수집 채널 준비 (P3-36 — 구글 폼)
+
+**Gate 2 통과 후 순차 실행**
+
+- P3-33: 버그 수정 (E2E에서 발견된 이슈)
+- P3-34: 프로덕션 배포
+- P3-35: 소프트 런칭
+- P3-33a: 법률 전문가 검토 (소프트 런칭 후 정식 런칭 전)
+
+> v0.2에서 추가: 자동화 테스트(통합/E2E/AI 품질/성능), OWASP 보안 점검, 접근성 검증, 구조화 로깅, Supabase 프로젝트 분리
 
 ---
 
@@ -578,49 +598,48 @@
 
 > 목표: 관리자 CRUD + 인증 + UI 구현
 > 전제: Gate 2 통과 (사용자 앱 배포 완료)
-> 설계 완료: Phase 0 (P0-4~P0-11) + Phase 1 (P1-8, P1-10, P1-13~P1-17, P1-23~P1-24)
+> 설계 완료: Phase 0 (P0-4~~P0-11) + Phase 1 (P1-8, P1-10, P1-13~~P1-17, P1-23~~P1-24)
 > 펜딩 사유: 사용자 앱과 아키텍처 의존 없음 (P-3 Last Leaf). MVP 출시 우선.
-> ID 이력: Phase 2 관리자 앱 섹션에서 이동 (2026-04-02). 구 ID: P2-45~P2-55 → P2-80~P2-90 → PA-*.
-
+> ID 이력: Phase 2 관리자 앱 섹션에서 이동 (2026-04-02). 구 ID: P2-45~~P2-55 → P2-80~P2-90 → PA-*.
 
 ## 구현
 
 
-| ID     | 작업                 | 상세                                                                                                                                 | 상태  |
-| ------ | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------- | --- |
-| PA-1   | 관리자 인증 서비스 + API   | 로그인, 세션, 권한 확인 (api-spec.md §6). (구 P2-80)                                                                                        | ⬜   |
-| PA-2   | 제네릭 CRUD 서비스       | `features/admin/service.ts` + withAuditLog 미들웨어 + 6엔티티 zod 스키마 + CRUD 후 비동기 임베딩 재생성 연동 (api-spec.md §5.1, embedding-strategy §3.4). (구 P2-81) | ⬜   |
-| PA-3   | 복합 엔티티 라우트         | Product/Store/Treatment/Clinic CRUD 라우트 + 하이라이트 API(§5.3) + 관계 API(§5.2). P2-16/16a/17/17a 리포지토리 의존. (구 P2-81a)                    | ⬜   |
-| PA-4   | 단순 엔티티 라우트         | Brand/Ingredient CRUD 라우트 + 리포지토리 생성 포함 (findAll/findById/create/update/deactivate, query-utils.ts 재사용). (구 P2-81b)                  | ⬜   |
-| PA-5   | 이미지 업로드 서비스 + API  | Product/Store/Clinic/Treatment 4엔티티. Supabase Storage + magic bytes 검증 + 순서 관리 (api-spec.md §5.4). (구 P2-82)                       | ⬜   |
-| PA-6   | 감사 로그 조회 API       | `GET /api/admin/audit-logs` + audit-service.ts. super_admin 전용, 날짜/액터/액션 필터 (api-spec.md §6.6). 기록은 PA-2 withAuditLog가 담당. (구 P2-83) | ⬜   |
-| PA-7   | 관리자 레이아웃 + 로그인 페이지 | admin 라우트 레이아웃, 인증 UI. (구 P2-84)                                                                                                   | ⬜   |
-| PA-8   | 관리자 대시보드 (간단)      | 엔티티별 데이터 건수, 최근 변경. (구 P2-85)                                                                                                     | ⬜   |
-| PA-9   | 관리자 공통 컴포넌트 — 목록   | 테이블, 검색, 필터, 페이지네이션. (구 P2-86)                                                                                                    | ⬜   |
-| PA-10  | 관리자 공통 컴포넌트 — 폼    | 폼 필드, JSONB 다국어 입력, 이미지 업로드. (구 P2-87)                                                                                            | ⬜   |
-| PA-11  | 복합 엔티티 CRUD 페이지    | Product, Store, Clinic, Treatment — 이미지+관계+하이라이트 포함 (PA-3 대응). (구 P2-88a)                                                          | ⬜   |
-| PA-12  | 단순 엔티티 CRUD 페이지    | Brand, Ingredient — 기본 CRUD (PA-4 대응). (구 P2-88b)                                                                                   | ⬜   |
-| PA-13  | 관계 관리 UI           | Product↔Store, Product↔Ingredient, Clinic↔Treatment. (구 P2-89)                                                                     | ⬜   |
-| PA-14  | 하이라이트 관리 UI        | is_highlighted 토글 + badge 텍스트. (구 P2-90)                                                                                           | ⬜   |
+| ID    | 작업                 | 상세                                                                                                                                            | 상태  |
+| ----- | ------------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | --- |
+| PA-1  | 관리자 인증 서비스 + API   | 로그인, 세션, 권한 확인 (api-spec.md §6). (구 P2-80)                                                                                                    | ⬜   |
+| PA-2  | 제네릭 CRUD 서비스       | `features/admin/service.ts` + withAuditLog 미들웨어 + 6엔티티 zod 스키마 + CRUD 후 비동기 임베딩 재생성 연동 (api-spec.md §5.1, embedding-strategy §3.4). (구 P2-81) | ⬜   |
+| PA-3  | 복합 엔티티 라우트         | Product/Store/Treatment/Clinic CRUD 라우트 + 하이라이트 API(§5.3) + 관계 API(§5.2). P2-16/16a/17/17a 리포지토리 의존. (구 P2-81a)                               | ⬜   |
+| PA-4  | 단순 엔티티 라우트         | Brand/Ingredient CRUD 라우트 + 리포지토리 생성 포함 (findAll/findById/create/update/deactivate, query-utils.ts 재사용). (구 P2-81b)                           | ⬜   |
+| PA-5  | 이미지 업로드 서비스 + API  | Product/Store/Clinic/Treatment 4엔티티. Supabase Storage + magic bytes 검증 + 순서 관리 (api-spec.md §5.4). (구 P2-82)                                  | ⬜   |
+| PA-6  | 감사 로그 조회 API       | `GET /api/admin/audit-logs` + audit-service.ts. super_admin 전용, 날짜/액터/액션 필터 (api-spec.md §6.6). 기록은 PA-2 withAuditLog가 담당. (구 P2-83)          | ⬜   |
+| PA-7  | 관리자 레이아웃 + 로그인 페이지 | admin 라우트 레이아웃, 인증 UI. (구 P2-84)                                                                                                              | ⬜   |
+| PA-8  | 관리자 대시보드 (간단)      | 엔티티별 데이터 건수, 최근 변경. (구 P2-85)                                                                                                                 | ⬜   |
+| PA-9  | 관리자 공통 컴포넌트 — 목록   | 테이블, 검색, 필터, 페이지네이션. (구 P2-86)                                                                                                                | ⬜   |
+| PA-10 | 관리자 공통 컴포넌트 — 폼    | 폼 필드, JSONB 다국어 입력, 이미지 업로드. (구 P2-87)                                                                                                        | ⬜   |
+| PA-11 | 복합 엔티티 CRUD 페이지    | Product, Store, Clinic, Treatment — 이미지+관계+하이라이트 포함 (PA-3 대응). (구 P2-88a)                                                                     | ⬜   |
+| PA-12 | 단순 엔티티 CRUD 페이지    | Brand, Ingredient — 기본 CRUD (PA-4 대응). (구 P2-88b)                                                                                             | ⬜   |
+| PA-13 | 관계 관리 UI           | Product↔Store, Product↔Ingredient, Clinic↔Treatment. (구 P2-89)                                                                                | ⬜   |
+| PA-14 | 하이라이트 관리 UI        | is_highlighted 토글 + badge 텍스트. (구 P2-90)                                                                                                      | ⬜   |
 
 
 ## 통합 테스트
 
 
-| ID    | 작업              | 상세                         | 상태  |
-| ----- | --------------- | -------------------------- | --- |
+| ID    | 작업              | 상세                                           | 상태  |
+| ----- | --------------- | -------------------------------------------- | --- |
 | PA-15 | 관리자 인증 통합 테스트   | admin 세션/권한 검증. (구 P2-75 admin 부분, P2-74 포함) | ⬜   |
-| PA-16 | 관리자 CRUD 통합 테스트 | admin API + DB + 감사 로그. (구 P2-74)     | ⬜   |
+| PA-16 | 관리자 CRUD 통합 테스트 | admin API + DB + 감사 로그. (구 P2-74)            | ⬜   |
 
 
 ## E2E + 보안 테스트
 
 
-| ID    | 작업              | 상세                                   | 상태  |
-| ----- | --------------- | ------------------------------------ | --- |
-| PA-17 | 관리자 CRUD E2E 플로우 | 로그인 → 생성 → 수정 → 관계 설정 → 삭제. (구 P3-4)  | ⬜   |
-| PA-18 | Admin 미인증 접근 테스트 | /admin/* 미인증 시 차단 확인. (구 P3-18)       | ⬜   |
-| PA-19 | 파일 업로드 검증       | 악성 파일, MIME 타입, 크기 제한. (구 P3-20)      | ⬜   |
+| ID    | 작업                 | 상세                                                                                                                                                     | 상태  |
+| ----- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | --- |
+| PA-17 | 관리자 CRUD E2E 플로우   | 로그인 → 생성 → 수정 → 관계 설정 → 삭제. (구 P3-4)                                                                                                                   | ⬜   |
+| PA-18 | Admin 미인증 접근 테스트   | /admin/* 미인증 시 차단 확인. (구 P3-18)                                                                                                                        | ⬜   |
+| PA-19 | 파일 업로드 검증          | 악성 파일, MIME 타입, 크기 제한. (구 P3-20)                                                                                                                       | ⬜   |
 | PA-20 | 시스템 설정 관리 API + UI | 삭제 요청 이메일(`privacy@essenly.com`) 등 법률 페이지에 표시되는 운영 상수를 관리자 화면에서 수정 가능하게. site_settings 테이블 또는 KV 방식. MVP에서는 shared/constants에 하드코딩, 관리자 앱에서 DB 기반으로 전환 | ⬜   |
 
 
@@ -655,8 +674,98 @@
 | V2-20 | domain.ts 열거값 타입 강화          | `status: string` → `EntityStatus`, `english_support: string` → `EnglishSupportLevel` 등 유니온 타입으로 강화. 기존 repositories/route handlers 전반 영향 → 다른 세션 작업 완료 후 일괄 진행. P-7(단일 변경점) 보장   | Q-14, P-7                |
 | V2-21 | 쿠팡 파트너스 API 활성화 (P2-V1)      | 판매 실적 15만원 달성 후 API 활성화. coupang-partners.ts 프로바이더 구현 (P2-56e)                                                                                                                   | U-12                     |
 | V2-22 | 올리브영/CJ 어필리에이트 약관 확인 (P2-V6) | Involve Asia 승인 후 제품 정보 사용 범위 확인 (U-10, U-11). V2-21 선행                                                                                                                          | V2-21                    |
-| V2-23 | 행동 로그 클라이언트 연동              | P2-26 서버 API 완료(POST /api/events). 클라이언트 연동 미구현: card_exposure(Intersection Observer), card_click(onClick), external_link_click(링크 인터셉트). 추적 유틸리티 + 카드 컴포넌트 연결. KPI 측정 활성화 | P2-26, ANALYTICS.md      |
-| V2-24 | 옵저버빌리티 통합                   | 분산 트레이싱(요청 흐름 추적), 구조화 로깅 통합, 대시보드(에러율/응답시간/LLM 비용). P3-27~30 개별 설정을 통합 옵저버빌리티 플랫폼으로 연결 (Sentry/Datadog/Vercel Observability)                                                       | P3-27~30                 |
+| V2-23 | 행동 로그 클라이언트 연동               | P2-26 서버 API 완료(POST /api/events). 클라이언트 연동 미구현: card_exposure(Intersection Observer), card_click(onClick), external_link_click(링크 인터셉트). 추적 유틸리티 + 카드 컴포넌트 연결. KPI 측정 활성화       | P2-26, ANALYTICS.md      |
+| V2-24 | 옵저버빌리티 통합                    | 분산 트레이싱(요청 흐름 추적), 구조화 로깅 통합, 대시보드(에러율/응답시간/LLM 비용). P3-27~30 개별 설정을 통합 옵저버빌리티 플랫폼으로 연결 (Sentry/Datadog/Vercel Observability)                                                    | P3-27~30                 |
+
+
+### MVP 간소화로 v0.2 연기된 항목 (Phase 2/3에서 이동)
+
+> 원본은 Phase 2/3 원래 위치에 ➡️ 또는 🔶 상태로 유지. 아래는 v0.2 작업 시 참조용 인덱스.
+
+**기존 v0.2 보류 (🔶, Phase 2)**
+
+
+| 원본 ID | 작업                             | 비고                            |
+| ----- | ------------------------------ | ----------------------------- |
+| P2-18 | Knowledge 리포지토리                | KB 테이블 미설계. MVP는 시스템 프롬프트 인라인 |
+| P2-36 | 5영역 탭 바                        | MVP 보류. v0.2에서 필요성 재검토        |
+| P2-41 | Profile 페이지                    | 이메일 로그인 후 활성화 (V2-4 선행)       |
+| P2-42 | 프로필 Context                    | 이메일 로그인 후 활성화 (V2-4 선행)       |
+| P2-49 | "Show recommendations" 버튼      | 런칭 후 K1/K2 데이터로 재검토           |
+| P2-XX | SuggestedActions (서버 기반 제안 버튼) | P2-49 재검토 시 함께 평가             |
+
+
+**데이터 검증 (Phase 2)**
+
+
+| 원본 ID  | 작업                | 비고                                 |
+| ------ | ----------------- | ---------------------------------- |
+| P2-64e | S5 교차 검증 + 품질 게이트 | 식약처 보고품목 교차 검증. MVP는 수동 spot-check |
+| P2-V5  | 시술 가격 범위 현실성 검증   | 5개 클리닉 실제 상담 가격 대조                 |
+
+
+**자동화 테스트 (Phase 2)**
+
+
+| 원본 ID | 작업                  | 비고                                       |
+| ----- | ------------------- | ---------------------------------------- |
+| P2-70 | chat tool 단위 테스트 보강 | extraction-handler 타입 통일 + vector 경로 테스트 |
+| P2-75 | 익명 인증 통합 테스트        | P2-71에서 범위 통합. anonymous 세션 + 권한 검증      |
+| P2-76 | 프롬프트 평가 자동화 구현      | prompt-evaluation.md 20건 시나리오 자동화        |
+| P2-77 | 멀티턴 adversarial 검증  | 멀티턴 탈옥 패턴 테스트 + 가드레일 강화                  |
+
+
+**E2E + 접근성 (Phase 3)**
+
+
+| 원본 ID | 작업           | 비고                                 |
+| ----- | ------------ | ---------------------------------- |
+| P3-1  | 경로A E2E 플로우  | 온보딩 4단계 활성화 후 (V2-4 계정 인증 선행)      |
+| P3-6b | 접근성(a11y) 검증 | axe-core 자동 스캔 + WCAG 2.1 AA 체크리스트 |
+
+
+**AI 품질 테스트 (Phase 3)**
+
+
+| 원본 ID | 작업              | 비고                     |
+| ----- | --------------- | ---------------------- |
+| P3-7  | 프롬프트 평가 시나리오 실행 | 20+건 자동 실행 (P2-76 선행)  |
+| P3-8  | 카드 데이터 정확성      | tool_use → 카드 스키마 검증   |
+| P3-9  | 가드레일 테스트        | 의료 조언, 이탈, 적대적 입력 거부   |
+| P3-10 | 다국어 품질 테스트      | 6개 언어 동일 시나리오          |
+| P3-11 | 개인화 정확성         | 동일 질문 + 다른 프로필 → 추천 차이 |
+
+
+**성능 테스트 (Phase 3)**
+
+
+| 원본 ID | 작업          | 비고                                      |
+| ----- | ----------- | --------------------------------------- |
+| P3-12 | 페이지 로드 시간   | Landing ≤ 2s, Chat ≤ 3s                 |
+| P3-13 | API 응답 시간   | profile/journey ≤ 200ms, search ≤ 100ms |
+| P3-14 | LLM 첫 토큰 시간 | ≤ 1s (스트리밍 시작)                          |
+| P3-15 | 동시 사용자      | 10 동시 세션 정상                             |
+
+
+**보안 검토 (Phase 3)**
+
+
+| 원본 ID | 작업                      | 비고                                   |
+| ----- | ----------------------- | ------------------------------------ |
+| P3-16 | OWASP Top 10 점검         | Injection, Auth, XSS, Access Control |
+| P3-17 | API 키 노출 확인             | Git 이력, 환경변수 클라이언트 노출                |
+| P3-19 | SQL injection / XSS 테스트 | 주요 입력 필드 대상                          |
+| P3-21 | Rate limit 동작 확인        | Chat API                             |
+
+
+**인프라 (Phase 3)**
+
+
+| 원본 ID | 작업               | 비고                                 |
+| ----- | ---------------- | ---------------------------------- |
+| P3-26 | Supabase 프로젝트 분리 | dev / staging / prod               |
+| P3-29 | LLM 비용 모니터링      | P3-29a에 통합. V2-24 옵저버빌리티에서 일괄      |
+| P3-30 | 구조화 로깅 전략        | JSON 로깅 + 로그 레벨. V2-24 옵저버빌리티에서 일괄 |
 
 
 ### v0.3 백로그
