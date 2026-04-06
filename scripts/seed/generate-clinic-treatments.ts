@@ -109,74 +109,20 @@ async function mapAllClinics(
 
   for (let i = 0; i < withTags.length; i++) {
     try {
-      const mapping = await mapSingleClinic(
-        withTags[i],
-        model,
-        treatmentListText,
-        treatments,
-      );
-      if (mapping) {
-        mappings.push(mapping);
-        succeeded++;
-      } else {
-        failed++;
-      }
+      const mapping = await mapSingleClinic(withTags[i], model, treatmentListText, treatments);
+      if (mapping) { mappings.push(mapping); succeeded++; }
+      else { failed++; }
     } catch (err) {
-      console.warn(
-        `  [${i + 1}/${withTags.length}] ERROR: ${withTags[i].clinicNameKo} — ${err instanceof Error ? err.message : String(err)}`,
-      );
+      const msg = err instanceof Error ? err.message : String(err);
+      console.warn(`  [${i + 1}/${withTags.length}] ERROR: ${withTags[i].clinicNameKo} — ${msg}`);
       failed++;
     }
-
-    if ((i + 1) % 20 === 0) {
-      console.log(
-        `  [${i + 1}/${withTags.length}] processed (${succeeded} ok, ${failed} fail)`,
-      );
-    }
+    if ((i + 1) % 20 === 0) console.log(`  [${i + 1}/${withTags.length}] (${succeeded} ok, ${failed} fail)`);
     if (i < withTags.length - 1) await sleep(CALL_DELAY_MS);
   }
 
-  console.log(
-    `[clinic-treatments] LLM 완료: ${succeeded} succeeded, ${failed} failed`,
-  );
+  console.log(`[clinic-treatments] LLM 완료: ${succeeded} succeeded, ${failed} failed`);
   return mappings;
-}
-
-/** 태그/fallback junction 생성 및 CSV export 오케스트레이터 */
-async function runGenerateMappings(
-  clinicTags: ClinicTagData[],
-  treatments: TreatmentRef[],
-): Promise<void> {
-  const treatmentListText = buildTreatmentListText(treatments);
-  const withTags = clinicTags.filter((c) => cleanTags(c.tags).length > 0);
-  const withoutTags = clinicTags.filter((c) => cleanTags(c.tags).length === 0);
-
-  const model = await getPipelineModel();
-  const tagMappings = await mapAllClinics(
-    withTags,
-    model,
-    treatmentListText,
-    treatments,
-  );
-
-  const tagJunctions = buildClinicTreatmentJunctions(tagMappings);
-  const fallbackClinics = withoutTags.map((c) => ({
-    id: c.clinicId,
-    clinicType: c.clinicType,
-    nameKo: c.clinicNameKo,
-  }));
-  const fallbackJunctions = buildFallbackJunctions(fallbackClinics, treatments);
-
-  console.log(
-    `[clinic-treatments] tag-based: ${tagJunctions.length}, fallback: ${fallbackJunctions.length}`,
-  );
-
-  const treatmentNameMap = new Map(treatments.map((t) => [t.id, t.nameKo]));
-  exportForReview(
-    [...tagJunctions, ...fallbackJunctions],
-    treatmentNameMap,
-    clinicTags,
-  );
 }
 
 async function generateMappings(dryRun: boolean): Promise<void> {
@@ -186,9 +132,7 @@ async function generateMappings(dryRun: boolean): Promise<void> {
   const withoutTags = clinicTags.filter((c) => cleanTags(c.tags).length === 0);
 
   console.log(`[clinic-treatments] total: ${clinicTags.length}`);
-  console.log(
-    `[clinic-treatments] with-tags: ${withTags.length}, no-tags: ${withoutTags.length}`,
-  );
+  console.log(`[clinic-treatments] with-tags: ${withTags.length}, no-tags: ${withoutTags.length}`);
   console.log(`[clinic-treatments] treatments: ${treatments.length}`);
 
   if (dryRun) {
@@ -196,7 +140,20 @@ async function generateMappings(dryRun: boolean): Promise<void> {
     return;
   }
 
-  await runGenerateMappings(clinicTags, treatments);
+  const treatmentListText = buildTreatmentListText(treatments);
+  const model = await getPipelineModel();
+  const tagMappings = await mapAllClinics(withTags, model, treatmentListText, treatments);
+  const tagJunctions = buildClinicTreatmentJunctions(tagMappings);
+
+  const fallbackClinics = withoutTags.map((c) => ({
+    id: c.clinicId, clinicType: c.clinicType, nameKo: c.clinicNameKo,
+  }));
+  const fallbackJunctions = buildFallbackJunctions(fallbackClinics, treatments);
+
+  console.log(`[clinic-treatments] tag-based: ${tagJunctions.length}, fallback: ${fallbackJunctions.length}`);
+
+  const treatmentNameMap = new Map(treatments.map((t) => [t.id, t.nameKo]));
+  exportForReview([...tagJunctions, ...fallbackJunctions], treatmentNameMap, clinicTags);
 }
 
 // ── CSV Export (D-7 검수용) ──────────────────────────────────
