@@ -119,11 +119,15 @@ export function parseTagMappingResponse(
       ? parsed.unmatched_tags
       : [];
 
-    // 1-based index → treatment ID 변환
+    // 1-based index → treatment ID 변환 (문자열 숫자 허용, 부동소수점 제외)
     const treatmentIds = rawNumbers
+      .map((n) => (typeof n === "string" ? Number(n) : n))
       .filter(
         (n): n is number =>
-          typeof n === "number" && n >= 1 && n <= treatments.length,
+          typeof n === "number" &&
+          Number.isInteger(n) &&
+          n >= 1 &&
+          n <= treatments.length,
       )
       .map((n) => treatments[n - 1].id);
 

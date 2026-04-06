@@ -125,7 +125,29 @@ async function extractTagsFromPage(
 
 // ── Playwright 스크래핑 루프 ─────────────────────────────
 
-/** 클리닉 목록 순회하며 태그 추출 (에러 격리) */
+/** 단일 클리닉 태그 추출 + 결과 축적 (에러 격리) */
+async function scrapeSingleClinic(
+  page: import("playwright").Page,
+  clinic: ClinicEntry,
+  results: ClinicTagData[],
+): Promise<boolean> {
+  try {
+    const tags = await extractTagsFromPage(page, clinic.placeUrl);
+    results.push({
+      clinicId: clinic.id,
+      clinicNameKo: clinic.nameKo,
+      clinicType: clinic.clinicType,
+      tags,
+    });
+    return true;
+  } catch (err) {
+    const msg = err instanceof Error ? err.message : String(err);
+    console.warn(`  ERROR: ${clinic.nameKo} — ${msg}`);
+    return false;
+  }
+}
+
+/** 클리닉 목록 순회하며 태그 추출 */
 async function scrapeAllTags(clinics: ClinicEntry[]): Promise<ClinicTagData[]> {
   const browser = await chromium.launch({ headless: true });
   const results: ClinicTagData[] = [];
@@ -134,35 +156,13 @@ async function scrapeAllTags(clinics: ClinicEntry[]): Promise<ClinicTagData[]> {
 
   try {
     const page = await browser.newPage();
-
     for (let i = 0; i < clinics.length; i++) {
-      const clinic = clinics[i];
-
-      try {
-        const tags = await extractTagsFromPage(page, clinic.placeUrl);
-        results.push({
-          clinicId: clinic.id,
-          clinicNameKo: clinic.nameKo,
-          clinicType: clinic.clinicType,
-          tags,
-        });
-        succeeded++;
-      } catch (err) {
-        console.warn(
-          `  [${i + 1}/${clinics.length}] ERROR: ${clinic.nameKo} — ${err instanceof Error ? err.message : String(err)}`,
-        );
-        failed++;
-      }
-
-      if ((i + 1) % LOG_INTERVAL === 0) {
-        console.log(
-          `  [${i + 1}/${clinics.length}] processed (${succeeded} ok, ${failed} fail)`,
-        );
-      }
-
+      const ok = await scrapeSingleClinic(page, clinics[i], results);
+      if (ok) succeeded++;
+      else failed++;
+      if ((i + 1) % LOG_INTERVAL === 0) console.log(`  [${i + 1}/${clinics.length}] (${succeeded} ok, ${failed} fail)`);
       if (i < clinics.length - 1) await delay(PAGE_DELAY_MS);
     }
-
     await page.close();
   } finally {
     await browser.close();

@@ -41,6 +41,16 @@ describe("cleanTags", () => {
     const result = cleanTags(["보톡스", "#필러"]);
     expect(result).toEqual(["보톡스", "필러"]);
   });
+
+  it("filters #2차병원 and #3차병원", () => {
+    const result = cleanTags(["#2차병원", "#3차병원", "#보톡스"]);
+    expect(result).toEqual(["보톡스"]);
+  });
+
+  it("removes hash-only and whitespace-only tags", () => {
+    const result = cleanTags(["#", "  ", "#보톡스"]);
+    expect(result).toEqual(["보톡스"]);
+  });
 });
 
 // ── buildTreatmentListText ──────────────────────────────────
@@ -104,6 +114,25 @@ describe("parseTagMappingResponse", () => {
   it("returns null for unparseable text", () => {
     expect(parseTagMappingResponse("no json here", TREATMENTS)).toBeNull();
   });
+
+  it("handles string numbers from LLM", () => {
+    const text = '{"treatment_numbers": ["1", "3"], "unmatched_tags": []}';
+    const result = parseTagMappingResponse(text, TREATMENTS);
+    expect(result!.treatmentIds).toEqual(["t-1", "t-3"]);
+  });
+
+  it("rejects float numbers", () => {
+    const text = '{"treatment_numbers": [1.5, 2], "unmatched_tags": []}';
+    const result = parseTagMappingResponse(text, TREATMENTS);
+    expect(result!.treatmentIds).toEqual(["t-2"]);
+  });
+
+  it("handles empty treatment_numbers array", () => {
+    const text = '{"treatment_numbers": [], "unmatched_tags": ["가슴성형"]}';
+    const result = parseTagMappingResponse(text, TREATMENTS);
+    expect(result!.treatmentIds).toEqual([]);
+    expect(result!.unmatchedTags).toEqual(["가슴성형"]);
+  });
 });
 
 // ── buildClinicTreatmentJunctions ───────────────────────────
@@ -145,5 +174,34 @@ describe("buildFallbackJunctions", () => {
     const rows = buildFallbackJunctions(clinics, TREATMENTS);
     const treatmentIds = rows.map((r) => r.treatment_id);
     expect(treatmentIds).toContain("t-6"); // hair
+  });
+
+  it("maps plastic_surgery to correct categories", () => {
+    const clinics = [{ id: "c-1", clinicType: "plastic_surgery", nameKo: "강남성형외과" }];
+    const rows = buildFallbackJunctions(clinics, TREATMENTS);
+    const treatmentIds = rows.map((r) => r.treatment_id);
+    expect(treatmentIds).toContain("t-2"); // injection
+    expect(treatmentIds).toContain("t-3"); // injection
+    expect(treatmentIds).not.toContain("t-1"); // laser — not in plastic_surgery fallback
+    expect(treatmentIds).not.toContain("t-5"); // skin — not in plastic_surgery fallback
+  });
+
+  it("returns empty for unknown clinicType", () => {
+    const clinics = [{ id: "c-1", clinicType: "orthodontics", nameKo: "치과" }];
+    const rows = buildFallbackJunctions(clinics, TREATMENTS);
+    expect(rows).toHaveLength(0);
+  });
+
+  it("deduplicates across multiple clinics", () => {
+    const clinics = [
+      { id: "c-1", clinicType: "dermatology", nameKo: "A피부과" },
+      { id: "c-2", clinicType: "dermatology", nameKo: "B피부과" },
+    ];
+    const rows = buildFallbackJunctions(clinics, TREATMENTS);
+    const c1Rows = rows.filter((r) => r.clinic_id === "c-1");
+    const c2Rows = rows.filter((r) => r.clinic_id === "c-2");
+    expect(c1Rows.length).toBeGreaterThan(0);
+    expect(c2Rows.length).toBeGreaterThan(0);
+    expect(c1Rows.length).toBe(c2Rows.length); // same type = same treatments
   });
 });

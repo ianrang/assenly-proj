@@ -36,6 +36,9 @@ import {
 /** LLM 호출 간 딜레이 (ms) — rate limit 방지 */
 const CALL_DELAY_MS = 500;
 
+/** 진행률 로그 간격 */
+const LOG_INTERVAL = 20;
+
 const TAGS_PATH = "scripts/seed/data/clinic-tags.json";
 
 const REVIEW_DIR = join(
@@ -117,7 +120,7 @@ async function mapAllClinics(
       console.warn(`  [${i + 1}/${withTags.length}] ERROR: ${withTags[i].clinicNameKo} — ${msg}`);
       failed++;
     }
-    if ((i + 1) % 20 === 0) console.log(`  [${i + 1}/${withTags.length}] (${succeeded} ok, ${failed} fail)`);
+    if ((i + 1) % LOG_INTERVAL === 0) console.log(`  [${i + 1}/${withTags.length}] (${succeeded} ok, ${failed} fail)`);
     if (i < withTags.length - 1) await sleep(CALL_DELAY_MS);
   }
 
@@ -145,7 +148,12 @@ async function generateMappings(dryRun: boolean): Promise<void> {
   const tagMappings = await mapAllClinics(withTags, model, treatmentListText, treatments);
   const tagJunctions = buildClinicTreatmentJunctions(tagMappings);
 
-  const fallbackClinics = withoutTags.map((c) => ({
+  // LLM 매핑 성공한 클리닉 ID 집합
+  const mappedClinicIds = new Set(tagMappings.map((m) => m.clinicId));
+  // LLM 매핑 0건 클리닉 = withTags 중 mappedClinicIds에 없는 클리닉 → fallback 대상
+  const unmappedFromTags = withTags.filter((c) => !mappedClinicIds.has(c.clinicId));
+
+  const fallbackClinics = [...withoutTags, ...unmappedFromTags].map((c) => ({
     id: c.clinicId, clinicType: c.clinicType, nameKo: c.clinicNameKo,
   }));
   const fallbackJunctions = buildFallbackJunctions(fallbackClinics, treatments);
@@ -262,6 +270,12 @@ async function loadReviewed(csvPath: string): Promise<void> {
     console.log(`  ${r.entityType}: ${r.inserted} inserted, ${r.failed} failed`);
     if (r.errors.length > 0) {
       r.errors.forEach((e) => console.warn(`    - ${e.message}`));
+    }
+    if (r.failed > 0) {
+      console.error(
+        "[clinic-treatments] INSERT 일부 실패. DELETE는 이미 완료된 상태입니다.\n" +
+        "CSV를 확인 후 --load --csv=<path>를 재실행하세요.",
+      );
     }
   }
 }
