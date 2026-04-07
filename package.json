@@ -10,6 +10,7 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
+    "test:integration": "vitest run --config vitest.integration.config.ts",
     "generate:kb": "tsx scripts/generate-kb.ts"
   },
   "dependencies": {
