@@ -14,8 +14,8 @@
 | Phase 0    | 37      | 37      | 0       | 0      | ✅      |
 | Phase 1    | 62      | 60      | 2       | 0      | ✅      |
 | Phase 2    | 115     | 98      | 13      | 4      | 🔶 진행중 |
-| Phase 3    | 37      | 0       | 18      | 19     | ⬜ 미시작  |
-| **MVP 합계** | **263** | **207** | **33**  | **23** |        |
+| Phase 3    | 37      | 3       | 18      | 16     | 🔶 진행중 |
+| **MVP 합계** | **263** | **210** | **33**  | **20** |        |
 | 관리자 앱 (펜딩) | 20      | 0       | 0       | 20     | ⏸️ 펜딩  |
 
 
@@ -545,8 +545,8 @@
 | ID     | 작업                     | 상세                                                                                         | 상태  |
 | ------ | ---------------------- | ------------------------------------------------------------------------------------------ | --- |
 | P3-23  | CI/CD — GitHub Actions | PR: lint → type-check → test (빌드 제외 — Vercel CD에서 수행)                                      | ✅   |
-| P3-24  | CI/CD — Vercel 자동 배포   | main → prod, PR → preview                                                                  | ⬜   |
-| P3-25  | 환경 분리                  | development(로컬) / preview / production. 정본: INFRA-PIPELINE.md                               | ⬜   |
+| P3-24  | CI/CD — Vercel 자동 배포   | main → prod, PR → preview. tsx devDep 추가 + 빌드/린트/타입 에러 6건 수정                                | ✅   |
+| P3-25  | 환경 분리                  | MVP: 전 환경 Google Gemini 사용. Production Anthropic 전환은 v0.2. 정본: INFRA-PIPELINE.md            | ✅   |
 | P3-26  | ~~Supabase 프로젝트 분리~~   | **→ v0.2 연기**. 2 프로젝트: dev+preview 공유 / prod. 소프트 런칭은 단일 프로젝트로 충분                         | ➡️  |
 | P3-27  | 에러 트래킹 설정              | MVP 간소화: Vercel 기본 로그로 시작. Sentry는 v0.2                                                    | ⬜   |
 | P3-28  | 성능 모니터링                | MVP 간소화: Vercel Analytics 기본 활성화                                                           | ⬜   |
@@ -592,7 +592,7 @@
 - P3-35: 소프트 런칭
 - P3-33a: 법률 전문가 검토 (소프트 런칭 후 정식 런칭 전)
 
-> v0.2에서 추가: 자동화 테스트(통합/E2E/AI 품질/성능), OWASP 보안 점검, 접근성 검증, 구조화 로깅, Supabase 프로젝트 분리
+> v0.2에서 추가: 자동화 테스트(통합/E2E/AI 품질/성능), OWASP 보안 점검, 접근성 검증, 구조화 로깅, Supabase 프로젝트 분리, Production LLM Anthropic 전환 (AI_PROVIDER=anthropic + ANTHROPIC_API_KEY 등록 + NEXT_PUBLIC_APP_URL 환경별 분리)
 
 ---
 
