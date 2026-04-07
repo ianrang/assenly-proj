@@ -134,7 +134,7 @@ describe('getModel', () => {
   it('지원하지 않는 프로바이더에 에러', async () => {
     stubValidEnv();
     const { getModel } = await import('@/server/core/config');
-    await expect(getModel('mistral' as any)).rejects.toThrow('Unsupported AI provider');
+    await expect(getModel('mistral' as never)).rejects.toThrow('Unsupported AI provider');
   });
 });
 

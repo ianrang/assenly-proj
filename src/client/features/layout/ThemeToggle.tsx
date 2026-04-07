@@ -10,6 +10,7 @@ export default function ThemeToggle() {
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
 
+  // eslint-disable-next-line react-hooks/set-state-in-effect -- hydration mismatch 방지 mount 감지 패턴
   useEffect(() => setMounted(true), []);
 
   if (!mounted) return <div className="h-9 w-9" />;

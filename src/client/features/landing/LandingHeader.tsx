@@ -4,7 +4,7 @@ import "client-only";
 
 import LanguageSelector from "@/client/features/layout/LanguageSelector";
 import ThemeToggle from "@/client/features/layout/ThemeToggle";
-import { BrandLogo } from "@/client/ui/primitives/typography";
+import BrandLogo from "@/client/features/layout/BrandLogo";
 
 export default function LandingHeader() {
   return (

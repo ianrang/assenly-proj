@@ -17,6 +17,7 @@ export default function ProfileTransition({ onComplete }: ProfileTransitionProps
   const t = useTranslations("onboarding");
   const [completedSteps, setCompletedSteps] = useState(0);
   const onCompleteRef = useRef(onComplete);
+  // eslint-disable-next-line react-hooks/refs -- stale closure 방지: effect에서 최신 콜백 참조
   onCompleteRef.current = onComplete;
 
   useEffect(() => {

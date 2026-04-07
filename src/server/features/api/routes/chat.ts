@@ -6,6 +6,7 @@ import { rateLimit } from '../middleware/rate-limit';
 import { errorResponseSchema } from '../schemas/common';
 import type { UserProfile, Journey } from '@/shared/types/profile';
 import type { UIMessage, StreamTextResult, ToolSet } from 'ai';
+import { type Output } from 'ai';
 import { convertToModelMessages } from 'ai';
 import { getProfile, createMinimalProfile, updateProfile } from '@/server/features/profile/service';
 import { getActiveJourney } from '@/server/features/journey/service';
@@ -251,7 +252,7 @@ export function registerChatRoutes(app: AppType) {
 
       // P2-50b: consumeStream — 클라이언트 연결 끊김 시에도 onFinish 보장
       // fire-and-forget. 내부적으로 스트림을 tee하여 별도 브랜치로 소비.
-      const stream = result.stream as StreamTextResult<ToolSet>;
+      const stream = result.stream as StreamTextResult<ToolSet, Output.Output<string, string, never>>;
       stream.consumeStream();
 
       // originalMessages: DB 히스토리 + 새 클라이언트 메시지

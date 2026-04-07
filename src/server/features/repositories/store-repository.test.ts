@@ -146,7 +146,6 @@ describe('store-repository', () => {
       const client = createMockClient({
         data: null,
         error: { message: 'DB error' },
-        count: null,
       });
 
       const { findAllStores } = await import(

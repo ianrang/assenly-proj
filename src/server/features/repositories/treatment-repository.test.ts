@@ -193,7 +193,6 @@ describe('treatment-repository', () => {
       const client = createMockClient({
         data: null,
         error: { message: 'DB error' },
-        count: null,
       });
 
       const { findAllTreatments } = await import(

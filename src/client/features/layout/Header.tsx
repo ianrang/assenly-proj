@@ -5,7 +5,7 @@ import "client-only";
 import type { ReactNode } from "react";
 import LanguageSelector from "@/client/features/layout/LanguageSelector";
 import ThemeToggle from "@/client/features/layout/ThemeToggle";
-import { BrandLogo } from "@/client/ui/primitives/typography";
+import BrandLogo from "@/client/features/layout/BrandLogo";
 
 type HeaderProps = {
   leftContent?: ReactNode;
