@@ -16,33 +16,24 @@ async function checkKitTable(): Promise<boolean> {
   return !error;
 }
 
-// beforeAll보다 먼저 실행해야 하므로 top-level await 대신 플래그 사용
-let kitTableExists: boolean | null = null;
+const kitTableExists = await checkKitTable();
 
-describe('POST /api/kit/claim (integration)', () => {
+describe.skipIf(!kitTableExists)('POST /api/kit/claim (integration)', () => {
   const app = createApp();
   let session: TestSession;
   const testEmail = `test-${Date.now()}@integration-test.example.com`;
 
   beforeAll(async () => {
-    kitTableExists = await checkKitTable();
-    if (!kitTableExists) return;
-
     registerKitRoutes(app);
     session = await createRegisteredTestUser();
   });
 
   afterAll(async () => {
-    if (!kitTableExists || !session) return;
+    if (!session) return;
     await cleanupTestUser(session.userId);
   });
 
   it('정상 → 201 + kit_subscribers DB 생성', async () => {
-    if (!kitTableExists) {
-      console.log('⏭️  kit_subscribers 테이블 미존재 — 스킵');
-      return;
-    }
-
     const res = await app.request(
       '/api/kit/claim',
       jsonRequest('POST', session.token, {
@@ -68,11 +59,6 @@ describe('POST /api/kit/claim (integration)', () => {
   });
 
   it('멱등성 (Q-12) — 동일 이메일 재전송 → 409 KIT_ALREADY_CLAIMED', async () => {
-    if (!kitTableExists) {
-      console.log('⏭️  kit_subscribers 테이블 미존재 — 스킵');
-      return;
-    }
-
     const res = await app.request(
       '/api/kit/claim',
       jsonRequest('POST', session.token, {
@@ -87,11 +73,6 @@ describe('POST /api/kit/claim (integration)', () => {
   });
 
   it('검증 실패 — 이메일 형식 → 400', async () => {
-    if (!kitTableExists) {
-      console.log('⏭️  kit_subscribers 테이블 미존재 — 스킵');
-      return;
-    }
-
     const res = await app.request(
       '/api/kit/claim',
       jsonRequest('POST', session.token, {

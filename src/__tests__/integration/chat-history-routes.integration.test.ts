@@ -15,16 +15,14 @@ async function checkUiMessagesColumn(): Promise<boolean> {
   return !error;
 }
 
-describe('GET /api/chat/history (integration)', () => {
+const columnExists = await checkUiMessagesColumn();
+
+describe.skipIf(!columnExists)('GET /api/chat/history (integration)', () => {
   const app = createApp();
   let session: TestSession;
   let testConversationId: string;
-  let columnExists = true;
 
   beforeAll(async () => {
-    columnExists = await checkUiMessagesColumn();
-    if (!columnExists) return;
-
     registerChatRoutes(app);
     session = await createRegisteredTestUser();
 
@@ -49,16 +47,11 @@ describe('GET /api/chat/history (integration)', () => {
   });
 
   afterAll(async () => {
-    if (!columnExists || !session) return;
+    if (!session) return;
     await cleanupTestUser(session.userId);
   });
 
   it('conversation_id 지정 → 200 + 저장된 ui_messages 반환', async () => {
-    if (!columnExists) {
-      console.log('⏭️  conversations.ui_messages 미존재 (migration 009) — 스킵');
-      return;
-    }
-
     const res = await app.request(
       `/api/chat/history?conversation_id=${testConversationId}`,
       { headers: { Authorization: `Bearer ${session.token}` } },
@@ -73,11 +66,6 @@ describe('GET /api/chat/history (integration)', () => {
   });
 
   it('conversation_id 미지정 → 200 + 최신 대화 반환', async () => {
-    if (!columnExists) {
-      console.log('⏭️  conversations.ui_messages 미존재 (migration 009) — 스킵');
-      return;
-    }
-
     const res = await app.request('/api/chat/history', {
       headers: { Authorization: `Bearer ${session.token}` },
     });
@@ -89,11 +77,6 @@ describe('GET /api/chat/history (integration)', () => {
   });
 
   it('대화 없는 유저 → 200 + 빈 messages', async () => {
-    if (!columnExists) {
-      console.log('⏭️  conversations.ui_messages 미존재 (migration 009) — 스킵');
-      return;
-    }
-
     const userB = await createRegisteredTestUser();
 
     const res = await app.request('/api/chat/history', {
@@ -109,11 +92,6 @@ describe('GET /api/chat/history (integration)', () => {
   });
 
   it('미인증 → 401', async () => {
-    if (!columnExists) {
-      console.log('⏭️  conversations.ui_messages 미존재 (migration 009) — 스킵');
-      return;
-    }
-
     const res = await app.request('/api/chat/history');
     expect(res.status).toBe(401);
   });
