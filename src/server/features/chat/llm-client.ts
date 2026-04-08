@@ -31,7 +31,7 @@ export async function callWithFallback(options: CallOptions) {
       model,
       ...options,
       temperature: TOKEN_CONFIG.default.temperature,
-      maxTokens: TOKEN_CONFIG.default.maxTokens,
+      maxOutputTokens: TOKEN_CONFIG.default.maxTokens,
       abortSignal: AbortSignal.timeout(env.LLM_TIMEOUT_MS),
     });
   } catch (primaryError) {
@@ -51,7 +51,7 @@ export async function callWithFallback(options: CallOptions) {
         model: fallbackModel,
         ...options,
         temperature: TOKEN_CONFIG.default.temperature,
-        maxTokens: TOKEN_CONFIG.default.maxTokens,
+        maxOutputTokens: TOKEN_CONFIG.default.maxTokens,
         abortSignal: AbortSignal.timeout(env.LLM_TIMEOUT_MS),
       });
     } catch (fallbackError) {
