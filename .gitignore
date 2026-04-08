@@ -67,4 +67,5 @@ supabase/.temp/
 *.png
 !src/app/icon.png
 !public/og.png
+!public/icon.png
 !public/apple-touch-icon.png
