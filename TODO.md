@@ -491,7 +491,7 @@
 | P2-91   | ~~프롬프트: 반복 응답 방지~~      | Rules §5 "Response variety" 추가. 동일 문구/패턴 반복 금지, 대화 진전 유도                                                                                                                  | ✅   |
 | P2-92   | ~~프롬프트: 선제적 추천 유도~~     | search_beauty_data "When to call"에 의도 감지 기반 선제 추천 조건 추가                                                                                                                   | ✅   |
 | P2-93   | ~~프롬프트: Chat-First 온보딩 강화~~ | "Recommend → Ask One Thing" 패턴으로 교체. 추천 후 프로필 질문 1개 자연 유도                                                                                                             | ✅   |
-| P2-94   | UI: 추천 카드 컴팩트 레이아웃      | 카드가 세로로 길게 나열. ProductCard h-40 이미지+상세=~250px, 기본 3개=750px. 컴팩트 카드(이미지 축소/가로) 또는 요약→확장 패턴. 모바일(L-12) 유지하면서 한 화면에 카드 개요 파악 가���하도록                                                  | ⬜   |
+| P2-94   | ~~UI: 추천 카드 컴팩트 레이아웃~~  | 가로 스크롤 160px compact 카드 + groupParts 순수 함수 추출 + 말풍선 w-fit 보정. 테스트 11건 추가                                                                                           | ✅   |
 | P2-95   | ~~버그: 채팅 히스토리 미표시~~     | ChatContent.tsx 빈 parts 메시지 필터링으로 히스토리 표시 복구                                                                                                                            | ✅   |
 | NEW-1   | ~~LLM temperature/maxTokens 설정~~ | TokenConfig에 temperature 0.4 + maxOutputTokens 1024 추가. streamText 호출에 적용                                                                                              | ✅   |
 | NEW-2   | ~~프로필 자동 필터 merge~~       | searchShopping에서 LLM이 skin_types 생략 시 profile.skin_type 자동 적용                                                                                                             | ✅   |
