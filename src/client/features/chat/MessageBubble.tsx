@@ -16,7 +16,7 @@ export default function MessageBubble({ role, children }: MessageBubbleProps) {
     <div className={cn("flex", isUser ? "justify-end" : "justify-start")}>
       <div
         className={cn(
-          "max-w-[80%] rounded-md px-3.5 py-2.5 text-sm leading-normal",
+          "w-fit max-w-[80%] rounded-md px-3.5 py-2.5 text-sm leading-normal",
           isUser
             ? "rounded-br-[4px] bg-primary text-primary-foreground"
             : "rounded-bl-[4px] border border-border-warm bg-surface-warm text-foreground"
