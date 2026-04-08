@@ -80,11 +80,13 @@ export default function ChatContent({ locale, initialMessages, initialConversati
   }
 
   // UIMessage.parts → ChatMessagePart[] 변환
-  const chatMessages = messages.map((m) => ({
-    id: m.id,
-    role: m.role as "user" | "assistant",
-    parts: mapUIMessageToParts(m.parts as UIPartLike[]),
-  }));
+  const chatMessages = messages
+    .map((m) => ({
+      id: m.id,
+      role: m.role as "user" | "assistant",
+      parts: mapUIMessageToParts(m.parts as UIPartLike[]),
+    }))
+    .filter((m) => m.parts.length > 0);
 
   return (
     <div className="-mx-5 flex h-[calc(100dvh-52px)] flex-col">
