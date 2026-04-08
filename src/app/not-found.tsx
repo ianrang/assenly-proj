@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 // ============================================================
 // Root not-found — 루트 레벨 404 (locale 라우트 밖)
 // 서버 컴포넌트 — "use client" 모듈(buttonVariants 등) 함수 호출 불가.
@@ -16,12 +18,12 @@ export default function RootNotFound() {
         <p className="mb-8 text-sm leading-relaxed text-muted-foreground">
           The page you&apos;re looking for doesn&apos;t exist or has been moved.
         </p>
-        <a
+        <Link
           href="/"
           className="inline-block rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground"
         >
           Back to home
-        </a>
+        </Link>
       </div>
     </div>
   );

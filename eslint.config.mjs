@@ -10,6 +10,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "docs/**",
+    "scripts/**",
   ]),
   // ──────────────────────────────────────────────────────
   // 4-Layer Dependency DAG Enforcement

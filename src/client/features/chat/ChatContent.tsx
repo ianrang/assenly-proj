@@ -2,7 +2,7 @@
 
 import "client-only";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useMemo } from "react";
 import { useChat } from "@ai-sdk/react";
 import type { UIMessage } from "ai";
 import { DefaultChatTransport } from "ai";
@@ -71,12 +71,11 @@ export default function ChatContent({ locale, initialMessages, initialConversati
 
   const isStreaming = status === "streaming" || status === "submitted";
 
-  // 메시지가 전송되면 제안 질문 숨김
-  useEffect(() => {
-    if (messages.length > 0) setShowSuggestions(false);
-  }, [messages.length]);
+  // 초기 메시지가 있으면(히스토리 복원) 제안 질문 숨김
+  const showSuggestionsResolved = showSuggestions && messages.length === 0;
 
   function handleSend(text: string) {
+    setShowSuggestions(false);
     sendMessage({ text });
   }
 
@@ -96,7 +95,7 @@ export default function ChatContent({ locale, initialMessages, initialConversati
               <MessageBubble role="assistant">
                 {t("greeting")}
               </MessageBubble>
-              {showSuggestions && (
+              {showSuggestionsResolved && (
                 <SuggestedQuestions onSelect={handleSend} />
               )}
             </div>

@@ -33,6 +33,7 @@ export default function GlobalError({ reset }: Props) {
               >
                 Try again
               </button>
+              {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- 루트 에러 바운더리: Next.js 라우터 컨텍스트 없음, 풀 리로드 필요 */}
               <a
                 href="/"
                 className="rounded-full border border-border px-6 py-3 text-sm font-medium"

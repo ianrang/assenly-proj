@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useEffect, useRef } from "react";
+import Link from "next/link";
 import { Button, buttonVariants } from "@/client/ui/primitives/button";
 
 type Props = {
@@ -36,12 +37,12 @@ export default function ErrorPage({ error, reset }: Props) {
           <Button onClick={reset} size="cta" className="w-full">
             {t("retry")}
           </Button>
-          <a
+          <Link
             href="/"
             className={buttonVariants({ variant: "outline", size: "cta", className: "w-full" })}
           >
             {t("home")}
-          </a>
+          </Link>
         </div>
       </div>
     </div>

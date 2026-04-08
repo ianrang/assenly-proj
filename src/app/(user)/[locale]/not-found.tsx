@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
 // 서버 컴포넌트 — buttonVariants(client-only cva) 호출 불가.
@@ -15,12 +16,12 @@ export default async function NotFoundPage() {
         <p className="mb-8 text-sm leading-relaxed text-muted-foreground">
           {t("notFoundDescription")}
         </p>
-        <a
+        <Link
           href="/"
           className="inline-block rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground"
         >
           {t("home")}
-        </a>
+        </Link>
       </div>
     </div>
   );
