@@ -26,7 +26,7 @@ vi.mock('@/shared/constants/ai', () => ({
   },
   TOKEN_CONFIG: {
     default: {
-      maxTokens: 1024,
+      maxOutputTokens: 1024,
       historyLimit: 20,
       temperature: 0.4,
     },

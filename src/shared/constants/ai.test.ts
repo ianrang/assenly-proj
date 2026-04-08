@@ -35,17 +35,17 @@ describe('TOKEN_CONFIG', () => {
     expect(TOKEN_CONFIG['default']).toBeDefined();
   });
 
-  it('default.maxTokens는 1024', () => {
-    expect(TOKEN_CONFIG['default'].maxTokens).toBe(1024);
+  it('default.maxOutputTokens는 1024', () => {
+    expect(TOKEN_CONFIG['default'].maxOutputTokens).toBe(1024);
   });
 
   it('default.historyLimit는 20', () => {
     expect(TOKEN_CONFIG['default'].historyLimit).toBe(20);
   });
 
-  it('모든 설정의 maxTokens가 양수', () => {
+  it('모든 설정의 maxOutputTokens가 양수', () => {
     for (const config of Object.values(TOKEN_CONFIG)) {
-      expect(config.maxTokens).toBeGreaterThan(0);
+      expect(config.maxOutputTokens).toBeGreaterThan(0);
     }
   });
 
