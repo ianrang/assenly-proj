@@ -22,6 +22,7 @@ export interface SystemPromptContext {
   realtime: RealtimeContext;
   derived: DerivedVariables | null;
   learnedPreferences: LearnedPreference[];
+  isFirstTurn: boolean;
 }
 
 // --- §2 Role (항상 포함) — system-prompt-spec.md §2 ---
@@ -414,23 +415,13 @@ do not ask directly — infer from conversation if possible, or recommend broadl
 }
 
 // --- §9 No Profile Mode (프로필 미존재 시) — system-prompt-spec.md §9 ---
-function buildNoProfileSection(realtime: RealtimeContext): string {
-  return `## No Profile Mode
+function buildNoProfileSection(realtime: RealtimeContext, isFirstTurn: boolean): string {
+  const firstTurnBullet = isFirstTurn
+    ? '- Welcome them warmly and offer to help with K-beauty questions'
+    : '- Continue the conversation naturally — do NOT re-introduce yourself or repeat greetings';
 
-The user has not set up a profile yet. They chose to start chatting directly.
-
-**Your approach:**
-- Welcome them warmly and offer to help with K-beauty questions
-- Answer their questions with broadly applicable recommendations
-- As you learn about them through conversation (e.g., they mention oily skin, or a
-  budget, or travel dates), naturally incorporate this into your recommendations
-- Do NOT ask multiple profile questions at once — gather information one piece at a time
-  through natural conversation
-
-**Real-time context:**
-- Current time: ${realtime.current_time} (KST)
-
-### First response (Route B)
+  const turnSection = isFirstTurn
+    ? `### First response (Route B)
 
 Your opening message should:
 - Greet warmly and introduce yourself briefly (1 sentence)
@@ -441,7 +432,28 @@ Example: "Hi! I'm Essenly, your K-beauty guide in Seoul. Ask me anything about s
 products, treatments, or where to shop — and if you tell me a bit about your skin,
 I can make my picks even more personal!"
 
-Do NOT list profile questions. The UI displays suggested question bubbles separately.
+Do NOT list profile questions. The UI displays suggested question bubbles separately.`
+    : `### Continuing conversation
+
+You are in a follow-up turn. Do NOT greet or introduce yourself again.
+Continue naturally from the previous message.`;
+
+  return `## No Profile Mode
+
+The user has not set up a profile yet. They chose to start chatting directly.
+
+**Your approach:**
+${firstTurnBullet}
+- Answer their questions with broadly applicable recommendations
+- As you learn about them through conversation (e.g., they mention oily skin, or a
+  budget, or travel dates), naturally incorporate this into your recommendations
+- Do NOT ask multiple profile questions at once — gather information one piece at a time
+  through natural conversation
+
+**Real-time context:**
+- Current time: ${realtime.current_time} (KST)
+
+${turnSection}
 
 ### Information gathering
 
@@ -527,7 +539,7 @@ export function buildSystemPrompt(context: SystemPromptContext): string {
     CARD_FORMAT_SECTION,
     context.profile
       ? buildUserProfileSection(context)
-      : buildNoProfileSection(context.realtime),
+      : buildNoProfileSection(context.realtime, context.isFirstTurn),
     context.derived
       ? buildBeautyProfileSection(context.derived)
       : null,

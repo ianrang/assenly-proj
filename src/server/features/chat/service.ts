@@ -65,6 +65,7 @@ export async function streamChat(params: StreamChatParams): Promise<StreamChatRe
     },
     derived,
     learnedPreferences: preferences,
+    isFirstTurn: params.history.length === 0,
   });
 
   // tool context (P-4: chatService가 조립하여 tool에 전달)

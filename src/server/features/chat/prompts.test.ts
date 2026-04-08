@@ -14,6 +14,7 @@ function makeContext(overrides: Record<string, unknown> = {}) {
     },
     derived: null,
     learnedPreferences: [],
+    isFirstTurn: false,
     ...overrides,
   };
 }
@@ -148,5 +149,34 @@ describe('buildSystemPrompt', () => {
     const result2 = buildSystemPrompt(ctx);
 
     expect(result1).toBe(result2);
+  });
+
+  it('경로B 첫 턴: "First response" 블록 포함', async () => {
+    const { buildSystemPrompt } = await import('@/server/features/chat/prompts');
+    const ctx = makeContext({ isFirstTurn: true });
+
+    const result = buildSystemPrompt(ctx as Parameters<typeof buildSystemPrompt>[0]);
+
+    expect(result).toContain('### First response');
+    expect(result).not.toContain('### Continuing conversation');
+  });
+
+  it('경로B 후속 턴: "First response" 블록 미포함', async () => {
+    const { buildSystemPrompt } = await import('@/server/features/chat/prompts');
+    const ctx = makeContext({ isFirstTurn: false });
+
+    const result = buildSystemPrompt(ctx as Parameters<typeof buildSystemPrompt>[0]);
+
+    expect(result).not.toContain('### First response');
+    expect(result).toContain('### Continuing conversation');
+  });
+
+  it('경로A 프로필 있음: isFirstTurn 무관하게 First response 미포함', async () => {
+    const { buildSystemPrompt } = await import('@/server/features/chat/prompts');
+    const ctx = makeContext({ profile: fullProfile, journey: fullJourney, isFirstTurn: true });
+
+    const result = buildSystemPrompt(ctx as Parameters<typeof buildSystemPrompt>[0]);
+
+    expect(result).not.toContain('### First response');
   });
 });

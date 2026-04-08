@@ -235,7 +235,7 @@ describe('streamChat', () => {
 
     expect(result.conversationId).toBe('conv-123');
     expect(mockBuildSystemPrompt).toHaveBeenCalledWith(
-      expect.objectContaining({ profile: null, journey: null, derived: null }),
+      expect.objectContaining({ profile: null, journey: null, derived: null, isFirstTurn: true }),
     );
     expect(mockCallWithFallback).toHaveBeenCalledOnce();
   });
