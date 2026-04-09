@@ -51,7 +51,7 @@ export async function getModel(provider?: string) {
 |--------|------|------|------|--------|------|
 | `AI_FALLBACK_PROVIDER` | ❌ | 서버 | enum | `google` | 폴백 프로바이더. 빈값 = 폴백 비활성 |
 | `AI_FALLBACK_MODEL` | ❌ | 서버 | string | (프로바이더 기본) | 폴백 모델명 |
-| `LLM_TIMEOUT_MS` | ❌ | 서버 | number | `30000` | LLM API 호출 타임아웃 (ms) |
+| `LLM_TIMEOUT_MS` | ❌ | 서버 | number | `45000` | LLM API 호출 타임아웃 (ms). v1.1: 30000→45000 (tool 3-5회 포함 시 30초 부족, chat-quality-improvements.md §4) |
 
 > security-infra.md §1.1 + §1.3 zod 스키마에 추가 필요 (D-6).
 
@@ -59,7 +59,7 @@ export async function getModel(provider?: string) {
 // security-infra.md §1.3 zod 스키마 추가분
 AI_FALLBACK_PROVIDER: z.enum(['anthropic', 'google', 'openai']).optional(),
 AI_FALLBACK_MODEL: z.string().optional(),
-LLM_TIMEOUT_MS: z.coerce.number().default(30000),
+LLM_TIMEOUT_MS: z.coerce.number().default(45000),
 ```
 
 ### 1.3 프로바이더별 차이
@@ -121,12 +121,15 @@ export async function callWithFallback(options: {
       throw primaryError;
     }
 
-    // 폴백 시도
+    // 폴백 시도 — FALLBACK_DELAY_MS 대기 후 전환
     console.warn('[LLM_FALLBACK]', {
       primary: primaryProvider,
       fallback: fallbackProvider,
       reason: (primaryError as Error).message,
     });
+
+    // v1.1: FALLBACK_DELAY_MS 적용 (chat-quality-improvements.md §5.2)
+    await new Promise(resolve => setTimeout(resolve, LLM_CONFIG.FALLBACK_DELAY_MS));
 
     try {
       const fallbackModel = await getModel(fallbackProvider);

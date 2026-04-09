@@ -30,21 +30,26 @@
 
 ### 1.1 설정값
 
-| 설정 | 값 | 근거 |
-|------|-----|------|
-| `maxTokens` | 1024 | PoC P0-15: 20턴 대화에서 응답당 ~500-800 토큰. 1024로 충분한 여유 확보 |
-| `historyLimit` | 20 | PoC P0-15: 20턴 대화 3회 검증 완료. Rate limit 일 100회 (api-spec.md §4.1) |
+| 설정 | 값 | 위치 | 근거 |
+|------|-----|------|------|
+| `maxOutputTokens` | 2048 | shared/constants/ai.ts TOKEN_CONFIG | 복잡 시나리오(5카드+개인화 설명) 잘림 방지. 상한이지 실사용량 아님. (변경: 1024→2048, chat-quality-improvements.md §4) |
+| `historyLimit` | 20 | shared/constants/ai.ts TOKEN_CONFIG | PoC P0-15: 20턴 대화 3회 검증 완료. Rate limit 일 100회 (api-spec.md §4.1) |
+| **temperature** (v1.2) | **0.6 (default)** | **server/core/config.ts env.LLM_TEMPERATURE (SSOT)** | "warm, knowledgeable" 대화 페르소나. 추천 정확성은 코드(beauty/)가 보장하므로 안전. (변경: 0.4→0.6, chat-quality-improvements.md §4). env로 A/B 테스트 및 롤백 가능. **v1.2에서 TOKEN_CONFIG에서 제거**하고 env로 이전 (SSOT, G-2 준수) |
+| `maxToolSteps` | 5 | shared/constants/ai.ts TOKEN_CONFIG | 비교 요청(검색 2회+링크) 지원. (변경: 3→5, 하드코딩→상수화, chat-quality-improvements.md §4) |
 
-### 1.2 상수 위치
+### 1.2 상수 위치 (v1.2 — SSOT 분리)
+
+**temperature는 server/core/config.ts에만 존재** (runtime env). 나머지는 shared/constants/ai.ts에 존재:
 
 ```typescript
 // shared/constants/ai.ts (기존 LLM_CONFIG와 동일 파일)
 
-/** 모델별 토큰 설정. MVP는 default만 사용 */
+/** 모델별 토큰 설정. MVP는 default만 사용. v1.2: temperature 제거 (env.LLM_TEMPERATURE로 이전) */
 export const TOKEN_CONFIG: Record<string, TokenConfig> = {
   default: {
-    maxTokens: 1024,
+    maxOutputTokens: 2048,
     historyLimit: 20,
+    maxToolSteps: 5,
   },
 };
 ```
@@ -53,14 +58,28 @@ export const TOKEN_CONFIG: Record<string, TokenConfig> = {
 // shared/types/ai.ts
 
 export interface TokenConfig {
-  /** LLM 응답 최대 토큰 (streamText maxTokens) */
-  maxTokens: number;
-  /** 히스토리 로드 최대 턴 수 (user+assistant 쌍 기준) */
+  /** LLM 응답 최대 토큰. streamText({ maxOutputTokens }) 에 사용 (AI SDK 6.x) */
+  maxOutputTokens: number;
+  /** 히스토리 로드 최대 턴 수 (1턴 = user 메시지 기준, token-management.md §1.3) */
   historyLimit: number;
+  /** LLM tool 호출 최대 단계 수. streamText stopWhen(stepCountIs(N))에 사용 */
+  maxToolSteps: number;
+  // v1.2: temperature 필드 제거 — env.LLM_TEMPERATURE가 단일 정본
 }
 ```
 
-**기존 패턴 준수**: `LLM_CONFIG`(llm-resilience.md §2.3)와 동일한 `shared/constants/ai.ts`에 배치. 의존성 방향 변경 없음.
+```typescript
+// server/core/config.ts — temperature 단일 정본 (SSOT)
+const envSchema = z.object({
+  // ...
+  LLM_TEMPERATURE: z.coerce.number().min(0).max(2).default(0.6),
+  // ...
+});
+```
+
+**기존 패턴 준수**: shared/constants/ai.ts는 `LLM_CONFIG`(llm-resilience.md §2.3)와 동일 파일. 의존성 방향 변경 없음.
+
+**v1.2 SSOT 근거**: shared/는 런타임 독립 상수만 보관(L-13). 서버 런타임 기본값은 server/core/에 있는 것이 올바름. 한 값이 두 곳에 선언되면 G-2(중복 금지), G-10(매직 넘버 금지), P-7(단일 변경점), V-25(정본 확인) 위반. SSOT로 전부 해소.
 
 ### 1.3 히스토리 로드 규칙
 
@@ -87,10 +106,11 @@ api-spec.md §3.4 step 4 "히스토리 로드"에서 적용:
 
 | 영역 | 추정 토큰 | 산출 근거 |
 |------|----------|----------|
-| 시스템 프롬프트 (§2-§10) | ~3,000-4,000 | system-prompt-spec.md 전체 텍스트 문자 수 / 4 (영어 기준) |
+| 시스템 프롬프트 (§2-§11, 축약+few-shot 후) | ~2,500-3,500 | system-prompt-spec.md 전체 텍스트. 550줄→379줄 축소(few-shot 60줄 순증 포함) (chat-quality-improvements.md §2) |
 | 히스토리 20턴 (tool 포함) | ~6,000-10,000 | 턴당 300-500 토큰. PoC P0-15 실측 ~114/턴은 **tool 미포함 텍스트만** 측정 (cost-estimate.md: 2,282토큰/20턴). tool_call/tool_result 포함 시 3-4배 증가 추정 |
 | tool 결과 (현재 턴) | ~500-750 | tool-spec.md: 최대 5카드 × ~150토큰 |
-| 응답 예약 (maxTokens) | 1,024 | TOKEN_CONFIG.maxTokens |
+| ~~의도 분류~~ | ~~~120~~ | **v0.2 후속** — v0.1 범위 제외 (chat-quality-improvements.md §3 v1.1 결정). v0.1에서는 메인 LLM만 호출 |
+| 응답 예약 (maxOutputTokens) | 2,048 | TOKEN_CONFIG.maxOutputTokens (1024→2048 변경) |
 | **합계** | **~10,500-15,800** | |
 | **200K 대비** | **5.3%-7.9%** | |
 
@@ -115,17 +135,19 @@ MVP에서 컨텍스트 윈도우 초과는 **물리적으로 불가능**하다. 
 
 ### 3.1 TokenConfig 확장 경로
 
-MVP에서 v0.2로 전환 시 `TokenConfig` 인터페이스에 필드를 추가한다. 기존 코드 변경 없이 확장 가능.
+MVP(v0.1)에서 v0.2로 전환 시 `TokenConfig` 인터페이스에 필드를 추가한다. 기존 코드 변경 없이 확장 가능.
 
 ```typescript
 // v0.2 확장 예시 (MVP에서는 구현하지 않음)
 export interface TokenConfig {
-  maxTokens: number;
+  maxOutputTokens: number;
   historyLimit: number;
+  maxToolSteps: number;
   // v0.2 추가 필드
   historyBudget?: number;    // 토큰 기반 히스토리 상한
   ragBudget?: number;        // RAG 결과 토큰 상한
   systemPromptBudget?: number; // 시스템 프롬프트 토큰 상한
+  // 주의: temperature는 env.LLM_TEMPERATURE가 정본 (v0.1 SSOT 결정). v0.2에서 per-model로 다시 가져올 경우 env 구조를 LLM_TEMPERATURE_CLAUDE, LLM_TEMPERATURE_GEMINI 등으로 확장하거나, TokenConfig에 optional override 필드 추가 후 env가 null일 때만 사용
 }
 ```
 
@@ -136,10 +158,11 @@ export interface TokenConfig {
 ```typescript
 // v0.2 모델별 설정 예시 (MVP에서는 구현하지 않음)
 export const TOKEN_CONFIG: Record<string, TokenConfig> = {
-  default: { maxTokens: 1024, historyLimit: 20 },
-  'claude-sonnet': { maxTokens: 1024, historyLimit: 20, historyBudget: 20000 },
-  'gemini-flash': { maxTokens: 2048, historyLimit: 40, historyBudget: 50000 },
+  default: { maxOutputTokens: 2048, historyLimit: 20, maxToolSteps: 5 },
+  'claude-sonnet': { maxOutputTokens: 2048, historyLimit: 20, maxToolSteps: 5, historyBudget: 20000 },
+  'gemini-flash': { maxOutputTokens: 4096, historyLimit: 40, maxToolSteps: 5, historyBudget: 50000 },
 };
+// v0.1 SSOT: temperature는 env.LLM_TEMPERATURE에서만 읽음. TOKEN_CONFIG에는 포함 안 함.
 ```
 
 ### 3.3 히스토리 로드 확장 경로
@@ -159,7 +182,7 @@ v0.2: loadRecentMessages(conversationId, config.historyLimit, config.historyBudg
 
 | 변경 | 수정 파일 | P-7 |
 |------|----------|-----|
-| maxTokens 변경 (1024 → 2048) | `shared/constants/ai.ts` (1) | 1파일 |
+| maxOutputTokens/temperature/maxToolSteps 변경 | `shared/constants/ai.ts` (1) | 1파일 |
 | 히스토리 턴 수 변경 (20 → 30) | `shared/constants/ai.ts` (1) | 1파일 |
 | 모델별 다른 설정 추가 | `shared/constants/ai.ts` (1) | 1파일 |
 | TokenConfig에 새 필드 추가 | `shared/types/ai.ts` (1) + `shared/constants/ai.ts` (1) | 2파일 |

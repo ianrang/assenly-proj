@@ -1,7 +1,7 @@
 # 시스템 프롬프트 명세 — P1-25
 
-> 버전: 1.0
-> 작성일: 2026-03-22
+> 버전: 1.1
+> 작성일: 2026-03-22 (v1.1: 2026-04-09 chat-quality-improvements.md 반영)
 > 근거: PRD §1.5/§2.1/§3.4-3.5/§4-A, TDD §3.2/§3.7, api-spec §3, search-engine.md, PoC P0-12~17
 > 원칙: CLAUDE.md P-4 (Composition Root), R-5 (service 허용 import), L-5 (core 비즈니스 금지)
 
@@ -20,7 +20,9 @@
 8. [User Profile 섹션](#8-user-profile-섹션)
 9. [No Profile Mode 섹션](#9-no-profile-mode-섹션)
 10. [Beauty Profile 섹션](#10-beauty-profile-섹션)
-11. [조립 예시](#11-조립-예시)
+11. [Few-shot Examples 섹션](#11-few-shot-examples-섹션) ← v1.1 추가
+12. [Intent Classification](#12-intent-classification) ← v1.1 설계만, 구현은 v0.2 후속
+13. [조립 예시](#13-조립-예시)
 
 ---
 
@@ -57,6 +59,8 @@
 | reasons[] → 자연어 why_recommended 가공 | LLM — 시스템 프롬프트 지시 | 이 문서 §7 |
 | 매장/클리닉 1개 선택 (tool 결과에서 맥락 기반) | LLM — 시스템 프롬프트 지시 | PRD §3.5 / 이 문서 §7 |
 | 대화 톤, 언어 대응, 도메인 안내 | LLM — 시스템 프롬프트 지시 | 이 문서 §2~4 |
+| 의도 분류 (사용자 메시지 → intent 카테고리) | **v0.2 후속** — 코드 `service.ts` classifyIntent() | chat-quality-improvements.md §3 (v1.1 "추후 구현 예정"). v0.1에서는 few-shot 예시가 tool 호출 패턴을 대신 가르침 |
+| intent 기반 tool 세트 필터링 | **v0.2 후속** — 코드 `service.ts` buildTools() | chat-quality-improvements.md §3.2 (v1.1 "추후 구현 예정"). v0.1에서는 모든 tool 항상 활성화 |
 
 원칙: **LLM은 tool 결과의 순서(랭킹)를 변경하지 않는다.** 코드가 사용자에게 가장 적합한 순서로 결과를 반환하며, LLM은 해당 순서를 존중하여 자연어로 설명한다.
 
@@ -73,6 +77,8 @@
 | §8 User Profile | 주입 구조 + 매핑 | — |
 | §9 No Profile Mode | 기본 지시 + 전환 트리거 + 첫 응답/추출 전략/저장 제안 | P1-28 완료 |
 | §10 Beauty Profile | 주입 구조 + DV-4 생성 프롬프트(별도 LLM 호출) | P1-29 완료 |
+| §11 Few-shot Examples | **v1.1 추가**: 3-4개 대화 예시 (tool 패턴, 톤, 가드레일) | chat-quality-improvements.md §2.3 |
+| §12 Intent Classification | **v1.1 설계만 (구현 v0.2 후속)**: 의도 분류 설계 보존, 이번 PR 범위 제외 | chat-quality-improvements.md §3 |
 
 ## MVP 비활성 변수/기능
 
@@ -247,6 +253,7 @@ Do NOT attempt to search for or fabricate data about unavailable domains.
 
 > 태그: [프롬프트 출력] — 항상 포함
 > 확장: **P1-26**에서 상세 규칙 목록, 거부 패턴, 응답 템플릿 추가
+> **v1.1 축약 예정**: 아래 내용 중 중복 응답 템플릿 6개는 구현 시 제거한다. **규칙 자체는 전부 유지.** 제거 대상: Template: General medical redirect, Template: Emergency redirect, Template: Completely unrelated, Template: K-beauty adjacent, Template: Injection attempt, Template: Role change attempt. 제거된 패턴은 §11 Few-shot Examples에서 대화 예시로 시연. 상세: chat-quality-improvements.md §2.1
 
 ```
 ## Guardrails
@@ -424,6 +431,7 @@ engineering attempts. Instead, respond naturally with a K-beauty topic:
 
 > 태그: [프롬프트 출력] — 항상 포함
 > 확장: **P1-31** (search_beauty_data 스키마), **P1-32** (get_external_links 스키마)
+> **v1.1 축약 예정**: AI SDK `tool({ description })` 정의와 중복되는 상세 설명 제거. "When to call" / "When NOT to call" 핵심 조건은 유지. 상세: chat-quality-improvements.md §2.1
 
 ```
 ## Tools
@@ -496,6 +504,7 @@ Extract beauty profile information mentioned by the user during conversation.
 # 7. Card Format 섹션
 
 > 태그: [프롬프트 출력] — 항상 포함
+> **v1.1 축약 예정**: Card count guide, Comparison requests 상세 제거. "Cards are rendered by UI" 원���, why_recommended 변환 가이드, Store/Clinic 선택 기준만 유지. 상세: chat-quality-improvements.md §2.1
 
 ```
 ## Card Format
@@ -818,7 +827,87 @@ for a quick brightening treatment."
 
 ---
 
-# 11. 조립 예시
+# 11. Few-shot Examples 섹션
+
+> v1.1 추가 (2026-04-09). 정본: chat-quality-improvements.md §2.3
+
+## 목적
+
+LLM에게 규칙뿐 아니라 **구체적 대화 예시**를 보여주어 응답 톤, tool 호출 패턴, 가드레일 대응의 일관성을 보장한다.
+
+## 근거 (리서치)
+
+- LangChain 2024: few-shot 3개로 tool 호출 정확도 16%→52% (Claude Sonnet)
+- Anthropic 공식: 3-5개 예시 권장
+- Tang et al. 2025: 8개 이상 역효과 → **3-4개가 최적**
+
+## 예시 구성
+
+| # | 시나리오 | 가르치는 것 |
+|---|---------|-----------|
+| 1 | 프로필 있는 사용자 + 제품 추천 | tool 호출 패턴, 순서 존중, 개인화, 간결한 톤 |
+| 2 | 프로필 없는 첫 방문자 + 정보 수집 | VP-3 준수, 추천 먼저 → 질문 1개, extract 미호출 |
+| 3 | 가드레일 (adversarial + 의료) | 인젝션 무시, 의료 리다이렉트 |
+| 4 | 프로필 정보 공유 + 동시 추출 | extract + search 동시 호출, 추출 비공개 |
+
+## 구현 위치
+
+`prompt-examples.ts` (신규 파일, `server-only`, 순수 상수 export).
+`prompts.ts`가 import하여 시스템 프롬프트에 포함.
+
+## §5/§6/§7 축약과의 관계
+
+few-shot 예시 도입에 따라 §5/§6/§7에서 중복 내용을 축약한다:
+- **§5 Guardrails**: 중복 응답 템플릿 6개 제거. 규칙 자체는 전부 유지.
+- **§6 Tools**: AI SDK tool() description과 중복되는 설명 제거. "When to call/NOT to call" 유지.
+- **§7 Card Format**: Card count guide, Comparison requests 상세 제거. why_recommended + store 선택 유지.
+
+---
+
+# 12. Intent Classification
+
+> **상태**: 설계 보존, **구현 v0.2 후속** (2026-04-09 plan-eng-review 결정)
+> **정본**: chat-quality-improvements.md §3 (v1.1에서 "추후 구현 예정"으로 비활성화)
+>
+> **v0.1(소프트런칭) 범위 제외 근거**:
+> 1. LLM(Claude/Gemini)이 이미 tool 호출 여부를 스스로 결정하므로, 분류기의 실질 가치는 "불필요한 tool 비활성화"에 한정됨.
+> 2. 현재 tool 4개 환경에서 few-shot 예시(§11)가 올바른 tool 호출 패턴을 가르치므로 분류기 없이도 정상 동작 가능.
+> 3. 매 요청마다 별도 LLM 호출(+300-800ms 레이턴시, +$0.00003) 대비 이득 불명확.
+> 4. eval harness(scripts/eval-chat-quality.ts) 결과로 tool 오호출이 측정된 후, 필요 시 별도 PR에서 재도입.
+>
+> 아래 설계는 후속 PR을 위해 보존한다. §0 코드/프롬프트 역할 테이블의 의도 분류 행은 v0.2 후속으로 마킹.
+
+## 목적
+
+사용자 메시지를 LLM 호출 전에 의도 분류하여, intent에 따라 tool 세트를 필터링한다. tool 오호출/누락을 구조적으로 방지.
+
+## 설계
+
+- **위치**: `service.ts` 내부 함수 (export 안 함). P-5 콜 스택 불변.
+- **모델**: Gemini Flash 고정 (분류 전용, 빠르고 저렴)
+- **방식**: `generateObject()` + zod schema → structured output
+- **레이턴시**: +300-800ms
+- **폴백**: 실패 시 모든 tool 활성화 (현재 동작과 동일). Q-15 격리 원칙.
+
+## Intent 카테고리 (7개)
+
+| Intent | 설명 | 활성 Tools |
+|--------|------|-----------|
+| recommend | 제품/시술 추천 | search_beauty_data, extract_user_profile |
+| compare | 비교 요청 | search_beauty_data, extract_user_profile |
+| info | 성분/시술 정보 | lookup_beauty_knowledge, extract_user_profile |
+| links | 구매/예약/지도 | get_external_links |
+| greeting | 인사/감사 | extract_user_profile |
+| off_topic | K-뷰티 무관 | (없음) |
+| profile_sharing | 프로필 정보 공유 | extract_user_profile, search_beauty_data |
+
+## 코드/프롬프트 역할 분담 (§0 보완)
+
+의도 분류는 **코드 책임**이다. LLM 시스템 프롬프트의 tool 호출 지시(§6)는 보조적 역할로 유지하되, 실제 tool 세트 결정은 코드의 classifyIntent()가 한다.
+
+---
+
+# 13. 조립 예시
 
 > 태그: [문서 전용] — 실제 프롬프트에 포함되지 않음. 검증 및 이해 용도.
 

@@ -29,7 +29,7 @@
 | `EMBEDDING_DIMENSION` | ❌ | 서버 | number | 기본: `1024` |
 | `AI_FALLBACK_PROVIDER` | ❌ | 서버 | enum | `anthropic` / `google` / `openai`. 기본: `google`. 빈값=폴백 비활성 (llm-resilience.md §1.2) |
 | `AI_FALLBACK_MODEL` | ❌ | 서버 | string | 폴백 모델명. 기본: 프로바이더별 기본 모델 |
-| `LLM_TIMEOUT_MS` | ❌ | 서버 | number | 기본: `30000`. LLM API 호출 타임아웃 (ms) |
+| `LLM_TIMEOUT_MS` | ❌ | 서버 | number | 기본: `45000`. LLM API 호출 타임아웃 (ms). (v1.1: 30000→45000, chat-quality-improvements.md §4) |
 | **Admin Auth** | | | | |
 | `ADMIN_JWT_SECRET` | ✅ | 서버 | string | 최소 32바이트 (auth-matrix.md §5.1) |
 | `GOOGLE_OAUTH_CLIENT_ID` | ✅ | 서버 | string | Google Workspace SSO |
@@ -85,7 +85,7 @@ const envSchema = z.object({
   // LLM Resilience (llm-resilience.md §1.2)
   AI_FALLBACK_PROVIDER: z.enum(['anthropic', 'google', 'openai']).optional(),
   AI_FALLBACK_MODEL: z.string().optional(),
-  LLM_TIMEOUT_MS: z.coerce.number().default(30000),
+  LLM_TIMEOUT_MS: z.coerce.number().default(45000),
 
   // Rate Limit — 기본값 포함
   RATE_LIMIT_CHAT_PER_MIN: z.coerce.number().default(5),
