@@ -366,3 +366,23 @@ types/      → validation/  ✗ (역방향 금지)
 □ D-CHK-10 수정 전에 관련 설계 문서·비즈니스 코드를 모두 추적하여 영향 범위를 파악했는가? 논리적 결함·규칙 위반·충돌이 없는가? 문제 발견 시 수정을 중단하고 사용자와 논의했는가?
 □ D-CHK-11 참조한 설계 문서가 해당 주제의 정본인가? 정본 우선순위(schema.dbml > PRD > TDD > design-detail > plans)를 확인했는가? 레거시·과거 버전·PoC 초안을 현행 설계로 취급하지 않았는가? 상위 정본이 이후 변경되어 하위 문서가 outdated되지 않았는가?
 ```
+
+## Skill routing
+
+When the user's request matches an available skill, ALWAYS invoke it using the Skill
+tool as your FIRST action. Do NOT answer directly, do NOT use other tools first.
+The skill has specialized workflows that produce better results than ad-hoc answers.
+
+Key routing rules:
+- Product ideas, "is this worth building", brainstorming → invoke office-hours
+- Bugs, errors, "why is this broken", 500 errors → invoke investigate
+- Ship, deploy, push, create PR → invoke ship
+- QA, test the site, find bugs → invoke qa
+- Code review, check my diff → invoke review
+- Update docs after shipping → invoke document-release
+- Weekly retro → invoke retro
+- Design system, brand → invoke design-consultation
+- Visual audit, design polish → invoke design-review
+- Architecture review → invoke plan-eng-review
+- Save progress, checkpoint, resume → invoke checkpoint
+- Code quality, health check → invoke health
