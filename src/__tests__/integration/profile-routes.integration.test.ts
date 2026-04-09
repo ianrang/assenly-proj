@@ -132,6 +132,100 @@ describe('Profile routes (integration)', () => {
     });
   });
 
+  // ============================================================
+  // NEW-21 WS1: 온보딩 → 프로필 저장 통합 테스트 (3건)
+  // OnboardingChips가 보내는 최소 body (skin_type + skin_concerns)
+  // ============================================================
+
+  describe('POST /api/profile/onboarding — minimal (NEW-9 OnboardingChips)', () => {
+    let minimalUser: TestSession;
+
+    beforeAll(async () => {
+      minimalUser = await createRegisteredTestUser();
+    });
+
+    afterAll(async () => {
+      await cleanupTestUser(minimalUser.userId);
+    });
+
+    it('skin_type + skin_concerns만 전송 → 201 + DB 프로필/여정 생성', async () => {
+      const body = { skin_type: 'dry', skin_concerns: ['acne', 'wrinkles'] };
+
+      const res = await app.request(
+        '/api/profile/onboarding',
+        jsonRequest('POST', minimalUser.token, body),
+      );
+      const json = await res.json();
+
+      expect(res.status).toBe(201);
+      expect(json.data.profile_id).toBe(minimalUser.userId);
+      expect(json.data.journey_id).toBeDefined();
+
+      // DB 검증 — optional 필드가 null/기본값으로 저장
+      const verify = createVerifyClient();
+
+      const { data: profile } = await verify
+        .from('user_profiles')
+        .select('skin_type, hair_type, country, language, age_range')
+        .eq('user_id', minimalUser.userId)
+        .single();
+      expect(profile).not.toBeNull();
+      expect(profile!.skin_type).toBe('dry');
+      expect(profile!.hair_type).toBeNull();
+      expect(profile!.country).toBeNull();
+      expect(profile!.language).toBe('en'); // default
+      expect(profile!.age_range).toBeNull();
+
+      const { data: journey } = await verify
+        .from('journeys')
+        .select('skin_concerns, interest_activities, stay_days, budget_level, status')
+        .eq('id', json.data.journey_id)
+        .single();
+      expect(journey).not.toBeNull();
+      expect(journey!.skin_concerns).toEqual(['acne', 'wrinkles']);
+      expect(journey!.interest_activities).toEqual(['shopping']); // default
+      expect(journey!.stay_days).toBeNull();
+      expect(journey!.budget_level).toBeNull();
+      expect(journey!.status).toBe('active');
+    });
+
+    it('최소 온보딩 후 GET /api/profile → 저장된 프로필 + 활성 여정 반환', async () => {
+      const res = await app.request('/api/profile', {
+        headers: { Authorization: `Bearer ${minimalUser.token}` },
+      });
+      const json = await res.json();
+
+      expect(res.status).toBe(200);
+      expect(json.data.profile.skin_type).toBe('dry');
+      expect(json.data.profile.hair_type).toBeNull();
+      expect(json.data.active_journey).not.toBeNull();
+      expect(json.data.active_journey.skin_concerns).toEqual(['acne', 'wrinkles']);
+    });
+
+    it('skin_concerns 빈 배열 → 201 (concerns 없이 온보딩 가능)', async () => {
+      const emptyUser = await createRegisteredTestUser();
+      try {
+        const body = { skin_type: 'oily', skin_concerns: [] };
+        const res = await app.request(
+          '/api/profile/onboarding',
+          jsonRequest('POST', emptyUser.token, body),
+        );
+        expect(res.status).toBe(201);
+
+        const verify = createVerifyClient();
+        const { data: journey } = await verify
+          .from('journeys')
+          .select('skin_concerns')
+          .eq('user_id', emptyUser.userId)
+          .eq('status', 'active')
+          .single();
+        expect(journey!.skin_concerns).toEqual([]);
+      } finally {
+        await cleanupTestUser(emptyUser.userId);
+      }
+    });
+  });
+
   describe('PUT /api/profile', () => {
     it('부분 업데이트 → 200 + DB 반영 확인', async () => {
       const res = await app.request(

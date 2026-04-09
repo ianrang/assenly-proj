@@ -50,6 +50,15 @@ describe("groupParts", () => {
     expect(result[1].type).toBe("text");
   });
 
+  it("단일 카드 → 1개 cards group", () => {
+    const result = groupParts([productPart]);
+    expect(result).toHaveLength(1);
+    expect(result[0].type).toBe("cards");
+    if (result[0].type === "cards") {
+      expect(result[0].cards).toHaveLength(1);
+    }
+  });
+
   it("연속 카드 → 1개 cards group", () => {
     const result = groupParts([productPart, productPart2, treatmentPart]);
     expect(result).toHaveLength(1);

@@ -1,10 +1,17 @@
-import { describe, it, expect, beforeAll } from 'vitest';
+import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { createApp } from '@/server/features/api/app';
 import { registerProductRoutes } from '@/server/features/api/routes/products';
 import { registerTreatmentRoutes } from '@/server/features/api/routes/treatments';
 import { registerStoreRoutes } from '@/server/features/api/routes/stores';
 import { registerClinicRoutes } from '@/server/features/api/routes/clinics';
-import { createVerifyClient } from './helpers';
+import { registerProfileRoutes } from '@/server/features/api/routes/profile';
+import {
+  createRegisteredTestUser,
+  cleanupTestUser,
+  createVerifyClient,
+  jsonRequest,
+  type TestSession,
+} from './helpers';
 
 // 데이터 존재 확인 — 파이프라인 미실행 시 전체 스킵
 async function checkDataExists(): Promise<boolean> {
@@ -401,6 +408,86 @@ describe.skipIf(!hasData)('Search filters (integration)', () => {
       const json = await fetchList('/api/clinics?query=zzz_nonexistent_xyz');
       expect(json.data).toHaveLength(0);
       expect(json.meta.total).toBe(0);
+    });
+  });
+
+  // ============================================================
+  // NEW-21 WS1: 프로필 → 검색 필터 통합 테스트 (4건)
+  // 온보딩 프로필 값이 검색 필터 파라미터로 올바르게 작동하는지 검증.
+  // 파이프라인: OnboardingChips → POST /api/profile/onboarding → 동일 값으로 검색
+  // ============================================================
+
+  // ============================================================
+  // NEW-21 WS1: 프로필 → 검색 필터 통합 테스트 (4건)
+  // 온보딩 프로필 값이 검색 필터 파라미터로 올바르게 작동하는지 검증.
+  // 파이프라인: OnboardingChips → POST /api/profile/onboarding → 동일 값으로 검색
+  // 별도 app 인스턴스 사용 — Hono SmartRouter는 첫 request 후 route 추가 불가.
+  // ============================================================
+
+  describe('Profile → search filter pipeline', () => {
+    const pfApp = createApp();
+    let profileUser: TestSession;
+
+    beforeAll(async () => {
+      registerProductRoutes(pfApp);
+      registerTreatmentRoutes(pfApp);
+      registerProfileRoutes(pfApp);
+
+      profileUser = await createRegisteredTestUser();
+
+      // 온보딩 완료: skin_type=sensitive, skin_concerns=[redness, dryness]
+      const res = await pfApp.request(
+        '/api/profile/onboarding',
+        jsonRequest('POST', profileUser.token, {
+          skin_type: 'sensitive',
+          skin_concerns: ['redness', 'dryness'],
+        }),
+      );
+      expect(res.status).toBe(201);
+    });
+
+    afterAll(async () => {
+      await cleanupTestUser(profileUser.userId);
+    });
+
+    async function pfFetchList(path: string) {
+      const res = await pfApp.request(path);
+      const json = await res.json();
+      expect(res.status).toBe(200);
+      expect(Array.isArray(json.data)).toBe(true);
+      return json as { data: Record<string, unknown>[]; meta: { total: number } };
+    }
+
+    it('PF-01: 프로필 skin_type → 제품 skin_types 필터 정합', async () => {
+      const json = await pfFetchList('/api/products?skin_types=sensitive&limit=50');
+      expect(json.meta.total).toBeGreaterThan(0);
+      for (const item of json.data) {
+        expect(item.skin_types as string[]).toContain('sensitive');
+      }
+    });
+
+    it('PF-02: 프로필 skin_concerns → 제품 concerns 필터 정합', async () => {
+      const json = await pfFetchList('/api/products?concerns=redness&limit=50');
+      expect(json.meta.total).toBeGreaterThan(0);
+      for (const item of json.data) {
+        expect(item.concerns as string[]).toContain('redness');
+      }
+    });
+
+    it('PF-03: 프로필 skin_type → 시술 skin_types 필터 정합', async () => {
+      const json = await pfFetchList('/api/treatments?skin_types=sensitive&limit=50');
+      expect(json.meta.total).toBeGreaterThan(0);
+      for (const item of json.data) {
+        expect(item.suitable_skin_types as string[]).toContain('sensitive');
+      }
+    });
+
+    it('PF-04: 프로필 값 복합 필터 (skin_types + concerns) → 교집합', async () => {
+      const json = await pfFetchList('/api/products?skin_types=sensitive&concerns=dryness&limit=50');
+      for (const item of json.data) {
+        expect(item.skin_types as string[]).toContain('sensitive');
+        expect(item.concerns as string[]).toContain('dryness');
+      }
     });
   });
 });

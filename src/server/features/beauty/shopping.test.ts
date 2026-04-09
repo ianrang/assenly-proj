@@ -174,6 +174,26 @@ describe('shopping/scoreProducts', () => {
     expect(result[1].is_highlighted).toBe(false);
   });
 
+  it('VP-1 네거티브: is_highlighted가 점수에 영향 없음', async () => {
+    const { scoreProducts } = await import(
+      '@/server/features/beauty/shopping'
+    );
+
+    const products = [
+      createProduct({ id: 'hl', is_highlighted: true, key_ingredients: ['niacinamide', 'retinol'] }),
+      createProduct({ id: 'no-hl', is_highlighted: false, key_ingredients: ['niacinamide', 'retinol'] }),
+    ];
+
+    const result = scoreProducts(products, ['niacinamide'], ['retinol']);
+
+    // 동일 성분 → 동일 점수. is_highlighted 차이는 점수에 무영향
+    const hlItem = result.find((r) => r.id === 'hl')!;
+    const noHlItem = result.find((r) => r.id === 'no-hl')!;
+    expect(hlItem.score).toBe(noHlItem.score);
+    expect(hlItem.reasons).toEqual(noHlItem.reasons);
+    expect(hlItem.warnings).toEqual(noHlItem.warnings);
+  });
+
   it('빈 배열 입력 → 빈 배열 반환', async () => {
     const { scoreProducts } = await import(
       '@/server/features/beauty/shopping'
