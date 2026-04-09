@@ -179,4 +179,68 @@ describe('buildSystemPrompt', () => {
 
     expect(result).not.toContain('### First response');
   });
+
+  // --- v1.1 신규: few-shot + guardrails 유지 + Behavior 블록 (chat-quality-improvements.md §2) ---
+
+  it('§11 Few-shot Examples 섹션 포함 (v1.1)', async () => {
+    const { buildSystemPrompt } = await import('@/server/features/chat/prompts');
+    const ctx = makeContext({ profile: fullProfile, journey: fullJourney });
+
+    const result = buildSystemPrompt(ctx as Parameters<typeof buildSystemPrompt>[0]);
+
+    // §11 헤딩 + <example> 태그 포함
+    expect(result).toContain('## Examples');
+    expect(result).toContain('<example>');
+    expect(result).toContain('</example>');
+    // 최소 4개의 <example> (중복 없는 5개 예시)
+    const exampleMatches = result.match(/<example>/g);
+    expect(exampleMatches).toBeDefined();
+    expect(exampleMatches!.length).toBeGreaterThanOrEqual(4);
+  });
+
+  it('§5 Guardrails 축약 후 Hard constraints + Adversarial 규칙 유지 (v1.1)', async () => {
+    const { buildSystemPrompt } = await import('@/server/features/chat/prompts');
+    const ctx = makeContext();
+
+    const result = buildSystemPrompt(ctx as Parameters<typeof buildSystemPrompt>[0]);
+
+    // Hard constraints 5개 전체 유지
+    expect(result).toContain('Hard constraints');
+    expect(result).toContain('No medical advice');
+    expect(result).toContain('K-beauty domain only');
+    expect(result).toContain('No price guarantees');
+    expect(result).toContain('No personal data requests');
+    expect(result).toContain('Instruction integrity');
+
+    // Detailed Medical/Off-topic/Adversarial 섹션 유지
+    expect(result).toContain('Detailed Medical Boundaries');
+    expect(result).toContain('Detailed Off-topic Boundaries');
+    expect(result).toContain('Detailed Adversarial Patterns');
+
+    // Adversarial 패턴 규칙 유지
+    expect(result).toContain('Role override');
+    expect(result).toContain('Prompt extraction');
+    expect(result).toContain('Role play');
+    expect(result).toContain('Compliance test');
+
+    // 축약 대상 템플릿 6개는 제거되어야 함
+    expect(result).not.toContain('**Template: General medical redirect**');
+    expect(result).not.toContain('**Template: Emergency redirect**');
+    expect(result).not.toContain('**Template: Completely unrelated**');
+    expect(result).not.toContain('**Template: K-beauty adjacent');
+    expect(result).not.toContain('**Template: Injection attempt');
+    expect(result).not.toContain('**Template: Role change attempt');
+  });
+
+  it('§6 extract_user_profile Behavior 블록 유지 (v1.1 — Outside voice #9)', async () => {
+    const { buildSystemPrompt } = await import('@/server/features/chat/prompts');
+    const ctx = makeContext();
+
+    const result = buildSystemPrompt(ctx as Parameters<typeof buildSystemPrompt>[0]);
+
+    // Behavior 블록은 defense-in-depth로 유지 (tool() description에 없는 중요 규칙)
+    expect(result).toContain('Call silently');
+    expect(result).toContain('do NOT tell the user');
+    expect(result).toMatch(/[Dd]o not guess/);
+  });
 });
