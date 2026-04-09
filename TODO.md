@@ -513,7 +513,8 @@
 | NEW-19  | ~~시스템 프롬프트 축약 (578→510줄)~~ | §5 Guardrails 중복 응답 템플릿 6개 제거 (Hard constraints + Adversarial 규칙 전부 유지), §6 Tools 1줄 기능 설명 제거 (extract_user_profile Behavior "Call silently" 블록 유지 — defense-in-depth), §7 CARD_FORMAT 축약 (클라이언트 책임), AVAILABLE_TOPICS import 제거 (G-4) | ✅   |
 | NEW-20  | 의도 분류 (classifyIntent)        | **→ v0.2 후속**. 원래 v1.1에 포함되었으나 plan-eng-review 결정으로 제외. few-shot이 tool 호출 패턴을 가르치므로 v0.1 범위 밖. eval harness 결과 후 별도 PR에서 재검토. 정본: system-prompt-spec.md §12 | ➡️  |
 | NEW-21  | ~~AI 품질 테스트 게이트 (WS1: 결정적 테스트)~~ | 결정적 경로 자동화 완료. OnboardingChips 컴포넌트 8건 + 프로필→검색 필터 통합 4건 + 온보딩 저장 통합 3건 + card-mapper 16건 + group-parts 7건 + ProductCard 17건 + VP-1 회귀 네거티브 3건. unit 772 pass + integration 106 pass. 브랜치: `feat/ws1-deterministic-tests` | ✅   |
-| NEW-22  | LLM-as-Judge Eval 하네스 (WS2: 20 시나리오) | `scripts/eval-chat-quality.ts` + `scripts/fixtures/eval-scenarios.json`. HTTP POST to dev server, Gemini 2.0 Flash judge (temperature=0), 구조화 출력. 5개 카테고리 20 시나리오 (개인화 5, 가드레일 4, 추천 품질 4, 다국어 4, 엣지 3). 1회 수동 보정(judge calibration) 포함. NOT COVERED 목록 명시. NEW-9/10과 독립, 즉시 착수 가능. **별도 브랜치**. 정본: `docs/superpowers/plans/2026-04-09-ai-quality-testing-gate.md` WS2 | ⬜   |
+| NEW-22  | ~~LLM-as-Judge Eval 하네스 (WS2: 20 시나리오)~~ | `scripts/eval-chat-quality.ts` + `scripts/fixtures/eval-scenarios.json`. HTTP POST to dev server, Gemini 2.0 Flash judge (temperature=0), 구조화 출력. 5개 카테고리 20 시나리오 (개인화 5, 가드레일 4, 추천 품질 4, 다국어 4, 엣지 3). 1회 수동 보정(judge calibration) 포함. NOT COVERED 목록 명시. 브랜치: `feat/ws1-deterministic-tests`. 정본: `docs/superpowers/plans/2026-04-09-ai-quality-testing-gate.md` WS2 | ✅   |
+| NEW-23  | Eval 하네스 실행 + Judge 보정 | dev 서버 기동 후 `npx tsx scripts/eval-chat-quality.ts --provider google` 실행. 20 시나리오 PASS/FAIL 확인, judge 보정(calibration-notes.md 기록), 실패 시나리오 rubric 조정. 채팅 품질 개선 완료 후 실행. 선행: NEW-22 ✅, 채팅 품질 수정 완료 | ⬜   |
 
 
 ---
