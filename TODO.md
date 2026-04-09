@@ -13,9 +13,9 @@
 | 사전 완료      | 12      | 12      | 0       | 0      | ✅      |
 | Phase 0    | 37      | 37      | 0       | 0      | ✅      |
 | Phase 1    | 62      | 60      | 2       | 0      | ✅      |
-| Phase 2    | 132     | 105     | 16      | 11     | 🔶 진행중 |
+| Phase 2    | 132     | 107     | 16      | 9      | 🔶 진행중 |
 | Phase 3    | 37      | 6       | 19      | 12     | 🔶 진행중 |
-| **MVP 합계** | **280** | **220** | **37**  | **23** |        |
+| **MVP 합계** | **280** | **222** | **37**  | **21** |        |
 | 관리자 앱 (펜딩) | 20      | 0       | 0       | 20     | ⏸️ 펜딩  |
 
 
@@ -500,8 +500,8 @@
 | NEW-6   | ~~채팅 히스토리 유실 수정~~          | 근본 원인: transport useMemo 클로저가 conversationId(null)를 캡처 → 두 번째 메시지부터 새 conversation 생성 → 대화 분리. 수정: conversationIdRef로 최신 값 참조. Playwright 재현+DB 검증 완료 | ✅   |
 | NEW-7   | ~~토큰 기반 히스토리 트리밍~~      | **→ v0.2 연기**. 현재 메시지 카운트 20개 기반 → 토큰 예산 기반 전환. tool call/result가 메시지 슬롯을 소비하여 실질 대화 턴 감소 문제. P1-36(히스토리 요약)과 함께 하이브리드 방식 검토 | ➡️  |
 | NEW-8   | CSV 소스 제품 이미지 보강         | **→ v0.2 연기**. CSV 채널 200개 제품에 imageUrl 없음. 방안: (1) 스크래퍼로 재수집 (2) CSV에 image URL 컬럼 추가 (3) purchase_links URL의 OG 이미지 추출. 법적/저작권 검토(G-12) 필요 | ➡️  |
-| NEW-9   | 채팅 내 인라인 온보딩 (OnboardingChips)  | ConsentOverlay 통과 후 빈 채팅에 칩 UI(skin_type + concerns) 표시. "Start chatting" / "Skip" 두 경로. 선택 시 POST /api/profile/onboarding 호출 → AI 첫 응답부터 개인화. **별도 브랜치**. 정본: `docs/superpowers/specs/2026-04-09-onboarding-and-kit-cta-design.md` §2.1 | ⬜   |
-| NEW-10  | Kit CTA 통합 카드 리팩토링            | 별도 KitCtaCard 제거, ProductCard(compact) 내 is_highlighted 분기로 "Get free kit" 액션 통합. 일관성 원칙: 일반 상품 = "Buy Online", 에센리 = "Get free kit". 영향: card-mapper.ts, group-parts.ts, MessageList.tsx, ProductCard.tsx, KitCtaCard.tsx 삭제, 테스트 업데이트. **별도 브랜치**. 정본: `docs/superpowers/specs/2026-04-09-onboarding-and-kit-cta-design.md` §2.2 | ⬜   |
+| NEW-9   | ~~채팅 내 인라인 온보딩 (OnboardingChips)~~  | OnboardingChips.tsx 신규: skin_type + concerns 칩 UI. ChatContent에 통합 (신규 세션 시 표시). POST /api/profile/onboarding 스키마 완화 (country/stay_days/budget optional). API 실패해도 채팅 시작 가능 (Q-15). 테스트 8건. 정본: `docs/superpowers/specs/2026-04-09-onboarding-and-kit-cta-design.md` §2.1 | ✅   |
+| NEW-10  | ~~Kit CTA 통합 카드 리팩토링~~          | KitCtaCard.tsx 삭제. card-mapper에서 KitCtaCardPart 제거. group-parts standalone 분기 제거. ProductCard(compact)에 is_highlighted → "Get free kit" 분기 통합 + onKitClaim 콜백. 일관성: 일반 = "Buy Online", 에센리 = "Get free kit". 테스트 5건 추가. 정본: `docs/superpowers/specs/2026-04-09-onboarding-and-kit-cta-design.md` §2.2 | ✅   |
 | NEW-11  | 에센리 자체 상품 카테고리 확장        | **→ v0.2 연기**. 현재 헤어 마스크 1개만 → 스킨케어/마스크팩/립케어 카테고리별 1~2개씩 추가. 통합 카드 방식(NEW-10) 유지. 노출 빈도 자연 증가 목적. 정본: `docs/superpowers/specs/2026-04-09-onboarding-and-kit-cta-design.md` §2.3 | ➡️  |
 | NEW-12  | 다브랜드 샘플 키트 모델 검토        | **→ v0.3 백로그**. 에센리 단독 → 다브랜드 샘플 큐레이션 비즈니스 모델 확장 검토. 협업 협상, 법적 검토(화장품 샘플 배포 규제), 물류 인프라 필요 | ➡️  |
 | NEW-13  | Kit 신청 후 자동 이메일 발송        | **→ v0.2 연기**. 현재 MVP는 DB 저장 + 운영팀 수동. SendGrid 등 이메일 자동화 인프라 도입 후 "Thank you, we'll contact you within 48h" 자동 회신 | ➡️  |
