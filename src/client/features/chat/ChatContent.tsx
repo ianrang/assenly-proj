@@ -2,7 +2,7 @@
 
 import "client-only";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import { useChat } from "@ai-sdk/react";
 import type { UIMessage } from "ai";
 import { DefaultChatTransport } from "ai";
@@ -34,8 +34,12 @@ export default function ChatContent({ locale, initialMessages, initialConversati
   const [conversationId, setConversationId] = useState<string | null>(
     initialConversationId
   );
+  // ref로 최신 conversationId를 transport 클로저에서 참조 (클로저 캡처 타이밍 문제 방지)
+  const conversationIdRef = useRef<string | null>(initialConversationId);
+  useEffect(() => { conversationIdRef.current = conversationId; }, [conversationId]);
 
   // P2-79: credentials → headers(Bearer 동적 주입)
+  // transport는 1회만 생성. conversationId는 ref로 최신 값 참조.
   const transport = useMemo(
     () =>
       new DefaultChatTransport({
@@ -47,11 +51,12 @@ export default function ChatContent({ locale, initialMessages, initialConversati
         prepareSendMessagesRequest: ({ messages }) => ({
           body: {
             message: messages[messages.length - 1],
-            conversation_id: conversationId,
+            conversation_id: conversationIdRef.current,
           },
         }),
       }),
-    [conversationId]
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- ref로 최신 값 참조, transport 재생성 불필요
+    []
   );
 
   // AI SDK 6.x: messages prop = 초기 메시지 (최초 마운트 시에만 유효)
