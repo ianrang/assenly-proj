@@ -13,9 +13,9 @@
 | 사전 완료      | 12      | 12      | 0       | 0      | ✅      |
 | Phase 0    | 37      | 37      | 0       | 0      | ✅      |
 | Phase 1    | 62      | 60      | 2       | 0      | ✅      |
-| Phase 2    | 132     | 107     | 16      | 9      | 🔶 진행중 |
+| Phase 2    | 134     | 107     | 16      | 11     | 🔶 진행중 |
 | Phase 3    | 37      | 6       | 19      | 12     | 🔶 진행중 |
-| **MVP 합계** | **280** | **222** | **37**  | **21** |        |
+| **MVP 합계** | **282** | **222** | **37**  | **23** |        |
 | 관리자 앱 (펜딩) | 20      | 0       | 0       | 20     | ⏸️ 펜딩  |
 
 
@@ -512,6 +512,8 @@
 | NEW-18  | ~~Few-shot 예시 통합 (§11)~~     | prompt-examples.ts 신규: 5개 few-shot 예시 (프로필 있는 추천, VP-3 추천, 인젝션 무시, 의료 긴급, 병렬 extract+search). Anthropic/LangChain 권장 3-4개 권장, 5개 채택 | ✅   |
 | NEW-19  | ~~시스템 프롬프트 축약 (578→510줄)~~ | §5 Guardrails 중복 응답 템플릿 6개 제거 (Hard constraints + Adversarial 규칙 전부 유지), §6 Tools 1줄 기능 설명 제거 (extract_user_profile Behavior "Call silently" 블록 유지 — defense-in-depth), §7 CARD_FORMAT 축약 (클라이언트 책임), AVAILABLE_TOPICS import 제거 (G-4) | ✅   |
 | NEW-20  | 의도 분류 (classifyIntent)        | **→ v0.2 후속**. 원래 v1.1에 포함되었으나 plan-eng-review 결정으로 제외. few-shot이 tool 호출 패턴을 가르치므로 v0.1 범위 밖. eval harness 결과 후 별도 PR에서 재검토. 정본: system-prompt-spec.md §12 | ➡️  |
+| NEW-21  | AI 품질 테스트 게이트 (WS1: 결정적 테스트) | 결정적 경로 자동화 ~23건. OnboardingChips 컴포넌트 8건 + 프로필→검색 필터 통합 4건 + 온보딩 저장 통합 3건 + card-mapper/group-parts/ProductCard 업데이트 + VP-1 회귀 네거티브 2건. NEW-9/10 구현 후 작성. **별도 브랜치**. 정본: `docs/superpowers/plans/2026-04-09-ai-quality-testing-gate.md` WS1 | ⬜   |
+| NEW-22  | LLM-as-Judge Eval 하네스 (WS2: 20 시나리오) | `scripts/eval-chat-quality.ts` + `scripts/fixtures/eval-scenarios.json`. HTTP POST to dev server, Gemini 2.0 Flash judge (temperature=0), 구조화 출력. 5개 카테고리 20 시나리오 (개인화 5, 가드레일 4, 추천 품질 4, 다국어 4, 엣지 3). 1회 수동 보정(judge calibration) 포함. NOT COVERED 목록 명시. NEW-9/10과 독립, 즉시 착수 가능. **별도 브랜치**. 정본: `docs/superpowers/plans/2026-04-09-ai-quality-testing-gate.md` WS2 | ⬜   |
 
 
 ---

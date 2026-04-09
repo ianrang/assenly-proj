@@ -57,6 +57,7 @@ export default function ChatContent({ locale, initialMessages, initialConversati
 
   // P2-79: credentials → headers(Bearer 동적 주입)
   // transport는 1회만 생성. conversationId는 ref로 최신 값 참조.
+  /* eslint-disable react-hooks/refs -- ref는 memo 초기화 시가 아닌 prepareSendMessagesRequest 호출 시(이벤트) 읽힘 */
   const transport = useMemo(
     () =>
       new DefaultChatTransport({
@@ -72,9 +73,9 @@ export default function ChatContent({ locale, initialMessages, initialConversati
           },
         }),
       }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- ref로 최신 값 참조, transport 재생성 불필요
     []
   );
+  /* eslint-enable react-hooks/refs */
 
   // AI SDK 6.x: messages prop = 초기 메시지 (최초 마운트 시에만 유효)
   const { messages, status, error, sendMessage } = useChat({

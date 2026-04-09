@@ -46,6 +46,7 @@ export default function ProductCard({ product, brand, store, whyRecommended, loc
       >
         <div className="relative flex h-20 items-center justify-center bg-surface-warm">
           {showImage ? (
+            /* eslint-disable-next-line @next/next/no-img-element -- 외부 URL 이미지, next/image 도메인 설정 별도 작업 */
             <img
               src={imgSrc}
               alt={localized(product.name, locale)}
@@ -103,6 +104,7 @@ export default function ProductCard({ product, brand, store, whyRecommended, loc
       {/* Image */}
       <div className="relative flex h-40 items-center justify-center bg-surface-warm">
         {showImage ? (
+          /* eslint-disable-next-line @next/next/no-img-element -- 외부 URL 이미지, next/image 도메인 설정 별도 작업 */
           <img
             src={imgSrc}
             alt={localized(product.name, locale)}

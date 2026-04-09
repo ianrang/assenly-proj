@@ -131,7 +131,7 @@ export function registerTreatmentRoutes(app: AppType) {
       );
 
       // embedding 제외 (api-spec §2.2 line 228)
-      const data = rawData.map(({ embedding: _embedding, ...rest }: Record<string, unknown>) => rest);
+      const data = rawData.map(({ embedding: _, ...rest }: Record<string, unknown>) => rest);
       return c.json({ data, meta: { total, limit, offset } }, 200);
     } catch (error) {
       console.error('[GET /api/treatments] repository error', String(error));
@@ -157,7 +157,7 @@ export function registerTreatmentRoutes(app: AppType) {
       }
 
       // embedding 제외 (Supabase join 타입 → unknown 경유 캐스트)
-      const { embedding: _embedding, ...rest } = (entity as unknown) as Record<string, unknown>;
+      const { embedding: _, ...rest } = (entity as unknown) as Record<string, unknown>;
       return c.json({ data: rest }, 200);
     } catch (error) {
       console.error('[GET /api/treatments/:id] repository error', String(error));

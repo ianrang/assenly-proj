@@ -33,7 +33,7 @@ vi.mock('@/server/features/beauty/derived', () => ({
   calculateAvoidedIngredients: vi.fn(),
 }));
 
-import type { UserProfileVars, JourneyContextVars, LearnedPreference } from '@/shared/types/profile';
+import type { UserProfileVars, JourneyContextVars } from '@/shared/types/profile';
 import type { Product, Treatment } from '@/shared/types/domain';
 
 // --- Mock helpers ---

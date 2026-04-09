@@ -175,7 +175,7 @@ export default function OnboardingChips({ onComplete, onSkip }: OnboardingChipsP
           onClick={onSkip}
           className="text-xs text-muted-foreground transition-colors hover:text-foreground"
         >
-          Skip — I'll just chat
+          Skip &mdash; I&apos;ll just chat
         </button>
       </div>
     </div>

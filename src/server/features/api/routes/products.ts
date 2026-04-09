@@ -129,7 +129,7 @@ export function registerProductRoutes(app: AppType) {
       );
 
       // embedding 제외 (api-spec §2.2 line 228)
-      const data = rawData.map(({ embedding: _embedding, ...rest }: Record<string, unknown>) => rest);
+      const data = rawData.map(({ embedding: _, ...rest }: Record<string, unknown>) => rest);
       return c.json({ data, meta: { total, limit, offset } }, 200);
     } catch (error) {
       console.error('[GET /api/products] repository error', String(error));
@@ -155,7 +155,7 @@ export function registerProductRoutes(app: AppType) {
       }
 
       // embedding 제외
-      const { embedding: _embedding, ...rest } = entity as Record<string, unknown>;
+      const { embedding: _, ...rest } = entity as Record<string, unknown>;
       return c.json({ data: rest }, 200);
     } catch (error) {
       console.error('[GET /api/products/:id] repository error', String(error));

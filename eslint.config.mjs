@@ -14,6 +14,20 @@ const eslintConfig = defineConfig([
     "scripts/**",
   ]),
   // ──────────────────────────────────────────────────────
+  // _ prefix 변수 허용 (destructuring omit 패턴)
+  // ──────────────────────────────────────────────────────
+  {
+    files: ["src/**/*.ts", "src/**/*.tsx"],
+    rules: {
+      "@typescript-eslint/no-unused-vars": ["warn", {
+        argsIgnorePattern: "^_",
+        varsIgnorePattern: "^_",
+        destructuredArrayIgnorePattern: "^_",
+      }],
+    },
+  },
+
+  // ──────────────────────────────────────────────────────
   // 4-Layer Dependency DAG Enforcement
   // ──────────────────────────────────────────────────────
 

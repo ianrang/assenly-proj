@@ -13,7 +13,7 @@ const mockCreateAuthenticatedClient = vi.fn();
 const mockCreateServiceClient = vi.fn();
 vi.mock('@/server/core/db', () => ({
   createAuthenticatedClient: (...args: unknown[]) => mockCreateAuthenticatedClient(...args),
-  createServiceClient: (...args: unknown[]) => mockCreateServiceClient(),
+  createServiceClient: () => mockCreateServiceClient(),
 }));
 
 // ── Rate limit mock ───────────────────────────────────────────

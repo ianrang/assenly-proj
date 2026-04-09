@@ -110,7 +110,7 @@ export function calculateSegment(
   ageRange: string | null,
   interests: string[],
   budgetLevel: string | null,
-  travelStyle: string[],
+  _travelStyle: string[],
 ): string | null {
   if (!budgetLevel && interests.length === 0) return null;
 
