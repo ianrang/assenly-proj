@@ -500,6 +500,11 @@
 | NEW-6   | ~~채팅 히스토리 유실 수정~~          | 근본 원인: transport useMemo 클로저가 conversationId(null)를 캡처 → 두 번째 메시지부터 새 conversation 생성 → 대화 분리. 수정: conversationIdRef로 최신 값 참조. Playwright 재현+DB 검증 완료 | ✅   |
 | NEW-7   | ~~토큰 기반 히스토리 트리밍~~      | **→ v0.2 연기**. 현재 메시지 카운트 20개 기반 → 토큰 예산 기반 전환. tool call/result가 메시지 슬롯을 소비하여 실질 대화 턴 감소 문제. P1-36(히스토리 요약)과 함께 하이브리드 방식 검토 | ➡️  |
 | NEW-8   | CSV 소스 제품 이미지 보강         | **→ v0.2 연기**. CSV 채널 200개 제품에 imageUrl 없음. 방안: (1) 스크래퍼로 재수집 (2) CSV에 image URL 컬럼 추가 (3) purchase_links URL의 OG 이미지 추출. 법적/저작권 검토(G-12) 필요 | ➡️  |
+| NEW-9   | 채팅 내 인라인 온보딩 (OnboardingChips)  | ConsentOverlay 통과 후 빈 채팅에 칩 UI(skin_type + concerns) 표시. "Start chatting" / "Skip" 두 경로. 선택 시 POST /api/profile/onboarding 호출 → AI 첫 응답부터 개인화. **별도 브랜치**. 정본: `docs/superpowers/specs/2026-04-09-onboarding-and-kit-cta-design.md` §2.1 | ⬜   |
+| NEW-10  | Kit CTA 통합 카드 리팩토링            | 별도 KitCtaCard 제거, ProductCard(compact) 내 is_highlighted 분기로 "Get free kit" 액션 통합. 일관성 원칙: 일반 상품 = "Buy Online", 에센리 = "Get free kit". 영향: card-mapper.ts, group-parts.ts, MessageList.tsx, ProductCard.tsx, KitCtaCard.tsx 삭제, 테스트 업데이트. **별도 브랜치**. 정본: `docs/superpowers/specs/2026-04-09-onboarding-and-kit-cta-design.md` §2.2 | ⬜   |
+| NEW-11  | 에센리 자체 상품 카테고리 확장        | **→ v0.2 연기**. 현재 헤어 마스크 1개만 → 스킨케어/마스크팩/립케어 카테고리별 1~2개씩 추가. 통합 카드 방식(NEW-10) 유지. 노출 빈도 자연 증가 목적. 정본: `docs/superpowers/specs/2026-04-09-onboarding-and-kit-cta-design.md` §2.3 | ➡️  |
+| NEW-12  | 다브랜드 샘플 키트 모델 검토        | **→ v0.3 백로그**. 에센리 단독 → 다브랜드 샘플 큐레이션 비즈니스 모델 확장 검토. 협업 협상, 법적 검토(화장품 샘플 배포 규제), 물류 인프라 필요 | ➡️  |
+| NEW-13  | Kit 신청 후 자동 이메일 발송        | **→ v0.2 연기**. 현재 MVP는 DB 저장 + 운영팀 수동. SendGrid 등 이메일 자동화 인프라 도입 후 "Thank you, we'll contact you within 48h" 자동 회신 | ➡️  |
 
 
 ---
@@ -517,7 +522,7 @@
 | ----- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------ | --- |
 | P3-1  | ~~경로A 플로우~~      | **→ v0.2 연기**. 온보딩 4단계가 v0.2 연기됨 (P2-33/34). Landing → Chat 경로B만 MVP 대상                                                        | ➡️  |
 | P3-2  | 경로B 플로우          | Landing → "Start chatting" → Chat → 점진적 개인화. QA PASS (2026-04-09): 채팅 송수신, 제품 카드, 프로필 저장 정상 동작                                    | ✅   |
-| P3-3  | Kit CTA 플로우      | Chat → Kit 카드 → 이메일 입력 → 제출. 컴포넌트 구현 완료(KitCtaCard, KitCtaSheet). is_highlighted 상품 1/201개로 자연 트리거 어려움. 코드 경로 검증 필요            | ⬜   |
+| P3-3  | Kit CTA 플로우      | Chat → Kit 카드 → 이메일 입력 → 제출. 통합 카드 방식으로 재설계 완료 (NEW-10). 통합 카드 구현 후 E2E 재검증 필요. 정본: `docs/superpowers/specs/2026-04-09-onboarding-and-kit-cta-design.md` | ⬜   |
 | P3-5  | 모바일 반응형          | QA PASS (2026-04-09): 랜딩/채팅/Terms 모바일(375x812) 레이아웃 정상. 카드 가로 스크롤, 다크모드, 언어 선택 동작 확인                                            | ✅   |
 | P3-6  | 에러 시나리오          | QA PASS (2026-04-09): 빈 입력 차단, 긴 입력 처리, XSS 방어, 404 페이지, API 인증 에러 정상 응답                                                        | ✅   |
 | P3-6a | SEO 구현           | P1-11 설계 기반 구현: sitemap.xml(1 URL), robots.txt(admin/api 차단), OG 이미지(정적 1장), JSON-LD(WebApplication), favicon                     | ✅   |
