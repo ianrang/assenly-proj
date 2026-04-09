@@ -13,9 +13,9 @@
 | 사전 완료      | 12      | 12      | 0       | 0      | ✅      |
 | Phase 0    | 37      | 37      | 0       | 0      | ✅      |
 | Phase 1    | 62      | 60      | 2       | 0      | ✅      |
-| Phase 2    | 125     | 99      | 15      | 11     | 🔶 진행중 |
+| Phase 2    | 132     | 105     | 16      | 11     | 🔶 진행중 |
 | Phase 3    | 37      | 6       | 19      | 12     | 🔶 진행중 |
-| **MVP 합계** | **273** | **214** | **36**  | **23** |        |
+| **MVP 합계** | **280** | **220** | **37**  | **23** |        |
 | 관리자 앱 (펜딩) | 20      | 0       | 0       | 20     | ⏸️ 펜딩  |
 
 
@@ -505,6 +505,13 @@
 | NEW-11  | 에센리 자체 상품 카테고리 확장        | **→ v0.2 연기**. 현재 헤어 마스크 1개만 → 스킨케어/마스크팩/립케어 카테고리별 1~2개씩 추가. 통합 카드 방식(NEW-10) 유지. 노출 빈도 자연 증가 목적. 정본: `docs/superpowers/specs/2026-04-09-onboarding-and-kit-cta-design.md` §2.3 | ➡️  |
 | NEW-12  | 다브랜드 샘플 키트 모델 검토        | **→ v0.3 백로그**. 에센리 단독 → 다브랜드 샘플 큐레이션 비즈니스 모델 확장 검토. 협업 협상, 법적 검토(화장품 샘플 배포 규제), 물류 인프라 필요 | ➡️  |
 | NEW-13  | Kit 신청 후 자동 이메일 발송        | **→ v0.2 연기**. 현재 MVP는 DB 저장 + 운영팀 수동. SendGrid 등 이메일 자동화 인프라 도입 후 "Thank you, we'll contact you within 48h" 자동 회신 | ➡️  |
+| NEW-14  | ~~채팅 품질 개선 v1.2 (SSOT)~~   | temperature를 TokenConfig에서 env.LLM_TEMPERATURE로 이전(SSOT). TokenConfig.temperature 필드 제거. llm-client.ts env.LLM_TEMPERATURE 치환. 정본: `docs/superpowers/specs/2026-04-09-chat-quality-improvements.md` | ✅   |
+| NEW-15  | ~~LLM 파라미터 튜닝 (v1.1)~~     | temperature 0.4→0.6 ("warm, knowledgeable" 페르소나), maxOutputTokens 1024→2048 (잘림 방지), maxToolSteps 3→5 (비교 요청 지원), LLM_TIMEOUT_MS 30000→45000 (tool 3-5회 포함 여유) | ✅   |
+| NEW-16  | ~~Q-7 위반 수정 (search-handler)~~ | silent catch 3곳에 에러 로깅 추가: `[EMBED_FALLBACK]` warn, `[STORE_JOIN_FAILED]` error, `[CLINIC_JOIN_FAILED]` error. 폴백 동작 불변, 로깅만 추가. 테스트 3건 추가 | ✅   |
+| NEW-17  | ~~FALLBACK_DELAY_MS 100ms 적용~~ | llm-resilience.md §2.2 선반영된 설계를 코드에 구현. 폴백 프로바이더 전환 전 100ms 대기로 연쇄 실패 방지. 테스트 2건 추가 | ✅   |
+| NEW-18  | ~~Few-shot 예시 통합 (§11)~~     | prompt-examples.ts 신규: 5개 few-shot 예시 (프로필 있는 추천, VP-3 추천, 인젝션 무시, 의료 긴급, 병렬 extract+search). Anthropic/LangChain 권장 3-4개 권장, 5개 채택 | ✅   |
+| NEW-19  | ~~시스템 프롬프트 축약 (578→510줄)~~ | §5 Guardrails 중복 응답 템플릿 6개 제거 (Hard constraints + Adversarial 규칙 전부 유지), §6 Tools 1줄 기능 설명 제거 (extract_user_profile Behavior "Call silently" 블록 유지 — defense-in-depth), §7 CARD_FORMAT 축약 (클라이언트 책임), AVAILABLE_TOPICS import 제거 (G-4) | ✅   |
+| NEW-20  | 의도 분류 (classifyIntent)        | **→ v0.2 후속**. 원래 v1.1에 포함되었으나 plan-eng-review 결정으로 제외. few-shot이 tool 호출 패턴을 가르치므로 v0.1 범위 밖. eval harness 결과 후 별도 PR에서 재검토. 정본: system-prompt-spec.md §12 | ➡️  |
 
 
 ---
