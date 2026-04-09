@@ -69,3 +69,4 @@ supabase/.temp/
 !public/og.png
 !public/icon.png
 !public/apple-touch-icon.png
+.gstack/

@@ -304,7 +304,9 @@ const FIELD_MAPPINGS: Partial<Record<EntityType, Record<string, FieldExtractor>>
     },
     images: (data: Record<string, unknown>) => {
       const imageUrl = data.imageUrl as string | undefined;
-      return imageUrl && imageUrl.trim() ? [imageUrl] : [];
+      if (!imageUrl || !imageUrl.trim()) return null;
+      if (!imageUrl.startsWith("https://")) return null;
+      return [imageUrl];
     },
     purchase_links: (data: Record<string, unknown>) => buildPurchaseLinks(data),
   },

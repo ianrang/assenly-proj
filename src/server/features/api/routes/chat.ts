@@ -290,16 +290,12 @@ export function registerChatRoutes(app: AppType) {
             // auth-matrix.md §5.4: service_role 사용 (토큰 만료 대비)
             const serviceClient = createServiceClient();
 
-            // step 9: UIMessage[] 스냅샷 저장
-            console.warn('[chat/onFinish] saving ui_messages', {
-              conversationId: result.conversationId,
-              messageCount: finalMessages.length,
-              roles: finalMessages.map((m: { role: string }) => m.role),
-            });
+            // step 9: UIMessage[] 스냅샷 저장 (defense-in-depth: user_id 방어 조건)
             const { error: saveErr } = await serviceClient
               .from('conversations')
               .update({ ui_messages: finalMessages })
-              .eq('id', result.conversationId);
+              .eq('id', result.conversationId)
+              .eq('user_id', user.id);
             if (saveErr) {
               console.error('[chat/onFinish] ui_messages save failed', saveErr.message);
             }

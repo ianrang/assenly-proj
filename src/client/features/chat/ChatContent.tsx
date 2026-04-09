@@ -68,7 +68,7 @@ export default function ChatContent({ locale, initialMessages, initialConversati
       const meta = message.metadata as
         | { conversationId?: string }
         | undefined;
-      if (meta?.conversationId && !conversationId) {
+      if (meta?.conversationId && !conversationIdRef.current) {
         setConversationId(meta.conversationId);
       }
     },
