@@ -86,7 +86,7 @@ export default function ProductCard({ product, brand, store, whyRecommended, loc
               rel="noopener noreferrer"
               className="mt-1.5 rounded border border-border px-2 py-1 text-center text-[10px] font-medium text-foreground transition-colors hover:bg-muted"
             >
-              Buy Online →
+              Product Details →
             </a>
           ) : null}
         </div>
@@ -194,7 +194,7 @@ export default function ProductCard({ product, brand, store, whyRecommended, loc
               rel="noopener noreferrer"
               className="underline transition-colors hover:text-foreground"
             >
-              Buy Online
+              Product Details
             </a>
           </p>
         )}

@@ -11,6 +11,7 @@ import StreamingIndicator from "./StreamingIndicator";
 import ProductCard from "@/client/features/cards/ProductCard";
 import TreatmentCard from "@/client/features/cards/TreatmentCard";
 import KitCtaSheet from "./KitCtaSheet";
+import MarkdownMessage from "./MarkdownMessage";
 
 // v1.2 NEW-10: KitCtaCard 삭제, Kit CTA는 ProductCard(compact) 내부 is_highlighted 분기로 통합.
 // StandalonePart도 제거 (kit-cta-card 전용이었음). KitCtaSheet는 그대로 유지.
@@ -112,7 +113,11 @@ function GroupedParts({
     <>
       {groups.map((group, gi) => {
         if (group.type === 'text') {
-          return <MessageBubble key={gi} role={role}>{group.part.text}</MessageBubble>;
+          return (
+            <MessageBubble key={gi} role={role}>
+              {role === 'assistant' ? <MarkdownMessage text={group.part.text} /> : group.part.text}
+            </MessageBubble>
+          );
         }
         // cards (product/treatment)
         return (

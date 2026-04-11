@@ -38,6 +38,28 @@ const treatmentPart = {
 
 // --- Tests ---
 
+// --- MarkdownMessage role-based rendering ---
+// MessageList는 assistant 텍스트에만 MarkdownMessage를 적용하고,
+// user 텍스트는 plain text로 렌더링한다.
+// 실제 렌더링 테스트는 RTL이 필요하므로 별도 파일이 적합하지만,
+// groupParts의 출력 구조가 role 분기를 지원하는지 여기서 검증한다.
+
+describe("groupParts role support", () => {
+  it("text group은 role과 무관하게 동일한 구조를 반환한다", () => {
+    const result = groupParts([textPart]);
+    expect(result).toHaveLength(1);
+    expect(result[0].type).toBe("text");
+    // GroupedParts 컴포넌트에서 role별 분기 처리 (MessageList.tsx)
+    // groupParts 자체는 role을 모름 — 순수 데이터 변환
+  });
+
+  it("cards group도 role과 무관하게 동일한 구조를 반환한다", () => {
+    const result = groupParts([productPart]);
+    expect(result).toHaveLength(1);
+    expect(result[0].type).toBe("cards");
+  });
+});
+
 describe("groupParts", () => {
   it("빈 배열 → 빈 groups", () => {
     expect(groupParts([])).toEqual([]);

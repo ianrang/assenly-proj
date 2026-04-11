@@ -38,7 +38,7 @@ function makeProduct(overrides?: Partial<Product>): Product {
 }
 
 describe("ProductCard purchase_links", () => {
-  it("purchase_links 배열 존재 시 Buy Online 링크 렌더링", () => {
+  it("purchase_links 배열 존재 시 Product Details 링크 렌더링", () => {
     const product = makeProduct({
       purchase_links: [
         { platform: "coupang", url: "https://www.coupang.com/vp/products/123" },
@@ -47,7 +47,7 @@ describe("ProductCard purchase_links", () => {
 
     render(<ProductCard product={product} locale="en" />);
 
-    const link = screen.getByText("Buy Online");
+    const link = screen.getByText("Product Details");
     expect(link).toBeInTheDocument();
     expect(link).toHaveAttribute("href", "https://www.coupang.com/vp/products/123");
     expect(link).toHaveAttribute("target", "_blank");
@@ -64,7 +64,7 @@ describe("ProductCard purchase_links", () => {
 
     render(<ProductCard product={product} locale="en" />);
 
-    const links = screen.getAllByText("Buy Online");
+    const links = screen.getAllByText("Product Details");
     expect(links).toHaveLength(1);
     expect(links[0]).toHaveAttribute("href", "https://www.coupang.com/vp/products/123");
   });
@@ -74,7 +74,7 @@ describe("ProductCard purchase_links", () => {
 
     render(<ProductCard product={product} locale="en" />);
 
-    expect(screen.queryByText("Buy Online")).not.toBeInTheDocument();
+    expect(screen.queryByText("Product Details")).not.toBeInTheDocument();
   });
 
   it("purchase_links 빈 배열 시 구매 링크 미렌더링", () => {
@@ -82,7 +82,7 @@ describe("ProductCard purchase_links", () => {
 
     render(<ProductCard product={product} locale="en" />);
 
-    expect(screen.queryByText("Buy Online")).not.toBeInTheDocument();
+    expect(screen.queryByText("Product Details")).not.toBeInTheDocument();
   });
 });
 
@@ -156,7 +156,7 @@ describe("ProductCard compact variant", () => {
     expect(screen.getByText("COSRX")).toBeInTheDocument();
   });
 
-  // v1.2 NEW-10: compact variant도 Buy Online 링크 + is_highlighted 시 Get free kit 표시.
+  // v1.2 NEW-10: compact variant도 Product Details 링크 + is_highlighted 시 Get free kit 표시.
   it("compact 렌더 시 tags/english_label/store는 여전히 미표시", () => {
     const product = makeProduct({
       tags: ["hydrating", "gentle"],
@@ -171,14 +171,14 @@ describe("ProductCard compact variant", () => {
     expect(screen.queryByText("Olive Young")).not.toBeInTheDocument();
   });
 
-  it("variant 미지정 시 default 동작 (Buy Online 표시)", () => {
+  it("variant 미지정 시 default 동작 (Product Details 표시)", () => {
     const product = makeProduct({
       purchase_links: [{ platform: "coupang", url: "https://coupang.com" }],
     });
 
     render(<ProductCard product={product} locale="en" />);
 
-    expect(screen.getByText("Buy Online")).toBeInTheDocument();
+    expect(screen.getByText("Product Details")).toBeInTheDocument();
   });
 });
 
@@ -224,7 +224,7 @@ describe("ProductCard Kit CTA integration (v1.2 NEW-10)", () => {
     expect(onKitClaim).toHaveBeenCalledTimes(1);
   });
 
-  it("compact + !is_highlighted + purchase_links → Buy Online 링크 (Get free kit 미표시)", () => {
+  it("compact + !is_highlighted + purchase_links → Product Details 링크 (Get free kit 미표시)", () => {
     const product = makeProduct({
       is_highlighted: false,
       purchase_links: [{ platform: "coupang", url: "https://coupang.com/p/123" }],
@@ -234,7 +234,7 @@ describe("ProductCard Kit CTA integration (v1.2 NEW-10)", () => {
       <ProductCard product={product} locale="en" variant="compact" onKitClaim={() => {}} />
     );
 
-    expect(screen.getByRole("link", { name: /Buy Online/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Product Details/i })).toBeInTheDocument();
     expect(screen.queryByRole("button", { name: /Get free kit/i })).not.toBeInTheDocument();
   });
 
@@ -247,9 +247,9 @@ describe("ProductCard Kit CTA integration (v1.2 NEW-10)", () => {
 
     render(<ProductCard product={product} locale="en" variant="compact" />);
 
-    // onKitClaim 미제공 시 Get free kit 버튼 없음. 대신 purchase_links가 있으면 Buy Online 폴백.
+    // onKitClaim 미제공 시 Get free kit 버튼 없음. 대신 purchase_links가 있으면 Product Details 폴백.
     expect(screen.queryByRole("button", { name: /Get free kit/i })).not.toBeInTheDocument();
-    expect(screen.getByRole("link", { name: /Buy Online/i })).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /Product Details/i })).toBeInTheDocument();
   });
 
   it("compact + !is_highlighted + 링크 없음 → 액션 버튼 없음", () => {
@@ -261,6 +261,6 @@ describe("ProductCard Kit CTA integration (v1.2 NEW-10)", () => {
     render(<ProductCard product={product} locale="en" variant="compact" />);
 
     expect(screen.queryByRole("button", { name: /Get free kit/i })).not.toBeInTheDocument();
-    expect(screen.queryByRole("link", { name: /Buy Online/i })).not.toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: /Product Details/i })).not.toBeInTheDocument();
   });
 });
