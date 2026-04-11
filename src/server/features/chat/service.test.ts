@@ -161,6 +161,7 @@ describe('streamChat', () => {
       journey: mockJourney,
       preferences: [],
       derived: mockDerived,
+      locale: 'en',
     });
 
     expect(result.conversationId).toBe('conv-123');
@@ -188,6 +189,7 @@ describe('streamChat', () => {
       journey: mockJourney,
       preferences: [],
       derived: mockDerived,
+      locale: 'en',
     });
 
     const callArgs = mockCallWithFallback.mock.calls[0][0];
@@ -220,6 +222,7 @@ describe('streamChat', () => {
       journey: mockJourney,
       preferences: [],
       derived: mockDerived,
+      locale: 'en',
     });
 
     expect(result.conversationId).toBe('new-conv-456');
@@ -246,6 +249,7 @@ describe('streamChat', () => {
       journey: mockJourney,
       preferences: [],
       derived: mockDerived,
+      locale: 'en',
     });
 
     const callArgs = mockCallWithFallback.mock.calls[0][0];
@@ -276,6 +280,7 @@ describe('streamChat', () => {
       journey: mockJourney,
       preferences: [],
       derived: mockDerived,
+      locale: 'en',
     });
 
     const callArgs = mockCallWithFallback.mock.calls[0][0];
@@ -296,6 +301,7 @@ describe('streamChat', () => {
       journey: null,
       preferences: [],
       derived: null,
+      locale: 'en',
     });
 
     expect(result.conversationId).toBe('conv-123');
@@ -339,6 +345,7 @@ describe('getOrCreateConversation (via streamChat)', () => {
       journey: null,
       preferences: [],
       derived: null,
+      locale: 'en',
     })).rejects.toThrow('Conversation not found');
   });
 });
@@ -369,6 +376,7 @@ describe('buildTools (via streamChat)', () => {
       journey: mockJourney,
       preferences: [],
       derived: mockDerived,
+      locale: 'en',
     });
 
     expect(capturedTools).not.toBeNull();
@@ -407,6 +415,7 @@ describe('buildTools (via streamChat)', () => {
       journey: null,
       preferences: [],
       derived: null,
+      locale: 'en',
     });
 
     // Manually execute the tool (simulate LLM calling it)
@@ -440,6 +449,7 @@ describe('buildTools (via streamChat)', () => {
       journey: null,
       preferences: [],
       derived: null,
+      locale: 'en',
     });
 
     // Manually execute the tool (simulate LLM calling it)

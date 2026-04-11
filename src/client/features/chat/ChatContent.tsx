@@ -70,6 +70,7 @@ export default function ChatContent({ locale, initialMessages, initialConversati
           body: {
             message: messages[messages.length - 1],
             conversation_id: conversationIdRef.current,
+            locale,
           },
         }),
       }),

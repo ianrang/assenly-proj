@@ -23,6 +23,7 @@ export interface SystemPromptContext {
   derived: DerivedVariables | null;
   learnedPreferences: LearnedPreference[];
   isFirstTurn: boolean;
+  locale: string;
 }
 
 // --- §2 Role (항상 포함) — system-prompt-spec.md §2 ---
@@ -43,10 +44,7 @@ Response style:
 - Never use aggressive sales language or pressure tactics
 - Be culturally sensitive: avoid commenting on skin color, body shape, or age appearance
 
-Language: Always respond in the same language the user writes in. If the user switches
-language mid-conversation, follow their lead. If the language is unsupported (not one of
-en, ja, zh, es, fr, ko), respond in English and mention that this language will be
-supported soon.`;
+Language: See the Rules section below for language instructions.`;
 
 // --- §3 Domains (항상 포함) — system-prompt-spec.md §3 ---
 const DOMAINS_SECTION = `## Domains
@@ -68,7 +66,9 @@ you with skincare products and treatments — would you like to explore those?"
 Do NOT attempt to search for or fabricate data about unavailable domains.`;
 
 // --- §4 Rules (항상 포함) — system-prompt-spec.md §4 ---
-const RULES_SECTION = `## Rules
+// v1.2: locale 파라미터를 받아 언어 규칙에 주입하는 함수로 변경 (언어 파이프라인).
+function buildRulesSection(locale: string): string {
+  return `## Rules
 
 1. **Non-interventional judgment (VP-1)**: Some items have a highlight badge — this is
    a visual marker only. It does NOT mean they are better or more recommended. Never
@@ -96,7 +96,17 @@ const RULES_SECTION = `## Rules
    a greeting, self-introduction, or pleasantry in any language. Do not say "Hi",
    "Hello", "안녕하세요", "こんにちは", or any equivalent. Start directly with the
    answer, recommendation, or follow-up question. Greetings belong only in the very
-   first message of a conversation.`;
+   first message of a conversation.
+
+Language: Your session language is set to ${locale}. You MUST respond entirely in this
+language. Do NOT mix languages within a single response. Every word, including product
+explanations and follow-up questions, must be in ${locale}.
+
+If the user writes in a different language than ${locale}, switch to their language for
+that response and all subsequent responses. Never mix two languages in one message.
+
+If the language is unsupported (not one of en, ja, zh, es, fr, ko), respond in English.`;
+}
 
 // --- §5 Guardrails (항상 포함) — system-prompt-spec.md §5 + §5.1~§5.3 ---
 const GUARDRAILS_SECTION = `## Guardrails
@@ -295,7 +305,14 @@ Pick the 1-2 most relevant reasons. One sentence per result.
 When multiple stores or clinics are available, select one based on:
 - User's mentioned area → closest match
 - User's language needs → matching language support
-- No context → default to first listed`;
+- No context → default to first listed
+
+### Text formatting
+Use markdown to improve readability:
+- **Bold** product or treatment names on first mention
+- Use line breaks between different product descriptions
+- Use numbered lists when comparing 3+ items
+- Keep each product description to 1-2 sentences`;
 
 // --- §8 User Profile (프로필 존재 시) — system-prompt-spec.md §8 ---
 function buildUserProfileSection(ctx: SystemPromptContext): string {
@@ -496,7 +513,7 @@ export function buildSystemPrompt(context: SystemPromptContext): string {
   return [
     ROLE_SECTION,
     DOMAINS_SECTION,
-    RULES_SECTION,
+    buildRulesSection(context.locale),
     GUARDRAILS_SECTION,
     TOOLS_SECTION,
     CARD_FORMAT_SECTION,

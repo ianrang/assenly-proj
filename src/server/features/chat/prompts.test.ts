@@ -15,6 +15,7 @@ function makeContext(overrides: Record<string, unknown> = {}) {
     derived: null,
     learnedPreferences: [],
     isFirstTurn: false,
+    locale: 'en',
     ...overrides,
   };
 }
@@ -242,5 +243,36 @@ describe('buildSystemPrompt', () => {
     expect(result).toContain('Call silently');
     expect(result).toContain('do NOT tell the user');
     expect(result).toMatch(/[Dd]o not guess/);
+  });
+
+  it('locale이 시스템 프롬프트에 주입된다', async () => {
+    const { buildSystemPrompt } = await import('@/server/features/chat/prompts');
+    const ctx = makeContext({ locale: 'ko' });
+
+    const result = buildSystemPrompt(ctx as Parameters<typeof buildSystemPrompt>[0]);
+
+    expect(result).toContain('ko');
+    expect(result).toContain('session language');
+  });
+
+  it('locale=en 시 영어 언어 지시가 프롬프트에 존재', async () => {
+    const { buildSystemPrompt } = await import('@/server/features/chat/prompts');
+    const ctx = makeContext({ locale: 'en' });
+
+    const result = buildSystemPrompt(ctx as Parameters<typeof buildSystemPrompt>[0]);
+
+    expect(result).toContain('set to en');
+    expect(result).toContain('MUST respond entirely');
+    expect(result).toContain('Do NOT mix languages');
+  });
+
+  it('Few-shot에 한국어 예시가 포함된다', async () => {
+    const { buildSystemPrompt } = await import('@/server/features/chat/prompts');
+    const ctx = makeContext();
+
+    const result = buildSystemPrompt(ctx as Parameters<typeof buildSystemPrompt>[0]);
+
+    expect(result).toContain('건성 피부');
+    expect(result).toContain('Session language: ko');
   });
 });
