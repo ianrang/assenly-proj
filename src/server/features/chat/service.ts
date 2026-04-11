@@ -35,6 +35,7 @@ export interface StreamChatParams {
   journey: Journey | null;             // L-3: route에서 조회하여 전달
   preferences: LearnedPreference[];    // L-3: route에서 조회하여 전달
   derived: DerivedVariables | null;    // L-3: route에서 조회하여 전달
+  locale: string;                      // URL locale (en|ko). 시스템 프롬프트 언어 지시에 사용.
 }
 
 /** streamChat 반환값 */
@@ -67,6 +68,7 @@ export async function streamChat(params: StreamChatParams): Promise<StreamChatRe
     derived,
     learnedPreferences: preferences,
     isFirstTurn: params.history.length === 0,
+    locale: params.locale,
   });
 
   // tool context (P-4: chatService가 조립하여 tool에 전달)

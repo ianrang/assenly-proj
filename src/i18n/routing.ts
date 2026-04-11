@@ -1,6 +1,6 @@
 import { defineRouting } from "next-intl/routing";
 
 export const routing = defineRouting({
-  locales: ["en"],   // MVP: English only
+  locales: ["en", "ko"],   // MVP: English + Korean
   defaultLocale: "en",
 });

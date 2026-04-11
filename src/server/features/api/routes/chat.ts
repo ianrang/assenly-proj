@@ -168,6 +168,7 @@ export function registerChatRoutes(app: AppType) {
         })).min(1),
       }),
       conversation_id: z.string().uuid().nullable().optional(),
+      locale: z.enum(['en', 'ko']).default('en'),
     });
 
     const parsed = chatRequestSchema.safeParse(body);
@@ -249,6 +250,7 @@ export function registerChatRoutes(app: AppType) {
         journey,
         preferences,
         derived: null, // MVP: DV-4 미구현. beauty/ DV-1/2는 search-handler 내부 계산.
+        locale: parsed.data.locale,
       });
 
       // P2-50b: consumeStream — 클라이언트 연결 끊김 시에도 onFinish 보장
@@ -315,8 +317,7 @@ export function registerChatRoutes(app: AppType) {
               // 프로필 미존재 시 최소 프로필 생성 (Chat-First: 온보딩 스킵 가능)
               if (!profile) {
                 try {
-                  // TODO(v0.2): derive locale from request (Accept-Language or chat body)
-                  await createMinimalProfile(serviceClient, user.id, 'en');
+                  await createMinimalProfile(serviceClient, user.id, parsed.data.locale);
                 } catch {
                   // PK 충돌 = 동시 요청으로 이미 생성됨 → updateProfile로 진행
                 }
