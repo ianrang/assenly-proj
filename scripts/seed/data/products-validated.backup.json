@@ -487,7 +487,7 @@
       "id": "b5849788-fc44-5a53-b246-377af9be1dda",
       "name_ko": "설화수 자음생크림",
       "name_en": "Sulwhasoo Concentrated Ginseng Renewing Cream",
-      "brand": "Kamill",
+      "brand": "Sulwhasoo",
       "category": "skincare",
       "subcategory": "moisturizer",
       "budget_level": "luxury",
@@ -513,8 +513,12 @@
         "budget:luxury"
       ],
       "name": {
-        "en": "Kamill Kamill Hand & Nail Cream BEST & BONUS Duo Set (Intensive Bonus Pack 133mL+Classic 100mL)",
-        "ko": "Kamill Kamill Hand & Nail Cream BEST & BONUS Duo Set (Intensive Bonus Pack 133mL+Classic 100mL)"
+        "en": "Sulwhasoo Concentrated Ginseng Renewing Cream",
+        "ko": "설화수 자음생크림",
+        "ja": "雪花秀 滋陰生クリーム",
+        "zh": "雪花秀 滋盈生人参焕颜修护霜",
+        "es": "Sulwhasoo Concentrated Ginseng Renewing Cream",
+        "fr": "Sulwhasoo Concentrated Ginseng Renewing Cream"
       },
       "skin_types": [
         "combination",
@@ -544,16 +548,8 @@
         "es": "Esta crema, rica en ginseng, es elogiada por sus beneficios nutritivos y potenciadores de la elasticidad. Sin embargo, el precio es elevado. (Resumen de la reseña generado por IA)",
         "fr": "Riche en ginseng, cette crème est appréciée pour ses bienfaits nourrissants et stimulant l'élasticité. Cependant, son prix est élevé. (Résumé de l'avis généré par l'IA)"
       },
-      "purchase_links": [
-        {
-          "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220113423"
-        }
-      ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1221/d76fc422-3e1a-48a4-a615-12f1b5dccc45.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 17164
+      "purchase_links": null,
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -787,12 +783,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210510519"
+          "url": "https://global.oliveyoung.com/search?query=isoi%20Bulgarian%20Rose%20Intensive%20Energizing%20Cream%20EX"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1589/5cc5eb79-d7e2-4ffd-aa1f-17edd43510e3.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -869,9 +863,7 @@
           "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220113372"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1564/66264603-e1a5-44d7-b8ae-2d6edae2d3ee.jpg"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -883,7 +875,7 @@
       "id": "2e1b9a7d-84f0-565c-9b8a-bf0d64c7c709",
       "name_ko": "구달 맑은 어성초 진정 수분크림",
       "name_en": "Goodal Houttuynia Cordata Calming Moisture Cream",
-      "brand": "HEVEBLUE",
+      "brand": "Goodal",
       "category": "skincare",
       "subcategory": "moisturizer",
       "budget_level": "budget",
@@ -908,8 +900,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "HEVEBLUE HEVEBLUE Derma Zinc Matcha MX BB Cream 30ml (6 Shades)",
-        "ko": "HEVEBLUE HEVEBLUE Derma Zinc Matcha MX BB Cream 30ml (6 Shades)"
+        "en": "Goodal Houttuynia Cordata Calming Moisture Cream",
+        "ko": "구달 맑은 어성초 진정 수분크림",
+        "ja": "グーダル ドクダミ鎮静水分クリーム",
+        "zh": "Goodal 鱼腥草舒缓保湿霜",
+        "es": "Goodal Crema Hidratante Calmante Houttuynia Cordata",
+        "fr": "Goodal Crème Hydratante Apaisante Houttuynia Cordata"
       },
       "skin_types": [
         "combination",
@@ -941,13 +937,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260338434"
+          "url": "https://global.oliveyoung.com/search?query=Goodal%20Houttuynia%20Cordata%20Calming%20Moisture%20Cream"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1928/e928ce92-3d9d-410a-8d40-9f286847f9b6.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 40656
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -1118,7 +1111,7 @@
       "id": "3689923e-f5a9-591b-aaca-78776ce3be87",
       "name_ko": "에뛰드 순정 모이스트 풀 콜라겐 크림",
       "name_en": "ETUDE SoonJung Moist Relief All in One Gel",
-      "brand": "fwee",
+      "brand": "ETUDE",
       "category": "skincare",
       "subcategory": "moisturizer",
       "budget_level": "budget",
@@ -1144,8 +1137,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "fwee fwee Spa Glowing UV Tone Up Prep (SPF30 Semi Dewy/SPF50+Wet Dewy) (Set/Single) (2 Shades)",
-        "ko": "fwee fwee Spa Glowing UV Tone Up Prep (SPF30 Semi Dewy/SPF50+Wet Dewy) (Set/Single) (2 Shades)"
+        "en": "Etude Soon Jung Moist Full Collagen Cream",
+        "ko": "에뛰드 순정 모이스트 풀 콜라겐 크림",
+        "ja": "エチュード スンジョン モイスト フル コラーゲン クリーム",
+        "zh": "伊蒂之屋 淳真 保湿胶原蛋白霜",
+        "es": "Etude Soon Jung Moist Full Collagen Cream",
+        "fr": "Etude Soon Jung Moist Full Crème Collagène"
       },
       "skin_types": [
         "combination",
@@ -1178,13 +1175,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260238183"
+          "url": "https://global.oliveyoung.com/search?query=ETUDE%20SoonJung%20Moist%20Relief%20All%20in%20One%20Gel"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1492/c174dcde-6c2a-4732-9925-5434fbf26da9.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 23800
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -1260,12 +1254,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240824996"
+          "url": "https://global.oliveyoung.com/search?query=Hanyul%20Yuja%20Sleeping%20Mask"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1354/6c573250-74a0-44af-816b-bccadc1876f5.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -1356,7 +1348,7 @@
       "id": "70a5e093-ebc8-5e8e-9ecc-d4549d511a8b",
       "name_ko": "바이오더마 아토덤 인텐시브 밤",
       "name_en": "Bioderma Atoderm Intensive Baume",
-      "brand": "Anua",
+      "brand": "Bioderma",
       "category": "skincare",
       "subcategory": "moisturizer",
       "budget_level": "moderate",
@@ -1381,8 +1373,12 @@
         "budget:moderate"
       ],
       "name": {
-        "en": "Anua Anua 7 Rice Ceramide Hydrating Barrier Serum 50ml",
-        "ko": "Anua Anua 7 Rice Ceramide Hydrating Barrier Serum 50ml"
+        "en": "Bioderma Atoderm Intensive Baume",
+        "ko": "바이오더마 아토덤 인텐시브 밤",
+        "ja": "ビオデルマ アトデルム インテンシブ バーム",
+        "zh": "贝德玛 Atoderm 滋养霜",
+        "es": "Bioderma Atoderm Intensive Baume",
+        "fr": "Bioderma Atoderm Intensive Baume"
       },
       "skin_types": [
         "dry",
@@ -1412,13 +1408,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250329703"
+          "url": "https://global.oliveyoung.com/search?query=Bioderma%20Atoderm%20Intensive%20Baume"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1738/1a74cffc-9178-407f-8283-601091370298.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 40600
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -1494,9 +1487,7 @@
           "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250933789"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1723/6e81f5f1-81d0-43a7-a574-0710aa3bc52c.jpg"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -1668,7 +1659,7 @@
       "id": "e16eb748-c12c-5c98-9d1d-aad163ef1147",
       "name_ko": "바이위시트렌드 프로바이옴 밸런스 크림",
       "name_en": "By Wishtrend Pro-Biome Balance Cream",
-      "brand": "Cell Fusion C",
+      "brand": "By Wishtrend",
       "category": "skincare",
       "subcategory": "moisturizer",
       "budget_level": "moderate",
@@ -1692,8 +1683,12 @@
         "budget:moderate"
       ],
       "name": {
-        "en": "Cell Fusion C Cell Fusion C Skin Blemish Balm Intensive 30ml (6 Shades)",
-        "ko": "Cell Fusion C Cell Fusion C Skin Blemish Balm Intensive 30ml (6 Shades)"
+        "en": "By Wishtrend Pro-Biome Balance Cream",
+        "ko": "바이위시트렌드 프로바이옴 밸런스 크림",
+        "ja": "By Wishtrend プロバイオーム バランス クリーム",
+        "zh": "By Wishtrend Pro-Biome 平衡霜",
+        "es": "By Wishtrend Pro-Biome Balance Cream",
+        "fr": "By Wishtrend Pro-Biome Crème Équilibrante"
       },
       "skin_types": [
         "combination",
@@ -1725,13 +1720,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA251134962"
+          "url": "https://global.oliveyoung.com/search?query=By%20Wishtrend%20Pro-Biome%20Balance%20Cream"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1858/e83e6c5f-5ad9-4b1b-b94c-183b18eb0d61.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 29064
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -2375,12 +2367,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250429972"
+          "url": "https://global.oliveyoung.com/search?query=MISSHA%20Time%20Revolution%20The%20First%20Treatment%20Essence%20RX"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1477/7c0968cc-51ef-4fbc-889f-39269c124023.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -2469,7 +2459,7 @@
       "id": "abfb1cc8-e306-5ed5-9dcb-c7f13bfc20c0",
       "name_ko": "설화수 윤조에센스 EX",
       "name_en": "Sulwhasoo First Care Activating Serum EX",
-      "brand": "numbuzin",
+      "brand": "Sulwhasoo",
       "category": "skincare",
       "subcategory": "serum",
       "budget_level": "luxury",
@@ -2496,8 +2486,12 @@
         "budget:luxury"
       ],
       "name": {
-        "en": "numbuzin numbuzin No.5+ Vitamin Concentrated Serum 30mL+30mL Duo Set",
-        "ko": "numbuzin numbuzin No.5+ Vitamin Concentrated Serum 30mL+30mL Duo Set"
+        "en": "Sulwhasoo First Care Activating Serum EX",
+        "ko": "설화수 윤조에센스 EX",
+        "ja": "雪花秀 ユンジョエッセンス EX",
+        "zh": "雪花秀 润燥焕活精华肌底液 EX",
+        "es": "Sulwhasoo First Care Activating Serum EX",
+        "fr": "Sulwhasoo First Care Activating Serum EX"
       },
       "skin_types": [
         "combination",
@@ -2527,16 +2521,8 @@
         "es": "Generalmente elogiado por mejorar la textura de la piel y la absorción de otros productos. Algunos señalan el precio más elevado. (Resumen de reseñas generado por IA)",
         "fr": "Généralement apprécié pour améliorer la texture de la peau et l'absorption des autres produits. Certains notent le prix plus élevé. (Résumé d'avis généré par l'IA)"
       },
-      "purchase_links": [
-        {
-          "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA230820183"
-        }
-      ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1818/82a4fad0-5f00-4de9-9e49-e94c722c72e7.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 38220
+      "purchase_links": null,
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -2948,7 +2934,7 @@
       "id": "15f7b140-0f00-56e1-b284-21c9849e50a0",
       "name_ko": "AHC 프리미엄 히드라 B5 수딩 에센스",
       "name_en": "AHC Premium Hydra B5 Soothing Enhancer",
-      "brand": "easydew",
+      "brand": "AHC",
       "category": "skincare",
       "subcategory": "serum",
       "budget_level": "moderate",
@@ -2972,8 +2958,12 @@
         "budget:moderate"
       ],
       "name": {
-        "en": "easydew easydew DW-EGF Vitamin C Boosting Amoule 25 13g Set (+Mela Glutathione Cream 2g*2ea)",
-        "ko": "easydew easydew DW-EGF Vitamin C Boosting Amoule 25 13g Set (+Mela Glutathione Cream 2g*2ea)"
+        "en": "AHC Premium Hydra B5 Soothing Essence",
+        "ko": "AHC 프리미엄 히드라 B5 수딩 에센스",
+        "ja": "AHC プレミアム ハイドラ B5 スージング エッセンス",
+        "zh": "AHC 高端玻尿酸B5舒缓精华",
+        "es": "AHC Premium Hydra B5 Esencia Calmante",
+        "fr": "AHC Premium Hydra B5 Essence Apaisante"
       },
       "skin_types": [
         "combination",
@@ -3004,13 +2994,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250832888"
+          "url": "https://global.oliveyoung.com/search?query=AHC%20Premium%20Hydra%20B5%20Soothing%20Enhancer"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1331/eb0839d7-9204-4173-94ad-c9cbd9809089.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 52668
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -3022,7 +3009,7 @@
       "id": "ff348ad3-5736-5516-bc67-c490963fd66a",
       "name_ko": "헉슬리 오일 에센스 에센스 라이크, 오일 라이크",
       "name_en": "Huxley Oil Essence: Essence-Like, Oil-Like",
-      "brand": "Dr. Althea",
+      "brand": "Huxley",
       "category": "skincare",
       "subcategory": "serum",
       "budget_level": "premium",
@@ -3047,8 +3034,12 @@
         "budget:premium"
       ],
       "name": {
-        "en": "Dr. Althea Dr. Althea Vitamin C Boosting Serum 30ml",
-        "ko": "Dr. Althea Dr. Althea Vitamin C Boosting Serum 30ml"
+        "en": "Huxley Oil Essence; Essence-Like, Oil-Like",
+        "ko": "헉슬리 오일 에센스 에센스 라이크, 오일 라이크",
+        "ja": "Huxley オイルエッセンス エッセンスライク、オイルライク",
+        "zh": "Huxley 精油精华; 精华般，精油般",
+        "es": "Huxley Aceite Esencia; Similar a Esencia, Similar a Aceite",
+        "fr": "Huxley Huile Essentielle; Essence-Like, Huile-Like"
       },
       "skin_types": [
         "combination",
@@ -3076,16 +3067,8 @@
         "es": "Los usuarios elogian su rápida absorción no grasa a pesar de ser un aceite. La hidratación es excelente, pero el aroma puede ser polarizante. *Resumen de reseñas generado por IA.",
         "fr": "Les utilisateurs apprécient sa rapidité d'absorption et sa texture non grasse, malgré sa nature huileuse. L'hydratation est excellente, mais le parfum peut diviser. *Résumé d'avis généré par l'IA."
       },
-      "purchase_links": [
-        {
-          "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250229056"
-        }
-      ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1206/9d3f6227-b97b-4ce9-869f-2e12592294e0.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 28378
+      "purchase_links": null,
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -3318,12 +3301,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250228488"
+          "url": "https://global.oliveyoung.com/search?query=numbuzin%20No.3%20Super%20Glowing%20Vitamin%20C%20Serum"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1656/26d1d7ab-6fbc-44a9-ab3d-1236cc187c26.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -3335,7 +3316,7 @@
       "id": "8bcb62d5-ffed-519b-9f31-c4b2700c196f",
       "name_ko": "바이오힐보 프로바이오덤 리프팅 크림",
       "name_en": "Bio Heal BOH Probioderm Lifting Ampoule",
-      "brand": "Torriden",
+      "brand": "Bio Heal BOH",
       "category": "skincare",
       "subcategory": "serum",
       "budget_level": "moderate",
@@ -3359,8 +3340,12 @@
         "budget:moderate"
       ],
       "name": {
-        "en": "Torriden Torriden Dive In Low Molecular Hyaluronic Acid Serum 50ml Refill Set (+Refill 50ml+Skin Booster 50ml+Balanceful Cream 20ml)",
-        "ko": "Torriden Torriden Dive In Low Molecular Hyaluronic Acid Serum 50ml Refill Set (+Refill 50ml+Skin Booster 50ml+Balanceful Cream 20ml)"
+        "en": "Bioheal Boh Probiotics Lifting Cream",
+        "ko": "바이오힐보 프로바이오덤 리프팅 크림",
+        "ja": "Bioheal Boh プロバイオダーム リフティングクリーム",
+        "zh": "Bioheal Boh 益生菌 提拉面霜",
+        "es": "Bioheal Boh Probiotics Lifting Cream",
+        "fr": "Bioheal Boh Probiotics Lifting Cream"
       },
       "skin_types": [
         "combination",
@@ -3392,13 +3377,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260237691"
+          "url": "https://global.oliveyoung.com/search?query=Bio%20Heal%20BOH%20Probioderm%20Lifting%20Ampoule"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1419/93a8017c-0e73-4bb1-858a-16c81bf56313.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 44100
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -3410,7 +3392,7 @@
       "id": "b77b7074-10ef-532b-99e1-f5d07ca1d9cc",
       "name_ko": "원씽 프로폴리스 + 꿀 에센스",
       "name_en": "One Thing Propolis + Honey Extract",
-      "brand": "Anua",
+      "brand": "One Thing",
       "category": "skincare",
       "subcategory": "serum",
       "budget_level": "budget",
@@ -3435,8 +3417,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "Anua Anua PDRN Hyaluronic Acid 100 Moisturizing Cream 60ml Set (+30ml)",
-        "ko": "Anua Anua PDRN Hyaluronic Acid 100 Moisturizing Cream 60ml Set (+30ml)"
+        "en": "ONE THING Propolis + Honey Essence",
+        "ko": "원씽 프로폴리스 + 꿀 에센스",
+        "ja": "ONE THING プロポリス＋ハニーエッセンス",
+        "zh": "ONE THING 蜂胶 + 蜂蜜精华",
+        "es": "ONE THING Esencia de Propóleo + Miel",
+        "fr": "ONE THING Essence Propolis + Miel"
       },
       "skin_types": [
         "combination",
@@ -3468,13 +3454,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250329147"
+          "url": "https://global.oliveyoung.com/search?query=One%20Thing%20Propolis%20%2B%20Honey%20Extract"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1840/4bdcb9e0-3a08-4cc4-8ca7-2a66bc6b0dfb.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 31556
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -3486,7 +3469,7 @@
       "id": "2c5025ff-9b67-5396-a79b-0b3836432ecd",
       "name_ko": "후 비첩 자생 에센스",
       "name_en": "The History of Whoo Bichup Self-Generating Anti-Aging Essence",
-      "brand": "WELLAGE",
+      "brand": "The History of Whoo",
       "category": "skincare",
       "subcategory": "serum",
       "budget_level": "luxury",
@@ -3510,8 +3493,12 @@
         "budget:luxury"
       ],
       "name": {
-        "en": "WELLAGE WELLAGE Real Hyaluronic Blue 100 Ampoule 75ml Double Pack (+Mask Sheet 1ea)",
-        "ko": "WELLAGE WELLAGE Real Hyaluronic Blue 100 Ampoule 75ml Double Pack (+Mask Sheet 1ea)"
+        "en": "The History of Whoo Bichup Self-Generating Anti-Aging Essence",
+        "ko": "후 비첩 자생 에센스",
+        "ja": "The History of Whoo 秘貼（ビチョプ） 自生エッセンス",
+        "zh": "后 秘贴 自生精华",
+        "es": "The History of Whoo Bichup Esencia Auto-Regeneradora Anti-Edad",
+        "fr": "The History of Whoo Bichup Essence Auto-Régénérante Anti-Âge"
       },
       "skin_types": [
         "combination",
@@ -3541,16 +3528,8 @@
         "es": "Los usuarios elogian su capacidad para estimular la regeneración de la piel. El precio es un inconveniente común. Resumen de reseñas generado por IA.",
         "fr": "Les utilisateurs apprécient sa capacité à stimuler la régénération de la peau. Le prix est un inconvénient courant. Résumé d'avis généré par l'IA."
       },
-      "purchase_links": [
-        {
-          "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250933415"
-        }
-      ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1356/3a888635-835a-4eb7-aba5-fde96dfa8839.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 48552
+      "purchase_links": null,
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -3643,7 +3622,7 @@
       "id": "dee92c65-4779-54bf-96ac-91f994275546",
       "name_ko": "넘버즈인 5번 판테놀 진정 세럼",
       "name_en": "numbuzin No.5 Vitamin B5 + Cica Serum",
-      "brand": "Torriden",
+      "brand": "numbuzin",
       "category": "skincare",
       "subcategory": "serum",
       "budget_level": "budget",
@@ -3668,8 +3647,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "Torriden Torriden Dive-In Hyaluronic Acid Soothing Cream 100mL",
-        "ko": "Torriden Torriden Dive-In Hyaluronic Acid Soothing Cream 100mL"
+        "en": "numbuzin No.5 Panthenol Soothing Serum",
+        "ko": "넘버즈인 5번 판테놀 진정 세럼",
+        "ja": "ナンバーズイン 5番 パンテノール鎮静セラム",
+        "zh": "numbuzin No.5 泛醇舒缓精华",
+        "es": "numbuzin Sérum Calmante de Pantenol No.5",
+        "fr": "numbuzin Sérum Apaisant au Panthénol N°5"
       },
       "skin_types": [
         "combination",
@@ -3702,13 +3685,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220715332"
+          "url": "https://global.oliveyoung.com/search?query=numbuzin%20No.5%20Vitamin%20B5%20%2B%20Cica%20Serum"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1696/e77c7cf6-0bb4-431b-81ce-33748cd613ff.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 39200
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -3801,7 +3781,7 @@
       "id": "f73763b4-8cc7-5819-a3cf-06ee25dfb3b9",
       "name_ko": "클레어스 프레쉬리 쥬스드 비타민 드롭",
       "name_en": "dear, Klairs Freshly Juiced Vitamin Drop",
-      "brand": "Anua",
+      "brand": "dear, Klairs",
       "category": "skincare",
       "subcategory": "serum",
       "budget_level": "moderate",
@@ -3826,8 +3806,12 @@
         "budget:moderate"
       ],
       "name": {
-        "en": "Anua Anua Niacinamide 10 TXA 4 Dark Spot Correcting Serum 30ml*2ea",
-        "ko": "Anua Anua Niacinamide 10 TXA 4 Dark Spot Correcting Serum 30ml*2ea"
+        "en": "Klairs Freshly Juiced Vitamin Drop",
+        "ko": "클레어스 프레쉬리 쥬스드 비타민 드롭",
+        "ja": "クレアス フレッシュリ ジュースド ビタミン ドロップ",
+        "zh": "克莱尔斯 鲜榨维他命精华滴",
+        "es": "Klairs Freshly Juiced Vitamin Drop",
+        "fr": "Klairs Freshly Juiced Vitamin Drop"
       },
       "skin_types": [
         "combination",
@@ -3860,13 +3844,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250530674"
+          "url": "https://global.oliveyoung.com/search?query=dear%2C%20Klairs%20Freshly%20Juiced%20Vitamin%20Drop"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1151/31431d98-1a3b-466e-8faa-62aea0c5109e.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 103600
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -4099,12 +4080,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA230920402"
+          "url": "https://global.oliveyoung.com/search?query=Innisfree%20Green%20Tea%20Foam%20Cleanser"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1991/461b4dc0-b860-470c-bb55-907757270a83.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -4279,7 +4258,7 @@
       "id": "72eb85ce-d632-5a31-9609-e30272ae863e",
       "name_ko": "에뛰드 순정 pH 6.5 워터리 클렌저",
       "name_en": "ETUDE SoonJung pH 6.5 Whip Cleanser",
-      "brand": "SUM37",
+      "brand": "ETUDE",
       "category": "skincare",
       "subcategory": "cleanser",
       "budget_level": "budget",
@@ -4305,8 +4284,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "SUM37 SUM37 Secret Essence 80ml Special Set (+Serum 10ml+Cream 10ml+Eye Cream 10ml+Foam Cleanser 40ml)",
-        "ko": "SUM37 SUM37 Secret Essence 80ml Special Set (+Serum 10ml+Cream 10ml+Eye Cream 10ml+Foam Cleanser 40ml)"
+        "en": "Etude House Soon Jung pH 6.5 Watery Cleanser",
+        "ko": "에뛰드 순정 pH 6.5 워터리 클렌저",
+        "ja": "エチュードハウス スンジョン pH 6.5 ウォータリークレンザー",
+        "zh": "伊蒂之屋 Soon Jung 弱酸性pH6.5 水润洁面乳",
+        "es": "Etude House Soon Jung pH 6.5 Limpiador Acuoso",
+        "fr": "Etude House Soon Jung pH 6.5 Nettoyant Eau"
       },
       "skin_types": [
         "combination",
@@ -4339,13 +4322,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240423289"
+          "url": "https://global.oliveyoung.com/search?query=ETUDE%20SoonJung%20pH%206.5%20Whip%20Cleanser"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1261/ca664708-a8b3-46df-9557-8353a92da708.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 108332
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -4495,12 +4475,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210002721"
+          "url": "https://global.oliveyoung.com/search?query=Laneige%20Cream%20Skin%20Toner%20%26%20Moisturizer"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/mig/prdtImg/e0e03c60a2fcbade6871226f2feef88e.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -4574,15 +4552,8 @@
         "es": "Elogiado por su exfoliación e hidratación, pero el aroma es polarizante. Se recomienda una prueba de parche para pieles sensibles. (Resumen de la reseña con IA)",
         "fr": "Encensé pour son exfoliation et son hydratation, mais le parfum est polarisant. Un test cutané est recommandé pour les peaux sensibles. (Résumé d'avis IA)"
       },
-      "purchase_links": [
-        {
-          "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260338435"
-        }
-      ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1690/febd46ea-95d4-49c9-8a8a-c44a6ac48a95.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "purchase_links": null,
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -4672,9 +4643,9 @@
       "id": "59cfa99d-d065-57d3-a240-71eaeb7bdc4c",
       "name_ko": "Some By Mi AHA BHA PHA 30 데이즈 미라클 토너",
       "name_en": "Some By Mi AHA BHA PHA 30 Days Miracle Toner",
-      "brand": "Isntree",
+      "brand": "Some By Mi",
       "category": "skincare",
-      "subcategory": "cleanser",
+      "subcategory": "toner",
       "budget_level": "budget",
       "expected_skin_types": "oily|combination",
       "expected_concerns": "acne|pores|dullness",
@@ -4696,8 +4667,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "Isntree Isntree Yam Root Vegan Milk Cleanser 220ml Refill Set (+Refill 200ml+Cleansing Foam 30ml)",
-        "ko": "Isntree Isntree Yam Root Vegan Milk Cleanser 220ml Refill Set (+Refill 200ml+Cleansing Foam 30ml)"
+        "en": "Some By Mi AHA BHA PHA 30 Days Miracle Toner",
+        "ko": "Some By Mi AHA BHA PHA 30 데이즈 미라클 토너",
+        "ja": "Some By Mi AHA BHA PHA 30デイズ ミラクル トナー",
+        "zh": "Some By Mi AHA BHA PHA 30天奇迹爽肤水",
+        "es": "Some By Mi AHA BHA PHA 30 Days Miracle Toner",
+        "fr": "Some By Mi AHA BHA PHA 30 Days Miracle Toner"
       },
       "skin_types": [
         "combination",
@@ -4730,13 +4705,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260136703"
+          "url": "https://global.oliveyoung.com/search?query=Some%20By%20Mi%20AHA%20BHA%20PHA%2030%20Days%20Miracle%20Toner"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1200/44d78f61-e789-40bc-ad0c-838fa42cec2f.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 36736
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -4966,12 +4938,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220314032"
+          "url": "https://global.oliveyoung.com/search?query=Bonajour%20Green%20Tea%20Water%20Bomb%20Toner"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1643/cf628615-cb74-486a-ab6d-da5e5a80d13f.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -5140,7 +5110,7 @@
       "id": "42523649-50db-53a3-aa27-50add5825a5d",
       "name_ko": "닥터자르트 시카페어 폼 클렌저",
       "name_en": "Dr.Jart+ Cicapair Foam Cleanser",
-      "brand": "Lagom",
+      "brand": "Dr.Jart+",
       "category": "skincare",
       "subcategory": "cleanser",
       "budget_level": "moderate",
@@ -5165,8 +5135,12 @@
         "budget:moderate"
       ],
       "name": {
-        "en": "Lagom Lagom Cellup Micro Foam Cleanser 120ml*2ea Set (+30ml) US$26.37US$34.00",
-        "ko": "Lagom Lagom Cellup Micro Foam Cleanser 120ml*2ea Set (+30ml) US$26.37US$34.00"
+        "en": "Dr.Jart+ Cicapair Foam Cleanser",
+        "ko": "닥터자르트 시카페어 폼 클렌저",
+        "ja": "Dr.Jart+ シカペア フォームクレンザー",
+        "zh": "Dr.Jart+ 积雪草舒缓泡沫洁面乳",
+        "es": "Dr.Jart+ Cicapair Limpiador Facial en Espuma",
+        "fr": "Dr.Jart+ Cicapair Nettoyant Moussant"
       },
       "skin_types": [
         "combination",
@@ -5198,13 +5172,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260338915"
+          "url": "https://global.oliveyoung.com/search?query=Dr.Jart%2B%20Cicapair%20Foam%20Cleanser"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1408/dd7dfc52-5a48-4de5-86c8-080508cd666b.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 36918
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -5295,7 +5266,7 @@
       "id": "9dde6fe6-65ae-5598-85c4-2dca43439e0c",
       "name_ko": "설화수 순행클렌징폼 EX",
       "name_en": "Sulwhasoo Gentle Cleansing Foam EX",
-      "brand": "beplain",
+      "brand": "Sulwhasoo",
       "category": "skincare",
       "subcategory": "cleanser",
       "budget_level": "premium",
@@ -5320,8 +5291,12 @@
         "budget:premium"
       ],
       "name": {
-        "en": "beplain beplain Mung Bean pH-Balanced Cleansing Foam 80ml",
-        "ko": "beplain beplain Mung Bean pH-Balanced Cleansing Foam 80ml"
+        "en": "Sulwhasoo Gentle Cleansing Foam EX",
+        "ko": "설화수 순행클렌징폼 EX",
+        "ja": "雪花秀 ソルファス ジェントル クレンジングフォーム EX",
+        "zh": "雪花秀 顺行柔和洁颜泡沫 EX",
+        "es": "Sulwhasoo Espuma Limpiadora Suave EX",
+        "fr": "Sulwhasoo Mousse Nettoyante Douce EX"
       },
       "skin_types": [
         "combination",
@@ -5351,16 +5326,8 @@
         "es": "La limpieza suave y no irritante es una gran ventaja. Muchos usuarios reportan piel hidratada después de su uso. Sin embargo, el precio puede ser un inconveniente. (Resumen de la revisión de la IA)",
         "fr": "Un nettoyage doux et non irritant est un atout majeur. De nombreux utilisateurs signalent une peau hydratée après utilisation. Cependant, le prix peut être un inconvénient. (Résumé de l'avis de l'IA)"
       },
-      "purchase_links": [
-        {
-          "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210001977"
-        }
-      ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1462/3a4f69c2-a8be-420f-9e38-7f3d0e8496c5.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 17682
+      "purchase_links": null,
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -5451,9 +5418,9 @@
       "id": "30758c51-d92b-58d3-9073-115e36d4540a",
       "name_ko": "프리메라 마일드 컴포팅 클렌저",
       "name_en": "primera Mild Comforting Cleanser",
-      "brand": "ROUND LAB",
+      "brand": "primera",
       "category": "skincare",
-      "subcategory": "toner",
+      "subcategory": "cleanser",
       "budget_level": "moderate",
       "expected_skin_types": "sensitive|dry|normal",
       "expected_concerns": "dryness|redness",
@@ -5476,8 +5443,12 @@
         "budget:moderate"
       ],
       "name": {
-        "en": "ROUND LAB ROUND LAB Signature Best Sellers Set",
-        "ko": "ROUND LAB ROUND LAB Signature Best Sellers Set"
+        "en": "Primera Mild Comforting Cleanser",
+        "ko": "프리메라 마일드 컴포팅 클렌저",
+        "ja": "プリメラ マイルド コンフォーティング クレンザー",
+        "zh": "芙丽美娜 (Primera) 温和舒缓洁面乳",
+        "es": "Primera Mild Comforting Cleanser",
+        "fr": "Primera Mild Comforting Cleanser"
       },
       "skin_types": [
         "combination",
@@ -5505,16 +5476,8 @@
         "es": "Los usuarios elogian su limpieza suave y no irritante. Algunos mencionan un poder de limpieza más débil. *Resumen de reseñas generado por IA.",
         "fr": "Les utilisateurs apprécient son nettoyage doux et non irritant. Certains mentionnent un pouvoir nettoyant plus faible. *Résumé d'avis généré par l'IA."
       },
-      "purchase_links": [
-        {
-          "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260338899"
-        }
-      ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1127/1d142706-adc4-4aa0-9f52-5fd0e33896fd.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 100030
+      "purchase_links": null,
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -5686,7 +5649,7 @@
       "id": "311c51f9-a3aa-5e96-8dc7-126d772d63dc",
       "name_ko": "이니스프리 데일리 UV 디펜스 선크림",
       "name_en": "Innisfree Daily UV Defense Sunscreen SPF36 PA+++",
-      "brand": "Cell Fusion C",
+      "brand": "Innisfree",
       "category": "skincare",
       "subcategory": "sunscreen",
       "budget_level": "budget",
@@ -5710,8 +5673,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "Cell Fusion C Cell Fusion C Advanced Clear Sunscreen 100 Twin Pack SPF50+/PA++++ (35ml + 35ml)",
-        "ko": "Cell Fusion C Cell Fusion C Advanced Clear Sunscreen 100 Twin Pack SPF50+/PA++++ (35ml + 35ml)"
+        "en": "Innisfree Daily UV Defense Sunscreen",
+        "ko": "이니스프리 데일리 UV 디펜스 선크림",
+        "ja": "イニスフリー デイリーUVディフェンス サンクリーム",
+        "zh": "悦诗风吟 每日防晒霜",
+        "es": "Innisfree Daily UV Defense Protector Solar",
+        "fr": "Innisfree Daily UV Defense Crème Solaire"
       },
       "skin_types": [
         "combination",
@@ -5743,13 +5710,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210610841"
+          "url": "https://global.oliveyoung.com/search?query=Innisfree%20Daily%20UV%20Defense%20Sunscreen%20SPF36%20PA%2B%2B%2B"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1325/d3d32a95-153b-421f-93f0-f36f28456a80.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 46200
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -5822,12 +5786,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA230518528"
+          "url": "https://global.oliveyoung.com/search?query=numbuzin%20No.1%20Pure%20Glass%20Clean%20Sun%20SPF50%2B%20PA%2B%2B%2B%2B"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1079/026edc7e-88c3-404e-aefb-2d9cddad59d7.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -5980,12 +5942,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220414400"
+          "url": "https://global.oliveyoung.com/search?query=COSRX%20Aloe%20Soothing%20Sun%20Cream%20SPF50%2B%20PA%2B%2B%2B"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1149/0aa75859-6d33-447f-bef0-a08a9d38a5b9.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -6059,12 +6019,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220414400"
+          "url": "https://global.oliveyoung.com/search?query=Aestura%20Atobarrier%20365%20Hydro%20Soothing%20Sun%20Cream%20SPF50%2B%20PA%2B%2B%2B%2B"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1149/0aa75859-6d33-447f-bef0-a08a9d38a5b9.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -6076,7 +6034,7 @@
       "id": "235fb9ce-550d-57be-9193-98a90e987848",
       "name_ko": "아이소이 선밀크 스킨 모이스처 SPF50+",
       "name_en": "isoi Sun Milk Skin Moisture SPF50+ PA++++",
-      "brand": "Cell Fusion C",
+      "brand": "isoi",
       "category": "skincare",
       "subcategory": "sunscreen",
       "budget_level": "moderate",
@@ -6099,8 +6057,12 @@
         "budget:moderate"
       ],
       "name": {
-        "en": "Cell Fusion C Cell Fusion C Stick Sunscreen 100 19g SPF 50+/PA++++",
-        "ko": "Cell Fusion C Cell Fusion C Stick Sunscreen 100 19g SPF 50+/PA++++"
+        "en": "isoi Sun Milk Skin Moisture SPF50+",
+        "ko": "아이소이 선밀크 스킨 모이스처 SPF50+",
+        "ja": "isoi サンミルク スキンモイスチャー SPF50+",
+        "zh": "isoi 隔离防晒乳 SPF50+",
+        "es": "isoi Leche Solar Hidratante para la Piel SPF50+",
+        "fr": "isoi Lait Solaire Hydratant pour la Peau SPF50+"
       },
       "skin_types": [
         "combination",
@@ -6131,13 +6093,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210001576"
+          "url": "https://global.oliveyoung.com/search?query=isoi%20Sun%20Milk%20Skin%20Moisture%20SPF50%2B%20PA%2B%2B%2B%2B"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1985/cdc0a5f1-5c97-4e26-9b8d-089125ce39ca.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 40600
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -6211,12 +6170,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220414400"
+          "url": "https://global.oliveyoung.com/search?query=Dr.Jart%2B%20Every%20Sun%20Day%20UV%20Sun%20Fluid%20SPF50%2B%20PA%2B%2B%2B%2B"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1149/0aa75859-6d33-447f-bef0-a08a9d38a5b9.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -6293,9 +6250,7 @@
           "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210001978"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/mig/prdtImg/0513fc987485e915e0d6f2b09af47527.jpg"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -6446,12 +6401,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250228488"
+          "url": "https://global.oliveyoung.com/search?query=Cell%20Fusion%20C%20Derma%20Relief%20Sunscreen%20SPF50%2B%20PA%2B%2B%2B%2B"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1656/26d1d7ab-6fbc-44a9-ab3d-1236cc187c26.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -6526,12 +6479,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220414400"
+          "url": "https://global.oliveyoung.com/search?query=ETUDE%20SoonJung%20Mild%20Defence%20Sun%20Cream%20SPF49%20PA%2B%2B"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1149/0aa75859-6d33-447f-bef0-a08a9d38a5b9.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -6621,7 +6572,7 @@
       "id": "99ae8f58-af5c-5fbc-914b-056af44140be",
       "name_ko": "프리메라 스킨 릴리프 UV 프로텍터 SPF50+",
       "name_en": "primera Skin Relief UV Protector SPF50+ PA++++",
-      "brand": "COSRX",
+      "brand": "primera",
       "category": "skincare",
       "subcategory": "sunscreen",
       "budget_level": "moderate",
@@ -6646,8 +6597,12 @@
         "budget:moderate"
       ],
       "name": {
-        "en": "COSRX COSRX Vitamin E Vitalizing Sunscreen SPF 50+",
-        "ko": "COSRX COSRX Vitamin E Vitalizing Sunscreen SPF 50+"
+        "en": "Primera Skin Relief UV Protector SPF50+",
+        "ko": "프리메라 스킨 릴리프 UV 프로텍터 SPF50+",
+        "ja": "Primera スキンリリーフ UV プロテクター SPF50+",
+        "zh": "Primera 舒缓肌肤防晒霜 SPF50+",
+        "es": "Primera Skin Relief UV Protector SPF50+",
+        "fr": "Primera Skin Relief UV Protector SPF50+"
       },
       "skin_types": [
         "dry",
@@ -6675,16 +6630,8 @@
         "es": "Los usuarios elogian su fórmula suave e hidratante. Sin embargo, puede ser demasiado untuosa para los tipos de piel grasa. *Resumen de reseñas generado por IA.",
         "fr": "Les utilisateurs apprécient sa formule douce et hydratante. Cependant, elle peut être trop riche pour les peaux grasses. *Résumé d'avis généré par l'IA."
       },
-      "purchase_links": [
-        {
-          "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240322874"
-        }
-      ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1641/fa432c5d-e6ac-4695-84c9-0dfe6ff8dcb5.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 23520
+      "purchase_links": null,
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -6855,7 +6802,7 @@
       "id": "cfeae786-0e47-5082-a4da-fc8f6448ce77",
       "name_ko": "이니스프리 수퍼 화산송이 포어 클레이 마스크 2X",
       "name_en": "Innisfree Super Volcanic Pore Clay Mask 2X",
-      "brand": "beplain",
+      "brand": "Innisfree",
       "category": "skincare",
       "subcategory": "mask",
       "budget_level": "budget",
@@ -6879,8 +6826,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "beplain beplain Mung Bean Pore Clay Mask 200ml Set (+Silicone Brush)",
-        "ko": "beplain beplain Mung Bean Pore Clay Mask 200ml Set (+Silicone Brush)"
+        "en": "Innisfree Super Volcanic Pore Clay Mask 2X",
+        "ko": "이니스프리 수퍼 화산송이 포어 클레이 마스크 2X",
+        "ja": "イニスフリー スーパーヴォルカニック ポア クレイマスク 2X",
+        "zh": "悦诗风吟 火山泥毛孔清洁面膜 2X",
+        "es": "Innisfree Super Volcanic Pore Clay Mask 2X",
+        "fr": "Innisfree Super Volcanic Pore Clay Mask 2X"
       },
       "skin_types": [
         "combination",
@@ -6910,13 +6861,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260338242"
+          "url": "https://global.oliveyoung.com/search?query=Innisfree%20Super%20Volcanic%20Pore%20Clay%20Mask%202X"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1749/6be5065b-1811-4326-8ceb-3f8691deb9f7.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 29568
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -6986,15 +6934,8 @@
         "es": "Los usuarios elogian esta mascarilla por sus efectos hidratantes y revitalizantes durante la noche. Algunos mencionan una textura ligeramente pegajosa. *Resumen de la reseña generado por IA.",
         "fr": "Les utilisateurs louent ce masque pour ses effets hydratants et revitalisants pendant la nuit. Certains mentionnent une texture légèrement collante. *Résumé de l'avis généré par l'IA."
       },
-      "purchase_links": [
-        {
-          "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240824996"
-        }
-      ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1354/6c573250-74a0-44af-816b-bccadc1876f5.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "purchase_links": null,
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -7303,12 +7244,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240824996"
+          "url": "https://global.oliveyoung.com/search?query=Abib%20Heartleaf%20Stress%20Relief%20Calming%20Sheet%20Mask"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1354/6c573250-74a0-44af-816b-bccadc1876f5.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -7398,7 +7337,7 @@
       "id": "40c89600-4465-57db-bbd8-1e036ee6c0f3",
       "name_ko": "파파레서피 봄비 꿀단지 마스크",
       "name_en": "Papa Recipe Bombee Honey Mask",
-      "brand": "ANESSA",
+      "brand": "Papa Recipe",
       "category": "skincare",
       "subcategory": "mask",
       "budget_level": "budget",
@@ -7422,8 +7361,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "ANESSA ANESSA Perfect UV Sunscreen Skincare Milk 60ml Set (+12ml*2ea) US$36.55US$43.00",
-        "ko": "ANESSA ANESSA Perfect UV Sunscreen Skincare Milk 60ml Set (+12ml*2ea) US$36.55US$43.00"
+        "en": "Papa Recipe Bombee Honey Mask",
+        "ko": "파파레서피 봄비 꿀단지 마스크",
+        "ja": "パパレシピ ボンビー ハニーマスク",
+        "zh": "Papa Recipe 春雨蜂蜜面膜",
+        "es": "Papa Recipe Bombee Honey Mask",
+        "fr": "Papa Recipe Bombee Honey Mask"
       },
       "skin_types": [
         "combination",
@@ -7456,13 +7399,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260238060"
+          "url": "https://global.oliveyoung.com/search?query=Papa%20Recipe%20Bombee%20Honey%20Mask"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1478/9009da1e-885b-47cd-bdb0-24de2164f5f8.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 51170
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -8021,7 +7961,7 @@
       "id": "81f1f40a-96a1-5c2b-a851-a54eda0958d5",
       "name_ko": "설화수 자음생 아이크림",
       "name_en": "Sulwhasoo Concentrated Ginseng Renewing Eye Cream",
-      "brand": "VT",
+      "brand": "Sulwhasoo",
       "category": "skincare",
       "subcategory": "eye_care",
       "budget_level": "luxury",
@@ -8045,8 +7985,12 @@
         "budget:luxury"
       ],
       "name": {
-        "en": "VT VT PDRN Reedle Shot Firming Eye Cream 15ml",
-        "ko": "VT VT PDRN Reedle Shot Firming Eye Cream 15ml"
+        "en": "Sulwhasoo Concentrated Ginseng Renewing Eye Cream",
+        "ko": "설화수 자음생 아이크림",
+        "ja": "雪花秀（ソルファス） 滋陰生（ジャウムセン） アイクリーム",
+        "zh": "雪花秀 滋盈生人参焕颜修护眼霜",
+        "es": "Sulwhasoo Concentrated Ginseng Renewing Eye Cream",
+        "fr": "Sulwhasoo Concentrated Ginseng Renewing Eye Cream"
       },
       "skin_types": [
         "combination",
@@ -8075,16 +8019,8 @@
         "es": "Elogiado por su firmeza y nutrición derivadas del ginseng, pero señalado por su precio más elevado. (Resumen de reseña generado por IA).",
         "fr": "Encensé pour sa fermeté et sa nutrition dérivées du ginseng, mais noté pour son prix plus élevé. (Résumé de l'avis généré par l'IA)."
       },
-      "purchase_links": [
-        {
-          "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250832756"
-        }
-      ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1727/03a72f91-68ea-4b80-9c98-872861ccf596.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 40656
+      "purchase_links": null,
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -8157,12 +8093,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240423317"
+          "url": "https://global.oliveyoung.com/search?query=MISSHA%20Time%20Revolution%20Night%20Repair%20Probio%20Eye%20Cream"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1019/d7f8574f-86e6-4775-aac6-a61dc66bc058.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -8253,7 +8187,7 @@
       "id": "15b51acf-b585-578d-976d-8b60456d05e6",
       "name_ko": "후 비첩 자생 아이크림",
       "name_en": "The History of Whoo Bichup Ja Yoon Eye Cream",
-      "brand": "numbuzin",
+      "brand": "The History of Whoo",
       "category": "skincare",
       "subcategory": "eye_care",
       "budget_level": "luxury",
@@ -8277,8 +8211,12 @@
         "budget:luxury"
       ],
       "name": {
-        "en": "numbuzin numbuzin No. 9 NAD Retinol Volume Shot Eye Cream 10ml",
-        "ko": "numbuzin numbuzin No. 9 NAD Retinol Volume Shot Eye Cream 10ml"
+        "en": "The History of Whoo Bichup Ja Saeng Eye Cream",
+        "ko": "후 비첩 자생 아이크림",
+        "ja": "The History of Whoo 秘帖(ビチョプ) 自生(ジャセン) アイクリーム",
+        "zh": "后 秘贴 自生 精华眼霜",
+        "es": "The History of Whoo Bichup Ja Saeng Contorno de Ojos",
+        "fr": "The History of Whoo Bichup Ja Saeng Crème Contour des Yeux"
       },
       "skin_types": [
         "combination",
@@ -8308,16 +8246,8 @@
         "es": "Ayuda a mejorar las arrugas alrededor de los ojos fortaleciendo el poder de auto-regeneración de la piel. Textura hidratante y suave. Sin embargo, el precio es alto. (Resumen de revisión de IA)",
         "fr": "Aide à améliorer les rides autour des yeux en renforçant le pouvoir d'auto-régénération de la peau. Texture hydratante et douce. Cependant, le prix est élevé. (Résumé de l'avis de l'IA)"
       },
-      "purchase_links": [
-        {
-          "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250631809"
-        }
-      ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1891/d024651c-ba21-4be4-8e5a-ca7c9f6395c0.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 23520
+      "purchase_links": null,
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -8409,7 +8339,7 @@
       "id": "70d9deab-b02e-5fb2-a821-dd47eecfd736",
       "name_ko": "더샘 세미 에센셜 아이크림",
       "name_en": "The SAEM Cell Renew Bio Eye Cream",
-      "brand": "BIOHEAL BOH",
+      "brand": "The SAEM",
       "category": "skincare",
       "subcategory": "eye_care",
       "budget_level": "budget",
@@ -8433,8 +8363,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "BIOHEAL BOH BIOHEAL BOH PROBIODERM 3D Lifting Eye & Wrinkle Cream 25ml Double Pack",
-        "ko": "BIOHEAL BOH BIOHEAL BOH PROBIODERM 3D Lifting Eye & Wrinkle Cream 25ml Double Pack"
+        "en": "the SAEM Semi Essential Eye Cream",
+        "ko": "더샘 세미 에센셜 아이크림",
+        "ja": "the SAEM セミエッセンシャル アイクリーム",
+        "zh": "the SAEM 半精华眼霜",
+        "es": "the SAEM Crema de Ojos Semi Esencial",
+        "fr": "the SAEM Crème Yeux Semi Essentielle"
       },
       "skin_types": [
         "combination",
@@ -8465,13 +8399,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240623965"
+          "url": "https://global.oliveyoung.com/search?query=The%20SAEM%20Cell%20Renew%20Bio%20Eye%20Cream"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1508/d78e4623-2e41-4e47-8901-77c7aafed376.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 43400
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -8483,7 +8414,7 @@
       "id": "5065984e-7de6-5a6b-bd21-64b4c809144d",
       "name_ko": "이자녹스 에이지 포커스 피토프로 레티놀 아이크림",
       "name_en": "ISA KNOX Age Focus Phyto Pro Retinol Eye Cream",
-      "brand": "Beauty of Joseon",
+      "brand": "ISA KNOX",
       "category": "skincare",
       "subcategory": "eye_care",
       "budget_level": "premium",
@@ -8508,8 +8439,12 @@
         "budget:premium"
       ],
       "name": {
-        "en": "Beauty of Joseon Beauty of Joseon Revive Eye Serum Ginseng + Retinal 30mL",
-        "ko": "Beauty of Joseon Beauty of Joseon Revive Eye Serum Ginseng + Retinal 30mL"
+        "en": "ISA KNOX Age Focus Phyto-Pro Retinol Eye Cream",
+        "ko": "이자녹스 에이지 포커스 피토프로 레티놀 아이크림",
+        "ja": "ISA KNOX エイジフォーカス フィトプロ レチノール アイクリーム",
+        "zh": "ISA KNOX 焕颜赋活植物精粹视黄醇眼霜",
+        "es": "ISA KNOX Age Focus Phyto-Pro Retinol Crema para Ojos",
+        "fr": "ISA KNOX Age Focus Phyto-Pro Retinol Crème Yeux"
       },
       "skin_types": [
         "combination",
@@ -8539,16 +8474,8 @@
         "es": "La crema para ojos Phyto-Pro Retinol Eye Cream es elogiada por su eficacia en la reducción de arrugas. Sin embargo, las personas con piel sensible deben tener precaución debido al contenido de retinol. (Resumen de reseña de IA)",
         "fr": "La crème pour les yeux Phyto-Pro Retinol Eye Cream est appréciée pour son efficacité dans la réduction des rides. Cependant, les personnes ayant la peau sensible doivent être prudentes en raison de la teneur en rétinol. (Résumé d'avis IA)"
       },
-      "purchase_links": [
-        {
-          "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220816048"
-        }
-      ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1799/32abf014-9f01-46d6-bcfd-86b89e1e08ca.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 19446
+      "purchase_links": null,
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -8560,7 +8487,7 @@
       "id": "58a3815b-ca23-5e48-a693-399cd65abf8a",
       "name_ko": "넘버즈인 4번 레티놀 아이크림",
       "name_en": "numbuzin No.4 Collagen 73 Dewy Focus Eye Serum",
-      "brand": "Beauty of Joseon",
+      "brand": "numbuzin",
       "category": "skincare",
       "subcategory": "eye_care",
       "budget_level": "budget",
@@ -8584,8 +8511,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "Beauty of Joseon Beauty of Joseon Revive Eye Serum : Ginseng + Retinol Double Pack",
-        "ko": "Beauty of Joseon Beauty of Joseon Revive Eye Serum : Ginseng + Retinol Double Pack"
+        "en": "numbuzin No.4 Retinol Eye Cream",
+        "ko": "넘버즈인 4번 레티놀 아이크림",
+        "ja": "ナンバーズイン 4番 レチノール アイクリーム",
+        "zh": "numbuzin No.4 视黄醇眼霜",
+        "es": "numbuzin N°4 Crema de Ojos con Retinol",
+        "fr": "numbuzin N°4 Crème Yeux au Rétinol"
       },
       "skin_types": [
         "combination",
@@ -8618,13 +8549,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240121816"
+          "url": "https://global.oliveyoung.com/search?query=numbuzin%20No.4%20Collagen%2073%20Dewy%20Focus%20Eye%20Serum"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1401/eaa23350-d45f-4573-8088-9e8a578440df.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 40600
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -8791,7 +8719,7 @@
       "id": "623e5c6d-b9c5-52ce-bc9a-a172404eded1",
       "name_ko": "페리페라 잉크 무드 매트 틴트",
       "name_en": "Peripera Ink Mood Matte Tint",
-      "brand": "fwee",
+      "brand": "Peripera",
       "category": "makeup",
       "subcategory": "lip_tint",
       "budget_level": "budget",
@@ -8812,8 +8740,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "fwee fwee Rose Obsession Stay-fit Lip Tint (24 Colors)",
-        "ko": "fwee fwee Rose Obsession Stay-fit Lip Tint (24 Colors)"
+        "en": "Peripera Ink Mood Matte Tint",
+        "ko": "페리페라 잉크 무드 매트 틴트",
+        "ja": "ペリペラ インク ムード マット ティント",
+        "zh": "Peripera 墨水慕斯哑光唇釉",
+        "es": "Peripera Ink Mood Matte Tint",
+        "fr": "Peripera Ink Mood Matte Tint"
       },
       "skin_types": [
         "combination",
@@ -8845,13 +8777,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260237886"
+          "url": "https://global.oliveyoung.com/search?query=Peripera%20Ink%20Mood%20Matte%20Tint"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1877/4b7f6c6e-deda-4f1e-bba7-ffbea0fdcde7.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 15190
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -8997,12 +8926,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250933246"
+          "url": "https://global.oliveyoung.com/search?query=Clio%20Melting%20Dewy%20Tint"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1802/491b41c9-d62f-4643-8f45-628e3307a037.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -9322,7 +9249,7 @@
       "id": "fa1b1f88-a60d-5a95-a514-a0a6921bc3a1",
       "name_ko": "마몽드 크리미 틴트 컬러 밤 인텐스",
       "name_en": "Mamonde Creamy Tint Color Balm Intense",
-      "brand": "athe",
+      "brand": "Mamonde",
       "category": "makeup",
       "subcategory": "lip_balm",
       "budget_level": "moderate",
@@ -9346,8 +9273,12 @@
         "budget:moderate"
       ],
       "name": {
-        "en": "athe athe Authentic Lip Glowy Balm (11 Colors)",
-        "ko": "athe athe Authentic Lip Glowy Balm (11 Colors)"
+        "en": "Mamonde Creamy Tint Color Balm Intense",
+        "ko": "마몽드 크리미 틴트 컬러 밤 인텐스",
+        "ja": "Mamonde クリーミー ティント カラー バーム インテンス",
+        "zh": "Mamonde 奶油唇釉蜡笔 Intense",
+        "es": "Mamonde Creamy Tint Color Balm Intense",
+        "fr": "Mamonde Creamy Tint Color Balm Intense"
       },
       "skin_types": [
         "combination",
@@ -9376,13 +9307,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260136358"
+          "url": "https://global.oliveyoung.com/search?query=Mamonde%20Creamy%20Tint%20Color%20Balm%20Intense"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1721/9cd044e5-235c-4d9c-939a-45983b5c3aad.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 41188
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -9394,7 +9322,7 @@
       "id": "a1c532d4-602c-500f-b0d3-d755cac430df",
       "name_ko": "투쿨포스쿨 글로우 핏 립 글레이즈",
       "name_en": "too cool for school Glaze Lip Gloss",
-      "brand": "HERA",
+      "brand": "too cool for school",
       "category": "makeup",
       "subcategory": "lip_gloss",
       "budget_level": "budget",
@@ -9417,8 +9345,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "HERA HERA Sensual Nude Gloss (Set/Single) (14 Colors)",
-        "ko": "HERA HERA Sensual Nude Gloss (Set/Single) (14 Colors)"
+        "en": "too cool for school Glowy Fit Lip Glaze",
+        "ko": "투쿨포스쿨 글로우 핏 립 글레이즈",
+        "ja": "too cool for school グローイフィット リップグレイズ",
+        "zh": "too cool for school 柔雾贴合唇釉",
+        "es": "too cool for school Glowy Fit Lip Glaze",
+        "fr": "too cool for school Glowy Fit Lip Glaze"
       },
       "skin_types": [
         "combination",
@@ -9450,13 +9382,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240825130"
+          "url": "https://global.oliveyoung.com/search?query=too%20cool%20for%20school%20Glaze%20Lip%20Gloss"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1786/c6cd2939-fa4b-4778-a060-b230213fb341.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 46200
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -9468,7 +9397,7 @@
       "id": "9121c461-20d8-583a-91a9-22c34b2a6c16",
       "name_ko": "설화수 에센셜 립 세럼 스틱",
       "name_en": "Sulwhasoo Essential Lip Serum Stick",
-      "brand": "3CE",
+      "brand": "Sulwhasoo",
       "category": "makeup",
       "subcategory": "lip_stick",
       "budget_level": "luxury",
@@ -9492,8 +9421,12 @@
         "budget:luxury"
       ],
       "name": {
-        "en": "3CE 3CE Cashmere Hug Lipstick (14 Colors)",
-        "ko": "3CE 3CE Cashmere Hug Lipstick (14 Colors)"
+        "en": "Sulwhasoo Essential Lip Serum Stick",
+        "ko": "설화수 에센셜 립 세럼 스틱",
+        "ja": "雪花秀 エッセンシャル リップセラム スティック",
+        "zh": "雪花秀 润唇精华棒",
+        "es": "Sulwhasoo Essential Lip Serum Stick",
+        "fr": "Sulwhasoo Essential Lip Serum Stick"
       },
       "skin_types": [
         "dry",
@@ -9520,16 +9453,8 @@
         "es": "Los usuarios elogian este labial en sérum por su textura hidratante y su color natural, lo que lo hace ideal para el uso diario. Algunos mencionan que la duración podría mejorarse. *Resumen de reseñas generado por IA.",
         "fr": "Les utilisateurs apprécient ce sérum à lèvres pour sa texture hydratante et son rendu de couleur naturelle, ce qui le rend idéal pour un usage quotidien. Certains mentionnent que la tenue pourrait être améliorée. *Résumé d'avis généré par l'IA."
       },
-      "purchase_links": [
-        {
-          "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA241026497"
-        }
-      ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1282/3ea68f4e-ed83-4ec1-aa0a-f4f563316ac2.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 29400
+      "purchase_links": null,
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -9601,12 +9526,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260338948"
+          "url": "https://global.oliveyoung.com/search?query=Wakemake%20Water%20Blurring%20Glow%20Lipstick"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1524/2b896461-f0b1-4161-9bb8-ba776df9e4f4.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -9828,12 +9751,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250832751"
+          "url": "https://global.oliveyoung.com/search?query=Clio%20Kill%20Cover%20Foun-Wear%20Cushion%20All%20New"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1992/ea50dab0-e10b-4cab-9775-6cb363265798.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -9845,7 +9766,7 @@
       "id": "36cb56b2-af43-5c93-bcd7-1078fd3e5fad",
       "name_ko": "미샤 매직 쿠션 커버 래스팅",
       "name_en": "Missha Magic Cushion Cover Lasting",
-      "brand": "JUNGSAEMMOOL",
+      "brand": "MISSHA",
       "category": "makeup",
       "subcategory": "cushion",
       "budget_level": "budget",
@@ -9869,8 +9790,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "JUNGSAEMMOOL JUNGSAEMMOOL Essential Skin Nuder Cushion (Refill Included) (12 Shades)",
-        "ko": "JUNGSAEMMOOL JUNGSAEMMOOL Essential Skin Nuder Cushion (Refill Included) (12 Shades)"
+        "en": "Missha Magic Cushion Cover Lasting",
+        "ko": "미샤 매직 쿠션 커버 래스팅",
+        "ja": "ミシャ マジッククッション カバーラスティング",
+        "zh": "谜尚 (Missha) 魔法气垫粉底 (持久遮瑕)",
+        "es": "Missha Magic Cushion Cover Lasting",
+        "fr": "Missha Magic Cushion Cover Lasting"
       },
       "skin_types": [
         "combination",
@@ -9901,13 +9826,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210002919"
+          "url": "https://global.oliveyoung.com/search?query=Missha%20Magic%20Cushion%20Cover%20Lasting"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1893/73b21d20-3ec1-4aa9-bad7-7731e5b18e8b.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 50400
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -10073,7 +9995,7 @@
       "id": "ac6a7d8d-2615-5de6-9393-ad393b2dc984",
       "name_ko": "에뛰드 더블 래스팅 쿠션 글로우",
       "name_en": "Etude Double Lasting Cushion Glow",
-      "brand": "CLIO",
+      "brand": "ETUDE",
       "category": "makeup",
       "subcategory": "cushion",
       "budget_level": "premium",
@@ -10097,8 +10019,12 @@
         "budget:premium"
       ],
       "name": {
-        "en": "CLIO CLIO Kill Cover High Glow Cushion (+Refill) (3 Colors)",
-        "ko": "CLIO CLIO Kill Cover High Glow Cushion (+Refill) (3 Colors)"
+        "en": "Etude Double Lasting Cushion Glow",
+        "ko": "에뛰드 더블 래스팅 쿠션 글로우",
+        "ja": "エチュード ダブルラスティング クッション グロウ",
+        "zh": "伊蒂之屋 持久焕采气垫粉底",
+        "es": "Etude Double Lasting Cushion Glow",
+        "fr": "Etude Double Lasting Cushion Glow"
       },
       "skin_types": [
         "combination",
@@ -10129,13 +10055,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA230819904"
+          "url": "https://global.oliveyoung.com/search?query=Etude%20Double%20Lasting%20Cushion%20Glow"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1677/5103a65f-1923-43c3-bb4d-0437a3cdf3c0.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 47600
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -10147,7 +10070,7 @@
       "id": "22a7296d-4482-5ad8-838d-aa0f494c5023",
       "name_ko": "설화수 퍼펙팅 쿠션",
       "name_en": "Sulwhasoo Perfecting Cushion",
-      "brand": "JUNGSAEMMOOL",
+      "brand": "Sulwhasoo",
       "category": "makeup",
       "subcategory": "cushion",
       "budget_level": "luxury",
@@ -10172,8 +10095,12 @@
         "budget:luxury"
       ],
       "name": {
-        "en": "JUNGSAEMMOOL JUNGSAEMMOOL Essential Skin Nuder Long Wear Cushion (Refill Included) (6 Colors)",
-        "ko": "JUNGSAEMMOOL JUNGSAEMMOOL Essential Skin Nuder Long Wear Cushion (Refill Included) (6 Colors)"
+        "en": "Sulwhasoo Perfecting Cushion",
+        "ko": "설화수 퍼펙팅 쿠션",
+        "ja": "雪花秀（ソルファス） パーフェクティング クッション",
+        "zh": "雪花秀 (Sulwhasoo) 致美润白气垫粉底液",
+        "es": "Sulwhasoo Perfecting Cushion",
+        "fr": "Sulwhasoo Perfecting Cushion"
       },
       "skin_types": [
         "combination",
@@ -10202,16 +10129,8 @@
         "es": "¡Logra un brillo húmedo y natural! Cobertura media. Buena duración, pero puede ser demasiado graso para algunas personas. (Resumen de reseña de IA)",
         "fr": "Permet d'obtenir un éclat rosé et naturel ! Couvrance moyenne. Bonne tenue, mais peut être un peu trop gras pour certaines personnes. (Résumé d'avis IA)"
       },
-      "purchase_links": [
-        {
-          "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250228733"
-        }
-      ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1477/99b69690-92d0-41a0-840a-40db43f6cbb6.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 50400
+      "purchase_links": null,
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -10281,12 +10200,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260338337"
+          "url": "https://global.oliveyoung.com/search?query=Innisfree%20No-Sebum%20Powder%20Cushion"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1860/31837260-4ece-4a32-aef7-846e3ea97b0a.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -10300,7 +10217,7 @@
       "name_en": "espoir Pro Tailor Be Foundation",
       "brand": "espoir",
       "category": "makeup",
-      "subcategory": "cushion",
+      "subcategory": "foundation",
       "budget_level": "premium",
       "expected_skin_types": "dry|oily|combination|normal",
       "expected_concerns": "uneven_tone|pores",
@@ -10324,8 +10241,12 @@
         "budget:premium"
       ],
       "name": {
-        "en": "espoir espoir Be Velvet Cover Cushion Full-size (Refill Included) (8 Shades)",
-        "ko": "espoir espoir Be Velvet Cover Cushion Full-size (Refill Included) (8 Shades)"
+        "en": "Espoir Pro Tailor Be Foundation",
+        "ko": "에스쁘아 프로 테일러 비 파운데이션",
+        "ja": "エスポア プロテーラー ビー ファンデーション",
+        "zh": "Espoir Pro Tailor Be 粉底液",
+        "es": "Espoir Pro Tailor Be Foundation",
+        "fr": "Espoir Pro Tailor Be Foundation"
       },
       "skin_types": [
         "combination",
@@ -10357,13 +10278,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA251034393"
+          "url": "https://global.oliveyoung.com/search?query=espoir%20Pro%20Tailor%20Be%20Foundation"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1739/8edc8556-ac00-4ac4-a578-de7a45470fe4.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 56000
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -10456,9 +10374,9 @@
       "id": "0f870ff9-a4e8-5f2f-9f3a-84baff67f86f",
       "name_ko": "아모레퍼시픽 타임 레스폰스 스킨 리저브 쿠션",
       "name_en": "Amorepacific Time Response Skin Reserve Cushion",
-      "brand": "Alternative stereo",
+      "brand": "Amorepacific",
       "category": "makeup",
-      "subcategory": "foundation",
+      "subcategory": "cushion",
       "budget_level": "luxury",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "wrinkles|dullness|dryness",
@@ -10480,8 +10398,12 @@
         "budget:luxury"
       ],
       "name": {
-        "en": "Alternative stereo Alternative stereo Lip Potion Caramel Glaze Tint (14 Colors)",
-        "ko": "Alternative stereo Alternative stereo Lip Potion Caramel Glaze Tint (14 Colors)"
+        "en": "Amorepacific Time Response Skin Reserve Cushion",
+        "ko": "아모레퍼시픽 타임 레스폰스 스킨 리저브 쿠션",
+        "ja": "アモーレパシフィック タイム レスポンス スキン リザーブ クッション",
+        "zh": "爱茉莉太平洋 时光活肤御时臻养气垫粉底",
+        "es": "Amorepacific Time Response Skin Reserve Cushion",
+        "fr": "Amorepacific Time Response Skin Reserve Cushion"
       },
       "skin_types": [
         "combination",
@@ -10510,16 +10432,8 @@
         "es": "Un cushion lujoso con excelente adherencia y un brillo radiante. Sin embargo, es relativamente caro. *Este es un resumen de reseña generado por IA.",
         "fr": "Un cushion luxueux avec une excellente adhérence et un éclat radieux. Cependant, il est relativement cher. *Ceci est un résumé d'avis généré par l'IA."
       },
-      "purchase_links": [
-        {
-          "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250933464"
-        }
-      ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1176/f7aef79e-6555-4fa3-bcc4-e095a6dd7a54.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 25284
+      "purchase_links": null,
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -10683,7 +10597,7 @@
       "id": "1cdb9808-41f7-5966-a2a5-f7d279a861b2",
       "name_ko": "에뛰드 플레이 컬러 아이즈",
       "name_en": "Etude Play Color Eyes",
-      "brand": "2aN",
+      "brand": "ETUDE",
       "category": "makeup",
       "subcategory": "eye_shadow",
       "budget_level": "premium",
@@ -10707,8 +10621,12 @@
         "budget:premium"
       ],
       "name": {
-        "en": "2aN 2aN Better Me Eye Palette (21 Options)",
-        "ko": "2aN 2aN Better Me Eye Palette (21 Options)"
+        "en": "Etude House Play Color Eyes Eyeshadow Palette",
+        "ko": "에뛰드 플레이 컬러 아이즈",
+        "ja": "エチュードハウス プレイカラーアイズ",
+        "zh": "伊蒂之屋玩转色彩多色眼影盘",
+        "es": "Etude House Play Color Eyes Paleta de Sombras",
+        "fr": "Etude House Play Color Eyes Palette d'Ombres à Paupières"
       },
       "skin_types": [
         "combination",
@@ -10739,13 +10657,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240222182"
+          "url": "https://global.oliveyoung.com/search?query=Etude%20Play%20Color%20Eyes"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1938/43af58e9-02a2-413f-9257-8304e57a54e7.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 25438
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -10757,7 +10672,7 @@
       "id": "710c681c-3a6b-50e2-b0a1-cf8d161b496a",
       "name_ko": "클리오 킬 래쉬 슈퍼프루프 마스카라",
       "name_en": "Clio Kill Lash Superproof Mascara",
-      "brand": "peripera",
+      "brand": "CLIO",
       "category": "makeup",
       "subcategory": "mascara",
       "budget_level": "moderate",
@@ -10780,8 +10695,12 @@
         "budget:moderate"
       ],
       "name": {
-        "en": "peripera peripera Speedy Skinny Brow Mascara (10 Colors)",
-        "ko": "peripera peripera Speedy Skinny Brow Mascara (10 Colors)"
+        "en": "Clio Kill Lash Superproof Mascara",
+        "ko": "클리오 킬 래쉬 슈퍼프루프 마스카라",
+        "ja": "クリオ キル ラッシュ スーパープルーフ マスカラ",
+        "zh": "Clio珂莉奥 Kill Lash防水睫毛膏",
+        "es": "Clio Kill Lash Superproof Máscara de Pestañas",
+        "fr": "Clio Kill Lash Mascara Superproof"
       },
       "skin_types": [
         "combination",
@@ -10810,13 +10729,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA241227545"
+          "url": "https://global.oliveyoung.com/search?query=Clio%20Kill%20Lash%20Superproof%20Mascara"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1889/a4263a82-c2b2-4519-bca8-f4097ca30905.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 10640
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -10828,7 +10744,7 @@
       "id": "021a9515-386e-599b-a523-f550c275b237",
       "name_ko": "롬앤 한올 슈퍼 프루프 마스카라",
       "name_en": "rom&nd Han All Sharp Proof Mascara",
-      "brand": "ETUDE",
+      "brand": "rom&nd",
       "category": "makeup",
       "subcategory": "mascara",
       "budget_level": "moderate",
@@ -10851,8 +10767,12 @@
         "budget:moderate"
       ],
       "name": {
-        "en": "ETUDE ETUDE Curl Fix Mascara 1+1 Set (4 Options)",
-        "ko": "ETUDE ETUDE Curl Fix Mascara 1+1 Set (4 Options)"
+        "en": "rom&nd Han All Super Proof Mascara",
+        "ko": "롬앤 한올 슈퍼 프루프 마스카라",
+        "ja": "rom&nd ハンオール スーパープルーフ マスカラ",
+        "zh": "rom&nd Han All 超级防水睫毛膏",
+        "es": "rom&nd Han All Máscara Super Proof",
+        "fr": "rom&nd Han All Mascara Super Proof"
       },
       "skin_types": [
         "combination",
@@ -10881,13 +10801,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260136558"
+          "url": "https://global.oliveyoung.com/search?query=rom%26nd%20Han%20All%20Sharp%20Proof%20Mascara"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1902/fa81fe24-8778-48aa-aca7-d6c5792f7e0d.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 21686
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -11049,7 +10966,7 @@
       "id": "9d329440-edb1-5e29-8552-8c97f29174be",
       "name_ko": "페리페라 잉크 씬씬 아이 펜슬",
       "name_en": "Peripera Ink Thin Thin Eye Pencil",
-      "brand": "Heart Percent",
+      "brand": "Peripera",
       "category": "makeup",
       "subcategory": "eye_liner",
       "budget_level": "budget",
@@ -11072,8 +10989,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "Heart Percent Heart Percent Dote On Mood Gel Eyeliner Pencil (10 Colors)",
-        "ko": "Heart Percent Heart Percent Dote On Mood Gel Eyeliner Pencil (10 Colors)"
+        "en": "Peripera Ink Thin Thin Eye Pencil",
+        "ko": "페리페라 잉크 씬씬 아이 펜슬",
+        "ja": "ペリペラ インク シンシン アイペンシル",
+        "zh": "Peripera 墨水细细眼线笔",
+        "es": "Peripera Ink Thin Thin Eye Pencil",
+        "fr": "Peripera Ink Thin Thin Eye Pencil"
       },
       "skin_types": [
         "combination",
@@ -11102,13 +11023,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250933557"
+          "url": "https://global.oliveyoung.com/search?query=Peripera%20Ink%20Thin%20Thin%20Eye%20Pencil"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1294/f37689d6-3a2a-4aeb-b3c9-65821ef815e6.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 19600
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -11335,12 +11253,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250329148"
+          "url": "https://global.oliveyoung.com/search?query=Laneige%20Glowy%20Makeup%20Serum"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1319/fedef0c1-2f85-4924-ac6c-d69b99a0a593.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -11352,7 +11268,7 @@
       "id": "3b3a1069-59a5-5c9c-bfae-9fb44f501b73",
       "name_ko": "이니스프리 노세범 미네랄 파우더",
       "name_en": "Innisfree No-Sebum Mineral Powder",
-      "brand": "espoir",
+      "brand": "Innisfree",
       "category": "makeup",
       "subcategory": "setting_powder",
       "budget_level": "budget",
@@ -11375,8 +11291,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "espoir espoir Fresh Setting Powder 9g",
-        "ko": "espoir espoir Fresh Setting Powder 9g"
+        "en": "Innisfree No Sebum Mineral Powder",
+        "ko": "이니스프리 노세범 미네랄 파우더",
+        "ja": "イニスフリー ノーセバム ミネラルパウダー",
+        "zh": "悦诗风吟 控油矿物质散粉",
+        "es": "Innisfree No Sebum Mineral Powder",
+        "fr": "Innisfree No Sebum Mineral Powder"
       },
       "skin_types": [
         "combination",
@@ -11405,13 +11325,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210610769"
+          "url": "https://global.oliveyoung.com/search?query=Innisfree%20No-Sebum%20Mineral%20Powder"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1356/c5de2201-9f0c-4730-baeb-9fe5fc1ff542.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 35000
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -11557,12 +11474,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240825108"
+          "url": "https://global.oliveyoung.com/search?query=Clio%20Kill%20Cover%20Fixer%20Primer"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1009/8a7e7bc2-d776-4169-974f-248906dd5f71.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -11574,7 +11489,7 @@
       "id": "a7812e0c-ee3b-5d9c-8ed7-d457582f7868",
       "name_ko": "에뛰드 꽃잎 블러셔",
       "name_en": "Etude Lovely Cookie Blusher",
-      "brand": "3CE",
+      "brand": "ETUDE",
       "category": "makeup",
       "subcategory": "blush",
       "budget_level": "budget",
@@ -11598,8 +11513,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "3CE 3CE Blushlighter 4.3g (7 Colors)",
-        "ko": "3CE 3CE Blushlighter 4.3g (7 Colors)"
+        "en": "Etude House Flower Petal Blusher",
+        "ko": "에뛰드 꽃잎 블러셔",
+        "ja": "エチュードハウス 花びらチーク",
+        "zh": "伊蒂之屋 花瓣腮红",
+        "es": "Etude House Colorete Pétalo de Flor",
+        "fr": "Etude House Blush Pétale de Fleur"
       },
       "skin_types": [
         "combination",
@@ -11631,13 +11550,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250127758"
+          "url": "https://global.oliveyoung.com/search?query=Etude%20Lovely%20Cookie%20Blusher"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1554/24592338-1900-4b36-937d-1a73f10632ae.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 25760
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -11718,7 +11634,7 @@
       "id": "6606c186-0660-58f6-8b70-96dd23e1e0ca",
       "name_ko": "라보에이치 탈모 증상 완화 샴푸",
       "name_en": "La'dor Anti Hair Loss Shampoo",
-      "brand": "UNOVE",
+      "brand": "La'dor",
       "category": "haircare",
       "subcategory": "shampoo",
       "budget_level": "budget",
@@ -11739,8 +11655,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "UNOVE UNOVE Deep Damage Repair Shampoo 500g Double Set (3 Options)",
-        "ko": "UNOVE UNOVE Deep Damage Repair Shampoo 500g Double Set (3 Options)"
+        "en": "Labo-H Hair Loss Relief Shampoo",
+        "ko": "라보에이치 탈모 증상 완화 샴푸",
+        "ja": "Labo-H 抜け毛緩和シャンプー",
+        "zh": "Labo-H 缓解脱发洗发水",
+        "es": "Champú para aliviar la caída del cabello Labo-H",
+        "fr": "Shampooing anti-chute Labo-H"
       },
       "skin_types": [],
       "concerns": [
@@ -11765,13 +11685,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250530907"
+          "url": "https://global.oliveyoung.com/search?query=La'dor%20Anti%20Hair%20Loss%20Shampoo"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1814/b8535579-ae4b-4fe0-b641-ea80b593de5d.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 44128
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -11783,7 +11700,7 @@
       "id": "d47ecc40-35f7-5c55-94c3-a91077a1b9f8",
       "name_ko": "아모스 녹차 실감 샴푸",
       "name_en": "Amos Green Tea Refresh Shampoo",
-      "brand": "LABO-H",
+      "brand": "Amos Professional",
       "category": "haircare",
       "subcategory": "shampoo",
       "budget_level": "premium",
@@ -11804,8 +11721,12 @@
         "budget:premium"
       ],
       "name": {
-        "en": "LABO-H LABO-H Scalp Strenghtening Shampoo 750ml Refill Set (+600ml)",
-        "ko": "LABO-H LABO-H Scalp Strenghtening Shampoo 750ml Refill Set (+600ml)"
+        "en": "Amos Green Tea Scalp Pack Shampoo",
+        "ko": "아모스 녹차 실감 샴푸",
+        "ja": "アモス グリーンティー スカルプ パック シャンプー",
+        "zh": "爱茉诗 绿茶实感洗发水",
+        "es": "Champú Amos Green Tea Real Scalp",
+        "fr": "Shampooing Amos Green Tea Scalp Pack"
       },
       "skin_types": [],
       "concerns": [
@@ -11831,13 +11752,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260136729"
+          "url": "https://global.oliveyoung.com/search?query=Amos%20Green%20Tea%20Refresh%20Shampoo"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1235/c13f6874-d23b-4161-8add-f72f074f0ee8.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 64456
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -11902,12 +11820,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250329148"
+          "url": "https://global.oliveyoung.com/search?query=Mise%20en%20Scene%20Perfect%20Serum%20Shampoo"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1319/fedef0c1-2f85-4924-ac6c-d69b99a0a593.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -11919,7 +11835,7 @@
       "id": "ef617b83-c968-5576-8b16-918e82f0eb89",
       "name_ko": "려 자양윤모 샴푸",
       "name_en": "Ryo Jayang Yunmo Anti Hair Loss Shampoo",
-      "brand": "AROMATICA",
+      "brand": "Ryo",
       "category": "haircare",
       "subcategory": "shampoo",
       "budget_level": "moderate",
@@ -11941,8 +11857,12 @@
         "budget:moderate"
       ],
       "name": {
-        "en": "AROMATICA AROMATICA Rosemary Scalp Scaling Shampoo 400ml (NEW Pump)",
-        "ko": "AROMATICA AROMATICA Rosemary Scalp Scaling Shampoo 400ml (NEW Pump)"
+        "en": "Ryo Jayang Yunmo Shampoo",
+        "ko": "려 자양윤모 샴푸",
+        "ja": "呂 (リョ) ジャヤンユンモ シャンプー",
+        "zh": "吕 滋养韧发洗发露",
+        "es": "Champú Ryo Jayang Yunmo",
+        "fr": "Shampoing Ryo Jayang Yunmo"
       },
       "skin_types": [],
       "concerns": [
@@ -11967,13 +11887,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240523590"
+          "url": "https://global.oliveyoung.com/search?query=Ryo%20Jayang%20Yunmo%20Anti%20Hair%20Loss%20Shampoo"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1380/4938bbcb-c196-4216-bc2f-8a1907632992.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 22344
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -11985,7 +11902,7 @@
       "id": "824090e6-5895-52f2-a0c0-5ef355de5f1a",
       "name_ko": "아모스 프로페셔널 녹차 실감 샴푸",
       "name_en": "Amos Professional Green Tea Real Fresh Shampoo",
-      "brand": "Dr.FORHAIR",
+      "brand": "Amos Professional",
       "category": "haircare",
       "subcategory": "shampoo",
       "budget_level": "moderate",
@@ -12008,8 +11925,12 @@
         "budget:moderate"
       ],
       "name": {
-        "en": "Dr.FORHAIR Dr.FORHAIR Folligen Thickening Shampoo 750ml Set (+100ml*2ea)",
-        "ko": "Dr.FORHAIR Dr.FORHAIR Folligen Thickening Shampoo 750ml Set (+100ml*2ea)"
+        "en": "Amos Professional The Green Tea Scalp Pack Shampoo",
+        "ko": "아모스 프로페셔널 녹차 실감 샴푸",
+        "ja": "アモスプロフェッショナル 緑茶実感 シャンプー",
+        "zh": "爱茉诗 绿茶实感洗发水",
+        "es": "Amos Professional Champú Estimulante de Té Verde",
+        "fr": "Amos Professional Shampooing Revitalisant au Thé Vert"
       },
       "skin_types": [],
       "concerns": [
@@ -12035,13 +11956,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260237865"
+          "url": "https://global.oliveyoung.com/search?query=Amos%20Professional%20Green%20Tea%20Real%20Fresh%20Shampoo"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1995/1fe9d0a3-3ae3-469d-9dfa-6cd88f2a17f7.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 49182
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -12053,7 +11971,7 @@
       "id": "94aa4a41-04bb-5a0e-bf30-2620fab62d41",
       "name_ko": "모레모 워터 트리트먼트 미라클 10",
       "name_en": "Moremo Water Treatment Miracle 10",
-      "brand": "Elizavecca",
+      "brand": "Moremo",
       "category": "haircare",
       "subcategory": "treatment",
       "budget_level": "premium",
@@ -12075,8 +11993,12 @@
         "budget:premium"
       ],
       "name": {
-        "en": "Elizavecca Elizavecca Collagen Ceramide Coating Protein Treatment (CER-100) 100mL",
-        "ko": "Elizavecca Elizavecca Collagen Ceramide Coating Protein Treatment (CER-100) 100mL"
+        "en": "Moremo Water Treatment Miracle 10",
+        "ko": "모레모 워터 트리트먼트 미라클 10",
+        "ja": "Moremo ウォータートリートメント ミラクル10",
+        "zh": "Moremo 奇迹10水疗护发素",
+        "es": "Moremo Tratamiento de Agua Miracle 10",
+        "fr": "Moremo Soin Eau Miracle 10"
       },
       "skin_types": [],
       "concerns": [
@@ -12101,13 +12023,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240523649"
+          "url": "https://global.oliveyoung.com/search?query=Moremo%20Water%20Treatment%20Miracle%2010"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1662/73f53e85-8a26-453f-a611-2d8fb633a440.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 10010
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -12119,7 +12038,7 @@
       "id": "1551d2f4-d367-5b9b-84c7-eb1c67056a22",
       "name_ko": "라도르 퍼펙트 헤어 필 업",
       "name_en": "La'dor Perfect Hair Fill-Up",
-      "brand": "Meebak",
+      "brand": "La'dor",
       "category": "haircare",
       "subcategory": "treatment",
       "budget_level": "moderate",
@@ -12142,8 +12061,12 @@
         "budget:moderate"
       ],
       "name": {
-        "en": "Meebak Meebak Cica Redness Solution Cream Lite 50ml",
-        "ko": "Meebak Meebak Cica Redness Solution Cream Lite 50ml"
+        "en": "Lador Perfect Hair Fill-Up",
+        "ko": "라도르 퍼펙트 헤어 필 업",
+        "ja": "Lador パーフェクトヘアフィルアップ",
+        "zh": "Lador 完美护发填充剂",
+        "es": "Lador Perfect Hair Fill-Up",
+        "fr": "Lador Perfect Hair Fill-Up"
       },
       "skin_types": [],
       "concerns": [
@@ -12168,13 +12091,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250530514"
+          "url": "https://global.oliveyoung.com/search?query=La'dor%20Perfect%20Hair%20Fill-Up"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1209/adb0a928-6f6c-4bd8-8421-6e71bd4502cc.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 27930
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -12239,12 +12159,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA230518746"
+          "url": "https://global.oliveyoung.com/search?query=Mise%20en%20Scene%20Perfect%20Serum%20Treatment%20Pack"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1595/6290bfe2-63de-4724-9e18-b27eb424964e.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -12379,12 +12297,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220414400"
+          "url": "https://global.oliveyoung.com/search?query=Amos%20Professional%20Recovery%20Cream%20Treatment"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1149/0aa75859-6d33-447f-bef0-a08a9d38a5b9.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -12396,7 +12312,7 @@
       "id": "91a0f0f3-25c7-58e3-8778-b72dfae2f719",
       "name_ko": "모레모 헤어 에센스 딜라이트풀 오일",
       "name_en": "Moremo Hair Essence Delightful Oil",
-      "brand": "UNOVE",
+      "brand": "Moremo",
       "category": "haircare",
       "subcategory": "hair_oil",
       "budget_level": "premium",
@@ -12418,8 +12334,12 @@
         "budget:premium"
       ],
       "name": {
-        "en": "UNOVE UNOVE Deep Damage Treatment EX 320mL Double Pack (4 Options)",
-        "ko": "UNOVE UNOVE Deep Damage Treatment EX 320mL Double Pack (4 Options)"
+        "en": "Moremo Hair Essence Delightful Oil",
+        "ko": "모레모 헤어 에센스 딜라이트풀 오일",
+        "ja": "Moremo ヘアエッセンス ディライトフルオイル",
+        "zh": "Moremo 秀发精华 Delightful Oil",
+        "es": "Moremo Hair Essence Delightful Oil",
+        "fr": "Moremo Hair Essence Delightful Oil"
       },
       "skin_types": [],
       "concerns": [
@@ -12445,13 +12365,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220916169"
+          "url": "https://global.oliveyoung.com/search?query=Moremo%20Hair%20Essence%20Delightful%20Oil"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1728/bcbeda64-fcb8-4d9f-bc84-4fc7d0e4b372.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 48664
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -12463,7 +12380,7 @@
       "id": "88b286f9-9b0b-585f-a825-20cb94c0e34e",
       "name_ko": "미장센 퍼펙트 오리지널 세럼",
       "name_en": "Mise en Scene Perfect Original Serum",
-      "brand": "Dr. Groot",
+      "brand": "Mise en Scène",
       "category": "haircare",
       "subcategory": "hair_serum",
       "budget_level": "budget",
@@ -12486,8 +12403,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "Dr. Groot Dr. Groot Aqua Hair Line Booster Shot 15ml Double Set US$34.68US$58.00",
-        "ko": "Dr. Groot Dr. Groot Aqua Hair Line Booster Shot 15ml Double Set US$34.68US$58.00"
+        "en": "Mise en Scène Perfect Serum Original",
+        "ko": "미장센 퍼펙트 오리지널 세럼",
+        "ja": "ミジャンセン パーフェクトセラム オリジナル",
+        "zh": "魅尚萱 完美修复护发精油 (Original)",
+        "es": "Mise en Scène Perfect Serum Original",
+        "fr": "Mise en Scène Perfect Serum Original"
       },
       "skin_types": [],
       "concerns": [
@@ -12512,13 +12433,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260338924"
+          "url": "https://global.oliveyoung.com/search?query=Mise%20en%20Scene%20Perfect%20Original%20Serum"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1962/91ff53d9-344d-4c60-ae5d-69ad56449ed2.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 48552
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -12530,7 +12448,7 @@
       "id": "c384bd77-a327-56a0-bc91-cec440fde836",
       "name_ko": "라도르 퍼펙트 헤어 필 업 에센스",
       "name_en": "La'dor Perfect Hair Fill-Up Essence",
-      "brand": "vodana",
+      "brand": "La'dor",
       "category": "haircare",
       "subcategory": "hair_essence",
       "budget_level": "moderate",
@@ -12553,8 +12471,12 @@
         "budget:moderate"
       ],
       "name": {
-        "en": "vodana vodana Glow Curling Styler FV 40mm #Powder Pink",
-        "ko": "vodana vodana Glow Curling Styler FV 40mm #Powder Pink"
+        "en": "Lador Perfect Hair Fill-Up Essence",
+        "ko": "라도르 퍼펙트 헤어 필 업 에센스",
+        "ja": "Lador パーフェクト ヘア フィルアップ エッセンス",
+        "zh": "Lador 完美护发精华",
+        "es": "Lador Perfect Hair Fill-Up Essence",
+        "fr": "Lador Perfect Hair Fill-Up Essence"
       },
       "skin_types": [],
       "concerns": [
@@ -12579,13 +12501,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA251034102"
+          "url": "https://global.oliveyoung.com/search?query=La'dor%20Perfect%20Hair%20Fill-Up%20Essence"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1270/3963dd16-73e9-4e56-8b5e-21aa310036ac.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 159264
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -12646,15 +12565,8 @@
         "es": "A los usuarios les encanta el brillo y la manejabilidad que aporta, especialmente para el cabello dañado. Algunos encuentran la fragancia fuerte. ※Este es un resumen de reseña generado por IA.",
         "fr": "Les utilisateurs apprécient la brillance et la maniabilité accrues, en particulier pour les cheveux abîmés. Certains trouvent le parfum fort. ※Il s'agit d'un résumé d'avis généré par l'IA."
       },
-      "purchase_links": [
-        {
-          "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260338998"
-        }
-      ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1829/e03ddac9-a0a1-4584-ac0b-1ca25578a6ce.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "purchase_links": null,
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -12719,12 +12631,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250329148"
+          "url": "https://global.oliveyoung.com/search?query=Kundal%20Argan%20Hair%20Serum"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1319/fedef0c1-2f85-4924-ac6c-d69b99a0a593.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -12736,7 +12646,7 @@
       "id": "48cd4a55-a2d8-5c36-a531-6be292d9963e",
       "name_ko": "미장센 헬로 버블 폼 컬러",
       "name_en": "Mise en Scene Hello Bubble Foam Color",
-      "brand": "ETUDE",
+      "brand": "Mise en Scène",
       "category": "haircare",
       "subcategory": "hair_color",
       "budget_level": "budget",
@@ -12759,8 +12669,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "ETUDE ETUDE Pang Pang Hair Shadow 3.5g (+Hair Fixer 25ml) (3 Colors)",
-        "ko": "ETUDE ETUDE Pang Pang Hair Shadow 3.5g (+Hair Fixer 25ml) (3 Colors)"
+        "en": "Mise en Scène Hello Bubble Foam Color",
+        "ko": "미장센 헬로 버블 폼 컬러",
+        "ja": "ミジャンセン Hello Bubble フォームカラー",
+        "zh": "魅尚萱 Hello Bubble 泡沫染发剂",
+        "es": "Mise en Scène Hello Bubble Foam Color",
+        "fr": "Mise en Scène Hello Bubble Foam Color"
       },
       "skin_types": [],
       "concerns": [],
@@ -12783,13 +12697,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260237890"
+          "url": "https://global.oliveyoung.com/search?query=Mise%20en%20Scene%20Hello%20Bubble%20Foam%20Color"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1744/ea4e05a6-2305-4542-9c6a-2af684161b18.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 21280
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -12851,12 +12762,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA251034266"
+          "url": "https://global.oliveyoung.com/search?query=Amos%20Professional%20Curling%20Essence%202X"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1944/167f6f0a-9efa-4fbc-8a32-337f37442c43.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -12868,9 +12777,9 @@
       "id": "ff2ccdc2-4f69-5ee2-a649-4f4884f8bc57",
       "name_ko": "려 더블 이펙터 루트 볼륨 세팅",
       "name_en": "Ryo Double Effector Root Volume Setting",
-      "brand": "ILLIYOON",
-      "category": "bodycare",
-      "subcategory": "body_wash",
+      "brand": "Ryo",
+      "category": "haircare",
+      "subcategory": "styling",
       "budget_level": "moderate",
       "expected_skin_types": "oily|combination|normal",
       "expected_concerns": "",
@@ -12889,8 +12798,12 @@
         "budget:moderate"
       ],
       "name": {
-        "en": "ILLIYOON ILLIYOON Fresh Moisture Scrub Wash 400ml*2ea Set",
-        "ko": "ILLIYOON ILLIYOON Fresh Moisture Scrub Wash 400ml*2ea Set"
+        "en": "Ryo Double Effector Root Volume Setting",
+        "ko": "려 더블 이펙터 루트 볼륨 세팅",
+        "ja": "呂(リョ) ダブルエフェクター ルートボリュームセッティング",
+        "zh": "吕 双重功效 蓬松定型",
+        "es": "Ryo Double Effector Root Volume Setting",
+        "fr": "Ryo Double Effector Root Volume Setting"
       },
       "skin_types": [],
       "concerns": [],
@@ -12913,13 +12826,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250430397"
+          "url": "https://global.oliveyoung.com/search?query=Ryo%20Double%20Effector%20Root%20Volume%20Setting"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1248/085ade32-784e-4367-b53c-d5297c02d805.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 27398
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -12982,12 +12892,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250329148"
+          "url": "https://global.oliveyoung.com/search?query=Moremo%20Hair%20Serum%20R"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1319/fedef0c1-2f85-4924-ac6c-d69b99a0a593.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -13077,7 +12985,7 @@
       "id": "2aef6b28-9b7d-51ce-95b3-e242f97a1861",
       "name_ko": "해피바스 그린티 바디워시",
       "name_en": "Happy Bath Green Tea Body Wash",
-      "brand": "medicube",
+      "brand": "Happy Bath",
       "category": "bodycare",
       "subcategory": "body_wash",
       "budget_level": "budget",
@@ -13101,8 +13009,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "medicube medicube Red Acne Body Wash 2.0 400g",
-        "ko": "medicube medicube Red Acne Body Wash 2.0 400g"
+        "en": "Happy Bath Green Tea Body Wash",
+        "ko": "해피바스 그린티 바디워시",
+        "ja": "ハッピーバス グリーンティー ボディウォッシュ",
+        "zh": "Happy Bath 绿茶沐浴露",
+        "es": "Happy Bath Gel de Ducha de Té Verde",
+        "fr": "Happy Bath Gel Douche Thé Vert"
       },
       "skin_types": [
         "combination",
@@ -13135,13 +13047,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA230820208"
+          "url": "https://global.oliveyoung.com/search?query=Happy%20Bath%20Green%20Tea%20Body%20Wash"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1740/92e40c3b-1b1d-4a3f-98d7-2e7a58a3d59a.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 51800
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -13153,7 +13062,7 @@
       "id": "923df183-cb89-5248-b49c-90aaed480cd8",
       "name_ko": "한율 달빛유자 바디워시",
       "name_en": "Hanyul Moonlight Citron Body Wash",
-      "brand": "ILLIYOON",
+      "brand": "Hanyul",
       "category": "bodycare",
       "subcategory": "body_wash",
       "budget_level": "premium",
@@ -13178,8 +13087,12 @@
         "budget:premium"
       ],
       "name": {
-        "en": "ILLIYOON ILLIYOON Ceramide Ato 6.0 Top To Toe Wash 1000ml",
-        "ko": "ILLIYOON ILLIYOON Ceramide Ato 6.0 Top To Toe Wash 1000ml"
+        "en": "Hanyul Yuja Moonlight Body Wash",
+        "ko": "한율 달빛유자 바디워시",
+        "ja": "ハンユル 月光ゆず ボディウォッシュ",
+        "zh": "Hanyul 月光柚子 沐浴露",
+        "es": "Hanyul Gel de Ducha Yuja Luz de Luna",
+        "fr": "Hanyul Gel Douche Yuja Clair de Lune"
       },
       "skin_types": [
         "combination",
@@ -13210,13 +13123,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250430401"
+          "url": "https://global.oliveyoung.com/search?query=Hanyul%20Moonlight%20Citron%20Body%20Wash"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1381/726b5c85-30a8-441b-8351-73f5742108bf.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 27706
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -13228,7 +13138,7 @@
       "id": "0cb810cf-fd2f-5bba-96ac-1ec13764138e",
       "name_ko": "메디힐 티트리 바디워시",
       "name_en": "Mediheal Tea Tree Body Wash",
-      "brand": "SOME BY MI",
+      "brand": "Mediheal",
       "category": "bodycare",
       "subcategory": "body_wash",
       "budget_level": "budget",
@@ -13252,8 +13162,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "SOME BY MI SOME BY MI AHA.BHA.PHA 30 Days Miracle Acne Body Cleanser 400g",
-        "ko": "SOME BY MI SOME BY MI AHA.BHA.PHA 30 Days Miracle Acne Body Cleanser 400g"
+        "en": "Mediheal Tea Tree Body Wash",
+        "ko": "메디힐 티트리 바디워시",
+        "ja": "Mediheal ティーツリー ボディウォッシュ",
+        "zh": "Mediheal 茶树沐浴露",
+        "es": "Mediheal Gel de Ducha de Árbol de Té",
+        "fr": "Mediheal Gel Douche Arbre à Thé"
       },
       "skin_types": [
         "combination",
@@ -13283,13 +13197,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240322660"
+          "url": "https://global.oliveyoung.com/search?query=Mediheal%20Tea%20Tree%20Body%20Wash"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1949/df25fcaf-13a5-4fcb-9ab6-76f8ee23963f.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 21126
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -13301,9 +13212,9 @@
       "id": "5f8ebc7b-e6ef-50b9-9360-d6a9b479a520",
       "name_ko": "아모레퍼시픽 바디 리추얼 클렌징 오일",
       "name_en": "Amorepacific Body Ritual Cleansing Oil",
-      "brand": "ILLIYOON",
+      "brand": "Amorepacific",
       "category": "bodycare",
-      "subcategory": "body_lotion",
+      "subcategory": "body_wash",
       "budget_level": "luxury",
       "expected_skin_types": "dry|sensitive|normal",
       "expected_concerns": "dryness",
@@ -13324,8 +13235,12 @@
         "budget:luxury"
       ],
       "name": {
-        "en": "ILLIYOON ILLIYOON Ceramide Ato Lotion 334mL (Set/Single)",
-        "ko": "ILLIYOON ILLIYOON Ceramide Ato Lotion 334mL (Set/Single)"
+        "en": "Amorepacific Body Ritual Cleansing Oil",
+        "ko": "아모레퍼시픽 바디 리추얼 클렌징 오일",
+        "ja": "アモーレパシフィック ボディリチュアル クレンジングオイル",
+        "zh": "爱茉莉太平洋 身体护理洁肤油",
+        "es": "Amorepacific Aceite Limpiador Body Ritual",
+        "fr": "Amorepacific Huile Démaquillante Corps Ritual"
       },
       "skin_types": [
         "dry",
@@ -13351,16 +13266,8 @@
         "es": "A los usuarios les encanta el efecto hidratante y el agradable aroma. Sin embargo, a algunos les parece un poco caro. *Resumen de reseñas generado por IA.",
         "fr": "Les utilisateurs apprécient l'effet hydratant et le parfum agréable. Cependant, certains trouvent que c'est un peu cher. *Résumé d'avis généré par l'IA."
       },
-      "purchase_links": [
-        {
-          "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210911943"
-        }
-      ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1693/31650a9d-aa27-478c-baa6-02cc7e95f0c2.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 30800
+      "purchase_links": null,
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -13430,12 +13337,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250631251"
+          "url": "https://global.oliveyoung.com/search?query=Kundal%20Honey%20%26%20Macadamia%20Pure%20Body%20Lotion"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1398/a66eef4c-a6dc-483b-a75d-2c16d5d271ce.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -13526,7 +13431,7 @@
       "id": "03bafefb-8e3b-5d42-a9e1-60040450f788",
       "name_ko": "세타필 바디 모이스처라이저",
       "name_en": "Cetaphil Daily Advance Body Moisturizer",
-      "brand": "AESTURA",
+      "brand": "Cetaphil",
       "category": "bodycare",
       "subcategory": "body_lotion",
       "budget_level": "moderate",
@@ -13550,8 +13455,12 @@
         "budget:moderate"
       ],
       "name": {
-        "en": "AESTURA AESTURA Atobarrier 365 BODY LOTION 400mL",
-        "ko": "AESTURA AESTURA Atobarrier 365 BODY LOTION 400mL"
+        "en": "Cetaphil Body Moisturizer",
+        "ko": "세타필 바디 모이스처라이저",
+        "ja": "セタフィル ボディ モイスチャライザー",
+        "zh": "丝塔芙 身体乳",
+        "es": "Cetaphil Body Moisturizer",
+        "fr": "Cetaphil Lait Hydratant Corps"
       },
       "skin_types": [
         "dry",
@@ -13581,13 +13490,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220113281"
+          "url": "https://global.oliveyoung.com/search?query=Cetaphil%20Daily%20Advance%20Body%20Moisturizer"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1157/8adee1b5-33fc-4be5-b6b3-01a973fab8ef.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 49280
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -13599,7 +13505,7 @@
       "id": "cd0a6acd-a72e-5fc5-b237-2d1c2e9d547c",
       "name_ko": "한율 달빛유자 바디 로션",
       "name_en": "Hanyul Moonlight Citron Body Lotion",
-      "brand": "BnD",
+      "brand": "Hanyul",
       "category": "bodycare",
       "subcategory": "body_lotion",
       "budget_level": "premium",
@@ -13624,8 +13530,12 @@
         "budget:premium"
       ],
       "name": {
-        "en": "BnD BnD Underarm & Armpit Cream 100ml",
-        "ko": "BnD BnD Underarm & Armpit Cream 100ml"
+        "en": "Hanyul Yuja Moonlight Body Lotion",
+        "ko": "한율 달빛유자 바디 로션",
+        "ja": "ハンユル 月光柚子 ボディローション",
+        "zh": "Hanyul 月光柚子身体乳",
+        "es": "Hanyul Loción Corporal Yuja Luz de Luna",
+        "fr": "Hanyul Lait Corporel Yuja Moonlight"
       },
       "skin_types": [
         "combination",
@@ -13655,13 +13565,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250732498"
+          "url": "https://global.oliveyoung.com/search?query=Hanyul%20Moonlight%20Citron%20Body%20Lotion"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1689/ef23f66f-8651-47f3-b710-9c3ba45a605e.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 37744
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -13729,15 +13636,8 @@
         "es": "La crema corporal Yoonjo es elogiada por sus efectos hidratantes y potenciadores de la luminosidad. Sin embargo, es relativamente cara. *Este es un resumen de revisión generado por IA.",
         "fr": "La crème pour le corps Yoonjo est appréciée pour ses effets hydratants et révélateurs d'éclat. Cependant, elle est relativement chère. *Ceci est un résumé d'avis généré par l'IA."
       },
-      "purchase_links": [
-        {
-          "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220414400"
-        }
-      ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1149/0aa75859-6d33-447f-bef0-a08a9d38a5b9.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "purchase_links": null,
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -13749,9 +13649,9 @@
       "id": "27dcf433-87bc-5076-a8e7-bdf9a0583335",
       "name_ko": "아토팜 MLE 바디로션",
       "name_en": "Atopalm MLE Body Lotion",
-      "brand": "Dr.Jart+",
+      "brand": "Atopalm",
       "category": "bodycare",
-      "subcategory": "hand_cream",
+      "subcategory": "body_lotion",
       "budget_level": "moderate",
       "expected_skin_types": "dry|sensitive|normal",
       "expected_concerns": "dryness|eczema",
@@ -13773,8 +13673,12 @@
         "budget:moderate"
       ],
       "name": {
-        "en": "Dr.Jart+ Dr.Jart+ Ceramidin Moisturizing Hand Cream 100ml US$35.00",
-        "ko": "Dr.Jart+ Dr.Jart+ Ceramidin Moisturizing Hand Cream 100ml US$35.00"
+        "en": "Atopalm MLE Body Lotion",
+        "ko": "아토팜 MLE 바디로션",
+        "ja": "アトパーム MLE ボディローション",
+        "zh": "爱多康 MLE 身体乳",
+        "es": "Atopalm MLE Loción Corporal",
+        "fr": "Atopalm MLE Lait Corporel"
       },
       "skin_types": [
         "dry",
@@ -13805,13 +13709,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260338321"
+          "url": "https://global.oliveyoung.com/search?query=Atopalm%20MLE%20Body%20Lotion"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1798/628ae1ec-ebe8-43e5-ab3a-1249617251c4.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 49000
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -13823,7 +13724,7 @@
       "id": "fc8c644c-e99e-51a2-85bd-1b5192443d8f",
       "name_ko": "더페이스샵 테라피가든 핸드크림",
       "name_en": "The Face Shop Therapy Garden Hand Cream",
-      "brand": "hetras",
+      "brand": "The Face Shop",
       "category": "bodycare",
       "subcategory": "hand_cream",
       "budget_level": "budget",
@@ -13845,8 +13746,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "hetras hetras Mango Seed Butter Perfume Hand Cream 50mL",
-        "ko": "hetras hetras Mango Seed Butter Perfume Hand Cream 50mL"
+        "en": "The Face Shop Therapy Garden Hand Cream",
+        "ko": "더페이스샵 테라피가든 핸드크림",
+        "ja": "ザフェイスショップ セラピーガーデン ハンドクリーム",
+        "zh": "菲诗小铺 Therapy Garden 护手霜",
+        "es": "The Face Shop Therapy Garden Crema de Manos",
+        "fr": "The Face Shop Therapy Garden Crème Mains"
       },
       "skin_types": [
         "dry",
@@ -13874,13 +13779,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240222150"
+          "url": "https://global.oliveyoung.com/search?query=The%20Face%20Shop%20Therapy%20Garden%20Hand%20Cream"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1217/1d9b705f-afe9-46fb-ab1c-06e76c283567.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 15246
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -13892,9 +13794,9 @@
       "id": "25164cac-29be-5ecd-b774-7cff05748703",
       "name_ko": "라네즈 립 앤 핸드 블루밍 세트",
       "name_en": "Laneige Lip & Hand Blooming Set",
-      "brand": "Dr. Althea",
+      "brand": "Laneige",
       "category": "bodycare",
-      "subcategory": "body_sunscreen",
+      "subcategory": "hand_cream",
       "budget_level": "premium",
       "expected_skin_types": "dry|normal",
       "expected_concerns": "dryness",
@@ -13915,8 +13817,12 @@
         "budget:premium"
       ],
       "name": {
-        "en": "Dr. Althea Dr. Althea 345 Relief Cream 50ml Set (+10ml*2ea+Tube Ringer) US$22.80US$27.00",
-        "ko": "Dr. Althea Dr. Althea 345 Relief Cream 50ml Set (+10ml*2ea+Tube Ringer) US$22.80US$27.00"
+        "en": "LANEIGE Lip & Hand Blooming Set",
+        "ko": "라네즈 립 앤 핸드 블루밍 세트",
+        "ja": "LANEIGE リップ＆ハンド ブルーミングセット",
+        "zh": "LANEIGE 唇部及手部护理套装",
+        "es": "LANEIGE Set Blooming para Labios y Manos",
+        "fr": "LANEIGE Coffret Floraison Lèvres & Mains"
       },
       "skin_types": [
         "dry",
@@ -13944,13 +13850,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260136559"
+          "url": "https://global.oliveyoung.com/search?query=Laneige%20Lip%20%26%20Hand%20Blooming%20Set"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1393/81ae56a1-8d14-43d1-a63b-5599dd3e825c.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 31920
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -14021,15 +13924,8 @@
         "es": "Elogiada por su agradable aroma y efecto hidratante, pero algunos la consideran cara. (Resumen de la reseña de IA)",
         "fr": "Encensée pour son parfum agréable et son effet hydratant, mais certains la trouvent chère. (Résumé de l'avis de l'IA)"
       },
-      "purchase_links": [
-        {
-          "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA220414400"
-        }
-      ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1149/0aa75859-6d33-447f-bef0-a08a9d38a5b9.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "purchase_links": null,
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -14192,9 +14088,9 @@
       "id": "1b670cf4-f365-55d6-aaf1-aedcb59bbca3",
       "name_ko": "아이소이 선 밀크 바디 SPF50+",
       "name_en": "isoi Sun Milk Body SPF50+",
-      "brand": "OLIVEYOUNG",
-      "category": "tools",
-      "subcategory": "application_sponge",
+      "brand": "isoi",
+      "category": "bodycare",
+      "subcategory": "body_sunscreen",
       "budget_level": "moderate",
       "expected_skin_types": "sensitive|dry|normal",
       "expected_concerns": "sun_damage|redness",
@@ -14217,8 +14113,12 @@
         "budget:moderate"
       ],
       "name": {
-        "en": "OLIVEYOUNG OLIVEYOUNG Soft Makeup Sponge #Makeup Base 65P",
-        "ko": "OLIVEYOUNG OLIVEYOUNG Soft Makeup Sponge #Makeup Base 65P"
+        "en": "isoi Sun Milk Body SPF50+",
+        "ko": "아이소이 선 밀크 바디 SPF50+",
+        "ja": "isoi サンミルク ボディ SPF50+",
+        "zh": "isoi 防晒乳液 身体 SPF50+",
+        "es": "isoi Leche Solar Corporal SPF50+",
+        "fr": "isoi Lait Solaire Corps SPF50+"
       },
       "skin_types": [
         "combination",
@@ -14251,13 +14151,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250933707"
+          "url": "https://global.oliveyoung.com/search?query=isoi%20Sun%20Milk%20Body%20SPF50%2B"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1959/d1a14629-e096-4b6f-a942-bd7b4f3048f5.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 12600
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -14329,12 +14226,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240824996"
+          "url": "https://global.oliveyoung.com/search?query=Mediheal%20Madecassoside%20Body%20Serum"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1354/6c573250-74a0-44af-816b-bccadc1876f5.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -14406,12 +14301,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA210711336"
+          "url": "https://global.oliveyoung.com/search?query=Illiyoon%20Probiotics%20Skin%20Barrier%20Cera%20Balm"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1433/02277b53-bdf2-48d6-a910-3041ea55eff4.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -14423,9 +14316,9 @@
       "id": "50226aed-add0-5e86-9635-fba93482f5f7",
       "name_ko": "에뛰드 마이 뷰티 툴 실리콘 퍼프",
       "name_en": "ETUDE My Beauty Tool Silicone Puff",
-      "brand": "fwee",
+      "brand": "ETUDE",
       "category": "tools",
-      "subcategory": "makeup_puff",
+      "subcategory": "application_sponge",
       "budget_level": "budget",
       "expected_skin_types": "all",
       "expected_concerns": "",
@@ -14442,8 +14335,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "fwee fwee Cushion Glass Natural (+Refill/Puff 2P)",
-        "ko": "fwee fwee Cushion Glass Natural (+Refill/Puff 2P)"
+        "en": "Etude My Beauty Tool Silicone Puff",
+        "ko": "에뛰드 마이 뷰티 툴 실리콘 퍼프",
+        "ja": "エチュード マイビューティツール シリコンパフ",
+        "zh": "伊蒂之屋 我的美妆工具 硅胶粉扑",
+        "es": "Etude My Beauty Tool Esponja de Silicona",
+        "fr": "Etude My Beauty Tool Éponge en Silicone"
       },
       "skin_types": [],
       "concerns": [],
@@ -14466,13 +14363,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240222179"
+          "url": "https://global.oliveyoung.com/search?query=ETUDE%20My%20Beauty%20Tool%20Silicone%20Puff"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1720/dd597bee-672b-4807-b887-3b16d20472de.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 36092
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -14484,9 +14378,9 @@
       "id": "42b9df53-a932-5d17-9bc3-2c83ade4bdb6",
       "name_ko": "에뛰드 마이 뷰티 툴 에어리 퍼프",
       "name_en": "Etude My Beauty Tool Airy Puff",
-      "brand": "hince",
+      "brand": "ETUDE",
       "category": "tools",
-      "subcategory": "makeup_sponge",
+      "subcategory": "makeup_puff",
       "budget_level": "budget",
       "expected_skin_types": "all",
       "expected_concerns": "",
@@ -14504,8 +14398,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "hince hince Half-Moon Cheek (7 Colors) US$18.99",
-        "ko": "hince hince Half-Moon Cheek (7 Colors) US$18.99"
+        "en": "Etude My Beauty Tool Airy Puff",
+        "ko": "에뛰드 마이 뷰티 툴 에어리 퍼프",
+        "ja": "エチュード マイビューティーツール エアリーパフ",
+        "zh": "伊蒂之屋 My Beauty Tool 空气感粉扑",
+        "es": "Etude My Beauty Tool Esponja Airy",
+        "fr": "Etude My Beauty Tool Airy Puff"
       },
       "skin_types": [],
       "concerns": [],
@@ -14528,13 +14426,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA260338920"
+          "url": "https://global.oliveyoung.com/search?query=Etude%20My%20Beauty%20Tool%20Airy%20Puff"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1686/85101b17-6daf-4173-9544-74b98ef9dc87.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 26586
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -14546,9 +14441,9 @@
       "id": "f53aed9a-c4a6-5b4a-86c5-556a05cdd6bd",
       "name_ko": "필리밀리 페이스 소프트 벨벳 스펀지",
       "name_en": "Fillimilli Face Soft Velvet Sponge",
-      "brand": "FOODOLOGY",
+      "brand": "Fillimilli",
       "category": "tools",
-      "subcategory": "mask_cover",
+      "subcategory": "makeup_sponge",
       "budget_level": "budget",
       "expected_skin_types": "all",
       "expected_concerns": "",
@@ -14565,8 +14460,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "FOODOLOGY FOODOLOGY Coleology Cutting Jelly 30 Sticks (30-day supply) US$43.40US$61.75",
-        "ko": "FOODOLOGY FOODOLOGY Coleology Cutting Jelly 30 Sticks (30-day supply) US$43.40US$61.75"
+        "en": "Fillimilli Face Soft Velvet Sponge",
+        "ko": "필리밀리 페이스 소프트 벨벳 스펀지",
+        "ja": "Fillimilli フェイス ソフト ベルベット スポンジ",
+        "zh": "Fillimilli 面部柔软丝绒海绵",
+        "es": "Fillimilli Esponja Facial Suave de Terciopelo",
+        "fr": "Fillimilli Éponge Visage Douce Velours"
       },
       "skin_types": [],
       "concerns": [],
@@ -14589,13 +14488,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240423305"
+          "url": "https://global.oliveyoung.com/search?query=Fillimilli%20Face%20Soft%20Velvet%20Sponge"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1476/7df00694-4678-498e-9ac7-3ea46d37b588.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 60760
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -14654,12 +14550,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250631756"
+          "url": "https://global.oliveyoung.com/search?query=Fillimilli%20Eye%20Shadow%20Brush%20Set"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1926/b54e546c-43b2-41ac-b8c2-91f0c1af4956.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -14671,9 +14565,9 @@
       "id": "de4d047c-e52a-5ac2-b6ff-7a1d6910a6d1",
       "name_ko": "다이소 실리콘 마스크 팩 커버",
       "name_en": "Daiso Silicone Mask Pack Cover",
-      "brand": "REJURAN",
+      "brand": "Daiso",
       "category": "tools",
-      "subcategory": "mirror",
+      "subcategory": "mask_cover",
       "budget_level": "budget",
       "expected_skin_types": "all",
       "expected_concerns": "",
@@ -14690,8 +14584,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "REJURAN REJURAN Healer Turnover Ampoule 10mlx2ea Double Pack (+Ampoule 10ml) US$50.78US$59.00",
-        "ko": "REJURAN REJURAN Healer Turnover Ampoule 10mlx2ea Double Pack (+Ampoule 10ml) US$50.78US$59.00"
+        "en": "Daiso Silicone Mask Pack Cover",
+        "ko": "다이소 실리콘 마스크 팩 커버",
+        "ja": "ダイソー シリコンマスクパックカバー",
+        "zh": "大创 硅胶面膜罩",
+        "es": "Cubierta de Mascarilla de Silicona Daiso",
+        "fr": "Couvre Masque en Silicone Daiso"
       },
       "skin_types": [],
       "concerns": [],
@@ -14711,16 +14609,8 @@
         "es": "Ayuda a mejorar la adherencia de la mascarilla y permite la libertad de movimiento. Sin embargo, podría no proporcionar una fijación perfecta. *Resumen de la reseña generado por IA.",
         "fr": "Aide à améliorer l'adhérence du masque et permet une liberté de mouvement. Cependant, il pourrait ne pas fournir une fixation parfaite. *Résumé de l'avis généré par l'IA."
       },
-      "purchase_links": [
-        {
-          "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250832684"
-        }
-      ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1911/eca25a6c-27d3-4b56-8766-a35bab747bca.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 71092
+      "purchase_links": null,
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -14780,12 +14670,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240824996"
+          "url": "https://global.oliveyoung.com/search?query=Etude%20My%20Beauty%20Tool%20Mask%20Sheet%20Hook"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1354/6c573250-74a0-44af-816b-bccadc1876f5.png?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -14799,7 +14687,7 @@
       "name_en": "Fillimilli LED Compact Mirror",
       "brand": "Fillimilli",
       "category": "tools",
-      "subcategory": "organizer",
+      "subcategory": "mirror",
       "budget_level": "premium",
       "expected_skin_types": "all",
       "expected_concerns": "",
@@ -14816,8 +14704,12 @@
         "budget:premium"
       ],
       "name": {
-        "en": "Fillimilli Fillimilli Sleek Fit Brush 830 & Puff Duo (+Pouch)",
-        "ko": "Fillimilli Fillimilli Sleek Fit Brush 830 & Puff Duo (+Pouch)"
+        "en": "Fillimilli LED Compact Mirror",
+        "ko": "필리밀리 LED 컴팩트 거울",
+        "ja": "Fillimilli LEDコンパクトミラー",
+        "zh": "Fillimilli LED 迷你化妆镜",
+        "es": "Fillimilli Espejo Compacto con LED",
+        "fr": "Fillimilli Miroir Compact LED"
       },
       "skin_types": [],
       "concerns": [],
@@ -14840,13 +14732,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA250933690"
+          "url": "https://global.oliveyoung.com/search?query=Fillimilli%20LED%20Compact%20Mirror"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1358/5e359174-a1c0-4cbc-8855-9539d1afc1ba.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 19362
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -14858,9 +14747,9 @@
       "id": "1cb304dc-4ebd-567d-9578-dda6d7aca3ff",
       "name_ko": "에뛰드 마이 뷰티 툴 브러시 파우치",
       "name_en": "Etude My Beauty Tool Brush Pouch",
-      "brand": "plu",
-      "category": "bodycare",
-      "subcategory": "body_scrub",
+      "brand": "ETUDE",
+      "category": "tools",
+      "subcategory": "organizer",
       "budget_level": "budget",
       "expected_skin_types": "all",
       "expected_concerns": "",
@@ -14878,8 +14767,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "plu plu Body Scrub Pink Floral 200g",
-        "ko": "plu plu Body Scrub Pink Floral 200g"
+        "en": "Etude My Beauty Tool Brush Pouch",
+        "ko": "에뛰드 마이 뷰티 툴 브러시 파우치",
+        "ja": "エチュード マイビューティーツール ブラシポーチ",
+        "zh": "伊蒂之屋 我的美妆工具刷具包",
+        "es": "Etude My Beauty Tool Neceser para Brochas",
+        "fr": "Etude My Beauty Tool Trousse à Pinceaux"
       },
       "skin_types": [],
       "concerns": [],
@@ -14902,13 +14795,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA230217715"
+          "url": "https://global.oliveyoung.com/search?query=Etude%20My%20Beauty%20Tool%20Brush%20Pouch"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1125/ca9527fe-8c65-4983-a428-e0fae35ba7f4.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 14980
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -14920,9 +14810,9 @@
       "id": "0402e52e-00b1-59d8-9dc7-2afbbf064465",
       "name_ko": "토니모리 플로리아 너리싱 바디 스크럽",
       "name_en": "TONYMOLY Floria Nutra Energy Body Scrub",
-      "brand": "THE TOOL LAB",
-      "category": "tools",
-      "subcategory": "cleansing_brush",
+      "brand": "TONYMOLY",
+      "category": "bodycare",
+      "subcategory": "body_scrub",
       "budget_level": "budget",
       "expected_skin_types": "oily|combination|normal",
       "expected_concerns": "dullness|dryness",
@@ -14944,8 +14834,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "THE TOOL LAB THE TOOL LAB Tool Cleansing Soap",
-        "ko": "THE TOOL LAB THE TOOL LAB Tool Cleansing Soap"
+        "en": "TONYMOLY Floria Nutra-Energy Body Scrub",
+        "ko": "토니모리 플로리아 너리싱 바디 스크럽",
+        "ja": "TONYMOLY フロリア ニュートラエナジー ボディスクラブ",
+        "zh": "TONYMOLY 芙莉雅 滋养身体磨砂膏",
+        "es": "TONYMOLY Floria Nutra-Energy Exfoliante Corporal",
+        "fr": "TONYMOLY Floria Nutra-Energy Gommage Corporel"
       },
       "skin_types": [
         "combination",
@@ -14976,13 +14870,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA241227458"
+          "url": "https://global.oliveyoung.com/search?query=TONYMOLY%20Floria%20Nutra%20Energy%20Body%20Scrub"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1224/fd6521c4-1c98-4e9b-8630-5b3a1b396c46.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 19040
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -14994,7 +14885,7 @@
       "id": "1d0c58be-357c-5c1a-b57c-c7eda6cf2b84",
       "name_ko": "이니스프리 에코 뷰티 툴 실리콘 클렌저",
       "name_en": "Innisfree Eco Beauty Tool Silicone Cleanser",
-      "brand": "THE TOOL LAB",
+      "brand": "Innisfree",
       "category": "tools",
       "subcategory": "cleansing_brush",
       "budget_level": "budget",
@@ -15016,8 +14907,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "THE TOOL LAB THE TOOL LAB Brush Cleansing Tissue (20P)",
-        "ko": "THE TOOL LAB THE TOOL LAB Brush Cleansing Tissue (20P)"
+        "en": "Innisfree Eco Beauty Tool Silicone Cleanser",
+        "ko": "이니스프리 에코 뷰티 툴 실리콘 클렌저",
+        "ja": "イニスフリー エコ ビューティー ツール シリコン クレンザー",
+        "zh": "悦诗风吟 生态美人工具 硅胶洁面仪",
+        "es": "Innisfree Eco Beauty Tool Limpiador de Silicona",
+        "fr": "Innisfree Eco Beauty Tool Nettoyant en Silicone"
       },
       "skin_types": [
         "combination",
@@ -15048,13 +14943,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240624074"
+          "url": "https://global.oliveyoung.com/search?query=Innisfree%20Eco%20Beauty%20Tool%20Silicone%20Cleanser"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1644/e366ec1c-2687-48f4-9555-a9a8631f92d1.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ],
-      "price": 12600
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
@@ -15066,7 +14958,7 @@
       "id": "e2f57eaa-1c40-5840-9615-d5a811426386",
       "name_ko": "미샤 슈퍼 아쿠아 소프트 클렌징 퍼프",
       "name_en": "MISSHA Super Aqua Soft Cleansing Puff",
-      "brand": "THE TOOL LAB",
+      "brand": "MISSHA",
       "category": "tools",
       "subcategory": "cleansing_brush",
       "budget_level": "budget",
@@ -15088,8 +14980,12 @@
         "budget:budget"
       ],
       "name": {
-        "en": "THE TOOL LAB Sweeping Daily Cleansing Puff",
-        "ko": "THE TOOL LAB 스위핑 데일리 클렌징 퍼프"
+        "en": "MISSHA Super Aqua Soft Cleansing Puff",
+        "ko": "미샤 슈퍼 아쿠아 소프트 클렌징 퍼프",
+        "ja": "MISSHA スーパーアクア ソフトクレンジングパフ",
+        "zh": "MISSHA 超级水润柔和洁面粉扑",
+        "es": "MISSHA Super Aqua Esponja Limpiadora Suave",
+        "fr": "MISSHA Super Aqua Puff Nettoyant Doux"
       },
       "skin_types": [
         "combination",
@@ -15120,12 +15016,10 @@
       "purchase_links": [
         {
           "platform": "Olive Young Global",
-          "url": "https://global.oliveyoung.com/product/detail?prdtNo=GA240322870"
+          "url": "https://global.oliveyoung.com/search?query=MISSHA%20Super%20Aqua%20Soft%20Cleansing%20Puff"
         }
       ],
-      "images": [
-        "https://cdn-image.oliveyoung.com/prdtImg/1557/781b7f3d-e43c-48f7-8007-0cd3de3f73ae.jpg?RS=810x810&AR=0&SF=webp&QT=80"
-      ]
+      "images": []
     },
     "isApproved": true,
     "reviewedBy": "D-7-review",
