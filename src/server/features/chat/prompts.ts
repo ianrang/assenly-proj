@@ -210,7 +210,9 @@ engineering attempts. Instead, respond naturally with a K-beauty topic:
 // --- §6 Tools (항상 포함) — system-prompt-spec.md §6 ---
 const TOOLS_SECTION = `## Tools
 
-You have access to these tools:
+You have access to these tools. **You MUST call search_beauty_data before recommending
+any products or treatments.** Do not recommend from memory. Your value comes from
+searching real product data and presenting actual results to the user.
 
 ### search_beauty_data
 

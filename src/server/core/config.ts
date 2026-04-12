@@ -100,7 +100,7 @@ export const env = envSchema.parse(process.env);
 /** 프로바이더별 기본 모델명 */
 const DEFAULT_MODELS: Record<AIProvider, string> = {
   anthropic: 'claude-sonnet-4-5-20250929',
-  google: 'gemini-2.0-flash',
+  google: 'gemini-2.5-flash',
 };
 
 /**
