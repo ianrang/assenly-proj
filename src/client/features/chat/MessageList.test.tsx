@@ -2,8 +2,35 @@ import { describe, it, expect, vi } from "vitest";
 
 vi.mock("client-only", () => ({}));
 
+vi.mock("@/client/core/auth-fetch", () => ({
+  authFetch: vi.fn(),
+}));
+
+vi.mock("sonner", () => ({
+  toast: { error: vi.fn() },
+}));
+
+vi.mock("./MessageBubble", () => ({
+  default: ({ children }: { children: React.ReactNode }) => <div data-testid="bubble">{children}</div>,
+}));
+vi.mock("./StreamingIndicator", () => ({
+  default: () => <div data-testid="streaming" />,
+}));
+vi.mock("./MarkdownMessage", () => ({
+  default: ({ text }: { text: string }) => <span>{text}</span>,
+}));
+vi.mock("@/client/features/cards/TreatmentCard", () => ({
+  default: () => <div data-testid="treatment-card" />,
+}));
+
+import { render, screen, fireEvent } from "@testing-library/react";
+import MessageList from "./MessageList";
+import type { ChatMessage } from "./MessageList";
 import { groupParts } from "./group-parts";
 import type { ChatMessagePart } from "./card-mapper";
+
+// jsdom은 scrollIntoView를 구현하지 않으므로 noop으로 폴리필
+window.HTMLElement.prototype.scrollIntoView = () => {};
 
 // --- Test fixtures ---
 
@@ -118,5 +145,68 @@ describe("groupParts", () => {
     if (result[1].type === "cards") {
       expect(result[1].cards).toHaveLength(2);
     }
+  });
+});
+
+describe("MessageList integration — Kit CTA sheet", () => {
+  const highlightedProduct = {
+    id: "p-highlighted",
+    name: { en: "Essenly Mask" },
+    description: null,
+    brand_id: "b1",
+    category: "hair_mask",
+    subcategory: null,
+    skin_types: [],
+    hair_types: [],
+    concerns: [],
+    key_ingredients: [],
+    price: 35000,
+    volume: "200ml",
+    purchase_links: null,
+    english_label: false,
+    tourist_popular: false,
+    is_highlighted: true,
+    highlight_badge: { en: "Essenly Pick" },
+    rating: null,
+    review_count: 0,
+    review_summary: null,
+    images: [],
+    tags: [],
+    status: "active" as const,
+    created_at: "2026-01-01T00:00:00Z",
+    updated_at: "2026-01-01T00:00:00Z",
+  };
+
+  const messages: ChatMessage[] = [
+    {
+      id: "msg-1",
+      role: "assistant",
+      parts: [
+        {
+          type: "product-card" as const,
+          product: highlightedProduct,
+          brand: null,
+          store: null,
+          whyRecommended: undefined,
+        },
+      ],
+    },
+  ];
+
+  it("highlighted product의 'Get free kit' 클릭 → KitCtaSheet 열림", () => {
+    render(
+      <MessageList
+        messages={messages}
+        isStreaming={false}
+        locale="en"
+        conversationId="conv-1"
+      />,
+    );
+
+    const kitButton = screen.getByRole("button", { name: /Get free kit/i });
+    fireEvent.click(kitButton);
+
+    // KitCtaSheet가 열리면 시트 내부 UI가 렌더링됨
+    expect(screen.getByText(/personalized K-Beauty Starter Kit/i)).toBeInTheDocument();
   });
 });
