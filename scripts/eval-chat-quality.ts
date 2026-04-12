@@ -249,7 +249,9 @@ async function sendChatMessage(
     throw new Error('Chat API returned empty body');
   }
 
-  // Parse Data Stream Protocol
+  // Parse UI Message Stream Protocol (SSE: "data: {JSON}\n\n")
+  // chat API는 stream.toUIMessageStreamResponse()를 사용.
+  // 형식: data: {"type":"text-delta","delta":"..."} / data: {"type":"tool-call",...} / data: [DONE]
   const reader = res.body.getReader();
   const decoder = new TextDecoder();
   let buffer = '';
@@ -266,45 +268,33 @@ async function sendChatMessage(
     buffer = lines.pop() ?? '';
 
     for (const line of lines) {
-      if (!line) continue;
+      if (!line || !line.startsWith('data: ')) continue;
+      const payload = line.slice(6); // "data: " 제거
+      if (payload === '[DONE]') break;
 
-      const colonIdx = line.indexOf(':');
-      if (colonIdx === -1) continue;
+      try {
+        const event = JSON.parse(payload) as {
+          type: string;
+          delta?: string;
+          toolName?: string;
+          messageMetadata?: { conversationId?: string };
+        };
 
-      const typeCode = line.slice(0, colonIdx);
-      const payload = line.slice(colonIdx + 1);
-
-      switch (typeCode) {
-        case '0': {
-          // Text delta — JSON string
-          try {
-            fullText += JSON.parse(payload) as string;
-          } catch {
-            // non-JSON text chunk, append raw
-            fullText += payload;
-          }
-          break;
-        }
-        case '9': {
-          // Tool call
-          try {
-            const tc = JSON.parse(payload) as { toolName?: string };
-            if (tc.toolName) toolCalls.push(tc.toolName);
-          } catch { /* skip malformed */ }
-          break;
-        }
-        case 'g': {
-          // Message metadata — may contain conversationId
-          try {
-            const meta = JSON.parse(payload) as [string, { conversationId?: string }];
-            if (Array.isArray(meta) && meta[1]?.conversationId) {
-              detectedConversationId = meta[1].conversationId;
+        switch (event.type) {
+          case 'text-delta':
+            if (event.delta) fullText += event.delta;
+            break;
+          case 'tool-call':
+            if (event.toolName) toolCalls.push(event.toolName);
+            break;
+          case 'start':
+            if (event.messageMetadata?.conversationId) {
+              detectedConversationId = event.messageMetadata.conversationId;
             }
-          } catch { /* skip */ }
-          break;
+            break;
+          // text-start, text-end, start-step, finish-step, finish — 무시
         }
-        // d: finish, f: start, e: error — ignored
-      }
+      } catch { /* skip malformed SSE line */ }
     }
   }
 
@@ -524,7 +514,8 @@ async function main(): Promise<void> {
   const session = await createEvalSession();
   console.log(`Session created: ${session.userId.slice(0, 8)}...\n`);
 
-  // Run scenarios sequentially (avoid rate limits)
+  // Run scenarios sequentially with delay (chat API rate limit: 15/min)
+  const SCENARIO_DELAY_MS = 4000;
   const results: ScenarioResult[] = [];
   for (let i = 0; i < filtered.length; i++) {
     const scenario = filtered[i];
@@ -532,6 +523,11 @@ async function main(): Promise<void> {
     const result = await runScenario(session, scenario);
     results.push(result);
     console.log(`  → ${result.pass ? 'PASS' : result.error ? 'ERROR' : 'FAIL'} (${(result.durationMs / 1000).toFixed(1)}s)`);
+
+    // Rate limit 방지: 다음 시나리오 전 대기 (마지막 시나리오 제외)
+    if (i < filtered.length - 1) {
+      await new Promise((resolve) => setTimeout(resolve, SCENARIO_DELAY_MS));
+    }
   }
 
   // Print results
