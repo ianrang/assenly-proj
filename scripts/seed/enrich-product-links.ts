@@ -290,7 +290,11 @@ async function main() {
   }
 }
 
-main().catch((err) => {
-  console.error("치명적 에러:", err);
-  process.exit(1);
-});
+// ESM 직접 실행 가드: npx tsx로 실행 시에만 main() 호출. 테스트 import 시 실행 안 함.
+const isDirectRun = process.argv[1]?.endsWith('enrich-product-links.ts');
+if (isDirectRun) {
+  main().catch((err) => {
+    console.error("치명적 에러:", err);
+    process.exit(1);
+  });
+}
