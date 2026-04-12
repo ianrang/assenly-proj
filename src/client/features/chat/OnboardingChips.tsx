@@ -3,6 +3,7 @@
 import "client-only";
 
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 import { cn } from "@/shared/utils/cn";
 import { getAccessToken } from "@/client/core/auth-fetch";
 
@@ -23,20 +24,21 @@ type Concern = typeof CONCERNS[number];
 
 const MAX_CONCERNS = 2;
 
-const SKIN_TYPE_LABELS: Record<SkinType, string> = {
-  dry: "Dry",
-  oily: "Oily",
-  combination: "Combination",
-  sensitive: "Sensitive",
-  normal: "Normal",
+// 번역 키 매핑 (G-10 매직 스트링 금지)
+const SKIN_TYPE_KEYS: Record<SkinType, string> = {
+  dry: "chipSkinDry",
+  oily: "chipSkinOily",
+  combination: "chipSkinCombination",
+  sensitive: "chipSkinSensitive",
+  normal: "chipSkinNormal",
 };
 
-const CONCERN_LABELS: Record<Concern, string> = {
-  dryness: "Dryness",
-  acne: "Acne",
-  wrinkles: "Wrinkles",
-  redness: "Redness",
-  dark_spots: "Dark spots",
+const CONCERN_KEYS: Record<Concern, string> = {
+  dryness: "chipConcernDryness",
+  acne: "chipConcernAcne",
+  wrinkles: "chipConcernWrinkles",
+  redness: "chipConcernRedness",
+  dark_spots: "chipConcernDarkSpots",
 };
 
 type OnboardingChipsProps = {
@@ -45,6 +47,7 @@ type OnboardingChipsProps = {
 };
 
 export default function OnboardingChips({ onComplete, onSkip }: OnboardingChipsProps) {
+  const t = useTranslations("chat");
   const [skinType, setSkinType] = useState<SkinType | null>(null);
   const [concerns, setConcerns] = useState<Concern[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -94,16 +97,16 @@ export default function OnboardingChips({ onComplete, onSkip }: OnboardingChipsP
     <div className="flex flex-col gap-4 rounded-xl border border-border bg-card p-4">
       <div>
         <p className="text-sm font-medium text-foreground">
-          Before we start, tell me a bit about your skin.
+          {t("chipTitle")}
         </p>
         <p className="mt-0.5 text-xs text-muted-foreground">
-          or skip and just chat
+          {t("chipSkipHint")}
         </p>
       </div>
 
       {/* Skin Type — 단일 선택 */}
       <div>
-        <p className="mb-2 text-xs font-medium text-muted-foreground">Your skin type:</p>
+        <p className="mb-2 text-xs font-medium text-muted-foreground">{t("chipSkinTypeLabel")}</p>
         <div className="flex flex-wrap gap-2">
           {SKIN_TYPES.map((type) => (
             <button
@@ -117,7 +120,7 @@ export default function OnboardingChips({ onComplete, onSkip }: OnboardingChipsP
                   : "border-border bg-background text-foreground hover:border-primary/50"
               )}
             >
-              {SKIN_TYPE_LABELS[type]}
+              {t(SKIN_TYPE_KEYS[type])}
             </button>
           ))}
         </div>
@@ -126,7 +129,7 @@ export default function OnboardingChips({ onComplete, onSkip }: OnboardingChipsP
       {/* Concerns — 다중 선택 1-2개 */}
       <div>
         <p className="mb-2 text-xs font-medium text-muted-foreground">
-          Top concern (choose 1-2):
+          {t("chipConcernLabel")}
         </p>
         <div className="flex flex-wrap gap-2">
           {CONCERNS.map((concern) => {
@@ -148,7 +151,7 @@ export default function OnboardingChips({ onComplete, onSkip }: OnboardingChipsP
                     : "hover:border-primary/50"
                 )}
               >
-                {CONCERN_LABELS[concern]}
+                {t(CONCERN_KEYS[concern])}
               </button>
             );
           })}
@@ -168,14 +171,14 @@ export default function OnboardingChips({ onComplete, onSkip }: OnboardingChipsP
               : "cursor-not-allowed bg-muted text-muted-foreground"
           )}
         >
-          {isSubmitting ? "Saving..." : "Start chatting →"}
+          {isSubmitting ? t("chipSaving") : t("chipStart")}
         </button>
         <button
           type="button"
           onClick={onSkip}
           className="text-xs text-muted-foreground transition-colors hover:text-foreground"
         >
-          Skip &mdash; I&apos;ll just chat
+          {t("chipSkip")}
         </button>
       </div>
     </div>

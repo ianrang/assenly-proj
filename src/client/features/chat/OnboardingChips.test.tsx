@@ -2,6 +2,15 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 
 vi.mock("client-only", () => ({}));
 
+// next-intl mock: en.json의 chat 키를 직접 로드
+import enMessages from "../../../../messages/en.json";
+vi.mock("next-intl", () => ({
+  useTranslations: (namespace: string) => {
+    const messages = (enMessages as Record<string, Record<string, string>>)[namespace] ?? {};
+    return (key: string) => messages[key] ?? key;
+  },
+}));
+
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import OnboardingChips from "./OnboardingChips";
 
