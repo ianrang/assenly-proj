@@ -3,7 +3,6 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { LanguageProvider } from "@/client/features/contexts/LanguageContext";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://essenly.com"),
@@ -45,9 +44,7 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   return (
     <NextIntlClientProvider>
-      <LanguageProvider>
-        {children}
-      </LanguageProvider>
+      {children}
     </NextIntlClientProvider>
   );
 }
