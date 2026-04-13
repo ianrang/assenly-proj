@@ -1,12 +1,19 @@
-# 채팅 품질 파이프라인 개선 Implementation Plan
+# 채팅 품질 파이프라인 개선 Implementation Plan (v2)
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** 빈 응답 방어, store/clinic 검색 품질 개선, 프롬프트 튜닝으로 eval 17/20 → 20/20 목표
 
-**Architecture:** 기존 SSE 스트리밍 파이프라인 유지. 클라이언트 빈 응답 감지 + 자동 1회 재시도. store/clinic에 beauty judgment(scoring + reasons) 파이프라인 추가. 프롬프트 few-shot 보강.
+**Architecture:** 기존 SSE 스트리밍 파이프라인 유지. 클라이언트 빈 응답 감지 + 자동 1회 재시도. store/clinic에 beauty judgment(scoring + reasons) 파이프라인 추가. 공통 scoring 상수는 judgment.ts(기반 모듈)에 추출. 프롬프트 few-shot 보강.
 
-**Tech Stack:** AI SDK 6.x (useChat, streamText), Supabase (RPC, pgvector), Vitest
+**Tech Stack:** AI SDK 6.x (useChat, streamText), Supabase, Vitest
+
+**FAIL → 변경 매핑:**
+| FAIL 시나리오 | 근본 원인 | 해결하는 Task |
+|-------------|---------|-------------|
+| P1 (빈 응답) | Gemini 2.5 Flash outputTokens=0 | Task 1 (클라이언트 자동 재시도) + Task 2 (서버 DB 스킵) |
+| P4 (combination_aware) | LLM이 skin type을 명시적으로 언급 안 함 | Task 8 (rubric 보정) + Task 7 (few-shot 추가) |
+| P5 (질문 우선) | "Answer first" 원칙이 추상적 | Task 6 (프롬프트 강화) + Task 7 (few-shot 추가) + Task 8 (rubric 보정) |
 
 ---
 
@@ -15,23 +22,29 @@
 ### 신규 파일
 | 파일 | 책임 |
 |------|------|
-| `src/server/features/beauty/store.ts` | Store scoring — english_support, tourist_services, rating 기반 점수 + reasons 생성 |
+| `src/server/features/beauty/store.ts` | Store scoring — english_support, tourist_services, rating, userLanguage 기반 점수 + reasons |
 | `src/server/features/beauty/store.test.ts` | scoreStores 단위 테스트 |
-| `src/server/features/beauty/clinic.ts` | Clinic scoring — english_support, foreigner_friendly, license_verified 기반 점수 + reasons 생성 |
+| `src/server/features/beauty/clinic.ts` | Clinic scoring — english_support, foreigner_friendly, license_verified, userLanguage 기반 점수 + reasons |
 | `src/server/features/beauty/clinic.test.ts` | scoreClinics 단위 테스트 |
-| `supabase/migrations/013_match_stores_clinics.sql` | match_stores, match_clinics RPC (벡터 검색) |
 
 ### 수정 파일
 | 파일 | 변경 내용 |
 |------|----------|
-| `src/server/features/repositories/store-repository.ts` | matchStoresByVector 함수 추가 |
-| `src/server/features/repositories/clinic-repository.ts` | matchClinicsByVector 함수 추가 |
-| `src/server/features/chat/tools/search-handler.ts` | searchStore/searchClinic에 벡터 검색 + scoring + rank 파이프라인 적용 |
+| `src/server/features/beauty/judgment.ts` | 공통 scoring 상수 추출 (ENGLISH_SUPPORT_BONUS/LABEL, RATING 상수) |
+| `src/server/features/chat/tools/search-handler.ts` | searchStore/searchClinic에 scoring + rank 파이프라인 적용 (SQL 검색 유지) |
 | `src/client/features/chat/ChatContent.tsx` | 빈 응답 감지 + 자동 1회 regenerate |
 | `src/server/features/api/routes/chat.ts` | 서버 onFinish에서 빈 응답 DB 저장 스킵 |
 | `src/server/features/chat/prompts.ts` | domain guide 수정 + "Answer first" 강화 + 빈 응답 방지 지시 |
 | `src/server/features/chat/prompt-examples.ts` | few-shot 예시 3개 추가 (store context, combination skin, no-profile generic) |
-| `scripts/fixtures/eval-scenarios.json` | 테스트 시나리오 확장 (store/clinic/multi-domain) |
+| `scripts/fixtures/eval-scenarios.json` | 테스트 시나리오 확장 + P4/P5 rubric 보정 |
+
+### NOT in scope (TODO)
+| 항목 | 이유 | 다음 PR |
+|------|------|---------|
+| match_stores/match_clinics RPC | stores/clinics embedding 0건. 데이터 없이 RPC 추가는 죽은 코드 | embedding 생성 스크립트와 함께 구현 |
+| store-repository matchStoresByVector | 위와 동일 | 위와 동일 |
+| clinic-repository matchClinicsByVector | 위와 동일 | 위와 동일 |
+| embedding 생성 스크립트 | 478건(253 stores + 225 clinics) Gemini embedding API 호출 필요. 현재 PR 범위 초과 | 별도 PR |
 
 ---
 
@@ -40,16 +53,14 @@
 **Files:**
 - Modify: `src/client/features/chat/ChatContent.tsx`
 
+**해결하는 FAIL:** P1 (빈 응답)
+
 - [ ] **Step 1: ChatContent.tsx에 빈 응답 감지 + 자동 재시도 추가**
 
 ```typescript
 // ChatContent.tsx — 변경 부분만
 
-// 기존 import 아래에 추가 (새 import 없음, useRef는 이미 import됨)
-
-// 기존 코드:
-// const conversationIdRef = useRef<string | null>(initialConversationId);
-// 아래에 추가:
+// 기존 코드 const conversationIdRef = ... 아래에 추가:
 const retryCountRef = useRef(0);
 
 // 기존 handleSend 함수를 수정:
@@ -102,6 +113,8 @@ git commit -m "fix: 빈 응답 클라이언트 감지 + 자동 1회 재시도"
 **Files:**
 - Modify: `src/server/features/api/routes/chat.ts`
 
+**해결하는 FAIL:** P1 (빈 응답 시 빈 메시지가 DB에 저장되는 문제 방지)
+
 - [ ] **Step 1: onFinish에서 빈 응답 시 DB 저장 스킵**
 
 `chat.ts`의 onFinish 콜백 시작 부분 (L300 `try {` 직후)에 추가:
@@ -123,7 +136,7 @@ onFinish: async ({ messages: finalMessages }) => {
       return;
     }
 
-    // ... 기존 저장 로직 (LLM_USAGE 로그 ~ extraction 저장)
+    // ... 기존 저장 로직 (LLM_USAGE 로그 ~ extraction 저장) 그대로 유지
 ```
 
 - [ ] **Step 2: tsc 확인**
@@ -140,7 +153,61 @@ git commit -m "fix: 빈 응답 시 DB 저장 스킵 — regenerate 후 성공 �
 
 ---
 
-## Task 3: Store scoring 순수 함수
+## Task 3: judgment.ts 공통 scoring 상수 추출
+
+**Files:**
+- Modify: `src/server/features/beauty/judgment.ts`
+
+**근거:** Eng Review Code Quality — english_support 상수가 store.ts/clinic.ts에 중복되면 DRY 위반. judgment.ts는 기반 모듈로 모든 beauty peer가 import 가능 (§2.3 준수).
+
+- [ ] **Step 1: judgment.ts에 공통 상수 추가**
+
+`rank()` 함수 위에 추가:
+
+```typescript
+// --- 공통 scoring 상수 — store.ts/clinic.ts에서 import ---
+// DB english_support enum 기반. 단일 진실 공급원 (DRY).
+// 이 상수를 수정하면 store/clinic 모두 반영됨.
+
+/** english_support 등급별 점수 보너스 */
+export const ENGLISH_SUPPORT_BONUS: Record<string, number> = {
+  fluent: 0.2,
+  good: 0.15,
+  basic: 0.05,
+  none: 0,
+};
+
+/** english_support 등급별 reasons 라벨 */
+export const ENGLISH_SUPPORT_LABEL: Record<string, string> = {
+  fluent: 'Fluent English support',
+  good: 'Good English support',
+  basic: 'Basic English available',
+};
+
+/** 높은 평점 기준 */
+export const HIGH_RATING_THRESHOLD = 4.0;
+
+/** 평점 보너스 점수 */
+export const RATING_BONUS = 0.1;
+```
+
+주석 업데이트: `G-9: export 7개 (rank, ScoredItem, RankedResult, ENGLISH_SUPPORT_BONUS, ENGLISH_SUPPORT_LABEL, HIGH_RATING_THRESHOLD, RATING_BONUS).`
+
+- [ ] **Step 2: tsc 확인**
+
+Run: `npx tsc --noEmit`
+Expected: 0 errors
+
+- [ ] **Step 3: 커밋**
+
+```bash
+git add src/server/features/beauty/judgment.ts
+git commit -m "refactor: 공통 scoring 상수를 judgment.ts로 추출 (DRY)"
+```
+
+---
+
+## Task 4: Store scoring 순수 함수
 
 **Files:**
 - Create: `src/server/features/beauty/store.ts`
@@ -182,40 +249,43 @@ describe('scoreStores', () => {
       makeStore({ id: 's2', english_support: 'fluent' }),
     ];
     const scored = scoreStores(stores);
-    const s1 = scored.find(s => s.id === 's1')!;
-    const s2 = scored.find(s => s.id === 's2')!;
-    expect(s2.score).toBeGreaterThan(s1.score);
-    expect(s2.reasons).toContain('Fluent English support');
+    expect(scored.find(s => s.id === 's2')!.score)
+      .toBeGreaterThan(scored.find(s => s.id === 's1')!.score);
+    expect(scored.find(s => s.id === 's2')!.reasons).toContain('Fluent English support');
   });
 
   it('adds reason for tourist services', () => {
-    const stores = [
-      makeStore({ id: 's1', tourist_services: ['tax_refund', 'beauty_consultation'] }),
-    ];
-    const scored = scoreStores(stores);
+    const scored = scoreStores([
+      makeStore({ tourist_services: ['tax_refund', 'beauty_consultation'] }),
+    ]);
     expect(scored[0].reasons.length).toBeGreaterThanOrEqual(1);
   });
 
   it('adds reason for high rating', () => {
-    const stores = [
-      makeStore({ id: 's1', rating: 4.5 }),
-    ];
-    const scored = scoreStores(stores);
+    const scored = scoreStores([makeStore({ rating: 4.5 })]);
     expect(scored[0].reasons).toContain('Highly rated (4.5)');
   });
 
+  it('adds bonus for matching user language', () => {
+    const scored = scoreStores(
+      [makeStore({ english_support: 'fluent' })],
+      'en',
+    );
+    expect(scored[0].reasons.some(r => r.includes('your language'))).toBe(true);
+  });
+
+  it('no language bonus when userLanguage is null', () => {
+    const scored = scoreStores([makeStore({ english_support: 'fluent' })]);
+    expect(scored[0].reasons.some(r => r.includes('your language'))).toBe(false);
+  });
+
   it('returns all stores (no exclusion)', () => {
-    const stores = [
-      makeStore({ id: 's1' }),
-      makeStore({ id: 's2' }),
-    ];
-    const scored = scoreStores(stores);
+    const scored = scoreStores([makeStore({ id: 's1' }), makeStore({ id: 's2' })]);
     expect(scored).toHaveLength(2);
   });
 
   it('preserves is_highlighted', () => {
-    const stores = [makeStore({ id: 's1', is_highlighted: true })];
-    const scored = scoreStores(stores);
+    const scored = scoreStores([makeStore({ is_highlighted: true })]);
     expect(scored[0].is_highlighted).toBe(true);
   });
 });
@@ -233,6 +303,12 @@ Expected: FAIL — `scoreStores` not found
 import 'server-only';
 import type { Store } from '@/shared/types/domain';
 import type { ScoredItem } from './judgment';
+import {
+  ENGLISH_SUPPORT_BONUS,
+  ENGLISH_SUPPORT_LABEL,
+  HIGH_RATING_THRESHOLD,
+  RATING_BONUS,
+} from './judgment';
 
 // ============================================================
 // 매장 도메인 로직 — search-engine.md §3.2 확장
@@ -244,19 +320,7 @@ import type { ScoredItem } from './judgment';
 // ============================================================
 
 const BASE_SCORE = 0.5;
-
-const ENGLISH_SUPPORT_BONUS: Record<string, number> = {
-  fluent: 0.2,
-  good: 0.15,
-  basic: 0.05,
-  none: 0,
-};
-
-const ENGLISH_SUPPORT_LABEL: Record<string, string> = {
-  fluent: 'Fluent English support',
-  good: 'Good English support',
-  basic: 'Basic English available',
-};
+const LANGUAGE_MATCH_BONUS = 0.1;
 
 const TOURIST_SERVICE_LABELS: Record<string, string> = {
   tax_refund: 'Tax refund available',
@@ -265,14 +329,15 @@ const TOURIST_SERVICE_LABELS: Record<string, string> = {
   product_samples: 'Free product samples',
 };
 
-const HIGH_RATING_THRESHOLD = 4.0;
-const RATING_BONUS = 0.1;
-
 /**
  * Store[]에 여행객 접근성 기반 점수를 부여하여 ScoredItem[]로 변환한다.
  * search-handler에서 rank()와 함께 사용.
+ * @param userLanguage 사용자 언어 (profile.language). null이면 언어 보너스 미적용.
  */
-export function scoreStores(stores: Store[]): ScoredItem[] {
+export function scoreStores(
+  stores: Store[],
+  userLanguage: string | null = null,
+): ScoredItem[] {
   return stores.map((store) => {
     let score = BASE_SCORE;
     const reasons: string[] = [];
@@ -282,6 +347,16 @@ export function scoreStores(stores: Store[]): ScoredItem[] {
     score += engBonus;
     const engLabel = ENGLISH_SUPPORT_LABEL[store.english_support];
     if (engLabel) reasons.push(engLabel);
+
+    // 사용자 언어 매칭
+    if (userLanguage && userLanguage !== 'ko') {
+      const supportsUserLang =
+        store.english_support === 'fluent' || store.english_support === 'good';
+      if (supportsUserLang) {
+        score += LANGUAGE_MATCH_BONUS;
+        reasons.push('Supports your language');
+      }
+    }
 
     // 관광객 서비스
     for (const svc of store.tourist_services) {
@@ -309,18 +384,18 @@ export function scoreStores(stores: Store[]): ScoredItem[] {
 - [ ] **Step 4: 테스트 통과 확인**
 
 Run: `npx vitest run src/server/features/beauty/store.test.ts`
-Expected: 5 passed
+Expected: 7 passed
 
 - [ ] **Step 5: 커밋**
 
 ```bash
 git add src/server/features/beauty/store.ts src/server/features/beauty/store.test.ts
-git commit -m "feat: scoreStores 순수 함수 — 여행객 접근성 기반 scoring"
+git commit -m "feat: scoreStores 순수 함수 — 여행객 접근성 + 언어 매칭 기반 scoring"
 ```
 
 ---
 
-## Task 4: Clinic scoring 순수 함수
+## Task 5: Clinic scoring 순수 함수
 
 **Files:**
 - Create: `src/server/features/beauty/clinic.ts`
@@ -375,11 +450,7 @@ describe('scoreClinics', () => {
   it('adds reason for foreigner friendly with interpreter', () => {
     const scored = scoreClinics([
       makeClinic({
-        foreigner_friendly: {
-          languages: ['en', 'ja'],
-          interpreter: true,
-          international_patients: true,
-        },
+        foreigner_friendly: { languages: ['en', 'ja'], interpreter: true, international_patients: true },
       }),
     ]);
     expect(scored[0].reasons.some(r => r.includes('Interpreter'))).toBe(true);
@@ -390,6 +461,19 @@ describe('scoreClinics', () => {
       makeClinic({ booking_url: 'https://example.com/book' }),
     ]);
     expect(scored[0].reasons).toContain('Online booking available');
+  });
+
+  it('adds bonus for matching user language', () => {
+    const scored = scoreClinics(
+      [makeClinic({ english_support: 'fluent' })],
+      'en',
+    );
+    expect(scored[0].reasons.some(r => r.includes('your language'))).toBe(true);
+  });
+
+  it('no language bonus when userLanguage is null', () => {
+    const scored = scoreClinics([makeClinic({ english_support: 'fluent' })]);
+    expect(scored[0].reasons.some(r => r.includes('your language'))).toBe(false);
   });
 
   it('preserves is_highlighted', () => {
@@ -411,6 +495,12 @@ Expected: FAIL
 import 'server-only';
 import type { Clinic } from '@/shared/types/domain';
 import type { ScoredItem } from './judgment';
+import {
+  ENGLISH_SUPPORT_BONUS,
+  ENGLISH_SUPPORT_LABEL,
+  HIGH_RATING_THRESHOLD,
+  RATING_BONUS,
+} from './judgment';
 
 // ============================================================
 // 클리닉 도메인 로직 — search-engine.md §3.2 확장
@@ -422,31 +512,20 @@ import type { ScoredItem } from './judgment';
 // ============================================================
 
 const BASE_SCORE = 0.5;
-
-const ENGLISH_SUPPORT_BONUS: Record<string, number> = {
-  fluent: 0.2,
-  good: 0.15,
-  basic: 0.05,
-  none: 0,
-};
-
-const ENGLISH_SUPPORT_LABEL: Record<string, string> = {
-  fluent: 'Fluent English support',
-  good: 'Good English support',
-  basic: 'Basic English available',
-};
-
 const LICENSE_BONUS = 0.1;
 const BOOKING_BONUS = 0.05;
 const FOREIGNER_BONUS = 0.1;
-const HIGH_RATING_THRESHOLD = 4.0;
-const RATING_BONUS = 0.1;
+const LANGUAGE_MATCH_BONUS = 0.1;
 
 /**
  * Clinic[]에 외국인 접근성 + 신뢰도 기반 점수를 부여하여 ScoredItem[]로 변환한다.
  * search-handler에서 rank()와 함께 사용.
+ * @param userLanguage 사용자 언어 (profile.language). null이면 언어 보너스 미적용.
  */
-export function scoreClinics(clinics: Clinic[]): ScoredItem[] {
+export function scoreClinics(
+  clinics: Clinic[],
+  userLanguage: string | null = null,
+): ScoredItem[] {
   return clinics.map((clinic) => {
     let score = BASE_SCORE;
     const reasons: string[] = [];
@@ -456,6 +535,16 @@ export function scoreClinics(clinics: Clinic[]): ScoredItem[] {
     score += engBonus;
     const engLabel = ENGLISH_SUPPORT_LABEL[clinic.english_support];
     if (engLabel) reasons.push(engLabel);
+
+    // 사용자 언어 매칭
+    if (userLanguage && userLanguage !== 'ko') {
+      const supportsUserLang =
+        clinic.english_support === 'fluent' || clinic.english_support === 'good';
+      if (supportsUserLang) {
+        score += LANGUAGE_MATCH_BONUS;
+        reasons.push('Supports your language');
+      }
+    }
 
     // 면허 인증
     if (clinic.license_verified) {
@@ -501,372 +590,27 @@ export function scoreClinics(clinics: Clinic[]): ScoredItem[] {
 - [ ] **Step 4: 테스트 통과 확인**
 
 Run: `npx vitest run src/server/features/beauty/clinic.test.ts`
-Expected: 5 passed
+Expected: 7 passed
 
 - [ ] **Step 5: 커밋**
 
 ```bash
 git add src/server/features/beauty/clinic.ts src/server/features/beauty/clinic.test.ts
-git commit -m "feat: scoreClinics 순수 함수 — 외국인 접근성 + 신뢰도 기반 scoring"
+git commit -m "feat: scoreClinics 순수 함수 — 외국인 접근성 + 신뢰도 + 언어 매칭"
 ```
 
 ---
 
-## Task 5: match_stores / match_clinics RPC 마이그레이션
-
-**Files:**
-- Create: `supabase/migrations/013_match_stores_clinics.sql`
-
-- [ ] **Step 1: 마이그레이션 SQL 작성**
-
-기존 `012_expand_rpc_columns.sql`의 `match_products` 패턴을 따라 작성:
-
-```sql
--- 013_match_stores_clinics.sql
--- Store/Clinic 벡터 검색 RPC — search-engine.md §2.1 확장
--- 기존 match_products/match_treatments 패턴 동일. cosine distance 기반 유사도 검색.
-
--- ============================================================
--- match_stores: 벡터 유사도 + 필터 검색
--- ============================================================
-CREATE OR REPLACE FUNCTION match_stores(
-  query_embedding vector(1024),
-  match_count int DEFAULT 5,
-  filter_store_type text DEFAULT NULL,
-  filter_english_support text DEFAULT NULL,
-  filter_district text DEFAULT NULL
-)
-RETURNS TABLE(
-  id uuid,
-  name jsonb,
-  description jsonb,
-  country text,
-  city text,
-  district text,
-  location jsonb,
-  address jsonb,
-  operating_hours jsonb,
-  english_support text,
-  store_type text,
-  tourist_services text[],
-  payment_methods text[],
-  nearby_landmarks text[],
-  external_links jsonb,
-  is_highlighted boolean,
-  highlight_badge jsonb,
-  rating float,
-  review_count int,
-  images text[],
-  tags text[],
-  similarity float
-)
-LANGUAGE plpgsql
-AS $$
-BEGIN
-  RETURN QUERY
-  SELECT
-    s.id, s.name, s.description,
-    s.country, s.city, s.district,
-    s.location::jsonb, s.address,
-    s.operating_hours,
-    s.english_support, s.store_type,
-    s.tourist_services, s.payment_methods,
-    s.nearby_landmarks, s.external_links,
-    s.is_highlighted, s.highlight_badge,
-    s.rating::float, s.review_count,
-    s.images, s.tags,
-    1 - (s.embedding <=> query_embedding) AS similarity
-  FROM stores s
-  WHERE s.status = 'active'
-    AND s.embedding IS NOT NULL
-    AND (filter_store_type IS NULL OR s.store_type = filter_store_type)
-    AND (filter_english_support IS NULL OR s.english_support = filter_english_support)
-    AND (filter_district IS NULL OR s.district = filter_district)
-  ORDER BY s.embedding <=> query_embedding
-  LIMIT match_count;
-END;
-$$;
-
--- ============================================================
--- match_clinics: 벡터 유사도 + 필터 검색
--- ============================================================
-CREATE OR REPLACE FUNCTION match_clinics(
-  query_embedding vector(1024),
-  match_count int DEFAULT 5,
-  filter_clinic_type text DEFAULT NULL,
-  filter_english_support text DEFAULT NULL,
-  filter_district text DEFAULT NULL
-)
-RETURNS TABLE(
-  id uuid,
-  name jsonb,
-  description jsonb,
-  country text,
-  city text,
-  district text,
-  location jsonb,
-  address jsonb,
-  operating_hours jsonb,
-  english_support text,
-  clinic_type text,
-  license_verified boolean,
-  consultation_type text[],
-  foreigner_friendly jsonb,
-  booking_url text,
-  external_links jsonb,
-  is_highlighted boolean,
-  highlight_badge jsonb,
-  rating float,
-  review_count int,
-  images text[],
-  tags text[],
-  similarity float
-)
-LANGUAGE plpgsql
-AS $$
-BEGIN
-  RETURN QUERY
-  SELECT
-    c.id, c.name, c.description,
-    c.country, c.city, c.district,
-    c.location::jsonb, c.address,
-    c.operating_hours,
-    c.english_support, c.clinic_type,
-    c.license_verified, c.consultation_type,
-    c.foreigner_friendly::jsonb, c.booking_url,
-    c.external_links,
-    c.is_highlighted, c.highlight_badge,
-    c.rating::float, c.review_count,
-    c.images, c.tags,
-    1 - (c.embedding <=> query_embedding) AS similarity
-  FROM clinics c
-  WHERE c.status = 'active'
-    AND c.embedding IS NOT NULL
-    AND (filter_clinic_type IS NULL OR c.clinic_type = filter_clinic_type)
-    AND (filter_english_support IS NULL OR c.english_support = filter_english_support)
-    AND (filter_district IS NULL OR c.district = filter_district)
-  ORDER BY c.embedding <=> query_embedding
-  LIMIT match_count;
-END;
-$$;
-```
-
-- [ ] **Step 2: 로컬 DB에 마이그레이션 적용**
-
-Run: `npx supabase db push --local`
-Expected: `Applied migration 013_match_stores_clinics.sql`
-
-- [ ] **Step 3: 커밋**
-
-```bash
-git add supabase/migrations/013_match_stores_clinics.sql
-git commit -m "feat: match_stores/match_clinics RPC — 벡터 검색 지원"
-```
-
----
-
-## Task 6: Repository에 벡터 검색 함수 추가
-
-**Files:**
-- Modify: `src/server/features/repositories/store-repository.ts`
-- Modify: `src/server/features/repositories/clinic-repository.ts`
-
-- [ ] **Step 1: store-repository.ts에 matchStoresByVector 추가**
-
-파일 끝 (`findAllStores` 함수 아래)에 추가:
-
-```typescript
-/**
- * AI tool용 벡터 유사도 검색.
- * search-engine.md §2.1 matchByVector: match_stores RPC 호출.
- */
-export async function matchStoresByVector(
-  client: SupabaseClient,
-  embedding: number[],
-  filters: StoreFilters,
-  limit: number = 5,
-) {
-  const { data, error } = await client.rpc('match_stores', {
-    query_embedding: embedding,
-    match_count: limit,
-    filter_store_type: filters.store_type ?? null,
-    filter_english_support: filters.english_support ?? null,
-    filter_district: filters.district ?? null,
-  });
-
-  if (error) {
-    throw new Error('Store vector search failed');
-  }
-
-  return data ?? [];
-}
-```
-
-- [ ] **Step 2: clinic-repository.ts에 matchClinicsByVector 추가**
-
-파일 끝에 추가:
-
-```typescript
-/**
- * AI tool용 벡터 유사도 검색.
- * search-engine.md §2.1 matchByVector: match_clinics RPC 호출.
- */
-export async function matchClinicsByVector(
-  client: SupabaseClient,
-  embedding: number[],
-  filters: ClinicFilters,
-  limit: number = 5,
-) {
-  const { data, error } = await client.rpc('match_clinics', {
-    query_embedding: embedding,
-    match_count: limit,
-    filter_clinic_type: filters.clinic_type ?? null,
-    filter_english_support: filters.english_support ?? null,
-    filter_district: filters.district ?? null,
-  });
-
-  if (error) {
-    throw new Error('Clinic vector search failed');
-  }
-
-  return data ?? [];
-}
-```
-
-- [ ] **Step 3: tsc 확인**
-
-Run: `npx tsc --noEmit`
-Expected: 0 errors
-
-- [ ] **Step 4: 커밋**
-
-```bash
-git add src/server/features/repositories/store-repository.ts src/server/features/repositories/clinic-repository.ts
-git commit -m "feat: matchStoresByVector/matchClinicsByVector — RPC 래퍼 추가"
-```
-
----
-
-## Task 7: search-handler에 store/clinic 파이프라인 적용
-
-**Files:**
-- Modify: `src/server/features/chat/tools/search-handler.ts`
-
-- [ ] **Step 1: import 추가**
-
-기존 import 섹션에 추가:
-
-```typescript
-import { matchStoresByVector } from '@/server/features/repositories/store-repository';
-import { matchClinicsByVector } from '@/server/features/repositories/clinic-repository';
-import { scoreStores } from '@/server/features/beauty/store';
-import { scoreClinics } from '@/server/features/beauty/clinic';
-```
-
-- [ ] **Step 2: searchStore 함수 교체**
-
-기존 `searchStore` 함수 (L207~L227)를 교체:
-
-```typescript
-async function searchStore(
-  client: SupabaseClient,
-  query: string,
-  filters: SearchArgs['filters'],
-  limit: number,
-) {
-  const storeFilters = {
-    store_type: filters?.category,
-    english_support: filters?.english_support,
-    district: undefined as string | undefined,
-    search: undefined as string | undefined,
-  };
-
-  // §5.2 벡터/SQL 분기
-  const stores = await searchWithFallback(
-    query,
-    (embedding) => matchStoresByVector(client, embedding, storeFilters, limit),
-    () => findStoresByFilters(client, { ...storeFilters, search: query || undefined }, limit),
-  );
-
-  // beauty 판단: scoreStores → rank
-  const scored = scoreStores(stores);
-  const ranked = rank(scored);
-
-  const cards = ranked.map(r => {
-    const store = stores.find(s => s.id === r.item.id);
-    return {
-      ...store,
-      reasons: r.item.reasons,
-    };
-  });
-
-  return { cards, total: cards.length };
-}
-```
-
-- [ ] **Step 3: searchClinic 함수 교체**
-
-기존 `searchClinic` 함수 (L231~L251)를 교체:
-
-```typescript
-async function searchClinic(
-  client: SupabaseClient,
-  query: string,
-  filters: SearchArgs['filters'],
-  limit: number,
-) {
-  const clinicFilters = {
-    clinic_type: filters?.category,
-    english_support: filters?.english_support,
-    district: undefined as string | undefined,
-    search: undefined as string | undefined,
-  };
-
-  // §5.2 벡터/SQL 분기
-  const clinics = await searchWithFallback(
-    query,
-    (embedding) => matchClinicsByVector(client, embedding, clinicFilters, limit),
-    () => findClinicsByFilters(client, { ...clinicFilters, search: query || undefined }, limit),
-  );
-
-  // beauty 판단: scoreClinics → rank
-  const scored = scoreClinics(clinics);
-  const ranked = rank(scored);
-
-  const cards = ranked.map(r => {
-    const clinic = clinics.find(c => c.id === r.item.id);
-    return {
-      ...clinic,
-      reasons: r.item.reasons,
-    };
-  });
-
-  return { cards, total: cards.length };
-}
-```
-
-- [ ] **Step 4: tsc 확인 + 기존 테스트 회귀 확인**
-
-Run: `npx tsc --noEmit && npx vitest run`
-Expected: 0 errors, 전체 테스트 통과
-
-- [ ] **Step 5: 커밋**
-
-```bash
-git add src/server/features/chat/tools/search-handler.ts
-git commit -m "feat: store/clinic 검색에 벡터 검색 + scoring + rank 파이프라인 적용"
-```
-
----
-
-## Task 8: 프롬프트 개선 — domain guide + Answer first 강화
+## Task 6: 프롬프트 개선 — domain guide + Answer first 강화
 
 **Files:**
 - Modify: `src/server/features/chat/prompts.ts`
 
+**해결하는 FAIL:** P5 (질문 우선 → 추천 우선으로 전환)
+
 - [ ] **Step 1: ROLE_SECTION에 빈 응답 방지 지시 추가**
 
-`ROLE_SECTION`의 `Response style:` 항목 마지막에 추가:
+`ROLE_SECTION`의 `Response style:` 마지막 항목 뒤에 추가:
 
 ```
 - Never return an empty response. If you are unsure how to help, ask a clarifying question
@@ -875,7 +619,9 @@ git commit -m "feat: store/clinic 검색에 벡터 검색 + scoring + rank 파�
 
 - [ ] **Step 2: TOOLS_SECTION domain guide 수정**
 
-기존 domain selection guide (L234~L237):
+기존 L234-237의 domain guide 교체:
+
+기존:
 ```
 - User asks about stores, shops, where to buy, Olive Young, duty-free → domain: "store"
 - User asks about clinics, dermatologists, where to get treatments → domain: "clinic"
@@ -891,8 +637,6 @@ git commit -m "feat: store/clinic 검색에 벡터 검색 + scoring + rank 파�
 
 - [ ] **Step 3: buildNoProfileSection의 "Answer first" 강화**
 
-`buildNoProfileSection`의 `**Your approach:**` 섹션에서 첫 번째 불릿을 수정:
-
 기존:
 ```
 - Answer their questions with broadly applicable recommendations
@@ -905,7 +649,7 @@ git commit -m "feat: store/clinic 검색에 벡터 검색 + scoring + rank 파�
   Then naturally ask ONE question to improve future recommendations.
 ```
 
-- [ ] **Step 4: tsc + 프롬프트 테스트 회귀 확인**
+- [ ] **Step 4: tsc + 기존 프롬프트 테스트 회귀 확인**
 
 Run: `npx tsc --noEmit && npx vitest run src/server/features/chat/prompts.test.ts`
 Expected: 통과
@@ -914,23 +658,23 @@ Expected: 통과
 
 ```bash
 git add src/server/features/chat/prompts.ts
-git commit -m "fix: 프롬프트 개선 — domain guide 수정 + Answer first 강화 + 빈 응답 방지"
+git commit -m "fix: 프롬프트 — domain guide 수정 + Answer first 강화 + 빈 응답 방지"
 ```
 
 ---
 
-## Task 9: Few-shot 예시 추가
+## Task 7: Few-shot 예시 추가
 
 **Files:**
 - Modify: `src/server/features/chat/prompt-examples.ts`
 
+**해결하는 FAIL:** P4 (combination skin 예시 부재), P5 (no-profile 매장 질문 예시 부재)
+
 - [ ] **Step 1: 3개 예시 추가**
 
-`FEW_SHOT_EXAMPLES` 문자열 끝 (마지막 `</example>` 뒤)에 추가:
+`FEW_SHOT_EXAMPLES` 끝 (마지막 `</example>` 뒤)에 추가:
 
-```typescript
-// 기존 FEW_SHOT_EXAMPLES 끝에 연결
-
+```
 <example>
 User: "Where's a good store to buy skincare in Myeongdong?"
 Context: No user profile.
@@ -980,150 +724,162 @@ git commit -m "feat: few-shot 예시 3개 추가 — store/combination skin/no-p
 
 ---
 
-## Task 10: Eval 시나리오 확장
+## Task 8: search-handler에 store/clinic scoring 파이프라인 적용
 
 **Files:**
-- Modify: `scripts/fixtures/eval-scenarios.json`
+- Modify: `src/server/features/chat/tools/search-handler.ts`
 
-- [ ] **Step 1: store/clinic/multi-domain 시나리오 추가**
+- [ ] **Step 1: import 추가**
 
-`scenarios` 배열 끝에 5개 시나리오 추가:
+기존 import 섹션에 추가:
 
-```json
-{
-  "id": "S1",
-  "category": "store_clinic",
-  "name": "Store recommendation → actionable result",
-  "profile": { "skin_type": "oily", "language": "en" },
-  "messages": [
-    { "role": "user", "text": "Where can I buy good skincare products in Myeongdong?" }
-  ],
-  "rubric": [
-    { "criterion": "store_info", "description": "Response mentions specific stores or store types (Olive Young, duty-free, etc.)" },
-    { "criterion": "location_relevant", "description": "Response is relevant to Myeongdong area" },
-    { "criterion": "actionable", "description": "Response provides enough info to actually visit a store" }
-  ]
-},
-{
-  "id": "S2",
-  "category": "store_clinic",
-  "name": "Clinic recommendation → treatment context",
-  "profile": { "skin_type": "combination", "skin_concerns": ["acne", "dark_spots"], "language": "en" },
-  "messages": [
-    { "role": "user", "text": "Can you recommend a good dermatology clinic for acne scar treatment?" }
-  ],
-  "rubric": [
-    { "criterion": "clinic_info", "description": "Response mentions clinics or clinic types relevant to dermatology" },
-    { "criterion": "treatment_relevant", "description": "Response connects to acne scar treatments (laser, peel, etc.)" },
-    { "criterion": "practical_info", "description": "Response includes practical info like English support, booking, or area" }
-  ]
-},
-{
-  "id": "S3",
-  "category": "store_clinic",
-  "name": "Multi-domain follow-up → maintains context",
-  "profile": { "skin_type": "dry", "skin_concerns": ["wrinkles"], "language": "en" },
-  "messages": [
-    { "role": "user", "text": "I need a good moisturizer for dry skin." },
-    { "role": "user", "text": "Where can I buy it in Gangnam?" }
-  ],
-  "rubric": [
-    { "criterion": "maintains_product_context", "description": "Second response refers back to the moisturizer or dry skin from the first message" },
-    { "criterion": "store_info", "description": "Provides store or location information for Gangnam area" },
-    { "criterion": "coherent_flow", "description": "Conversation flows naturally without repeating the full recommendation" }
-  ]
-},
-{
-  "id": "P6",
-  "category": "personalization",
-  "name": "No profile + product request → recommend first",
-  "profile": null,
-  "messages": [
-    { "role": "user", "text": "I'm looking for a good sunscreen for my trip to Seoul" }
-  ],
-  "rubric": [
-    { "criterion": "recommends_first", "description": "Provides at least one product recommendation before asking any profile questions" },
-    { "criterion": "relevant_product", "description": "Recommends sunscreen or UV protection products" },
-    { "criterion": "natural_followup", "description": "If asking a profile question, it comes after the recommendation and feels natural" }
-  ]
-},
-{
-  "id": "P7",
-  "category": "personalization",
-  "name": "Skin concern chat → ingredient info",
-  "profile": { "skin_type": "sensitive", "skin_concerns": ["redness"], "language": "en" },
-  "messages": [
-    { "role": "user", "text": "I've been struggling with redness on my cheeks. Is centella good for that?" }
-  ],
-  "rubric": [
-    { "criterion": "ingredient_info", "description": "Provides information about centella asiatica and its benefits for redness" },
-    { "criterion": "product_suggestion", "description": "Suggests products or treatments containing centella or related to redness" },
-    { "criterion": "personalized", "description": "Connects the advice to the user's sensitive skin type and redness concern" }
-  ]
+```typescript
+import { scoreStores } from '@/server/features/beauty/store';
+import { scoreClinics } from '@/server/features/beauty/clinic';
+```
+
+- [ ] **Step 2: searchStore 함수의 context 파라미터 추가 + scoring 적용**
+
+기존 `searchStore` 함수 시그니처와 본문 교체:
+
+```typescript
+async function searchStore(
+  client: SupabaseClient,
+  query: string,
+  filters: SearchArgs['filters'],
+  limit: number,
+  userLanguage: string | null,
+) {
+  const storeFilters = {
+    store_type: filters?.category,
+    english_support: filters?.english_support,
+    search: query || undefined,
+  };
+
+  const stores = await findStoresByFilters(client, storeFilters, limit);
+
+  // beauty 판단: scoreStores → rank
+  const scored = scoreStores(stores, userLanguage);
+  const ranked = rank(scored);
+
+  const cards = ranked.map(r => {
+    const store = stores.find(s => s.id === r.item.id);
+    return {
+      ...store,
+      reasons: r.item.reasons,
+    };
+  });
+
+  return { cards, total: cards.length };
 }
 ```
 
-- [ ] **Step 2: JSON 유효성 확인**
+- [ ] **Step 3: searchClinic 함수도 동일하게 수정**
 
-Run: `node -e "JSON.parse(require('fs').readFileSync('scripts/fixtures/eval-scenarios.json')); console.log('Valid JSON')"`
-Expected: `Valid JSON`
+```typescript
+async function searchClinic(
+  client: SupabaseClient,
+  query: string,
+  filters: SearchArgs['filters'],
+  limit: number,
+  userLanguage: string | null,
+) {
+  const clinicFilters = {
+    clinic_type: filters?.category,
+    english_support: filters?.english_support,
+    search: query || undefined,
+  };
 
-- [ ] **Step 3: 커밋**
+  const clinics = await findClinicsByFilters(client, clinicFilters, limit);
+
+  // beauty 판단: scoreClinics → rank
+  const scored = scoreClinics(clinics, userLanguage);
+  const ranked = rank(scored);
+
+  const cards = ranked.map(r => {
+    const clinic = clinics.find(c => c.id === r.item.id);
+    return {
+      ...clinic,
+      reasons: r.item.reasons,
+    };
+  });
+
+  return { cards, total: cards.length };
+}
+```
+
+- [ ] **Step 4: executeSearchBeautyData에서 userLanguage 전달**
+
+`executeSearchBeautyData` 함수에서 store/clinic 호출 시 language 전달:
+
+```typescript
+if (domain === 'store') {
+  return await searchStore(client, query, filters, limit, profile?.language ?? null);
+}
+return await searchClinic(client, query, filters, limit, profile?.language ?? null);
+```
+
+- [ ] **Step 5: tsc + 전체 테스트 회귀 확인**
+
+Run: `npx tsc --noEmit && npx vitest run`
+Expected: 0 errors, 전체 테스트 통과
+
+- [ ] **Step 6: 커밋**
 
 ```bash
-git add scripts/fixtures/eval-scenarios.json
-git commit -m "feat: eval 시나리오 5개 추가 — store/clinic/multi-domain/ingredient"
+git add src/server/features/chat/tools/search-handler.ts
+git commit -m "feat: store/clinic 검색에 scoring + rank 파이프라인 + 언어 매칭 적용"
 ```
 
 ---
 
-## Task 11: P1/P4/P5 rubric 보정
+## Task 9: Eval 시나리오 확장 + rubric 보정
 
 **Files:**
 - Modify: `scripts/fixtures/eval-scenarios.json`
 
-- [ ] **Step 1: P4 rubric 수정 — combination_aware 완화**
+**해결하는 FAIL:** P4 (rubric 보정), P5 (rubric 보정)
 
-P4의 `combination_aware` criterion 교체:
+- [ ] **Step 1: 5개 시나리오 추가 (store/clinic/multi-domain/ingredient)**
+
+`scenarios` 배열 끝에 추가 (S1, S2, S3, P6, P7 — Task 10의 코드 참조)
+
+- [ ] **Step 2: P4 rubric `combination_aware` 완화**
 
 기존:
 ```json
 { "criterion": "combination_aware", "description": "Acknowledges combination skin needs (not too heavy, not too light) or zone-specific advice" }
 ```
-
 교체:
 ```json
 { "criterion": "combination_aware", "description": "Recommends products suitable for combination skin. Acknowledging combination skin characteristics in the recommendation text is ideal but not required if the products themselves are appropriate." }
 ```
 
-- [ ] **Step 2: P5 rubric 수정 — 명확화 질문 허용**
-
-P5의 `generic_recs` criterion 교체:
+- [ ] **Step 3: P5 rubric `generic_recs` 완화**
 
 기존:
 ```json
 { "criterion": "generic_recs", "description": "Provides general popular K-beauty recommendations (not personalized to any skin type)" }
 ```
-
 교체:
 ```json
 { "criterion": "generic_recs", "description": "Either provides popular K-beauty recommendations OR asks a helpful clarifying question while offering initial suggestions. Both are valid for a no-profile user." }
 ```
 
-- [ ] **Step 3: JSON 유효성 + 커밋**
+- [ ] **Step 4: JSON 유효성 확인 + 커밋**
 
 Run: `node -e "JSON.parse(require('fs').readFileSync('scripts/fixtures/eval-scenarios.json')); console.log('Valid')"`
 
 ```bash
 git add scripts/fixtures/eval-scenarios.json
-git commit -m "fix: P4/P5 rubric 보정 — combination skin 완화 + 명확화 질문 허용"
+git commit -m "feat: eval 시나리오 5개 추가 + P4/P5 rubric 보정"
 ```
 
 ---
 
-## Task 12: 전체 검증
+## Task 10: 전체 검증
 
-- [ ] **Step 1: tsc + lint + 전체 테스트**
+- [ ] **Step 1: tsc + 전체 테스트**
 
 Run: `npx tsc --noEmit && npx vitest run`
 Expected: 0 errors, 전체 테스트 통과
@@ -1131,21 +887,21 @@ Expected: 0 errors, 전체 테스트 통과
 - [ ] **Step 2: eval harness 실행 (dev 서버 필요)**
 
 Run: `set -a && source .env.local && set +a && npx tsx scripts/eval-chat-quality.ts`
-Expected: 25개 시나리오 실행, PASS율 확인
+Expected: 25개 시나리오 실행
 
 - [ ] **Step 3: calibration-notes.md 업데이트**
 
-Run 결과를 calibration-notes.md에 Run 8로 기록.
+Run 결과를 `scripts/fixtures/calibration-notes.md`에 기록.
 
 - [ ] **Step 4: TODO.md 업데이트**
 
-진행률 반영.
+벡터 검색 + embedding 생성 TODO 추가. 진행률 반영.
 
 - [ ] **Step 5: 최종 커밋**
 
 ```bash
 git add scripts/fixtures/calibration-notes.md TODO.md
-git commit -m "docs: Run 8 결과 기록 + TODO 업데이트"
+git commit -m "docs: 검증 결과 + TODO 벡터 검색 항목 추가"
 ```
 
 ---
@@ -1155,16 +911,14 @@ git commit -m "docs: Run 8 결과 기록 + TODO 업데이트"
 ```
 Task 1 (클라이언트 방어) ─────── 독립
 Task 2 (서버 방어) ──────────── 독립
-Task 3 (store scoring) ─────── 독립
-Task 4 (clinic scoring) ────── 독립
-Task 5 (DB migration) ──────── 독립
-Task 6 (repository 함수) ───── Task 5 이후
-Task 7 (search-handler) ───── Task 3,4,6 이후
-Task 8 (프롬프트) ─────────── 독립
-Task 9 (few-shot) ─────────── 독립
-Task 10 (eval 시나리오) ────── 독립
-Task 11 (rubric 보정) ──────── 독립
-Task 12 (전체 검증) ────────── 전체 완료 후
+Task 3 (judgment 상수 추출) ──── 독립
+Task 4 (store scoring) ─────── Task 3 이후
+Task 5 (clinic scoring) ────── Task 3 이후
+Task 6 (프롬프트) ─────────── 독립
+Task 7 (few-shot) ─────────── 독립
+Task 8 (search-handler) ───── Task 4,5 이후
+Task 9 (eval + rubric) ────── 독립
+Task 10 (전체 검증) ────────── 전체 완료 후
 ```
 
-Task 1-5, 8-11은 병렬 실행 가능. Task 6→7은 순차.
+Task 1-3, 6-7, 9는 병렬 실행 가능. Task 4,5는 Task 3 이후. Task 8은 Task 4,5 이후.
