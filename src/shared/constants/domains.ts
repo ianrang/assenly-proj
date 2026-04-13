@@ -70,6 +70,18 @@ export const ENTITY_STATUSES = [
 /** Ingredient relation types (product_ingredients.type CHECK) */
 export const INGREDIENT_RELATION_TYPES = ["key", "avoid"] as const;
 
+/** Price source enum — products/treatments price_source + range_source CHECK (schema.dbml 정본) */
+export const PRICE_SOURCES = [
+  "manual",
+  "real",
+  "estimated-pipeline",
+  "estimated-ai",
+  "category-default",
+] as const;
+
+/** Price currency whitelist — products/treatments price_currency CHECK */
+export const PRICE_CURRENCIES = ["KRW", "USD", "JPY", "CNY", "EUR"] as const;
+
 /** Link types for external links (domain.ts LinkType 전수 반영) */
 export const LINK_TYPES = [
   "naver_map",

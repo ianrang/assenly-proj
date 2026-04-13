@@ -67,6 +67,17 @@ export type AgeRange =
   | "40-49"
   | "50+";
 
+// --- Price metadata (products/treatments 공용) ---
+
+export type PriceSource =
+  | "manual"
+  | "real"
+  | "estimated-pipeline"
+  | "estimated-ai"
+  | "category-default";
+
+export type PriceCurrency = "KRW" | "USD" | "JPY" | "CNY" | "EUR";
+
 // --- External Links ---
 
 export type LinkType =
@@ -108,6 +119,13 @@ export interface Product {
   concerns: SkinConcern[];
   key_ingredients: string[] | null; // JSONB
   price: number | null;
+  price_min: number | null;
+  price_max: number | null;
+  price_currency: PriceCurrency;
+  price_source: PriceSource | null;
+  range_source: PriceSource | null;
+  price_updated_at: string | null;
+  price_source_url: string | null;
   volume: string | null;
   purchase_links: PurchaseLink[] | null;
   english_label: boolean;
@@ -221,9 +239,14 @@ export interface Treatment {
   subcategory: string | null;
   target_concerns: SkinConcern[];
   suitable_skin_types: SkinType[];
+  price: number | null;
   price_min: number | null;
   price_max: number | null;
-  price_currency: string;
+  price_currency: PriceCurrency;
+  price_source: PriceSource | null;
+  range_source: PriceSource | null;
+  price_updated_at: string | null;
+  price_source_url: string | null;
   duration_minutes: number | null;
   downtime_days: number | null;
   session_count: string | null;

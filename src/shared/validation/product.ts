@@ -5,6 +5,8 @@ import {
   SKIN_TYPES,
   HAIR_TYPES,
   SKIN_CONCERNS,
+  PRICE_SOURCES,
+  PRICE_CURRENCIES,
 } from "@/shared/constants";
 
 import {
@@ -20,7 +22,8 @@ import {
 // Product — create / update schemas
 // ============================================================
 
-export const productCreateSchema = z.object({
+/** Base fields — refine 전 원본. update에서 .partial() 재사용 */
+const productFields = z.object({
   name: localizedTextRequired,
   description: localizedTextOptional,
   brand_id: z.string().uuid().nullable().optional(),
@@ -31,6 +34,13 @@ export const productCreateSchema = z.object({
   concerns: z.array(z.enum(SKIN_CONCERNS)).default([]),
   key_ingredients: z.array(z.string()).nullable().optional(),
   price: z.number().int().min(0).nullable().optional(),
+  price_min: z.number().int().min(0).nullable().optional(),
+  price_max: z.number().int().min(0).nullable().optional(),
+  price_currency: z.enum(PRICE_CURRENCIES).default("KRW"),
+  price_source: z.enum(PRICE_SOURCES).nullable().optional(),
+  range_source: z.enum(PRICE_SOURCES).nullable().optional(),
+  price_updated_at: z.string().datetime().nullable().optional(),
+  price_source_url: z.string().url().nullable().optional(),
   volume: z.string().nullable().optional(),
   purchase_links: z.array(purchaseLinkSchema).nullable().optional(),
   english_label: z.boolean().default(false),
@@ -45,4 +55,26 @@ export const productCreateSchema = z.object({
   status: statusEnum.default("active"),
 });
 
-export const productUpdateSchema = productCreateSchema.partial();
+/** price_min <= price_max cross-field validation (DB CHECK 대응) */
+function refinePriceRange<T extends { price_min?: number | null; price_max?: number | null }>(
+  data: T,
+): boolean {
+  if (data.price_min != null && data.price_max != null) {
+    return data.price_min <= data.price_max;
+  }
+  return true;
+}
+
+const priceRangeRefinement = {
+  message: "price_min must be <= price_max",
+  path: ["price_min"],
+};
+
+export const productCreateSchema = productFields.refine(
+  refinePriceRange,
+  priceRangeRefinement,
+);
+
+export const productUpdateSchema = productFields
+  .partial()
+  .refine(refinePriceRange, priceRangeRefinement);
