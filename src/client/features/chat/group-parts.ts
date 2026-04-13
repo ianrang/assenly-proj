@@ -33,7 +33,7 @@ export function groupParts(parts: ChatMessagePart[]): PartGroup[] {
       flushCards();
       groups.push({ type: "text", part });
     } else {
-      // product-card, treatment-card (그 외 타입은 card-mapper에서 생성 안 됨)
+      // product-card, treatment-card, store-card, clinic-card
       cardBuffer.push(part);
     }
   }
@@ -46,5 +46,7 @@ export function groupParts(parts: ChatMessagePart[]): PartGroup[] {
 export function cardKey(part: ChatMessagePart): string {
   if (part.type === "product-card") return part.product.id;
   if (part.type === "treatment-card") return part.treatment.id;
+  if (part.type === "store-card") return part.store.id;
+  if (part.type === "clinic-card") return part.clinic.id;
   return part.type;
 }

@@ -10,6 +10,8 @@ import MessageGroup from "./MessageGroup";
 import StreamingIndicator from "./StreamingIndicator";
 import ProductCard from "@/client/features/cards/ProductCard";
 import TreatmentCard from "@/client/features/cards/TreatmentCard";
+import StoreCard from "@/client/features/cards/StoreCard";
+import ClinicCard from "@/client/features/cards/ClinicCard";
 import KitCtaSheet from "./KitCtaSheet";
 import MarkdownMessage from "./MarkdownMessage";
 
@@ -91,6 +93,24 @@ function CardPart({
           variant="compact"
         />
       );
+    case 'store-card':
+      return (
+        <StoreCard
+          store={part.store}
+          whyRecommended={part.whyRecommended}
+          locale={locale}
+          variant="compact"
+        />
+      );
+    case 'clinic-card':
+      return (
+        <ClinicCard
+          clinic={part.clinic}
+          whyRecommended={part.whyRecommended}
+          locale={locale}
+          variant="compact"
+        />
+      );
     default:
       return null;
   }
@@ -122,7 +142,7 @@ function GroupedParts({
         }
         // cards (product/treatment)
         return (
-          <div key={gi} className="flex gap-2 overflow-x-auto pb-1 snap-x snap-mandatory scrollbar-thin">
+          <div key={gi} className="flex max-w-full gap-2 overflow-x-auto pb-1 snap-x snap-mandatory scrollbar-thin">
             {group.cards.map((card) => (
               <CardPart key={cardKey(card)} part={card} locale={locale} onKitClaim={onKitClaim} />
             ))}

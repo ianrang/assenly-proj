@@ -14,7 +14,7 @@ export default function MessageGroup({ role, children }: MessageGroupProps) {
   return (
     <div
       className={cn(
-        "flex flex-col gap-2",
+        "flex min-w-0 flex-col gap-2",
         role === "user" ? "items-end" : "items-start"
       )}
     >

@@ -55,6 +55,16 @@ export default function TreatmentCard({ treatment, clinic, whyRecommended, stayD
             {treatment.duration_minutes}min{treatment.downtime_days !== null && treatment.downtime_days > 0 ? ` · ${treatment.downtime_days}d rec.` : ""}
           </p>
         )}
+        {clinic?.booking_url && (
+          <a
+            href={clinic.booking_url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-1.5 rounded border border-border px-2 py-1 text-center text-[10px] font-medium text-foreground transition-colors hover:bg-muted"
+          >
+            Book →
+          </a>
+        )}
       </article>
     );
   }

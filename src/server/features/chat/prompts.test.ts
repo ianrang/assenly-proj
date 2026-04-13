@@ -252,7 +252,7 @@ describe('buildSystemPrompt', () => {
     const result = buildSystemPrompt(ctx as Parameters<typeof buildSystemPrompt>[0]);
 
     expect(result).toContain('ko');
-    expect(result).toContain('session language');
+    expect(result).toContain('For your first message, respond in ko');
   });
 
   it('locale=en 시 영어 언어 지시가 프롬프트에 존재', async () => {
@@ -261,9 +261,8 @@ describe('buildSystemPrompt', () => {
 
     const result = buildSystemPrompt(ctx as Parameters<typeof buildSystemPrompt>[0]);
 
-    expect(result).toContain('set to en');
-    expect(result).toContain('MUST respond entirely');
-    expect(result).toContain('Do NOT mix languages');
+    expect(result).toContain('respond in en');
+    expect(result).toContain('Never mix two languages');
   });
 
   it('Few-shot에 한국어 예시가 포함된다', async () => {

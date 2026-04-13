@@ -1,6 +1,7 @@
 import "client-only";
 
-import type { Product, Treatment, LocalizedText } from "@/shared/types/domain";
+import type { Product, Treatment, Store, Clinic, LocalizedText } from "@/shared/types/domain";
+import { extractMapUrl } from "@/client/features/cards/map-utils";
 
 // ============================================================
 // card-mapper — UIMessage.parts → ChatMessagePart[] 변환
@@ -22,7 +23,9 @@ export type UIPartLike = {
 export type ChatMessagePart =
   | { type: "text"; text: string }
   | ProductCardPart
-  | TreatmentCardPart;
+  | TreatmentCardPart
+  | StoreCardPart
+  | ClinicCardPart;
 
 export type ProductCardPart = {
   type: "product-card";
@@ -36,6 +39,18 @@ export type TreatmentCardPart = {
   type: "treatment-card";
   treatment: Treatment;
   clinic: { name: LocalizedText; booking_url?: string | null } | null;
+  whyRecommended: string | undefined;
+};
+
+export type StoreCardPart = {
+  type: "store-card";
+  store: Store;
+  whyRecommended: string | undefined;
+};
+
+export type ClinicCardPart = {
+  type: "clinic-card";
+  clinic: Clinic;
   whyRecommended: string | undefined;
 };
 
@@ -69,6 +84,14 @@ interface ToolClinic {
   clinic_type: string | null;
   rating: number | null;
   booking_url: string | null;
+}
+
+interface ToolStoreCard extends Store {
+  reasons: string[];
+}
+
+interface ToolClinicCard extends Clinic {
+  reasons: string[];
 }
 
 interface ToolOutput {
@@ -119,6 +142,10 @@ function mapToolCards(cards: unknown[], domain: string | undefined, result: Chat
       result.push(...mapProductCard(card as ToolProductCard));
     } else if (domain === "treatment") {
       result.push(mapTreatmentCard(card as ToolTreatmentCard));
+    } else if (domain === "store") {
+      result.push(mapStoreCard(card as ToolStoreCard));
+    } else if (domain === "clinic") {
+      result.push(mapClinicCard(card as ToolClinicCard));
     }
   }
 }
@@ -155,10 +182,21 @@ function mapTreatmentCard(card: ToolTreatmentCard): TreatmentCardPart {
   };
 }
 
-const MAP_LINK_TYPES = ["kakao_map", "naver_map", "map"];
-
-function extractMapUrl(links: Array<{ type: string; url: string }> | null): string | undefined {
-  if (!links) return undefined;
-  const mapLink = links.find((l) => MAP_LINK_TYPES.includes(l.type));
-  return mapLink?.url;
+function mapStoreCard(card: ToolStoreCard): StoreCardPart {
+  const { reasons, ...store } = card;
+  return {
+    type: "store-card",
+    store,
+    whyRecommended: reasons[0] ?? undefined,
+  };
 }
+
+function mapClinicCard(card: ToolClinicCard): ClinicCardPart {
+  const { reasons, ...clinic } = card;
+  return {
+    type: "clinic-card",
+    clinic,
+    whyRecommended: reasons[0] ?? undefined,
+  };
+}
+

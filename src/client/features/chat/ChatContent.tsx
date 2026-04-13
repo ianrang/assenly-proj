@@ -80,7 +80,7 @@ export default function ChatContent({ locale, initialMessages, initialConversati
   /* eslint-enable react-hooks/refs */
 
   // AI SDK 6.x: messages prop = 초기 메시지 (최초 마운트 시에만 유효)
-  const { messages, status, error, sendMessage } = useChat({
+  const { messages, status, error, sendMessage, regenerate, clearError } = useChat({
     messages: initialMessages,
     transport,
     onFinish: ({ message }) => {
@@ -149,9 +149,16 @@ export default function ChatContent({ locale, initialMessages, initialConversati
 
         {error && (
           <div className="px-4 py-2">
-            <p className="text-center text-xs text-destructive">
+            <button
+              type="button"
+              onClick={() => {
+                clearError();
+                regenerate();
+              }}
+              className="w-full rounded-lg border border-destructive/30 bg-destructive/5 px-4 py-2 text-center text-xs text-destructive transition-colors hover:bg-destructive/10"
+            >
               {t("errorRetry")}
-            </p>
+            </button>
           </div>
         )}
 

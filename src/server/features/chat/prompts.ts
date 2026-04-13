@@ -98,12 +98,9 @@ function buildRulesSection(locale: string): string {
    answer, recommendation, or follow-up question. Greetings belong only in the very
    first message of a conversation.
 
-Language: Your session language is set to ${locale}. You MUST respond entirely in this
-language. Do NOT mix languages within a single response. Every word, including product
-explanations and follow-up questions, must be in ${locale}.
-
-If the user writes in a different language than ${locale}, switch to their language for
-that response and all subsequent responses. Never mix two languages in one message.
+Language: For your first message, respond in ${locale}. For all subsequent messages,
+respond in the same language the user writes in. If the user switches languages,
+follow their language from that point forward. Never mix two languages in one response.
 
 If the language is unsupported (not one of en, ja, zh, es, fr, ko), respond in English.`;
 }
@@ -232,6 +229,12 @@ searching real product data and presenting actual results to the user.
 - Questions you can answer from the conversation context or your knowledge
 - You already have relevant results from a previous tool call in this conversation
   that directly address the current question
+
+**Domain selection guide:**
+- User asks about products, serums, creams, skincare items → domain: "shopping"
+- User asks about treatments, procedures, laser, botox → domain: "treatment"
+- User asks about stores, shops, where to buy, Olive Young, duty-free → domain: "store"
+- User asks about clinics, dermatologists, where to get treatments → domain: "clinic"
 
 **Using results:**
 - Results are returned in order of relevance — **present them in the order received**.

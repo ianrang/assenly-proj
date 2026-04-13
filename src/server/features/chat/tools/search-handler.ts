@@ -5,6 +5,8 @@ import type { UserProfileVars, JourneyContextVars, LearnedPreference } from '@/s
 import { embedQuery } from '@/server/core/knowledge';
 import { findProductsByFilters, matchProductsByVector } from '@/server/features/repositories/product-repository';
 import { findTreatmentsByFilters, matchTreatmentsByVector } from '@/server/features/repositories/treatment-repository';
+import { findStoresByFilters } from '@/server/features/repositories/store-repository';
+import { findClinicsByFilters } from '@/server/features/repositories/clinic-repository';
 import { scoreProducts } from '@/server/features/beauty/shopping';
 import { scoreTreatments } from '@/server/features/beauty/treatment';
 import { rank } from '@/server/features/beauty/judgment';
@@ -20,7 +22,7 @@ import { calculatePreferredIngredients, calculateAvoidedIngredients } from '@/se
 /** tool-spec.md §1 입력 스키마 — service.ts에서 tool() inputSchema로 사용 */
 export const searchBeautyDataSchema = z.object({
   query: z.string().describe('Search query in natural language'),
-  domain: z.enum(['shopping', 'treatment']).describe('shopping = products+stores, treatment = procedures+clinics'),
+  domain: z.enum(['shopping', 'treatment', 'store', 'clinic']).describe('shopping = products+stores, treatment = procedures+clinics, store = store/shop locations, clinic = clinic locations'),
   filters: z.object({
     skin_types: z.array(z.enum(['dry', 'oily', 'combination', 'sensitive', 'normal'])).optional(),
     concerns: z.array(z.enum([
@@ -66,7 +68,13 @@ export async function executeSearchBeautyData(
     if (domain === 'shopping') {
       return await searchShopping(client, query, filters, limit, profile, preferences);
     }
-    return await searchTreatment(client, query, filters, limit, journey);
+    if (domain === 'treatment') {
+      return await searchTreatment(client, query, filters, limit, journey);
+    }
+    if (domain === 'store') {
+      return await searchStore(client, query, filters, limit);
+    }
+    return await searchClinic(client, query, filters, limit);
   } catch {
     // tool-spec.md §4.2: DB 에러 → 에러 결과 반환, LLM이 사과
     return { cards: [], total: 0, error: 'DB_UNAVAILABLE' };
@@ -190,6 +198,54 @@ async function searchTreatment(
       clinics: clinicMap.get(r.item.id) ?? [],
     };
   });
+
+  return { cards, total: cards.length };
+}
+
+// --- domain: store ---
+
+async function searchStore(
+  client: SupabaseClient,
+  query: string,
+  filters: SearchArgs['filters'],
+  limit: number,
+) {
+  const storeFilters = {
+    store_type: filters?.category,
+    english_support: filters?.english_support,
+    search: query || undefined,
+  };
+
+  const stores = await findStoresByFilters(client, storeFilters, limit);
+
+  const cards = stores.map((store) => ({
+    ...store,
+    reasons: query ? [`Matches your search for "${query}"`] : ['Popular store'],
+  }));
+
+  return { cards, total: cards.length };
+}
+
+// --- domain: clinic ---
+
+async function searchClinic(
+  client: SupabaseClient,
+  query: string,
+  filters: SearchArgs['filters'],
+  limit: number,
+) {
+  const clinicFilters = {
+    clinic_type: filters?.category,
+    english_support: filters?.english_support,
+    search: query || undefined,
+  };
+
+  const clinics = await findClinicsByFilters(client, clinicFilters, limit);
+
+  const cards = clinics.map((clinic) => ({
+    ...clinic,
+    reasons: query ? [`Matches your search for "${query}"`] : ['Popular clinic'],
+  }));
 
   return { cards, total: cards.length };
 }
