@@ -81,6 +81,20 @@ export function resolveProductUrl(href: string | null): string | null {
   return `${OY_BASE}${href}`;
 }
 
+/** 브랜드 매칭: 특수문자 제거 후 대소문자 무시 비교 */
+export function brandMatches(dbBrand: string, pageBrand: string): boolean {
+  const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+  return normalize(dbBrand) === normalize(pageBrand);
+}
+
+/** KRW 가격 문자열 파싱 → 정수 또는 null */
+export function parseKrwPrice(text: string): number | null {
+  if (!text || !text.trim()) return null;
+  const cleaned = text.replace(/[₩원KRW,\s]/gi, '');
+  const num = parseInt(cleaned, 10);
+  return isNaN(num) || num <= 0 ? null : num;
+}
+
 // ── 대기 헬퍼 ────────────────────────────────────────────────
 
 function delay(ms: number): Promise<void> {
