@@ -154,7 +154,12 @@
     "chipConcernAcne": "여드름",
     "chipConcernWrinkles": "주름",
     "chipConcernRedness": "홍조",
-    "chipConcernDarkSpots": "잡티"
+    "chipConcernDarkSpots": "잡티",
+    "newChatTitle": "새 대화를 시작할까요?",
+    "newChatDescription": "현재 대화는 화면에서 사라지지만, 데이터는 보존됩니다.",
+    "newChatCancel": "취소",
+    "newChatConfirm": "새 대화",
+    "newChatLabel": "새 대화"
   },
   "tabs": {
     "shops": "쇼핑",

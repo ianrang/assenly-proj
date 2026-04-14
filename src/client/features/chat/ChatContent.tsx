@@ -25,9 +25,10 @@ type ChatContentProps = {
   locale: string;
   initialMessages: UIMessage[];
   initialConversationId: string | null;
+  onMessageSent?: () => void;
 };
 
-export default function ChatContent({ locale, initialMessages, initialConversationId }: ChatContentProps) {
+export default function ChatContent({ locale, initialMessages, initialConversationId, onMessageSent }: ChatContentProps) {
   const t = useTranslations("chat");
   const [showSuggestions, setShowSuggestions] = useState(
     initialMessages.length === 0
@@ -115,6 +116,7 @@ export default function ChatContent({ locale, initialMessages, initialConversati
   function handleSend(text: string) {
     setShowSuggestions(false);
     retryCountRef.current = 0;
+    onMessageSent?.();
     sendMessage({ text });
   }
 

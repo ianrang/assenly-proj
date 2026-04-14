@@ -6,8 +6,10 @@ import { useState, useEffect, useCallback } from "react";
 import type { UIMessage } from "ai";
 import { getSupabaseBrowserClient } from "@/client/core/supabase-browser";
 import { authFetch } from "@/client/core/auth-fetch";
+import Header from "@/client/features/layout/Header";
 import ConsentOverlay from "./ConsentOverlay";
 import ChatContent from "./ChatContent";
+import NewChatButton from "./NewChatButton";
 
 // ============================================================
 // ChatInterface — P2-45: 동의 게이트 + P2-50c 히스토리 로드
@@ -39,6 +41,11 @@ export default function ChatInterface({ locale }: ChatInterfaceProps) {
   const [consentError, setConsentError] = useState(false);
   const [initialMessages, setInitialMessages] = useState<UIMessage[]>([]);
   const [initialConversationId, setInitialConversationId] = useState<string | null>(null);
+  // NEW-33: key 변경으로 ChatContent 리마운트 → useChat 초기화
+  const [chatKey, setChatKey] = useState(0);
+  // ChatContent에서 메시지 전송 시 true로 전환. 리셋 시 false 복귀.
+  const [hasStartedChat, setHasStartedChat] = useState(false);
+  const showResetButton = phase === "ready" && hasStartedChat;
 
   // P2-45: 세션 확인 + 히스토리 로드 (L-10: 서버 상태 = API 호출)
   // P2-79: authFetch로 Bearer 토큰 자동 주입
@@ -62,6 +69,7 @@ export default function ChatInterface({ locale }: ChatInterfaceProps) {
         if (json.data?.messages && Array.isArray(json.data.messages) && json.data.messages.length > 0) {
           setInitialMessages(json.data.messages);
           setInitialConversationId(json.data.conversation_id);
+          setHasStartedChat(true);
         }
         setPhase("ready");
       })
@@ -108,27 +116,59 @@ export default function ChatInterface({ locale }: ChatInterfaceProps) {
     }
   }
 
+  // NEW-33: 대화 초기화 — 기존 row 조작 없이 클라이언트 상태만 리셋.
+  // 다음 메시지 전송 시 getOrCreateConversation이 새 conversation 자동 생성.
+  function handleReset() {
+    setInitialMessages([]);
+    setInitialConversationId(null);
+    setHasStartedChat(false);
+    setChatKey((k) => k + 1);
+  }
+
   if (phase === "checking") {
-    return <ChatSkeleton />;
+    return (
+      <>
+        <Header />
+        <main className="mx-auto w-full max-w-[640px] flex-1 px-5">
+          <ChatSkeleton />
+        </main>
+      </>
+    );
   }
 
   if (phase === "needs-consent") {
     return (
-      <ConsentOverlay
-        onConsent={handleConsent}
-        isConsenting={isConsenting}
-        hasError={consentError}
-        locale={locale}
-      />
+      <>
+        <Header />
+        <main className="mx-auto w-full max-w-[640px] flex-1 px-5">
+          <ConsentOverlay
+            onConsent={handleConsent}
+            isConsenting={isConsenting}
+            hasError={consentError}
+            locale={locale}
+          />
+        </main>
+      </>
     );
   }
 
   return (
-    <ChatContent
-      locale={locale}
-      initialMessages={initialMessages}
-      initialConversationId={initialConversationId}
-    />
+    <>
+      <Header
+        leftContent={
+          <NewChatButton onReset={handleReset} hasMessages={showResetButton} />
+        }
+      />
+      <main className="mx-auto w-full max-w-[640px] flex-1 px-5">
+        <ChatContent
+          key={chatKey}
+          locale={locale}
+          initialMessages={initialMessages}
+          initialConversationId={initialConversationId}
+          onMessageSent={() => setHasStartedChat(true)}
+        />
+      </main>
+    </>
   );
 }
 
