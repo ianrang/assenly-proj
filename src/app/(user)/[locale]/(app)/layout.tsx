@@ -7,7 +7,7 @@ type Props = {
 export default function AppLayout({ children }: Props) {
   return (
     <>
-      <Header showLanguageSelector />
+      <Header />
       <main className="mx-auto w-full max-w-[640px] flex-1 px-5">
         {children}
       </main>
