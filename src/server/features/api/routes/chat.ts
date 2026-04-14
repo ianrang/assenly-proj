@@ -299,6 +299,20 @@ export function registerChatRoutes(app: AppType) {
         // 기존 afterWork 로직 통합 (레이스 컨디션 수정: tool 실행 완료 후 실행 보장)
         onFinish: async ({ messages: finalMessages }) => {
           try {
+            // 빈 응답 방어: assistant 텍스트가 없으면 DB 저장 스킵
+            // regenerate() 후 성공 응답이 오면 그때 정상 저장됨
+            const lastMsg = finalMessages[finalMessages.length - 1];
+            const hasAssistantText = lastMsg?.role === 'assistant' &&
+              Array.isArray(lastMsg.parts) &&
+              lastMsg.parts.some(
+                (p: { type: string; text?: string }) =>
+                  p.type === 'text' && typeof p.text === 'string' && p.text.trim() !== ''
+              );
+            if (!hasAssistantText) {
+              console.warn('[chat/onFinish] empty assistant response — skip DB save');
+              return;
+            }
+
             // P3-29a: LLM 토큰 사용량 로그 (Vercel Logs 가시성). v0.2: DB 기반 집계.
             try {
               const usage = await stream.usage;

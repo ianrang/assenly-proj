@@ -53,6 +53,7 @@ export default function ChatContent({ locale, initialMessages, initialConversati
   // - 회귀 방지: conversationIdRef + useEffect 동기화는 단일 탭 순차 전송 시나리오에서
   //   충분히 안전하다 (messages #1 완료 → onFinish → setConversationId → useEffect flush → #2 전송).
   const conversationIdRef = useRef<string | null>(initialConversationId);
+  const retryCountRef = useRef(0);
   useEffect(() => { conversationIdRef.current = conversationId; }, [conversationId]);
   const localeRef = useRef(locale);
 
@@ -84,13 +85,25 @@ export default function ChatContent({ locale, initialMessages, initialConversati
     messages: initialMessages,
     transport,
     onFinish: ({ message }) => {
-      // P2-50b: messageMetadata에서 conversationId 추출
+      // P2-50b: messageMetadata에서 conversationId 추출 (기존)
       const meta = message.metadata as
         | { conversationId?: string }
         | undefined;
       if (meta?.conversationId && !conversationIdRef.current) {
         setConversationId(meta.conversationId);
       }
+
+      // 빈 응답 감지 + 자동 1회 재시도
+      const hasText = message.parts?.some(
+        (p: { type: string; text?: string }) =>
+          p.type === 'text' && typeof p.text === 'string' && p.text.trim() !== ''
+      );
+      if (!hasText && retryCountRef.current < 1) {
+        retryCountRef.current += 1;
+        regenerate();
+        return;
+      }
+      retryCountRef.current = 0;
     },
   });
 
@@ -101,6 +114,7 @@ export default function ChatContent({ locale, initialMessages, initialConversati
 
   function handleSend(text: string) {
     setShowSuggestions(false);
+    retryCountRef.current = 0;
     sendMessage({ text });
   }
 

@@ -11,7 +11,8 @@
     "test:watch": "vitest",
     "test:e2e": "playwright test",
     "test:integration": "vitest run --config vitest.integration.config.ts",
-    "generate:kb": "tsx scripts/generate-kb.ts"
+    "generate:kb": "tsx scripts/generate-kb.ts",
+    "audit:price": "tsx scripts/audit/price-coverage.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "3.0.58",

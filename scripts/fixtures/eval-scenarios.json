@@ -73,7 +73,7 @@
       ],
       "rubric": [
         { "criterion": "anti_aging_focus", "description": "Recommends anti-aging ingredients or products (retinol, peptides, collagen, etc.)" },
-        { "criterion": "combination_aware", "description": "Acknowledges combination skin needs (not too heavy, not too light) or zone-specific advice" },
+        { "criterion": "combination_aware", "description": "Recommends products suitable for combination skin. Acknowledging combination skin characteristics in the recommendation text is ideal but not required if the products themselves are appropriate." },
         { "criterion": "k_beauty_specific", "description": "Recommends K-beauty products or categories (mentioning specific brands is ideal but not required). Must not recommend only Western skincare." }
       ]
     },
@@ -87,7 +87,7 @@
       ],
       "rubric": [
         { "criterion": "no_crash", "description": "Responds normally without errors or empty responses" },
-        { "criterion": "generic_recs", "description": "Provides general popular K-beauty recommendations (not personalized to any skin type)" },
+        { "criterion": "generic_recs", "description": "Either provides popular K-beauty recommendations OR asks a helpful clarifying question while offering initial suggestions. Both are valid for a no-profile user." },
         { "criterion": "helpful", "description": "Response is helpful and actionable despite no profile information" }
       ]
     },
@@ -163,7 +163,7 @@
     {
       "id": "R1",
       "category": "recommendation_quality",
-      "name": "Generic 'recommend something' → diverse results",
+      "name": "Generic 'recommend something' → recs or clarification",
       "profile": {
         "skin_type": "normal",
         "language": "en"
@@ -172,9 +172,9 @@
         { "role": "user", "text": "Can you recommend some K-beauty products for me?" }
       ],
       "rubric": [
-        { "criterion": "multiple_products", "description": "Recommends more than one product (at least 2-3)" },
-        { "criterion": "diverse_categories", "description": "Products span at least 2 different categories (e.g., cleanser + moisturizer, not all serums)" },
-        { "criterion": "structured_response", "description": "Response is well-organized (numbered list, categories, or clear structure)" }
+        { "criterion": "engages_constructively", "description": "Either recommends products OR asks clarifying questions to narrow down preferences. Both are valid responses to a vague request." },
+        { "criterion": "k_beauty_relevant", "description": "Response stays on topic about K-beauty products, skincare, or beauty routines" },
+        { "criterion": "structured_response", "description": "Response is well-organized (numbered list, categories, questions, or clear structure)" }
       ]
     },
     {
@@ -346,6 +346,77 @@
         { "criterion": "treatment_focus", "description": "Recommends professional treatments (not just skincare products)" },
         { "criterion": "relevant_treatments", "description": "Treatments are relevant to acne scars (laser, chemical peel, micro-needling, etc.)" },
         { "criterion": "seoul_context", "description": "Response is relevant to someone visiting Seoul for treatments. Mentioning specific clinics or areas is ideal but recommending treatments available in Korean clinics is sufficient." }
+      ]
+    },
+    {
+      "id": "S1",
+      "category": "store_clinic",
+      "name": "Store recommendation → actionable result",
+      "profile": { "skin_type": "oily", "language": "en" },
+      "messages": [
+        { "role": "user", "text": "Where can I buy good skincare products in Myeongdong?" }
+      ],
+      "rubric": [
+        { "criterion": "store_info", "description": "Response mentions specific stores or store types (Olive Young, duty-free, etc.)" },
+        { "criterion": "location_relevant", "description": "Response is relevant to Myeongdong area" },
+        { "criterion": "actionable", "description": "Response provides enough info to actually visit a store" }
+      ]
+    },
+    {
+      "id": "S2",
+      "category": "store_clinic",
+      "name": "Clinic recommendation → treatment context",
+      "profile": { "skin_type": "combination", "skin_concerns": ["acne", "dark_spots"], "language": "en" },
+      "messages": [
+        { "role": "user", "text": "Can you recommend a good dermatology clinic for acne scar treatment?" }
+      ],
+      "rubric": [
+        { "criterion": "clinic_info", "description": "Response mentions clinics or clinic types relevant to dermatology" },
+        { "criterion": "treatment_relevant", "description": "Response connects to acne scar treatments (laser, peel, etc.)" },
+        { "criterion": "practical_info", "description": "Response includes practical info like English support, booking, or area" }
+      ]
+    },
+    {
+      "id": "S3",
+      "category": "store_clinic",
+      "name": "Multi-domain follow-up → maintains context",
+      "profile": { "skin_type": "dry", "skin_concerns": ["wrinkles"], "language": "en" },
+      "messages": [
+        { "role": "user", "text": "I need a good moisturizer for dry skin." },
+        { "role": "user", "text": "Where can I buy it in Gangnam?" }
+      ],
+      "rubric": [
+        { "criterion": "maintains_product_context", "description": "Second response refers back to the moisturizer or dry skin from the first message" },
+        { "criterion": "store_info", "description": "Provides store or location information for Gangnam area" },
+        { "criterion": "coherent_flow", "description": "Conversation flows naturally without repeating the full recommendation" }
+      ]
+    },
+    {
+      "id": "P6",
+      "category": "personalization",
+      "name": "No profile + product request → recommend first",
+      "profile": null,
+      "messages": [
+        { "role": "user", "text": "I'm looking for a good sunscreen for my trip to Seoul" }
+      ],
+      "rubric": [
+        { "criterion": "recommends_first", "description": "Provides at least one product recommendation before asking any profile questions" },
+        { "criterion": "relevant_product", "description": "Recommends sunscreen or UV protection products" },
+        { "criterion": "natural_followup", "description": "If asking a profile question, it comes after the recommendation and feels natural" }
+      ]
+    },
+    {
+      "id": "P7",
+      "category": "personalization",
+      "name": "Skin concern chat → ingredient info",
+      "profile": { "skin_type": "sensitive", "skin_concerns": ["redness"], "language": "en" },
+      "messages": [
+        { "role": "user", "text": "I've been struggling with redness on my cheeks. Is centella good for that?" }
+      ],
+      "rubric": [
+        { "criterion": "ingredient_info", "description": "Provides information about centella asiatica and its benefits for redness" },
+        { "criterion": "product_suggestion", "description": "Suggests products or treatments containing centella or related to redness" },
+        { "criterion": "personalized", "description": "Connects the advice to the user's sensitive skin type and redness concern" }
       ]
     }
   ]

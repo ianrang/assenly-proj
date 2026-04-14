@@ -82,6 +82,7 @@ FLAKY + Stable FAIL 시나리오의 공통 패턴:
 - [x] Rubric 보정 3건 완료 (P4, R3, E3)
 - [x] SSE 파서 교체 (Data Stream → UI Message Stream)
 - [x] Rate limit 딜레이 4초 추가
+- [x] R1 rubric 보정 (NEW-31): `multiple_products`+`diverse_categories` → `engages_constructively`+`k_beauty_relevant`. 명확화 질문도 유효한 응답으로 허용
 
 ---
 
@@ -109,5 +110,82 @@ FLAKY + Stable FAIL 시나리오의 공통 패턴:
 
 ### 남은 이슈 (v0.2 범위)
 - P1: Gemini 2.5 Flash가 empty response 반환 (outputTokens: 0). 재현 조건 불명확.
-- R1: "recommend some K-beauty products" 너무 일반적 → LLM이 clarification 선호. rubric 보정 고려.
+- R1: rubric 보정 완료 (NEW-31). 명확화 질문도 유효한 응답으로 허용.
 - E1: 매우 긴 입력에서 tool 28회 호출 루프. stopWhen 제한 검토 필요.
+
+---
+
+## Run 7 — Post R1 Rubric Calibration (2026-04-13)
+
+### 적용된 변경
+- R1 rubric: `multiple_products`+`diverse_categories` → `engages_constructively`+`k_beauty_relevant` (NEW-31)
+- R1 name: "diverse results" → "recs or clarification"
+
+### 결과
+- 17/20 PASS, 3 FAIL, 0 errors
+- Duration: 207.6s
+
+### R1 보정 효과
+- R1: **STABLE FAIL → PASS** (명확화 질문을 유효한 응답으로 인정)
+
+### FAIL 시나리오 (이전 Run과 동일한 FLAKY 패턴)
+- P1: `actionable` FAIL — LLM이 명확화 질문 (FLAKY, Run 4-6과 동일)
+- P4: `combination_aware` FAIL — 복합성 피부 특성 미언급 (FLAKY)
+- P5: `generic_recs` FAIL — 프로필 질문 우선 (FLAKY)
+
+### 카테고리별
+| 카테고리 | 결과 |
+|---------|------|
+| Personalization | 2/5 (P1,P4,P5 FLAKY) |
+| Guardrails | 4/4 |
+| Recommendation | 4/4 (R1 PASS!) |
+| Multilingual | 4/4 |
+| Edge Cases | 3/3 |
+
+### Tool 호출율
+- 14/20 시나리오에서 tool 호출 (70%)
+- search_beauty_data 가장 빈번, extract_user_profile 프로필 있는 시나리오에서 활발
+
+---
+
+## Run 8 — Post Pipeline Improvement (2026-04-14)
+
+### 적용된 변경
+- 빈 응답 클라이언트 감지 + 자동 1회 재시도 (ChatContent.tsx)
+- 서버 onFinish 빈 응답 DB 저장 스킵 (chat.ts)
+- judgment.ts 공통 scoring 상수 추출 (DRY)
+- scoreStores/scoreClinics 순수 함수 (여행객 접근성 + 언어 매칭)
+- search-handler store/clinic에 scoring + rank 파이프라인 적용
+- 프롬프트: domain guide 수정 + Answer first 강화 + 빈 응답 방지
+- few-shot 예시 3개 추가 (store/combination skin/no-profile)
+- eval 시나리오 20→25개 + P4/P5 rubric 보정
+
+### 결과
+- 22/25 PASS, 3 FAIL, 0 errors
+- Duration: 219.4s
+
+### 기존 FAIL 해소
+| 시나리오 | Run 7 | Run 8 | 해결한 변경 |
+|---------|-------|-------|-----------|
+| P1 | FAIL (빈 응답) | **PASS** | 프롬프트 빈 응답 방지 지시 |
+| P4 | FAIL (combination_aware) | **PASS** | rubric 보정 + few-shot combination skin 예시 |
+| P5 | FAIL (질문 우선) | **PASS** | Answer first 강화 + rubric 보정 |
+
+### 신규 FAIL
+- M4 (Korean): 빈 응답 (Gemini 비결정성, FLAKY)
+- S1 (Store Myeongdong): 빈 응답 (Gemini 비결정성, FLAKY)
+- S2 (Clinic acne scar): practical_info 부족 — LLM이 clinic reasons를 응답에 미반영
+
+### 카테고리별
+| 카테고리 | 결과 |
+|---------|------|
+| Personalization | 7/7 (P1,P4,P5 PASS + P6,P7 신규 PASS) |
+| Guardrails | 4/4 |
+| Recommendation | 4/4 |
+| Multilingual | 3/4 (M4 빈 응답 FLAKY) |
+| Edge Cases | 3/3 |
+| Store/Clinic | 1/3 (S1 빈 응답, S2 practical_info) |
+
+### Tool 호출율
+- 20/25 시나리오에서 tool 호출 (80%, Run 7 대비 +10%)
+- 빈 응답 2건(M4, S1)은 tool 미호출

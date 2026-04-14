@@ -345,8 +345,8 @@ describe('Chat routes — POST /api/chat', () => {
       body: JSON.stringify(makeRequestBody('hello')),
     });
 
-    // onFinish 호출 시뮬레이션
-    const finalMessages = [makeUIMessage('hello')];
+    // onFinish 호출 시뮬레이션 (assistant 텍스트 포함 — 빈 응답 가드 통과)
+    const finalMessages = [makeUIMessage('hello'), { id: 'a1', role: 'assistant', parts: [{ type: 'text', text: 'Hi!' }] }];
     await capturedStreamOpts!.onFinish!({ messages: finalMessages });
 
     // [CONVERSATION_SAVE_MISMATCH] 로그 확인
@@ -384,7 +384,8 @@ describe('Chat routes — POST /api/chat', () => {
       body: JSON.stringify(makeRequestBody('hello')),
     });
 
-    const finalMessages = [makeUIMessage('hello')];
+    // assistant 텍스트 포함 — 빈 응답 가드 통과
+    const finalMessages = [makeUIMessage('hello'), { id: 'a1', role: 'assistant', parts: [{ type: 'text', text: 'Hi!' }] }];
     await capturedStreamOpts!.onFinish!({ messages: finalMessages });
 
     expect(errorSpy).toHaveBeenCalledWith(

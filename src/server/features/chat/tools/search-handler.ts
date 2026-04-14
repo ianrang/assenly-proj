@@ -9,6 +9,8 @@ import { findStoresByFilters } from '@/server/features/repositories/store-reposi
 import { findClinicsByFilters } from '@/server/features/repositories/clinic-repository';
 import { scoreProducts } from '@/server/features/beauty/shopping';
 import { scoreTreatments } from '@/server/features/beauty/treatment';
+import { scoreStores } from '@/server/features/beauty/store';
+import { scoreClinics } from '@/server/features/beauty/clinic';
 import { rank } from '@/server/features/beauty/judgment';
 import { calculatePreferredIngredients, calculateAvoidedIngredients } from '@/server/features/beauty/derived';
 
@@ -72,9 +74,9 @@ export async function executeSearchBeautyData(
       return await searchTreatment(client, query, filters, limit, journey);
     }
     if (domain === 'store') {
-      return await searchStore(client, query, filters, limit);
+      return await searchStore(client, query, filters, limit, profile?.language ?? null);
     }
-    return await searchClinic(client, query, filters, limit);
+    return await searchClinic(client, query, filters, limit, profile?.language ?? null);
   } catch {
     // tool-spec.md §4.2: DB 에러 → 에러 결과 반환, LLM이 사과
     return { cards: [], total: 0, error: 'DB_UNAVAILABLE' };
@@ -209,6 +211,7 @@ async function searchStore(
   query: string,
   filters: SearchArgs['filters'],
   limit: number,
+  userLanguage: string | null,
 ) {
   const storeFilters = {
     store_type: filters?.category,
@@ -218,10 +221,17 @@ async function searchStore(
 
   const stores = await findStoresByFilters(client, storeFilters, limit);
 
-  const cards = stores.map((store) => ({
-    ...store,
-    reasons: query ? [`Matches your search for "${query}"`] : ['Popular store'],
-  }));
+  // beauty 판단: scoreStores → rank
+  const scored = scoreStores(stores, userLanguage);
+  const ranked = rank(scored);
+
+  const cards = ranked.map(r => {
+    const store = stores.find(s => s.id === r.item.id);
+    return {
+      ...store,
+      reasons: r.item.reasons,
+    };
+  });
 
   return { cards, total: cards.length };
 }
@@ -233,6 +243,7 @@ async function searchClinic(
   query: string,
   filters: SearchArgs['filters'],
   limit: number,
+  userLanguage: string | null,
 ) {
   const clinicFilters = {
     clinic_type: filters?.category,
@@ -242,10 +253,17 @@ async function searchClinic(
 
   const clinics = await findClinicsByFilters(client, clinicFilters, limit);
 
-  const cards = clinics.map((clinic) => ({
-    ...clinic,
-    reasons: query ? [`Matches your search for "${query}"`] : ['Popular clinic'],
-  }));
+  // beauty 판단: scoreClinics → rank
+  const scored = scoreClinics(clinics, userLanguage);
+  const ranked = rank(scored);
+
+  const cards = ranked.map(r => {
+    const clinic = clinics.find(c => c.id === r.item.id);
+    return {
+      ...clinic,
+      reasons: r.item.reasons,
+    };
+  });
 
   return { cards, total: cards.length };
 }

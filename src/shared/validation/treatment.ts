@@ -4,6 +4,8 @@ import {
   TREATMENT_CATEGORIES,
   SKIN_TYPES,
   SKIN_CONCERNS,
+  PRICE_SOURCES,
+  PRICE_CURRENCIES,
 } from "@/shared/constants";
 
 import {
@@ -26,9 +28,14 @@ const treatmentFields = z.object({
   subcategory: z.string().nullable().optional(),
   target_concerns: z.array(z.enum(SKIN_CONCERNS)).default([]),
   suitable_skin_types: z.array(z.enum(SKIN_TYPES)).default([]),
+  price: z.number().int().min(0).nullable().optional(),
   price_min: z.number().int().min(0).nullable().optional(),
   price_max: z.number().int().min(0).nullable().optional(),
-  price_currency: z.string().default("KRW"),
+  price_currency: z.enum(PRICE_CURRENCIES).default("KRW"),
+  price_source: z.enum(PRICE_SOURCES).nullable().optional(),
+  range_source: z.enum(PRICE_SOURCES).nullable().optional(),
+  price_updated_at: z.string().datetime().nullable().optional(),
+  price_source_url: z.string().url().nullable().optional(),
   duration_minutes: z.number().int().min(1).nullable().optional(),
   downtime_days: z.number().int().min(0).nullable().optional(),
   session_count: z.string().nullable().optional(),
