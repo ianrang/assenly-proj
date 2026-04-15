@@ -3,6 +3,16 @@ import { describe, it, expect, vi } from "vitest";
 vi.mock("server-only", () => ({}));
 
 import { computeProfilePatch, mergeExtractionResults } from "./merge";
+
+/** 테스트 픽스처용 느슨한 프로필 타입 — readonly 리터럴 추론 방지 */
+type TestProfileFields = {
+  age_range?: string | null;
+  hair_type?: string | null;
+  skin_types?: string[];
+  hair_concerns?: string[];
+  country?: string | null;
+  language?: string;
+};
 import {
   PROFILE_FIELD_SPEC,
   JOURNEY_FIELD_SPEC,
@@ -11,7 +21,7 @@ import {
 describe("computeProfilePatch", () => {
   describe("scalar + source=user", () => {
     it("existing null → set", () => {
-      const r = computeProfilePatch(
+      const r = computeProfilePatch<TestProfileFields>(
         { age_range: null },
         { age_range: "25-29" },
         "user",
@@ -32,7 +42,7 @@ describe("computeProfilePatch", () => {
 
   describe("scalar + source=ai", () => {
     it("aiWritable=false → skip", () => {
-      const r = computeProfilePatch(
+      const r = computeProfilePatch<TestProfileFields>(
         { hair_type: null },
         { hair_type: "straight" },
         "ai",
@@ -45,7 +55,7 @@ describe("computeProfilePatch", () => {
       });
     });
     it("existing null → set", () => {
-      const r = computeProfilePatch(
+      const r = computeProfilePatch<TestProfileFields>(
         { age_range: null },
         { age_range: "25-29" },
         "ai",
@@ -193,8 +203,8 @@ describe("computeProfilePatch", () => {
   });
 
   it("멱등 재호출 (ai)", () => {
-    const existing = { skin_types: ["dry", "sensitive"], age_range: "25-29" as const };
-    const incoming = { skin_types: ["dry"], age_range: "30-34" as const };
+    const existing: TestProfileFields = { skin_types: ["dry", "sensitive"], age_range: "25-29" };
+    const incoming: TestProfileFields = { skin_types: ["dry"], age_range: "30-34" };
     const r1 = computeProfilePatch(existing, incoming, "ai", PROFILE_FIELD_SPEC);
     expect(r1.updates).toEqual({});
   });

@@ -1,4 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
+import type { UserProfile } from '@/shared/types/profile';
 
 vi.mock('server-only', () => ({}));
 
@@ -102,14 +103,14 @@ function makeMockClient(overrides?: {
 
 // ---- Common test fixtures ----
 
-const mockProfile = {
+const mockProfile: UserProfile = {
   user_id: 'user-1',
-  skin_types: ['dry'] as const,
+  skin_types: ['dry'],
   hair_type: null,
   hair_concerns: [],
   country: 'US',
-  language: 'en' as const,
-  age_range: '25-29' as const,
+  language: 'en',
+  age_range: '25-29',
   onboarding_completed_at: null,
   updated_at: '2024-01-01',
 };
