@@ -62,7 +62,8 @@ BEGIN
     IF v_inc IS NULL OR v_inc = 'null'::jsonb THEN CONTINUE; END IF;
 
     IF v_fspec->>'cardinality' = 'scalar' THEN
-      -- M3 + CR-2: 현 값 조회, NULL일 때만 set
+      -- M3 + CR-2: 현 값 조회, NULL일 때만 set.
+      -- jsonb_populate_record로 jsonb→컬럼 타입 자동 캐스트 (int/text 등 모두 안전).
       EXECUTE format(
         'SELECT %I::text FROM user_profiles WHERE user_id = $1',
         v_field
@@ -70,9 +71,12 @@ BEGIN
 
       IF v_cur_scalar IS NULL THEN
         EXECUTE format(
-          'UPDATE user_profiles SET %I = $1, updated_at = now() WHERE user_id = $2 AND %I IS NULL',
-          v_field, v_field
-        ) USING v_inc#>>'{}', p_user_id;
+          'UPDATE user_profiles
+              SET %I = (jsonb_populate_record(NULL::user_profiles, jsonb_build_object(%L, $1))).%I,
+                  updated_at = now()
+            WHERE user_id = $2 AND %I IS NULL',
+          v_field, v_field, v_field, v_field
+        ) USING v_inc, p_user_id;
         IF FOUND THEN v_applied := array_append(v_applied, v_field); END IF;
       END IF;
     ELSE

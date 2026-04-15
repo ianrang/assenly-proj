@@ -37,7 +37,7 @@ BEGIN
   IF v_journey_id IS NULL THEN
     INSERT INTO journeys (user_id, status)
     VALUES (p_user_id, 'active')
-    ON CONFLICT DO NOTHING
+    ON CONFLICT (user_id) WHERE status = 'active' DO NOTHING
     RETURNING id INTO v_journey_id;
 
     -- ux_journeys_user_active 경합으로 이미 생성되었으면 재조회
@@ -55,6 +55,7 @@ BEGIN
 
     IF v_fspec->>'cardinality' = 'scalar' THEN
       -- CR-2: 현 값 조회 후 NULL일 때만 쓰기, 실제 변경 시에만 applied.
+      -- jsonb_populate_record로 jsonb→컬럼 타입 자동 캐스트 (stay_days int 등 안전).
       EXECUTE format(
         'SELECT %I::text FROM journeys WHERE id = $1',
         v_field
@@ -62,9 +63,11 @@ BEGIN
 
       IF v_cur_scalar IS NULL THEN
         EXECUTE format(
-          'UPDATE journeys SET %I = $1 WHERE id = $2 AND %I IS NULL',
-          v_field, v_field
-        ) USING v_inc#>>'{}', v_journey_id;
+          'UPDATE journeys
+              SET %I = (jsonb_populate_record(NULL::journeys, jsonb_build_object(%L, $1))).%I
+            WHERE id = $2 AND %I IS NULL',
+          v_field, v_field, v_field, v_field
+        ) USING v_inc, v_journey_id;
         IF FOUND THEN v_applied := array_append(v_applied, v_field); END IF;
       END IF;
     ELSE
