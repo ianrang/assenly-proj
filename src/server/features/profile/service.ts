@@ -157,6 +157,31 @@ export async function markOnboardingCompleted(
   client: SupabaseClient,
   userId: string,
 ): Promise<void> {
+  // NEW-9b adversarial review C3 정합:
+  // Supabase update().eq()는 0-row 일치 시에도 error 없이 빈 결과를 반환한다.
+  // 이 함수가 조용히 no-op가 되면 handler가 201 "onboarding_completed:true"를 반환하는데
+  // 실제로는 user_profiles row가 없을 수 있어 사용자가 영구 잠금됨.
+  // 따라서 .select()로 실제 영향 받은 행을 확인한다.
+  //
+  // 정상 no-op 케이스 (matched=1 but rows=0 because WHERE IS NULL):
+  //   이미 완료된 사용자 재호출 → 에러 아님, 멱등 통과. 이를 구분하기 위해
+  //   "matched row 유무"는 user_profiles 존재 유무로 확인 — updated rows 배열이
+  //   비어 있어도 row 자체는 있을 수 있다(이미 NOT NULL). 따라서 별도 확인 필요.
+  const { data: existingBefore, error: selectError } = await client
+    .from('user_profiles')
+    .select('user_id')
+    .eq('user_id', userId)
+    .maybeSingle();
+
+  if (selectError) {
+    throw new Error('Onboarding completion precheck failed');
+  }
+  if (!existingBefore) {
+    // persistOnboarding 의 upsertProfile/createMinimalProfile 이 선행되었음에도
+    // row가 없으면 DB/RLS 이상. 명시적 에러로 상위에 500 유도.
+    throw new Error('Onboarding completion mark failed: profile row missing');
+  }
+
   const { error } = await client
     .from('user_profiles')
     .update({

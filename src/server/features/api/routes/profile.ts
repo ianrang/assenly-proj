@@ -70,31 +70,37 @@ const travelStyleEnum = z.enum([
   'budget',
 ]);
 
-const startOnboardingBodySchema = z.object({
-  skipped: z.literal(false).optional(),
+// NEW-9b adversarial review C1 정합:
+// 두 스키마 모두 .strict()로 경계 분리. { skipped:true, skin_type:'x' }처럼
+// 모순된 payload가 조용히 Skip 경로로 떨어져 데이터 손실되는 문제 차단.
+// Start 경로는 'skipped' 필드 선언 자체를 제외 — 포함되면 strict로 400.
+const startOnboardingBodySchema = z
+  .object({
+    // user_profiles 필드 (UP 변수)
+    skin_type: skinTypeEnum,
+    hair_type: hairTypeEnum.nullable().optional(),
+    hair_concerns: z.array(hairConcernEnum).default([]),
+    country: z.string().min(2).max(2).optional(),
+    language: languageEnum.default('en'),
+    age_range: ageRangeEnum.optional(),
 
-  // user_profiles 필드 (UP 변수)
-  skin_type: skinTypeEnum,
-  hair_type: hairTypeEnum.nullable().optional(),
-  hair_concerns: z.array(hairConcernEnum).default([]),
-  country: z.string().min(2).max(2).optional(),
-  language: languageEnum.default('en'),
-  age_range: ageRangeEnum.optional(),
+    // journeys 필드 (JC 변수)
+    // NEW-9b: PRD §595 정본 — 온보딩 UI 7종 중 최대 3개. 저장 한계 5(대화 추출 포함).
+    skin_concerns: z.array(skinConcernEnum).max(5).default([]),
+    interest_activities: z.array(interestActivityEnum).default(['shopping']),
+    stay_days: z.number().int().positive().optional(),
+    start_date: z.string().date().optional(),
+    budget_level: budgetLevelEnum.optional(),
+    travel_style: z.array(travelStyleEnum).default([]),
+  })
+  .strict();
 
-  // journeys 필드 (JC 변수)
-  // NEW-9b: PRD §595 정본 — 온보딩 UI 7종 중 최대 3개. 저장 한계 5(대화 추출 포함).
-  skin_concerns: z.array(skinConcernEnum).max(5).default([]),
-  interest_activities: z.array(interestActivityEnum).default(['shopping']),
-  stay_days: z.number().int().positive().optional(),
-  start_date: z.string().date().optional(),
-  budget_level: budgetLevelEnum.optional(),
-  travel_style: z.array(travelStyleEnum).default([]),
-});
-
-const skipOnboardingBodySchema = z.object({
-  skipped: z.literal(true),
-  language: languageEnum.default('en'),
-});
+const skipOnboardingBodySchema = z
+  .object({
+    skipped: z.literal(true),
+    language: languageEnum.default('en'),
+  })
+  .strict();
 
 const onboardingBodySchema = z.union([
   skipOnboardingBodySchema,
@@ -270,6 +276,12 @@ const putProfileRoute = createRoute({
 // 자기 치유가 깨진다. L-1 thin handler 준수를 위해 private helper로 분리.
 // ============================================================
 type OnboardingBody = z.infer<typeof onboardingBodySchema>;
+type SkipOnboardingBody = z.infer<typeof skipOnboardingBodySchema>;
+type StartOnboardingBody = z.infer<typeof startOnboardingBodySchema>;
+
+function isSkipOnboardingBody(body: OnboardingBody): body is SkipOnboardingBody {
+  return 'skipped' in body && body.skipped === true;
+}
 
 async function persistOnboarding(
   client: DbClient,
@@ -284,7 +296,8 @@ async function persistOnboarding(
   //     1. createMinimalProfile(language만 set, 나머지 DB default null)
   //     2. PK 충돌(=이미 존재) → updateProfile({ language })로 language만 갱신,
   //        기존 skin_type / hair_type / 등 보존
-  if (body.skipped === true) {
+  // 타입 가드: z.union의 두 브랜치를 'skipped' 키 유무로 구분 (C1 정합 보강).
+  if (isSkipOnboardingBody(body)) {
     try {
       await createMinimalProfile(client, userId, body.language);
     } catch {
@@ -295,22 +308,23 @@ async function persistOnboarding(
   }
 
   // Start 경로: profile + journey + 게이트
+  const startBody: StartOnboardingBody = body;
   await upsertProfile(client, userId, {
-    skin_type: body.skin_type,
-    hair_type: body.hair_type ?? null,
-    hair_concerns: body.hair_concerns,
-    country: body.country ?? null,
-    language: body.language,
-    age_range: body.age_range ?? null,
+    skin_type: startBody.skin_type,
+    hair_type: startBody.hair_type ?? null,
+    hair_concerns: startBody.hair_concerns,
+    country: startBody.country ?? null,
+    language: startBody.language,
+    age_range: startBody.age_range ?? null,
   });
 
   const { journeyId } = await createOrUpdateJourney(client, userId, {
-    skin_concerns: body.skin_concerns,
-    interest_activities: body.interest_activities,
-    stay_days: body.stay_days ?? null,
-    start_date: body.start_date ?? null,
-    budget_level: body.budget_level ?? null,
-    travel_style: body.travel_style,
+    skin_concerns: startBody.skin_concerns,
+    interest_activities: startBody.interest_activities,
+    stay_days: startBody.stay_days ?? null,
+    start_date: startBody.start_date ?? null,
+    budget_level: startBody.budget_level ?? null,
+    travel_style: startBody.travel_style,
   });
 
   await markOnboardingCompleted(client, userId);
