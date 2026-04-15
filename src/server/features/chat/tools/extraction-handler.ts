@@ -10,9 +10,10 @@ import { z } from 'zod';
 
 /** tool-spec.md §3 출력 스키마 — PoC p0-17 계승 (93% 정확도 검증) */
 export const extractUserProfileSchema = z.object({
-  skin_type: z.enum(['dry', 'oily', 'combination', 'sensitive', 'normal'])
-    .nullable()
-    .describe('Skin type if explicitly mentioned. null if not mentioned.'),
+  skin_types: z.array(
+    z.enum(['dry', 'oily', 'combination', 'sensitive', 'normal']),
+  ).nullable()
+    .describe('Skin types if mentioned. Can be multiple (e.g., combination+sensitive). null if not mentioned.'),
 
   skin_concerns: z.array(
     z.enum([
@@ -34,13 +35,7 @@ export const extractUserProfileSchema = z.object({
     .nullable()
     .describe('Age range if mentioned or clearly inferable. null if not.'),
 
-  learned_preferences: z.array(
-    z.object({
-      item: z.string().describe('Ingredient or product type'),
-      direction: z.enum(['prefer', 'avoid']),
-    })
-  ).nullable()
-    .describe('Explicit ingredient/product preferences. null if not mentioned.'),
+  // NEW-17: learned_preferences 제거 (NEW-17c에서 재검토)
 });
 
 /** 추출 성공 결과 */
