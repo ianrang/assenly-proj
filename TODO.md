@@ -13,9 +13,9 @@
 | 사전 완료      | 12      | 12      | 0       | 0      | ✅      |
 | Phase 0    | 37      | 37      | 0       | 0      | ✅      |
 | Phase 1    | 62      | 60      | 2       | 0      | ✅      |
-| Phase 2    | 133     | 112     | 16      | 5      | 🔶 진행중 |
+| Phase 2    | 134     | 112     | 16      | 6      | 🔶 진행중 |
 | Phase 3    | 38      | 15      | 21      | 2      | 🔶 진행중 |
-| **MVP 합계** | **282** | **236** | **39**  | **7**  |        |
+| **MVP 합계** | **283** | **236** | **39**  | **8**  |        |
 | 관리자 앱 (펜딩) | 20      | 0       | 0       | 20     | ⏸️ 펜딩  |
 
 
@@ -503,6 +503,7 @@
 | NEW-9   | ~~채팅 내 인라인 온보딩 (OnboardingChips v1)~~  | OnboardingChips.tsx 신규: skin_type + concerns 칩 UI. ChatContent에 통합 (신규 세션 시 표시). POST /api/profile/onboarding 스키마 완화 (country/stay_days/budget optional). API 실패해도 채팅 시작 가능 (Q-15). 테스트 8건. 정본: `docs/superpowers/specs/2026-04-09-onboarding-and-kit-cta-design.md` §2.1 | ✅   |
 | NEW-9b  | ~~NEW-9 하드닝: PRD 정합 + 무결성 + 중복 제거~~ | PRD §4-A §595 정합 (concerns 5→7, MAX 2→3). OptionGroup을 `client/ui/primitives/`로 승격 (G-2 중복 제거). 마이그레이션 014 (`onboarding_completed_at` 컬럼 + `ux_journeys_user_active` 부분 유니크 인덱스 + 기존 중복 dedup). `markOnboardingCompleted` 원샷 서비스(`WHERE IS NULL` + row precheck). 3단계 handler invariant (profile→journey→mark). Skip API 경로 (create-if-missing으로 기존 데이터 보존). ChatInterface 프로필 병렬 조회 (fail-closed). i18n `onboarding.skinType_*`/`skinConcern_*` 재사용 + `chat.onboarding.*` 6키 신규. zod `.strict()` 로 모순 페이로드 방어. Adversarial review C1/C3 수정 + 단위 테스트 13건 추가. 검증: 851/851 통과, type/lint/build 클린, Playwright E2E 8개 시나리오 통과. 정본: `docs/03-design/PRD.md` §4-A §595 + `docs/superpowers/specs/2026-04-09-onboarding-and-kit-cta-design.md` §2.1 | ✅   |
 | NEW-17  | ~~extract_user_profile vs onboarding 쓰기 경합 정책~~ | **완료 (2026-04-15, feat/new-17-profile-merge 브랜치)**. `user_profiles.skin_type` 단일 → `skin_types TEXT[]` (max 3) 배열화 + 필드 스펙 레지스트리 + Postgres RPC 원자 merge 구현. 쓰기 3지점(Start/PUT/chat afterWork) 모두 merge 규약 경유. 사용자 명시값 불변(M1), RPC 내 priority ordering + IS DISTINCT FROM 가드. 전체 테스트 892 pass. migration 015/015b/016 파일 적재 + Supabase Dashboard 수동 적용 대기. `learned_preferences`는 NEW-17c로 분리. 정본: `docs/superpowers/specs/2026-04-15-new17-profile-merge-policy-design.md` v1.1 + `docs/superpowers/plans/2026-04-15-new17-profile-merge-policy.md` | ✅ |
+| NEW-17a | NEW-17 migration 015/015b Supabase Dashboard 수동 적용 | **대기 (PR 머지 전 필수)**. Supabase Dashboard SQL Editor에서 순차 실행: (1) `015_profile_skin_types_array.sql` — skin_types text[] 컬럼 + 백필 + CHECK + `apply_ai_profile_patch` RPC (2) `015b_apply_ai_journey_patch.sql` — `apply_ai_journey_patch` RPC (lazy-create). 검증: `SELECT proname FROM pg_proc WHERE proname LIKE 'apply_ai_%_patch';` → 2 rows, skin_types 컬럼 + CHECK 제약 존재 확인, 백필 쿼리 `SELECT count(*) FROM user_profiles WHERE skin_type IS NOT NULL AND (skin_types IS NULL OR NOT (skin_types @> ARRAY[skin_type]));` → 0. `016_drop_profile_skin_type.sql`은 프로덕션 코드 배포 + 24~72h 관측 후 적용 | ⬜ |
 | NEW-17c | learned_preferences 저장 경로 검토 + 분석 | **→ v0.2 후보**. NEW-17에서 tool 스키마 제거된 `learned_preferences: Array<{item, direction: prefer|avoid}>` 의 재도입 여부를 소비자(검색/판단/프롬프트) 요구와 함께 분석. (1) search-handler/beauty judgment에서 선호/기피 가중치 도입 가치 (2) user_profiles JSONB 컬럼 추가 vs 별도 테이블 (3) 추출 정확도 PoC 필요성 (4) LLM 토큰 비용 대비 효과. 설계 문서(tool-spec.md, system-prompt-spec.md) 갱신 포함. NEW-17 merge 설계가 JSONB 배열까지 커버하므로 재도입 시 로직 추가 없이 레지스트리 1줄로 확장 가능 | ⬜ |
 | NEW-10  | ~~Kit CTA 통합 카드 리팩토링~~          | KitCtaCard.tsx 삭제. card-mapper에서 KitCtaCardPart 제거. group-parts standalone 분기 제거. ProductCard(compact)에 is_highlighted → "Get free kit" 분기 통합 + onKitClaim 콜백. 일관성: 일반 = "Buy Online", 에센리 = "Get free kit". 테스트 5건 추가. 정본: `docs/superpowers/specs/2026-04-09-onboarding-and-kit-cta-design.md` §2.2 | ✅   |
 | NEW-11  | 에센리 자체 상품 카테고리 확장        | **→ v0.2 연기**. 현재 헤어 마스크 1개만 → 스킨케어/마스크팩/립케어 카테고리별 1~2개씩 추가. 통합 카드 방식(NEW-10) 유지. 노출 빈도 자연 증가 목적. 정본: `docs/superpowers/specs/2026-04-09-onboarding-and-kit-cta-design.md` §2.3 | ➡️  |
