@@ -108,7 +108,7 @@ describe("OnboardingChips (NEW-9b)", () => {
         expect.objectContaining({
           method: "POST",
           body: JSON.stringify({
-            skin_type: "oily",
+            skin_types: ["oily"],
             skin_concerns: ["acne"],
           }),
         }),
@@ -173,6 +173,24 @@ describe("OnboardingChips (NEW-9b)", () => {
     });
 
     expect(onComplete).not.toHaveBeenCalled();
+  });
+
+  it("skin_types 다중 선택 후 Start — payload에 2개 전달", async () => {
+    mockFetch.mockResolvedValueOnce({ ok: true });
+    render(<OnboardingChips onComplete={vi.fn()} />);
+
+    fireEvent.click(screen.getByText("Dry"));
+    fireEvent.click(screen.getByText("Sensitive"));
+    fireEvent.click(screen.getByRole("button", { name: /start chatting/i }));
+
+    await waitFor(() => {
+      expect(mockFetch).toHaveBeenCalledWith(
+        "/api/profile/onboarding",
+        expect.objectContaining({
+          body: expect.stringContaining('"skin_types":["dry","sensitive"]'),
+        }),
+      );
+    });
   });
 
   it("제출 중 이중 클릭 방어 (isSubmitting)", async () => {

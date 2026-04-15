@@ -9,6 +9,7 @@ import {
   ONBOARDING_SKIN_CONCERNS,
   MAX_ONBOARDING_SKIN_CONCERNS,
 } from "@/shared/constants/beauty";
+import { PROFILE_FIELD_SPEC } from "@/shared/constants/profile-field-spec";
 import type { SkinType, SkinConcern } from "@/shared/types/domain";
 import { getAccessToken } from "@/client/core/auth-fetch";
 import OptionGroup from "@/client/ui/primitives/option-group";
@@ -39,7 +40,7 @@ type OnboardingChipsProps = {
 /** Start 경로 페이로드 */
 type StartPayload = {
   skipped?: false;
-  skin_type: SkinType;
+  skin_types: SkinType[];
   skin_concerns: SkinConcern[];
 };
 
@@ -67,7 +68,7 @@ export default function OnboardingChips({ onComplete }: OnboardingChipsProps) {
   const tChat = useTranslations("chat");
   const tOnb = useTranslations("onboarding");
 
-  const [skinType, setSkinType] = useState<SkinType | "">("");
+  const [skinTypes, setSkinTypes] = useState<SkinType[]>([]);
   const [concerns, setConcerns] = useState<SkinConcern[]>([]);
   const [submitMode, setSubmitMode] = useState<"idle" | "start" | "skip">("idle");
   const [hasError, setHasError] = useState(false);
@@ -85,12 +86,12 @@ export default function OnboardingChips({ onComplete }: OnboardingChipsProps) {
   }));
 
   async function handleStart() {
-    if (!skinType || isSubmitting) return;
+    if (skinTypes.length === 0 || isSubmitting) return;
     setSubmitMode("start");
     setHasError(false);
     try {
       const ok = await submitOnboarding({
-        skin_type: skinType,
+        skin_types: skinTypes,
         skin_concerns: concerns,
       });
       if (ok) {
@@ -138,13 +139,17 @@ export default function OnboardingChips({ onComplete }: OnboardingChipsProps) {
 
       <div>
         <p className="mb-2 text-xs font-medium text-muted-foreground">
-          {tOnb("skinType")}
+          {tOnb("skinType")}{" "}
+          <span className="text-muted-foreground/70">
+            ({skinTypes.length}/{PROFILE_FIELD_SPEC.skin_types.max})
+          </span>
         </p>
         <OptionGroup
           options={skinOptions}
-          value={skinType}
-          onChange={(v) => setSkinType(v as SkinType | "")}
-          mode="single"
+          value={skinTypes}
+          onChange={(v) => setSkinTypes(v as SkinType[])}
+          mode="multiple"
+          max={PROFILE_FIELD_SPEC.skin_types.max}
         />
       </div>
 
@@ -175,7 +180,7 @@ export default function OnboardingChips({ onComplete }: OnboardingChipsProps) {
           type="button"
           size="cta"
           onClick={handleStart}
-          disabled={!skinType || isSubmitting}
+          disabled={skinTypes.length === 0 || isSubmitting}
         >
           {submitMode === "start" ? tChat("onboarding.saving") : tChat("onboarding.start")}
         </Button>
