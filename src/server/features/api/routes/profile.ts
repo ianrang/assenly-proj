@@ -13,6 +13,7 @@ import {
 } from '@/server/features/profile/service';
 import { getActiveJourney, createOrUpdateJourney } from '@/server/features/journey/service';
 import { createAuthenticatedClient } from '@/server/core/db';
+import { MAX_SKIN_TYPES } from "@/shared/constants/profile-field-spec";
 
 // ============================================================
 // POST /api/profile/onboarding — api-spec.md §2.3
@@ -77,7 +78,7 @@ const travelStyleEnum = z.enum([
 const startOnboardingBodySchema = z
   .object({
     // user_profiles 필드 (UP 변수)
-    skin_type: skinTypeEnum,
+    skin_types: z.array(skinTypeEnum).min(1).max(MAX_SKIN_TYPES),
     hair_type: hairTypeEnum.nullable().optional(),
     hair_concerns: z.array(hairConcernEnum).default([]),
     country: z.string().min(2).max(2).optional(),
@@ -155,8 +156,10 @@ const postOnboardingRoute = createRoute({
 /** Q-1, Q-14: PUT 부분 업데이트 스키마 — DB 스키마와 일치 */
 const updateBodySchema = z
   .object({
-    skin_type: z
-      .enum(['dry', 'oily', 'combination', 'sensitive', 'normal'])
+    skin_types: z
+      .array(z.enum(['dry', 'oily', 'combination', 'sensitive', 'normal']))
+      .min(1)
+      .max(MAX_SKIN_TYPES)
       .optional(),
     hair_type: z
       .enum(['straight', 'wavy', 'curly', 'coily'])
@@ -310,7 +313,7 @@ async function persistOnboarding(
   // Start 경로: profile + journey + 게이트
   const startBody: StartOnboardingBody = body;
   await upsertProfile(client, userId, {
-    skin_type: startBody.skin_type,
+    skin_types: startBody.skin_types,
     hair_type: startBody.hair_type ?? null,
     hair_concerns: startBody.hair_concerns,
     country: startBody.country ?? null,

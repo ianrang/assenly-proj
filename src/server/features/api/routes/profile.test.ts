@@ -46,7 +46,7 @@ import { createApp } from '@/server/features/api/app';
 import { registerProfileRoutes } from '@/server/features/api/routes/profile';
 
 const VALID_ONBOARDING_BODY = {
-  skin_type: 'oily',
+  skin_types: ['oily'],
   hair_type: 'straight',
   hair_concerns: ['damage'],
   country: 'US',
@@ -81,7 +81,7 @@ describe('Profile routes', () => {
     // default: services succeed
     mockUpsertProfile.mockResolvedValue(undefined);
     mockCreateOrUpdateJourney.mockResolvedValue({ journeyId: 'journey-uuid-456' });
-    mockGetProfile.mockResolvedValue({ user_id: 'user-123', skin_type: 'oily' });
+    mockGetProfile.mockResolvedValue({ user_id: 'user-123', skin_types: ['oily'] });
     mockGetActiveJourney.mockResolvedValue({ id: 'journey-uuid-456' });
     mockUpdateProfile.mockResolvedValue(undefined);
     mockCreateMinimalProfile.mockResolvedValue(undefined);
@@ -127,7 +127,7 @@ describe('Profile routes', () => {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        skin_type: 'dry',
+        skin_types: ['dry'],
         skin_concerns: ['acne', 'dryness'],
       }),
     });
@@ -198,7 +198,7 @@ describe('Profile routes', () => {
     const res = await app.request('/api/profile/onboarding', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ skin_type: 'dry', skin_concerns: [] }),
+      body: JSON.stringify({ skin_types: ['dry'], skin_concerns: [] }),
     });
 
     expect(res.status).toBe(500);
@@ -224,12 +224,69 @@ describe('Profile routes', () => {
     const res = await app.request('/api/profile', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ skin_type: 'dry' }),
+      body: JSON.stringify({ skin_types: ['dry'] }),
     });
     const json = await res.json();
 
     expect(res.status).toBe(200);
     expect(json.data.updated).toBe(true);
+  });
+
+  it("POST Start — skin_types=['dry','sensitive'] (복수) 성공", async () => {
+    const res = await app.request('/api/profile/onboarding', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        skin_types: ['dry', 'sensitive'],
+        skin_concerns: ['acne'],
+        interest_activities: ['shopping'],
+      }),
+    });
+    expect(res.status).toBe(201);
+    expect(mockUpsertProfile).toHaveBeenCalledWith(
+      expect.anything(),
+      'user-123',
+      expect.objectContaining({ skin_types: ['dry', 'sensitive'] }),
+    );
+  });
+
+  it("POST Start — skin_types=[] (min 1 위반) → 400", async () => {
+    const res = await app.request('/api/profile/onboarding', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ skin_types: [], skin_concerns: [] }),
+    });
+    expect(res.status).toBe(400);
+  });
+
+  it("POST Start — skin_types 4개 (max 3 위반) → 400", async () => {
+    const res = await app.request('/api/profile/onboarding', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        skin_types: ['dry', 'oily', 'sensitive', 'normal'],
+        skin_concerns: [],
+      }),
+    });
+    expect(res.status).toBe(400);
+  });
+
+  it("PUT — skin_types=['dry'] 성공", async () => {
+    const res = await app.request('/api/profile', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ skin_types: ['dry'] }),
+    });
+    expect(res.status).toBe(200);
+  });
+
+  it("PUT — skin_types=[] (min 1 위반) → 400", async () => {
+    const res = await app.request('/api/profile', {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ skin_types: [] }),
+    });
+    expect(res.status).toBe(400);
   });
 
   it('PUT /api/profile 빈 body → 400 (최소 1개 필드 필요)', async () => {
