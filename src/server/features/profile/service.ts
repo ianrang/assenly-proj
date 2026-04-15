@@ -17,11 +17,12 @@ import {
 /**
  * 프로필 UPSERT 입력 (온보딩 UP 변수).
  *
- * DB user_profiles 컬럼 상태 (schema.dbml §98):
- *   skin_type nullable · hair_type nullable · country nullable · age_range nullable
+ * DB user_profiles 컬럼 상태 (schema.dbml, migration 015 이후):
+ *   skin_types text[] nullable · hair_type nullable · country nullable · age_range nullable
  *   language NOT NULL
  *
- * NEW-9b: Start 경로는 skin_type 전달(필수), Skip 경로는 null 전달 허용.
+ * NEW-17: Start 경로는 skin_types 배열(min 1, max 3) 전달(필수).
+ *          Skip 경로는 createMinimalProfile 사용 (upsertProfile 미호출).
  */
 interface ProfileData {
   skin_types: string[]; // NEW-17: 단일 → 배열
