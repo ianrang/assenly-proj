@@ -5,7 +5,7 @@ import type { SupabaseClient } from '@supabase/supabase-js';
 // 프로필 서비스 — api-spec.md §2.3
 // R-5: shared/ 타입만 import. core/ import 없음 (client 파라미터 주입).
 // R-9: features/journey/ import 없음 (P-4 Composition Root에서 조합).
-// G-9: export 4개 (upsertProfile, getProfile, updateProfile, createMinimalProfile).
+// G-9: export 5개 (upsertProfile, getProfile, updateProfile, createMinimalProfile, markOnboardingCompleted).
 // L-14: ProfileData, ProfileRow export 안 함.
 // ============================================================
 
@@ -33,6 +33,7 @@ interface ProfileRow {
   language: string;
   age_range: string | null;
   beauty_summary: string | null;
+  onboarding_completed_at: string | null;
   updated_at: string;
 }
 
@@ -127,5 +128,40 @@ export async function updateProfile(
 
   if (error) {
     throw new Error('Profile update failed');
+  }
+}
+
+/**
+ * NEW-9b: 온보딩 완료 게이트 원샷 설정.
+ *
+ * 불변량 I4 (one-shot semantics):
+ *   onboarding_completed_at 은 단조 증가 — 한 번 NOT NULL이 되면 덮어쓰지 않는다.
+ *   `WHERE onboarding_completed_at IS NULL` 조건부 UPDATE로 강제.
+ *
+ * 재호출 시 동작:
+ *   - 이미 완료된 상태면 matched rows=0, no-op (에러 아님)
+ *   - 멱등(Q-12) + 자기 치유(I7): 부분 실패 재시도에서 타임스탬프 drift 없음
+ *
+ * 3단계 handler invariant (반드시 마지막 단계):
+ *   1. upsertProfile
+ *   2. createOrUpdateJourney (optional — skipped 경로에서는 실행 안 함)
+ *   3. markOnboardingCompleted  ← 이 함수
+ *
+ * 순서 역전 시 I7 (자기 치유) 보장이 깨진다. 순서를 변경하지 말 것.
+ */
+export async function markOnboardingCompleted(
+  client: SupabaseClient,
+  userId: string,
+): Promise<void> {
+  const { error } = await client
+    .from('user_profiles')
+    .update({
+      onboarding_completed_at: new Date().toISOString(),
+    })
+    .eq('user_id', userId)
+    .is('onboarding_completed_at', null);
+
+  if (error) {
+    throw new Error('Onboarding completion mark failed');
   }
 }
