@@ -18,9 +18,18 @@ UPDATE user_profiles
  WHERE skin_type IS NOT NULL AND skin_types IS NULL;
 
 -- Step 3. CHECK — M2 DB 레벨 (3 = PROFILE_FIELD_SPEC.skin_types.max)
-ALTER TABLE user_profiles
-  ADD CONSTRAINT user_profiles_skin_types_max_3
-  CHECK (skin_types IS NULL OR array_length(skin_types, 1) <= 3);
+-- 멱등 가드: 수동 배포 환경(Dashboard SQL Editor)에서 재실행 안전성 확보.
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1 FROM pg_constraint
+    WHERE conname = 'user_profiles_skin_types_max_3'
+  ) THEN
+    ALTER TABLE user_profiles
+      ADD CONSTRAINT user_profiles_skin_types_max_3
+      CHECK (skin_types IS NULL OR array_length(skin_types, 1) <= 3);
+  END IF;
+END $$;
 
 -- Step 4. AI patch RPC — M1/M2/M3/M5 DB 레벨 강제
 --
