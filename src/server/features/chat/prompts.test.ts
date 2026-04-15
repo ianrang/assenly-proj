@@ -22,7 +22,7 @@ function makeContext(overrides: Record<string, unknown> = {}) {
 
 const fullProfile = {
   user_id: 'user-1',
-  skin_type: 'oily' as const,
+  skin_types: ['oily'] as const,
   hair_type: null,
   hair_concerns: [],
   country: 'US',
@@ -273,5 +273,18 @@ describe('buildSystemPrompt', () => {
 
     expect(result).toContain('건성 피부');
     expect(result).toContain('Session language: ko');
+  });
+
+  it('복수 skin_types 렌더 — "oily, sensitive" 형식', async () => {
+    const { buildSystemPrompt } = await import('@/server/features/chat/prompts');
+    const ctx = makeContext({
+      profile: { ...fullProfile, skin_types: ['oily', 'sensitive'] },
+      journey: fullJourney,
+      derived: null,
+      learnedPreferences: [],
+    });
+
+    const result = buildSystemPrompt(ctx as Parameters<typeof buildSystemPrompt>[0]);
+    expect(result).toContain('Skin type: oily, sensitive');
   });
 });
