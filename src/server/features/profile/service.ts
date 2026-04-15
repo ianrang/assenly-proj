@@ -1,5 +1,10 @@
 import 'server-only';
 import type { SupabaseClient } from '@supabase/supabase-js';
+import type { UserProfileVars, JourneyContextVars } from '@/shared/types/profile';
+import {
+  PROFILE_FIELD_SPEC,
+  JOURNEY_FIELD_SPEC,
+} from '@/shared/constants/profile-field-spec';
 
 // ============================================================
 // 프로필 서비스 — api-spec.md §2.3
@@ -19,7 +24,7 @@ import type { SupabaseClient } from '@supabase/supabase-js';
  * NEW-9b: Start 경로는 skin_type 전달(필수), Skip 경로는 null 전달 허용.
  */
 interface ProfileData {
-  skin_type: string | null;
+  skin_types: string[]; // NEW-17: 단일 → 배열
   hair_type: string | null;
   hair_concerns: string[];
   country: string | null;
@@ -27,12 +32,12 @@ interface ProfileData {
   age_range?: string | null;
 }
 
-/** DB 조회 결과 */
+/** DB 조회 결과 (getProfile에서 null 배열은 [] 로 정규화 — SG-6 / CQ-2) */
 interface ProfileRow {
   user_id: string;
-  skin_type: string | null;
+  skin_types: string[]; // normalized to [] by getProfile
   hair_type: string | null;
-  hair_concerns: string[] | null;
+  hair_concerns: string[]; // normalized to []
   country: string | null;
   language: string;
   age_range: string | null;
@@ -55,7 +60,7 @@ export async function upsertProfile(
     .upsert(
       {
         user_id: userId,
-        skin_type: data.skin_type,
+        skin_types: data.skin_types,
         hair_type: data.hair_type,
         hair_concerns: data.hair_concerns,
         country: data.country,
@@ -113,7 +118,12 @@ export async function getProfile(
     throw new Error('Profile retrieval failed');
   }
 
-  return data;
+  if (!data) return null;
+  return {
+    ...data,
+    skin_types: data.skin_types ?? [],
+    hair_concerns: data.hair_concerns ?? [],
+  };
 }
 
 /**
@@ -193,4 +203,40 @@ export async function markOnboardingCompleted(
   if (error) {
     throw new Error('Onboarding completion mark failed');
   }
+}
+
+/**
+ * NEW-17: AI 추출 결과를 RPC apply_ai_profile_patch로 원자 적용.
+ * M1/M2/M3/M5 DB 레벨 강제 (spec §2.1).
+ * merge.ts의 computeProfilePatch와 의미론 동일 (RPC/TS sync test T9).
+ */
+export async function applyAiExtraction(
+  client: SupabaseClient,
+  userId: string,
+  patch: Partial<UserProfileVars>,
+): Promise<{ applied: string[] }> {
+  const { data, error } = await client.rpc('apply_ai_profile_patch', {
+    p_user_id: userId,
+    p_patch: patch,
+    p_spec: PROFILE_FIELD_SPEC,
+  });
+  if (error) throw new Error('AI profile patch failed');
+  return { applied: (data as string[]) ?? [] };
+}
+
+/**
+ * NEW-17: journey AI 추출. active journey lazy-create 포함.
+ */
+export async function applyAiExtractionToJourney(
+  client: SupabaseClient,
+  userId: string,
+  patch: Partial<JourneyContextVars>,
+): Promise<{ applied: string[] }> {
+  const { data, error } = await client.rpc('apply_ai_journey_patch', {
+    p_user_id: userId,
+    p_patch: patch,
+    p_spec: JOURNEY_FIELD_SPEC,
+  });
+  if (error) throw new Error('AI journey patch failed');
+  return { applied: (data as string[]) ?? [] };
 }

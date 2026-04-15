@@ -18,7 +18,7 @@ describe('profile/service', () => {
         '@/server/features/profile/service'
       );
       await upsertProfile(client as never, 'user-123', {
-        skin_type: 'oily',
+        skin_types: ['oily'],
         hair_type: 'straight',
         hair_concerns: ['damage'],
         country: 'US',
@@ -29,7 +29,7 @@ describe('profile/service', () => {
       expect(mockUpsert).toHaveBeenCalledWith(
         expect.objectContaining({
           user_id: 'user-123',
-          skin_type: 'oily',
+          skin_types: ['oily'],
           hair_type: 'straight',
           country: 'US',
           age_range: null,
@@ -50,7 +50,7 @@ describe('profile/service', () => {
 
       await expect(
         upsertProfile(client as never, 'user-123', {
-          skin_type: 'oily',
+          skin_types: ['oily'],
           hair_type: null,
           hair_concerns: [],
           country: 'KR',
@@ -64,13 +64,14 @@ describe('profile/service', () => {
     it('존재: ProfileRow 반환', async () => {
       const profileRow = {
         user_id: 'user-123',
-        skin_type: 'oily',
+        skin_types: ['oily'],
         hair_type: 'straight',
         hair_concerns: ['damage'],
         country: 'US',
         language: 'en',
         age_range: '25-29',
         beauty_summary: null,
+        onboarding_completed_at: null,
         updated_at: '2026-03-25T00:00:00Z',
       };
       const mockMaybeSingle = vi.fn().mockResolvedValue({ data: profileRow, error: null });
@@ -130,12 +131,12 @@ describe('profile/service', () => {
         '@/server/features/profile/service'
       );
       await updateProfile(client as never, 'user-123', {
-        skin_type: 'dry',
+        skin_types: ['dry'],
       });
 
       expect(client.from).toHaveBeenCalledWith('user_profiles');
       expect(mockUpdate).toHaveBeenCalledWith(
-        expect.objectContaining({ skin_type: 'dry' }),
+        expect.objectContaining({ skin_types: ['dry'] }),
       );
     });
 
@@ -151,7 +152,7 @@ describe('profile/service', () => {
       );
 
       await expect(
-        updateProfile(client as never, 'user-123', { skin_type: 'dry' }),
+        updateProfile(client as never, 'user-123', { skin_types: ['dry'] }),
       ).rejects.toThrow('Profile update failed');
     });
   });
@@ -275,6 +276,80 @@ describe('profile/service', () => {
       await expect(
         markOnboardingCompleted(client as never, 'user-1'),
       ).resolves.not.toThrow();
+    });
+  });
+
+  describe('applyAiExtraction (RPC wrapper)', () => {
+    it('정상: apply_ai_profile_patch 호출 + applied 반환', async () => {
+      const mockRpc = vi.fn().mockResolvedValue({ data: ['skin_types'], error: null });
+      const client = { rpc: mockRpc };
+
+      const { applyAiExtraction } = await import('@/server/features/profile/service');
+      const r = await applyAiExtraction(client as never, 'user-1', {
+        skin_types: ['dry'],
+      });
+
+      expect(mockRpc).toHaveBeenCalledWith(
+        'apply_ai_profile_patch',
+        expect.objectContaining({
+          p_user_id: 'user-1',
+          p_patch: { skin_types: ['dry'] },
+        }),
+      );
+      expect(r.applied).toEqual(['skin_types']);
+    });
+
+    it('RPC 에러 → throw', async () => {
+      const mockRpc = vi
+        .fn()
+        .mockResolvedValue({ data: null, error: { message: 'rpc failed' } });
+      const client = { rpc: mockRpc };
+      const { applyAiExtraction } = await import('@/server/features/profile/service');
+      await expect(
+        applyAiExtraction(client as never, 'user-1', { skin_types: ['dry'] }),
+      ).rejects.toThrow('AI profile patch failed');
+    });
+
+    it('RPC data=null → applied=[]', async () => {
+      const mockRpc = vi.fn().mockResolvedValue({ data: null, error: null });
+      const client = { rpc: mockRpc };
+      const { applyAiExtraction } = await import('@/server/features/profile/service');
+      const r = await applyAiExtraction(client as never, 'user-1', { age_range: '25-29' });
+      expect(r.applied).toEqual([]);
+    });
+  });
+
+  describe('applyAiExtractionToJourney (RPC wrapper)', () => {
+    it('정상: apply_ai_journey_patch 호출', async () => {
+      const mockRpc = vi.fn().mockResolvedValue({ data: ['skin_concerns'], error: null });
+      const client = { rpc: mockRpc };
+      const { applyAiExtractionToJourney } = await import(
+        '@/server/features/profile/service'
+      );
+      const r = await applyAiExtractionToJourney(client as never, 'user-1', {
+        skin_concerns: ['acne'],
+      });
+      expect(mockRpc).toHaveBeenCalledWith(
+        'apply_ai_journey_patch',
+        expect.objectContaining({
+          p_user_id: 'user-1',
+          p_patch: { skin_concerns: ['acne'] },
+        }),
+      );
+      expect(r.applied).toEqual(['skin_concerns']);
+    });
+
+    it('RPC 에러 → throw', async () => {
+      const mockRpc = vi
+        .fn()
+        .mockResolvedValue({ data: null, error: { message: 'rpc failed' } });
+      const client = { rpc: mockRpc };
+      const { applyAiExtractionToJourney } = await import(
+        '@/server/features/profile/service'
+      );
+      await expect(
+        applyAiExtractionToJourney(client as never, 'user-1', { skin_concerns: ['acne'] }),
+      ).rejects.toThrow('AI journey patch failed');
     });
   });
 });
