@@ -418,12 +418,11 @@ describe('buildTools (via streamChat)', () => {
   it('extract_user_profile execute 성공 시 extractionResults에 수집된다', async () => {
     const client = makeMockClient();
     const extractedData = {
-      skin_type: 'dry' as const,
+      skin_types: ['dry' as const],
       skin_concerns: ['acne' as const],
       stay_days: 7,
       budget_level: 'moderate' as const,
       age_range: '25-29' as const,
-      learned_preferences: null,
     };
     mockExecuteExtractUserProfile.mockResolvedValue(extractedData);
 
@@ -448,7 +447,7 @@ describe('buildTools (via streamChat)', () => {
     });
 
     // Manually execute the tool (simulate LLM calling it)
-    await capturedTools!['extract_user_profile'].execute({ skin_type: 'dry' });
+    await capturedTools!['extract_user_profile'].execute({ skin_types: ['dry'] });
 
     expect(result.extractionResults).toHaveLength(1);
     expect(result.extractionResults[0]).toEqual(extractedData);
