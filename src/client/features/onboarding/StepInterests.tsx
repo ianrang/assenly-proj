@@ -7,7 +7,7 @@ import { useFormContext } from "react-hook-form";
 import { INTEREST_ACTIVITIES } from "@/shared/constants/beauty";
 import type { OnboardingFormData } from "@/shared/types/profile";
 import { CardTitle } from "@/client/ui/primitives/typography";
-import OptionGroup from "./OptionGroup";
+import OptionGroup from "@/client/ui/primitives/option-group";
 
 export default function StepInterests() {
   const t = useTranslations("onboarding");
