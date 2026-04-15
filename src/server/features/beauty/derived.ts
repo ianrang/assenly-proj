@@ -7,7 +7,7 @@ import type { LearnedPreference } from '@/shared/types/profile';
 // 독립 모듈: beauty/ 타 파일 import 없음 (§2.3).
 // R-7: shared/types ONLY.
 // L-7: 순수 함수. DB/API 호출 없음.
-// G-9: export 3개 (calculatePreferredIngredients, calculateAvoidedIngredients, calculateSegment).
+// G-9: export 4개 (calculatePreferredIngredients, calculateAvoidedIngredients, calculateSegment, resolveConflicts).
 // L-14: 매핑 상수 미export.
 // DV-4(AI 뷰티 프로필)는 LLM 호출 필요 → derived.ts 범위 외.
 // ============================================================
@@ -47,59 +47,65 @@ const SKIN_TYPE_CAUTION: Record<string, string[]> = {
 
 /**
  * DV-1: 선호 성분 계산.
- * PRD §4-A: skin_type + concerns → 성분 매핑 + 학습 가중치(BH-4 likes).
+ * PRD §4-A: skin_types + concerns → 성분 매핑 + 학습 가중치(BH-4 likes).
  */
 export function calculatePreferredIngredients(
-  skinType: SkinType | null,
+  skinTypes: SkinType[],              // NEW-17: 단일 → 배열
   concerns: SkinConcern[],
   learnedLikes: LearnedPreference[],
 ): string[] {
   const ingredients = new Set<string>();
-
-  if (skinType) {
-    for (const ing of SKIN_TYPE_PREFERRED[skinType] ?? []) {
-      ingredients.add(ing);
-    }
+  for (const t of skinTypes) {
+    for (const ing of SKIN_TYPE_PREFERRED[t] ?? []) ingredients.add(ing);
   }
-
-  for (const concern of concerns) {
-    for (const ing of CONCERN_PREFERRED[concern] ?? []) {
-      ingredients.add(ing);
-    }
+  for (const c of concerns) {
+    for (const ing of CONCERN_PREFERRED[c] ?? []) ingredients.add(ing);
   }
-
   for (const pref of learnedLikes) {
     if (pref.category === 'ingredient' && pref.direction === 'like') {
       ingredients.add(pref.preference);
     }
   }
-
   return [...ingredients];
 }
 
 /**
  * DV-2: 기피 성분 계산.
- * PRD §4-A: skin_type → 주의 성분 + 명시적 비선호(BH-4 dislikes).
+ * PRD §4-A: skin_types → 주의 성분 + 명시적 비선호(BH-4 dislikes).
  */
 export function calculateAvoidedIngredients(
-  skinType: SkinType | null,
+  skinTypes: SkinType[],              // NEW-17: 단일 → 배열
   learnedDislikes: LearnedPreference[],
 ): string[] {
   const ingredients = new Set<string>();
-
-  if (skinType) {
-    for (const ing of SKIN_TYPE_CAUTION[skinType] ?? []) {
-      ingredients.add(ing);
-    }
+  for (const t of skinTypes) {
+    for (const ing of SKIN_TYPE_CAUTION[t] ?? []) ingredients.add(ing);
   }
-
   for (const pref of learnedDislikes) {
     if (pref.category === 'ingredient' && pref.direction === 'dislike') {
       ingredients.add(pref.preference);
     }
   }
-
   return [...ingredients];
+}
+
+/**
+ * NEW-17 (2A): 복수 skin_types 확장 시 preferred ∩ avoided 충돌 해결.
+ * 정책: avoided 우선 (민감 피부 안전 우선). preferred에서 제거 + 관측 로그.
+ */
+export function resolveConflicts(
+  preferred: string[],
+  avoided: string[],
+): { preferred: string[]; avoided: string[] } {
+  const avoidedSet = new Set(avoided);
+  const conflicts = preferred.filter((p) => avoidedSet.has(p));
+  if (conflicts.length > 0) {
+    console.warn('[derived] ingredient conflict — avoided wins', { conflicts });
+  }
+  return {
+    preferred: preferred.filter((p) => !avoidedSet.has(p)),
+    avoided,
+  };
 }
 
 /**
