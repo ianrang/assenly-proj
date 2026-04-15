@@ -138,23 +138,14 @@
     "suggestedQ3": "I want a facial treatment with no downtime",
     "errorRetry": "Something went wrong. Tap to retry.",
     "rateLimited": "Please wait a moment before sending another message.",
-    "chipTitle": "Before we start, tell me a bit about your skin.",
-    "chipSkipHint": "or skip and just chat",
-    "chipSkinTypeLabel": "Your skin type:",
-    "chipConcernLabel": "Top concern (choose 1-2):",
-    "chipStart": "Start chatting →",
-    "chipSaving": "Saving...",
-    "chipSkip": "Skip — I'll just chat",
-    "chipSkinDry": "Dry",
-    "chipSkinOily": "Oily",
-    "chipSkinCombination": "Combination",
-    "chipSkinSensitive": "Sensitive",
-    "chipSkinNormal": "Normal",
-    "chipConcernDryness": "Dryness",
-    "chipConcernAcne": "Acne",
-    "chipConcernWrinkles": "Wrinkles",
-    "chipConcernRedness": "Redness",
-    "chipConcernDarkSpots": "Dark spots"
+    "onboarding": {
+      "greeting": "Before we start, tell me a bit about your skin.",
+      "skipHint": "or skip and just chat",
+      "start": "Start chatting →",
+      "saving": "Saving...",
+      "skip": "Skip — I'll just chat",
+      "error": "Couldn't save. Please try again."
+    }
   },
   "tabs": {
     "shops": "Shops",

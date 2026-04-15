@@ -190,4 +190,91 @@ describe('profile/service', () => {
       ).rejects.toThrow('Minimal profile creation failed: duplicate key value violates unique constraint');
     });
   });
+
+  // NEW-9b + adversarial review C3: markOnboardingCompleted
+  describe('markOnboardingCompleted', () => {
+    function buildClient(opts: {
+      precheck: { data: unknown; error: unknown };
+      update?: { error: unknown };
+    }) {
+      const mockPrecheckSingle = vi.fn().mockResolvedValue(opts.precheck);
+      const mockPrecheckEq = vi.fn().mockReturnValue({ maybeSingle: mockPrecheckSingle });
+      const mockPrecheckSelect = vi.fn().mockReturnValue({ eq: mockPrecheckEq });
+
+      const mockUpdateIs = vi.fn().mockResolvedValue(opts.update ?? { error: null });
+      const mockUpdateEq = vi.fn().mockReturnValue({ is: mockUpdateIs });
+      const mockUpdate = vi.fn().mockReturnValue({ eq: mockUpdateEq });
+
+      // `.from()` 첫 호출은 select(precheck), 두 번째 호출은 update
+      let fromCallCount = 0;
+      const client = {
+        from: vi.fn(() => {
+          fromCallCount += 1;
+          if (fromCallCount === 1) {
+            return { select: mockPrecheckSelect };
+          }
+          return { update: mockUpdate };
+        }),
+      };
+
+      return { client, mockPrecheckSingle, mockUpdate };
+    }
+
+    it('정상: 프로필 존재 + update 성공', async () => {
+      const { client, mockUpdate } = buildClient({
+        precheck: { data: { user_id: 'user-1' }, error: null },
+      });
+
+      const { markOnboardingCompleted } = await import(
+        '@/server/features/profile/service'
+      );
+      await expect(
+        markOnboardingCompleted(client as never, 'user-1'),
+      ).resolves.not.toThrow();
+      expect(mockUpdate).toHaveBeenCalled();
+    });
+
+    it('프로필 row 부재 시 throw (C3: 0-row silent no-op 방어)', async () => {
+      const { client, mockUpdate } = buildClient({
+        precheck: { data: null, error: null },
+      });
+
+      const { markOnboardingCompleted } = await import(
+        '@/server/features/profile/service'
+      );
+      await expect(
+        markOnboardingCompleted(client as never, 'user-ghost'),
+      ).rejects.toThrow('profile row missing');
+      // update 호출 안 됨 — precheck에서 이미 throw
+      expect(mockUpdate).not.toHaveBeenCalled();
+    });
+
+    it('precheck SELECT 실패 시 throw', async () => {
+      const { client } = buildClient({
+        precheck: { data: null, error: { message: 'db error' } },
+      });
+
+      const { markOnboardingCompleted } = await import(
+        '@/server/features/profile/service'
+      );
+      await expect(
+        markOnboardingCompleted(client as never, 'user-1'),
+      ).rejects.toThrow('precheck failed');
+    });
+
+    it('이미 완료된 사용자 재호출: WHERE IS NULL 조건으로 no-op, 에러 아님 (원샷 I4)', async () => {
+      // 프로필은 존재, update는 0행 매치(이미 completed_at 설정됨) — 에러 없음
+      const { client } = buildClient({
+        precheck: { data: { user_id: 'user-1' }, error: null },
+        update: { error: null },
+      });
+
+      const { markOnboardingCompleted } = await import(
+        '@/server/features/profile/service'
+      );
+      await expect(
+        markOnboardingCompleted(client as never, 'user-1'),
+      ).resolves.not.toThrow();
+    });
+  });
 });

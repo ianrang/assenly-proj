@@ -175,6 +175,85 @@ describe('journey/service', () => {
         expect.objectContaining({ end_date: null, start_date: null }),
       );
     });
+
+    // NEW-9b: unique_violation 경합 재시도 — ux_journeys_user_active 부분 유니크 인덱스
+    it('경합(23505): 1차 SELECT=빈 + INSERT=23505 → 2차 SELECT=기존 + UPDATE 성공', async () => {
+      // 2회 호출에 대한 상태 기반 mock — maybeSingle은 1차=null, 2차=기존 반환
+      let selectCallCount = 0;
+      const mockMaybeSingle = vi.fn().mockImplementation(() => {
+        selectCallCount += 1;
+        return Promise.resolve(
+          selectCallCount === 1
+            ? { data: null, error: null }
+            : { data: { id: 'journey-raced-789' }, error: null },
+        );
+      });
+      const mockLimit = vi.fn().mockReturnValue({ maybeSingle: mockMaybeSingle });
+      const mockStatusEq = vi.fn().mockReturnValue({ limit: mockLimit });
+      const mockUserEq = vi.fn().mockReturnValue({ eq: mockStatusEq });
+      const mockSelect = vi.fn().mockReturnValue({ eq: mockUserEq });
+
+      // INSERT: 1차 호출에서 23505 반환
+      const mockInsertSingle = vi.fn().mockResolvedValue({
+        data: null,
+        error: { code: '23505', message: 'duplicate key' },
+      });
+      const mockInsertSelect = vi.fn().mockReturnValue({ single: mockInsertSingle });
+      const mockInsert = vi.fn().mockReturnValue({ select: mockInsertSelect });
+
+      // UPDATE: 재시도 시 성공
+      const mockUpdateEq = vi.fn().mockResolvedValue({ error: null });
+      const mockUpdate = vi.fn().mockReturnValue({ eq: mockUpdateEq });
+
+      const client = {
+        from: vi.fn(() => ({
+          select: mockSelect,
+          insert: mockInsert,
+          update: mockUpdate,
+        })),
+      };
+
+      const { createOrUpdateJourney } = await import(
+        '@/server/features/journey/service'
+      );
+      const result = await createOrUpdateJourney(
+        client as never,
+        'user-123',
+        baseData,
+      );
+
+      expect(result).toEqual({ journeyId: 'journey-raced-789' });
+      expect(mockInsert).toHaveBeenCalledTimes(1);
+      expect(mockUpdate).toHaveBeenCalledTimes(1);
+      expect(selectCallCount).toBe(2);
+    });
+
+    it('INSERT 에러가 23505가 아니면 즉시 create_failed throw (재시도 없음)', async () => {
+      const mockMaybeSingle = vi.fn().mockResolvedValue({ data: null, error: null });
+      const mockLimit = vi.fn().mockReturnValue({ maybeSingle: mockMaybeSingle });
+      const mockEq = vi.fn()
+        .mockReturnValueOnce({ eq: vi.fn().mockReturnValue({ limit: mockLimit }) });
+      const mockInsertSingle = vi.fn().mockResolvedValue({
+        data: null,
+        error: { code: '23502', message: 'not null violation' },
+      });
+      const mockInsertSelect = vi.fn().mockReturnValue({ single: mockInsertSingle });
+      const mockInsert = vi.fn().mockReturnValue({ select: mockInsertSelect });
+
+      const client = {
+        from: vi.fn(() => ({
+          select: vi.fn().mockReturnValue({ eq: mockEq }),
+          insert: mockInsert,
+        })),
+      };
+
+      const { createOrUpdateJourney } = await import(
+        '@/server/features/journey/service'
+      );
+      await expect(
+        createOrUpdateJourney(client as never, 'user-123', baseData),
+      ).rejects.toThrow('Journey creation failed');
+    });
   });
 
   describe('getActiveJourney', () => {

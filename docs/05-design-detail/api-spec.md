@@ -301,7 +301,9 @@ export async function METHOD(req: Request) {
 
 **인증**: 필수
 
-**요청:**
+**NEW-9b**: 두 경로를 discriminated union으로 수용 (`skipped` 필드로 구분).
+
+**요청 (Start 경로 — full wizard, v0.2 경로A):**
 ```json
 {
   "skin_type": "combination",
@@ -319,17 +321,40 @@ export async function METHOD(req: Request) {
 }
 ```
 
-**구현**: user_profiles UPSERT + journeys INSERT. Route에서 두 service를 순차 호출 (P-4 Composition Root).
+**요청 (Start 경로 — OnboardingChips, MVP):**
+```json
+{
+  "skin_type": "dry",
+  "skin_concerns": ["acne", "wrinkles"]
+}
+```
+칩에서 수집하지 않는 필드는 모두 optional. `skin_concerns` 최대 3개(PRD §595).
+
+**요청 (Skip 경로):**
+```json
+{ "skipped": true }
+```
+
+**구현 — 3단계 invariant (순서 불변, NEW-9b)**:
+1. `upsertProfile` — user_profiles (UP 변수)
+2. `createOrUpdateJourney` — journeys (JC 변수). **Skip 경로에서는 실행하지 않음**
+3. `markOnboardingCompleted` — user_profiles.onboarding_completed_at 원샷 set (`WHERE IS NULL`)
+
+부분 실패 시 게이트가 NULL로 유지되어 클라이언트가 칩을 재표시하고 재전송 → 멱등 자기 치유(I7).
+경합 방어: journeys에 부분 유니크 인덱스 `ux_journeys_user_active` 존재, `createOrUpdateJourney`가 23505 unique_violation 시 1회 재시도.
 
 **응답 201:**
 ```json
 {
   "data": {
     "profile_id": "uuid",
-    "journey_id": "uuid"
-  }
+    "journey_id": "uuid | null",
+    "onboarding_completed": true
+  },
+  "meta": { "timestamp": "ISO 8601" }
 }
 ```
+`journey_id`는 Skip 경로에서 `null`.
 
 ### `GET /api/profile`
 

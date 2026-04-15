@@ -7,7 +7,7 @@ import { useFormContext } from "react-hook-form";
 import { AGE_RANGES, BUDGET_LEVELS, ONBOARDING_TRAVEL_STYLES, ONBOARDING_COUNTRIES } from "@/shared/constants/beauty";
 import type { OnboardingFormData } from "@/shared/types/profile";
 import { CardTitle } from "@/client/ui/primitives/typography";
-import OptionGroup from "./OptionGroup";
+import OptionGroup from "@/client/ui/primitives/option-group";
 
 const STAY_DAYS = Array.from({ length: 30 }, (_, i) => i + 1);
 

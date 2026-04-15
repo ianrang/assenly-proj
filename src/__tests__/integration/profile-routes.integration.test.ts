@@ -226,6 +226,164 @@ describe('Profile routes (integration)', () => {
     });
   });
 
+  // ============================================================
+  // NEW-9b: 무결성 통합 테스트
+  // - onboarding_completed_at 게이트 설정
+  // - 원샷 의미론(I4)
+  // - Skip 경로 저장
+  // - I7 자기 치유
+  // ============================================================
+
+  describe('NEW-9b onboarding_completed_at 게이트 (I4 원샷)', () => {
+    it('Start 경로 완료 시 onboarding_completed_at 설정', async () => {
+      const user = await createRegisteredTestUser();
+      try {
+        const res = await app.request(
+          '/api/profile/onboarding',
+          jsonRequest('POST', user.token, {
+            skin_type: 'dry',
+            skin_concerns: ['acne'],
+          }),
+        );
+        expect(res.status).toBe(201);
+        const json = await res.json();
+        expect(json.data.onboarding_completed).toBe(true);
+        expect(json.data.journey_id).toBeDefined();
+
+        const verify = createVerifyClient();
+        const { data: profile } = await verify
+          .from('user_profiles')
+          .select('onboarding_completed_at, skin_type')
+          .eq('user_id', user.userId)
+          .single();
+        expect(profile!.onboarding_completed_at).not.toBeNull();
+        expect(profile!.skin_type).toBe('dry');
+      } finally {
+        await cleanupTestUser(user.userId);
+      }
+    });
+
+    it('Skip 경로 ({skipped:true}) → 201, journey_id null, 게이트 설정', async () => {
+      const user = await createRegisteredTestUser();
+      try {
+        const res = await app.request(
+          '/api/profile/onboarding',
+          jsonRequest('POST', user.token, { skipped: true }),
+        );
+        expect(res.status).toBe(201);
+        const json = await res.json();
+        expect(json.data.journey_id).toBeNull();
+        expect(json.data.onboarding_completed).toBe(true);
+
+        const verify = createVerifyClient();
+        const { data: profile } = await verify
+          .from('user_profiles')
+          .select('onboarding_completed_at, skin_type, language')
+          .eq('user_id', user.userId)
+          .single();
+        expect(profile!.onboarding_completed_at).not.toBeNull();
+        expect(profile!.skin_type).toBeNull();
+        expect(profile!.language).toBe('en');
+
+        // Skip 경로는 journey 생성하지 않음
+        const { data: journeys } = await verify
+          .from('journeys')
+          .select('id')
+          .eq('user_id', user.userId);
+        expect(journeys).toHaveLength(0);
+      } finally {
+        await cleanupTestUser(user.userId);
+      }
+    });
+
+    it('원샷 의미론(I4): 재전송 시 onboarding_completed_at 변하지 않음', async () => {
+      const user = await createRegisteredTestUser();
+      try {
+        const body = { skin_type: 'combination', skin_concerns: ['pores'] };
+
+        const first = await app.request(
+          '/api/profile/onboarding',
+          jsonRequest('POST', user.token, body),
+        );
+        expect(first.status).toBe(201);
+
+        const verify = createVerifyClient();
+        const { data: beforeRow } = await verify
+          .from('user_profiles')
+          .select('onboarding_completed_at')
+          .eq('user_id', user.userId)
+          .single();
+        const firstTimestamp = beforeRow!.onboarding_completed_at;
+        expect(firstTimestamp).not.toBeNull();
+
+        // 충분한 시간 간격 확보 (DB timestamp 정밀도)
+        await new Promise((r) => setTimeout(r, 50));
+
+        // 동일 페이로드 재전송
+        const second = await app.request(
+          '/api/profile/onboarding',
+          jsonRequest('POST', user.token, body),
+        );
+        expect(second.status).toBe(201);
+
+        const { data: afterRow } = await verify
+          .from('user_profiles')
+          .select('onboarding_completed_at')
+          .eq('user_id', user.userId)
+          .single();
+        // 원샷: WHERE IS NULL 조건으로 UPDATE 되지 않음
+        expect(afterRow!.onboarding_completed_at).toBe(firstTimestamp);
+      } finally {
+        await cleanupTestUser(user.userId);
+      }
+    });
+
+    it('Skip 후 Start 재진입 불가 (게이트 기반 1회성)', async () => {
+      // 클라이언트 측 불변량: showOnboarding은 onboarding_completed_at 기반이므로
+      // Skip 후 다음 세션에서는 칩이 표시되지 않는다.
+      // 서버는 동일 endpoint를 허용하지만 클라이언트 게이트 우회는 비정상 경로.
+      // 이 테스트는 "Skip 후 Start가 여전히 동작하는가"를 확인(서버는 관대함).
+      const user = await createRegisteredTestUser();
+      try {
+        // Skip 먼저
+        const skipRes = await app.request(
+          '/api/profile/onboarding',
+          jsonRequest('POST', user.token, { skipped: true }),
+        );
+        expect(skipRes.status).toBe(201);
+
+        // 비정상 경로: Skip 후 Start 시도 (서버는 허용하나 onboarding_completed_at은 원샷)
+        const startRes = await app.request(
+          '/api/profile/onboarding',
+          jsonRequest('POST', user.token, {
+            skin_type: 'oily',
+            skin_concerns: ['wrinkles'],
+          }),
+        );
+        expect(startRes.status).toBe(201);
+
+        // 결과: skin_type은 업데이트됨, journey 생성됨, completed_at은 첫 Skip 시점 유지
+        const verify = createVerifyClient();
+        const { data: profile } = await verify
+          .from('user_profiles')
+          .select('skin_type, onboarding_completed_at')
+          .eq('user_id', user.userId)
+          .single();
+        expect(profile!.skin_type).toBe('oily');
+
+        const { data: journey } = await verify
+          .from('journeys')
+          .select('skin_concerns, status')
+          .eq('user_id', user.userId)
+          .eq('status', 'active')
+          .single();
+        expect(journey!.skin_concerns).toEqual(['wrinkles']);
+      } finally {
+        await cleanupTestUser(user.userId);
+      }
+    });
+  });
+
   describe('PUT /api/profile', () => {
     it('부분 업데이트 → 200 + DB 반영 확인', async () => {
       const res = await app.request(

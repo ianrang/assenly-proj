@@ -40,7 +40,20 @@ QA 검증(2026-04-09) 결과 두 가지 핵심 문제가 발견되었다.
 
 ### 2.1 온보딩: 채팅 내 인라인 선택 UI
 
+> **v2 (2026-04-15, NEW-9b)**: 초기 구현(v1)이 concerns 5종/MAX 2로 확정되었으나 PRD §4-A §595 정본은 7종/MAX 3 이다. v2는 정본에 맞춰 정정하고, 무결성·중복·재표시 게이트 이슈를 해결한다. 정본 우선순위(D-11): `PRD.md §4-A` > 본 문서. 본 §2.1은 PRD를 정본으로 참조하는 상세 설계다.
+
 **위치**: ConsentOverlay 통과 후, 빈 채팅 화면 진입 시 첫 메시지 자리에 표시
+
+**필드 수집 범위** (PRD §4-A 정본 준수):
+
+| 필드 | 타입 | 제약 | 저장 위치 | 근거 |
+|---|---|---|---|---|
+| `skin_type` (UP-1) | 단일 선택, 필수 | 5종: dry/oily/combination/sensitive/normal | `user_profiles.skin_type` | PRD §578 |
+| `skin_concerns` (JC-1) | 다중 선택, 권장 | **7종 표시** (acne, wrinkles, dark_spots, redness, dryness, pores, dullness), **최대 3개** | `journeys.skin_concerns` | PRD §589, §595 |
+
+나머지 4개 concerns(dark_circles/uneven_tone/sun_damage/eczema)는 칩 UI에서 제외 — 대화 중 `extract_user_profile` tool이 자동 수집(VP-3 점진적 개인화).
+
+JC-2~5(interest_activities, stay_days, budget_level, travel_style)는 **수집하지 않음** — 5영역 도메인 탭 UI(v0.2 P2-36)가 등장할 때 별도 mini-onboarding에서 수집한다(D2-a 결정).
 
 **구성**:
 
@@ -54,20 +67,23 @@ QA 검증(2026-04-09) 결과 두 가지 핵심 문제가 발견되었다.
 │  (or skip and just chat)       │
 │                                 │
 │  Your skin type:                │
-│  ┌─────┐ ┌────────────┐ ┌─────┐│
-│  │ Dry │ │Combination │ │Oily ││
-│  └─────┘ └────────────┘ └─────┘│
-│  ┌─────────┐ ┌────────┐        │
-│  │Sensitive│ │ Normal │        │
-│  └─────────┘ └────────┘        │
+│  ┌─────┐ ┌─────┐ ┌────────────┐│
+│  │ Dry │ │Oily │ │Combination ││
+│  └─────┘ └─────┘ └────────────┘│
+│  ┌─────────┐ ┌────────────────┐│
+│  │Sensitive│ │Normal/Not sure ││
+│  └─────────┘ └────────────────┘│
 │                                 │
-│  Top concern (choose 1~2):      │
-│  ┌────────┐ ┌──────┐ ┌────────┐│
-│  │Dryness │ │ Acne │ │Wrinkles││
-│  └────────┘ └──────┘ └────────┘│
-│  ┌────────┐ ┌──────────┐       │
-│  │Redness │ │Dark spots│       │
-│  └────────┘ └──────────┘       │
+│  Top skin concerns (pick ≤3):   │
+│  ┌─────┐┌──────┐┌──────────┐   │
+│  │Acne ││Wrinkl││Dark spots│   │
+│  └─────┘└──────┘└──────────┘   │
+│  ┌───────┐┌───────┐┌───────┐   │
+│  │Redness││Drynes ││Pores  │   │
+│  └───────┘└───────┘└───────┘   │
+│  ┌──────────┐                   │
+│  │Dullness  │                   │
+│  └──────────┘                   │
 │                                 │
 │  ┌──────────────────────┐      │
 │  │   Start chatting →   │      │
@@ -83,30 +99,77 @@ QA 검증(2026-04-09) 결과 두 가지 핵심 문제가 발견되었다.
 **핵심 동작**:
 
 1. 채팅 화면 안에서 표시 (별도 페이지/모달 아님)
-2. 칩 UI: 단일 선택(skin_type) + 다중 선택(concerns, 1~2개)
+2. 칩 UI: 단일 선택(skin_type, 5종 필수) + 다중 선택(skin_concerns, **최대 3개** 권장)
 3. "Start chatting" 버튼 = 선택 저장 후 AI가 개인화 인사
-4. "Skip" 링크 = 현재처럼 제안 질문 3개로 시작
-5. 한 번 완료하면 다시 표시 안 됨 (`showOnboarding` 상태 = `messages.length === 0 && !profile.skin_type`)
+4. "Skip" 링크 = API 호출로 **완료 상태만 기록**, AI 기본 인사 + SuggestedQuestions 표시
+5. **재표시 판정**: `showOnboarding = initialMessages.length === 0 && !profile.onboarding_completed_at`. `onboarding_completed_at`이 단일 진실 공급원(아래 §2.1 데이터 모델 참조)
 
-**데이터 처리 + 전환 흐름**:
+**재사용 자산** (G-2 중복 금지):
 
-1. 유저가 skin_type 칩 + concerns 칩 1~2개 선택
-2. "Start chatting" 버튼 활성화 (skin_type 필수, concerns 선택)
-3. 버튼 클릭 시:
-   - `POST /api/profile/onboarding` 호출 (skin_type, concerns만 포함)
-   - 응답 성공 시 `OnboardingChips` 컴포넌트 unmount
-   - `ChatContent`의 `showOnboarding` 상태 = false
-   - 빈 채팅 + 입력창만 남음
-4. 유저가 첫 메시지 입력 → 시스템 프롬프트가 프로필 기반으로 렌더링됨 → AI가 개인화된 응답
-5. 별도의 "환영 메시지"는 표시하지 않음 (유저가 먼저 질문하도록 유도)
+- `SKIN_TYPES` 상수 → `shared/constants/beauty.ts:17` (이미 존재)
+- `ONBOARDING_SKIN_CONCERNS` 상수 → `shared/constants/beauty.ts:102` (7종 정본, 이미 존재)
+- `MAX_ONBOARDING_SKIN_CONCERNS = 3` → `shared/constants/beauty.ts:99` (이미 존재)
+- `OptionGroup` 컴포넌트 → `client/ui/primitives/option-group.tsx` (NEW-9b에서 `features/onboarding/`에서 승격)
+- i18n: `onboarding.skinType_*`, `onboarding.skinConcern_*`, `onboarding.skinConcernsCount` (이미 존재, 양 로케일 번역됨)
+- 신규 i18n 키: `chat.onboarding.greeting`, `chat.onboarding.skipHint`, `chat.onboarding.start`, `chat.onboarding.skip`, `chat.onboarding.saving`, `chat.onboarding.error` (6 키)
+
+**데이터 모델** (NEW-9b 마이그레이션 014):
+
+```sql
+-- user_profiles
+ADD COLUMN onboarding_completed_at timestamptz  -- NULL=미완료/미스킵, NOT NULL=완료(Start 또는 Skip)
+
+-- journeys
+CREATE UNIQUE INDEX ux_journeys_user_active
+  ON journeys(user_id) WHERE status='active'
+```
+
+**저장 흐름 — Start chatting 경로**:
+
+```
+POST /api/profile/onboarding
+body: { skin_type: "dry", skin_concerns: ["acne","dryness"] }
+
+Handler (Composition Root, P-4):
+1. upsertProfile(client, userId, { skin_type, ... })          ← user_profiles
+2. createOrUpdateJourney(client, userId, { skin_concerns, ... }) ← journeys (Q-12 멱등)
+3. markOnboardingCompleted(client, userId)                    ← WHERE onboarding_completed_at IS NULL
+                                                                 (one-shot, 불변량 I4)
+4. 201 { profile_id, journey_id, onboarding_completed: true }
+```
 
 **Skip 흐름**:
 
-1. "Skip" 링크 클릭 시:
-   - API 호출 없음 (프로필 미생성 상태 유지)
-   - `OnboardingChips` unmount
-   - 기존 `SuggestedQuestions` 컴포넌트 표시
-   - AI 첫 메시지: 일반 인사 ("Hi! I'm your K-beauty guide...")
+```
+POST /api/profile/onboarding
+body: { skipped: true }
+
+Handler:
+1. upsertProfile with language only (minimal)                 ← user_profiles row 생성
+2. journey 생성 skip (concerns 없음)
+3. markOnboardingCompleted(client, userId)                    ← Skip도 "완료된 게이트"
+4. 201 { profile_id, journey_id: null, onboarding_completed: true }
+```
+
+**실패 시 자기 치유**:
+
+`markOnboardingCompleted`를 **반드시 마지막 단계**로 실행. 1/2단계 실패 시 `onboarding_completed_at`이 NULL로 유지되어 다음 세션에서 칩이 재표시되며, 재제출은 upsert/journey update 멱등성(Q-12) + markOnboardingCompleted 원샷(IS NULL) 덕분에 안전하게 자기 치유된다.
+
+**경합 방어**:
+
+`ux_journeys_user_active` 부분 유니크 인덱스로 동시 INSERT 시 23505 발생. `createOrUpdateJourney`는 unique_violation catch → 재조회 → UPDATE 1회 재시도한다.
+
+**클라이언트 흐름**:
+
+1. `ChatInterface`가 `/api/chat/history` 와 `/api/profile` 을 병렬 조회
+2. profile fetch 결과 해석:
+   - 200 → `onboarding_completed_at`에서 판정
+   - 404 → 신규 사용자, `completed=false`
+   - 500/network → **fail-closed**: `completed=true` (칩 미표시, UX 안전)
+3. `ChatContent`에 `initialOnboardingCompleted: boolean` 주입
+4. `showOnboarding = initialMessages.length === 0 && !initialOnboardingCompleted`
+5. 칩 컴포넌트 제출 성공 시 콜백으로 상위 상태 `completed=true` 업데이트
+6. 제출 실패 시 에러 메시지 + 재시도 버튼 (자동 onComplete 금지)
 
 **AI 첫 메시지 변경**:
 

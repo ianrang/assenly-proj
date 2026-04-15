@@ -33,42 +33,70 @@ interface HistoryResponse {
   };
 }
 
+/** 프로필 조회 응답 (NEW-9b) */
+interface ProfileResponse {
+  data: {
+    profile: { onboarding_completed_at: string | null } | null;
+    active_journey: unknown;
+  };
+}
+
+/**
+ * NEW-9b: 프로필 조회 결과를 "온보딩 완료" 단일 불리언으로 축약.
+ * Fail-closed 규칙:
+ *   - 404 Profile not found → 신규 사용자 → false (칩 표시)
+ *   - 200 OK → onboarding_completed_at 유무로 판정
+ *   - 401/500/network → true (fail-closed, 칩 미표시)
+ *     이미 완료한 사용자에게 중복 표시 방지. 신규 사용자는 다음 세션에 복구.
+ */
+async function fetchOnboardingCompleted(): Promise<boolean> {
+  try {
+    const res = await authFetch("/api/profile");
+    if (res.status === 404) return false;
+    if (!res.ok) return true; // fail-closed
+    const json = (await res.json()) as ProfileResponse;
+    return json.data?.profile?.onboarding_completed_at != null;
+  } catch {
+    return true; // fail-closed
+  }
+}
+
 export default function ChatInterface({ locale }: ChatInterfaceProps) {
   const [phase, setPhase] = useState<Phase>("checking");
   const [isConsenting, setIsConsenting] = useState(false);
   const [consentError, setConsentError] = useState(false);
   const [initialMessages, setInitialMessages] = useState<UIMessage[]>([]);
   const [initialConversationId, setInitialConversationId] = useState<string | null>(null);
+  const [initialOnboardingCompleted, setInitialOnboardingCompleted] = useState(false);
 
-  // P2-45: 세션 확인 + 히스토리 로드 (L-10: 서버 상태 = API 호출)
-  // P2-79: authFetch로 Bearer 토큰 자동 주입
+  // P2-45: 세션 확인 + 히스토리 로드 + 프로필(NEW-9b) 병렬 조회.
+  // 히스토리는 인증 관문 역할, 프로필은 온보딩 완료 판정 전용.
+  // 히스토리 성공 후에만 프로필을 조회하여 ready 전환 전 initialOnboardingCompleted를 결정.
   const checkSessionAndLoad = useCallback(() => {
     setPhase("checking");
-    authFetch("/api/chat/history")
-      .then((res) => {
-        if (res.status === 401) {
+    void (async () => {
+      try {
+        const res = await authFetch("/api/chat/history");
+        if (res.status === 401 || !res.ok) {
           setPhase("needs-consent");
-          return null;
+          return;
         }
-        if (!res.ok) {
-          // 500 등 서버 에러 → 세션 미확인 → 동의 필요로 간주
-          setPhase("needs-consent");
-          return null;
-        }
-        return res.json() as Promise<HistoryResponse>;
-      })
-      .then((json) => {
-        if (!json) return;
-        if (json.data?.messages && Array.isArray(json.data.messages) && json.data.messages.length > 0) {
-          setInitialMessages(json.data.messages);
-          setInitialConversationId(json.data.conversation_id);
+        const history = (await res.json()) as HistoryResponse;
+
+        // history 성공 → 프로필 병렬 조회 (fail-closed)
+        const completed = await fetchOnboardingCompleted();
+        setInitialOnboardingCompleted(completed);
+
+        const msgs = history.data?.messages;
+        if (msgs && Array.isArray(msgs) && msgs.length > 0) {
+          setInitialMessages(msgs);
+          setInitialConversationId(history.data.conversation_id);
         }
         setPhase("ready");
-      })
-      .catch(() => {
-        // 네트워크 에러 → 동의 필요로 간주 (서버 연결 실패)
+      } catch {
         setPhase("needs-consent");
-      });
+      }
+    })();
   }, []);
 
   useEffect(() => {
@@ -128,6 +156,7 @@ export default function ChatInterface({ locale }: ChatInterfaceProps) {
       locale={locale}
       initialMessages={initialMessages}
       initialConversationId={initialConversationId}
+      initialOnboardingCompleted={initialOnboardingCompleted}
     />
   );
 }

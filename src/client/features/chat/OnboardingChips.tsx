@@ -4,92 +4,124 @@ import "client-only";
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { cn } from "@/shared/utils/cn";
+import {
+  SKIN_TYPES,
+  ONBOARDING_SKIN_CONCERNS,
+  MAX_ONBOARDING_SKIN_CONCERNS,
+} from "@/shared/constants/beauty";
+import type { SkinType, SkinConcern } from "@/shared/types/domain";
 import { getAccessToken } from "@/client/core/auth-fetch";
+import OptionGroup from "@/client/ui/primitives/option-group";
+import { Button } from "@/client/ui/primitives/button";
 
 // ============================================================
-// OnboardingChips — 채팅 내 인라인 온보딩
-// onboarding-and-kit-cta-design.md §2.1
+// OnboardingChips — 채팅 내 인라인 온보딩 (NEW-9b v2)
 //
-// skin_type (단일 선택, 필수) + skin_concerns (다중 선택 1-2개, 선택)
-// "Start chatting" → POST /api/profile/onboarding → unmount
-// "Skip" → 프로필 미생성 → SuggestedQuestions로 전환
+// 정본: PRD §4-A §578/§595 (skin_type 5종 + skin_concerns 7종 표시 / 최대 3개)
+//       docs/superpowers/specs/2026-04-09-onboarding-and-kit-cta-design.md §2.1
+//
+// 설계:
+// - 기존 자산 재사용 (G-2 중복 금지):
+//   - SKIN_TYPES / ONBOARDING_SKIN_CONCERNS / MAX_ONBOARDING_SKIN_CONCERNS (shared/constants)
+//   - OptionGroup primitive (client/ui/primitives)
+//   - onboarding.* i18n 키 (skinType_*, skinConcern_*)
+//   - chat.onboarding.* i18n 키 (greeting, skipHint, start, saving, skip, error)
+// - 2 경로: Start(skin_type 필수, concerns 선택) / Skip (API로 완료 기록)
+// - 실패 시 에러 표시 + 재시도 (자동 onComplete 금지)
+// - 부모(ChatContent)가 onboarding_completed_at 기반으로 재표시 판정
 // ============================================================
-
-const SKIN_TYPES = ["dry", "oily", "combination", "sensitive", "normal"] as const;
-type SkinType = typeof SKIN_TYPES[number];
-
-const CONCERNS = ["dryness", "acne", "wrinkles", "redness", "dark_spots"] as const;
-type Concern = typeof CONCERNS[number];
-
-const MAX_CONCERNS = 2;
-
-// 번역 키 매핑 (G-10 매직 스트링 금지)
-const SKIN_TYPE_KEYS: Record<SkinType, string> = {
-  dry: "chipSkinDry",
-  oily: "chipSkinOily",
-  combination: "chipSkinCombination",
-  sensitive: "chipSkinSensitive",
-  normal: "chipSkinNormal",
-};
-
-const CONCERN_KEYS: Record<Concern, string> = {
-  dryness: "chipConcernDryness",
-  acne: "chipConcernAcne",
-  wrinkles: "chipConcernWrinkles",
-  redness: "chipConcernRedness",
-  dark_spots: "chipConcernDarkSpots",
-};
 
 type OnboardingChipsProps = {
+  /** 서버 저장 성공 시 호출. 부모는 showOnboarding=false 로 전환. */
   onComplete: () => void;
-  onSkip: () => void;
 };
 
-export default function OnboardingChips({ onComplete, onSkip }: OnboardingChipsProps) {
-  const t = useTranslations("chat");
-  const [skinType, setSkinType] = useState<SkinType | null>(null);
-  const [concerns, setConcerns] = useState<Concern[]>([]);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+/** Start 경로 페이로드 */
+type StartPayload = {
+  skipped?: false;
+  skin_type: SkinType;
+  skin_concerns: SkinConcern[];
+};
 
-  function toggleConcern(concern: Concern) {
-    setConcerns((prev) => {
-      if (prev.includes(concern)) {
-        return prev.filter((c) => c !== concern);
-      }
-      if (prev.length >= MAX_CONCERNS) return prev;
-      return [...prev, concern];
-    });
-  }
+/** Skip 경로 페이로드 */
+type SkipPayload = {
+  skipped: true;
+};
+
+type OnboardingPayload = StartPayload | SkipPayload;
+
+async function submitOnboarding(payload: OnboardingPayload): Promise<boolean> {
+  const token = await getAccessToken();
+  const res = await fetch("/api/profile/onboarding", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: JSON.stringify(payload),
+  });
+  return res.ok;
+}
+
+export default function OnboardingChips({ onComplete }: OnboardingChipsProps) {
+  const tChat = useTranslations("chat");
+  const tOnb = useTranslations("onboarding");
+
+  const [skinType, setSkinType] = useState<SkinType | "">("");
+  const [concerns, setConcerns] = useState<SkinConcern[]>([]);
+  const [submitMode, setSubmitMode] = useState<"idle" | "start" | "skip">("idle");
+  const [hasError, setHasError] = useState(false);
+
+  const isSubmitting = submitMode !== "idle";
+
+  // OptionGroup은 string|string[] 인터페이스 → SkinType/SkinConcern 변환
+  const skinOptions = SKIN_TYPES.map((v) => ({
+    value: v,
+    label: tOnb(`skinType_${v}`),
+  }));
+  const concernOptions = ONBOARDING_SKIN_CONCERNS.map((v) => ({
+    value: v,
+    label: tOnb(`skinConcern_${v}`),
+  }));
 
   async function handleStart() {
     if (!skinType || isSubmitting) return;
-    setIsSubmitting(true);
-
+    setSubmitMode("start");
+    setHasError(false);
     try {
-      const token = await getAccessToken();
-      const res = await fetch("/api/profile/onboarding", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          ...(token ? { Authorization: `Bearer ${token}` } : {}),
-        },
-        body: JSON.stringify({
-          skin_type: skinType,
-          skin_concerns: concerns,
-        }),
+      const ok = await submitOnboarding({
+        skin_type: skinType,
+        skin_concerns: concerns,
       });
-
-      if (res.ok) {
+      if (ok) {
         onComplete();
       } else {
-        // 실패해도 채팅은 시작 가능 (Q-15 격리)
-        console.error("[OnboardingChips] save failed", res.status);
-        onComplete();
+        setHasError(true);
+        setSubmitMode("idle");
       }
     } catch (error) {
-      console.error("[OnboardingChips] network error", error);
-      onComplete();
+      console.error("[OnboardingChips] start failed", error);
+      setHasError(true);
+      setSubmitMode("idle");
+    }
+  }
+
+  async function handleSkip() {
+    if (isSubmitting) return;
+    setSubmitMode("skip");
+    setHasError(false);
+    try {
+      const ok = await submitOnboarding({ skipped: true });
+      if (ok) {
+        onComplete();
+      } else {
+        setHasError(true);
+        setSubmitMode("idle");
+      }
+    } catch (error) {
+      console.error("[OnboardingChips] skip failed", error);
+      setHasError(true);
+      setSubmitMode("idle");
     }
   }
 
@@ -97,88 +129,63 @@ export default function OnboardingChips({ onComplete, onSkip }: OnboardingChipsP
     <div className="flex flex-col gap-4 rounded-xl border border-border bg-card p-4">
       <div>
         <p className="text-sm font-medium text-foreground">
-          {t("chipTitle")}
+          {tChat("onboarding.greeting")}
         </p>
         <p className="mt-0.5 text-xs text-muted-foreground">
-          {t("chipSkipHint")}
+          {tChat("onboarding.skipHint")}
         </p>
       </div>
 
-      {/* Skin Type — 단일 선택 */}
-      <div>
-        <p className="mb-2 text-xs font-medium text-muted-foreground">{t("chipSkinTypeLabel")}</p>
-        <div className="flex flex-wrap gap-2">
-          {SKIN_TYPES.map((type) => (
-            <button
-              key={type}
-              type="button"
-              onClick={() => setSkinType(type)}
-              className={cn(
-                "rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
-                skinType === type
-                  ? "border-primary bg-primary text-primary-foreground"
-                  : "border-border bg-background text-foreground hover:border-primary/50"
-              )}
-            >
-              {t(SKIN_TYPE_KEYS[type])}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Concerns — 다중 선택 1-2개 */}
       <div>
         <p className="mb-2 text-xs font-medium text-muted-foreground">
-          {t("chipConcernLabel")}
+          {tOnb("skinType")}
         </p>
-        <div className="flex flex-wrap gap-2">
-          {CONCERNS.map((concern) => {
-            const isSelected = concerns.includes(concern);
-            const isDisabled = !isSelected && concerns.length >= MAX_CONCERNS;
-            return (
-              <button
-                key={concern}
-                type="button"
-                onClick={() => toggleConcern(concern)}
-                disabled={isDisabled}
-                className={cn(
-                  "rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
-                  isSelected
-                    ? "border-primary bg-primary text-primary-foreground"
-                    : "border-border bg-background text-foreground",
-                  isDisabled
-                    ? "cursor-not-allowed opacity-40"
-                    : "hover:border-primary/50"
-                )}
-              >
-                {t(CONCERN_KEYS[concern])}
-              </button>
-            );
-          })}
-        </div>
+        <OptionGroup
+          options={skinOptions}
+          value={skinType}
+          onChange={(v) => setSkinType(v as SkinType | "")}
+          mode="single"
+        />
       </div>
 
-      {/* Actions */}
+      <div>
+        <p className="mb-2 text-xs font-medium text-muted-foreground">
+          {tOnb("skinConcerns")}{" "}
+          <span className="text-muted-foreground/70">
+            ({concerns.length}/{MAX_ONBOARDING_SKIN_CONCERNS})
+          </span>
+        </p>
+        <OptionGroup
+          options={concernOptions}
+          value={concerns}
+          onChange={(v) => setConcerns(v as SkinConcern[])}
+          mode="multiple"
+          max={MAX_ONBOARDING_SKIN_CONCERNS}
+        />
+      </div>
+
+      {hasError && (
+        <p className="text-xs text-destructive" role="alert">
+          {tChat("onboarding.error")}
+        </p>
+      )}
+
       <div className="flex flex-col gap-2">
-        <button
+        <Button
           type="button"
+          size="cta"
           onClick={handleStart}
           disabled={!skinType || isSubmitting}
-          className={cn(
-            "rounded-lg px-4 py-2.5 text-sm font-medium transition-colors",
-            skinType
-              ? "bg-primary text-primary-foreground hover:bg-primary/90"
-              : "cursor-not-allowed bg-muted text-muted-foreground"
-          )}
         >
-          {isSubmitting ? t("chipSaving") : t("chipStart")}
-        </button>
+          {submitMode === "start" ? tChat("onboarding.saving") : tChat("onboarding.start")}
+        </Button>
         <button
           type="button"
-          onClick={onSkip}
-          className="text-xs text-muted-foreground transition-colors hover:text-foreground"
+          onClick={handleSkip}
+          disabled={isSubmitting}
+          className="text-xs text-muted-foreground transition-colors hover:text-foreground disabled:cursor-not-allowed disabled:opacity-60"
         >
-          {t("chipSkip")}
+          {submitMode === "skip" ? tChat("onboarding.saving") : tChat("onboarding.skip")}
         </button>
       </div>
     </div>

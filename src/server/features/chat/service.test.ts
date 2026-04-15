@@ -110,6 +110,7 @@ const mockProfile = {
   country: 'US',
   language: 'en' as const,
   age_range: '25-29' as const,
+  onboarding_completed_at: null,
   updated_at: '2024-01-01',
 };
 

@@ -7,7 +7,7 @@ import { useFormContext } from "react-hook-form";
 import { HAIR_CONCERNS, MAX_ONBOARDING_SKIN_CONCERNS, ONBOARDING_SKIN_CONCERNS } from "@/shared/constants/beauty";
 import type { OnboardingFormData } from "@/shared/types/profile";
 import { CardTitle } from "@/client/ui/primitives/typography";
-import OptionGroup from "./OptionGroup";
+import OptionGroup from "@/client/ui/primitives/option-group";
 
 export default function StepConcerns() {
   const t = useTranslations("onboarding");

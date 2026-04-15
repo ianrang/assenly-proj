@@ -74,6 +74,8 @@ export interface DerivedVariables {
 /** Full user profile (DB row) */
 export interface UserProfile extends UserProfileVars {
   user_id: string;
+  /** NEW-9b: 온보딩 게이트 완료 시점. NULL=미완료, NOT NULL=Start 또는 Skip 수행. 원샷(I4). */
+  onboarding_completed_at: string | null;
   updated_at: string;
 }
 

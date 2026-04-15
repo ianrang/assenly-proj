@@ -4,6 +4,13 @@ import "client-only";
 
 import { Button } from "@/client/ui/primitives/button";
 
+// ============================================================
+// OptionGroup — 재사용 가능한 선택 그룹 프리미티브
+// L-17: 도메인 무관(value/label 인터페이스). K-뷰티 용어 포함 금지.
+// S-10: Button primitive + Tailwind 토큰만 사용.
+// 단일/다중 선택 + max 제약 지원.
+// ============================================================
+
 type OptionGroupProps = {
   options: readonly { value: string; label: string }[];
   value: string | string[];
