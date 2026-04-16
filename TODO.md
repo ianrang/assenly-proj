@@ -535,7 +535,7 @@
 | NEW-37  | ~~products/treatments 가격 스키마 확장 (MVP 승격, 전 도메인 동기화)~~ | **완료 (워크트리 머지 대기, 2026-04-13, b57a838)**. `supabase/migrations/013_price_schema_expansion.sql` — products 7개/treatments 5개 컬럼 추가 + 4 CHECK(currency 화이트리스트, source enum, price_min≤price_max) + 4 partial index + 기존 데이터 백필(price→source='real'). schema.dbml 정본 동기화, zod PRICE_SOURCES/PRICE_CURRENCIES enum + refinePriceRange 도입. 825/825 tests pass, tsc 0 errors. 워크트리: `.claude/worktrees/agent-a07f2463`, 브랜치: `worktree-agent-a07f2463`. **⚠️ 수동 조치**: 마이그레이션 미적용(로컬 Supabase 접근 없음) → `supabase db push` 필요 | ✅   |
 | NEW-38  | v0.2 — 멀티 채팅방 (프로필당 여러 대화) | **→ v0.2 연기**. 현재 schema의 conversations 테이블은 이미 여러 row 지원 → DB 수정 불필요. v0.2 계정 인증 도입 시 user_id로 묶어 목록 조회 API + 사이드바/drawer UI 추가. NEW-33 reset이 "새 conversation 생성" 방식이라 자연스럽게 확장 | ➡️  |
 | NEW-39  | v0.2 — 관리자 가격 수동 수정 UI | **→ v0.2 연기** (관리자 앱 펜딩 20건에 포함). products/treatments 가격(price, price_range_min/max, price_source='manual') 수동 입력·수정. `price_source` 덮어쓰기 우선순위: manual > real > estimated-pipeline > estimated-ai. 감사 로그(P0-10) 대상 | ➡️  |
-| NEW-40  | ~~제품 데이터 정합성 복구 + 가격 수집~~ | **완료**. 기존 오염 데이터 전량 폐기 → 올리브영 상세 페이지에서 200건 직접 수집 (199 OY + 1 Essenly). 모든 제품의 브랜드/이름/이미지/링크/가격이 OY 실제 페이지에서 직접 추출. 중복 URL 0건, 이미지 0건. OY 실제 페이지 대조 검증 완료. DB 적재 대기. 설계: `docs/superpowers/specs/2026-04-14-product-data-recovery-design.md` | ✅   |
+| NEW-40  | ~~제품 데이터 정합성 복구 + 가격 수집~~ | **완료**. 기존 오염 데이터 전량 폐기 → 올리브영 상세 페이지에서 200건 직접 수집 (199 OY + 1 Essenly). 이미지/링크/가격 100%. 중복 0건. OY 실제 페이지 대조 검증 완료. **DB 적재 완료 (200 inserted, 0 failed)**. 후속: 신규 제품 brand_id 매핑 + 한국어 번역 | ✅   |
 
 
 ---
