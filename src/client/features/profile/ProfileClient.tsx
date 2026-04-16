@@ -43,7 +43,7 @@ export default function ProfileClient({ locale }: ProfileClientProps) {
             journey: json.data.active_journey,
           });
         } else if (res.status === 404) {
-          router.replace(`/${locale}/onboarding`);
+          router.replace(`/${locale}/chat`);
         } else if (res.status === 401) {
           router.replace(`/${locale}`);
         } else {
@@ -88,16 +88,10 @@ export default function ProfileClient({ locale }: ProfileClientProps) {
     <div className="px-5 py-6">
       <ProfileCard profile={state.profile} journey={state.journey} />
 
-      <div className="mt-6 flex gap-3">
-        <Link
-          href={`/${locale}/onboarding`}
-          className={buttonVariants({ variant: "outline", size: "cta", className: "flex-1" })}
-        >
-          {t("edit")}
-        </Link>
+      <div className="mt-6">
         <Link
           href={`/${locale}/chat`}
-          className={buttonVariants({ size: "cta", className: "flex-1" })}
+          className={buttonVariants({ size: "cta", className: "w-full" })}
         >
           {t("continue")}
         </Link>

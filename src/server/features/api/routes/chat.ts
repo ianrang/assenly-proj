@@ -8,7 +8,13 @@ import type { UserProfile, Journey } from '@/shared/types/profile';
 import type { UIMessage, StreamTextResult, ToolSet } from 'ai';
 import { type Output } from 'ai';
 import { convertToModelMessages } from 'ai';
-import { getProfile, createMinimalProfile, updateProfile } from '@/server/features/profile/service';
+import {
+  getProfile,
+  createMinimalProfile,
+  applyAiExtraction,
+  applyAiExtractionToJourney,
+} from '@/server/features/profile/service';
+import { mergeExtractionResults } from '@/server/features/profile/merge';
 import { getActiveJourney } from '@/server/features/journey/service';
 import { streamChat } from '@/server/features/chat/service';
 import { createAuthenticatedClient, createServiceClient } from '@/server/core/db';
@@ -348,26 +354,25 @@ export function registerChatRoutes(app: AppType) {
               });
             }
 
-            // step 11: 추출 결과 저장 (Chat-First 온보딩 — mvp-flow-redesign.md §2.1)
+            // step 11: 추출 결과 저장 (NEW-17 — 원자 merge via RPC)
             if (result.extractionResults.length > 0) {
-              // 프로필 미존재 시 최소 프로필 생성 (Chat-First: 온보딩 스킵 가능)
+              // 프로필 미존재 시 최소 프로필 생성 (Chat-First)
               if (!profile) {
                 try {
                   await createMinimalProfile(serviceClient, user.id, parsed.data.locale);
                 } catch {
-                  // PK 충돌 = 동시 요청으로 이미 생성됨 → updateProfile로 진행
+                  // PK 충돌 = 이미 존재 → 계속
                 }
               }
 
-              // 추출된 필드 집계 (마지막 추출 결과 우선)
-              const updates: Record<string, unknown> = {};
-              for (const extraction of result.extractionResults) {
-                if (extraction.skin_type !== null) updates.skin_type = extraction.skin_type;
-                if (extraction.age_range !== null) updates.age_range = extraction.age_range;
-              }
+              // 다중 extraction pre-merge (AI-AI union, scalar first-wins)
+              const { profilePatch, journeyPatch } = mergeExtractionResults(result.extractionResults);
 
-              if (Object.keys(updates).length > 0) {
-                await updateProfile(serviceClient, user.id, updates);
+              if (Object.keys(profilePatch).length > 0) {
+                await applyAiExtraction(serviceClient, user.id, profilePatch);
+              }
+              if (Object.keys(journeyPatch).length > 0) {
+                await applyAiExtractionToJourney(serviceClient, user.id, journeyPatch);
               }
             }
           } catch (error) {

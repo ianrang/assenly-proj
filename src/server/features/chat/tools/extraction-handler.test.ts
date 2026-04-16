@@ -9,21 +9,19 @@ describe('extraction-handler', () => {
         '@/server/features/chat/tools/extraction-handler'
       );
       const result = await executeExtractUserProfile({
-        skin_type: 'oily',
+        skin_types: ['oily'],
         skin_concerns: ['acne', 'pores'],
         stay_days: 5,
         budget_level: 'moderate',
         age_range: '25-29',
-        learned_preferences: [{ item: 'niacinamide', direction: 'prefer' }],
       });
 
       expect(result).toEqual({
-        skin_type: 'oily',
+        skin_types: ['oily'],
         skin_concerns: ['acne', 'pores'],
         stay_days: 5,
         budget_level: 'moderate',
         age_range: '25-29',
-        learned_preferences: [{ item: 'niacinamide', direction: 'prefer' }],
       });
     });
 
@@ -32,21 +30,19 @@ describe('extraction-handler', () => {
         '@/server/features/chat/tools/extraction-handler'
       );
       const result = await executeExtractUserProfile({
-        skin_type: null,
+        skin_types: null,
         skin_concerns: null,
         stay_days: null,
         budget_level: null,
         age_range: null,
-        learned_preferences: null,
       });
 
       expect(result).toEqual({
-        skin_type: null,
+        skin_types: null,
         skin_concerns: null,
         stay_days: null,
         budget_level: null,
         age_range: null,
-        learned_preferences: null,
       });
     });
 
@@ -55,15 +51,14 @@ describe('extraction-handler', () => {
         '@/server/features/chat/tools/extraction-handler'
       );
       const result = await executeExtractUserProfile({
-        skin_type: 'dry',
+        skin_types: ['dry'],
         skin_concerns: null,
         stay_days: 7,
         budget_level: null,
         age_range: null,
-        learned_preferences: null,
       });
 
-      expect((result as { skin_type: string }).skin_type).toBe('dry');
+      expect((result as { skin_types: string[] }).skin_types).toEqual(['dry']);
       expect((result as { stay_days: number }).stay_days).toBe(7);
       expect((result as { budget_level: null }).budget_level).toBeNull();
     });
@@ -88,15 +83,24 @@ describe('extraction-handler', () => {
       );
 
       expect(() => extractUserProfileSchema.parse({
-        skin_type: null, skin_concerns: null, stay_days: null,
-        budget_level: 'mid', age_range: null, learned_preferences: null,
+        skin_types: null, skin_concerns: null, stay_days: null,
+        budget_level: 'mid', age_range: null,
       })).toThrow();
 
       const result = extractUserProfileSchema.parse({
-        skin_type: null, skin_concerns: null, stay_days: null,
-        budget_level: 'moderate', age_range: null, learned_preferences: null,
+        skin_types: null, skin_concerns: null, stay_days: null,
+        budget_level: 'moderate', age_range: null,
       });
       expect(result.budget_level).toBe('moderate');
+    });
+
+    it('NEW-17: learned_preferences is not part of schema', async () => {
+      const { extractUserProfileSchema } = await import(
+        '@/server/features/chat/tools/extraction-handler'
+      );
+
+      const shape = (extractUserProfileSchema as unknown as { shape: Record<string, unknown> }).shape;
+      expect('learned_preferences' in shape).toBe(false);
     });
   });
 });

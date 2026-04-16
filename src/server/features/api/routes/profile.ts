@@ -4,9 +4,16 @@ import type { AppType } from '../app';
 import { requireAuth } from '../middleware/auth';
 import { rateLimit } from '../middleware/rate-limit';
 import { errorResponseSchema } from '../schemas/common';
-import { getProfile, updateProfile, upsertProfile } from '@/server/features/profile/service';
+import {
+  getProfile,
+  updateProfile,
+  upsertProfile,
+  createMinimalProfile,
+  markOnboardingCompleted,
+} from '@/server/features/profile/service';
 import { getActiveJourney, createOrUpdateJourney } from '@/server/features/journey/service';
 import { createAuthenticatedClient } from '@/server/core/db';
+import { MAX_SKIN_TYPES } from "@/shared/constants/profile-field-spec";
 
 // ============================================================
 // POST /api/profile/onboarding — api-spec.md §2.3
@@ -22,77 +29,91 @@ type DbClient = ReturnType<typeof createAuthenticatedClient>;
 /**
  * Q-1, Q-14: zod 입력 검증 — DB 스키마 열거값과 일치.
  *
- * v1.2 (NEW-9): OnboardingChips 인라인 온보딩에서는 skin_type + skin_concerns만 수집.
- * 나머지 필드는 DB에서 NULLABLE이므로 optional + default로 완화.
- * OnboardingWizard (v0.2)는 여전히 모든 필드를 보내므로 하위 호환 유지.
+ * NEW-9b: 두 경로 discriminated union.
+ *  - Start 경로: skin_type 필수, skin_concerns 최대 3개 (PRD §595 정본).
+ *                나머지 full-wizard(v0.2 경로A) 필드는 optional 하위 호환.
+ *  - Skip 경로: { skipped: true } 만 전송. user_profiles 레코드만 생성 + 완료 게이트.
  */
-const onboardingBodySchema = z.object({
-  // user_profiles 필드 (UP 변수)
-  skin_type: z.enum(['dry', 'oily', 'combination', 'sensitive', 'normal']),
-  hair_type: z
-    .enum(['straight', 'wavy', 'curly', 'coily'])
-    .nullable()
-    .optional(),
-  hair_concerns: z
-    .array(
-      z.enum([
-        'damage',
-        'thinning',
-        'oily_scalp',
-        'dryness',
-        'dandruff',
-        'color_treated',
-      ]),
-    )
-    .default([]),
-  country: z.string().min(2).max(2).optional(),  // v1.2: OnboardingChips 미수집, DB user_profiles.country NULLABLE
-  language: z.enum(['en', 'ja', 'zh', 'es', 'fr', 'ko']).default('en'),
-  age_range: z
-    .enum(['18-24', '25-29', '30-34', '35-39', '40-49', '50+'])
-    .optional(),
+const skinTypeEnum = z.enum(['dry', 'oily', 'combination', 'sensitive', 'normal']);
+const skinConcernEnum = z.enum([
+  'acne',
+  'wrinkles',
+  'dark_spots',
+  'redness',
+  'dryness',
+  'pores',
+  'dullness',
+  'dark_circles',
+  'uneven_tone',
+  'sun_damage',
+  'eczema',
+]);
+const hairTypeEnum = z.enum(['straight', 'wavy', 'curly', 'coily']);
+const hairConcernEnum = z.enum([
+  'damage',
+  'thinning',
+  'oily_scalp',
+  'dryness',
+  'dandruff',
+  'color_treated',
+]);
+const languageEnum = z.enum(['en', 'ja', 'zh', 'es', 'fr', 'ko']);
+const ageRangeEnum = z.enum(['18-24', '25-29', '30-34', '35-39', '40-49', '50+']);
+const budgetLevelEnum = z.enum(['budget', 'moderate', 'premium', 'luxury']);
+const interestActivityEnum = z.enum(['shopping', 'clinic', 'salon', 'dining', 'cultural']);
+const travelStyleEnum = z.enum([
+  'efficient',
+  'relaxed',
+  'adventurous',
+  'instagram',
+  'local_experience',
+  'luxury',
+  'budget',
+]);
 
-  // journeys 필드 (JC 변수) — v1.2: 인라인 온보딩에서 미수집 필드 optional화
-  skin_concerns: z
-    .array(
-      z.enum([
-        'acne',
-        'wrinkles',
-        'dark_spots',
-        'redness',
-        'dryness',
-        'pores',
-        'dullness',
-        'dark_circles',
-        'uneven_tone',
-        'sun_damage',
-        'eczema',
-      ]),
-    )
-    .max(5)
-    .default([]),  // v1.2: 빈 배열 기본값 (DB NULLABLE)
-  interest_activities: z
-    .array(z.enum(['shopping', 'clinic', 'salon', 'dining', 'cultural']))
-    .default(['shopping']),  // v1.2: OnboardingChips 미수집. 기본값 shopping (MVP DOM-1)
-  stay_days: z.number().int().positive().optional(),  // v1.2: OnboardingChips 미수집 (DB NULLABLE)
-  start_date: z.string().date().optional(),
-  budget_level: z.enum(['budget', 'moderate', 'premium', 'luxury']).optional(),  // v1.2: OnboardingChips 미수집 (DB NULLABLE)
-  travel_style: z
-    .array(
-      z.enum([
-        'efficient',
-        'relaxed',
-        'adventurous',
-        'instagram',
-        'local_experience',
-        'luxury',
-        'budget',
-      ]),
-    )
-    .default([]),
-});
+// NEW-9b adversarial review C1 정합:
+// 두 스키마 모두 .strict()로 경계 분리. { skipped:true, skin_type:'x' }처럼
+// 모순된 payload가 조용히 Skip 경로로 떨어져 데이터 손실되는 문제 차단.
+// Start 경로는 'skipped' 필드 선언 자체를 제외 — 포함되면 strict로 400.
+const startOnboardingBodySchema = z
+  .object({
+    // user_profiles 필드 (UP 변수)
+    skin_types: z.array(skinTypeEnum).min(1).max(MAX_SKIN_TYPES),
+    hair_type: hairTypeEnum.nullable().optional(),
+    hair_concerns: z.array(hairConcernEnum).default([]),
+    country: z.string().min(2).max(2).optional(),
+    language: languageEnum.default('en'),
+    age_range: ageRangeEnum.optional(),
+
+    // journeys 필드 (JC 변수)
+    // NEW-9b: PRD §595 정본 — 온보딩 UI 7종 중 최대 3개. 저장 한계 5(대화 추출 포함).
+    skin_concerns: z.array(skinConcernEnum).max(5).default([]),
+    interest_activities: z.array(interestActivityEnum).default(['shopping']),
+    stay_days: z.number().int().positive().optional(),
+    start_date: z.string().date().optional(),
+    budget_level: budgetLevelEnum.optional(),
+    travel_style: z.array(travelStyleEnum).default([]),
+  })
+  .strict();
+
+const skipOnboardingBodySchema = z
+  .object({
+    skipped: z.literal(true),
+    language: languageEnum.default('en'),
+  })
+  .strict();
+
+const onboardingBodySchema = z.union([
+  skipOnboardingBodySchema,
+  startOnboardingBodySchema,
+]);
 
 const onboardingResponseSchema = z.object({
-  data: z.object({ profile_id: z.string(), journey_id: z.string() }),
+  data: z.object({
+    profile_id: z.string(),
+    journey_id: z.string().nullable(),
+    onboarding_completed: z.literal(true),
+  }),
   meta: z.object({ timestamp: z.string() }),
 });
 
@@ -135,8 +156,10 @@ const postOnboardingRoute = createRoute({
 /** Q-1, Q-14: PUT 부분 업데이트 스키마 — DB 스키마와 일치 */
 const updateBodySchema = z
   .object({
-    skin_type: z
-      .enum(['dry', 'oily', 'combination', 'sensitive', 'normal'])
+    skin_types: z
+      .array(z.enum(['dry', 'oily', 'combination', 'sensitive', 'normal']))
+      .min(1)
+      .max(MAX_SKIN_TYPES)
       .optional(),
     hair_type: z
       .enum(['straight', 'wavy', 'curly', 'coily'])
@@ -239,6 +262,78 @@ const putProfileRoute = createRoute({
   },
 });
 
+// ============================================================
+// 온보딩 저장 오케스트레이션 (NEW-9b)
+//
+// 3단계 invariant — 순서를 변경하지 말 것:
+//   1. upsertProfile              ← user_profiles (UP 변수)
+//   2. createOrUpdateJourney      ← journeys (JC 변수, Start 경로에서만)
+//   3. markOnboardingCompleted    ← 원샷 게이트 (WHERE IS NULL, 불변량 I4)
+//
+// 부분 실패 시 자기 치유 (I7):
+//   - 1단계 실패 → profile 미저장 → 재전송 시 정상 재시도
+//   - 2단계 실패 → profile 저장/게이트 미설정 → 재전송 시 upsert+journey 멱등, 게이트 설정
+//   - 3단계 실패 → profile+journey 저장/게이트 미설정 → 재전송 시 멱등, 게이트 설정
+//
+// 순서를 역전시키면 게이트가 먼저 설정되어 중간 실패 시 칩이 재표시되지 않아
+// 자기 치유가 깨진다. L-1 thin handler 준수를 위해 private helper로 분리.
+// ============================================================
+type OnboardingBody = z.infer<typeof onboardingBodySchema>;
+type SkipOnboardingBody = z.infer<typeof skipOnboardingBodySchema>;
+type StartOnboardingBody = z.infer<typeof startOnboardingBodySchema>;
+
+function isSkipOnboardingBody(body: OnboardingBody): body is SkipOnboardingBody {
+  return 'skipped' in body && body.skipped === true;
+}
+
+async function persistOnboarding(
+  client: DbClient,
+  userId: string,
+  body: OnboardingBody,
+): Promise<string | null> {
+  // Skip 경로: user_profiles 레코드 확보(language만) + 게이트 설정.
+  //
+  // 데이터 보존(NEW-9b 리뷰 개선):
+  //   upsertProfile로 전체 덮어쓰면 기존 extract_user_profile 결과가 손실된다.
+  //   create-if-missing 패턴 사용 — chat.ts:356-370의 afterWork 패턴과 동일:
+  //     1. createMinimalProfile(language만 set, 나머지 DB default null)
+  //     2. PK 충돌(=이미 존재) → updateProfile({ language })로 language만 갱신,
+  //        기존 skin_type / hair_type / 등 보존
+  // 타입 가드: z.union의 두 브랜치를 'skipped' 키 유무로 구분 (C1 정합 보강).
+  if (isSkipOnboardingBody(body)) {
+    try {
+      await createMinimalProfile(client, userId, body.language);
+    } catch {
+      await updateProfile(client, userId, { language: body.language });
+    }
+    await markOnboardingCompleted(client, userId);
+    return null;
+  }
+
+  // Start 경로: profile + journey + 게이트
+  const startBody: StartOnboardingBody = body;
+  await upsertProfile(client, userId, {
+    skin_types: startBody.skin_types,
+    hair_type: startBody.hair_type ?? null,
+    hair_concerns: startBody.hair_concerns,
+    country: startBody.country ?? null,
+    language: startBody.language,
+    age_range: startBody.age_range ?? null,
+  });
+
+  const { journeyId } = await createOrUpdateJourney(client, userId, {
+    skin_concerns: startBody.skin_concerns,
+    interest_activities: startBody.interest_activities,
+    stay_days: startBody.stay_days ?? null,
+    start_date: startBody.start_date ?? null,
+    budget_level: startBody.budget_level ?? null,
+    travel_style: startBody.travel_style,
+  });
+
+  await markOnboardingCompleted(client, userId);
+  return journeyId;
+}
+
 export function registerProfileRoutes(app: AppType) {
   // ── /api/profile/onboarding ───────────────────────────────
   app.use('/api/profile/onboarding', requireAuth());
@@ -249,38 +344,15 @@ export function registerProfileRoutes(app: AppType) {
     const client = c.get('client') as DbClient;
     const parsed = c.req.valid('json');
 
-    // 필드 분리 (L-1: route 책임)
-    // v1.2: optional 필드는 ?? null로 안전하게 변환 (DB NULLABLE 호환)
-    const profileData = {
-      skin_type: parsed.skin_type,
-      hair_type: parsed.hair_type ?? null,
-      hair_concerns: parsed.hair_concerns,
-      country: parsed.country ?? null,
-      language: parsed.language,
-      age_range: parsed.age_range ?? null,
-    };
-
-    const journeyData = {
-      skin_concerns: parsed.skin_concerns,
-      interest_activities: parsed.interest_activities,
-      stay_days: parsed.stay_days ?? null,
-      start_date: parsed.start_date ?? null,
-      budget_level: parsed.budget_level ?? null,
-      travel_style: parsed.travel_style,
-    };
-
-    // Service 순차 호출 (P-4, Q-13: profile → journey)
     try {
-      await upsertProfile(client, user.id, profileData);
-      const { journeyId } = await createOrUpdateJourney(
-        client,
-        user.id,
-        journeyData,
-      );
-
+      const journeyId = await persistOnboarding(client, user.id, parsed);
       return c.json(
         {
-          data: { profile_id: user.id, journey_id: journeyId },
+          data: {
+            profile_id: user.id,
+            journey_id: journeyId,
+            onboarding_completed: true as const,
+          },
           meta: { timestamp: new Date().toISOString() },
         },
         201,

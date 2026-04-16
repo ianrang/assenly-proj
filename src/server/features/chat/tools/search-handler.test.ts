@@ -31,6 +31,7 @@ vi.mock('@/server/features/beauty/judgment', () => ({
 vi.mock('@/server/features/beauty/derived', () => ({
   calculatePreferredIngredients: vi.fn(),
   calculateAvoidedIngredients: vi.fn(),
+  resolveConflicts: vi.fn(),
 }));
 
 import type { UserProfileVars, JourneyContextVars } from '@/shared/types/profile';
@@ -113,7 +114,7 @@ function createMockTreatment(id: string, overrides: Partial<Treatment> = {}): Tr
 
 function createMockProfile(overrides: Partial<UserProfileVars> = {}): UserProfileVars {
   return {
-    skin_type: 'dry',
+    skin_types: ['dry'],
     hair_type: null,
     hair_concerns: [],
     country: 'US',
@@ -210,6 +211,7 @@ describe('executeSearchBeautyData', () => {
     vi.mocked(judgment.rank).mockReturnValue(rankedItems);
     vi.mocked(derived.calculatePreferredIngredients).mockReturnValue([]);
     vi.mocked(derived.calculateAvoidedIngredients).mockReturnValue([]);
+    vi.mocked(derived.resolveConflicts).mockReturnValue({ preferred: [], avoided: [] });
 
     const client = createMockSupabaseClient([{ product_id: 'p1', store: { id: 's1', english_support: 'fluent' } }]);
     const { executeSearchBeautyData } = await getHandler();
@@ -244,6 +246,7 @@ describe('executeSearchBeautyData', () => {
     vi.mocked(judgment.rank).mockReturnValue(rankedItems);
     vi.mocked(derived.calculatePreferredIngredients).mockReturnValue([]);
     vi.mocked(derived.calculateAvoidedIngredients).mockReturnValue([]);
+    vi.mocked(derived.resolveConflicts).mockReturnValue({ preferred: [], avoided: [] });
 
     const client = createMockSupabaseClient([]);
     const { executeSearchBeautyData } = await getHandler();
@@ -276,6 +279,7 @@ describe('executeSearchBeautyData', () => {
     vi.mocked(judgment.rank).mockReturnValue(rankedItems);
     vi.mocked(derived.calculatePreferredIngredients).mockReturnValue([]);
     vi.mocked(derived.calculateAvoidedIngredients).mockReturnValue([]);
+    vi.mocked(derived.resolveConflicts).mockReturnValue({ preferred: [], avoided: [] });
 
     const client = createMockSupabaseClient([]);
     const { executeSearchBeautyData } = await getHandler();
@@ -303,6 +307,7 @@ describe('executeSearchBeautyData', () => {
     vi.mocked(judgment.rank).mockReturnValue([]);
     vi.mocked(derived.calculatePreferredIngredients).mockReturnValue([]);
     vi.mocked(derived.calculateAvoidedIngredients).mockReturnValue([]);
+    vi.mocked(derived.resolveConflicts).mockReturnValue({ preferred: [], avoided: [] });
 
     const client = createMockSupabaseClient([]);
     const { executeSearchBeautyData } = await getHandler();
@@ -396,6 +401,7 @@ describe('executeSearchBeautyData', () => {
     vi.mocked(productRepo.findProductsByFilters).mockRejectedValue(new Error('Connection failed'));
     vi.mocked(derived.calculatePreferredIngredients).mockReturnValue([]);
     vi.mocked(derived.calculateAvoidedIngredients).mockReturnValue([]);
+    vi.mocked(derived.resolveConflicts).mockReturnValue({ preferred: [], avoided: [] });
 
     const client = createMockSupabaseClient([]);
     const { executeSearchBeautyData } = await getHandler();
@@ -420,6 +426,7 @@ describe('executeSearchBeautyData', () => {
     vi.mocked(judgment.rank).mockReturnValue([]);
     vi.mocked(derived.calculatePreferredIngredients).mockReturnValue([]);
     vi.mocked(derived.calculateAvoidedIngredients).mockReturnValue([]);
+    vi.mocked(derived.resolveConflicts).mockReturnValue({ preferred: [], avoided: [] });
 
     const client = createMockSupabaseClient([]);
     const { executeSearchBeautyData } = await getHandler();
@@ -453,6 +460,7 @@ describe('executeSearchBeautyData', () => {
     vi.mocked(judgment.rank).mockReturnValue(rankedItems);
     vi.mocked(derived.calculatePreferredIngredients).mockReturnValue([]);
     vi.mocked(derived.calculateAvoidedIngredients).mockReturnValue([]);
+    vi.mocked(derived.resolveConflicts).mockReturnValue({ preferred: [], avoided: [] });
 
     const client = createMockSupabaseClient([]);
     const { executeSearchBeautyData } = await getHandler();
@@ -462,9 +470,9 @@ describe('executeSearchBeautyData', () => {
       { client: client as never, profile: null, journey: null, preferences: [] },
     );
 
-    // calculatePreferredIngredients called with null skinType
-    expect(derived.calculatePreferredIngredients).toHaveBeenCalledWith(null, [], []);
-    expect(derived.calculateAvoidedIngredients).toHaveBeenCalledWith(null, []);
+    // calculatePreferredIngredients called with empty skin_types array (VP-3 null-safe)
+    expect(derived.calculatePreferredIngredients).toHaveBeenCalledWith([], [], []);
+    expect(derived.calculateAvoidedIngredients).toHaveBeenCalledWith([], []);
     expect(result.cards).toHaveLength(1);
   });
 
@@ -484,6 +492,7 @@ describe('executeSearchBeautyData', () => {
     vi.mocked(judgment.rank).mockReturnValue(rankedItems);
     vi.mocked(derived.calculatePreferredIngredients).mockReturnValue([]);
     vi.mocked(derived.calculateAvoidedIngredients).mockReturnValue([]);
+    vi.mocked(derived.resolveConflicts).mockReturnValue({ preferred: [], avoided: [] });
 
     // Two stores: one with 'fluent' english_support, one with 'none'
     const junctionData = [
@@ -525,6 +534,7 @@ describe('executeSearchBeautyData', () => {
     vi.mocked(judgment.rank).mockReturnValue(rankedItems);
     vi.mocked(derived.calculatePreferredIngredients).mockReturnValue([]);
     vi.mocked(derived.calculateAvoidedIngredients).mockReturnValue([]);
+    vi.mocked(derived.resolveConflicts).mockReturnValue({ preferred: [], avoided: [] });
 
     const client = createMockSupabaseClient([]);
     const { executeSearchBeautyData } = await getHandler();
@@ -564,6 +574,7 @@ describe('executeSearchBeautyData', () => {
     vi.mocked(judgment.rank).mockReturnValue(rankedItems);
     vi.mocked(derived.calculatePreferredIngredients).mockReturnValue([]);
     vi.mocked(derived.calculateAvoidedIngredients).mockReturnValue([]);
+    vi.mocked(derived.resolveConflicts).mockReturnValue({ preferred: [], avoided: [] });
 
     // store 조회 실패 재현: .in()이 reject
     const inFn = vi.fn().mockRejectedValue(new Error('store join failed'));

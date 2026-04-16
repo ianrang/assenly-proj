@@ -301,10 +301,12 @@ export async function METHOD(req: Request) {
 
 **인증**: 필수
 
-**요청:**
+**NEW-9b**: 두 경로를 discriminated union으로 수용 (`skipped` 필드로 구분).
+
+**요청 (Start 경로 — full wizard, v0.2 경로A):**
 ```json
 {
-  "skin_type": "combination",
+  "skin_types": ["combination"],
   "hair_type": "straight",
   "hair_concerns": ["damage"],
   "country": "US",
@@ -319,17 +321,40 @@ export async function METHOD(req: Request) {
 }
 ```
 
-**구현**: user_profiles UPSERT + journeys INSERT. Route에서 두 service를 순차 호출 (P-4 Composition Root).
+**요청 (Start 경로 — OnboardingChips, MVP):**
+```json
+{
+  "skin_types": ["dry", "sensitive"],
+  "skin_concerns": ["acne", "wrinkles"]
+}
+```
+칩에서 수집하지 않는 필드는 모두 optional. `skin_types` 배열 min 1, max 3 (NEW-17: skin_types 배열화, migration 015). `skin_concerns` 최대 3개(PRD §595).
+
+**요청 (Skip 경로):**
+```json
+{ "skipped": true }
+```
+
+**구현 — 3단계 invariant (순서 불변, NEW-9b)**:
+1. `upsertProfile` — user_profiles (UP 변수)
+2. `createOrUpdateJourney` — journeys (JC 변수). **Skip 경로에서는 실행하지 않음**
+3. `markOnboardingCompleted` — user_profiles.onboarding_completed_at 원샷 set (`WHERE IS NULL`)
+
+부분 실패 시 게이트가 NULL로 유지되어 클라이언트가 칩을 재표시하고 재전송 → 멱등 자기 치유(I7).
+경합 방어: journeys에 부분 유니크 인덱스 `ux_journeys_user_active` 존재, `createOrUpdateJourney`가 23505 unique_violation 시 1회 재시도.
 
 **응답 201:**
 ```json
 {
   "data": {
     "profile_id": "uuid",
-    "journey_id": "uuid"
-  }
+    "journey_id": "uuid | null",
+    "onboarding_completed": true
+  },
+  "meta": { "timestamp": "ISO 8601" }
 }
 ```
+`journey_id`는 Skip 경로에서 `null`.
 
 ### `GET /api/profile`
 
@@ -461,7 +486,7 @@ Vercel AI SDK 6.x `toUIMessageStreamResponse()` 기반.
 9. (비동기) 대화 히스토리 저장
 10. (비동기) 행동 로그 기록 — service_role + user_id 명시
 11. (비동기) 개인화 추출 결과 — 조건부 저장 (PRD §4-C 동의 원칙)
-    - **프로필 존재**: 추출 결과를 비동기로 DB 갱신 (`updateProfile` — skin_type, age_range).
+    - **프로필 존재**: 추출 결과를 비동기로 DB 갱신 (`updateProfile` — skin_types, age_range).
     - **프로필 미존재** (MVP Chat-First: 온보딩 스킵): `createMinimalProfile` → `updateProfile` 순차 호출. 최소 프로필 생성 후 추출 필드 저장. PK 충돌(동시 요청) 시 graceful 처리 후 updateProfile 진행.
 ```
 
@@ -882,7 +907,7 @@ Vercel AI SDK 6.x `toUIMessageStreamResponse()` 기반.
 | `has_highlight=true` (관리자) | boolean | `is_highlighted = true` |
 
 > `skin_types` (복수, 필터): 제품이 적합한 피부타입 배열에서 겹침 검색.
-> `skin_type` (단수, 프로필): 사용자의 단일 피부타입. 혼동 방지 목적으로 구분.
+> `skin_types` (프로필): 사용자의 피부타입 배열 (max 3). NEW-17: skin_type 단일 → skin_types 배열 전환 (migration 015).
 
 ## B.4 onboarding vs journey 역할 구분
 

@@ -76,7 +76,7 @@ export async function streamChat(params: StreamChatParams): Promise<StreamChatRe
     client,
     profile: profile
       ? {
-          skin_type: profile.skin_type,
+          skin_types: profile.skin_types ?? [],
           hair_type: profile.hair_type,
           hair_concerns: profile.hair_concerns,
           country: profile.country,

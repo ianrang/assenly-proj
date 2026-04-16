@@ -25,7 +25,7 @@ describe('derived/calculatePreferredIngredients', () => {
       '@/server/features/beauty/derived'
     );
 
-    const result = calculatePreferredIngredients('dry', [], []);
+    const result = calculatePreferredIngredients(['dry'], [], []);
 
     expect(result).toContain('hyaluronic_acid');
     expect(result).toContain('ceramide');
@@ -36,7 +36,7 @@ describe('derived/calculatePreferredIngredients', () => {
       '@/server/features/beauty/derived'
     );
 
-    const result = calculatePreferredIngredients(null, ['acne', 'wrinkles'], []);
+    const result = calculatePreferredIngredients([], ['acne', 'wrinkles'], []);
 
     expect(result).toContain('salicylic_acid');
     expect(result).toContain('retinol');
@@ -48,7 +48,7 @@ describe('derived/calculatePreferredIngredients', () => {
     );
 
     const likes = [createPref({ preference: 'snail_mucin', direction: 'like' })];
-    const result = calculatePreferredIngredients(null, [], likes);
+    const result = calculatePreferredIngredients([], [], likes);
 
     expect(result).toContain('snail_mucin');
   });
@@ -59,20 +59,30 @@ describe('derived/calculatePreferredIngredients', () => {
     );
 
     // dry → hyaluronic_acid, dryness → hyaluronic_acid
-    const result = calculatePreferredIngredients('dry', ['dryness'], []);
+    const result = calculatePreferredIngredients(['dry'], ['dryness'], []);
 
     const count = result.filter((i) => i === 'hyaluronic_acid').length;
     expect(count).toBe(1);
   });
 
-  it('VP-3: 모두 null/빈 → 빈 배열', async () => {
+  it('VP-3: 모두 빈 → 빈 배열', async () => {
     const { calculatePreferredIngredients } = await import(
       '@/server/features/beauty/derived'
     );
 
-    const result = calculatePreferredIngredients(null, [], []);
+    const result = calculatePreferredIngredients([], [], []);
 
     expect(result).toEqual([]);
+  });
+
+  it('복수 skinTypes → preferred 합집합', async () => {
+    const { calculatePreferredIngredients } = await import(
+      '@/server/features/beauty/derived'
+    );
+
+    const r = calculatePreferredIngredients(['dry', 'sensitive'], [], []);
+    expect(r).toContain('hyaluronic_acid'); // dry
+    expect(r).toContain('centella_asiatica'); // sensitive
   });
 });
 
@@ -82,7 +92,7 @@ describe('derived/calculateAvoidedIngredients', () => {
       '@/server/features/beauty/derived'
     );
 
-    const result = calculateAvoidedIngredients('sensitive', []);
+    const result = calculateAvoidedIngredients(['sensitive'], []);
 
     expect(result).toContain('fragrance');
     expect(result).toContain('alcohol');
@@ -96,12 +106,12 @@ describe('derived/calculateAvoidedIngredients', () => {
     const dislikes = [
       createPref({ preference: 'paraben', direction: 'dislike' }),
     ];
-    const result = calculateAvoidedIngredients(null, dislikes);
+    const result = calculateAvoidedIngredients([], dislikes);
 
     expect(result).toContain('paraben');
   });
 
-  it('VP-3: skinType null → learned만', async () => {
+  it('VP-3: skinTypes 빈 배열 → learned만', async () => {
     const { calculateAvoidedIngredients } = await import(
       '@/server/features/beauty/derived'
     );
@@ -109,7 +119,7 @@ describe('derived/calculateAvoidedIngredients', () => {
     const dislikes = [
       createPref({ preference: 'sulfate', direction: 'dislike' }),
     ];
-    const result = calculateAvoidedIngredients(null, dislikes);
+    const result = calculateAvoidedIngredients([], dislikes);
 
     expect(result).toEqual(['sulfate']);
   });
@@ -172,7 +182,7 @@ describe('derived/필터링 검증', () => {
       createPref({ category: 'brand', preference: 'cosrx', direction: 'like' }),
       createPref({ preference: 'niacinamide', direction: 'like' }),
     ];
-    const result = calculatePreferredIngredients(null, [], likes);
+    const result = calculatePreferredIngredients([], [], likes);
     expect(result).toContain('niacinamide');
     expect(result).not.toContain('cosrx');
   });
@@ -185,8 +195,34 @@ describe('derived/필터링 검증', () => {
       createPref({ preference: 'retinol', direction: 'like' }),
       createPref({ preference: 'alcohol', direction: 'dislike' }),
     ];
-    const result = calculateAvoidedIngredients(null, mixed);
+    const result = calculateAvoidedIngredients([], mixed);
     expect(result).toContain('alcohol');
     expect(result).not.toContain('retinol');
+  });
+});
+
+describe('resolveConflicts (2A: avoided 우선)', () => {
+  it('충돌 없음 → passthrough', async () => {
+    const { resolveConflicts } = await import('@/server/features/beauty/derived');
+    const r = resolveConflicts(['a', 'b'], ['c']);
+    expect(r.preferred).toEqual(['a', 'b']);
+    expect(r.avoided).toEqual(['c']);
+  });
+
+  it('충돌 발생 → preferred에서 제거, avoided 유지', async () => {
+    const { resolveConflicts } = await import('@/server/features/beauty/derived');
+    const spy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const r = resolveConflicts(['a', 'b', 'c'], ['b']);
+    expect(r.preferred).toEqual(['a', 'c']);
+    expect(r.avoided).toEqual(['b']);
+    expect(spy).toHaveBeenCalled();
+    spy.mockRestore();
+  });
+
+  it('완전 상쇄 (preferred ⊆ avoided)', async () => {
+    const { resolveConflicts } = await import('@/server/features/beauty/derived');
+    const r = resolveConflicts(['a'], ['a', 'b']);
+    expect(r.preferred).toEqual([]);
+    expect(r.avoided).toEqual(['a', 'b']);
   });
 });

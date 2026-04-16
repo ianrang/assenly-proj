@@ -435,11 +435,11 @@ describe.skipIf(!hasData)('Search filters (integration)', () => {
 
       profileUser = await createRegisteredTestUser();
 
-      // 온보딩 완료: skin_type=sensitive, skin_concerns=[redness, dryness]
+      // 온보딩 완료: skin_types=[sensitive], skin_concerns=[redness, dryness]
       const res = await pfApp.request(
         '/api/profile/onboarding',
         jsonRequest('POST', profileUser.token, {
-          skin_type: 'sensitive',
+          skin_types: ['sensitive'],
           skin_concerns: ['redness', 'dryness'],
         }),
       );
@@ -458,7 +458,7 @@ describe.skipIf(!hasData)('Search filters (integration)', () => {
       return json as { data: Record<string, unknown>[]; meta: { total: number } };
     }
 
-    it('PF-01: 프로필 skin_type → 제품 skin_types 필터 정합', async () => {
+    it('PF-01: 프로필 skin_types → 제품 skin_types 필터 정합', async () => {
       const json = await pfFetchList('/api/products?skin_types=sensitive&limit=50');
       expect(json.meta.total).toBeGreaterThan(0);
       for (const item of json.data) {
@@ -474,7 +474,7 @@ describe.skipIf(!hasData)('Search filters (integration)', () => {
       }
     });
 
-    it('PF-03: 프로필 skin_type → 시술 skin_types 필터 정합', async () => {
+    it('PF-03: 프로필 skin_types → 시술 skin_types 필터 정합', async () => {
       const json = await pfFetchList('/api/treatments?skin_types=sensitive&limit=50');
       expect(json.meta.total).toBeGreaterThan(0);
       for (const item of json.data) {

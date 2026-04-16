@@ -63,10 +63,13 @@ vi.mock('@/server/core/rate-limit', () => ({
 
 // ── Profile service mock ──────────────────────────────────────
 const mockGetProfile = vi.fn();
+const mockApplyAi = vi.fn().mockResolvedValue({ applied: ['skin_types'] });
+const mockApplyAiJourney = vi.fn().mockResolvedValue({ applied: [] });
 vi.mock('@/server/features/profile/service', () => ({
   getProfile: (...args: unknown[]) => mockGetProfile(...args),
   createMinimalProfile: vi.fn().mockResolvedValue(undefined),
-  updateProfile: vi.fn().mockResolvedValue(undefined),
+  applyAiExtraction: (...args: unknown[]) => mockApplyAi(...args),
+  applyAiExtractionToJourney: (...args: unknown[]) => mockApplyAiJourney(...args),
 }));
 
 // ── Journey service mock ──────────────────────────────────────

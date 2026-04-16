@@ -34,7 +34,7 @@ export default function ProfileCard({ profile, journey }: ProfileCardProps) {
   const t = useTranslations("profile");
   const to = useTranslations("onboarding");
 
-  const skinTypeLabel = profile.skin_type ? to(`skinType_${profile.skin_type}`) : null;
+  const skinTypeLabels = (profile.skin_types ?? []).map((t) => to(`skinType_${t}`));
   const hairTypeLabel = profile.hair_type ? to(`hairType_${profile.hair_type}`) : null;
   const budgetLabel = journey?.budget_level ? to(`budget_${journey.budget_level}`) : null;
 
@@ -47,7 +47,14 @@ export default function ProfileCard({ profile, journey }: ProfileCardProps) {
     <div className="rounded-xl border border-border bg-card p-5">
       <CardTitle className="mb-4 text-lg">{t("title")}</CardTitle>
 
-      <Row label={t("skinType")} value={skinTypeLabel} />
+      <div className="flex items-baseline justify-between border-b border-border py-2.5">
+        <span className="text-sm text-muted-foreground">{t("skinType")}</span>
+        {skinTypeLabels.length ? (
+          <span className="text-sm font-medium text-foreground">{skinTypeLabels.join(", ")}</span>
+        ) : (
+          <span className="text-sm font-medium text-muted-foreground">{t("notSet")}</span>
+        )}
+      </div>
       <Row label={t("hairType")} value={hairTypeLabel} />
 
       {skinConcernLabels.length > 0 && (

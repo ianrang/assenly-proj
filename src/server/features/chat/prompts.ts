@@ -328,7 +328,9 @@ function buildUserProfileSection(ctx: SystemPromptContext): string {
   const { profile, journey, realtime, learnedPreferences } = ctx;
   if (!profile) return '';
 
-  const skinType = profile.skin_type ?? 'not specified';
+  const skinType = profile.skin_types?.length
+    ? profile.skin_types.join(', ')
+    : 'not specified';
   const concerns = journey?.skin_concerns?.length
     ? journey.skin_concerns.join(', ')
     : 'none specified';

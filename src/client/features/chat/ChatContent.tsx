@@ -25,18 +25,32 @@ type ChatContentProps = {
   locale: string;
   initialMessages: UIMessage[];
   initialConversationId: string | null;
+  /**
+   * NEW-9b: 서버 조회한 user_profiles.onboarding_completed_at 유무를 단일 불리언으로 전달.
+   * true = 게이트 통과(완료 또는 Skip 수행) → 칩 미표시.
+   * false = 미완료 신규 사용자 → 빈 채팅일 때 칩 표시.
+   * ChatInterface에서 /api/profile 병렬 조회로 계산됨(fail-closed).
+   */
+  initialOnboardingCompleted: boolean;
   onMessageSent?: () => void;
 };
 
-export default function ChatContent({ locale, initialMessages, initialConversationId, onMessageSent }: ChatContentProps) {
+export default function ChatContent({
+  locale,
+  initialMessages,
+  initialConversationId,
+  initialOnboardingCompleted,
+  onMessageSent,
+}: ChatContentProps) {
   const t = useTranslations("chat");
   const [showSuggestions, setShowSuggestions] = useState(
     initialMessages.length === 0
   );
-  // v1.2 NEW-9: 온보딩 칩 표시 여부. 신규 세션(메시지+대화 없음)에서만 표시.
-  // 온보딩 완료 또는 스킵 시 false → SuggestedQuestions 또는 빈 채팅으로 전환.
+  // NEW-9b: 온보딩 칩 표시 여부.
+  // 불변량 I1/I2: initialOnboardingCompleted === false 일 때만 칩 표시.
+  // 재표시 판정의 단일 진실 공급원 = user_profiles.onboarding_completed_at.
   const [showOnboarding, setShowOnboarding] = useState(
-    initialMessages.length === 0 && initialConversationId === null
+    initialMessages.length === 0 && !initialOnboardingCompleted
   );
   const [conversationId, setConversationId] = useState<string | null>(
     initialConversationId
@@ -136,15 +150,11 @@ export default function ChatContent({ locale, initialMessages, initialConversati
           <div className="flex-1 overflow-y-auto px-4 py-4">
             <div className="flex flex-col gap-3">
               {showOnboarding ? (
-                /* v1.2 NEW-9: 인라인 온보딩 칩 UI */
+                /* NEW-9b: 인라인 온보딩 칩 UI. onComplete는 Start/Skip 양쪽에서 호출.
+                   서버가 onboarding_completed_at을 설정하므로 다음 세션부터는 재표시되지 않음. */
                 <OnboardingChips
                   onComplete={() => {
                     setShowOnboarding(false);
-                    setShowSuggestions(false);
-                  }}
-                  onSkip={() => {
-                    setShowOnboarding(false);
-                    // Skip 시 AI 인사 메시지 + SuggestedQuestions 표시
                   }}
                 />
               ) : (

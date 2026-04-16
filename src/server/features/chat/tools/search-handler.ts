@@ -12,7 +12,11 @@ import { scoreTreatments } from '@/server/features/beauty/treatment';
 import { scoreStores } from '@/server/features/beauty/store';
 import { scoreClinics } from '@/server/features/beauty/clinic';
 import { rank } from '@/server/features/beauty/judgment';
-import { calculatePreferredIngredients, calculateAvoidedIngredients } from '@/server/features/beauty/derived';
+import {
+  calculatePreferredIngredients,
+  calculateAvoidedIngredients,
+  resolveConflicts,
+} from '@/server/features/beauty/derived';
 
 // ============================================================
 // search_beauty_data Tool Handler — tool-spec.md §1
@@ -94,7 +98,11 @@ async function searchShopping(
   preferences: LearnedPreference[],
 ) {
   const productFilters = {
-    skin_types: filters?.skin_types ?? (profile?.skin_type ? [profile.skin_type] : undefined),
+    skin_types:
+      filters?.skin_types ??
+      (profile?.skin_types && profile.skin_types.length > 0
+        ? profile.skin_types
+        : undefined),
     concerns: filters?.concerns,
     category: filters?.category,
     budget_max: filters?.budget_max_krw,
@@ -109,15 +117,17 @@ async function searchShopping(
   );
 
   // beauty 판단: DV-1/2 → scoreProducts → rank (§3.1 3~5단계)
-  const preferred = calculatePreferredIngredients(
-    profile?.skin_type ?? null,
+  const preferredRaw = calculatePreferredIngredients(
+    profile?.skin_types ?? [],
     filters?.concerns ?? [],
-    preferences.filter(p => p.direction === 'like'),
+    preferences.filter((p) => p.direction === 'like'),
   );
-  const avoided = calculateAvoidedIngredients(
-    profile?.skin_type ?? null,
-    preferences.filter(p => p.direction === 'dislike'),
+  const avoidedRaw = calculateAvoidedIngredients(
+    profile?.skin_types ?? [],
+    preferences.filter((p) => p.direction === 'dislike'),
   );
+  // NEW-17 (2A): 복수 skin_types 확장 시 preferred ∩ avoided 충돌 해결
+  const { preferred, avoided } = resolveConflicts(preferredRaw, avoidedRaw);
   const scored = scoreProducts(products, preferred, avoided);
   const ranked = rank(scored);
 

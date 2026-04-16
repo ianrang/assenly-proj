@@ -576,7 +576,7 @@ api-spec §3.4 서버 플로우 5단계에서 프로필을 로드한다. 프로�
 ## User Profile
 
 **Skin & Hair**
-- Skin type: {UP-1 | "not specified"}
+- Skin type: {UP-1 skin_types joined by ', ' | "not specified"}
 - Skin concerns: {JC-1 배열 | "none specified"}
 
 **Travel Context**
@@ -783,7 +783,7 @@ DV-1(선호 성분)과 DV-2(기피 성분)는 `derived.ts` 순수 함수가 구�
 You are generating a personalized K-beauty profile summary for a user visiting Korea.
 
 **Input data:**
-- Skin type: {UP-1}
+- Skin type: {UP-1 skin_types joined by ', '}
 - Skin concerns: {JC-1}
 - Hair type & concerns: {UP-2, if available}
 - Country: {UP-3.country}
@@ -940,7 +940,7 @@ get_external_links: When to call
 Introduction → Card data → Follow-up offer
 
 [§8 User Profile]              ← 프로필 존재 → §8 주입
-Skin type: combination
+Skin type: oily, sensitive
 Skin concerns: acne, pores
 Country: US, Language: en
 Stay: 5 days (from 2026-04-01)
@@ -981,7 +981,7 @@ Language: en
 [§2~§7] (동일)
 
 [§8 User Profile]              ← 프로필 존재 → §8 주입 (일부 필드만)
-Skin type: oily
+Skin type: oily, sensitive
 Skin concerns: none specified   ← null → "none specified" (VP-3)
 Country: JP, Language: ja
 Age range: not specified        ← null → "not specified"

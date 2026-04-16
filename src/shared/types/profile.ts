@@ -14,9 +14,9 @@ import type {
   SupportedLanguage,
 } from "./domain";
 
-/** UP: User Profile — 반영구적 (4개) */
+/** UP: User Profile — 반영구적 (NEW-17: skin_type 단일 → skin_types 배열 max 3) */
 export interface UserProfileVars {
-  skin_type: SkinType | null;           // UP-1
+  skin_types: SkinType[];               // UP-1 (NEW-17)
   hair_type: HairType | null;           // UP-2
   hair_concerns: HairConcern[];         // UP-2
   country: string | null;               // UP-3
@@ -74,6 +74,8 @@ export interface DerivedVariables {
 /** Full user profile (DB row) */
 export interface UserProfile extends UserProfileVars {
   user_id: string;
+  /** NEW-9b: 온보딩 게이트 완료 시점. NULL=미완료, NOT NULL=Start 또는 Skip 수행. 원샷(I4). */
+  onboarding_completed_at: string | null;
   updated_at: string;
 }
 
@@ -96,24 +98,4 @@ export interface ConsentRecord {
   marketing: boolean;
   consented_at: string;
   updated_at: string;
-}
-
-/** Onboarding form data (4 steps combined) */
-export interface OnboardingFormData {
-  // Step 1: Skin & Hair
-  skin_type: SkinType;
-  hair_type: HairType | null;
-  hair_concerns: HairConcern[];
-  // Step 2: Concerns
-  skin_concerns: SkinConcern[]; // max 3 in UI
-  // Step 3: Travel
-  country: string;
-  age_range?: AgeRange;
-  stay_days: number;
-  start_date?: string;
-  end_date?: string;
-  budget_level: BudgetLevel;
-  travel_style: TravelStyle[];
-  // Step 4: Interests
-  interest_activities: InterestActivity[];
 }
