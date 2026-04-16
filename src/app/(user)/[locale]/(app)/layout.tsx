@@ -1,16 +1,7 @@
-import Header from "@/client/features/layout/Header";
-
 type Props = {
   children: React.ReactNode;
 };
 
 export default function AppLayout({ children }: Props) {
-  return (
-    <>
-      <Header showLanguageSelector />
-      <main className="mx-auto w-full max-w-[640px] flex-1 px-5">
-        {children}
-      </main>
-    </>
-  );
+  return <>{children}</>;
 }

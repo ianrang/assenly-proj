@@ -1,11 +1,17 @@
 // ============================================================
-// 제품 이미지 + 구매 링크 보강 스크립트
-// Olive Young Global에서 제품 검색 → 이미지 URL + 직접 제품 URL 추출
+// 제품 이미지 + 구매 링크 + 가격 보강 스크립트
+// Olive Young Global/Korea에서 제품 검색 → 이미지 URL + 제품 URL + 가격 추출
 // P-9: scripts/ 내부 + shared/ import만. server/ import 금지.
+//
+// 개선사항:
+//   - 브랜드 검증 게이트: 상세 페이지 브랜드명과 DB 브랜드 대조, 불일치 시 거부
+//   - 가격 추출: 상세 페이지에서 할인가/정가 추출 (KRW 기준)
+//   - 한국 OY fallback: Global 실패 시 oliveyoung.co.kr 재검색
 //
 // 실행:
 //   npx tsx scripts/seed/enrich-product-links.ts --test   # 5개만 테스트
 //   npx tsx scripts/seed/enrich-product-links.ts           # 전체 실행
+//   npx tsx scripts/seed/enrich-product-links.ts --input path/to/file.json
 // ============================================================
 
 import { chromium, type Browser, type Page } from "playwright";
@@ -17,10 +23,37 @@ import * as path from "node:path";
 const CRAWL_DELAY_MS = 5_000;
 const DATA_DIR = path.join(__dirname, "data");
 const VALIDATED_PATH = path.join(DATA_DIR, "products-validated.json");
+const RECOVERED_PATH = path.join(DATA_DIR, "products-recovered.json");
 const BACKUP_PATH = path.join(DATA_DIR, "products-validated.backup.json");
 const FAILURES_PATH = path.join(DATA_DIR, "products-enrich-failures.json");
 const OY_BASE = "https://global.oliveyoung.com";
+const OY_KR_BASE = "https://www.oliveyoung.co.kr";
 const TEST_COUNT = 5;
+const USD_TO_KRW = 1380;
+
+// ── 셀렉터 상수 (사이트 구조 변경 시 여기만 수정) ────────────
+
+const SELECTORS_GLOBAL = {
+  searchResult: ".unit-desc",
+  productLink: ".unit-desc a[href*='product/detail']",
+  thumbnail: ".unit-thumb img",
+  brand: ".brand-name",
+  priceSale: ".price-info strong",
+  priceOriginal: ".price-info > span",
+  priceAlt: ".price-info",
+  ogImage: "meta[property='og:image']",
+} as const;
+
+const SELECTORS_KOREA = {
+  searchResult: ".prd_info",
+  productLink: ".prd_info a[href*='goods']",
+  thumbnail: ".prd_img img",
+  brand: ".prd_brand_area a",
+  priceSale: ".price .tx_cur",
+  priceOriginal: ".price .tx_org",
+  priceAlt: ".price .prd_price",
+  ogImage: "meta[property='og:image']",
+} as const;
 
 // ── 타입 ─────────────────────────────────────────────────────
 
@@ -31,6 +64,14 @@ interface ValidatedRecord {
     name: { en: string; ko: string; [key: string]: string };
     images: string[];
     purchase_links: Array<{ platform: string; url: string }> | null;
+    price?: number | null;
+    price_min?: number | null;
+    price_max?: number | null;
+    price_currency?: string;
+    price_source?: string;
+    range_source?: string;
+    price_source_url?: string;
+    price_updated_at?: string;
     [key: string]: unknown;
   };
   isApproved: boolean;
@@ -41,7 +82,17 @@ interface EnrichResult {
   status: "success" | "not_found" | "error";
   imageUrl?: string;
   productUrl?: string;
+  price?: number | null;
+  priceOriginal?: number | null;
+  source?: "global" | "korea";
   error?: string;
+}
+
+interface MatchResult {
+  productUrl: string;
+  imageUrl: string | null;
+  price: number | null;
+  priceOriginal: number | null;
 }
 
 // ── 순수 함수 (테스트 가능) ─────────────────────────────────
@@ -81,10 +132,92 @@ export function resolveProductUrl(href: string | null): string | null {
   return `${OY_BASE}${href}`;
 }
 
+/** 브랜드 매칭: 특수문자 제거 후 대소문자 무시 비교 */
+export function brandMatches(dbBrand: string, pageBrand: string): boolean {
+  const normalize = (s: string) => s.toLowerCase().replace(/[^a-z0-9]/g, '');
+  return normalize(dbBrand) === normalize(pageBrand);
+}
+
+/** KRW 가격 문자열 파싱 → 정수 또는 null */
+export function parseKrwPrice(text: string): number | null {
+  if (!text || !text.trim()) return null;
+  const cleaned = text.replace(/[₩원KRW,\s]/gi, '');
+  const num = parseInt(cleaned, 10);
+  return isNaN(num) || num <= 0 ? null : num;
+}
+
 // ── 대기 헬퍼 ────────────────────────────────────────────────
 
 function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+// ── 가격 추출 ────────────────────────────────────────────────
+
+/** USD 가격 문자열 → KRW 근사 변환 */
+function parseUsdToKrw(text: string): number | null {
+  if (!text || !text.trim()) return null;
+  // "US$12.99", "$12.99", "USD 12.99" 등 처리
+  const cleaned = text.replace(/[US$USD,\s]/gi, '');
+  const num = parseFloat(cleaned);
+  if (isNaN(num) || num <= 0) return null;
+  return Math.round(num * USD_TO_KRW);
+}
+
+/** 가격 텍스트에서 KRW 또는 USD 파싱 */
+function parsePriceText(text: string): number | null {
+  if (!text || !text.trim()) return null;
+  // KRW 우선 시도
+  const krw = parseKrwPrice(text);
+  if (krw) return krw;
+  // USD 변환 시도
+  return parseUsdToKrw(text);
+}
+
+/** 상세 페이지에서 가격 추출 (복수 셀렉터 패턴 시도) */
+async function extractPriceFromPage(
+  page: Page,
+  selectors: typeof SELECTORS_GLOBAL | typeof SELECTORS_KOREA,
+): Promise<{ price: number | null; priceOriginal: number | null }> {
+  let price: number | null = null;
+  let priceOriginal: number | null = null;
+
+  try {
+    // Pattern 1: 할인가 + 정가 쌍
+    const saleEl = await page.$(selectors.priceSale);
+    if (saleEl) {
+      const saleText = await saleEl.textContent();
+      price = saleText ? parsePriceText(saleText) : null;
+    }
+
+    const origEl = await page.$(selectors.priceOriginal);
+    if (origEl) {
+      const origText = await origEl.textContent();
+      priceOriginal = origText ? parsePriceText(origText) : null;
+    }
+
+    // Pattern 2: 단일 가격 (할인가 못 찾은 경우)
+    if (!price) {
+      const altEl = await page.$(selectors.priceAlt);
+      if (altEl) {
+        const altText = await altEl.textContent();
+        price = altText ? parsePriceText(altText) : null;
+      }
+    }
+
+    // Pattern 3: meta 태그 가격
+    if (!price) {
+      const metaPrice = await page.$("meta[property='product:price:amount']");
+      if (metaPrice) {
+        const content = await metaPrice.getAttribute("content");
+        price = content ? parsePriceText(content) : null;
+      }
+    }
+  } catch {
+    // 가격 추출 실패는 치명적이지 않음 — null 반환
+  }
+
+  return { price, priceOriginal };
 }
 
 // ── 스크래핑 ─────────────────────────────────────────────────
@@ -99,12 +232,13 @@ function nameSimilarity(searchName: string, resultName: string): number {
   return matches / searchWords.length;
 }
 
-/** 검색 결과에서 최적 매칭 추출 */
+/** Global 검색 결과에서 최적 매칭 추출 + 브랜드 검증 + 가격 추출 */
 async function extractBestMatch(
   page: Page,
   nameEn: string,
-): Promise<{ productUrl: string; imageUrl: string | null } | null> {
-  const cards = await page.$$eval(".unit-desc a[href*='product/detail']", (els: HTMLAnchorElement[]) =>
+  expectedBrand: string,
+): Promise<MatchResult | null> {
+  const cards = await page.$$eval(SELECTORS_GLOBAL.productLink, (els: HTMLAnchorElement[]) =>
     els.map((el) => ({
       href: el.href,
       text: el.textContent?.trim().replace(/\s+/g, " ") ?? "",
@@ -129,56 +263,192 @@ async function extractBestMatch(
 
   const productUrl = cards[bestIdx].href;
 
-  // 같은 인덱스의 unit-thumb에서 이미지 추출
-  const thumbs = await page.$$(".unit-thumb img");
+  // 같은 인덱스의 unit-thumb에서 이미지 추출 (폴백용)
+  const thumbs = await page.$$(SELECTORS_GLOBAL.thumbnail);
   let imageUrl: string | null = null;
   if (thumbs[bestIdx]) {
     imageUrl = await thumbs[bestIdx].getAttribute("src");
   }
 
-  // 이미지 못 찾으면 제품 상세 페이지에서 og:image 추출
-  if (!isValidImageUrl(imageUrl)) {
-    await page.goto(productUrl, { waitUntil: "domcontentloaded", timeout: 15_000 });
-    await delay(CRAWL_DELAY_MS);
+  // 항상 상세 페이지로 이동 — 브랜드 검증 + 가격 추출 + og:image
+  await page.goto(productUrl, { waitUntil: "domcontentloaded", timeout: 15_000 });
+  await delay(CRAWL_DELAY_MS);
 
-    const ogImage = await page.$("meta[property='og:image']");
-    if (ogImage) {
-      imageUrl = await ogImage.getAttribute("content");
+  // 브랜드 검증 게이트
+  if (expectedBrand) {
+    try {
+      const brandEl = await page.$(SELECTORS_GLOBAL.brand);
+      if (brandEl) {
+        const pageBrand = (await brandEl.textContent())?.trim() ?? "";
+        if (pageBrand && !brandMatches(expectedBrand, pageBrand)) {
+          console.log(`  ⊘ 브랜드 불일치: DB="${expectedBrand}" vs 페이지="${pageBrand}"`);
+          return null;
+        }
+      }
+    } catch {
+      // 브랜드 요소 못 찾으면 검증 스킵 (차단보다 허용이 낫다)
     }
   }
 
-  return { productUrl, imageUrl: isValidImageUrl(imageUrl) ? imageUrl : null };
+  // 가격 추출
+  const { price, priceOriginal } = await extractPriceFromPage(page, SELECTORS_GLOBAL);
+
+  // og:image 추출
+  const ogImage = await page.$(SELECTORS_GLOBAL.ogImage);
+  if (ogImage) {
+    const ogUrl = await ogImage.getAttribute("content");
+    if (isValidImageUrl(ogUrl)) {
+      imageUrl = ogUrl;
+    }
+  }
+
+  return {
+    productUrl,
+    imageUrl: isValidImageUrl(imageUrl) ? imageUrl : null,
+    price,
+    priceOriginal,
+  };
+}
+
+/** 한국 OY 검색 결과에서 최적 매칭 추출 + 브랜드 검증 + 가격 추출 */
+async function extractBestMatchKorea(
+  page: Page,
+  nameEn: string,
+  expectedBrand: string,
+): Promise<MatchResult | null> {
+  const cards = await page.$$eval(SELECTORS_KOREA.productLink, (els: HTMLAnchorElement[]) =>
+    els.map((el) => ({
+      href: el.href,
+      text: el.textContent?.trim().replace(/\s+/g, " ") ?? "",
+    })),
+  ).catch(() => [] as Array<{ href: string; text: string }>);
+
+  if (cards.length === 0) return null;
+
+  // 제품명 유사도 기반 최적 매칭
+  let bestIdx = 0;
+  let bestScore = 0;
+  for (let i = 0; i < cards.length; i++) {
+    const score = nameSimilarity(nameEn, cards[i].text);
+    if (score > bestScore) {
+      bestScore = score;
+      bestIdx = i;
+    }
+  }
+
+  if (bestScore < 0.25) return null;
+
+  let productUrl = cards[bestIdx].href;
+  if (!productUrl.startsWith("http")) {
+    productUrl = `${OY_KR_BASE}${productUrl}`;
+  }
+
+  // 상세 페이지로 이동 — 브랜드 검증 + 가격 추출 + og:image
+  await page.goto(productUrl, { waitUntil: "domcontentloaded", timeout: 15_000 });
+  await delay(CRAWL_DELAY_MS);
+
+  // 브랜드 검증 게이트
+  if (expectedBrand) {
+    try {
+      const brandEl = await page.$(SELECTORS_KOREA.brand);
+      if (brandEl) {
+        const pageBrand = (await brandEl.textContent())?.trim() ?? "";
+        if (pageBrand && !brandMatches(expectedBrand, pageBrand)) {
+          console.log(`  ⊘ 브랜드 불일치 (KR): DB="${expectedBrand}" vs 페이지="${pageBrand}"`);
+          return null;
+        }
+      }
+    } catch {
+      // 브랜드 요소 못 찾으면 검증 스킵
+    }
+  }
+
+  // 가격 추출
+  const { price, priceOriginal } = await extractPriceFromPage(page, SELECTORS_KOREA);
+
+  // og:image 추출
+  let imageUrl: string | null = null;
+  const ogImage = await page.$(SELECTORS_KOREA.ogImage);
+  if (ogImage) {
+    const ogUrl = await ogImage.getAttribute("content");
+    if (isValidImageUrl(ogUrl)) {
+      imageUrl = ogUrl;
+    }
+  }
+
+  return {
+    productUrl,
+    imageUrl,
+    price,
+    priceOriginal,
+  };
 }
 
 async function searchAndEnrich(page: Page, nameEn: string, brand: string): Promise<EnrichResult> {
   try {
-    // 1차 시도: 전체 영문 제품명
+    // === GLOBAL ===
+    // 1차: Global 전체 이름
     const searchUrl = buildSearchUrl(nameEn);
     await page.goto(searchUrl, { waitUntil: "domcontentloaded", timeout: 15_000 });
-    await page.waitForSelector(".unit-desc", { timeout: 10_000 }).catch(() => {});
+    await page.waitForSelector(SELECTORS_GLOBAL.searchResult, { timeout: 10_000 }).catch(() => {});
     await delay(CRAWL_DELAY_MS);
+    let match = await extractBestMatch(page, nameEn, brand);
 
-    let match = await extractBestMatch(page, nameEn);
-
-    // 2차 시도: 브랜드 + 핵심 키워드 (축약)
+    // 2차: Global 축약 검색
     if (!match) {
       const shortQuery = buildShortQuery(nameEn, brand);
       if (shortQuery !== nameEn) {
         const retryUrl = buildSearchUrl(shortQuery);
         await page.goto(retryUrl, { waitUntil: "domcontentloaded", timeout: 15_000 });
-        await page.waitForSelector(".unit-desc", { timeout: 10_000 }).catch(() => {});
+        await page.waitForSelector(SELECTORS_GLOBAL.searchResult, { timeout: 10_000 }).catch(() => {});
         await delay(CRAWL_DELAY_MS);
-        match = await extractBestMatch(page, nameEn);
+        match = await extractBestMatch(page, nameEn, brand);
       }
     }
 
-    if (!match) return { status: "not_found" };
+    if (match) {
+      return {
+        status: "success",
+        productUrl: match.productUrl,
+        imageUrl: match.imageUrl ?? undefined,
+        price: match.price,
+        priceOriginal: match.priceOriginal,
+        source: "global",
+      };
+    }
 
-    return {
-      status: "success",
-      productUrl: match.productUrl,
-      imageUrl: match.imageUrl ?? undefined,
-    };
+    // === KOREAN OY FALLBACK ===
+    // 3차: 한국 OY 전체 이름
+    const krSearchUrl = `${OY_KR_BASE}/store/search/getSearchMain.do?query=${encodeURIComponent(nameEn)}`;
+    await page.goto(krSearchUrl, { waitUntil: "domcontentloaded", timeout: 15_000 });
+    await page.waitForSelector(SELECTORS_KOREA.searchResult, { timeout: 10_000 }).catch(() => {});
+    await delay(CRAWL_DELAY_MS);
+    match = await extractBestMatchKorea(page, nameEn, brand);
+
+    // 4차: 한국 OY 축약 검색
+    if (!match) {
+      const shortQuery = buildShortQuery(nameEn, brand);
+      if (shortQuery !== nameEn) {
+        const krRetryUrl = `${OY_KR_BASE}/store/search/getSearchMain.do?query=${encodeURIComponent(shortQuery)}`;
+        await page.goto(krRetryUrl, { waitUntil: "domcontentloaded", timeout: 15_000 });
+        await page.waitForSelector(SELECTORS_KOREA.searchResult, { timeout: 10_000 }).catch(() => {});
+        await delay(CRAWL_DELAY_MS);
+        match = await extractBestMatchKorea(page, nameEn, brand);
+      }
+    }
+
+    if (match) {
+      return {
+        status: "success",
+        productUrl: match.productUrl,
+        imageUrl: match.imageUrl ?? undefined,
+        price: match.price,
+        priceOriginal: match.priceOriginal,
+        source: "korea",
+      };
+    }
+
+    return { status: "not_found" };
   } catch (err) {
     return { status: "error", error: String(err) };
   }
@@ -189,21 +459,35 @@ async function searchAndEnrich(page: Page, nameEn: string, brand: string): Promi
 async function main() {
   const isTest = process.argv.includes("--test");
 
+  // --input 인자 처리
+  const inputArgIdx = process.argv.indexOf("--input");
+  let inputPath: string;
+  if (inputArgIdx !== -1 && process.argv[inputArgIdx + 1]) {
+    inputPath = process.argv[inputArgIdx + 1];
+  } else if (fs.existsSync(RECOVERED_PATH)) {
+    inputPath = RECOVERED_PATH;
+  } else {
+    inputPath = VALIDATED_PATH;
+  }
+
   // 데이터 로드
-  if (!fs.existsSync(VALIDATED_PATH)) {
-    console.error(`파일 없음: ${VALIDATED_PATH}`);
+  if (!fs.existsSync(inputPath)) {
+    console.error(`파일 없음: ${inputPath}`);
     process.exit(1);
   }
 
-  const raw = fs.readFileSync(VALIDATED_PATH, "utf-8");
+  const raw = fs.readFileSync(inputPath, "utf-8");
   const records: ValidatedRecord[] = JSON.parse(raw);
   const products = records.filter((r) => r.entityType === "product");
 
+  console.log(`입력 파일: ${inputPath}`);
   console.log(`총 제품: ${products.length}개`);
 
   // 백업 생성
-  fs.copyFileSync(VALIDATED_PATH, BACKUP_PATH);
-  console.log(`백업 생성: ${BACKUP_PATH}`);
+  if (fs.existsSync(VALIDATED_PATH)) {
+    fs.copyFileSync(VALIDATED_PATH, BACKUP_PATH);
+    console.log(`백업 생성: ${BACKUP_PATH}`);
+  }
 
   const target = isTest ? products.slice(0, TEST_COUNT) : products;
   console.log(`대상: ${target.length}개 (${isTest ? "테스트 모드" : "전체"})`);
@@ -215,6 +499,7 @@ async function main() {
   const failures: Array<{ id: string; name: string; reason: string }> = [];
   let successCount = 0;
   let imageCount = 0;
+  let priceCount = 0;
 
   for (let i = 0; i < target.length; i++) {
     const product = target[i];
@@ -222,11 +507,14 @@ async function main() {
     const brand = (product.data.brand as string) ?? "";
     const progress = `[${i + 1}/${target.length}]`;
 
-    // 이미 이미지가 있는 제품은 스킵
-    if (product.data.images && product.data.images.length > 0 && isValidImageUrl(product.data.images[0])) {
-      console.log(`${progress} ${nameEn}... ⊘ 이미 확보됨, 스킵`);
+    // 이미 이미지와 가격이 모두 있는 제품은 스킵
+    const hasImage = product.data.images && product.data.images.length > 0 && isValidImageUrl(product.data.images[0]);
+    const hasPrice = product.data.price != null && product.data.price > 0;
+    if (hasImage && hasPrice) {
+      console.log(`${progress} ${nameEn}... ⊘ 이미 확보됨(이미지+가격), 스킵`);
       successCount++;
       imageCount++;
+      priceCount++;
       continue;
     }
 
@@ -237,19 +525,38 @@ async function main() {
     if (result.status === "success") {
       successCount++;
 
+      // 플랫폼 소스 라벨
+      const platformLabel = result.source === "korea" ? "Olive Young Korea" : "Olive Young Global";
+
       if (result.productUrl) {
         product.data.purchase_links = [
-          { platform: "Olive Young Global", url: result.productUrl },
+          { platform: platformLabel, url: result.productUrl },
         ];
       }
 
       if (result.imageUrl && isValidImageUrl(result.imageUrl)) {
         product.data.images = [result.imageUrl];
         imageCount++;
-        console.log(`  ✓ 이미지 + 링크 확보`);
-      } else if (result.productUrl) {
-        console.log(`  △ 링크만 확보 (이미지 없음)`);
       }
+
+      // 가격 필드 저장 (NEW-37 schema)
+      if (result.price != null) {
+        product.data.price = result.price;
+        product.data.price_min = result.price;
+        product.data.price_max = result.priceOriginal ?? result.price;
+        product.data.price_currency = "KRW";
+        product.data.price_source = "real";
+        product.data.range_source = "real";
+        product.data.price_source_url = result.productUrl;
+        product.data.price_updated_at = new Date().toISOString();
+        priceCount++;
+      }
+
+      const parts: string[] = [];
+      if (result.imageUrl) parts.push("이미지");
+      if (result.productUrl) parts.push("링크");
+      if (result.price != null) parts.push(`가격(₩${result.price.toLocaleString()})`);
+      console.log(`  ✓ ${parts.join(" + ")} 확보 [${result.source}]`);
     } else {
       const reason = result.status === "not_found" ? "검색 결과 없음" : (result.error ?? "알 수 없는 에러");
       failures.push({ id: product.data.id, name: nameEn, reason });
@@ -276,6 +583,7 @@ async function main() {
   console.log(`\n=== 결과 요약 ===`);
   console.log(`성공: ${successCount}/${target.length}`);
   console.log(`이미지 확보: ${imageCount}/${target.length}`);
+  console.log(`가격 확보: ${priceCount}/${target.length}`);
   console.log(`실패: ${failures.length}/${target.length}`);
 
   if (failures.length > 0) {

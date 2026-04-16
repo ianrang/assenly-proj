@@ -144,7 +144,12 @@
       "saving": "저장 중...",
       "skip": "건너뛰기 — 바로 채팅할게요",
       "error": "저장에 실패했습니다. 다시 시도해주세요."
-    }
+    },
+    "newChatTitle": "새 대화를 시작할까요?",
+    "newChatDescription": "현재 대화는 화면에서 사라지지만, 데이터는 보존됩니다.",
+    "newChatCancel": "취소",
+    "newChatConfirm": "새 대화",
+    "newChatLabel": "새 대화"
   },
   "tabs": {
     "shops": "쇼핑",

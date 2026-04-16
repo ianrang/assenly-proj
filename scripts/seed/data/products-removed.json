@@ -1,0 +1,506 @@
+[
+  {
+    "brand": "Sulwhasoo",
+    "name": "Sulwhasoo Concentrated Ginseng Renewing Cream",
+    "id": "b5849788-fc44-5a53-b246-377af9be1dda",
+    "category": "skincare",
+    "subcategory": "moisturizer"
+  },
+  {
+    "brand": "Goodal",
+    "name": "Goodal Houttuynia Cordata Calming Moisture Cream",
+    "id": "2e1b9a7d-84f0-565c-9b8a-bf0d64c7c709",
+    "category": "skincare",
+    "subcategory": "moisturizer"
+  },
+  {
+    "brand": "ETUDE",
+    "name": "Etude Soon Jung Moist Full Collagen Cream",
+    "id": "3689923e-f5a9-591b-aaca-78776ce3be87",
+    "category": "skincare",
+    "subcategory": "moisturizer"
+  },
+  {
+    "brand": "Bioderma",
+    "name": "Bioderma Atoderm Intensive Baume",
+    "id": "70a5e093-ebc8-5e8e-9ecc-d4549d511a8b",
+    "category": "skincare",
+    "subcategory": "moisturizer"
+  },
+  {
+    "brand": "By Wishtrend",
+    "name": "By Wishtrend Pro-Biome Balance Cream",
+    "id": "e16eb748-c12c-5c98-9d1d-aad163ef1147",
+    "category": "skincare",
+    "subcategory": "moisturizer"
+  },
+  {
+    "brand": "Sulwhasoo",
+    "name": "Sulwhasoo First Care Activating Serum EX",
+    "id": "abfb1cc8-e306-5ed5-9dcb-c7f13bfc20c0",
+    "category": "skincare",
+    "subcategory": "serum"
+  },
+  {
+    "brand": "AHC",
+    "name": "AHC Premium Hydra B5 Soothing Essence",
+    "id": "15f7b140-0f00-56e1-b284-21c9849e50a0",
+    "category": "skincare",
+    "subcategory": "serum"
+  },
+  {
+    "brand": "Huxley",
+    "name": "Huxley Oil Essence; Essence-Like, Oil-Like",
+    "id": "ff348ad3-5736-5516-bc67-c490963fd66a",
+    "category": "skincare",
+    "subcategory": "serum"
+  },
+  {
+    "brand": "Bio Heal BOH",
+    "name": "Bioheal Boh Probiotics Lifting Cream",
+    "id": "8bcb62d5-ffed-519b-9f31-c4b2700c196f",
+    "category": "skincare",
+    "subcategory": "serum"
+  },
+  {
+    "brand": "One Thing",
+    "name": "ONE THING Propolis + Honey Essence",
+    "id": "b77b7074-10ef-532b-99e1-f5d07ca1d9cc",
+    "category": "skincare",
+    "subcategory": "serum"
+  },
+  {
+    "brand": "The History of Whoo",
+    "name": "The History of Whoo Bichup Self-Generating Anti-Aging Essence",
+    "id": "2c5025ff-9b67-5396-a79b-0b3836432ecd",
+    "category": "skincare",
+    "subcategory": "serum"
+  },
+  {
+    "brand": "numbuzin",
+    "name": "numbuzin No.5 Panthenol Soothing Serum",
+    "id": "dee92c65-4779-54bf-96ac-91f994275546",
+    "category": "skincare",
+    "subcategory": "serum"
+  },
+  {
+    "brand": "dear, Klairs",
+    "name": "Klairs Freshly Juiced Vitamin Drop",
+    "id": "f73763b4-8cc7-5819-a3cf-06ee25dfb3b9",
+    "category": "skincare",
+    "subcategory": "serum"
+  },
+  {
+    "brand": "ETUDE",
+    "name": "Etude House Soon Jung pH 6.5 Watery Cleanser",
+    "id": "72eb85ce-d632-5a31-9609-e30272ae863e",
+    "category": "skincare",
+    "subcategory": "cleanser"
+  },
+  {
+    "brand": "Some By Mi",
+    "name": "Some By Mi AHA BHA PHA 30 Days Miracle Toner",
+    "id": "59cfa99d-d065-57d3-a240-71eaeb7bdc4c",
+    "category": "skincare",
+    "subcategory": "cleanser"
+  },
+  {
+    "brand": "HERA",
+    "name": "Hera Cell Essence",
+    "id": "cbd60932-fda5-5d35-b790-f89e5c43f07f",
+    "category": "skincare",
+    "subcategory": "toner"
+  },
+  {
+    "brand": "primera",
+    "name": "Primera Mild Comforting Cleanser",
+    "id": "30758c51-d92b-58d3-9073-115e36d4540a",
+    "category": "skincare",
+    "subcategory": "toner"
+  },
+  {
+    "brand": "Innisfree",
+    "name": "Innisfree Daily UV Defense Sunscreen",
+    "id": "311c51f9-a3aa-5e96-8dc7-126d772d63dc",
+    "category": "skincare",
+    "subcategory": "sunscreen"
+  },
+  {
+    "brand": "Cell Fusion C",
+    "name": "Cell Fusion C Tone Up Sunscreen SPF50+",
+    "id": "295eb231-0c11-5e46-ac6d-967bb6b11e68",
+    "category": "skincare",
+    "subcategory": "sunscreen"
+  },
+  {
+    "brand": "Papa Recipe",
+    "name": "Papa Recipe Bombee Honey Mask",
+    "id": "40c89600-4465-57db-bbd8-1e036ee6c0f3",
+    "category": "skincare",
+    "subcategory": "mask"
+  },
+  {
+    "brand": "Sulwhasoo",
+    "name": "Sulwhasoo Concentrated Ginseng Renewing Eye Cream",
+    "id": "81f1f40a-96a1-5c2b-a851-a54eda0958d5",
+    "category": "skincare",
+    "subcategory": "eye_care"
+  },
+  {
+    "brand": "The History of Whoo",
+    "name": "The History of Whoo Bichup Ja Saeng Eye Cream",
+    "id": "15b51acf-b585-578d-976d-8b60456d05e6",
+    "category": "skincare",
+    "subcategory": "eye_care"
+  },
+  {
+    "brand": "The SAEM",
+    "name": "the SAEM Semi Essential Eye Cream",
+    "id": "70d9deab-b02e-5fb2-a821-dd47eecfd736",
+    "category": "skincare",
+    "subcategory": "eye_care"
+  },
+  {
+    "brand": "ISA KNOX",
+    "name": "ISA KNOX Age Focus Phyto-Pro Retinol Eye Cream",
+    "id": "5065984e-7de6-5a6b-bd21-64b4c809144d",
+    "category": "skincare",
+    "subcategory": "eye_care"
+  },
+  {
+    "brand": "numbuzin",
+    "name": "numbuzin No.4 Retinol Eye Cream",
+    "id": "58a3815b-ca23-5e48-a693-399cd65abf8a",
+    "category": "skincare",
+    "subcategory": "eye_care"
+  },
+  {
+    "brand": "Peripera",
+    "name": "Peripera Ink Mood Matte Tint",
+    "id": "623e5c6d-b9c5-52ce-bc9a-a172404eded1",
+    "category": "makeup",
+    "subcategory": "lip_tint"
+  },
+  {
+    "brand": "Laneige",
+    "name": "Laneige Two Tone Lip Tint",
+    "id": "5012eb3b-baac-5bae-9d35-007ec2f77f5d",
+    "category": "makeup",
+    "subcategory": "lip_tint"
+  },
+  {
+    "brand": "Mamonde",
+    "name": "Mamonde Creamy Tint Color Balm Intense",
+    "id": "fa1b1f88-a60d-5a95-a514-a0a6921bc3a1",
+    "category": "makeup",
+    "subcategory": "lip_balm"
+  },
+  {
+    "brand": "too cool for school",
+    "name": "too cool for school Glowy Fit Lip Glaze",
+    "id": "a1c532d4-602c-500f-b0d3-d755cac430df",
+    "category": "makeup",
+    "subcategory": "lip_gloss"
+  },
+  {
+    "brand": "Sulwhasoo",
+    "name": "Sulwhasoo Essential Lip Serum Stick",
+    "id": "9121c461-20d8-583a-91a9-22c34b2a6c16",
+    "category": "makeup",
+    "subcategory": "lip_stick"
+  },
+  {
+    "brand": "MISSHA",
+    "name": "Missha Magic Cushion Cover Lasting",
+    "id": "36cb56b2-af43-5c93-bcd7-1078fd3e5fad",
+    "category": "makeup",
+    "subcategory": "cushion"
+  },
+  {
+    "brand": "ETUDE",
+    "name": "Etude Double Lasting Cushion Glow",
+    "id": "ac6a7d8d-2615-5de6-9393-ad393b2dc984",
+    "category": "makeup",
+    "subcategory": "cushion"
+  },
+  {
+    "brand": "Sulwhasoo",
+    "name": "Sulwhasoo Perfecting Cushion",
+    "id": "22a7296d-4482-5ad8-838d-aa0f494c5023",
+    "category": "makeup",
+    "subcategory": "cushion"
+  },
+  {
+    "brand": "espoir",
+    "name": "Espoir Pro Tailor Be Foundation",
+    "id": "d913f96f-1640-54f3-87d4-ec6aaad8cfab",
+    "category": "makeup",
+    "subcategory": "cushion"
+  },
+  {
+    "brand": "Amorepacific",
+    "name": "Amorepacific Time Response Skin Reserve Cushion",
+    "id": "0f870ff9-a4e8-5f2f-9f3a-84baff67f86f",
+    "category": "makeup",
+    "subcategory": "foundation"
+  },
+  {
+    "brand": "ETUDE",
+    "name": "Etude House Play Color Eyes Eyeshadow Palette",
+    "id": "1cdb9808-41f7-5966-a2a5-f7d279a861b2",
+    "category": "makeup",
+    "subcategory": "eye_shadow"
+  },
+  {
+    "brand": "CLIO",
+    "name": "Clio Kill Lash Superproof Mascara",
+    "id": "710c681c-3a6b-50e2-b0a1-cf8d161b496a",
+    "category": "makeup",
+    "subcategory": "mascara"
+  },
+  {
+    "brand": "rom&nd",
+    "name": "rom&nd Han All Super Proof Mascara",
+    "id": "021a9515-386e-599b-a523-f550c275b237",
+    "category": "makeup",
+    "subcategory": "mascara"
+  },
+  {
+    "brand": "Peripera",
+    "name": "Peripera Ink Thin Thin Eye Pencil",
+    "id": "9d329440-edb1-5e29-8552-8c97f29174be",
+    "category": "makeup",
+    "subcategory": "eye_liner"
+  },
+  {
+    "brand": "HERA",
+    "name": "Hera Eye Designer Palette",
+    "id": "2c433f68-9375-5434-9675-894ffd1ea98a",
+    "category": "makeup",
+    "subcategory": "eye_shadow"
+  },
+  {
+    "brand": "Innisfree",
+    "name": "Innisfree No Sebum Mineral Powder",
+    "id": "3b3a1069-59a5-5c9c-bfae-9fb44f501b73",
+    "category": "makeup",
+    "subcategory": "setting_powder"
+  },
+  {
+    "brand": "ETUDE",
+    "name": "Etude House Flower Petal Blusher",
+    "id": "a7812e0c-ee3b-5d9c-8ed7-d457582f7868",
+    "category": "makeup",
+    "subcategory": "blush"
+  },
+  {
+    "brand": "La'dor",
+    "name": "Labo-H Hair Loss Relief Shampoo",
+    "id": "6606c186-0660-58f6-8b70-96dd23e1e0ca",
+    "category": "haircare",
+    "subcategory": "shampoo"
+  },
+  {
+    "brand": "Amos Professional",
+    "name": "Amos Green Tea Scalp Pack Shampoo",
+    "id": "d47ecc40-35f7-5c55-94c3-a91077a1b9f8",
+    "category": "haircare",
+    "subcategory": "shampoo"
+  },
+  {
+    "brand": "Amos Professional",
+    "name": "Amos Professional The Green Tea Scalp Pack Shampoo",
+    "id": "824090e6-5895-52f2-a0c0-5ef355de5f1a",
+    "category": "haircare",
+    "subcategory": "shampoo"
+  },
+  {
+    "brand": "Moremo",
+    "name": "Moremo Water Treatment Miracle 10",
+    "id": "94aa4a41-04bb-5a0e-bf30-2620fab62d41",
+    "category": "haircare",
+    "subcategory": "treatment"
+  },
+  {
+    "brand": "La'dor",
+    "name": "Lador Perfect Hair Fill-Up",
+    "id": "1551d2f4-d367-5b9b-84c7-eb1c67056a22",
+    "category": "haircare",
+    "subcategory": "treatment"
+  },
+  {
+    "brand": "Moremo",
+    "name": "Moremo Hair Essence Delightful Oil",
+    "id": "91a0f0f3-25c7-58e3-8778-b72dfae2f719",
+    "category": "haircare",
+    "subcategory": "hair_oil"
+  },
+  {
+    "brand": "Mise en Scène",
+    "name": "Mise en Scène Perfect Serum Original",
+    "id": "88b286f9-9b0b-585f-a825-20cb94c0e34e",
+    "category": "haircare",
+    "subcategory": "hair_serum"
+  },
+  {
+    "brand": "La'dor",
+    "name": "Lador Perfect Hair Fill-Up Essence",
+    "id": "c384bd77-a327-56a0-bc91-cec440fde836",
+    "category": "haircare",
+    "subcategory": "hair_essence"
+  },
+  {
+    "brand": "HERA",
+    "name": "Hera Signia Hair Oil",
+    "id": "225108a7-f817-52b9-a9a0-46e604969eb9",
+    "category": "haircare",
+    "subcategory": "hair_oil"
+  },
+  {
+    "brand": "Mise en Scène",
+    "name": "Mise en Scène Hello Bubble Foam Color",
+    "id": "48cd4a55-a2d8-5c36-a531-6be292d9963e",
+    "category": "haircare",
+    "subcategory": "hair_color"
+  },
+  {
+    "brand": "Amos Professional",
+    "name": "Amos Curling Essence 2X",
+    "id": "4f36a22b-3c71-5466-a508-cb878e71d091",
+    "category": "haircare",
+    "subcategory": "styling"
+  },
+  {
+    "brand": "Ryo",
+    "name": "Ryo Double Effector Root Volume Setting",
+    "id": "ff2ccdc2-4f69-5ee2-a649-4f4884f8bc57",
+    "category": "bodycare",
+    "subcategory": "body_wash"
+  },
+  {
+    "brand": "Happy Bath",
+    "name": "Happy Bath Green Tea Body Wash",
+    "id": "2aef6b28-9b7d-51ce-95b3-e242f97a1861",
+    "category": "bodycare",
+    "subcategory": "body_wash"
+  },
+  {
+    "brand": "Hanyul",
+    "name": "Hanyul Yuja Moonlight Body Wash",
+    "id": "923df183-cb89-5248-b49c-90aaed480cd8",
+    "category": "bodycare",
+    "subcategory": "body_wash"
+  },
+  {
+    "brand": "Mediheal",
+    "name": "Mediheal Tea Tree Body Wash",
+    "id": "0cb810cf-fd2f-5bba-96ac-1ec13764138e",
+    "category": "bodycare",
+    "subcategory": "body_wash"
+  },
+  {
+    "brand": "Amorepacific",
+    "name": "Amorepacific Body Ritual Cleansing Oil",
+    "id": "5f8ebc7b-e6ef-50b9-9360-d6a9b479a520",
+    "category": "bodycare",
+    "subcategory": "body_lotion"
+  },
+  {
+    "brand": "Cetaphil",
+    "name": "Cetaphil Body Moisturizer",
+    "id": "03bafefb-8e3b-5d42-a9e1-60040450f788",
+    "category": "bodycare",
+    "subcategory": "body_lotion"
+  },
+  {
+    "brand": "Hanyul",
+    "name": "Hanyul Yuja Moonlight Body Lotion",
+    "id": "cd0a6acd-a72e-5fc5-b237-2d1c2e9d547c",
+    "category": "bodycare",
+    "subcategory": "body_lotion"
+  },
+  {
+    "brand": "Atopalm",
+    "name": "Atopalm MLE Body Lotion",
+    "id": "27dcf433-87bc-5076-a8e7-bdf9a0583335",
+    "category": "bodycare",
+    "subcategory": "hand_cream"
+  },
+  {
+    "brand": "The Face Shop",
+    "name": "The Face Shop Therapy Garden Hand Cream",
+    "id": "fc8c644c-e99e-51a2-85bd-1b5192443d8f",
+    "category": "bodycare",
+    "subcategory": "hand_cream"
+  },
+  {
+    "brand": "Laneige",
+    "name": "LANEIGE Lip & Hand Blooming Set",
+    "id": "25164cac-29be-5ecd-b774-7cff05748703",
+    "category": "bodycare",
+    "subcategory": "body_sunscreen"
+  },
+  {
+    "brand": "ETUDE",
+    "name": "Etude My Beauty Tool Silicone Puff",
+    "id": "50226aed-add0-5e86-9635-fba93482f5f7",
+    "category": "tools",
+    "subcategory": "makeup_puff"
+  },
+  {
+    "brand": "ETUDE",
+    "name": "Etude My Beauty Tool Airy Puff",
+    "id": "42b9df53-a932-5d17-9bc3-2c83ade4bdb6",
+    "category": "tools",
+    "subcategory": "makeup_sponge"
+  },
+  {
+    "brand": "Fillimilli",
+    "name": "Fillimilli Face Soft Velvet Sponge",
+    "id": "f53aed9a-c4a6-5b4a-86c5-556a05cdd6bd",
+    "category": "tools",
+    "subcategory": "mask_cover"
+  },
+  {
+    "brand": "Daiso",
+    "name": "Daiso Silicone Mask Pack Cover",
+    "id": "de4d047c-e52a-5ac2-b6ff-7a1d6910a6d1",
+    "category": "tools",
+    "subcategory": "mirror"
+  },
+  {
+    "brand": "Fillimilli",
+    "name": "Fillimilli LED Compact Mirror",
+    "id": "94c6cf34-c88a-5f68-95d9-0eac696380f0",
+    "category": "tools",
+    "subcategory": "organizer"
+  },
+  {
+    "brand": "ETUDE",
+    "name": "Etude My Beauty Tool Brush Pouch",
+    "id": "1cb304dc-4ebd-567d-9578-dda6d7aca3ff",
+    "category": "bodycare",
+    "subcategory": "body_scrub"
+  },
+  {
+    "brand": "TONYMOLY",
+    "name": "TONYMOLY Floria Nutra-Energy Body Scrub",
+    "id": "0402e52e-00b1-59d8-9dc7-2afbbf064465",
+    "category": "tools",
+    "subcategory": "cleansing_brush"
+  },
+  {
+    "brand": "Innisfree",
+    "name": "Innisfree Eco Beauty Tool Silicone Cleanser",
+    "id": "1d0c58be-357c-5c1a-b57c-c7eda6cf2b84",
+    "category": "tools",
+    "subcategory": "cleansing_brush"
+  },
+  {
+    "brand": "MISSHA",
+    "name": "MISSHA Super Aqua Soft Cleansing Puff",
+    "id": "e2f57eaa-1c40-5840-9615-d5a811426386",
+    "category": "tools",
+    "subcategory": "cleansing_brush"
+  }
+]

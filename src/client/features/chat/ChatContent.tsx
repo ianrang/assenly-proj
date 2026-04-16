@@ -32,6 +32,7 @@ type ChatContentProps = {
    * ChatInterface에서 /api/profile 병렬 조회로 계산됨(fail-closed).
    */
   initialOnboardingCompleted: boolean;
+  onMessageSent?: () => void;
 };
 
 export default function ChatContent({
@@ -39,6 +40,7 @@ export default function ChatContent({
   initialMessages,
   initialConversationId,
   initialOnboardingCompleted,
+  onMessageSent,
 }: ChatContentProps) {
   const t = useTranslations("chat");
   const [showSuggestions, setShowSuggestions] = useState(
@@ -128,6 +130,7 @@ export default function ChatContent({
   function handleSend(text: string) {
     setShowSuggestions(false);
     retryCountRef.current = 0;
+    onMessageSent?.();
     sendMessage({ text });
   }
 

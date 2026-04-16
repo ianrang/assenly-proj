@@ -144,7 +144,12 @@
       "saving": "Saving...",
       "skip": "Skip — I'll just chat",
       "error": "Couldn't save. Please try again."
-    }
+    },
+    "newChatTitle": "Start a new conversation?",
+    "newChatDescription": "The current chat will disappear from view, but your data is preserved.",
+    "newChatCancel": "Cancel",
+    "newChatConfirm": "New chat",
+    "newChatLabel": "New conversation"
   },
   "tabs": {
     "shops": "Shops",
