@@ -88,12 +88,18 @@ export default function ProfileClient({ locale }: ProfileClientProps) {
     <div className="px-5 py-6">
       <ProfileCard profile={state.profile} journey={state.journey} />
 
-      <div className="mt-6">
+      <div className="mt-6 flex flex-col gap-2">
         <Link
           href={`/${locale}/chat`}
           className={buttonVariants({ size: "cta", className: "w-full" })}
         >
           {t("continue")}
+        </Link>
+        <Link
+          href={`/${locale}/profile/edit`}
+          className={buttonVariants({ size: "cta", variant: "outline", className: "w-full" })}
+        >
+          {t("edit")}
         </Link>
       </div>
     </div>

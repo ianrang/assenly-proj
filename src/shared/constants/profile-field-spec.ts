@@ -30,3 +30,11 @@ export const JOURNEY_FIELD_SPEC = {
 
 /** UP-1: 단일 사용자가 가질 수 있는 피부 타입 수 상한 (G-10 단일 원천) */
 export const MAX_SKIN_TYPES = PROFILE_FIELD_SPEC.skin_types.max;
+
+/**
+ * NEW-17d P-3 Time-Decay Lock cooldown (일 단위).
+ * DB SSOT: `get_user_edit_cooldown()` IMMUTABLE 함수 (migration 019).
+ * Drift guard: integration test T11 — `get_user_edit_cooldown_days()` ↔ 이 상수 일치 검증.
+ * v0.2 admin-UI 도입 시 DB 함수는 STABLE + app_settings table-lookup 로 전환.
+ */
+export const USER_EDIT_COOLDOWN_DAYS = 30 as const;

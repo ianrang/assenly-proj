@@ -269,3 +269,41 @@ export async function applyAiExtractionToJourney(
   }
   return { applied: (data as string[]) ?? [] };
 }
+
+/**
+ * NEW-17d: 사용자 명시 편집 (REPLACE semantic, atomic profile + journey).
+ * authenticated client 로 호출. RLS 가 auth.uid() = user_id 강제.
+ * M3: error logging (Q-7 관측성).
+ *
+ * v1.1 CQ1: RPC 'not found' EXCEPTION 을 PROFILE_NOT_FOUND 코드로 재전파하여
+ *           route handler 가 404 로 매핑 가능하도록.
+ */
+export async function applyUserExplicitEdit(
+  client: SupabaseClient,
+  userId: string,
+  profilePatch: Record<string, unknown>,
+  journeyPatch: Record<string, unknown>,
+): Promise<{ applied_profile: string[]; applied_journey: string[] }> {
+  const { data, error } = await client.rpc('apply_user_explicit_edit', {
+    p_user_id: userId,
+    p_profile_patch: profilePatch,
+    p_journey_patch: journeyPatch,
+  });
+  if (error) {
+    console.error('[applyUserExplicitEdit] rpc error', {
+      userId,
+      code: error.code,
+      message: error.message,
+    });
+    // v1.1 RT-2: Use SQLSTATE P0002 (no_data_found) instead of message regex.
+    // Regex matching on 'not found' is fragile — migration 019c sets
+    // USING ERRCODE = 'P0002' on the RAISE EXCEPTION for PROFILE_NOT_FOUND case.
+    if (error.code === 'P0002') {
+      const err = new Error('PROFILE_NOT_FOUND');
+      (err as Error & { code?: string }).code = 'PROFILE_NOT_FOUND';
+      throw err;
+    }
+    throw new Error('Profile edit failed');
+  }
+  return data as { applied_profile: string[]; applied_journey: string[] };
+}

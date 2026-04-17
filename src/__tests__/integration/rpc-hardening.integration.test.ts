@@ -21,6 +21,12 @@ describe('RPC Hardening (integration)', () => {
   let userD: TestSession;
   const admin = createVerifyClient();
 
+  function createAuthClient(token: string) {
+    return createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+      global: { headers: { Authorization: `Bearer ${token}` } },
+    });
+  }
+
   beforeAll(async () => {
     userA = await createRegisteredTestUser();
     userB = await createRegisteredTestUser();
@@ -151,14 +157,11 @@ describe('RPC Hardening (integration)', () => {
     });
   });
 
-  // ── T5: REVOKE 검증 — 4개 함수 전수 ──────────────────────
-  describe('T5: REVOKE 검증 (authenticated 거부)', () => {
-    function createAuthClient(token: string) {
-      return createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
-        global: { headers: { Authorization: `Bearer ${token}` } },
-      });
-    }
-
+  // ── T5: REVOKE 검증 — apply_ai_*_patch 만 ─────────────────
+  // NEW-17d 이후: get_*_field_spec 은 authenticated 에 공개 (migration 019 Step 7).
+  // 이유: apply_user_explicit_edit (SECURITY INVOKER, authenticated) 가 내부 호출.
+  // 보안 경계 이동 없음 — 핵심은 apply_ai_*_patch 가 여전히 service_role 전용인 것.
+  describe('T5: REVOKE 검증 (authenticated 거부 — AI patch RPCs)', () => {
     it('apply_ai_profile_patch → 거부', async () => {
       const client = createAuthClient(userA.token);
       const { error, status } = await client.rpc('apply_ai_profile_patch', {
@@ -178,26 +181,6 @@ describe('RPC Hardening (integration)', () => {
         p_user_id: userA.userId,
         p_patch: { skin_concerns: ['acne'] },
       });
-      expect(error).not.toBeNull();
-      expect(
-        error!.code === '42501' || error!.code === 'PGRST202' || error!.code === 'PGRST301',
-      ).toBe(true);
-      expect(status).toBeGreaterThanOrEqual(400);
-    });
-
-    it('get_profile_field_spec → 거부', async () => {
-      const client = createAuthClient(userA.token);
-      const { error, status } = await client.rpc('get_profile_field_spec');
-      expect(error).not.toBeNull();
-      expect(
-        error!.code === '42501' || error!.code === 'PGRST202' || error!.code === 'PGRST301',
-      ).toBe(true);
-      expect(status).toBeGreaterThanOrEqual(400);
-    });
-
-    it('get_journey_field_spec → 거부', async () => {
-      const client = createAuthClient(userA.token);
-      const { error, status } = await client.rpc('get_journey_field_spec');
       expect(error).not.toBeNull();
       expect(
         error!.code === '42501' || error!.code === 'PGRST202' || error!.code === 'PGRST301',
@@ -318,6 +301,303 @@ describe('RPC Hardening (integration)', () => {
         .eq('user_id', userC.userId)
         .single();
       expect(row2!.age_range).toBe('25-29'); // 불변
+    });
+  });
+
+  // ── T9: NEW-17d — cooldown 내 skin_types AI 스킵 ──────────
+  describe('T9: AI patch cooldown 내 skin_types 스킵', () => {
+    it('user_updated_at 설정된 필드는 AI patch 가 스킵', async () => {
+      // Setup: user_profiles 존재 확인 + skin_types + timestamp 세팅
+      await admin.from('user_profiles').upsert({
+        user_id: userA.userId,
+        language: 'en',
+        skin_types: ['dry'],
+        skin_types_user_updated_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      }, { onConflict: 'user_id' });
+
+      const { data: applied, error } = await admin.rpc('apply_ai_profile_patch', {
+        p_user_id: userA.userId,
+        p_patch: { skin_types: ['oily'] },
+      });
+
+      expect(error).toBeNull();
+      expect(applied as string[]).not.toContain('skin_types');
+
+      const { data: row } = await admin
+        .from('user_profiles')
+        .select('skin_types')
+        .eq('user_id', userA.userId)
+        .single();
+      expect(row!.skin_types).toEqual(['dry']);  // 불변
+    });
+  });
+
+  // ── T10: NEW-17d — cooldown 만료 후 재활성 ─────────────────
+  describe('T10: AI patch cooldown 만료 후 재활성', () => {
+    it('user_updated_at 이 31일 전이면 AI 재merge 허용', async () => {
+      const thirtyOneDaysAgo = new Date(Date.now() - 31 * 24 * 60 * 60 * 1000);
+      await admin.from('user_profiles').upsert({
+        user_id: userB.userId,
+        language: 'en',
+        skin_types: ['dry'],
+        skin_types_user_updated_at: thirtyOneDaysAgo.toISOString(),
+        updated_at: new Date().toISOString(),
+      }, { onConflict: 'user_id' });
+
+      const { data: applied, error } = await admin.rpc('apply_ai_profile_patch', {
+        p_user_id: userB.userId,
+        p_patch: { skin_types: ['oily'] },
+      });
+
+      expect(error).toBeNull();
+      expect(applied as string[]).toContain('skin_types');
+
+      const { data: row } = await admin
+        .from('user_profiles')
+        .select('skin_types')
+        .eq('user_id', userB.userId)
+        .single();
+      // CR-1 priority: cur=['dry'] first, inc=['oily'] appended
+      expect(row!.skin_types).toEqual(['dry', 'oily']);
+    });
+  });
+
+  // ── T11: NEW-17d — cooldown drift guard ───────────────────
+  describe('T11: get_user_edit_cooldown_days() drift guard', () => {
+    it('TS USER_EDIT_COOLDOWN_DAYS matches DB', async () => {
+      const { USER_EDIT_COOLDOWN_DAYS } = await import(
+        '@/shared/constants/profile-field-spec'
+      );
+      const { data, error } = await admin.rpc('get_user_edit_cooldown_days');
+      expect(error).toBeNull();
+      expect(Number(data)).toBe(USER_EDIT_COOLDOWN_DAYS);
+    });
+  });
+
+  // ── T12: NEW-17d — apply_user_explicit_edit REPLACE ───────
+  describe('T12: apply_user_explicit_edit REPLACE semantic (배열 축소)', () => {
+    it('skin_types [oily, sensitive] → [dry]', async () => {
+      // Setup
+      await admin.from('user_profiles').upsert({
+        user_id: userC.userId,
+        language: 'en',
+        skin_types: ['oily', 'sensitive'],
+        skin_types_user_updated_at: null,
+        updated_at: new Date().toISOString(),
+      }, { onConflict: 'user_id' });
+
+      const client = createAuthClient(userC.token);
+      const { data, error } = await client.rpc('apply_user_explicit_edit', {
+        p_user_id: userC.userId,
+        p_profile_patch: { skin_types: ['dry'] },
+        p_journey_patch: {},
+      });
+
+      expect(error).toBeNull();
+      const result = data as { applied_profile: string[]; applied_journey: string[] };
+      expect(result.applied_profile).toContain('skin_types');
+
+      const { data: row } = await admin
+        .from('user_profiles')
+        .select('skin_types, skin_types_user_updated_at')
+        .eq('user_id', userC.userId)
+        .single();
+      expect(row!.skin_types).toEqual(['dry']);  // 축소됨
+      expect(row!.skin_types_user_updated_at).not.toBeNull();  // timestamp set
+    });
+  });
+
+  // ── T13: NEW-17d — beauty_summary NULL 재설정 ──────────────
+  describe('T13: beauty_summary stale 방어', () => {
+    it('편집 시 beauty_summary NULL 로 재설정', async () => {
+      await admin.from('user_profiles').upsert({
+        user_id: userD.userId,
+        language: 'en',
+        beauty_summary: 'Some AI summary text',
+        hair_type: null,
+        updated_at: new Date().toISOString(),
+      }, { onConflict: 'user_id' });
+
+      const client = createAuthClient(userD.token);
+      const { error } = await client.rpc('apply_user_explicit_edit', {
+        p_user_id: userD.userId,
+        p_profile_patch: { hair_type: 'curly' },
+        p_journey_patch: {},
+      });
+      expect(error).toBeNull();
+
+      const { data: row } = await admin
+        .from('user_profiles')
+        .select('beauty_summary, hair_type')
+        .eq('user_id', userD.userId)
+        .single();
+      expect(row!.beauty_summary).toBeNull();
+      expect(row!.hair_type).toBe('curly');
+    });
+  });
+
+  // ── T14: NEW-17d — Q-11 atomic rollback ───────────────────
+  describe('T14: journey CHECK 위반 시 profile ROLLBACK', () => {
+    it('budget_level 불법값 → profile + journey 모두 원복', async () => {
+      await admin.from('user_profiles').upsert({
+        user_id: userA.userId,
+        language: 'en',
+        hair_type: 'straight',
+        updated_at: new Date().toISOString(),
+      }, { onConflict: 'user_id' });
+
+      const client = createAuthClient(userA.token);
+      const { error } = await client.rpc('apply_user_explicit_edit', {
+        p_user_id: userA.userId,
+        p_profile_patch: { hair_type: 'curly' },
+        p_journey_patch: { budget_level: 'INVALID_VALUE' }, // CHECK 위반
+      });
+      expect(error).not.toBeNull();
+
+      const { data: row } = await admin
+        .from('user_profiles')
+        .select('hair_type')
+        .eq('user_id', userA.userId)
+        .single();
+      expect(row!.hair_type).toBe('straight');  // 원복됨
+    });
+  });
+
+  // ── T15: NEW-17d — 동시 AI patch + user edit, user 승리 ────
+  describe('T15: 동시 편집 row lock + cooldown', () => {
+    it('병렬 실행 후 최종 상태는 user 값 우선', async () => {
+      await admin.from('user_profiles').upsert({
+        user_id: userB.userId,
+        language: 'en',
+        skin_types: ['oily'],
+        skin_types_user_updated_at: null,
+        updated_at: new Date().toISOString(),
+      }, { onConflict: 'user_id' });
+
+      const client = createAuthClient(userB.token);
+      // 병렬 dispatch
+      const userPromise = client.rpc('apply_user_explicit_edit', {
+        p_user_id: userB.userId,
+        p_profile_patch: { skin_types: ['dry'] },
+        p_journey_patch: {},
+      });
+      const aiPromise = admin.rpc('apply_ai_profile_patch', {
+        p_user_id: userB.userId,
+        p_patch: { skin_types: ['normal'] },
+      });
+      await Promise.all([userPromise, aiPromise]);
+
+      const { data: row } = await admin
+        .from('user_profiles')
+        .select('skin_types')
+        .eq('user_id', userB.userId)
+        .single();
+      // 둘 중 어느 순서라도 user 값이 최종
+      // Case A (user first): user REPLACE ['dry'] → AI cooldown skip → 최종 ['dry']
+      // Case B (AI first): AI merge ['oily', 'normal'] → user REPLACE ['dry'] → 최종 ['dry']
+      expect(row!.skin_types).toEqual(['dry']);
+    });
+  });
+
+  // ── T16: NEW-17d — Q-12 멱등성 ───────────────────────────
+  describe('T16: 동일 patch 재전송 멱등', () => {
+    it('두 번째 호출의 applied_profile 은 []', async () => {
+      await admin.from('user_profiles').upsert({
+        user_id: userC.userId,
+        language: 'en',
+        skin_types: ['dry'],
+        skin_types_user_updated_at: null,
+        updated_at: new Date().toISOString(),
+      }, { onConflict: 'user_id' });
+
+      const client = createAuthClient(userC.token);
+      const patch = {
+        p_user_id: userC.userId,
+        p_profile_patch: { skin_types: ['oily', 'sensitive'] },
+        p_journey_patch: {},
+      };
+      const first = await client.rpc('apply_user_explicit_edit', patch);
+      expect(first.error).toBeNull();
+      const firstResult = first.data as { applied_profile: string[]; applied_journey: string[] };
+      expect(firstResult.applied_profile).toContain('skin_types');
+
+      const second = await client.rpc('apply_user_explicit_edit', patch);
+      expect(second.error).toBeNull();
+      const secondResult = second.data as { applied_profile: string[]; applied_journey: string[] };
+      expect(secondResult.applied_profile).toEqual([]);
+    });
+  });
+
+  // ── T17: NEW-17d — cross-user 격리 ────────────────────────
+  describe('T17: 타 사용자 user_id 전달 시 EXCEPTION or 무변경', () => {
+    it('User A 가 User B 의 user_id 로 RPC 호출 시 실패', async () => {
+      // Setup: userD 사전 상태 고정
+      await admin.from('user_profiles').upsert({
+        user_id: userD.userId,
+        language: 'en',
+        hair_type: 'straight',
+        updated_at: new Date().toISOString(),
+      }, { onConflict: 'user_id' });
+
+      const clientA = createAuthClient(userA.token);
+      const { error } = await clientA.rpc('apply_user_explicit_edit', {
+        p_user_id: userD.userId,  // 타인
+        p_profile_patch: { hair_type: 'curly' },
+        p_journey_patch: {},
+      });
+      // RLS + 선체크 조합 → EXCEPTION or 0 rows
+      expect(error).not.toBeNull();
+
+      const { data: rowD } = await admin
+        .from('user_profiles')
+        .select('hair_type')
+        .eq('user_id', userD.userId)
+        .single();
+      expect(rowD!.hair_type).toBe('straight');  // 무변경
+    });
+  });
+
+  // ── T19: NEW-17d 019b — null scalar SET NULL ───────────────
+  describe('T19: apply_user_explicit_edit null scalar clears field', () => {
+    it('hair_type: null → SET NULL + applied_profile 포함', async () => {
+      // Setup: hair_type 기존값 있음
+      await admin.from('user_profiles').upsert({
+        user_id: userD.userId,
+        language: 'en',
+        hair_type: 'straight',
+        updated_at: new Date().toISOString(),
+      }, { onConflict: 'user_id' });
+
+      const client = createAuthClient(userD.token);
+      const { data, error } = await client.rpc('apply_user_explicit_edit', {
+        p_user_id: userD.userId,
+        p_profile_patch: { hair_type: null },
+        p_journey_patch: {},
+      });
+      expect(error).toBeNull();
+      const result = data as { applied_profile: string[]; applied_journey: string[] };
+      expect(result.applied_profile).toContain('hair_type');
+
+      const { data: row } = await admin
+        .from('user_profiles')
+        .select('hair_type')
+        .eq('user_id', userD.userId)
+        .single();
+      expect(row!.hair_type).toBeNull();
+    });
+
+    it('hair_type: null 재전송 → 멱등 (이미 NULL)', async () => {
+      // hair_type 이미 NULL 인 상태 가정 (이전 테스트에서)
+      const client = createAuthClient(userD.token);
+      const { data, error } = await client.rpc('apply_user_explicit_edit', {
+        p_user_id: userD.userId,
+        p_profile_patch: { hair_type: null },
+        p_journey_patch: {},
+      });
+      expect(error).toBeNull();
+      const result = data as { applied_profile: string[]; applied_journey: string[] };
+      expect(result.applied_profile).not.toContain('hair_type');  // 이미 NULL 이라 no-op
     });
   });
 });

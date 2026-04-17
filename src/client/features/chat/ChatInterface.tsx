@@ -10,6 +10,7 @@ import Header from "@/client/features/layout/Header";
 import ConsentOverlay from "./ConsentOverlay";
 import ChatContent from "./ChatContent";
 import NewChatButton from "./NewChatButton";
+import ProfileLinkButton from "./ProfileLinkButton";
 
 // ============================================================
 // ChatInterface — P2-45: 동의 게이트 + P2-50c 히스토리 로드
@@ -186,6 +187,13 @@ export default function ChatInterface({ locale }: ChatInterfaceProps) {
         leftContent={
           <NewChatButton onReset={handleReset} hasMessages={showResetButton} />
         }
+        rightContent={
+          // NEW-17d: onboarding 완료 사용자에게만 /profile 진입 버튼 노출.
+          // 미완료 사용자는 클릭 시 /api/profile 404 → /chat 리다이렉트가 되므로 왕복 방지.
+          initialOnboardingCompleted ? (
+            <ProfileLinkButton locale={locale} />
+          ) : null
+        }
       />
       <main className="mx-auto w-full max-w-[640px] flex-1 px-5">
         <ChatContent
@@ -194,6 +202,7 @@ export default function ChatInterface({ locale }: ChatInterfaceProps) {
           initialMessages={initialMessages}
           initialConversationId={initialConversationId}
           initialOnboardingCompleted={initialOnboardingCompleted}
+          onOnboardingComplete={() => setInitialOnboardingCompleted(true)}
           onMessageSent={() => setHasStartedChat(true)}
         />
       </main>

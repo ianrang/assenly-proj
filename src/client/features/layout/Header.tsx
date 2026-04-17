@@ -9,11 +9,13 @@ import BrandLogo from "@/client/features/layout/BrandLogo";
 
 type HeaderProps = {
   leftContent?: ReactNode;
+  rightContent?: ReactNode;
   showLanguageSelector?: boolean;
 };
 
 export default function Header({
   leftContent,
+  rightContent,
   showLanguageSelector = false,
 }: HeaderProps) {
   return (
@@ -24,6 +26,7 @@ export default function Header({
         </div>
         <BrandLogo />
         <div className="flex min-w-[60px] items-center justify-end gap-2">
+          {rightContent}
           {showLanguageSelector && <LanguageSelector />}
           <ThemeToggle />
         </div>

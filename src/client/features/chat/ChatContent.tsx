@@ -32,6 +32,12 @@ type ChatContentProps = {
    * ChatInterface에서 /api/profile 병렬 조회로 계산됨(fail-closed).
    */
   initialOnboardingCompleted: boolean;
+  /**
+   * NEW-17d: OnboardingChips Start/Skip 성공 시 호출. 부모(ChatInterface)가
+   * initialOnboardingCompleted state 를 즉시 true 로 전환하도록 bubble up.
+   * 이 callback 이 없으면 Profile 아이콘이 세션 새로고침 전까지 숨김 유지.
+   */
+  onOnboardingComplete?: () => void;
   onMessageSent?: () => void;
 };
 
@@ -40,6 +46,7 @@ export default function ChatContent({
   initialMessages,
   initialConversationId,
   initialOnboardingCompleted,
+  onOnboardingComplete,
   onMessageSent,
 }: ChatContentProps) {
   const t = useTranslations("chat");
@@ -155,6 +162,9 @@ export default function ChatContent({
                 <OnboardingChips
                   onComplete={() => {
                     setShowOnboarding(false);
+                    // NEW-17d: bubble up to ChatInterface so Header Profile icon
+                    // + New chat button 즉시 노출 (onboarding 게이트 통과).
+                    onOnboardingComplete?.();
                   }}
                 />
               ) : (

@@ -74,6 +74,10 @@
     "skinConcern_dryness": "건조함",
     "skinConcern_pores": "모공",
     "skinConcern_dullness": "칙칙함",
+    "skinConcern_dark_circles": "다크서클",
+    "skinConcern_uneven_tone": "색조 불균형",
+    "skinConcern_sun_damage": "자외선 손상",
+    "skinConcern_eczema": "습진",
     "hairConcerns": "모발 고민이 있나요?",
     "hairConcern_damage": "손상",
     "hairConcern_thinning": "탈모",
@@ -83,6 +87,12 @@
     "hairConcern_color_treated": "염색 모발",
     "country": "어느 나라에서 오셨나요?",
     "age": "연령대",
+    "ageRange_18-24": "18~24세",
+    "ageRange_25-29": "25~29세",
+    "ageRange_30-34": "30~34세",
+    "ageRange_35-39": "35~39세",
+    "ageRange_40-49": "40~49세",
+    "ageRange_50+": "50세 이상",
     "stayDays": "한국 체류 기간은?",
     "stayDaysSuffix": "{days, plural, one {#일} other {#일}}",
     "budget": "예산 수준",
@@ -112,7 +122,16 @@
   },
   "profile": {
     "title": "나의 뷰티 프로필",
+    "navLabel": "내 프로필",
     "continue": "추천 보기",
+    "edit": "프로필 수정",
+    "editTitle": "프로필 수정",
+    "save": "저장",
+    "cancel": "취소",
+    "unsavedChanges": "저장되지 않은 변경사항",
+    "unsavedChangesDescription": "저장되지 않은 변경사항이 있습니다. 이 페이지를 떠날까요?",
+    "saveError": "저장 실패. 다시 시도하세요.",
+    "skinTypeRequired": "저장하려면 피부 타입을 하나 이상 선택해주세요.",
     "skinType": "피부 타입",
     "hairType": "모발 타입",
     "skinConcerns": "피부 고민",
@@ -253,6 +272,9 @@
   "common": {
     "loading": "로딩 중...",
     "error": "문제가 발생했습니다",
-    "retry": "다시 시도"
+    "retry": "다시 시도",
+    "saving": "저장 중...",
+    "stay": "머무르기",
+    "leave": "나가기"
   }
 }
