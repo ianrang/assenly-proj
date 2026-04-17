@@ -83,6 +83,12 @@
     "hairConcern_color_treated": "Color-treated",
     "country": "Where are you from?",
     "age": "Age range",
+    "ageRange_18-24": "18–24",
+    "ageRange_25-29": "25–29",
+    "ageRange_30-34": "30–34",
+    "ageRange_35-39": "35–39",
+    "ageRange_40-49": "40–49",
+    "ageRange_50+": "50+",
     "stayDays": "How many days in Korea?",
     "stayDaysSuffix": "{days, plural, one {# day} other {# days}}",
     "budget": "Budget level",
@@ -113,6 +119,12 @@
   "profile": {
     "title": "Your Beauty Profile",
     "continue": "Show my picks",
+    "edit": "Edit profile",
+    "editTitle": "Edit your profile",
+    "save": "Save",
+    "cancel": "Cancel",
+    "unsavedChanges": "You have unsaved changes. Leave anyway?",
+    "saveError": "Failed to save. Please try again.",
     "skinType": "Skin Type",
     "hairType": "Hair Type",
     "skinConcerns": "Skin Concerns",
@@ -253,6 +265,9 @@
   "common": {
     "loading": "Loading...",
     "error": "Something went wrong",
-    "retry": "Try again"
+    "retry": "Try again",
+    "saving": "Saving...",
+    "stay": "Stay",
+    "leave": "Leave"
   }
 }
