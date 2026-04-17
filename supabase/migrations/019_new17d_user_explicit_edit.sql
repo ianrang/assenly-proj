@@ -79,7 +79,7 @@ BEGIN
     RAISE EXCEPTION 'user_profiles row not found for user_id %', p_user_id;
   END IF;
 
-  -- Journey lazy-create (aplay_ai_journey_patch 패턴 연속)
+  -- Journey lazy-create (apply_ai_journey_patch 패턴 연속)
   IF p_journey_patch IS NOT NULL AND p_journey_patch <> '{}'::jsonb THEN
     SELECT id INTO v_journey_id FROM journeys
      WHERE user_id = p_user_id AND status = 'active'
@@ -407,5 +407,10 @@ GRANT EXECUTE ON FUNCTION apply_ai_journey_patch(uuid, jsonb) TO service_role;
 
 COMMENT ON FUNCTION apply_ai_journey_patch(uuid, jsonb) IS
   'NEW-17d v1.1: apply_ai_journey_patch + cooldown check. service_role 전용.';
+
+-- Step 7. get_*_field_spec: v1.1 DC-1 authenticated GRANT 확장
+-- apply_user_explicit_edit (SECURITY INVOKER, authenticated) 가 내부적으로 호출하므로 필요.
+GRANT EXECUTE ON FUNCTION get_profile_field_spec() TO authenticated;
+GRANT EXECUTE ON FUNCTION get_journey_field_spec() TO authenticated;
 
 COMMIT;
