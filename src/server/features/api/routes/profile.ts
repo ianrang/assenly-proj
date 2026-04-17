@@ -10,10 +10,12 @@ import {
   upsertProfile,
   createMinimalProfile,
   markOnboardingCompleted,
+  applyUserExplicitEdit,
 } from '@/server/features/profile/service';
 import { getActiveJourney, createOrUpdateJourney } from '@/server/features/journey/service';
 import { createAuthenticatedClient } from '@/server/core/db';
 import { MAX_SKIN_TYPES } from "@/shared/constants/profile-field-spec";
+import { profileEditSchema } from '@/shared/validation/profile-edit';
 
 // ============================================================
 // POST /api/profile/onboarding — api-spec.md §2.3
@@ -262,6 +264,39 @@ const putProfileRoute = createRoute({
   },
 });
 
+const putProfileEditRoute = createRoute({
+  method: 'put',
+  path: '/api/profile/edit',
+  summary: 'NEW-17d: user-explicit profile + journey edit (atomic REPLACE)',
+  request: {
+    body: {
+      content: { 'application/json': { schema: profileEditSchema } },
+      required: true,
+    },
+  },
+  responses: {
+    200: {
+      content: {
+        'application/json': {
+          schema: z.object({
+            data: z.object({
+              applied_profile: z.array(z.string()),
+              applied_journey: z.array(z.string()),
+            }),
+            meta: z.object({ timestamp: z.string() }),
+          }),
+        },
+      },
+      description: 'Edit applied',
+    },
+    400: { content: { 'application/json': { schema: errorResponseSchema } }, description: 'Validation failed' },
+    401: { content: { 'application/json': { schema: errorResponseSchema } }, description: 'Authentication required' },
+    404: { content: { 'application/json': { schema: errorResponseSchema } }, description: 'Profile not found' },
+    429: { content: { 'application/json': { schema: errorResponseSchema } }, description: 'Rate limit exceeded' },
+    500: { content: { 'application/json': { schema: errorResponseSchema } }, description: 'Edit failed' },
+  },
+});
+
 // ============================================================
 // 온보딩 저장 오케스트레이션 (NEW-9b)
 //
@@ -444,6 +479,57 @@ export function registerProfileRoutes(app: AppType) {
           error: {
             code: 'PROFILE_UPDATE_FAILED',
             message: 'Failed to update profile',
+            details: null,
+          },
+        },
+        500,
+      );
+    }
+  });
+
+  // ── /api/profile/edit (NEW-17d) ───────────────────────────
+  app.use('/api/profile/edit', requireAuth());
+  app.use('/api/profile/edit', rateLimit('profile_edit', 30, 60_000));
+
+  app.openapi(putProfileEditRoute, async (c) => {
+    const user = c.get('user')!;
+    const client = c.get('client') as DbClient;
+    const body = c.req.valid('json');
+
+    try {
+      const result = await applyUserExplicitEdit(
+        client,
+        user.id,
+        body.profile,
+        body.journey,
+      );
+      return c.json(
+        {
+          data: result,
+          meta: { timestamp: new Date().toISOString() },
+        },
+        200,
+      );
+    } catch (error) {
+      const err = error as Error & { code?: string };
+      if (err.code === 'PROFILE_NOT_FOUND') {
+        return c.json(
+          {
+            error: {
+              code: 'PROFILE_NOT_FOUND',
+              message: 'Profile does not exist',
+              details: null,
+            },
+          },
+          404,
+        );
+      }
+      console.error('[PUT /api/profile/edit] failed', String(error));
+      return c.json(
+        {
+          error: {
+            code: 'PROFILE_EDIT_FAILED',
+            message: 'Failed to save profile edits',
             details: null,
           },
         },
