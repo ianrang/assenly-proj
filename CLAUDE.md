@@ -262,6 +262,7 @@ types/      → validation/  ✗ (역방향 금지)
 | Q-13 | FK 의존 순서 | 복수 테이블에 삽입할 때, 부모 레코드를 자식보다 먼저 생성한다. 외래 키 제약 위반을 에러 처리 흐름으로 사용하지 않는다 |
 | Q-14 | 스키마 정합성 | 입력 검증의 필수/선택 필드, 허용값, 타입은 DB 스키마의 제약(NOT NULL, CHECK, 열거값)과 일치해야 한다. 불일치 시 DB 스키마를 정본으로 한다 |
 | Q-15 | 비동기 쓰기 격리 | 응답 후 비동기로 실행되는 쓰기는 실패해도 사용자 응답에 영향을 주지 않는다. 에러는 로그에 기록한다 |
+| Q-16 | DB-TS spec drift 방어 | TS 상수와 DB(RPC/함수/제약)에 동일 spec이 이중 저장된 경우(예: `PROFILE_FIELD_SPEC` ↔ `get_profile_field_spec()`, zod enum ↔ CHECK 제약), 어느 쪽을 수정해도 반드시 로컬 `npm run test:integration` 실행으로 drift 테스트 통과를 확인한다. CI에서는 integration test가 실행되지 않으므로(`docs/03-design/INFRA-PIPELINE.md` §3.5) 개발자 로컬 규율이 유일한 drift 방어선이다 |
 
 ---
 
@@ -327,6 +328,7 @@ types/      → validation/  ✗ (역방향 금지)
 □ V-24 수정 영향 분석: 기존 코드 수정 시, (1) 관련 설계 문서와 설계 의도 일치를 확인했는가? (2) 수정 대상을 호출/참조하는 모든 비즈니스 코드를 추적하여 수정 범위를 정확히 파악했는가? (3) 논리적 결함·규칙 위반·비즈니스 로직 충돌이 없는가? 문제 발견 시 수정을 중단하고 사용자와 논의했는가?
 □ V-25 정본 확인: 참조한 설계 문서가 해당 주제의 정본(schema.dbml > PRD > TDD > design-detail > plans)인가? 레거시·아카이브·PoC 초안을 현행 설계로 취급하지 않았는가? 상위 정본과 하위 문서 간 충돌이 없는가?
 □ V-26 API 레이어: features/api/routes/ 파일이 Composition Root 역할을 수행하는가 (L-21)? createRoute 정의가 스키마+handler+문서를 통합하는가 (L-23)?
+□ V-27 DB-TS spec drift: TS 상수와 DB(RPC/함수/제약)에 동일 spec이 이중 저장된 필드를 변경한 경우, 로컬 `npm run test:integration` 실행으로 drift 테스트 통과를 확인했는가 (Q-16)?
 ```
 
 ---

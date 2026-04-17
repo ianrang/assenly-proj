@@ -1,10 +1,6 @@
 import 'server-only';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import type { UserProfileVars, JourneyContextVars } from '@/shared/types/profile';
-import {
-  PROFILE_FIELD_SPEC,
-  JOURNEY_FIELD_SPEC,
-} from '@/shared/constants/profile-field-spec';
 
 // ============================================================
 // 프로필 서비스 — api-spec.md §2.3
@@ -237,7 +233,6 @@ export async function applyAiExtraction(
   const { data, error } = await client.rpc('apply_ai_profile_patch', {
     p_user_id: userId,
     p_patch: patch,
-    p_spec: PROFILE_FIELD_SPEC,
   });
   if (error) {
     // M3: error logging (Q-7 관측성)
@@ -262,7 +257,6 @@ export async function applyAiExtractionToJourney(
   const { data, error } = await client.rpc('apply_ai_journey_patch', {
     p_user_id: userId,
     p_patch: patch,
-    p_spec: JOURNEY_FIELD_SPEC,
   });
   if (error) {
     // M3: error logging (Q-7 관측성)

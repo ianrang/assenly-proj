@@ -1,8 +1,4 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import {
-  PROFILE_FIELD_SPEC,
-  JOURNEY_FIELD_SPEC,
-} from '@/shared/constants/profile-field-spec';
 
 vi.mock('server-only', () => ({}));
 
@@ -293,14 +289,11 @@ describe('profile/service', () => {
         skin_types: ['dry'],
       });
 
-      expect(mockRpc).toHaveBeenCalledWith(
-        'apply_ai_profile_patch',
-        expect.objectContaining({
-          p_user_id: 'user-1',
-          p_patch: { skin_types: ['dry'] },
-          p_spec: PROFILE_FIELD_SPEC,
-        }),
-      );
+      // C2: exact match — p_user_id + p_patch만. p_spec 키가 있으면 fail.
+      expect(mockRpc).toHaveBeenCalledWith('apply_ai_profile_patch', {
+        p_user_id: 'user-1',
+        p_patch: { skin_types: ['dry'] },
+      });
       expect(r.applied).toEqual(['skin_types']);
     });
 
@@ -323,14 +316,14 @@ describe('profile/service', () => {
       expect(r.applied).toEqual([]);
     });
 
-    it('M4: applyAiExtraction은 PROFILE_FIELD_SPEC만 전달 (레지스트리 혼동 방지)', async () => {
+    it('M4: RPC 호출은 정확히 2개 키만 전달 (p_spec 서버 고정 확인)', async () => {
       const mockRpc = vi.fn().mockResolvedValue({ data: [], error: null });
       const client = { rpc: mockRpc };
       const { applyAiExtraction } = await import('@/server/features/profile/service');
       await applyAiExtraction(client as never, 'user-1', {});
-      const args = mockRpc.mock.calls[0][1];
-      expect(args.p_spec).toBe(PROFILE_FIELD_SPEC);
-      expect(args.p_spec).not.toBe(JOURNEY_FIELD_SPEC);
+
+      const args = mockRpc.mock.calls[0][1] as Record<string, unknown>;
+      expect(Object.keys(args).sort()).toEqual(['p_patch', 'p_user_id']);
     });
   });
 
@@ -344,14 +337,12 @@ describe('profile/service', () => {
       const r = await applyAiExtractionToJourney(client as never, 'user-1', {
         skin_concerns: ['acne'],
       });
-      expect(mockRpc).toHaveBeenCalledWith(
-        'apply_ai_journey_patch',
-        expect.objectContaining({
-          p_user_id: 'user-1',
-          p_patch: { skin_concerns: ['acne'] },
-          p_spec: JOURNEY_FIELD_SPEC,
-        }),
-      );
+
+      // C2: exact match — p_user_id + p_patch만
+      expect(mockRpc).toHaveBeenCalledWith('apply_ai_journey_patch', {
+        p_user_id: 'user-1',
+        p_patch: { skin_concerns: ['acne'] },
+      });
       expect(r.applied).toEqual(['skin_concerns']);
     });
 
@@ -368,16 +359,16 @@ describe('profile/service', () => {
       ).rejects.toThrow('AI journey patch failed');
     });
 
-    it('M4: applyAiExtractionToJourney는 JOURNEY_FIELD_SPEC만 전달 (레지스트리 혼동 방지)', async () => {
+    it('M4: RPC 호출은 정확히 2개 키만 전달 (p_spec 서버 고정 확인)', async () => {
       const mockRpc = vi.fn().mockResolvedValue({ data: [], error: null });
       const client = { rpc: mockRpc };
       const { applyAiExtractionToJourney } = await import(
         '@/server/features/profile/service'
       );
       await applyAiExtractionToJourney(client as never, 'user-1', {});
-      const args = mockRpc.mock.calls[0][1];
-      expect(args.p_spec).toBe(JOURNEY_FIELD_SPEC);
-      expect(args.p_spec).not.toBe(PROFILE_FIELD_SPEC);
+
+      const args = mockRpc.mock.calls[0][1] as Record<string, unknown>;
+      expect(Object.keys(args).sort()).toEqual(['p_patch', 'p_user_id']);
     });
   });
 });
