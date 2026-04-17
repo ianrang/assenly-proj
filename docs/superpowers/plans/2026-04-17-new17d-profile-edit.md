@@ -111,6 +111,19 @@ GRANT EXECUTE ON FUNCTION get_user_edit_cooldown() TO authenticated, service_rol
 COMMENT ON FUNCTION get_user_edit_cooldown() IS
   'NEW-17d: P-3 Time-Decay Lock cooldown 기간 SSOT. TS USER_EDIT_COOLDOWN_DAYS 와 drift guard (T11) 로 동기.';
 
+-- Step 3b. T11 drift guard 용 scalar wrapper
+-- supabase-js 의 RPC 호출이 INTERVAL 반환을 안정적으로 파싱하지 못하므로 days 숫자로 래핑.
+CREATE OR REPLACE FUNCTION get_user_edit_cooldown_days() RETURNS numeric
+  LANGUAGE sql IMMUTABLE AS $$
+    SELECT EXTRACT(EPOCH FROM get_user_edit_cooldown()) / 86400
+  $$;
+
+REVOKE ALL ON FUNCTION get_user_edit_cooldown_days() FROM PUBLIC, anon;
+GRANT EXECUTE ON FUNCTION get_user_edit_cooldown_days() TO authenticated, service_role;
+
+COMMENT ON FUNCTION get_user_edit_cooldown_days() IS
+  'NEW-17d T11: Q-16 drift guard 용. get_user_edit_cooldown() 을 days(numeric) 로 래핑.';
+
 -- Step 4. apply_user_explicit_edit RPC — 사용자 명시 편집 (REPLACE semantic)
 CREATE OR REPLACE FUNCTION apply_user_explicit_edit(
   p_user_id       uuid,
@@ -516,7 +529,8 @@ DROP FUNCTION IF EXISTS apply_ai_profile_patch(uuid, jsonb);
 DROP FUNCTION IF EXISTS apply_ai_journey_patch(uuid, jsonb);
 -- ... (017 원본 함수 정의 복사)
 
--- 3. Drop cooldown SSOT 함수
+-- 3. Drop cooldown SSOT 함수 + 헬퍼
+DROP FUNCTION IF EXISTS get_user_edit_cooldown_days();
 DROP FUNCTION IF EXISTS get_user_edit_cooldown();
 
 -- 4. timestamp 컬럼 drop
