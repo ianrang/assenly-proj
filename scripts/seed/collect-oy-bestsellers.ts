@@ -10,13 +10,13 @@ import { chromium, type Browser, type Page } from "playwright";
 import * as fs from "node:fs";
 import * as path from "node:path";
 import * as crypto from "node:crypto";
+import { parseUsdPrice, USD_TO_KRW } from "./lib/oy-parser";
 
 const DATA_DIR = path.join(__dirname, "data");
 const VALIDATED_PATH = path.join(DATA_DIR, "products-validated.json");
 const NEW_PRODUCTS_PATH = path.join(DATA_DIR, "products-new-collected.json");
 const CRAWL_DELAY_MS = 3_000;
 const OY_BASE = "https://global.oliveyoung.com";
-const USD_TO_KRW = 1380;
 
 function delay(ms: number): Promise<void> {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -84,17 +84,6 @@ interface CollectedProduct {
   productUrl: string;
   price: number; // KRW
   priceOriginal: number | null; // KRW (정가, 할인 시)
-}
-
-// ── 가격 파싱 ────────────────────────────────────────────────
-
-function parseUsdPrice(text: string): number | null {
-  if (!text) return null;
-  const match = text.match(/US?\$\s*([\d,.]+)/);
-  if (!match) return null;
-  const num = parseFloat(match[1].replace(/,/g, ""));
-  if (isNaN(num) || num <= 0) return null;
-  return Math.round(num * USD_TO_KRW);
 }
 
 // ── 검색 결과에서 제품 URL 수집 ──────────────────────────────

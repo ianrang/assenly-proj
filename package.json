@@ -12,7 +12,8 @@
     "test:e2e": "playwright test",
     "test:integration": "vitest run --config vitest.integration.config.ts",
     "generate:kb": "tsx scripts/generate-kb.ts",
-    "audit:price": "tsx scripts/audit/price-coverage.ts"
+    "audit:price": "tsx scripts/audit/price-coverage.ts",
+    "backfill:price": "tsx --env-file=.env.local scripts/seed/backfill-price.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "3.0.58",
