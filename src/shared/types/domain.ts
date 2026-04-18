@@ -78,6 +78,10 @@ export type PriceSource =
 
 export type PriceCurrency = "KRW" | "USD" | "JPY" | "CNY" | "EUR";
 
+export type TierLevel = "$" | "$$" | "$$$";
+
+export type PriceDomain = "product" | "treatment";
+
 // --- External Links ---
 
 export type LinkType =

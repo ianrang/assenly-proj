@@ -7,6 +7,10 @@ import type { Product, LocalizedText } from "@/shared/types/domain";
 import { Skeleton } from "@/client/ui/primitives/skeleton";
 import { cn } from "@/shared/utils/cn";
 import { localized } from "@/shared/utils/localized";
+import { computeTier } from "@/shared/utils/compute-tier";
+import { formatPriceShort } from "@/shared/utils/format-price-short";
+import { PRICE_TIER_CONFIG } from "@/shared/constants";
+import PriceTierBadge from "@/client/ui/primitives/price-tier-badge";
 import HighlightBadge from "./HighlightBadge";
 
 type ProductCardProps = {
@@ -24,17 +28,14 @@ type ProductCardProps = {
   onKitClaim?: () => void;
 };
 
-function formatPrice(price: number | null): string {
-  if (price === null) return "";
-  return `₩${price.toLocaleString()}`;
-}
-
 export default function ProductCard({ product, brand, store, whyRecommended, locale, variant = "default", onKitClaim }: ProductCardProps) {
   const [imgError, setImgError] = useState(false);
   const imgSrc = product.images[0];
   const showImage = imgSrc && !imgError;
   const isHighlighted = product.is_highlighted && product.highlight_badge !== null;
   const isCompact = variant === "compact";
+  const tier = computeTier(PRICE_TIER_CONFIG.product.thresholds, product.price, product.price_min);
+  const displayPrice = formatPriceShort(product.price ?? product.price_min);
 
   if (isCompact) {
     return (
@@ -67,8 +68,15 @@ export default function ProductCard({ product, brand, store, whyRecommended, loc
             <p className="truncate text-[10px] text-muted-foreground">{localized(brand.name, locale)}</p>
           )}
           <p className="truncate text-xs font-semibold text-foreground">{localized(product.name, locale)}</p>
-          {product.price !== null && (
-            <p className="text-xs font-bold text-primary">{formatPrice(product.price)}</p>
+          {tier !== null && (
+            <PriceTierBadge
+              tier={tier}
+              displayPrice={displayPrice}
+              domain="product"
+              thresholdLabel={PRICE_TIER_CONFIG.product.tooltipRange}
+              showInfo={false}
+              className="text-xs"
+            />
           )}
           {/* v1.2 NEW-10: is_highlighted 분기로 액션 버튼 선택 */}
           {isHighlighted && onKitClaim ? (
@@ -135,10 +143,15 @@ export default function ProductCard({ product, brand, store, whyRecommended, loc
         <p className="mb-1 text-sm font-semibold text-foreground">
           {localized(product.name, locale)}
         </p>
-        {product.price !== null && (
-          <p className="mb-2 text-base font-bold text-primary">
-            {formatPrice(product.price)}
-          </p>
+        {tier !== null && (
+          <PriceTierBadge
+            tier={tier}
+            displayPrice={displayPrice}
+            domain="product"
+            thresholdLabel={PRICE_TIER_CONFIG.product.tooltipRange}
+            showInfo
+            className="mb-2 text-base"
+          />
         )}
         {whyRecommended && (
           <p className="mb-3 text-xs leading-relaxed text-muted-foreground">
@@ -211,7 +224,7 @@ export function ProductCardSkeleton() {
       <div className="p-4">
         <Skeleton className="mb-2 h-3 w-20" />
         <Skeleton className="mb-2 h-4 w-3/4" />
-        <Skeleton className="mb-3 h-5 w-16" />
+        <Skeleton className="mb-3 h-5 w-28" />
         <Skeleton className="mb-2 h-3 w-full" />
         <Skeleton className="h-3 w-2/3" />
       </div>

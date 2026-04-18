@@ -145,13 +145,15 @@ describe("ProductCard store map_url", () => {
 });
 
 describe("ProductCard compact variant", () => {
-  it("compact 렌더 시 이름과 가격 표시", () => {
+  it("compact 렌더 시 이름과 가격 티어 표시", () => {
     const product = makeProduct({ name: { en: "Snail Mucin" }, price: 18000 });
 
     render(<ProductCard product={product} locale="en" variant="compact" />);
 
     expect(screen.getByText("Snail Mucin")).toBeInTheDocument();
-    expect(screen.getByText("₩18,000")).toBeInTheDocument();
+    // price=18000 < 25000 → '$' tier
+    expect(screen.getByText(/\$/)).toBeInTheDocument();
+    expect(screen.getByText(/~₩18k/)).toBeInTheDocument();
   });
 
   it("compact 렌더 시 브랜드 표시", () => {

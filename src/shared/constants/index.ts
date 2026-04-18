@@ -5,3 +5,4 @@ export * from "./legal";
 export * from "./kb.generated";
 export * from "./embedding";
 export * from "./profile-field-spec";
+export * from "./price-tier";

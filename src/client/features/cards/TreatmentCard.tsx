@@ -6,6 +6,10 @@ import type { Treatment, LocalizedText } from "@/shared/types/domain";
 import { Skeleton } from "@/client/ui/primitives/skeleton";
 import { cn } from "@/shared/utils/cn";
 import { localized } from "@/shared/utils/localized";
+import { computeTier } from "@/shared/utils/compute-tier";
+import { formatPriceShort } from "@/shared/utils/format-price-short";
+import { PRICE_TIER_CONFIG } from "@/shared/constants";
+import PriceTierBadge from "@/client/ui/primitives/price-tier-badge";
 import HighlightBadge from "./HighlightBadge";
 
 type TreatmentCardProps = {
@@ -17,16 +21,11 @@ type TreatmentCardProps = {
   variant?: "default" | "compact";
 };
 
-function formatPriceRange(min: number | null, max: number | null): string {
-  if (min === null && max === null) return "";
-  if (min !== null && max !== null) return `₩${min.toLocaleString()}~${max.toLocaleString()}`;
-  if (min !== null) return `₩${min.toLocaleString()}~`;
-  return `~₩${max!.toLocaleString()}`;
-}
-
 export default function TreatmentCard({ treatment, clinic, whyRecommended, stayDays, locale, variant = "default" }: TreatmentCardProps) {
   const isHighlighted = treatment.is_highlighted && treatment.highlight_badge !== null;
   const isCompact = variant === "compact";
+  const tier = computeTier(PRICE_TIER_CONFIG.treatment.thresholds, treatment.price, treatment.price_min);
+  const displayPrice = formatPriceShort(treatment.price ?? treatment.price_min);
 
   if (isCompact) {
     return (
@@ -47,8 +46,15 @@ export default function TreatmentCard({ treatment, clinic, whyRecommended, stayD
           )}
         </div>
         <p className="truncate text-xs font-semibold text-foreground">{localized(treatment.name, locale)}</p>
-        {(treatment.price_min !== null || treatment.price_max !== null) && (
-          <p className="text-xs font-bold text-primary">{formatPriceRange(treatment.price_min, treatment.price_max)}</p>
+        {tier !== null && (
+          <PriceTierBadge
+            tier={tier}
+            displayPrice={displayPrice}
+            domain="treatment"
+            thresholdLabel={PRICE_TIER_CONFIG.treatment.tooltipRange}
+            showInfo={false}
+            className="text-xs"
+          />
         )}
         {treatment.duration_minutes && (
           <p className="mt-1 text-[10px] text-muted-foreground">
@@ -102,10 +108,15 @@ export default function TreatmentCard({ treatment, clinic, whyRecommended, stayD
       </div>
 
       {/* Price Range */}
-      {(treatment.price_min !== null || treatment.price_max !== null) && (
-        <p className="mb-2 text-base font-bold text-primary">
-          {formatPriceRange(treatment.price_min, treatment.price_max)}
-        </p>
+      {tier !== null && (
+        <PriceTierBadge
+          tier={tier}
+          displayPrice={displayPrice}
+          domain="treatment"
+          thresholdLabel={PRICE_TIER_CONFIG.treatment.tooltipRange}
+          showInfo
+          className="mb-2 text-base"
+        />
       )}
 
       {/* AI Recommendation */}
@@ -185,7 +196,7 @@ export function TreatmentCardSkeleton() {
     <div className="overflow-hidden rounded-xl border border-border bg-card p-4">
       <Skeleton className="mb-2 h-3 w-16" />
       <Skeleton className="mb-2 h-4 w-3/4" />
-      <Skeleton className="mb-3 h-5 w-20" />
+      <Skeleton className="mb-3 h-5 w-28" />
       <Skeleton className="mb-2 h-3 w-full" />
       <Skeleton className="h-3 w-1/2" />
     </div>
