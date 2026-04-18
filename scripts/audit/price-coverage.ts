@@ -58,12 +58,22 @@ function loadEnv(): z.infer<typeof auditEnvSchema> {
 interface PriceRow {
   price: number | null;
   category: string | null;
+  price_source: string | null;
+  range_source: string | null;
 }
 
 interface TreatmentRow {
   price_min: number | null;
   price_max: number | null;
   category: string | null;
+  price_source: string | null;
+  range_source: string | null;
+}
+
+interface SourceStat {
+  source: string;
+  count: number;
+  ratio: number;
 }
 
 interface QuantileTable {
@@ -92,7 +102,7 @@ async function fetchAllProducts(client: SupabaseClient): Promise<PriceRow[]> {
   for (let from = 0; ; from += PAGE_SIZE) {
     const { data, error } = await client
       .from("products")
-      .select("price, category")
+      .select("price, category, price_source, range_source")
       .range(from, from + PAGE_SIZE - 1);
     if (error) throw new Error(`products fetch failed: ${error.message}`);
     if (!data || data.length === 0) break;
@@ -109,7 +119,7 @@ async function fetchAllTreatments(
   for (let from = 0; ; from += PAGE_SIZE) {
     const { data, error } = await client
       .from("treatments")
-      .select("price_min, price_max, category")
+      .select("price_min, price_max, category, price_source, range_source")
       .range(from, from + PAGE_SIZE - 1);
     if (error) throw new Error(`treatments fetch failed: ${error.message}`);
     if (!data || data.length === 0) break;
@@ -168,6 +178,33 @@ function computeCategoryStats(
       nullRatio: v.total > 0 ? v.nullCount / v.total : 0,
     }))
     .sort((a, b) => b.total - a.total);
+}
+
+function computeSourceStats(
+  rows: { source: string | null }[],
+): SourceStat[] {
+  const map = new Map<string, number>();
+  for (const r of rows) {
+    const key = r.source ?? "(NULL)";
+    map.set(key, (map.get(key) ?? 0) + 1);
+  }
+  return [...map.entries()]
+    .map(([source, count]) => ({
+      source,
+      count,
+      ratio: rows.length > 0 ? count / rows.length : 0,
+    }))
+    .sort((a, b) => b.count - a.count);
+}
+
+function renderSourceTable(stats: SourceStat[]): string {
+  const rows = stats
+    .map(
+      (s) =>
+        `| ${s.source} | ${s.count.toLocaleString()} | ${fmtPct(s.ratio)} |`,
+    )
+    .join("\n");
+  return [`| source | count | ratio |`, `|---|---:|---:|`, rows].join("\n");
 }
 
 function buildHistogram(values: number[]): string {
@@ -351,6 +388,20 @@ async function main(): Promise<void> {
   const tMinHistogram = buildHistogram(tPriceMin);
   const tMaxHistogram = buildHistogram(tPriceMax);
 
+  // price_source / range_source 분포
+  const productPriceSourceStats = computeSourceStats(
+    products.map((p) => ({ source: p.price_source })),
+  );
+  const productRangeSourceStats = computeSourceStats(
+    products.map((p) => ({ source: p.range_source })),
+  );
+  const treatmentPriceSourceStats = computeSourceStats(
+    treatments.map((t) => ({ source: t.price_source })),
+  );
+  const treatmentRangeSourceStats = computeSourceStats(
+    treatments.map((t) => ({ source: t.range_source })),
+  );
+
   const worstProductCat = [...productCatStats]
     .filter((s) => s.total >= 5)
     .sort((a, b) => b.nullRatio - a.nullRatio)[0];
@@ -371,7 +422,7 @@ async function main(): Promise<void> {
 - Branch: \`${branch}\`
 - Script: \`scripts/audit/price-coverage.ts\` (NEW-34)
 
-이 리포트는 NEW-35 (가격 티어 임계값 보정)의 입력으로 사용된다. 분석 대상은 \`products.price\` (KRW) 와 \`treatments.price_min\` / \`price_max\` (KRW). 모두 \`docs/03-design/schema.dbml\` 정의 기준.
+NEW-36 완료 후 가격 커버리지 재검증 (NEW-34R). 분석 대상은 \`products.price\` (KRW) 와 \`treatments.price_min\` / \`price_max\` (KRW). 모두 \`docs/03-design/schema.dbml\` 정의 기준. price_source / range_source 분포 포함.
 
 ---
 
@@ -394,6 +445,14 @@ ${renderCategoryTable(productCatStats)}
 \`\`\`
 ${productHistogram}
 \`\`\`
+
+### price_source distribution
+
+${renderSourceTable(productPriceSourceStats)}
+
+### range_source distribution
+
+${renderSourceTable(productRangeSourceStats)}
 
 ---
 
@@ -426,6 +485,14 @@ ${tMinHistogram}
 \`\`\`
 ${tMaxHistogram}
 \`\`\`
+
+### price_source distribution
+
+${renderSourceTable(treatmentPriceSourceStats)}
+
+### range_source distribution
+
+${renderSourceTable(treatmentRangeSourceStats)}
 
 ---
 

@@ -89,6 +89,7 @@ function loadEnv(): z.infer<typeof backfillEnvSchema> {
 interface BackfillReport {
   phase36a: { attempted: number; success: number; failed: number; skipped: number };
   phase36d: { applied: number; skipped: number; noCategoryMatch: number };
+  phase36e: { applied: number; skipped: number; noRange: number };
   metadata: { treatmentsUpdated: number; productsDriftFixed: number };
 }
 
@@ -344,6 +345,77 @@ async function runPhase36d(
 }
 
 // ─────────────────────────────────────────────────────────────
+// 36-e: range 중앙값 → 대표가격 backfill (NEW-34R)
+// price IS NULL AND price_min IS NOT NULL 대상
+// ─────────────────────────────────────────────────────────────
+async function runPhase36e(
+  client: SupabaseClient,
+  dryRun: boolean,
+): Promise<BackfillReport["phase36e"]> {
+  console.log("\n=== 36-e: range 중앙값 → 대표가격 backfill ===");
+
+  const { data: rows, error } = await client
+    .from("products")
+    .select("id, category, price, price_min, price_max, price_source, range_source")
+    .is("price", null)
+    .not("price_min", "is", null);
+
+  if (error) {
+    console.error("[36-e] DB 조회 실패:", error.message);
+    return { applied: 0, skipped: 0, noRange: 0 };
+  }
+
+  const targets = (rows ?? []) as Array<{
+    id: string;
+    category: string | null;
+    price_min: number;
+    price_max: number | null;
+    price_source: string | null;
+    range_source: string | null;
+  }>;
+  console.log(`  대상: ${targets.length}건 (price IS NULL AND price_min IS NOT NULL)`);
+
+  const report = { applied: 0, skipped: 0, noRange: 0 };
+
+  for (const product of targets) {
+    if (!shouldOverwrite(product.price_source, "category-default")) {
+      console.log(`    \u23ED ${product.id} \u2014 price_source='${product.price_source}' \uC6B0\uC120\uC21C\uC704 \uB192\uC74C, \uC2A4\uD0B5`);
+      report.skipped++;
+      continue;
+    }
+
+    const priceMax = product.price_max ?? product.price_min;
+    const price = Math.round((product.price_min + priceMax) / 2);
+    const source = product.range_source ?? "category-default";
+
+    if (dryRun) {
+      console.log(`    [DRY-RUN] ${product.id} \u2014 ${product.category}: price=\u20A9${price.toLocaleString()} (range \u20A9${product.price_min.toLocaleString()}~\u20A9${priceMax.toLocaleString()}, source='${source}')`);
+      report.applied++;
+      continue;
+    }
+
+    const { error: updateError } = await client
+      .from("products")
+      .update({
+        price,
+        price_source: source,
+        price_updated_at: new Date().toISOString(),
+      })
+      .eq("id", product.id)
+      .is("price", null);
+
+    if (updateError) {
+      console.log(`    \u2717 ${product.id} \u2014 DB \uC5C5\uB370\uC774\uD2B8 \uC2E4\uD328: ${updateError.message}`);
+    } else {
+      console.log(`    \u2713 ${product.id} \u2014 ${product.category}: price=\u20A9${price.toLocaleString()} (source='${source}')`);
+      report.applied++;
+    }
+  }
+
+  return report;
+}
+
+// ─────────────────────────────────────────────────────────────
 // 메타데이터 백필
 // ─────────────────────────────────────────────────────────────
 async function runMetadataBackfill(
@@ -442,6 +514,10 @@ function printReport(report: BackfillReport, dryRun: boolean): void {
   console.log(`  적용: ${report.phase36d.applied}건`);
   console.log(`  스킵: ${report.phase36d.skipped}건`);
   console.log(`  카테고리 매칭 실패: ${report.phase36d.noCategoryMatch}건`);
+  console.log(`\n36-e range 중앙값 → 대표가격:`);
+  console.log(`  적용: ${report.phase36e.applied}건`);
+  console.log(`  스킵: ${report.phase36e.skipped}건`);
+  console.log(`  range 없음: ${report.phase36e.noRange}건`);
   console.log(`\n메타데이터 백필:`);
   console.log(`  treatments: ${report.metadata.treatmentsUpdated}건`);
   console.log(`  products drift: ${report.metadata.productsDriftFixed}건`);
@@ -462,9 +538,10 @@ async function main(): Promise<void> {
 
   const phase36a = await runPhase36a(client, dryRun);
   const phase36d = await runPhase36d(client, dryRun);
+  const phase36e = await runPhase36e(client, dryRun);
   const metadata = await runMetadataBackfill(client, dryRun);
 
-  printReport({ phase36a, phase36d, metadata }, dryRun);
+  printReport({ phase36a, phase36d, phase36e, metadata }, dryRun);
 }
 
 const isDirectRun = process.argv[1]?.endsWith("backfill-price.ts");
