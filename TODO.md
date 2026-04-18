@@ -13,9 +13,9 @@
 | 사전 완료      | 12      | 12      | 0       | 0      | ✅      |
 | Phase 0    | 37      | 37      | 0       | 0      | ✅      |
 | Phase 1    | 62      | 60      | 2       | 0      | ✅      |
-| Phase 2    | 138     | 114     | 16      | 8      | 🔶 진행중 |
+| Phase 2    | 139     | 115     | 16      | 8      | 🔶 진행중 |
 | Phase 3    | 38      | 15      | 21      | 2      | 🔶 진행중 |
-| **MVP 합계** | **287** | **238** | **39**  | **10** |        |
+| **MVP 합계** | **288** | **239** | **39**  | **10** |        |
 | 관리자 앱 (펜딩) | 20      | 0       | 0       | 20     | ⏸️ 펜딩  |
 
 
@@ -530,7 +530,8 @@
 | NEW-30  | E1 tool-call 루프 — stopWhen 제한 미동작 | **완료 (2026-04-12, b8b0cc3)**. `stepCountIs(n)`이 ai@6.0.x에서 `steps.length === n` strict equality로 구현되어 step 초과 시 중단 불발. `({steps}) => steps.length >= TOKEN_CONFIG.default.maxToolSteps` predicate로 교체. 회귀 테스트 4건 추가(4/5/6/28 step 경계). 815/815 tests pass | ✅   |
 | NEW-31  | ~~R1 rubric 보정 — 일반적 요청에 대한 기대값~~ | R1 rubric `multiple_products`+`diverse_categories` → `engages_constructively`+`k_beauty_relevant`로 보정. 명확화 질문도 유효한 응답으로 허용. Run 7(2026-04-13) 검증: R1 STABLE FAIL → PASS. 전체 17/20 PASS(86%), Guardrails/Recommendation/Multilingual/Edge Cases 전원 PASS. P1,P4,P5는 기존 FLAKY(LLM 비결정성, 프롬프트 튜닝 별도 태스크) | ✅   |
 | NEW-38  | ~~채팅 품질 파이프라인 개선 — 빈 응답 방어 + store/clinic scoring~~ | (1) 빈 응답 클라이언트 자동 1회 재시도 (retryCountRef) (2) 서버 onFinish 빈 응답 DB 저장 스킵 (3) judgment.ts 공통 scoring 상수 추출 (DRY) (4) scoreStores/scoreClinics 순수 함수 + 여행객 접근성 + 언어 매칭 (5) search-handler store/clinic scoring + rank 파이프라인 적용 (6) 프롬프트 domain guide + Answer first 강화 + 빈 응답 방지 (7) few-shot 3개 추가 (8) eval 20→25 시나리오 + P4/P5 rubric 보정. **검증**: Run 8(2026-04-14) 22/25 PASS. P1,P4,P5 기존 FAIL 전부 해소. 839/839 tests pass | ✅   |
-| NEW-39  | store/clinic 벡터 검색 + embedding 생성 | stores 253건, clinics 225건 embedding 0건. (1) embedding 생성 스크립트 (Gemini embedding API 478건) (2) match_stores/match_clinics RPC 마이그레이션 (3) store/clinic-repository matchByVector 함수 (4) search-handler searchWithFallback 적용. NEW-38의 scoring 파이프라인과 결합하여 벡터 유사도 + scoring + rank 완전 파이프라인 구성 | ⬜   |
+| NEW-39  | ~~store/clinic 벡터 검색 + embedding 생성~~ | **완료 (2026-04-18)**. embedding은 이미 100% 존재(stores 337/337, clinics 225/225). (1) embedding 생성 — 기존 완료 (2) match_stores/match_clinics RPC 마이그레이션 (020_vector_search_stores_clinics.sql, DROP→CREATE 멱등성 + rollback) (3) store/clinic-repository matchStoresByVector/matchClinicsByVector 함수 추가 (4) search-handler searchStore/searchClinic에 searchWithFallback 적용 (벡터 검색 primary + SQL ILIKE 폴백). store/clinic 도메인 테스트 6건 추가(14~19번). 벡터 검색 E2E 검증: 4개 쿼리 similarity 0.70~0.78. 85파일 992건 테스트 통과, tsc 0에러, next build 성공. gstack-review PASS. 브랜치: `fix/NEW-39-store-clinic-vector-search`, PR #28. **후속: dev 서버 4개 도메인 채팅 수동 테스트 (NEW-39T)** | ✅   |
+| NEW-39T | dev 서버 4개 도메인 채팅 테스트 (수동) | NEW-39 후속. dev 서버에서 실제 채팅 시나리오 수행: (1) "서울에서 올리브영 매장 알려줘" (store) (2) "강남에서 보톡스 시술 추천해줘" (treatment) (3) "외국인 친화적인 피부과 클리닉 추천" (clinic) (4) "건성 피부에 좋은 수분크림 추천" (shopping, 대조군). 각 도메인별 tool_use 호출 확인 + 카드 렌더링(compact variant, 가로 스크롤) + 이미지/가격/링크 동작 검증 | ⬜   |
 | NEW-24  | ~~채팅 마크다운 렌더링 + ProductCard 문구 변경~~ | react-markdown@9.0.3 설치. MarkdownMessage 컴포넌트 추가 (assistant 전용). MessageList에서 assistant 텍스트에 마크다운 적용, user는 plain text 유지. ProductCard "Buy Online" → "Product Details" 변경 (compact + default). 테스트 추가 | ✅   |
 | NEW-25  | ~~채팅 언어 파이프라인 — locale 전달 + 프롬프트 강화~~ | ChatContent → chat API body에 locale 추가. chatRequestSchema locale 필드 (en\|ko, default 'en'). buildRulesSection(locale) 함수화, 세션 언어 명시 주입. 언어 혼합 금지 규칙 강화 + 마크다운 포맷팅 가이드. 한국어 few-shot 예시 추가. createMinimalProfile locale 파라미터화. 테스트 추가 | ✅   |
 | NEW-26  | ~~i18n 한국어 지원~~ | routing.ts locales ["en"] → ["en", "ko"] 확장. messages/ko.json 전체 번역 (246줄, en.json 키 구조 100% 동일). i18n 키 패리티 테스트 추가 | ✅   |
