@@ -12,8 +12,7 @@ import {
 // Clinic 리포지토리 — search-engine.md §2.1, §2.3 Clinics
 // R-8: core/db(client 파라미터) + query-utils ONLY.
 // L-8: DB CRUD만. 비즈니스 로직 없음.
-// G-9: export 3개 (findByFilters, findById, findAll).
-// matchByVector 없음: match_clinics RPC 미설계 (§2.1).
+// G-9: export 4개 (findByFilters, matchByVector, findById, findAll).
 // ============================================================
 
 /** AI tool 검색 필터 — search-engine.md §2.3 Clinics */
@@ -58,6 +57,31 @@ export async function findClinicsByFilters(
 
   if (error) {
     throw new Error('Clinic search failed');
+  }
+
+  return data ?? [];
+}
+
+/**
+ * AI tool용 벡터 검색.
+ * search-engine.md §2.1 matchByVector: pgvector RPC (020_vector_search_stores_clinics.sql).
+ */
+export async function matchClinicsByVector(
+  client: SupabaseClient,
+  embedding: number[],
+  filters: ClinicFilters,
+  limit: number = 5,
+) {
+  const { data, error } = await client.rpc('match_clinics', {
+    query_embedding: embedding,
+    match_count: limit,
+    filter_district: filters.district ?? null,
+    filter_english_support: filters.english_support ?? null,
+    filter_clinic_type: filters.clinic_type ?? null,
+  });
+
+  if (error) {
+    throw new Error('Clinic vector search failed');
   }
 
   return data ?? [];

@@ -16,12 +16,30 @@ vi.mock('@/server/features/repositories/treatment-repository', () => ({
   matchTreatmentsByVector: vi.fn(),
 }));
 
+vi.mock('@/server/features/repositories/store-repository', () => ({
+  findStoresByFilters: vi.fn(),
+  matchStoresByVector: vi.fn(),
+}));
+
+vi.mock('@/server/features/repositories/clinic-repository', () => ({
+  findClinicsByFilters: vi.fn(),
+  matchClinicsByVector: vi.fn(),
+}));
+
 vi.mock('@/server/features/beauty/shopping', () => ({
   scoreProducts: vi.fn(),
 }));
 
 vi.mock('@/server/features/beauty/treatment', () => ({
   scoreTreatments: vi.fn(),
+}));
+
+vi.mock('@/server/features/beauty/store', () => ({
+  scoreStores: vi.fn(),
+}));
+
+vi.mock('@/server/features/beauty/clinic', () => ({
+  scoreClinics: vi.fn(),
 }));
 
 vi.mock('@/server/features/beauty/judgment', () => ({
@@ -35,7 +53,7 @@ vi.mock('@/server/features/beauty/derived', () => ({
 }));
 
 import type { UserProfileVars, JourneyContextVars } from '@/shared/types/profile';
-import type { Product, Treatment } from '@/shared/types/domain';
+import type { Product, Treatment, Store, Clinic } from '@/shared/types/domain';
 
 // --- Mock helpers ---
 
@@ -103,6 +121,67 @@ function createMockTreatment(id: string, overrides: Partial<Treatment> = {}): Tr
     highlight_badge: null,
     rating: null,
     review_count: 0,
+    images: [],
+    tags: [],
+    status: 'active',
+    created_at: '2026-01-01T00:00:00Z',
+    updated_at: '2026-01-01T00:00:00Z',
+    ...overrides,
+  };
+}
+
+function createMockStore(id: string, overrides: Partial<Store> = {}): Store {
+  return {
+    id,
+    name: { en: `Store ${id}` },
+    description: null,
+    country: 'KR',
+    city: 'seoul',
+    district: 'gangnam',
+    location: null,
+    address: null,
+    operating_hours: null,
+    english_support: 'good',
+    store_type: 'cosmetics',
+    tourist_services: [],
+    payment_methods: [],
+    nearby_landmarks: [],
+    external_links: [],
+    is_highlighted: false,
+    highlight_badge: null,
+    rating: 4.2,
+    review_count: 100,
+    images: [],
+    tags: [],
+    status: 'active',
+    created_at: '2026-01-01T00:00:00Z',
+    updated_at: '2026-01-01T00:00:00Z',
+    ...overrides,
+  };
+}
+
+function createMockClinic(id: string, overrides: Partial<Clinic> = {}): Clinic {
+  return {
+    id,
+    name: { en: `Clinic ${id}` },
+    description: null,
+    country: 'KR',
+    city: 'seoul',
+    district: 'gangnam',
+    location: null,
+    address: null,
+    operating_hours: null,
+    english_support: 'fluent',
+    clinic_type: 'dermatology',
+    license_verified: true,
+    consultation_type: [],
+    foreigner_friendly: null,
+    booking_url: null,
+    external_links: [],
+    is_highlighted: false,
+    highlight_badge: null,
+    rating: 4.5,
+    review_count: 50,
     images: [],
     tags: [],
     status: 'active',
@@ -186,6 +265,22 @@ async function getBeautyJudgment() {
 
 async function getBeautyDerived() {
   return import('@/server/features/beauty/derived');
+}
+
+async function getStoreRepo() {
+  return import('@/server/features/repositories/store-repository');
+}
+
+async function getClinicRepo() {
+  return import('@/server/features/repositories/clinic-repository');
+}
+
+async function getBeautyStore() {
+  return import('@/server/features/beauty/store');
+}
+
+async function getBeautyClinic() {
+  return import('@/server/features/beauty/clinic');
 }
 
 // --- Tests ---
@@ -641,5 +736,191 @@ describe('executeSearchBeautyData', () => {
     const card = result.cards[0] as { clinics: unknown[] };
     expect(card.clinics).toEqual([]);
     errorSpy.mockRestore();
+  });
+
+  // --- store 도메인 테스트 ---
+
+  // Test 14: store — vector search (with query) → embedQuery + matchByVector 호출
+  it('14. store: query 있음 → embedQuery + matchStoresByVector 호출', async () => {
+    const stores = [createMockStore('s1')];
+    const scoredItems = [{ id: 's1', score: 0.7, reasons: ['Good English support'], warnings: [], is_highlighted: false }];
+    const rankedItems = [{ item: scoredItems[0], rank: 1, is_highlighted: false }];
+    const embedding = [0.1, 0.2, 0.3];
+
+    const knowledge = await getKnowledge();
+    const storeRepo = await getStoreRepo();
+    const beautyStore = await getBeautyStore();
+    const judgment = await getBeautyJudgment();
+
+    vi.mocked(knowledge.embedQuery).mockResolvedValue(embedding);
+    vi.mocked(storeRepo.matchStoresByVector).mockResolvedValue(stores);
+    vi.mocked(beautyStore.scoreStores).mockReturnValue(scoredItems);
+    vi.mocked(judgment.rank).mockReturnValue(rankedItems);
+
+    const client = createMockSupabaseClient([]);
+    const { executeSearchBeautyData } = await getHandler();
+
+    const result = await executeSearchBeautyData(
+      { query: 'Olive Young near Gangnam', domain: 'store', limit: 3 },
+      { client: client as never, profile: createMockProfile(), journey: null, preferences: [] },
+    );
+
+    expect(knowledge.embedQuery).toHaveBeenCalledWith('Olive Young near Gangnam');
+    expect(storeRepo.matchStoresByVector).toHaveBeenCalledTimes(1);
+    expect(storeRepo.findStoresByFilters).not.toHaveBeenCalled();
+    expect(result.total).toBe(1);
+    expect(result.cards).toHaveLength(1);
+    expect(result.cards[0]).toMatchObject({ id: 's1', reasons: ['Good English support'] });
+  });
+
+  // Test 15: store — embedding 실패 → SQL 폴백
+  it('15. store: embedQuery 실패 → SQL 폴백(findStoresByFilters)', async () => {
+    const stores = [createMockStore('s1')];
+    const scoredItems = [{ id: 's1', score: 0.5, reasons: [], warnings: [], is_highlighted: false }];
+    const rankedItems = [{ item: scoredItems[0], rank: 1, is_highlighted: false }];
+
+    const knowledge = await getKnowledge();
+    const storeRepo = await getStoreRepo();
+    const beautyStore = await getBeautyStore();
+    const judgment = await getBeautyJudgment();
+
+    vi.mocked(knowledge.embedQuery).mockRejectedValue(new Error('Embedding API down'));
+    vi.mocked(storeRepo.findStoresByFilters).mockResolvedValue(stores);
+    vi.mocked(beautyStore.scoreStores).mockReturnValue(scoredItems);
+    vi.mocked(judgment.rank).mockReturnValue(rankedItems);
+
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const client = createMockSupabaseClient([]);
+    const { executeSearchBeautyData } = await getHandler();
+
+    const result = await executeSearchBeautyData(
+      { query: 'duty free shop', domain: 'store' },
+      { client: client as never, profile: createMockProfile(), journey: null, preferences: [] },
+    );
+
+    expect(storeRepo.matchStoresByVector).not.toHaveBeenCalled();
+    expect(storeRepo.findStoresByFilters).toHaveBeenCalledTimes(1);
+    expect(result.cards).toHaveLength(1);
+    warnSpy.mockRestore();
+  });
+
+  // Test 16: store — query 없음 → SQL 검색
+  it('16. store: query 없음 → SQL 검색(findStoresByFilters)', async () => {
+    const stores = [createMockStore('s1')];
+    const scoredItems = [{ id: 's1', score: 0.5, reasons: [], warnings: [], is_highlighted: false }];
+    const rankedItems = [{ item: scoredItems[0], rank: 1, is_highlighted: false }];
+
+    const storeRepo = await getStoreRepo();
+    const beautyStore = await getBeautyStore();
+    const judgment = await getBeautyJudgment();
+
+    vi.mocked(storeRepo.findStoresByFilters).mockResolvedValue(stores);
+    vi.mocked(beautyStore.scoreStores).mockReturnValue(scoredItems);
+    vi.mocked(judgment.rank).mockReturnValue(rankedItems);
+
+    const client = createMockSupabaseClient([]);
+    const { executeSearchBeautyData } = await getHandler();
+
+    const result = await executeSearchBeautyData(
+      { query: '', domain: 'store', limit: 3 },
+      { client: client as never, profile: createMockProfile(), journey: null, preferences: [] },
+    );
+
+    expect(storeRepo.findStoresByFilters).toHaveBeenCalledTimes(1);
+    expect(storeRepo.matchStoresByVector).not.toHaveBeenCalled();
+    expect(result.total).toBe(1);
+  });
+
+  // --- clinic 도메인 테스트 ---
+
+  // Test 17: clinic — vector search (with query) → embedQuery + matchByVector 호출
+  it('17. clinic: query 있음 → embedQuery + matchClinicsByVector 호출', async () => {
+    const clinics = [createMockClinic('c1')];
+    const scoredItems = [{ id: 'c1', score: 0.8, reasons: ['Licensed and verified clinic'], warnings: [], is_highlighted: false }];
+    const rankedItems = [{ item: scoredItems[0], rank: 1, is_highlighted: false }];
+    const embedding = [0.1, 0.2, 0.3];
+
+    const knowledge = await getKnowledge();
+    const clinicRepo = await getClinicRepo();
+    const beautyClinic = await getBeautyClinic();
+    const judgment = await getBeautyJudgment();
+
+    vi.mocked(knowledge.embedQuery).mockResolvedValue(embedding);
+    vi.mocked(clinicRepo.matchClinicsByVector).mockResolvedValue(clinics);
+    vi.mocked(beautyClinic.scoreClinics).mockReturnValue(scoredItems);
+    vi.mocked(judgment.rank).mockReturnValue(rankedItems);
+
+    const client = createMockSupabaseClient([]);
+    const { executeSearchBeautyData } = await getHandler();
+
+    const result = await executeSearchBeautyData(
+      { query: 'English-speaking dermatology clinic in Gangnam', domain: 'clinic', limit: 3 },
+      { client: client as never, profile: createMockProfile(), journey: null, preferences: [] },
+    );
+
+    expect(knowledge.embedQuery).toHaveBeenCalledWith('English-speaking dermatology clinic in Gangnam');
+    expect(clinicRepo.matchClinicsByVector).toHaveBeenCalledTimes(1);
+    expect(clinicRepo.findClinicsByFilters).not.toHaveBeenCalled();
+    expect(result.total).toBe(1);
+    expect(result.cards).toHaveLength(1);
+    expect(result.cards[0]).toMatchObject({ id: 'c1', reasons: ['Licensed and verified clinic'] });
+  });
+
+  // Test 18: clinic — embedding 실패 → SQL 폴백
+  it('18. clinic: embedQuery 실패 → SQL 폴백(findClinicsByFilters)', async () => {
+    const clinics = [createMockClinic('c1')];
+    const scoredItems = [{ id: 'c1', score: 0.5, reasons: [], warnings: [], is_highlighted: false }];
+    const rankedItems = [{ item: scoredItems[0], rank: 1, is_highlighted: false }];
+
+    const knowledge = await getKnowledge();
+    const clinicRepo = await getClinicRepo();
+    const beautyClinic = await getBeautyClinic();
+    const judgment = await getBeautyJudgment();
+
+    vi.mocked(knowledge.embedQuery).mockRejectedValue(new Error('Embedding API down'));
+    vi.mocked(clinicRepo.findClinicsByFilters).mockResolvedValue(clinics);
+    vi.mocked(beautyClinic.scoreClinics).mockReturnValue(scoredItems);
+    vi.mocked(judgment.rank).mockReturnValue(rankedItems);
+
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const client = createMockSupabaseClient([]);
+    const { executeSearchBeautyData } = await getHandler();
+
+    const result = await executeSearchBeautyData(
+      { query: 'best skin clinic', domain: 'clinic' },
+      { client: client as never, profile: createMockProfile(), journey: null, preferences: [] },
+    );
+
+    expect(clinicRepo.matchClinicsByVector).not.toHaveBeenCalled();
+    expect(clinicRepo.findClinicsByFilters).toHaveBeenCalledTimes(1);
+    expect(result.cards).toHaveLength(1);
+    warnSpy.mockRestore();
+  });
+
+  // Test 19: clinic — query 없음 → SQL 검색
+  it('19. clinic: query 없음 → SQL 검색(findClinicsByFilters)', async () => {
+    const clinics = [createMockClinic('c1')];
+    const scoredItems = [{ id: 'c1', score: 0.5, reasons: [], warnings: [], is_highlighted: false }];
+    const rankedItems = [{ item: scoredItems[0], rank: 1, is_highlighted: false }];
+
+    const clinicRepo = await getClinicRepo();
+    const beautyClinic = await getBeautyClinic();
+    const judgment = await getBeautyJudgment();
+
+    vi.mocked(clinicRepo.findClinicsByFilters).mockResolvedValue(clinics);
+    vi.mocked(beautyClinic.scoreClinics).mockReturnValue(scoredItems);
+    vi.mocked(judgment.rank).mockReturnValue(rankedItems);
+
+    const client = createMockSupabaseClient([]);
+    const { executeSearchBeautyData } = await getHandler();
+
+    const result = await executeSearchBeautyData(
+      { query: '', domain: 'clinic', limit: 3 },
+      { client: client as never, profile: createMockProfile(), journey: null, preferences: [] },
+    );
+
+    expect(clinicRepo.findClinicsByFilters).toHaveBeenCalledTimes(1);
+    expect(clinicRepo.matchClinicsByVector).not.toHaveBeenCalled();
+    expect(result.total).toBe(1);
   });
 });

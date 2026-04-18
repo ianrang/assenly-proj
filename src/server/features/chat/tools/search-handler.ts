@@ -5,8 +5,8 @@ import type { UserProfileVars, JourneyContextVars, LearnedPreference } from '@/s
 import { embedQuery } from '@/server/core/knowledge';
 import { findProductsByFilters, matchProductsByVector } from '@/server/features/repositories/product-repository';
 import { findTreatmentsByFilters, matchTreatmentsByVector } from '@/server/features/repositories/treatment-repository';
-import { findStoresByFilters } from '@/server/features/repositories/store-repository';
-import { findClinicsByFilters } from '@/server/features/repositories/clinic-repository';
+import { findStoresByFilters, matchStoresByVector } from '@/server/features/repositories/store-repository';
+import { findClinicsByFilters, matchClinicsByVector } from '@/server/features/repositories/clinic-repository';
 import { scoreProducts } from '@/server/features/beauty/shopping';
 import { scoreTreatments } from '@/server/features/beauty/treatment';
 import { scoreStores } from '@/server/features/beauty/store';
@@ -226,10 +226,15 @@ async function searchStore(
   const storeFilters = {
     store_type: filters?.category,
     english_support: filters?.english_support,
-    search: query || undefined,
+    search: undefined as string | undefined,
   };
 
-  const stores = await findStoresByFilters(client, storeFilters, limit);
+  // §5.2 벡터/SQL 분기
+  const stores = await searchWithFallback(
+    query,
+    (embedding) => matchStoresByVector(client, embedding, storeFilters, limit),
+    () => findStoresByFilters(client, storeFilters, limit),
+  );
 
   // beauty 판단: scoreStores → rank
   const scored = scoreStores(stores, userLanguage);
@@ -258,10 +263,15 @@ async function searchClinic(
   const clinicFilters = {
     clinic_type: filters?.category,
     english_support: filters?.english_support,
-    search: query || undefined,
+    search: undefined as string | undefined,
   };
 
-  const clinics = await findClinicsByFilters(client, clinicFilters, limit);
+  // §5.2 벡터/SQL 분기
+  const clinics = await searchWithFallback(
+    query,
+    (embedding) => matchClinicsByVector(client, embedding, clinicFilters, limit),
+    () => findClinicsByFilters(client, clinicFilters, limit),
+  );
 
   // beauty 판단: scoreClinics → rank
   const scored = scoreClinics(clinics, userLanguage);
