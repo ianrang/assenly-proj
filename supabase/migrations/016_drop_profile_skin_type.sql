@@ -13,4 +13,9 @@
 -- 이 DROP 이후 롤백은 DB backup 의존.
 -- ============================================================
 
+-- Step 1: 동기화 trigger + 함수 제거 (021_sync_skin_type_trigger.sql에서 생성)
+DROP TRIGGER IF EXISTS trg_sync_skin_type ON user_profiles;
+DROP FUNCTION IF EXISTS sync_skin_type_to_array();
+
+-- Step 2: 구 컬럼 DROP
 ALTER TABLE user_profiles DROP COLUMN IF EXISTS skin_type;

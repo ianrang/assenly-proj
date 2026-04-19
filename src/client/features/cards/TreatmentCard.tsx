@@ -52,7 +52,6 @@ export default function TreatmentCard({ treatment, clinic, whyRecommended, stayD
             tier={tier}
             domain="treatment"
             thresholdLabel={PRICE_TIER_CONFIG.treatment.tooltipRange}
-            showInfo={false}
             className="text-xs"
           />
         )}

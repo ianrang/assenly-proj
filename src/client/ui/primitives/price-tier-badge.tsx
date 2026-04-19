@@ -4,11 +4,10 @@ import "client-only";
 
 import type { TierLevel } from "@/shared/utils/compute-tier";
 import {
-  Tooltip,
-  TooltipTrigger,
-  TooltipContent,
-  TooltipProvider,
-} from "@/client/ui/primitives/tooltip";
+  Popover,
+  PopoverTrigger,
+  PopoverContent,
+} from "@/client/ui/primitives/popover";
 import { cn } from "@/shared/utils/cn";
 
 const TIER_LABELS: Record<TierLevel, string> = {
@@ -47,21 +46,21 @@ export default function PriceTierBadge({
         {tier}
       </span>
       {showInfo && (
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger
-              aria-label={`${domain} price info`}
-              className="ml-1 inline-flex min-h-[44px] min-w-[44px] items-center justify-center text-[11px] text-muted-foreground"
-            >
-              ⓘ
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>
-                {tier}: {tierLabel}, typically {thresholdLabel} for {domain}s
-              </p>
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+        <Popover>
+          <PopoverTrigger
+            openOnHover
+            delay={200}
+            aria-label={`${domain} price info`}
+            className="relative z-10 ml-0.5 inline-flex items-center justify-center rounded-full p-1.5 text-[11px] text-muted-foreground transition-colors hover:bg-muted/50 active:bg-muted"
+          >
+            ⓘ
+          </PopoverTrigger>
+          <PopoverContent>
+            <p>
+              {tier}: {tierLabel}, typically {thresholdLabel} for {domain}s
+            </p>
+          </PopoverContent>
+        </Popover>
       )}
     </div>
   );

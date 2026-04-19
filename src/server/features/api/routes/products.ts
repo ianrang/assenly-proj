@@ -119,7 +119,7 @@ export function registerProductRoutes(app: AppType) {
         {
           skin_types: skin_types ? skin_types.split(',').map(s => s.trim()).filter(Boolean) : undefined,
           concerns: concerns ? concerns.split(',').map(s => s.trim()).filter(Boolean) : undefined,
-          category,
+          category: category ? [category] : undefined,
           budget_max,
           search,
           status: 'active',

@@ -2,13 +2,12 @@
 
 import "client-only";
 
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { SlidersHorizontal } from "lucide-react";
 import Header from "@/client/features/layout/Header";
 import ProfileLinkButton from "@/client/features/layout/ProfileLinkButton";
-import { authFetch } from "@/client/core/auth-fetch";
 import { Button } from "@/client/ui/primitives/button";
 import DomainTabs from "./DomainTabs";
 import ExploreGrid from "./ExploreGrid";
@@ -16,7 +15,6 @@ import ChatLinkButton from "./ChatLinkButton";
 import FilterSheet from "./FilterSheet";
 import FilterChips from "./FilterChips";
 import SortDropdown from "./SortDropdown";
-import ProfileBanner from "./ProfileBanner";
 import { useExplore } from "./use-explore";
 import type { ExploreDomain } from "@/shared/types/explore";
 
@@ -30,11 +28,6 @@ export default function ExploreClient({ locale }: ExploreClientProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [filterOpen, setFilterOpen] = useState(false);
-  const [hasProfile, setHasProfile] = useState(false);
-
-  useEffect(() => {
-    authFetch("/api/profile").then((res) => setHasProfile(res.ok)).catch(() => {});
-  }, []);
 
   const domain = (searchParams.get("domain") ?? "products") as ExploreDomain;
   const sort = searchParams.get("sort") ?? "rating";
@@ -129,7 +122,7 @@ export default function ExploreClient({ locale }: ExploreClientProps) {
         maxWidth="max-w-[960px]"
         rightContent={
           <>
-            {hasProfile && <ProfileLinkButton locale={locale} />}
+            <ProfileLinkButton locale={locale} />
             <ChatLinkButton locale={locale} />
           </>
         }
@@ -159,12 +152,6 @@ export default function ExploreClient({ locale }: ExploreClientProps) {
             hasProfile={scored}
           />
         </div>
-
-        {!scored && !isLoading && (
-          <div className="mt-3">
-            <ProfileBanner locale={locale} />
-          </div>
-        )}
 
         {hasFilters && (
           <div className="mt-2">

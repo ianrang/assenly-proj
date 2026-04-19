@@ -146,6 +146,7 @@
     "notSet": "Not set"
   },
   "chat": {
+    "navLabel": "Chat with AI",
     "placeholder": "Ask me anything about K-beauty...",
     "send": "Send",
     "streaming": "AI is thinking...",
@@ -299,11 +300,6 @@
       "title": "No results found",
       "suggestion": "Try removing some filters",
       "resetFilters": "Reset filters"
-    },
-    "profileBanner": {
-      "title": "Get personalized picks",
-      "description": "Set up your beauty profile for recommendations tailored to you",
-      "cta": "Set up profile"
     }
   },
   "beauty": {

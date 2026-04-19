@@ -162,7 +162,7 @@ function VirtualGrid({ scrollContainerRef, rows, virtualizer, domain, locale, on
     <div
       ref={scrollContainerRef}
       data-testid="virtual-scroll-container"
-      className="h-[calc(100vh-200px)] overflow-y-auto"
+      className="h-[calc(100vh-200px)] overflow-y-auto pr-2 scrollbar-thin"
     >
       <div
         style={{

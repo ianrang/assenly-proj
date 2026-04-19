@@ -45,8 +45,8 @@ export default function MessageList({ messages, isStreaming, locale, conversatio
     <>
       <div className="flex-1 overflow-y-auto px-4 py-4" role="log" aria-live="polite">
         <div className="flex flex-col gap-3">
-          {messages.map((msg) => (
-            <MessageGroup key={msg.id} role={msg.role}>
+          {messages.map((msg, idx) => (
+            <MessageGroup key={msg.id || `msg-${idx}`} role={msg.role}>
               <GroupedParts parts={msg.parts} role={msg.role} locale={locale} onKitClaim={() => setSheetOpen(true)} />
             </MessageGroup>
           ))}
@@ -143,8 +143,8 @@ function GroupedParts({
         // cards (product/treatment)
         return (
           <div key={gi} className="flex max-w-full gap-2 overflow-x-auto pb-1 snap-x snap-mandatory scrollbar-thin">
-            {group.cards.map((card) => (
-              <CardPart key={cardKey(card)} part={card} locale={locale} onKitClaim={onKitClaim} />
+            {group.cards.map((card, ci) => (
+              <CardPart key={`${cardKey(card)}-${ci}`} part={card} locale={locale} onKitClaim={onKitClaim} />
             ))}
           </div>
         );

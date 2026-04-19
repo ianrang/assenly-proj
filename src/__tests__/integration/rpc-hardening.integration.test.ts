@@ -102,10 +102,12 @@ describe('RPC Hardening (integration)', () => {
   // ── T3: skin_types cap 절단 금지 ──────────────────────────
   describe('T3: skin_types cap 절단 금지 (M1 + CR-1)', () => {
     it('cap=3 도달 시 AI 추가값 무시', async () => {
-      // Setup: cap 도달
-      await admin.from('user_profiles').update({
+      // Setup: cap 도달 — T2 결과에 의존하지 않고 명시적 upsert
+      await admin.from('user_profiles').upsert({
+        user_id: userA.userId,
         skin_types: ['dry', 'oily', 'combination'],
-      }).eq('user_id', userA.userId);
+        updated_at: new Date().toISOString(),
+      }, { onConflict: 'user_id' });
 
       // Action
       const { data, error } = await admin.rpc('apply_ai_profile_patch', {
@@ -212,7 +214,15 @@ describe('RPC Hardening (integration)', () => {
     });
 
     it('잘못된 budget_level → 23514', async () => {
-      // userB에 journey가 T4에서 생성되었으므로 사용
+      // Setup: T4 의존 제거 — userB journey 명시적 보장
+      await admin.from('journeys').upsert({
+        user_id: userB.userId,
+        status: 'active',
+        country: 'KR',
+        city: 'seoul',
+        updated_at: new Date().toISOString(),
+      }, { onConflict: 'user_id, status' });
+
       const { error } = await admin
         .from('journeys')
         .update({ budget_level: 'bogus' })

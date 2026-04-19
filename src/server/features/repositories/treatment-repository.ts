@@ -2,7 +2,7 @@ import 'server-only';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import {
   applyArrayOverlap,
-  applyExact,
+  applyIn,
   applyMax,
   applyTextSearch,
   applyLimit,
@@ -21,7 +21,7 @@ import {
 interface TreatmentFilters {
   skin_types?: string[];
   concerns?: string[];
-  category?: string;
+  category?: string[];
   budget_max?: number;
   max_downtime?: number;
   search?: string;
@@ -63,7 +63,7 @@ export async function findTreatmentsByFilters(
 
   query = applyArrayOverlap(query, 'suitable_skin_types', filters.skin_types);
   query = applyArrayOverlap(query, 'target_concerns', filters.concerns);
-  query = applyExact(query, 'category', filters.category);
+  query = applyIn(query, 'category', filters.category);
   query = applyMax(query, 'price_max', filters.budget_max);
   query = applyMax(query, 'downtime_days', filters.max_downtime);
   query = applyTextSearch(query, 'name', filters.search);
@@ -148,7 +148,7 @@ export async function findAllTreatments(
 
   query = applyArrayOverlap(query, 'suitable_skin_types', filters.skin_types);
   query = applyArrayOverlap(query, 'target_concerns', filters.concerns);
-  query = applyExact(query, 'category', filters.category);
+  query = applyIn(query, 'category', filters.category);
   query = applyMax(query, 'price_max', filters.budget_max);
   query = applyMax(query, 'downtime_days', filters.max_downtime);
   query = applyTextSearch(query, 'name', filters.search);

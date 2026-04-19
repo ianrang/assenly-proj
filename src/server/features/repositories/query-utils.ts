@@ -21,6 +21,17 @@ export function applyArrayOverlap(
   return query.overlaps(column, values);
 }
 
+/** 복수 값 일치 (IN): column IN (values) — 단일 값이면 eq, 복수면 in */
+export function applyIn(
+  query: any,
+  column: string,
+  values: string[] | undefined,
+): any {
+  if (values == null || values.length === 0) return query;
+  if (values.length === 1) return query.eq(column, values[0]);
+  return query.in(column, values);
+}
+
 /** 정확 일치: column = value */
 export function applyExact(
   query: any,
