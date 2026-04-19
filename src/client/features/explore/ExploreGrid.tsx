@@ -2,8 +2,6 @@
 
 import "client-only";
 
-import { useRef, useMemo, useCallback } from "react";
-import { useVirtualizer } from "@tanstack/react-virtual";
 import type { ExploreDomain } from "@/shared/types/explore";
 import type { Product, Store, Clinic, Treatment } from "@/shared/types/domain";
 import ProductCard, { ProductCardSkeleton } from "@/client/features/cards/ProductCard";
@@ -19,14 +17,6 @@ type ExploreGridProps = {
   isLoading: boolean;
   onResetFilters: () => void;
 };
-
-const ESTIMATE_ROW_HEIGHT = 320;
-const OVERSCAN = 3;
-
-function useColumns() {
-  if (typeof window === "undefined") return 2;
-  return window.innerWidth >= 1024 ? 3 : 2;
-}
 
 function renderCard(domain: ExploreDomain, item: Record<string, unknown>, locale: string) {
   const reasons = item.reasons as string[] | undefined;
@@ -86,31 +76,6 @@ export default function ExploreGrid({
   isLoading,
   onResetFilters,
 }: ExploreGridProps) {
-  const parentRef = useRef<HTMLDivElement>(null);
-  const columns = useColumns();
-
-  const rows = useMemo(() => {
-    const result: Record<string, unknown>[][] = [];
-    for (let i = 0; i < items.length; i += columns) {
-      result.push(items.slice(i, i + columns));
-    }
-    return result;
-  }, [items, columns]);
-
-  const measureElement = useCallback((el: HTMLElement | null) => {
-    if (el) {
-      virtualizer.measureElement(el);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
-  const virtualizer = useVirtualizer({
-    count: rows.length,
-    getScrollElement: () => parentRef.current,
-    estimateSize: () => ESTIMATE_ROW_HEIGHT,
-    overscan: OVERSCAN,
-  });
-
   if (isLoading) {
     return (
       <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
@@ -123,32 +88,13 @@ export default function ExploreGrid({
     return <ExploreEmptyState onResetFilters={onResetFilters} />;
   }
 
-  const virtualItems = virtualizer.getVirtualItems();
-
   return (
-    <div
-      ref={parentRef}
-      className="relative"
-      style={{ height: `${virtualizer.getTotalSize()}px` }}
-    >
-      {virtualItems.map((virtualRow) => {
-        const row = rows[virtualRow.index];
-        return (
-          <div
-            key={virtualRow.key}
-            ref={measureElement}
-            data-index={virtualRow.index}
-            className="absolute left-0 right-0 grid grid-cols-2 gap-3 lg:grid-cols-3"
-            style={{ top: `${virtualRow.start}px` }}
-          >
-            {row.map((item) => (
-              <div key={item.id as string}>
-                {renderCard(domain, item, locale)}
-              </div>
-            ))}
-          </div>
-        );
-      })}
+    <div className="grid grid-cols-2 gap-3 lg:grid-cols-3">
+      {items.map((item) => (
+        <div key={item.id as string}>
+          {renderCard(domain, item, locale)}
+        </div>
+      ))}
     </div>
   );
 }
