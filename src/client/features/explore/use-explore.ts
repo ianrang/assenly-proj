@@ -2,6 +2,7 @@
 
 import "client-only";
 
+import { useCallback } from "react";
 import useSWRInfinite from "swr/infinite";
 import { authFetch } from "@/client/core/auth-fetch";
 import type { ExploreDomain, ExploreResponse } from "@/shared/types/explore";
@@ -42,7 +43,7 @@ export function useExplore(
     return buildUrl(domain, filters, sort, pageIndex * PAGE_SIZE);
   };
 
-  const { data, size, setSize, isLoading, isValidating } = useSWRInfinite(
+  const { data, setSize, isLoading, isValidating } = useSWRInfinite(
     getKey,
     fetcher,
     {
@@ -56,6 +57,7 @@ export function useExplore(
   const total = data?.[0]?.meta.total ?? 0;
   const scored = data?.[0]?.meta.scored ?? false;
   const hasMore = items.length < total;
+  const loadMore = useCallback(() => setSize((s) => s + 1), [setSize]);
 
   return {
     items,
@@ -64,6 +66,6 @@ export function useExplore(
     hasMore,
     isLoading,
     isValidating,
-    loadMore: () => setSize(size + 1),
+    loadMore,
   };
 }

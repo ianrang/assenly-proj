@@ -55,7 +55,7 @@ export default function StoreCard({ store, whyRecommended, locale, variant = "de
           <p className="truncate text-[10px] text-muted-foreground">{store.district}</p>
         )}
         {store.english_support && store.english_support !== "none" && (
-          <span className="mt-1 inline-block w-fit rounded-full border border-border px-1.5 py-0.5 text-[9px] font-medium text-muted-foreground">
+          <span className="mt-1 inline-block w-fit rounded-full border border-teal bg-teal/10 px-1.5 py-0.5 text-[9px] font-medium text-teal">
             EN: {store.english_support}
           </span>
         )}
@@ -86,7 +86,10 @@ export default function StoreCard({ store, whyRecommended, locale, variant = "de
         isHighlighted ? "border-primary" : "border-border hover:border-primary/50"
       )}
     >
-      <div className="relative flex h-40 items-center justify-center bg-surface-warm">
+      <div className={cn(
+        "relative flex h-40 items-center justify-center",
+        showImage ? "bg-surface-warm" : "bg-gradient-to-br from-teal/10 via-surface-warm to-sage/10"
+      )}>
         {showImage ? (
           /* eslint-disable-next-line @next/next/no-img-element -- 외부 URL 이미지, next/image 도메인 설정 별도 작업 */
           <img
@@ -96,7 +99,7 @@ export default function StoreCard({ store, whyRecommended, locale, variant = "de
             onError={() => setImgError(true)}
           />
         ) : (
-          <ShoppingBag className="size-10 text-muted-foreground/30" />
+          <ShoppingBag className="size-10 text-teal/30" />
         )}
         {isHighlighted && (
           <div className="absolute left-2 top-2">
@@ -117,7 +120,7 @@ export default function StoreCard({ store, whyRecommended, locale, variant = "de
 
         <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
           {store.english_support && store.english_support !== "none" && (
-            <span className="rounded-full border border-border px-2 py-0.5 text-[10px] font-medium">EN: {store.english_support}</span>
+            <span className="rounded-full border border-teal bg-teal/10 px-2 py-0.5 text-[10px] font-medium text-teal">EN: {store.english_support}</span>
           )}
           {store.rating !== null && <span>{"★"} {store.rating.toFixed(1)}</span>}
         </div>
@@ -125,7 +128,7 @@ export default function StoreCard({ store, whyRecommended, locale, variant = "de
         {store.tourist_services.length > 0 && (
           <div className="mb-2 flex flex-wrap gap-1.5">
             {store.tourist_services.slice(0, 3).map((service) => (
-              <span key={service} className="rounded-full border border-border px-2 py-0.5 text-[10px] font-medium text-muted-foreground">{service}</span>
+              <span key={service} className="rounded-full border border-teal bg-teal/10 px-2 py-0.5 text-[10px] font-medium text-teal">{service}</span>
             ))}
           </div>
         )}

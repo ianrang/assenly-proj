@@ -10,7 +10,7 @@ import Header from "@/client/features/layout/Header";
 import ConsentOverlay from "./ConsentOverlay";
 import ChatContent from "./ChatContent";
 import NewChatButton from "./NewChatButton";
-import ProfileLinkButton from "./ProfileLinkButton";
+import ProfileLinkButton from "@/client/features/layout/ProfileLinkButton";
 
 // ============================================================
 // ChatInterface — P2-45: 동의 게이트 + P2-50c 히스토리 로드

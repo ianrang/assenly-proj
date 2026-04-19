@@ -9,7 +9,6 @@ import HeroSection from "@/client/features/landing/HeroSection";
 import HowItWorksSection from "@/client/features/landing/HowItWorksSection";
 import BenefitsSection from "@/client/features/landing/BenefitsSection";
 import TrustSection from "@/client/features/landing/TrustSection";
-import ReturnVisitBanner from "@/client/features/landing/ReturnVisitBanner";
 
 // ============================================================
 // LandingClient — P2-45: 동의 로직 제거 (Chat으로 이동)
@@ -24,7 +23,6 @@ type LandingState = "loading" | "new" | "returning";
 
 export default function LandingClient({ locale }: LandingClientProps) {
   const [state, setState] = useState<LandingState>("loading");
-  const [bannerDismissed, setBannerDismissed] = useState(false);
 
   useEffect(() => {
     async function checkSession() {
@@ -51,9 +49,6 @@ export default function LandingClient({ locale }: LandingClientProps) {
         <BenefitsSection />
         <TrustSection />
       </main>
-      {state === "returning" && !bannerDismissed && (
-        <ReturnVisitBanner locale={locale} onClose={() => setBannerDismissed(true)} />
-      )}
     </div>
   );
 }

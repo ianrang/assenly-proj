@@ -131,19 +131,12 @@ export default function TreatmentCard({ treatment, clinic, whyRecommended, stayD
           <span>{treatment.duration_minutes} min</span>
         )}
         {treatment.downtime_days !== null && treatment.downtime_days > 0 && (
-          <span
-            className={cn(
-              "rounded-full border px-2 py-0.5 text-[10px] font-medium",
-              downtimeWarning
-                ? "border-coral text-coral"
-                : "border-border text-muted-foreground"
-            )}
-          >
+          <span className="rounded-full border border-coral px-2 py-0.5 text-[10px] font-medium text-coral">
             {treatment.downtime_days}-day recovery
           </span>
         )}
         {treatment.downtime_days === 0 && (
-          <span className="text-[10px]">No downtime</span>
+          <span className="rounded-full border border-sage bg-sage/10 px-2 py-0.5 text-[10px] font-medium text-sage">No downtime</span>
         )}
       </div>
 

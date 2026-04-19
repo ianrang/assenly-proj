@@ -52,7 +52,7 @@ export default function ClinicCard({ clinic, whyRecommended, locale, variant = "
           <p className="truncate text-[10px] text-muted-foreground">{clinic.district}</p>
         )}
         {clinic.english_support && clinic.english_support !== "none" && (
-          <span className="mt-1 inline-block w-fit rounded-full border border-border px-1.5 py-0.5 text-[9px] font-medium text-muted-foreground">
+          <span className="mt-1 inline-block w-fit rounded-full border border-teal bg-teal/10 px-1.5 py-0.5 text-[9px] font-medium text-teal">
             EN: {clinic.english_support}
           </span>
         )}
@@ -84,7 +84,10 @@ export default function ClinicCard({ clinic, whyRecommended, locale, variant = "
         isHighlighted ? "border-primary" : "border-border hover:border-primary/50"
       )}
     >
-      <div className="relative flex h-40 items-center justify-center bg-surface-warm">
+      <div className={cn(
+        "relative flex h-40 items-center justify-center",
+        showImage ? "bg-surface-warm" : "bg-gradient-to-br from-primary/10 via-surface-warm to-teal/10"
+      )}>
         {showImage ? (
           /* eslint-disable-next-line @next/next/no-img-element -- 외부 URL 이미지, next/image 도메인 설정 별도 작업 */
           <img
@@ -94,7 +97,7 @@ export default function ClinicCard({ clinic, whyRecommended, locale, variant = "
             onError={() => setImgError(true)}
           />
         ) : (
-          <Stethoscope className="size-10 text-muted-foreground/30" />
+          <Stethoscope className="size-10 text-primary/30" />
         )}
         {isHighlighted && (
           <div className="absolute left-2 top-2">
@@ -115,20 +118,20 @@ export default function ClinicCard({ clinic, whyRecommended, locale, variant = "
 
         <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
           {clinic.english_support && clinic.english_support !== "none" && (
-            <span className="rounded-full border border-border px-2 py-0.5 text-[10px] font-medium">EN: {clinic.english_support}</span>
+            <span className="rounded-full border border-teal bg-teal/10 px-2 py-0.5 text-[10px] font-medium text-teal">EN: {clinic.english_support}</span>
           )}
           {clinic.rating !== null && <span>{"★"} {clinic.rating.toFixed(1)}</span>}
           {clinic.license_verified && (
-            <span className="rounded-full border border-border px-2 py-0.5 text-[10px] font-medium">Verified</span>
+            <span className="rounded-full border border-teal bg-teal/10 px-2 py-0.5 text-[10px] font-medium text-teal">Verified</span>
           )}
         </div>
 
         {ff && (
           <div className="mb-2 flex flex-wrap gap-1.5">
-            {ff.interpreter_available && <span className="rounded-full border border-border px-2 py-0.5 text-[10px] font-medium text-muted-foreground">Interpreter</span>}
-            {ff.english_consent_form && <span className="rounded-full border border-border px-2 py-0.5 text-[10px] font-medium text-muted-foreground">EN Consent Form</span>}
-            {ff.international_cards && <span className="rounded-full border border-border px-2 py-0.5 text-[10px] font-medium text-muted-foreground">Int&apos;l Cards</span>}
-            {ff.pickup_service && <span className="rounded-full border border-border px-2 py-0.5 text-[10px] font-medium text-muted-foreground">Pickup</span>}
+            {ff.interpreter_available && <span className="rounded-full border border-teal bg-teal/10 px-2 py-0.5 text-[10px] font-medium text-teal">Interpreter</span>}
+            {ff.english_consent_form && <span className="rounded-full border border-teal bg-teal/10 px-2 py-0.5 text-[10px] font-medium text-teal">EN Consent Form</span>}
+            {ff.international_cards && <span className="rounded-full border border-teal bg-teal/10 px-2 py-0.5 text-[10px] font-medium text-teal">Int&apos;l Cards</span>}
+            {ff.pickup_service && <span className="rounded-full border border-teal bg-teal/10 px-2 py-0.5 text-[10px] font-medium text-teal">Pickup</span>}
           </div>
         )}
 

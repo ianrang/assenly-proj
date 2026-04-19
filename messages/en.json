@@ -11,7 +11,7 @@
     "pathADescription": "Chat with our AI guide and get instant recommendations",
     "pathBDescription": "Answer a few quick questions first for personalized picks",
     "ctaDescription": "Chat with our AI guide — no signup needed",
-    "browseExplore": "or Browse products",
+    "browseExplore": "Browse products",
     "howItWorksLabel": "Simple",
     "howItWorksTitle": "How it works",
     "step1Title": "Chat with our AI guide",
@@ -39,9 +39,7 @@
     "trustDelete": "Delete anytime",
     "trustDeleteDesc": "One tap removes everything",
     "followUs": "Follow us on Instagram",
-    "returnTitle": "Welcome back!",
-    "returnDescription": "Your beauty profile is ready. Pick up where you left off.",
-    "returnChat": "Continue chatting"
+    "returnCta": "Continue chatting"
   },
   "onboarding": {
     "heading": "Tell me about you",
@@ -306,10 +304,6 @@
       "title": "Get personalized picks",
       "description": "Set up your beauty profile for recommendations tailored to you",
       "cta": "Set up profile"
-    },
-    "loadMore": {
-      "button": "Load more ({remaining} remaining)",
-      "loading": "Loading..."
     }
   },
   "beauty": {

@@ -177,7 +177,7 @@ export default function ProductCard({ product, brand, store, whyRecommended, loc
 
         {/* English Label Badge */}
         {product.english_label && (
-          <span className="inline-block rounded-full border border-border px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
+          <span className="inline-block rounded-full border border-teal bg-teal/10 px-2 py-0.5 text-[10px] font-medium text-teal">
             English Label
           </span>
         )}
@@ -202,16 +202,13 @@ export default function ProductCard({ product, brand, store, whyRecommended, loc
           )}
 
           {primaryUrl && (
-            <p className="text-[10px] text-muted-foreground">
-              <a
-                href={primaryUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline transition-colors hover:text-foreground after:absolute after:inset-0 after:content-['']"
-              >
-                Product Details
-              </a>
-            </p>
+            <a
+              href={primaryUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="after:absolute after:inset-0 after:content-['']"
+              aria-label="Product Details"
+            />
           )}
         </div>
       </div>

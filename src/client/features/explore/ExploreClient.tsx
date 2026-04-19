@@ -2,11 +2,13 @@
 
 import "client-only";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { SlidersHorizontal } from "lucide-react";
 import Header from "@/client/features/layout/Header";
+import ProfileLinkButton from "@/client/features/layout/ProfileLinkButton";
+import { authFetch } from "@/client/core/auth-fetch";
 import { Button } from "@/client/ui/primitives/button";
 import DomainTabs from "./DomainTabs";
 import ExploreGrid from "./ExploreGrid";
@@ -28,6 +30,11 @@ export default function ExploreClient({ locale }: ExploreClientProps) {
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [filterOpen, setFilterOpen] = useState(false);
+  const [hasProfile, setHasProfile] = useState(false);
+
+  useEffect(() => {
+    authFetch("/api/profile").then((res) => setHasProfile(res.ok)).catch(() => {});
+  }, []);
 
   const domain = (searchParams.get("domain") ?? "products") as ExploreDomain;
   const sort = searchParams.get("sort") ?? "rating";
@@ -39,7 +46,7 @@ export default function ExploreClient({ locale }: ExploreClientProps) {
     }
   }
 
-  const { items, total, scored, hasMore, isLoading, isValidating, loadMore } = useExplore(
+  const { items, scored, hasMore, isLoading, isValidating, loadMore } = useExplore(
     domain,
     filters,
     sort,
@@ -114,14 +121,18 @@ export default function ExploreClient({ locale }: ExploreClientProps) {
     router.replace(`${pathname}?${params.toString()}`);
   }, [pathname, router, domain]);
 
-  const remaining = total - items.length;
   const hasFilters = Object.keys(filters).length > 0;
 
   return (
     <div className="flex min-h-[100dvh] flex-col">
       <Header
         maxWidth="max-w-[960px]"
-        rightContent={<ChatLinkButton locale={locale} />}
+        rightContent={
+          <>
+            {hasProfile && <ProfileLinkButton locale={locale} />}
+            <ChatLinkButton locale={locale} />
+          </>
+        }
       />
       <main className="mx-auto w-full max-w-[960px] flex-1 px-4 py-4">
         <DomainTabs activeDomain={domain} onDomainChange={handleDomainChange} />
@@ -172,21 +183,9 @@ export default function ExploreClient({ locale }: ExploreClientProps) {
             locale={locale}
             isLoading={isLoading}
             onResetFilters={handleResetFilters}
-            footer={
-              hasMore && !isLoading ? (
-                <div className="flex justify-center py-6">
-                  <Button
-                    variant="outline"
-                    onClick={loadMore}
-                    disabled={isValidating}
-                  >
-                    {isValidating
-                      ? t("loadMore.loading")
-                      : t("loadMore.button", { remaining })}
-                  </Button>
-                </div>
-              ) : undefined
-            }
+            onLoadMore={loadMore}
+            hasMore={hasMore && !isLoading}
+            isValidating={isValidating}
           />
         </div>
       </main>

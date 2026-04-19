@@ -13,7 +13,7 @@ import ClinicCard, { ClinicCardSkeleton } from "@/client/features/cards/ClinicCa
 import TreatmentCard, { TreatmentCardSkeleton } from "@/client/features/cards/TreatmentCard";
 import ExploreEmptyState from "./ExploreEmptyState";
 
-const ESTIMATE_ROW_HEIGHT = 280;
+const ESTIMATE_ROW_HEIGHT = 296;
 const OVERSCAN = 3;
 const LG_BREAKPOINT = "(min-width: 1024px)";
 
@@ -23,7 +23,9 @@ type ExploreGridProps = {
   locale: string;
   isLoading: boolean;
   onResetFilters: () => void;
-  footer?: React.ReactNode;
+  onLoadMore?: () => void;
+  hasMore?: boolean;
+  isValidating?: boolean;
 };
 
 function useColumns(): number {
@@ -122,10 +124,40 @@ type VirtualGridProps = {
   virtualizer: Virtualizer<HTMLDivElement, Element>;
   domain: ExploreDomain;
   locale: string;
-  footer?: React.ReactNode;
+  onLoadMore?: () => void;
+  hasMore?: boolean;
+  isValidating?: boolean;
 };
 
-function VirtualGrid({ scrollContainerRef, rows, virtualizer, domain, locale, footer }: VirtualGridProps) {
+function LoadMoreSentinel({ scrollRootRef, onLoadMore, isValidating }: {
+  scrollRootRef: React.RefObject<HTMLDivElement | null>;
+  onLoadMore: () => void;
+  isValidating: boolean;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    const scrollRoot = scrollRootRef.current;
+    if (!el || !scrollRoot) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting && !isValidating) onLoadMore(); },
+      { root: scrollRoot, rootMargin: "200px" },
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, [scrollRootRef, onLoadMore, isValidating]);
+
+  return (
+    <div ref={ref} className="flex justify-center py-6">
+      {isValidating && (
+        <div className="size-5 animate-spin rounded-full border-2 border-primary border-t-transparent" />
+      )}
+    </div>
+  );
+}
+
+function VirtualGrid({ scrollContainerRef, rows, virtualizer, domain, locale, onLoadMore, hasMore, isValidating }: VirtualGridProps) {
   return (
     <div
       ref={scrollContainerRef}
@@ -152,7 +184,7 @@ function VirtualGrid({ scrollContainerRef, rows, virtualizer, domain, locale, fo
               transform: `translateY(${virtualRow.start}px)`,
             }}
           >
-            <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
+            <div className="grid grid-cols-2 gap-4 pb-4 lg:grid-cols-3">
               {rows[virtualRow.index].map((item) => (
                 <div key={item.id as string}>
                   {renderCard(domain, item, locale)}
@@ -162,7 +194,13 @@ function VirtualGrid({ scrollContainerRef, rows, virtualizer, domain, locale, fo
           </div>
         ))}
       </div>
-      {footer}
+      {hasMore && onLoadMore && (
+        <LoadMoreSentinel
+          scrollRootRef={scrollContainerRef}
+          onLoadMore={onLoadMore}
+          isValidating={!!isValidating}
+        />
+      )}
     </div>
   );
 }
@@ -173,7 +211,9 @@ export default function ExploreGrid({
   locale,
   isLoading,
   onResetFilters,
-  footer,
+  onLoadMore,
+  hasMore,
+  isValidating,
 }: ExploreGridProps) {
   const columns = useColumns();
   const { scrollContainerRef, rows, virtualizer } = useVirtualRows(items, columns);
@@ -197,7 +237,9 @@ export default function ExploreGrid({
       virtualizer={virtualizer}
       domain={domain}
       locale={locale}
-      footer={footer}
+      onLoadMore={onLoadMore}
+      hasMore={hasMore}
+      isValidating={isValidating}
     />
   );
 }

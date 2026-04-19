@@ -11,7 +11,7 @@
     "pathADescription": "AI 가이드와 대화하며 즉시 추천을 받아보세요",
     "pathBDescription": "간단한 질문에 답하고 맞춤 추천을 받아보세요",
     "ctaDescription": "AI 가이드와 대화하세요 — 가입 불필요",
-    "browseExplore": "또는 제품 둘러보기",
+    "browseExplore": "제품 둘러보기",
     "howItWorksLabel": "간단해요",
     "howItWorksTitle": "이용 방법",
     "step1Title": "AI 가이드와 대화하기",
@@ -39,9 +39,7 @@
     "trustDelete": "언제든 삭제",
     "trustDeleteDesc": "한 번의 탭으로 모든 데이터 삭제",
     "followUs": "인스타그램 팔로우",
-    "returnTitle": "다시 오셨군요!",
-    "returnDescription": "뷰티 프로필이 준비되어 있어요. 이어서 시작하세요.",
-    "returnChat": "대화 이어하기"
+    "returnCta": "대화 이어하기"
   },
   "onboarding": {
     "heading": "자기소개를 해주세요",
@@ -306,10 +304,6 @@
       "title": "맞춤 추천 받기",
       "description": "뷰티 프로필을 설정하면 나에게 맞는 추천을 받을 수 있어요",
       "cta": "프로필 설정"
-    },
-    "loadMore": {
-      "button": "더 보기 ({remaining}개 남음)",
-      "loading": "로딩 중..."
     }
   },
   "beauty": {

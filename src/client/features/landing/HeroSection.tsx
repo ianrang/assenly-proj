@@ -46,18 +46,19 @@ export default function HeroSection({ state, locale }: HeroSectionProps) {
             disabled={state === "loading"}
             className="w-full"
           >
-            {t("pathA")}
+            {state === "returning" ? t("returnCta") : t("pathA")}
           </Button>
           <p className="mt-2.5 text-center text-xs text-foreground/50">
             {t("ctaDescription")}
           </p>
-          <button
-            type="button"
+          <Button
+            variant="outline"
+            size="cta"
             onClick={() => router.push(`/${locale}/explore`)}
-            className="mt-3 text-xs font-medium text-primary/80 transition-colors hover:text-primary"
+            className="mt-3 w-full"
           >
-            {t("browseExplore")} →
-          </button>
+            {t("browseExplore")}
+          </Button>
         </div>
       </div>
     </div>

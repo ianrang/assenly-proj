@@ -45,7 +45,7 @@ function makeProduct(overrides?: Partial<Product>): Product {
 }
 
 describe("ProductCard purchase_links", () => {
-  it("purchase_links 배열 존재 시 Product Details 링크 렌더링", () => {
+  it("purchase_links 배열 존재 시 카드 클릭 오버레이 렌더링", () => {
     const product = makeProduct({
       purchase_links: [
         { platform: "coupang", url: "https://www.coupang.com/vp/products/123" },
@@ -54,7 +54,7 @@ describe("ProductCard purchase_links", () => {
 
     render(<ProductCard product={product} locale="en" />);
 
-    const link = screen.getByText("Product Details");
+    const link = screen.getByLabelText("Product Details");
     expect(link).toBeInTheDocument();
     expect(link).toHaveAttribute("href", "https://www.coupang.com/vp/products/123");
     expect(link).toHaveAttribute("target", "_blank");
@@ -71,7 +71,7 @@ describe("ProductCard purchase_links", () => {
 
     render(<ProductCard product={product} locale="en" />);
 
-    const links = screen.getAllByText("Product Details");
+    const links = screen.getAllByLabelText("Product Details");
     expect(links).toHaveLength(1);
     expect(links[0]).toHaveAttribute("href", "https://www.coupang.com/vp/products/123");
   });
@@ -81,7 +81,7 @@ describe("ProductCard purchase_links", () => {
 
     render(<ProductCard product={product} locale="en" />);
 
-    expect(screen.queryByText("Product Details")).not.toBeInTheDocument();
+    expect(screen.queryByLabelText("Product Details")).not.toBeInTheDocument();
   });
 
   it("purchase_links 빈 배열 시 구매 링크 미렌더링", () => {
@@ -89,7 +89,7 @@ describe("ProductCard purchase_links", () => {
 
     render(<ProductCard product={product} locale="en" />);
 
-    expect(screen.queryByText("Product Details")).not.toBeInTheDocument();
+    expect(screen.queryByLabelText("Product Details")).not.toBeInTheDocument();
   });
 });
 
@@ -179,14 +179,14 @@ describe("ProductCard compact variant", () => {
     expect(screen.queryByText("Olive Young")).not.toBeInTheDocument();
   });
 
-  it("variant 미지정 시 default 동작 (Product Details 표시)", () => {
+  it("variant 미지정 시 default 동작 (카드 오버레이 링크 존재)", () => {
     const product = makeProduct({
       purchase_links: [{ platform: "coupang", url: "https://coupang.com" }],
     });
 
     render(<ProductCard product={product} locale="en" />);
 
-    expect(screen.getByText("Product Details")).toBeInTheDocument();
+    expect(screen.getByLabelText("Product Details")).toBeInTheDocument();
   });
 });
 
@@ -315,6 +315,6 @@ describe("ProductCard Kit CTA integration (v1.2 NEW-10)", () => {
     // default variant에서는 Get free kit 버튼이 없음 — compact 전용 설계
     expect(screen.queryByRole("button", { name: /Get free kit/i })).not.toBeInTheDocument();
     // border-primary 강조와 HighlightBadge는 표시됨
-    expect(screen.getByText("Product Details")).toBeInTheDocument();
+    expect(screen.getByLabelText("Product Details")).toBeInTheDocument();
   });
 });
