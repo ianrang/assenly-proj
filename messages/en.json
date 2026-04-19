@@ -301,6 +301,11 @@
       "suggestion": "Try removing some filters",
       "resetFilters": "Reset filters"
     },
+    "profileBanner": {
+      "title": "Get personalized picks",
+      "description": "Set up your beauty profile for recommendations tailored to you",
+      "cta": "Set up profile"
+    },
     "loadMore": {
       "button": "Load more ({remaining} remaining)",
       "loading": "Loading..."

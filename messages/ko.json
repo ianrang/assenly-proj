@@ -301,6 +301,11 @@
       "suggestion": "필터를 줄여보세요",
       "resetFilters": "필터 초기화"
     },
+    "profileBanner": {
+      "title": "맞춤 추천 받기",
+      "description": "뷰티 프로필을 설정하면 나에게 맞는 추천을 받을 수 있어요",
+      "cta": "프로필 설정"
+    },
     "loadMore": {
       "button": "더 보기 ({remaining}개 남음)",
       "loading": "로딩 중..."

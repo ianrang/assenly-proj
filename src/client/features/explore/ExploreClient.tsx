@@ -14,6 +14,7 @@ import ChatLinkButton from "./ChatLinkButton";
 import FilterSheet from "./FilterSheet";
 import FilterChips from "./FilterChips";
 import SortDropdown from "./SortDropdown";
+import ProfileBanner from "./ProfileBanner";
 import { useExplore } from "./use-explore";
 import type { ExploreDomain } from "@/shared/types/explore";
 
@@ -147,6 +148,12 @@ export default function ExploreClient({ locale }: ExploreClientProps) {
             hasProfile={scored}
           />
         </div>
+
+        {!scored && !isLoading && (
+          <div className="mt-3">
+            <ProfileBanner locale={locale} />
+          </div>
+        )}
 
         {hasFilters && (
           <div className="mt-2">
