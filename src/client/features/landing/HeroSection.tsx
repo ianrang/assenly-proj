@@ -51,6 +51,13 @@ export default function HeroSection({ state, locale }: HeroSectionProps) {
           <p className="mt-2.5 text-center text-xs text-foreground/50">
             {t("ctaDescription")}
           </p>
+          <button
+            type="button"
+            onClick={() => router.push(`/${locale}/explore`)}
+            className="mt-3 text-xs font-medium text-primary/80 transition-colors hover:text-primary"
+          >
+            {t("browseExplore")} →
+          </button>
         </div>
       </div>
     </div>
