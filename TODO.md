@@ -642,8 +642,8 @@
 | P3-33  | ~~버그 수정 + 최적화~~  | 수정 완료 (PR #17 머지): (1) 불완전 동의 세션 방어 (2) ChatContent useMemo locale 의존성 (3) enrich-product-links ESM 가드 (4) package-lock.json 동기화. E2E 재검증 (2026-04-13): 815/815 테스트 통과, tsc 0에러. 코드 레벨 검증 9/9 항목 PASS (언어전환, StoreCard, ClinicCard, search 도메인, 에러retry, 가로스크롤, TreatmentCard booking, map-utils, card-mapper). eval harness 17/20 PASS | ✅   |
 | P3-33a | 법률 전문가 검토        | 소프트 런칭 후 정식 런칭 전 진행. 이용약관(/terms), 개인정보처리방침(/privacy), 면책 조항 법률 전문가 검토. GDPR/국제 규정 검토. 소프트 런칭 차단 아님 | ⬜   |
 | P3-33b | Vercel/도메인 essenly 변경 | Vercel 프로젝트명·도메인 essenly-proj 변경 완료. 코드 내 참조 전수 변경 완료 | ✅   |
-| P3-34  | 프로덕션 배포          | 최종 배포                                                                                               | ⬜   |
-| P3-35  | 소프트 런칭           | 제한 사용자 테스트 (대상/규모 별도 결정)                                                                            | ⬜   |
+| P3-34  | 프로덕션 배포          | Vercel 자동 배포 완료. 프로덕션 4개 핵심 흐름(랜딩/채팅/Explore/프로필) 정상 확인 (2026-04-19)                                  | ✅   |
+| P3-35  | 소프트 런칭           | 지인 1~3명 대상 소프트 런칭 시작 (2026-04-19). URL: essenly-proj.vercel.app                                       | ✅   |
 | P3-36  | ~~사용자 피드백 수집 채널 구축~~ | **→ v0.2 연기**. 인앱 별점+리뷰 UI로 v0.2에서 구현. 소프트 런칭은 소수 사용자 직접 소통으로 피드백 수집                                    | ➡️  |
 
 
