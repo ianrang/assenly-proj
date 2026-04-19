@@ -196,7 +196,7 @@ export function registerChatRoutes(app: AppType) {
         })).min(1),
       }),
       conversation_id: z.string().uuid().nullable().optional(),
-      locale: z.enum(['en', 'ko']).default('en'),
+      locale: z.enum(['en', 'ko', 'ja', 'zh', 'th', 'es', 'fr']).default('en'),
     });
 
     const parsed = chatRequestSchema.safeParse(body);

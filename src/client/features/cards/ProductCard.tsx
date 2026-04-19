@@ -38,6 +38,9 @@ export default function ProductCard({ product, brand, store, whyRecommended, loc
   const displayTags = product.tags
     .filter(t => !INTERNAL_TAG_PREFIXES.some(p => t.startsWith(p)))
     .slice(0, 3);
+  const subcategoryLabel = product.subcategory
+    ? product.subcategory.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
+    : null;
 
   if (isCompact) {
     return (
@@ -161,9 +164,19 @@ export default function ProductCard({ product, brand, store, whyRecommended, loc
           </p>
         )}
 
-        {/* Tags */}
-        {displayTags.length > 0 && (
+        {/* Tags — 5색 체계: muted(카테고리) + teal(관광 편의) + muted(기타) */}
+        {(subcategoryLabel || product.english_label || displayTags.length > 0) && (
           <div className="mb-2 flex flex-wrap gap-1.5">
+            {subcategoryLabel && (
+              <span className="rounded-full border border-border px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
+                {subcategoryLabel}
+              </span>
+            )}
+            {product.english_label && (
+              <span className="rounded-full border border-teal bg-teal/10 px-2 py-0.5 text-[10px] font-medium text-teal">
+                English Label
+              </span>
+            )}
             {displayTags.map((tag) => (
               <span
                 key={tag}
@@ -173,13 +186,6 @@ export default function ProductCard({ product, brand, store, whyRecommended, loc
               </span>
             ))}
           </div>
-        )}
-
-        {/* English Label Badge */}
-        {product.english_label && (
-          <span className="inline-block rounded-full border border-teal bg-teal/10 px-2 py-0.5 text-[10px] font-medium text-teal">
-            English Label
-          </span>
         )}
 
         {/* Bottom links — pushed to bottom */}

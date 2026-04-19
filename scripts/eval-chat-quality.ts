@@ -163,8 +163,9 @@ async function setupProfile(
   profile: ScenarioProfile,
 ): Promise<void> {
   // Use onboarding API to set profile properly (handles profile + journey creation)
+  // API expects skin_types (array), not skin_type (string). .strict() rejects unknown fields.
   const body: Record<string, unknown> = {
-    skin_type: profile.skin_type ?? 'normal',
+    skin_types: [profile.skin_type ?? 'normal'],
     language: profile.language ?? 'en',
     skin_concerns: profile.skin_concerns ?? [],
   };
@@ -219,7 +220,7 @@ async function sendChatMessage(
   session: EvalSession,
   messageText: string,
   conversationId: string | null,
-  locale: 'en' | 'ko' = 'en',
+  locale: string = 'en',
 ): Promise<ChatResponse> {
   const messageId = `eval-${Date.now()}-${Math.random().toString(36).slice(2, 8)}`;
 
@@ -374,8 +375,13 @@ async function runScenario(
     }
 
     // 2. Send messages (multi-turn support)
-    // chat API는 locale: 'en' | 'ko'만 허용. 그 외 언어는 LLM이 입력 감지로 전환.
-    const locale: 'en' | 'ko' = scenario.profile?.language === 'ko' ? 'ko' : 'en';
+    // NEW-42: locale enum 확장 (en|ko|ja|zh|th|es|fr). profile.language가 지원 범위면 그대로 사용.
+    const supportedLocales = ['en', 'ko', 'ja', 'zh', 'th', 'es', 'fr'] as const;
+    type SupportedLocale = typeof supportedLocales[number];
+    const profileLang = scenario.profile?.language;
+    const locale: SupportedLocale = profileLang && supportedLocales.includes(profileLang as SupportedLocale)
+      ? (profileLang as SupportedLocale)
+      : 'en';
     let conversationId: string | null = null;
     let lastResponse: ChatResponse = { text: '', toolCalls: [], conversationId: null };
     const conversationLog: string[] = [];

@@ -13,9 +13,9 @@
 | 사전 완료      | 12      | 12      | 0       | 0      | ✅      |
 | Phase 0    | 37      | 37      | 0       | 0      | ✅      |
 | Phase 1    | 62      | 60      | 2       | 0      | ✅      |
-| Phase 2    | 140     | 115     | 16      | 9      | 🔶 진행중 |
+| Phase 2    | 145     | 115     | 16      | 14     | 🔶 진행중 |
 | Phase 3    | 38      | 15      | 21      | 2      | 🔶 진행중 |
-| **MVP 합계** | **289** | **239** | **39**  | **11** |        |
+| **MVP 합계** | **294** | **239** | **39**  | **16** |        |
 | 관리자 앱 (펜딩) | 20      | 0       | 0       | 20     | ⏸️ 펜딩  |
 
 
@@ -548,6 +548,11 @@
 | NEW-38  | v0.2 — 멀티 채팅방 (프로필당 여러 대화) | **→ v0.2 연기**. 현재 schema의 conversations 테이블은 이미 여러 row 지원 → DB 수정 불필요. v0.2 계정 인증 도입 시 user_id로 묶어 목록 조회 API + 사이드바/drawer UI 추가. NEW-33 reset이 "새 conversation 생성" 방식이라 자연스럽게 확장 | ➡️  |
 | NEW-39  | v0.2 — 관리자 가격 수동 수정 UI | **→ v0.2 연기** (관리자 앱 펜딩 20건에 포함). products/treatments 가격(price, price_range_min/max, price_source='manual') 수동 입력·수정. `price_source` 덮어쓰기 우선순위: manual > real > estimated-pipeline > estimated-ai. 감사 로그(P0-10) 대상 | ➡️  |
 | NEW-40  | ~~제품 데이터 정합성 복구 + 가격 수집~~ | **완료**. 기존 오염 데이터 전량 폐기 → 올리브영 상세 페이지에서 200건 직접 수집 (199 OY + 1 Essenly). 이미지/링크/가격 100%. 중복 0건. OY 실제 페이지 대조 검증 완료. **DB 적재 완료 (200 inserted, 0 failed)**. 후속: 신규 제품 brand_id 매핑 + 한국어 번역 | ✅   |
+| NEW-42  | 채팅 언어 감지 안정화 | **완료**. (1) 프롬프트 언어 지시를 사용자 입력 언어 우선 감지로 변경 (locale은 ambiguous 메시지 폴백) (2) locale enum `en\|ko` → 7개 언어 확장 (`en\|ko\|ja\|zh\|th\|es\|fr`) (3) eval M1-M4 다국어 시나리오 전체 PASS | ✅ |
+| NEW-43  | 채팅 품질 검증 + eval 실행 | **완료**. eval 25/25 PASS (setupProfile skin_type→skin_types 스키마 수정 포함). 4도메인 KO 채팅 QA 정상 (products/stores/treatments/clinics). 튜닝 불필요 | ✅ |
+| NEW-44  | ProductCard 태그 시스템 개선 | **완료**. subcategory를 muted 태그로, english_label을 teal 태그로 통합 태그 영역 배치. 5색 체계 유지. Store/Clinic은 구조화 필드가 이미 올바르게 매핑됨 (변경 불필요) | ✅ |
+| NEW-45  | StoreCard 태그 시스템 디자인 검토 | **변경 불필요**. 코드 리뷰 결과: store_type→muted, english_support→teal, tourist_services→teal로 design-preview.html 5색 체계에 이미 올바르게 매핑. tags 배열은 DB에서 빈 배열 | ✅ |
+| NEW-46  | ClinicCard 태그 시스템 디자인 검토 | **변경 불필요**. 코드 리뷰 결과: clinic_type→muted, english_support/license_verified/foreigner_friendly→teal로 design-preview.html 5색 체계에 이미 올바르게 매핑. tags 배열은 DB에서 빈 배열 | ✅ |
 
 
 ---

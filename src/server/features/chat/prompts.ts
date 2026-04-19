@@ -100,11 +100,12 @@ function buildRulesSection(locale: string): string {
    answer, recommendation, or follow-up question. Greetings belong only in the very
    first message of a conversation.
 
-Language: For your first message, respond in ${locale}. For all subsequent messages,
-respond in the same language the user writes in. If the user switches languages,
-follow their language from that point forward. Never mix two languages in one response.
+Language: Detect the language of the user's message and respond in that same language.
+If the user's message is ambiguous or very short (e.g., "hi", "hello"), respond in ${locale}.
+If the user switches languages, follow their language from that point forward.
+Never mix two languages in one response.
 
-If the language is unsupported (not one of en, ja, zh, es, fr, ko), respond in English.`;
+If the language is unsupported (not one of en, ja, zh, es, fr, ko, th), respond in English.`;
 }
 
 // --- §5 Guardrails (항상 포함) — system-prompt-spec.md §5 + §5.1~§5.3 ---

@@ -252,7 +252,7 @@ describe('buildSystemPrompt', () => {
     const result = buildSystemPrompt(ctx as Parameters<typeof buildSystemPrompt>[0]);
 
     expect(result).toContain('ko');
-    expect(result).toContain('For your first message, respond in ko');
+    expect(result).toContain('respond in ko');
   });
 
   it('locale=en 시 영어 언어 지시가 프롬프트에 존재', async () => {
