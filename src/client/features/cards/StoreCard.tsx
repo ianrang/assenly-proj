@@ -18,6 +18,7 @@ type StoreCardProps = {
 };
 
 function extractWebsiteUrl(links: Store["external_links"]): string | undefined {
+  if (!links) return undefined;
   const webLink = links.find((l) => l.type === "website" || l.type === "instagram");
   return webLink?.url;
 }

@@ -161,7 +161,7 @@ export interface Store {
   tourist_services: string[];
   payment_methods: string[];
   nearby_landmarks: string[];
-  external_links: ExternalLink[];
+  external_links: ExternalLink[] | null;
   is_highlighted: boolean;
   highlight_badge: LocalizedText | null;
   rating: number | null;
@@ -215,7 +215,7 @@ export interface Clinic {
   consultation_type: string[];
   foreigner_friendly: ForeignerSupport | null;
   booking_url: string | null;
-  external_links: ExternalLink[];
+  external_links: ExternalLink[] | null;
   is_highlighted: boolean;
   highlight_badge: LocalizedText | null;
   rating: number | null;

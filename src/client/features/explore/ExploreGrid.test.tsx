@@ -1,9 +1,27 @@
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 
 vi.mock('client-only', () => ({}));
 vi.mock('next-intl', () => ({
   useTranslations: () => (key: string) => key,
+}));
+
+// useVirtualizer mock: 모든 행을 가상 아이템으로 반환 (JSDOM에서 레이아웃 불가)
+const mockMeasureElement = vi.fn();
+vi.mock('@tanstack/react-virtual', () => ({
+  useVirtualizer: (opts: { count: number; estimateSize: () => number }) => {
+    const items = Array.from({ length: opts.count }, (_, i) => ({
+      index: i,
+      key: String(i),
+      start: i * opts.estimateSize(),
+      size: opts.estimateSize(),
+    }));
+    return {
+      getVirtualItems: () => items,
+      getTotalSize: () => opts.count * opts.estimateSize(),
+      measureElement: mockMeasureElement,
+    };
+  },
 }));
 
 vi.mock('@/client/features/cards/ProductCard', () => ({
@@ -41,6 +59,26 @@ vi.mock('./ExploreEmptyState', () => ({
 import ExploreGrid from './ExploreGrid';
 
 describe('ExploreGrid', () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    // JSDOM 기본: matchMedia는 모바일 (lg 미매칭 → 2열)
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      value: vi.fn().mockImplementation((query: string) => ({
+        matches: false, // lg 미매칭 → 2열
+        media: query,
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+        onchange: null,
+        addListener: vi.fn(),
+        removeListener: vi.fn(),
+        dispatchEvent: vi.fn(),
+      })),
+    });
+  });
+
+  // --- 기존 테스트: 스켈레톤, 빈 상태, 도메인별 렌더링 ---
+
   it('isLoading=true 시 스켈레톤 표시 (products)', () => {
     render(
       <ExploreGrid domain="products" items={[]} locale="en" isLoading={true} onResetFilters={vi.fn()} />,
@@ -90,5 +128,85 @@ describe('ExploreGrid', () => {
       <ExploreGrid domain="treatments" items={[{ id: 't1', name: { en: 'Laser' } }]} locale="en" isLoading={false} onResetFilters={vi.fn()} />,
     );
     expect(screen.getByTestId('treatment-card-t1')).toBeDefined();
+  });
+
+  // --- 가상 스크롤 테스트 ---
+
+  it('가상 스크롤 컨테이너 구조: scroll container + total size wrapper 존재', () => {
+    const items = [{ id: 'p1' }, { id: 'p2' }, { id: 'p3' }];
+    const { container } = render(
+      <ExploreGrid domain="products" items={items} locale="en" isLoading={false} onResetFilters={vi.fn()} />,
+    );
+    // 스크롤 컨테이너 (overflow 설정된 부모)
+    const scrollContainer = container.querySelector('[data-testid="virtual-scroll-container"]');
+    expect(scrollContainer).not.toBeNull();
+    // 전체 높이를 표현하는 inner div
+    const totalSizeDiv = scrollContainer?.firstElementChild;
+    expect(totalSizeDiv).not.toBeNull();
+    expect(totalSizeDiv?.getAttribute('style')).toContain('height');
+  });
+
+  it('아이템이 행 단위로 그룹핑 (모바일 2열: 5개 → 3행)', () => {
+    const items = Array.from({ length: 5 }, (_, i) => ({ id: `p${i}` }));
+    const { container } = render(
+      <ExploreGrid domain="products" items={items} locale="en" isLoading={false} onResetFilters={vi.fn()} />,
+    );
+    // data-index 속성이 있는 행 요소 = 3개 (ceil(5/2))
+    const rows = container.querySelectorAll('[data-index]');
+    expect(rows).toHaveLength(3);
+  });
+
+  it('데스크톱 3열: 7개 아이템 → 3행', () => {
+    // lg 매칭 → 3열
+    Object.defineProperty(window, 'matchMedia', {
+      writable: true,
+      value: vi.fn().mockImplementation((query: string) => ({
+        matches: query.includes('1024'), // lg breakpoint
+        media: query,
+        addEventListener: vi.fn(),
+        removeEventListener: vi.fn(),
+        onchange: null,
+        addListener: vi.fn(),
+        removeListener: vi.fn(),
+        dispatchEvent: vi.fn(),
+      })),
+    });
+
+    const items = Array.from({ length: 7 }, (_, i) => ({ id: `p${i}` }));
+    const { container } = render(
+      <ExploreGrid domain="products" items={items} locale="en" isLoading={false} onResetFilters={vi.fn()} />,
+    );
+    // ceil(7/3) = 3행
+    const rows = container.querySelectorAll('[data-index]');
+    expect(rows).toHaveLength(3);
+  });
+
+  it('각 가상 행에 올바른 카드가 배치 (2열 기준)', () => {
+    const items = [{ id: 'p0' }, { id: 'p1' }, { id: 'p2' }, { id: 'p3' }, { id: 'p4' }];
+    const { container } = render(
+      <ExploreGrid domain="products" items={items} locale="en" isLoading={false} onResetFilters={vi.fn()} />,
+    );
+    // 행 0: p0, p1
+    const row0 = container.querySelector('[data-index="0"]');
+    expect(row0?.querySelector('[data-testid="product-card-p0"]')).not.toBeNull();
+    expect(row0?.querySelector('[data-testid="product-card-p1"]')).not.toBeNull();
+    // 행 1: p2, p3
+    const row1 = container.querySelector('[data-index="1"]');
+    expect(row1?.querySelector('[data-testid="product-card-p2"]')).not.toBeNull();
+    expect(row1?.querySelector('[data-testid="product-card-p3"]')).not.toBeNull();
+    // 행 2: p4 (마지막 행, 1개만)
+    const row2 = container.querySelector('[data-index="2"]');
+    expect(row2?.querySelector('[data-testid="product-card-p4"]')).not.toBeNull();
+  });
+
+  it('가상 행에 position: absolute + translateY 스타일 적용', () => {
+    const items = [{ id: 'p0' }, { id: 'p1' }, { id: 'p2' }];
+    const { container } = render(
+      <ExploreGrid domain="products" items={items} locale="en" isLoading={false} onResetFilters={vi.fn()} />,
+    );
+    const row0 = container.querySelector('[data-index="0"]');
+    const style = row0?.getAttribute('style') ?? '';
+    expect(style).toContain('position');
+    expect(style).toContain('translateY');
   });
 });
