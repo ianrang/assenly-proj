@@ -151,4 +151,103 @@ describe('domain-handlers', () => {
     expect(mockRank).toHaveBeenCalledWith(scored);
     expect(result).toEqual(ranked);
   });
+
+  it('treatments fetch → findAllTreatments 호출', async () => {
+    const { getDomainHandler } = await import(
+      '@/server/features/explore/domain-handlers'
+    );
+    const handler = getDomainHandler('treatments')!;
+    const mockResult = { data: [{ id: 't1' }], total: 1 };
+    mockFindAllTreatments.mockResolvedValue(mockResult);
+
+    const result = await handler.fetch(
+      MOCK_CLIENT,
+      { concerns: ['acne'], category: 'laser' },
+      { page: 1, pageSize: 10 },
+      { field: 'rating', order: 'desc' as const },
+    );
+
+    expect(mockFindAllTreatments).toHaveBeenCalledOnce();
+    expect(result).toEqual(mockResult);
+  });
+
+  it('clinics fetch → findAllClinics 호출', async () => {
+    const { getDomainHandler } = await import(
+      '@/server/features/explore/domain-handlers'
+    );
+    const handler = getDomainHandler('clinics')!;
+    const mockResult = { data: [{ id: 'c1' }], total: 1 };
+    mockFindAllClinics.mockResolvedValue(mockResult);
+
+    const result = await handler.fetch(
+      MOCK_CLIENT,
+      { clinic_type: 'dermatology' },
+      { page: 1, pageSize: 10 },
+      { field: 'rating', order: 'desc' as const },
+    );
+
+    expect(mockFindAllClinics).toHaveBeenCalledOnce();
+    expect(result).toEqual(mockResult);
+  });
+
+  it('treatments score → scoreTreatments + rank 호출', async () => {
+    const { getDomainHandler } = await import(
+      '@/server/features/explore/domain-handlers'
+    );
+    const handler = getDomainHandler('treatments')!;
+    const items = [{ id: 't1', downtime_days: 3 }];
+    const scored = [{ id: 't1', score: 0.5, reasons: [], warnings: [], is_highlighted: false }];
+    const ranked = [{ item: scored[0], rank: 1, is_highlighted: false }];
+    mockScoreTreatments.mockReturnValue(scored);
+    mockRank.mockReturnValue(ranked);
+
+    const result = handler.score(items, null, null);
+
+    expect(mockScoreTreatments).toHaveBeenCalledOnce();
+    expect(mockRank).toHaveBeenCalledWith(scored);
+    expect(result).toEqual(ranked);
+  });
+
+  it('clinics score → scoreClinics + rank 호출', async () => {
+    const { getDomainHandler } = await import(
+      '@/server/features/explore/domain-handlers'
+    );
+    const handler = getDomainHandler('clinics')!;
+    const items = [{ id: 'c1', english_support: 'good' }];
+    const scored = [{ id: 'c1', score: 0.65, reasons: ['Good English support'], warnings: [], is_highlighted: false }];
+    const ranked = [{ item: scored[0], rank: 1, is_highlighted: false }];
+    mockScoreClinics.mockReturnValue(scored);
+    mockRank.mockReturnValue(ranked);
+
+    const result = handler.score(items, 'en', null);
+
+    expect(mockScoreClinics).toHaveBeenCalledWith(items, 'en');
+    expect(mockRank).toHaveBeenCalledWith(scored);
+    expect(result).toEqual(ranked);
+  });
+
+  it('빈 아이템 배열 → score는 빈 ranked 배열 반환', async () => {
+    const { getDomainHandler } = await import(
+      '@/server/features/explore/domain-handlers'
+    );
+    const handler = getDomainHandler('products')!;
+    mockScoreProducts.mockReturnValue([]);
+    mockRank.mockReturnValue([]);
+
+    const result = handler.score([], [], []);
+
+    expect(result).toEqual([]);
+  });
+
+  it('fetch 에러 → 그대로 throw', async () => {
+    const { getDomainHandler } = await import(
+      '@/server/features/explore/domain-handlers'
+    );
+    const handler = getDomainHandler('products')!;
+    mockFindAllProducts.mockRejectedValue(new Error('DB error'));
+
+    await expect(
+      handler.fetch(MOCK_CLIENT, {}, { page: 1, pageSize: 10 }, { field: 'rating', order: 'desc' }),
+    ).rejects.toThrow('DB error');
+  });
 });

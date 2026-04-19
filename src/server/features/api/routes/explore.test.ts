@@ -211,4 +211,118 @@ describe('GET /api/explore', () => {
     expect(res.status).toBe(500);
     expect(json.error.code).toBe('INTERNAL_ERROR');
   });
+
+  it('domain=treatments 정상 동작', async () => {
+    const handler = createMockHandler([{ id: 't1', name: { en: 'Laser' } }], 1);
+    mockGetDomainHandler.mockReturnValue(handler);
+
+    const res = await app.request('/api/explore?domain=treatments');
+    const json = await res.json();
+
+    expect(res.status).toBe(200);
+    expect(json.meta.domain).toBe('treatments');
+  });
+
+  it('domain=stores 정상 동작', async () => {
+    const handler = createMockHandler([{ id: 's1' }], 1);
+    mockGetDomainHandler.mockReturnValue(handler);
+
+    const res = await app.request('/api/explore?domain=stores');
+    const json = await res.json();
+
+    expect(res.status).toBe(200);
+    expect(json.meta.domain).toBe('stores');
+  });
+
+  it('domain=clinics 정상 동작', async () => {
+    const handler = createMockHandler([{ id: 'c1' }], 1);
+    mockGetDomainHandler.mockReturnValue(handler);
+
+    const res = await app.request('/api/explore?domain=clinics');
+    const json = await res.json();
+
+    expect(res.status).toBe(200);
+    expect(json.meta.domain).toBe('clinics');
+  });
+
+  it('concerns 필터 쉼표 구분 파싱', async () => {
+    const handler = createMockHandler([], 0);
+    mockGetDomainHandler.mockReturnValue(handler);
+
+    await app.request('/api/explore?domain=treatments&concerns=acne,wrinkles,pores');
+
+    const filters = handler.fetch.mock.calls[0][1] as Record<string, unknown>;
+    expect(filters.concerns).toEqual(['acne', 'wrinkles', 'pores']);
+  });
+
+  it('budget_max 숫자 필터 전달', async () => {
+    const handler = createMockHandler([], 0);
+    mockGetDomainHandler.mockReturnValue(handler);
+
+    await app.request('/api/explore?domain=products&budget_max=50000');
+
+    const filters = handler.fetch.mock.calls[0][1] as Record<string, unknown>;
+    expect(filters.budget_max).toBe(50000);
+  });
+
+  it('store_type 필터 전달 (stores)', async () => {
+    const handler = createMockHandler([], 0);
+    mockGetDomainHandler.mockReturnValue(handler);
+
+    await app.request('/api/explore?domain=stores&store_type=olive_young');
+
+    const filters = handler.fetch.mock.calls[0][1] as Record<string, unknown>;
+    expect(filters.store_type).toBe('olive_young');
+  });
+
+  it('english_support 필터 전달', async () => {
+    const handler = createMockHandler([], 0);
+    mockGetDomainHandler.mockReturnValue(handler);
+
+    await app.request('/api/explore?domain=clinics&english_support=fluent');
+
+    const filters = handler.fetch.mock.calls[0][1] as Record<string, unknown>;
+    expect(filters.english_support).toBe('fluent');
+  });
+
+  it('sort=price → sort field "price", order "asc"', async () => {
+    const handler = createMockHandler([], 0);
+    mockGetDomainHandler.mockReturnValue(handler);
+
+    await app.request('/api/explore?domain=products&sort=price');
+
+    const sortArg = handler.fetch.mock.calls[0][3] as { field: string; order: string };
+    expect(sortArg.field).toBe('price');
+    expect(sortArg.order).toBe('asc');
+  });
+
+  it('결과 0건 → 빈 data 배열 + total=0', async () => {
+    const handler = createMockHandler([], 0);
+    mockGetDomainHandler.mockReturnValue(handler);
+
+    const res = await app.request('/api/explore?domain=products');
+    const json = await res.json();
+
+    expect(res.status).toBe(200);
+    expect(json.data).toEqual([]);
+    expect(json.meta.total).toBe(0);
+  });
+
+  it('복수 아이템에서 모든 embedding 필드 제거', async () => {
+    const mockData = [
+      { id: 'p1', embedding: [0.1], name: { en: 'A' } },
+      { id: 'p2', embedding: [0.2], name: { en: 'B' } },
+      { id: 'p3', embedding: [0.3], name: { en: 'C' } },
+    ];
+    const handler = createMockHandler(mockData, 3);
+    mockGetDomainHandler.mockReturnValue(handler);
+
+    const res = await app.request('/api/explore?domain=products');
+    const json = await res.json();
+
+    for (const item of json.data as Record<string, unknown>[]) {
+      expect(item).not.toHaveProperty('embedding');
+    }
+    expect(json.data).toHaveLength(3);
+  });
 });
