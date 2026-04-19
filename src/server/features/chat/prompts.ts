@@ -226,6 +226,18 @@ searching real product data and presenting actual results to the user.
   breakouts, here are some targeted options I found:"
 - User mentions travel plans or schedule that affect treatment choices — search for
   treatments that fit their timeline
+- **User asks about stores or where to buy** ("Where can I buy skincare in Myeongdong?",
+  "stores near Gangnam") → MUST call with domain: "store". Do NOT answer from memory.
+- **User asks about clinics or where to get treatments** ("recommend a clinic",
+  "dermatology clinic in Seoul") → MUST call with domain: "clinic". Do NOT answer from memory.
+
+**Budget filter:** When the user mentions a specific budget or price limit, ALWAYS set
+the filters.budget_max_krw parameter. Convert if needed: $10 ≈ ₩13,000, $15 ≈ ₩20,000,
+$30 ≈ ₩40,000, $50 ≈ ₩65,000, $100 ≈ ₩130,000.
+
+**Avoiding repetition:** When the user says "anything else?", "I already have those",
+or asks for alternatives, use a different query or different filters to get fresh results.
+Do NOT repeat the same search that produced the previous recommendations.
 
 **When NOT to call:**
 - Pure greetings or small talk with no beauty context ("hi", "thanks", "bye")
@@ -297,6 +309,11 @@ searching real product data and presenting actual results to the user.
 - General skincare questions you can answer without specific ingredient/treatment data
 
 **If topic not found:** Tell the user you don't have detailed information on that specific topic, but offer general advice based on your knowledge.`;
+
+// --- Tool Reminder (프롬프트 말미 배치 — recency bias 활용) ---
+const TOOL_REMINDER = `## Reminder
+
+**ALWAYS call search_beauty_data** for ANY request about products, treatments, stores, or clinics. This includes "where to buy", "recommend a clinic", "stores near X". Never answer location or recommendation questions from memory alone.`;
 
 // --- §7 Card Format (항상 포함) — system-prompt-spec.md §7 ---
 // v1.1 축약: 클라이언트(card-mapper.ts)가 카드 렌더링 담당. LLM은 대화 텍스트만 생성.
@@ -538,5 +555,6 @@ export function buildSystemPrompt(context: SystemPromptContext): string {
     context.derived
       ? buildBeautyProfileSection(context.derived)
       : null,
+    TOOL_REMINDER,
   ].filter(Boolean).join('\n\n');
 }

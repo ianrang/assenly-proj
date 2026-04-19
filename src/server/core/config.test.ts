@@ -90,10 +90,10 @@ describe('envSchema', () => {
   });
 
   // v1.2: LLM_TEMPERATURE SSOT (chat-quality-improvements.md §4)
-  it('LLM_TEMPERATURE 기본값은 0.6', async () => {
+  it('LLM_TEMPERATURE 기본값은 0.4', async () => {
     stubValidEnv();
     const { env } = await import('@/server/core/config');
-    expect(env.LLM_TEMPERATURE).toBe(0.6);
+    expect(env.LLM_TEMPERATURE).toBe(0.4);
   });
 
   it('LLM_TEMPERATURE 문자열이 숫자로 변환됨 (롤백 경로)', async () => {

@@ -1,7 +1,7 @@
 {
   "$schema": "./eval-scenarios.schema.json",
   "version": "1.0.0",
-  "description": "WS2 LLM-as-Judge eval scenarios — 20 scenarios in 5 categories",
+  "description": "LLM-as-Judge eval scenarios — 35 scenarios in 9 categories",
   "scenarios": [
     {
       "id": "P1",
@@ -417,6 +417,206 @@
         { "criterion": "ingredient_info", "description": "Provides information about centella asiatica and its benefits for redness" },
         { "criterion": "product_suggestion", "description": "Suggests products or treatments containing centella or related to redness" },
         { "criterion": "personalized", "description": "Connects the advice to the user's sensitive skin type and redness concern" }
+      ]
+    },
+
+    {
+      "id": "LT1",
+      "category": "long_conversation",
+      "name": "5-turn routine building → context maintained",
+      "profile": {
+        "skin_type": "combination",
+        "skin_concerns": ["acne", "dullness"],
+        "language": "en"
+      },
+      "messages": [
+        { "role": "user", "text": "I want to build a full K-beauty routine for my combination skin." },
+        { "role": "user", "text": "What cleanser should I start with?" },
+        { "role": "user", "text": "OK, and what toner pairs well with that cleanser?" },
+        { "role": "user", "text": "Now I need a serum. Something for my dullness." },
+        { "role": "user", "text": "Great, can you summarize the full routine you've recommended so far?" }
+      ],
+      "rubric": [
+        { "criterion": "remembers_all_steps", "description": "Final summary includes cleanser, toner, and serum from prior turns (not just the last recommendation)" },
+        { "criterion": "consistent_skin_type", "description": "All recommendations throughout are appropriate for combination skin — no contradictions" },
+        { "criterion": "logical_routine_order", "description": "Products are recommended in a logical skincare routine order (cleanser → toner → serum)" },
+        { "criterion": "no_repetition", "description": "Does not repeat the same full recommendation verbatim across turns" }
+      ]
+    },
+    {
+      "id": "LT2",
+      "category": "long_conversation",
+      "name": "4-turn domain switching → coherent transitions",
+      "profile": {
+        "skin_type": "dry",
+        "skin_concerns": ["wrinkles"],
+        "language": "en"
+      },
+      "messages": [
+        { "role": "user", "text": "Recommend a good anti-aging moisturizer." },
+        { "role": "user", "text": "What about professional treatments for wrinkles in Seoul?" },
+        { "role": "user", "text": "Which clinics near Gangnam offer that treatment?" },
+        { "role": "user", "text": "And where can I buy the moisturizer you mentioned earlier?" }
+      ],
+      "rubric": [
+        { "criterion": "domain_transitions", "description": "Smoothly transitions from products → treatments → clinics → stores without confusion" },
+        { "criterion": "remembers_first_product", "description": "Last response references the moisturizer from the first turn (not a new random product)" },
+        { "criterion": "wrinkle_focus_maintained", "description": "All recommendations stay relevant to anti-aging/wrinkles throughout the conversation" },
+        { "criterion": "no_hallucinated_locations", "description": "Does not fabricate specific clinic names or addresses that aren't in the database" }
+      ]
+    },
+    {
+      "id": "LT3",
+      "category": "long_conversation",
+      "name": "3-turn Korean multi-turn → consistent language",
+      "profile": {
+        "skin_type": "oily",
+        "skin_concerns": ["acne", "pores"],
+        "language": "ko"
+      },
+      "messages": [
+        { "role": "user", "text": "지성 피부에 좋은 클렌징 추천해주세요" },
+        { "role": "user", "text": "그리고 모공 관리에 도움 되는 토너도 있을까요?" },
+        { "role": "user", "text": "지금까지 추천해준 제품들 정리해줄 수 있어요?" }
+      ],
+      "rubric": [
+        { "criterion": "korean_throughout", "description": "All three responses are primarily in Korean" },
+        { "criterion": "oily_skin_consistent", "description": "All recommendations are appropriate for oily skin across all turns" },
+        { "criterion": "summary_coherent", "description": "Final summary correctly references products from prior turns" },
+        { "criterion": "pore_concern_addressed", "description": "Toner recommendation addresses pore concerns specifically" }
+      ]
+    },
+
+    {
+      "id": "CT1",
+      "category": "contradiction",
+      "name": "Profile says dry but user says oily → handles gracefully",
+      "profile": {
+        "skin_type": "dry",
+        "skin_concerns": ["dryness"],
+        "language": "en"
+      },
+      "messages": [
+        { "role": "user", "text": "My skin is super oily, especially on my forehead. What can I use to control the shine?" }
+      ],
+      "rubric": [
+        { "criterion": "follows_user_input", "description": "Recommends products for oily/shine control (follows the user's stated concern, not the profile)" },
+        { "criterion": "no_confusion", "description": "Does not produce a confused or contradictory response mixing dry and oily recommendations" },
+        { "criterion": "actionable", "description": "Provides specific product recommendations for oil control" }
+      ]
+    },
+    {
+      "id": "CT2",
+      "category": "contradiction",
+      "name": "User reverses preference mid-conversation",
+      "profile": {
+        "skin_type": "sensitive",
+        "language": "en"
+      },
+      "messages": [
+        { "role": "user", "text": "I want a strong retinol serum, the most potent one you have." },
+        { "role": "user", "text": "Actually wait, I forgot I have very sensitive skin. I should probably avoid strong actives. What's a gentle alternative?" }
+      ],
+      "rubric": [
+        { "criterion": "adapts_to_reversal", "description": "Second response pivots to gentle alternatives, does NOT continue recommending strong retinol" },
+        { "criterion": "acknowledges_change", "description": "Acknowledges the user changed their mind or mentions the sensitive skin concern" },
+        { "criterion": "safe_recommendation", "description": "Alternative recommendation is actually gentle and safe for sensitive skin" }
+      ]
+    },
+    {
+      "id": "CT3",
+      "category": "contradiction",
+      "name": "Asks for product already recommended → no blind repeat",
+      "profile": {
+        "skin_type": "oily",
+        "skin_concerns": ["acne"],
+        "language": "en"
+      },
+      "messages": [
+        { "role": "user", "text": "Recommend a good BHA product for blackheads." },
+        { "role": "user", "text": "Those are good, but I already have those. Anything else?" }
+      ],
+      "rubric": [
+        { "criterion": "different_recommendations", "description": "Second response provides different products or alternatives, not the same ones again" },
+        { "criterion": "acknowledges_request", "description": "Acknowledges the user already has the first recommendations" },
+        { "criterion": "still_relevant", "description": "Alternative recommendations are still relevant to BHA/blackheads/oily skin" }
+      ]
+    },
+
+    {
+      "id": "LC1",
+      "category": "logic_consistency",
+      "name": "Budget constraint respected across turns",
+      "profile": {
+        "skin_type": "dry",
+        "budget_level": "budget",
+        "language": "en"
+      },
+      "messages": [
+        { "role": "user", "text": "I'm on a very tight budget. Recommend affordable moisturizers under $15." },
+        { "role": "user", "text": "What about a serum to go with it? Still cheap please." },
+        { "role": "user", "text": "And a sunscreen? Keep it budget friendly." }
+      ],
+      "rubric": [
+        { "criterion": "budget_consistent", "description": "All three responses respect the budget constraint — recommends affordable/budget options throughout" },
+        { "criterion": "no_premium_drift", "description": "Does NOT start recommending expensive products in later turns after initially being budget-conscious" },
+        { "criterion": "practical_prices", "description": "Mentions budget-friendly price ranges or explicitly affordable product lines" }
+      ]
+    },
+    {
+      "id": "LC2",
+      "category": "logic_consistency",
+      "name": "Sensitive skin safety maintained across domains",
+      "profile": {
+        "skin_type": "sensitive",
+        "skin_concerns": ["redness", "eczema"],
+        "language": "en"
+      },
+      "messages": [
+        { "role": "user", "text": "What products are safe for my extremely sensitive skin with eczema?" },
+        { "role": "user", "text": "What about treatments? Are there gentle facial treatments I could try in Seoul?" }
+      ],
+      "rubric": [
+        { "criterion": "product_safety", "description": "Product recommendations avoid harsh ingredients (strong acids, retinol, fragrances)" },
+        { "criterion": "treatment_safety", "description": "Treatment recommendations avoid aggressive procedures (deep chemical peels, strong lasers) for eczema-prone skin" },
+        { "criterion": "consistent_caution", "description": "Both responses show consistent caution about sensitive/eczema skin — no sudden switch to aggressive recommendations" },
+        { "criterion": "mentions_precautions", "description": "At least one response shows awareness of the skin's fragility — mentioning caution, gentle approach, patch testing, consulting a professional, or noting that eczema-prone skin needs extra care. Any form of precautionary guidance counts." }
+      ]
+    },
+    {
+      "id": "LC3",
+      "category": "logic_consistency",
+      "name": "Seasonal context consistency",
+      "profile": {
+        "skin_type": "combination",
+        "language": "en"
+      },
+      "messages": [
+        { "role": "user", "text": "It's summer in Seoul and super humid. What skincare should I use?" },
+        { "role": "user", "text": "What about a good night cream for this weather?" }
+      ],
+      "rubric": [
+        { "criterion": "summer_appropriate", "description": "First response recommends lightweight/summer-appropriate products (not heavy winter creams)" },
+        { "criterion": "night_cream_consistent", "description": "Night cream recommendation is still appropriate for humid summer (not contradicting the seasonal context)" },
+        { "criterion": "no_seasonal_contradiction", "description": "Does not recommend heavy/occlusive products in one turn after recommending lightweight products in another" }
+      ]
+    },
+    {
+      "id": "LC4",
+      "category": "logic_consistency",
+      "name": "Ingredient conflict awareness",
+      "profile": {
+        "skin_type": "normal",
+        "language": "en"
+      },
+      "messages": [
+        { "role": "user", "text": "I'm using a vitamin C serum in the morning." },
+        { "role": "user", "text": "Can I add a niacinamide product to my routine? Would they work together?" }
+      ],
+      "rubric": [
+        { "criterion": "addresses_combination", "description": "Provides information about using vitamin C and niacinamide together (whether they conflict or are compatible)" },
+        { "criterion": "scientifically_reasonable", "description": "The advice is scientifically reasonable (modern consensus: they can be used together, or if noting old concerns, explains they are outdated)" },
+        { "criterion": "practical_guidance", "description": "Gives practical advice on how to incorporate both (timing, layering order, or product suggestions)" }
       ]
     }
   ]
