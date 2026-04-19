@@ -277,6 +277,9 @@
       "clinics": "클리닉"
     },
     "filters": {
+      "title": "필터",
+      "apply": "적용",
+      "reset": "초기화",
       "skinType": "피부 타입",
       "category": "카테고리",
       "budget": "예산",
@@ -287,6 +290,7 @@
       "englishSupport": "영어 지원"
     },
     "sort": {
+      "label": "정렬",
       "relevance": "맞춤 추천순",
       "rating": "평점순",
       "price": "가격순",

@@ -277,6 +277,9 @@
       "clinics": "Clinics"
     },
     "filters": {
+      "title": "Filters",
+      "apply": "Apply",
+      "reset": "Reset",
       "skinType": "Skin Type",
       "category": "Category",
       "budget": "Budget",
@@ -287,6 +290,7 @@
       "englishSupport": "English Support"
     },
     "sort": {
+      "label": "Sort by",
       "relevance": "Best for you",
       "rating": "Highest rated",
       "price": "Lowest price",
