@@ -99,7 +99,7 @@
 | P0-25 | Supabase 브라우저 클라이언트     | 공개 읽기 OK, RLS 쓰기 차단 OK                                                                                           | 정상 동작          | ✅   |
 | P0-26 | Supabase anonymous auth | 세션 + UUID + 데이터 연결 정상                                                                                            | 세션 유지, 데이터 연결  | ✅   |
 | P0-27 | Supabase Storage        | 업로드 + CDN URL(200 OK) 정상                                                                                         | 업로드/조회 정상      | ✅   |
-| P0-28 | Vercel + GitHub 배포      | GitHub push + Vercel 연동 완료. [https://assenly-proj.vercel.app/en](https://assenly-proj.vercel.app/en) HTTPS 접근 확인 | 빌드 + HTTPS 접근  | ✅   |
+| P0-28 | Vercel + GitHub 배포      | GitHub push + Vercel 연동 완료. [https://essenly-proj.vercel.app/en](https://essenly-proj.vercel.app/en) HTTPS 접근 확인 | 빌드 + HTTPS 접근  | ✅   |
 
 
 ## 도메인 데이터 수집/갱신 검증
@@ -631,7 +631,7 @@
 | P3-29a | LLM 비용 한도 + 알림         | Anthropic Console $100/월 한도 + 알림. Google 무료 티어 기본 한도. onFinish 토큰 사용량 로그 추가. v0.2: DB 기반 집계 (V2-24) | ✅   |
 | P3-30  | ~~로깅 전략~~              | **→ v0.2 연기**. 구조화 로깅 (JSON), 로그 레벨. MVP는 console.error 기본 로깅 충분                           | ➡️  |
 | P3-31  | ~~DB 백업 확인~~             | **→ v0.2 연기**. Supabase Pro 업그레이드($25/월)는 정식 런칭 전 수행. MVP 소프트 런칭은 소수 테스트 — 데이터 재시드 가능      | ➡️  |
-| P3-32  | ~~도메인 + SSL~~          | **→ v0.2 연기**. MVP는 `assenly-proj.vercel.app` (Vercel 자동 SSL) 사용. 커스텀 도메인 구매·연결은 v0.2           | ➡️  |
+| P3-32  | ~~도메인 + SSL~~          | **→ v0.2 연기**. MVP는 `essenly-proj.vercel.app` (Vercel 자동 SSL) 사용. 커스텀 도메인 구매·연결은 v0.2           | ➡️  |
 
 
 ## 배포 + 런칭
@@ -641,7 +641,7 @@
 | ------ | ---------------- | --------------------------------------------------------------------------------------------------- | --- |
 | P3-33  | ~~버그 수정 + 최적화~~  | 수정 완료 (PR #17 머지): (1) 불완전 동의 세션 방어 (2) ChatContent useMemo locale 의존성 (3) enrich-product-links ESM 가드 (4) package-lock.json 동기화. E2E 재검증 (2026-04-13): 815/815 테스트 통과, tsc 0에러. 코드 레벨 검증 9/9 항목 PASS (언어전환, StoreCard, ClinicCard, search 도메인, 에러retry, 가로스크롤, TreatmentCard booking, map-utils, card-mapper). eval harness 17/20 PASS | ✅   |
 | P3-33a | 법률 전문가 검토        | 소프트 런칭 후 정식 런칭 전 진행. 이용약관(/terms), 개인정보처리방침(/privacy), 면책 조항 법률 전문가 검토. GDPR/국제 규정 검토. 소프트 런칭 차단 아님 | ⬜   |
-| P3-33b | Vercel/도메인 essenly 변경 | Vercel 프로젝트명 assenly→essenly 변경, 도메인 essenly-proj.vercel.app 설정, 코드 내 assenly 참조 전수 변경. 배포 전 필수 | ⬜   |
+| P3-33b | Vercel/도메인 essenly 변경 | Vercel 프로젝트명·도메인 essenly-proj 변경 완료. 코드 내 참조 전수 변경 완료 | ✅   |
 | P3-34  | 프로덕션 배포          | 최종 배포                                                                                               | ⬜   |
 | P3-35  | 소프트 런칭           | 제한 사용자 테스트 (대상/규모 별도 결정)                                                                            | ⬜   |
 | P3-36  | ~~사용자 피드백 수집 채널 구축~~ | **→ v0.2 연기**. 인앱 별점+리뷰 UI로 v0.2에서 구현. 소프트 런칭은 소수 사용자 직접 소통으로 피드백 수집                                    | ➡️  |
