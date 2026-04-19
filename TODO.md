@@ -553,6 +553,7 @@
 | NEW-44  | ProductCard 태그 시스템 개선 | **완료**. subcategory를 muted 태그로, english_label을 teal 태그로 통합 태그 영역 배치. 5색 체계 유지. Store/Clinic은 구조화 필드가 이미 올바르게 매핑됨 (변경 불필요) | ✅ |
 | NEW-45  | StoreCard 태그 시스템 디자인 검토 | **변경 불필요**. 코드 리뷰 결과: store_type→muted, english_support→teal, tourist_services→teal로 design-preview.html 5색 체계에 이미 올바르게 매핑. tags 배열은 DB에서 빈 배열 | ✅ |
 | NEW-46  | ClinicCard 태그 시스템 디자인 검토 | **변경 불필요**. 코드 리뷰 결과: clinic_type→muted, english_support/license_verified/foreigner_friendly→teal로 design-preview.html 5색 체계에 이미 올바르게 매핑. tags 배열은 DB에서 빈 배열 | ✅ |
+| NEW-47  | ~~카드 UX 개선 — 가격 정보 팝업 + 위치 아이콘~~ | **완료 (2026-04-19)**. (1) PriceTierBadge Tooltip→Popover 전환: `@base-ui/react/tooltip`은 터치 디바이스에서 비활성화(공식 문서 명시) → `@base-ui/react/popover`(`openOnHover`+클릭) 전환. `popover.tsx` 디자인 시스템 프리미티브 신규 추가. (2) compact 카드 showInfo 활성화: ProductCard/TreatmentCard compact에서 `showInfo={false}` 제거 → 채팅 카드에도 ⓘ 표시. (3) 카드 오버레이 z-index 충돌 해소: PopoverTrigger에 `relative z-10` 추가 (기존 store 링크 패턴 재사용). (4) $ ↔ ⓘ 간격 축소: `min-w-[44px]` 제거 → `p-1.5` + `ml-0.5`로 터치 영역 확보 + 시각적 간격 최소화. (5) StoreCard/ClinicCard district 앞 MapPin 아이콘 추가 (compact `size-2.5` / default `size-3`). 테스트 1087/1087 PASS, tsc 0에러 | ✅ |
 
 
 ---

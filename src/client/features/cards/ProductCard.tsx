@@ -78,7 +78,6 @@ export default function ProductCard({ product, brand, store, whyRecommended, loc
               tier={tier}
               domain="product"
               thresholdLabel={PRICE_TIER_CONFIG.product.tooltipRange}
-              showInfo={false}
               className="text-xs"
             />
           )}

@@ -3,7 +3,7 @@
 import "client-only";
 
 import { useState } from "react";
-import { Stethoscope } from "lucide-react";
+import { Stethoscope, MapPin } from "lucide-react";
 import type { Clinic } from "@/shared/types/domain";
 import { Skeleton } from "@/client/ui/primitives/skeleton";
 import { cn } from "@/shared/utils/cn";
@@ -49,7 +49,10 @@ export default function ClinicCard({ clinic, whyRecommended, locale, variant = "
         </div>
         <p className="truncate text-xs font-semibold text-foreground">{localized(clinic.name, locale)}</p>
         {clinic.district && (
-          <p className="truncate text-[10px] text-muted-foreground">{clinic.district}</p>
+          <p className="flex items-center gap-0.5 truncate text-[10px] text-muted-foreground">
+            <MapPin className="size-2.5 shrink-0" />
+            {clinic.district}
+          </p>
         )}
         {clinic.english_support && clinic.english_support !== "none" && (
           <span className="mt-1 inline-block w-fit rounded-full border border-teal bg-teal/10 px-1.5 py-0.5 text-[9px] font-medium text-teal">
@@ -113,7 +116,12 @@ export default function ClinicCard({ clinic, whyRecommended, locale, variant = "
           </span>
         )}
         <p className="mb-1 line-clamp-2 text-sm font-semibold text-foreground">{localized(clinic.name, locale)}</p>
-        {clinic.district && <p className="mb-1 text-xs text-muted-foreground">{clinic.district}</p>}
+        {clinic.district && (
+          <p className="mb-1 flex items-center gap-1 text-xs text-muted-foreground">
+            <MapPin className="size-3 shrink-0" />
+            {clinic.district}
+          </p>
+        )}
         {whyRecommended && <p className="mb-3 text-xs leading-relaxed text-muted-foreground">{whyRecommended}</p>}
 
         <div className="mb-2 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
