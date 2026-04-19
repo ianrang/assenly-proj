@@ -5,7 +5,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://essenly.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? "https://essenly-proj.vercel.app"),
   title: {
     template: "%s | Essenly",
     default: "Essenly — Your AI K-Beauty Guide",
