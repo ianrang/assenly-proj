@@ -97,7 +97,7 @@ export function registerExploreRoutes(app: AppType) {
     const filters: Record<string, unknown> = {};
     if (query.skin_types) filters.skin_types = parseCommaSeparated(query.skin_types);
     if (query.concerns) filters.concerns = parseCommaSeparated(query.concerns);
-    if (query.category) filters.category = query.category;
+    if (query.category) filters.category = parseCommaSeparated(query.category);
     if (query.budget_max) filters.budget_max = query.budget_max;
     if (query.max_downtime) filters.max_downtime = query.max_downtime;
     if (query.store_type) filters.store_type = query.store_type;

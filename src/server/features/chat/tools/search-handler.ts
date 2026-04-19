@@ -104,7 +104,7 @@ async function searchShopping(
         ? profile.skin_types
         : undefined),
     concerns: filters?.concerns,
-    category: filters?.category,
+    category: filters?.category ? [filters.category] : undefined,
     budget_max: filters?.budget_max_krw,
     search: undefined as string | undefined,
   };
@@ -168,7 +168,7 @@ async function searchTreatment(
   const treatmentFilters = {
     skin_types: filters?.skin_types,
     concerns: filters?.concerns,
-    category: filters?.category,
+    category: filters?.category ? [filters.category] : undefined,
     budget_max: filters?.budget_max_krw,
     max_downtime: filters?.max_downtime,
   };

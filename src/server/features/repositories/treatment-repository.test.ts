@@ -6,6 +6,7 @@ function createMockClient(resolvedValue: { data: unknown; error: unknown; count?
   const chain = {
     select: vi.fn().mockReturnThis(),
     eq: vi.fn().mockReturnThis(),
+    in: vi.fn().mockReturnThis(),
     overlaps: vi.fn().mockReturnThis(),
     lte: vi.fn().mockReturnThis(),
     or: vi.fn().mockReturnThis(),
@@ -44,7 +45,7 @@ describe('treatment-repository', () => {
       );
       const result = await findTreatmentsByFilters(
         client as never,
-        { skin_types: ['dry'], category: 'injection', max_downtime: 3 },
+        { skin_types: ['dry'], category: ['injection'], max_downtime: 3 },
         5,
       );
 

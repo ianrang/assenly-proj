@@ -2,7 +2,7 @@ import 'server-only';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import {
   applyArrayOverlap,
-  applyExact,
+  applyIn,
   applyMax,
   applyTextSearch,
   applyLimit,
@@ -21,7 +21,7 @@ import {
 interface ProductFilters {
   skin_types?: string[];
   concerns?: string[];
-  category?: string;
+  category?: string[];
   budget_max?: number;
   search?: string;
 }
@@ -53,7 +53,7 @@ export async function findProductsByFilters(
 
   query = applyArrayOverlap(query, 'skin_types', filters.skin_types);
   query = applyArrayOverlap(query, 'concerns', filters.concerns);
-  query = applyExact(query, 'category', filters.category);
+  query = applyIn(query, 'category', filters.category);
   query = applyMax(query, 'price', filters.budget_max);
   query = applyTextSearch(query, 'name', filters.search);
   query = applyLimit(query, limit);
@@ -135,7 +135,7 @@ export async function findAllProducts(
 
   query = applyArrayOverlap(query, 'skin_types', filters.skin_types);
   query = applyArrayOverlap(query, 'concerns', filters.concerns);
-  query = applyExact(query, 'category', filters.category);
+  query = applyIn(query, 'category', filters.category);
   query = applyMax(query, 'price', filters.budget_max);
   query = applyTextSearch(query, 'name', filters.search);
   query = applySort(query, sort.field, sort.order, ALLOWED_SORT_FIELDS);

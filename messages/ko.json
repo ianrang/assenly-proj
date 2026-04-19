@@ -146,6 +146,7 @@
     "notSet": "미설정"
   },
   "chat": {
+    "navLabel": "AI 채팅",
     "placeholder": "K-뷰티에 대해 무엇이든 물어보세요...",
     "send": "전송",
     "streaming": "AI가 생각하고 있어요...",
@@ -299,11 +300,6 @@
       "title": "검색 결과가 없습니다",
       "suggestion": "필터를 줄여보세요",
       "resetFilters": "필터 초기화"
-    },
-    "profileBanner": {
-      "title": "맞춤 추천 받기",
-      "description": "뷰티 프로필을 설정하면 나에게 맞는 추천을 받을 수 있어요",
-      "cta": "프로필 설정"
     }
   },
   "beauty": {

@@ -143,8 +143,8 @@ function GroupedParts({
         // cards (product/treatment)
         return (
           <div key={gi} className="flex max-w-full gap-2 overflow-x-auto pb-1 snap-x snap-mandatory scrollbar-thin">
-            {group.cards.map((card) => (
-              <CardPart key={cardKey(card)} part={card} locale={locale} onKitClaim={onKitClaim} />
+            {group.cards.map((card, ci) => (
+              <CardPart key={`${cardKey(card)}-${ci}`} part={card} locale={locale} onKitClaim={onKitClaim} />
             ))}
           </div>
         );

@@ -6,6 +6,7 @@ function createMockClient(resolvedValue: { data: unknown; error: unknown; count?
   const chain = {
     select: vi.fn().mockReturnThis(),
     eq: vi.fn().mockReturnThis(),
+    in: vi.fn().mockReturnThis(),
     overlaps: vi.fn().mockReturnThis(),
     lte: vi.fn().mockReturnThis(),
     or: vi.fn().mockReturnThis(),
@@ -46,7 +47,7 @@ describe('product-repository', () => {
       );
       const result = await findProductsByFilters(
         client as never,
-        { skin_types: ['dry'], category: 'skincare' },
+        { skin_types: ['dry'], category: ['skincare'] },
         5,
       );
 

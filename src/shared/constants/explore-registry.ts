@@ -20,7 +20,7 @@ export const EXPLORE_REGISTRY: ExploreDomainConfig[] = [
       {
         key: 'category',
         labelKey: 'explore.filters.category',
-        type: 'select',
+        type: 'multi',
         options: [
           { value: 'skincare', labelKey: 'beauty.productCategory.skincare' },
           { value: 'makeup', labelKey: 'beauty.productCategory.makeup' },
@@ -69,7 +69,7 @@ export const EXPLORE_REGISTRY: ExploreDomainConfig[] = [
       {
         key: 'category',
         labelKey: 'explore.filters.category',
-        type: 'select',
+        type: 'multi',
         options: [
           { value: 'skin', labelKey: 'beauty.treatmentCategory.skin' },
           { value: 'laser', labelKey: 'beauty.treatmentCategory.laser' },

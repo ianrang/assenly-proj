@@ -143,7 +143,7 @@ describe('GET /api/explore', () => {
     const fetchArgs = handler.fetch.mock.calls[0];
     const filters = fetchArgs[1] as Record<string, unknown>;
     expect(filters.skin_types).toEqual(['oily', 'dry']);
-    expect(filters.category).toBe('skincare');
+    expect(filters.category).toEqual(['skincare']);
   });
 
   it('sort=relevance + 프로필 존재 → scoring 적용 (meta.scored=true)', async () => {
