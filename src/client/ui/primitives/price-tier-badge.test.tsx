@@ -3,24 +3,21 @@ import { render, screen } from '@testing-library/react';
 import PriceTierBadge from './price-tier-badge';
 
 describe('PriceTierBadge', () => {
-  it('tier + displayPrice → 렌더링', () => {
+  it('tier 렌더링', () => {
     render(
       <PriceTierBadge
         tier="$$"
-        displayPrice="~₩40k"
         domain="product"
         thresholdLabel="₩25,000–₩50,000"
       />,
     );
     expect(screen.getByText(/\$\$/)).toBeInTheDocument();
-    expect(screen.getByText(/~₩40k/)).toBeInTheDocument();
   });
 
   it('showInfo=true → ⓘ 버튼 표시', () => {
     render(
       <PriceTierBadge
         tier="$$"
-        displayPrice="~₩40k"
         domain="product"
         thresholdLabel="₩25,000–₩50,000"
         showInfo
@@ -33,7 +30,6 @@ describe('PriceTierBadge', () => {
     render(
       <PriceTierBadge
         tier="$$"
-        displayPrice="~₩40k"
         domain="product"
         thresholdLabel="₩25,000–₩50,000"
         showInfo={false}
@@ -42,24 +38,10 @@ describe('PriceTierBadge', () => {
     expect(screen.queryByRole('button', { name: /price info/i })).not.toBeInTheDocument();
   });
 
-  it('displayPrice=null → "Price varies" 폴백', () => {
-    render(
-      <PriceTierBadge
-        tier="$$"
-        displayPrice={null}
-        domain="product"
-        thresholdLabel="₩25,000–₩50,000"
-      />,
-    );
-    expect(screen.getByText(/\$\$/)).toBeInTheDocument();
-    expect(screen.getByText('Price varies')).toBeInTheDocument();
-  });
-
   it('tier=null → 아무것도 렌더링 안 함', () => {
     const { container } = render(
       <PriceTierBadge
         tier={null}
-        displayPrice="~₩40k"
         domain="product"
         thresholdLabel="₩25,000–₩50,000"
       />,
@@ -71,7 +53,6 @@ describe('PriceTierBadge', () => {
     render(
       <PriceTierBadge
         tier="$$"
-        displayPrice="~₩40k"
         domain="product"
         thresholdLabel="₩25,000–₩50,000"
       />,
@@ -82,12 +63,12 @@ describe('PriceTierBadge', () => {
 
   it('$, $$$ 티어도 렌더링된다', () => {
     const { rerender } = render(
-      <PriceTierBadge tier="$" displayPrice="~₩20k" domain="product" thresholdLabel="₩25,000–₩50,000" />,
+      <PriceTierBadge tier="$" domain="product" thresholdLabel="₩25,000–₩50,000" />,
     );
     expect(screen.getByText(/\$/)).toBeInTheDocument();
 
     rerender(
-      <PriceTierBadge tier="$$$" displayPrice="~₩60k" domain="treatment" thresholdLabel="₩50,000–₩200,000" />,
+      <PriceTierBadge tier="$$$" domain="treatment" thresholdLabel="₩50,000–₩200,000" />,
     );
     expect(screen.getByText(/\$\$\$/)).toBeInTheDocument();
   });

@@ -3,13 +3,13 @@
 import "client-only";
 
 import { useState } from "react";
+import { Package } from "lucide-react";
 import type { Product, LocalizedText } from "@/shared/types/domain";
 import { Skeleton } from "@/client/ui/primitives/skeleton";
 import { cn } from "@/shared/utils/cn";
 import { localized } from "@/shared/utils/localized";
 import { computeTier } from "@/shared/utils/compute-tier";
-import { formatPriceShort } from "@/shared/utils/format-price-short";
-import { PRICE_TIER_CONFIG } from "@/shared/constants";
+import { PRICE_TIER_CONFIG, INTERNAL_TAG_PREFIXES } from "@/shared/constants";
 import PriceTierBadge from "@/client/ui/primitives/price-tier-badge";
 import HighlightBadge from "./HighlightBadge";
 
@@ -35,7 +35,9 @@ export default function ProductCard({ product, brand, store, whyRecommended, loc
   const isHighlighted = product.is_highlighted && product.highlight_badge !== null;
   const isCompact = variant === "compact";
   const tier = computeTier(PRICE_TIER_CONFIG.product.thresholds, product.price, product.price_min);
-  const displayPrice = formatPriceShort(product.price ?? product.price_min);
+  const displayTags = product.tags
+    .filter(t => !INTERNAL_TAG_PREFIXES.some(p => t.startsWith(p)))
+    .slice(0, 3);
 
   if (isCompact) {
     return (
@@ -55,7 +57,7 @@ export default function ProductCard({ product, brand, store, whyRecommended, loc
               onError={() => setImgError(true)}
             />
           ) : (
-            <span className="text-[10px] text-muted-foreground">Image</span>
+            <Package className="size-6 text-muted-foreground/30" />
           )}
           {isHighlighted && (
             <div className="absolute left-1.5 top-1.5">
@@ -71,7 +73,6 @@ export default function ProductCard({ product, brand, store, whyRecommended, loc
           {tier !== null && (
             <PriceTierBadge
               tier={tier}
-              displayPrice={displayPrice}
               domain="product"
               thresholdLabel={PRICE_TIER_CONFIG.product.tooltipRange}
               showInfo={false}
@@ -102,10 +103,12 @@ export default function ProductCard({ product, brand, store, whyRecommended, loc
     );
   }
 
+  const primaryUrl = product.purchase_links?.[0]?.url;
+
   return (
     <article
       className={cn(
-        "overflow-hidden rounded-xl border bg-card transition-colors",
+        "relative flex h-full flex-col overflow-hidden rounded-xl border bg-card transition-colors",
         isHighlighted ? "border-primary" : "border-border hover:border-primary/50"
       )}
     >
@@ -120,7 +123,7 @@ export default function ProductCard({ product, brand, store, whyRecommended, loc
             onError={() => setImgError(true)}
           />
         ) : (
-          <span className="text-xs text-muted-foreground">Product Image</span>
+          <Package className="size-10 text-muted-foreground/30" />
         )}
         {isHighlighted && (
           <div className="absolute left-2 top-2">
@@ -134,19 +137,18 @@ export default function ProductCard({ product, brand, store, whyRecommended, loc
       </div>
 
       {/* Body */}
-      <div className="p-4">
+      <div className="flex flex-1 flex-col p-4">
         {brand && (
           <p className="mb-1 text-xs text-muted-foreground">
             {localized(brand.name, locale)}
           </p>
         )}
-        <p className="mb-1 text-sm font-semibold text-foreground">
+        <p className="mb-1 line-clamp-2 text-sm font-semibold text-foreground">
           {localized(product.name, locale)}
         </p>
         {tier !== null && (
           <PriceTierBadge
             tier={tier}
-            displayPrice={displayPrice}
             domain="product"
             thresholdLabel={PRICE_TIER_CONFIG.product.tooltipRange}
             showInfo
@@ -160,9 +162,9 @@ export default function ProductCard({ product, brand, store, whyRecommended, loc
         )}
 
         {/* Tags */}
-        {product.tags.length > 0 && (
+        {displayTags.length > 0 && (
           <div className="mb-2 flex flex-wrap gap-1.5">
-            {product.tags.slice(0, 3).map((tag) => (
+            {displayTags.map((tag) => (
               <span
                 key={tag}
                 className="rounded-full border border-border px-2 py-0.5 text-[10px] font-medium text-muted-foreground"
@@ -180,37 +182,38 @@ export default function ProductCard({ product, brand, store, whyRecommended, loc
           </span>
         )}
 
-        {/* Store */}
-        {store && (
-          <p className="text-[10px] text-muted-foreground">
-            {store.map_url ? (
+        {/* Bottom links — pushed to bottom */}
+        <div className="mt-auto">
+          {store && (
+            <p className="text-[10px] text-muted-foreground">
+              {store.map_url ? (
+                <a
+                  href={store.map_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative z-10 underline transition-colors hover:text-foreground"
+                >
+                  {localized(store.name, locale)}
+                </a>
+              ) : (
+                localized(store.name, locale)
+              )}
+            </p>
+          )}
+
+          {primaryUrl && (
+            <p className="text-[10px] text-muted-foreground">
               <a
-                href={store.map_url}
+                href={primaryUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="underline transition-colors hover:text-foreground"
+                className="underline transition-colors hover:text-foreground after:absolute after:inset-0 after:content-['']"
               >
-                {localized(store.name, locale)}
+                Product Details
               </a>
-            ) : (
-              localized(store.name, locale)
-            )}
-          </p>
-        )}
-
-        {/* Purchase Link */}
-        {product.purchase_links && product.purchase_links.length > 0 && (
-          <p className="text-[10px] text-muted-foreground">
-            <a
-              href={product.purchase_links[0].url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline transition-colors hover:text-foreground"
-            >
-              Product Details
-            </a>
-          </p>
-        )}
+            </p>
+          )}
+        </div>
       </div>
     </article>
   );

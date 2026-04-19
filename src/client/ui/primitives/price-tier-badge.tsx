@@ -19,7 +19,6 @@ const TIER_LABELS: Record<TierLevel, string> = {
 
 type PriceTierBadgeProps = {
   tier: TierLevel | null;
-  displayPrice: string | null;
   domain: string;
   thresholdLabel: string;
   showInfo?: boolean;
@@ -28,7 +27,6 @@ type PriceTierBadgeProps = {
 
 export default function PriceTierBadge({
   tier,
-  displayPrice,
   domain,
   thresholdLabel,
   showInfo = true,
@@ -37,9 +35,7 @@ export default function PriceTierBadge({
   if (tier === null) return null;
 
   const tierLabel = TIER_LABELS[tier];
-  const ariaLabel = displayPrice
-    ? `${tierLabel} price for ${domain}s, typically ${thresholdLabel}. Approximately ${displayPrice.replace("~", "")}.`
-    : `${tierLabel} price for ${domain}s, typically ${thresholdLabel}. Price varies.`;
+  const ariaLabel = `${tierLabel} price for ${domain}s, typically ${thresholdLabel}.`;
 
   return (
     <div
@@ -48,11 +44,8 @@ export default function PriceTierBadge({
       role="group"
     >
       <span className="font-bold text-primary">
-        {tier}{displayPrice ? ` · ${displayPrice}` : ""}
+        {tier}
       </span>
-      {displayPrice === null && (
-        <span className="ml-1 font-normal text-muted-foreground">Price varies</span>
-      )}
       {showInfo && (
         <TooltipProvider>
           <Tooltip>

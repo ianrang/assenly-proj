@@ -48,7 +48,6 @@ describe("TreatmentCard PriceTierBadge", () => {
     render(<TreatmentCard treatment={treatment} locale="en" />);
 
     expect(screen.getByText(/\$\$/)).toBeInTheDocument();
-    expect(screen.getByText(/~₩100k/)).toBeInTheDocument();
   });
 
   it("price=null, price_min=50000 → '$$' fallback 렌더링", () => {

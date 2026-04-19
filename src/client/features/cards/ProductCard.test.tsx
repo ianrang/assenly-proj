@@ -153,7 +153,6 @@ describe("ProductCard compact variant", () => {
     expect(screen.getByText("Snail Mucin")).toBeInTheDocument();
     // price=18000 < 25000 → '$' tier
     expect(screen.getByText(/\$/)).toBeInTheDocument();
-    expect(screen.getByText(/~₩18k/)).toBeInTheDocument();
   });
 
   it("compact 렌더 시 브랜드 표시", () => {
@@ -188,6 +187,29 @@ describe("ProductCard compact variant", () => {
     render(<ProductCard product={product} locale="en" />);
 
     expect(screen.getByText("Product Details")).toBeInTheDocument();
+  });
+});
+
+describe("ProductCard internal tag filtering", () => {
+  it('tags에 "budget:budget" 포함 시 UI에 표시되지 않음', () => {
+    const product = makeProduct({
+      tags: ["budget:budget", "hydrating"],
+    });
+
+    render(<ProductCard product={product} locale="en" />);
+
+    expect(screen.queryByText("budget:budget")).not.toBeInTheDocument();
+    expect(screen.getByText("hydrating")).toBeInTheDocument();
+  });
+
+  it("budget 계열 태그만 있으면 tags 영역 미렌더링", () => {
+    const product = makeProduct({
+      tags: ["budget:luxury"],
+    });
+
+    render(<ProductCard product={product} locale="en" />);
+
+    expect(screen.queryByText("budget:luxury")).not.toBeInTheDocument();
   });
 });
 

@@ -172,22 +172,23 @@ export default function ExploreClient({ locale }: ExploreClientProps) {
             locale={locale}
             isLoading={isLoading}
             onResetFilters={handleResetFilters}
+            footer={
+              hasMore && !isLoading ? (
+                <div className="flex justify-center py-6">
+                  <Button
+                    variant="outline"
+                    onClick={loadMore}
+                    disabled={isValidating}
+                  >
+                    {isValidating
+                      ? t("loadMore.loading")
+                      : t("loadMore.button", { remaining })}
+                  </Button>
+                </div>
+              ) : undefined
+            }
           />
         </div>
-
-        {hasMore && !isLoading && (
-          <div className="mt-6 flex justify-center">
-            <Button
-              variant="outline"
-              onClick={loadMore}
-              disabled={isValidating}
-            >
-              {isValidating
-                ? t("loadMore.loading")
-                : t("loadMore.button", { remaining })}
-            </Button>
-          </div>
-        )}
       </main>
 
       <FilterSheet

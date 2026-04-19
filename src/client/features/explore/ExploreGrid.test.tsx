@@ -199,6 +199,47 @@ describe('ExploreGrid', () => {
     expect(row2?.querySelector('[data-testid="product-card-p4"]')).not.toBeNull();
   });
 
+  // --- footer prop 테스트 ---
+
+  it('footer 전달 시 스크롤 컨테이너 내부에 표시', () => {
+    const items = [{ id: 'p1' }, { id: 'p2' }];
+    render(
+      <ExploreGrid
+        domain="products"
+        items={items}
+        locale="en"
+        isLoading={false}
+        onResetFilters={vi.fn()}
+        footer={<button data-testid="load-more">Load More</button>}
+      />,
+    );
+    const scrollContainer = screen.getByTestId('virtual-scroll-container');
+    const loadMore = screen.getByTestId('load-more');
+    expect(scrollContainer.contains(loadMore)).toBe(true);
+  });
+
+  it('footer 미전달 시 추가 요소 없음', () => {
+    const items = [{ id: 'p1' }];
+    render(
+      <ExploreGrid domain="products" items={items} locale="en" isLoading={false} onResetFilters={vi.fn()} />,
+    );
+    expect(screen.queryByTestId('load-more')).toBeNull();
+  });
+
+  it('isLoading=true 시 footer 미표시 (스켈레톤 모드)', () => {
+    render(
+      <ExploreGrid
+        domain="products"
+        items={[]}
+        locale="en"
+        isLoading={true}
+        onResetFilters={vi.fn()}
+        footer={<button data-testid="load-more">Load More</button>}
+      />,
+    );
+    expect(screen.queryByTestId('load-more')).toBeNull();
+  });
+
   it('가상 행에 position: absolute + translateY 스타일 적용', () => {
     const items = [{ id: 'p0' }, { id: 'p1' }, { id: 'p2' }];
     const { container } = render(

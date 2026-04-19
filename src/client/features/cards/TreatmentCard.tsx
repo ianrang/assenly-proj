@@ -7,8 +7,7 @@ import { Skeleton } from "@/client/ui/primitives/skeleton";
 import { cn } from "@/shared/utils/cn";
 import { localized } from "@/shared/utils/localized";
 import { computeTier } from "@/shared/utils/compute-tier";
-import { formatPriceShort } from "@/shared/utils/format-price-short";
-import { PRICE_TIER_CONFIG } from "@/shared/constants";
+import { PRICE_TIER_CONFIG, INTERNAL_TAG_PREFIXES } from "@/shared/constants";
 import PriceTierBadge from "@/client/ui/primitives/price-tier-badge";
 import HighlightBadge from "./HighlightBadge";
 
@@ -25,7 +24,9 @@ export default function TreatmentCard({ treatment, clinic, whyRecommended, stayD
   const isHighlighted = treatment.is_highlighted && treatment.highlight_badge !== null;
   const isCompact = variant === "compact";
   const tier = computeTier(PRICE_TIER_CONFIG.treatment.thresholds, treatment.price, treatment.price_min);
-  const displayPrice = formatPriceShort(treatment.price ?? treatment.price_min);
+  const displayTags = treatment.tags
+    .filter(t => !INTERNAL_TAG_PREFIXES.some(p => t.startsWith(p)))
+    .slice(0, 3);
 
   if (isCompact) {
     return (
@@ -49,7 +50,6 @@ export default function TreatmentCard({ treatment, clinic, whyRecommended, stayD
         {tier !== null && (
           <PriceTierBadge
             tier={tier}
-            displayPrice={displayPrice}
             domain="treatment"
             thresholdLabel={PRICE_TIER_CONFIG.treatment.tooltipRange}
             showInfo={false}
@@ -82,7 +82,7 @@ export default function TreatmentCard({ treatment, clinic, whyRecommended, stayD
   return (
     <article
       className={cn(
-        "overflow-hidden rounded-xl border bg-card p-4 transition-colors",
+        "relative flex h-full flex-col overflow-hidden rounded-xl border bg-card p-4 transition-colors",
         isHighlighted ? "border-primary" : "border-border hover:border-primary/50"
       )}
     >
@@ -94,7 +94,7 @@ export default function TreatmentCard({ treatment, clinic, whyRecommended, stayD
               {treatment.category}
             </span>
           )}
-          <p className="text-sm font-semibold text-foreground">
+          <p className="line-clamp-2 text-sm font-semibold text-foreground">
             {localized(treatment.name, locale)}
           </p>
         </div>
@@ -111,7 +111,6 @@ export default function TreatmentCard({ treatment, clinic, whyRecommended, stayD
       {tier !== null && (
         <PriceTierBadge
           tier={tier}
-          displayPrice={displayPrice}
           domain="treatment"
           thresholdLabel={PRICE_TIER_CONFIG.treatment.tooltipRange}
           showInfo
@@ -156,9 +155,9 @@ export default function TreatmentCard({ treatment, clinic, whyRecommended, stayD
       )}
 
       {/* Tags */}
-      {treatment.tags.length > 0 && (
+      {displayTags.length > 0 && (
         <div className="mb-2 flex flex-wrap gap-1.5">
-          {treatment.tags.slice(0, 3).map((tag) => (
+          {displayTags.map((tag) => (
             <span
               key={tag}
               className="rounded-full border border-border px-2 py-0.5 text-[10px] font-medium text-muted-foreground"
@@ -170,22 +169,24 @@ export default function TreatmentCard({ treatment, clinic, whyRecommended, stayD
       )}
 
       {/* Clinic Footer */}
-      {clinic && (
-        <p className="text-[10px] text-muted-foreground">
-          {clinic.booking_url ? (
-            <a
-              href={clinic.booking_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline transition-colors hover:text-foreground"
-            >
-              {localized(clinic.name, locale)}
-            </a>
-          ) : (
-            localized(clinic.name, locale)
-          )}
-        </p>
-      )}
+      <div className="mt-auto">
+        {clinic && (
+          <p className="text-[10px] text-muted-foreground">
+            {clinic.booking_url ? (
+              <a
+                href={clinic.booking_url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline transition-colors hover:text-foreground after:absolute after:inset-0 after:content-['']"
+              >
+                {localized(clinic.name, locale)}
+              </a>
+            ) : (
+              localized(clinic.name, locale)
+            )}
+          </p>
+        )}
+      </div>
     </article>
   );
 }

@@ -3,6 +3,7 @@
 import "client-only";
 
 import { useState } from "react";
+import { ShoppingBag } from "lucide-react";
 import type { Store } from "@/shared/types/domain";
 import { Skeleton } from "@/client/ui/primitives/skeleton";
 import { cn } from "@/shared/utils/cn";
@@ -76,11 +77,12 @@ export default function StoreCard({ store, whyRecommended, locale, variant = "de
   }
 
   const websiteUrl = extractWebsiteUrl(store.external_links);
+  const primaryUrl = mapUrl ?? websiteUrl;
 
   return (
     <article
       className={cn(
-        "overflow-hidden rounded-xl border bg-card transition-colors",
+        "relative flex h-full flex-col overflow-hidden rounded-xl border bg-card transition-colors",
         isHighlighted ? "border-primary" : "border-border hover:border-primary/50"
       )}
     >
@@ -94,7 +96,7 @@ export default function StoreCard({ store, whyRecommended, locale, variant = "de
             onError={() => setImgError(true)}
           />
         ) : (
-          <span className="text-xs text-muted-foreground">Store</span>
+          <ShoppingBag className="size-10 text-muted-foreground/30" />
         )}
         {isHighlighted && (
           <div className="absolute left-2 top-2">
@@ -103,13 +105,13 @@ export default function StoreCard({ store, whyRecommended, locale, variant = "de
         )}
       </div>
 
-      <div className="p-4">
+      <div className="flex flex-1 flex-col p-4">
         {store.store_type && (
           <span className="mb-1 inline-block rounded-full border border-border px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
             {store.store_type}
           </span>
         )}
-        <p className="mb-1 text-sm font-semibold text-foreground">{localized(store.name, locale)}</p>
+        <p className="mb-1 line-clamp-2 text-sm font-semibold text-foreground">{localized(store.name, locale)}</p>
         {store.district && <p className="mb-1 text-xs text-muted-foreground">{store.district}</p>}
         {whyRecommended && <p className="mb-3 text-xs leading-relaxed text-muted-foreground">{whyRecommended}</p>}
 
@@ -128,12 +130,12 @@ export default function StoreCard({ store, whyRecommended, locale, variant = "de
           </div>
         )}
 
-        <div className="flex flex-wrap gap-2">
-          {mapUrl && (
-            <a href={mapUrl} target="_blank" rel="noopener noreferrer" className="text-[10px] text-muted-foreground underline transition-colors hover:text-foreground">Map</a>
+        <div className="mt-auto flex flex-wrap gap-2">
+          {primaryUrl && (
+            <a href={primaryUrl} target="_blank" rel="noopener noreferrer" className="text-[10px] text-muted-foreground underline transition-colors hover:text-foreground after:absolute after:inset-0 after:content-['']">{mapUrl ? "Map" : "Website"}</a>
           )}
-          {websiteUrl && (
-            <a href={websiteUrl} target="_blank" rel="noopener noreferrer" className="text-[10px] text-muted-foreground underline transition-colors hover:text-foreground">Website</a>
+          {mapUrl && websiteUrl && (
+            <a href={websiteUrl} target="_blank" rel="noopener noreferrer" className="relative z-10 text-[10px] text-muted-foreground underline transition-colors hover:text-foreground">Website</a>
           )}
         </div>
       </div>

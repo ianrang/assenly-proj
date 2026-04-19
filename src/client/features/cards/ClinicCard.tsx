@@ -3,10 +3,12 @@
 import "client-only";
 
 import { useState } from "react";
+import { Stethoscope } from "lucide-react";
 import type { Clinic } from "@/shared/types/domain";
 import { Skeleton } from "@/client/ui/primitives/skeleton";
 import { cn } from "@/shared/utils/cn";
 import { localized } from "@/shared/utils/localized";
+import { INTERNAL_TAG_PREFIXES } from "@/shared/constants";
 import HighlightBadge from "./HighlightBadge";
 import { extractMapUrl } from "./map-utils";
 
@@ -23,6 +25,9 @@ export default function ClinicCard({ clinic, whyRecommended, locale, variant = "
   const showImage = imgSrc && !imgError;
   const isHighlighted = clinic.is_highlighted && clinic.highlight_badge !== null;
   const isCompact = variant === "compact";
+  const displayTags = clinic.tags
+    .filter(t => !INTERNAL_TAG_PREFIXES.some(p => t.startsWith(p)))
+    .slice(0, 3);
 
   if (isCompact) {
     return (
@@ -70,11 +75,12 @@ export default function ClinicCard({ clinic, whyRecommended, locale, variant = "
 
   const mapUrl = extractMapUrl(clinic.external_links);
   const ff = clinic.foreigner_friendly;
+  const primaryUrl = clinic.booking_url ?? mapUrl;
 
   return (
     <article
       className={cn(
-        "overflow-hidden rounded-xl border bg-card transition-colors",
+        "relative flex h-full flex-col overflow-hidden rounded-xl border bg-card transition-colors",
         isHighlighted ? "border-primary" : "border-border hover:border-primary/50"
       )}
     >
@@ -88,7 +94,7 @@ export default function ClinicCard({ clinic, whyRecommended, locale, variant = "
             onError={() => setImgError(true)}
           />
         ) : (
-          <span className="text-xs text-muted-foreground">Clinic</span>
+          <Stethoscope className="size-10 text-muted-foreground/30" />
         )}
         {isHighlighted && (
           <div className="absolute left-2 top-2">
@@ -97,13 +103,13 @@ export default function ClinicCard({ clinic, whyRecommended, locale, variant = "
         )}
       </div>
 
-      <div className="p-4">
+      <div className="flex flex-1 flex-col p-4">
         {clinic.clinic_type && (
           <span className="mb-1 inline-block rounded-full border border-border px-2 py-0.5 text-[10px] font-medium text-muted-foreground">
             {clinic.clinic_type}
           </span>
         )}
-        <p className="mb-1 text-sm font-semibold text-foreground">{localized(clinic.name, locale)}</p>
+        <p className="mb-1 line-clamp-2 text-sm font-semibold text-foreground">{localized(clinic.name, locale)}</p>
         {clinic.district && <p className="mb-1 text-xs text-muted-foreground">{clinic.district}</p>}
         {whyRecommended && <p className="mb-3 text-xs leading-relaxed text-muted-foreground">{whyRecommended}</p>}
 
@@ -126,20 +132,20 @@ export default function ClinicCard({ clinic, whyRecommended, locale, variant = "
           </div>
         )}
 
-        {clinic.tags.length > 0 && (
+        {displayTags.length > 0 && (
           <div className="mb-2 flex flex-wrap gap-1.5">
-            {clinic.tags.slice(0, 3).map((tag) => (
+            {displayTags.map((tag) => (
               <span key={tag} className="rounded-full border border-border px-2 py-0.5 text-[10px] font-medium text-muted-foreground">{tag}</span>
             ))}
           </div>
         )}
 
-        <div className="flex flex-wrap gap-2">
-          {clinic.booking_url && (
-            <a href={clinic.booking_url} target="_blank" rel="noopener noreferrer" className="text-[10px] text-muted-foreground underline transition-colors hover:text-foreground">Book Appointment</a>
+        <div className="mt-auto flex flex-wrap gap-2">
+          {primaryUrl && (
+            <a href={primaryUrl} target="_blank" rel="noopener noreferrer" className="text-[10px] text-muted-foreground underline transition-colors hover:text-foreground after:absolute after:inset-0 after:content-['']">{clinic.booking_url ? "Book Appointment" : "Map"}</a>
           )}
-          {mapUrl && (
-            <a href={mapUrl} target="_blank" rel="noopener noreferrer" className="text-[10px] text-muted-foreground underline transition-colors hover:text-foreground">Map</a>
+          {clinic.booking_url && mapUrl && (
+            <a href={mapUrl} target="_blank" rel="noopener noreferrer" className="relative z-10 text-[10px] text-muted-foreground underline transition-colors hover:text-foreground">Map</a>
           )}
         </div>
       </div>

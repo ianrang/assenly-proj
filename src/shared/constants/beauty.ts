@@ -149,6 +149,9 @@ export const ONBOARDING_COUNTRIES = [
   { value: "OTHER", label: "Other" },
 ] as const;
 
+/** 내부 분류용 태그 접두사 — UI에 노출하지 않는다. */
+export const INTERNAL_TAG_PREFIXES = ["budget:"] as const;
+
 /** DB: max 5 skin concerns storable */
 export const MAX_STORED_SKIN_CONCERNS = 5;
 
